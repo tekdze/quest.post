@@ -374,6 +374,21 @@ Font yüklenmesi metin yüksekliğini değiştirdiği için ölçüm **iki kez**
 bir kez DOM kurulurken, bir kez fontlar ve görsel yüklendikten sonra. Tek ölçümle
 gradyan birkaç piksel kayıyordu.
 
+### Türkçe ek kuralı — write.py'ın çözmesi gereken sorun (2026-08-25)
+
+Örnek tarifte `godot'yu` yazılmıştı, doğrusu **`godot'u`**. Yabancı özel isimlere
+Türkçe ek eklerken ek **okunuşa** göre seçilir ve bu LLM'in düzenli olarak
+yanlış yaptığı bir yer. Kaynak metin İngilizce olduğu için her postta çıkacak.
+
+Çözüm `write.py` içinde iki katmanlı olacak:
+1. **Kürasyonlu istisna sözlüğü** — sık geçen özel isimler ve doğru ekli hâlleri
+   (godot'u, steam'de, unity'yi, ubisoft'un, valve'ın, xbox'ta, playstation'da).
+   LLM'e bırakılmaz, kod dayatır.
+2. **Üslup filtresi kontrolü** — sözlükte olmayan bir isme ek geldiyse ve
+   apostroftan sonraki ek şüpheliyse yeniden üretim istenir.
+
+Bu, "yasak kalıplar" filtresinin ikinci işi oluyor.
+
 ### Uygulanan tasarım kuralları
 - Tier rengi tam dört yerde: üst şerit (8px), kicker, madde işaretleri, künye karesi
 - `text-transform: lowercase` **CSS'te zorlanıyor** — metin üretiminde bir kaçak
