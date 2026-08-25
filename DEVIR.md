@@ -3,7 +3,7 @@
 > Yeni bir sohbete geçerken: **önce bu dosyayı oku.** Kararlar burada, kodda değil.
 > Her önemli kararda veya faz bitiminde bu dosya güncellenir.
 
-Son güncelleme: 2026-08-25 (Faz 3 sonu)
+Son güncelleme: 2026-08-25 (Faz 2 kodu yazıldı)
 
 ---
 
@@ -220,7 +220,7 @@ Her faz ayrı ayrı çalıştırılıp doğrulanır, öncekine dönülmez.
 | # | Faz | Bağımlılık | Durum |
 |---|---|---|---|
 | 1 | `feeds.json` + `fetch.py` — RSS çekme, tekrar filtresi | Yok | **✅ 2026-08-25** |
-| 2 | `write.py` — Gemini + üslup filtresi | `GEMINI_API_KEY` | sıradaki |
+| 2 | `write.py` — Gemini + üslup filtresi | `GEMINI_API_KEY` | ⚠️ kod hazır, Google erişimi bloke |
 | 3 | `render.py` + `card.html` — PNG üretimi | Fontlar | **✅ 2026-08-25** |
 | 4 | `images.py` — IGDB | IGDB anahtarları | |
 | 5 | `telegram.py` — onay döngüsü | TG anahtarları | |
@@ -411,3 +411,85 @@ Bu, "yasak kalıplar" filtresinin ikinci işi oluyor.
   `out/sample_post/` sadece test, sonra silinebilir.
 - Tier renk/ad tablosu `render.py` içindeki `TIERS`. `tier.py` yazıldığında
   eşikler orada olacak, renk/ad burada kalacak — tek kaynak.
+
+---
+
+## 12. Faz 2 — metin üretimi ⚠️ (2026-08-25)
+
+**Kod tamamlandı, LLM tarafı Google kaynaklı engelle test edilemedi.**
+
+### Dosyalar
+| Dosya | Sorumluluk |
+|---|---|
+| `src/write.py` | Gemini çağrısı, istem kurulumu, yeniden üretim döngüsü, render tarifine çevirme |
+| `src/style.py` | Üslup filtresi. **LLM çağırmaz, tamamen deterministik** |
+
+Çalıştırma: `py -3.12 src/write.py --index 1 --tier A`
+Model listesi: `py -3.12 src/write.py --list-models`
+
+### Anahtar yönetimi
+`.env` dosyası proje kökünde, `.gitignore` dışlıyor. `write.py` kendi
+`load_env()` fonksiyonuyla okuyor — `python-dotenv` bağımlılığı eklenmedi,
+tek işi olan 8 satırlık kod için paket gereksiz.
+
+### Model kararı
+`DEFAULT_MODEL = "gemini-3.7-flash"` — **sürüm sabitlendi.**
+`gemini-flash-latest` gibi takma ad kullanılmıyor: model sessizce değişirse
+üslup da değişir, "300. post 1. postla aynı olur" ilkesi bozulur.
+
+Ölçüm (2026-08-25, `--list-models`): hesapta `generateContent` destekleyen 37
+model var. **`gemini-2.5-*` serisi yeni kullanıcılara kapatılmış**
+(`NOT_FOUND: no longer available to new users`), yani 3.x zorunlu.
+
+### ⛔ Açık engel: Gemini API projesi bloke
+Tüm 3.x modellerinde aynı cevap:
+`403 PERMISSION_DENIED — Your project has been denied access.`
+
+Tanı: anahtar **geçerli** (model listesi çekiliyor), engel **proje seviyesinde**.
+Bu, AI Studio'nun daha önce verdiği "Unable to create API key" hatasıyla aynı
+kökten geliyor. Kontrol sırası: hesap yaşı (18 altı → Gemini API tamamen kapalı,
+iki hatayı da açıklar) → Workspace kısıtı → temiz Cloud projesi → API'nin
+etkin olması.
+
+Kod tarafında yapılacak bir şey yok. Engel kalkınca `write.py` olduğu gibi çalışır.
+
+### İş bölümü — LLM'in dokunamadığı şeyler
+LLM **sadece** şu alanları üretir: `game`, `category` (sabit listeden seçer),
+`studio`, `is_leak`, ve sayfa metinleri. Dokunamadıkları: tier, görsel seçimi,
+tasarım, sayfa sayısı sınırı, gradyan.
+
+`is_leak` LLM'den geliyor ama sonucu **kod uyguluyor**: true ise `render.py`
+görseli ve krediyi tamamen düşürüyor, kart tipografik hale geçiyor. Telif
+kuralı LLM'in iyi niyetine bırakılmadı.
+
+### Üslup filtresi — `style.py`
+Üç denetim, hepsi deterministik:
+
+1. **Yasak kalıp avı** — em-dash ve eğik tırnak, yasak kelime listesi, emoji,
+   büyük harf, 2'den fazla hashtag, "a, b ve c" üçlük kalıbı, soru cümlesiyle
+   başlama (son sayfanın sorusu hariç, o tasarımın parçası).
+2. **Ek denetimi** — yabancı özel isme yanlış Türkçe ek. Sözlükte olan hatalar
+   **yeniden üretim istenmeden otomatik düzeltiliyor** (`autofix_suffixes`):
+   yeniden üretim pahalı ve sonucu belirsiz, ek hatası ise mekanik bir düzeltme.
+3. **Rakam denetimi** — çıktıdaki her rakam dizisi kaynak metinde geçmek zorunda.
+   Geçmiyorsa ihlal. LLM'in en tehlikeli hata tipi bu, çünkü inandırıcı görünüyor.
+
+Doğrulandı (2026-08-25, LLM'siz): uydurma "47 milyon" ve "2019" yakalandı,
+`godot'yu` otomatik `godot'u` oldu, em-dash + emoji + "adeta" yakalandı.
+
+İki kusur bulunup düzeltildi:
+- `tier` alanı ("A") büyük harf denetimine giriyordu. Düz metin olmayan alanlar
+  `NON_PROSE_KEYS` ile ayrıldı.
+- Yasak kelime avı Türkçe işaretlere bağımlıydı: LLM "iste" veya "cigir acan"
+  yazsa filtre kaçırıyordu. Artık karşılaştırma işaretler sadeleştirilerek
+  yapılıyor (`fold()`).
+
+Yeniden üretim döngüsü: en fazla 3 deneme, her denemede önceki ihlal listesi
+isteme ekleniyor. 3'te de temizlenmezse hata dönüyor — kirli metin yayına gitmez.
+
+### Sonraki fazda hatırlanacak
+- `--tier` şu an elle veriliyor. `tier.py` yazılınca oradan gelecek.
+- Görsel `assets/placeholder.png` olarak sabit. `images.py` (Faz 4) devralacak.
+- Tam makale metni **çekilmiyor**, kümedeki tüm kaynakların RSS özeti
+  birleştirilip veriliyor. Kazıma yapmamak için bilinçli tercih; birden fazla
+  özet zaten tek özetten zengin.
