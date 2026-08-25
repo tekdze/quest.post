@@ -66,6 +66,11 @@ TR_FOLD = str.maketrans({
 })
 
 
+# Turkceye ozgu harfler. Uzun bir metinde bunlardan hic yoksa metin
+# isaretsiz yazilmis demektir.
+TR_CHARS = set("ışğüöçİIŞĞÜÖÇ") - set("I")
+
+
 def fold(text: str) -> str:
     return text.translate(TR_FOLD).lower()
 
@@ -127,6 +132,12 @@ def check_patterns(spec: dict) -> list[str]:
         if text.count("#") > 2:
             problems.append(f"{path}: 2'den fazla hashtag")
 
+        # Isaretsiz Turkce: LLM "ayni", "hazirlaniyor", "buyuk" yaziyor.
+        # 60 karakterden uzun bir Turkce metinde ı/ş/ğ/ü/ö/ç harflerinden
+        # HIC yoksa metin neredeyse kesin isaretsiz yazilmis.
+        if len(text) > 60 and not TR_CHARS & set(text):
+            problems.append(f"{path}: Turkce karakter hic yok, isaretsiz yazilmis")
+
         # Ucluk kalibi: "a, b ve c" - metnin her yerinde tekrarlayan bir tik.
         if re.search(r"\w+, [^,.]{3,40}, [^,.]{3,40} ve ", folded):
             problems.append(f"{path}: uc'lu liste kalibi (\"a, b ve c\")")
@@ -166,12 +177,28 @@ def digit_runs(text: str) -> list[str]:
     return re.findall(r"\d+", text.replace(".", "").replace(",", ""))
 
 
+# Kaynak Ingilizce, cikti Turkce: kaynakta "two hours" yazarken cikti
+# "2 saat" oluyor. Rakam denetimi bunu uydurma sanmasin diye sayi
+# kelimeleri de rakama cevrilip izinli kumeye ekleniyor.
+NUMBER_WORDS = {
+    "one": "1", "two": "2", "three": "3", "four": "4", "five": "5",
+    "six": "6", "seven": "7", "eight": "8", "nine": "9", "ten": "10",
+    "eleven": "11", "twelve": "12", "fifteen": "15", "twenty": "20",
+    "thirty": "30", "forty": "40", "fifty": "50", "sixty": "60",
+    "hundred": "100", "thousand": "1000", "million": "1000000",
+    "first": "1", "second": "2", "third": "3", "fourth": "4", "fifth": "5",
+    "half": "30",  # "half an hour" -> 30 dk
+}
+
+
 def check_numbers(spec: dict, source_text: str) -> list[str]:
     """Kaynak metninde gecmeyen sayi karta giremez.
 
     LLM sayi uydurur; bu en tehlikeli hata tipi cunku inandirici gorunuyor.
     """
     allowed = set(digit_runs(source_text))
+    words = set(re.findall(r"[a-z]+", source_text.lower()))
+    allowed |= {NUMBER_WORDS[w] for w in words & NUMBER_WORDS.keys()}
     problems: list[str] = []
 
     for path, text in strings_of(spec):

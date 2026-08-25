@@ -19,6 +19,7 @@ import json
 import os
 import random
 import sys
+import time
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -31,10 +32,13 @@ CANDIDATES_FILE = ROOT / "state" / "candidates.json"
 DEFAULT_OUT = ROOT / "state" / "draft.json"
 
 API_BASE = "https://generativelanguage.googleapis.com/v1beta"
-# Surum SABITLENDI. "gemini-flash-latest" gibi takma ad kullanilmiyor:
+# Surum SABITLENDI (3.7-flash surekli 503 donuyordu, 3.6 stabil). "gemini-flash-latest" gibi takma ad kullanilmiyor:
 # model sessizce degisirse uslup da degisir, 300. post 1. postla ayni olmaz.
-DEFAULT_MODEL = "gemini-3.7-flash"
+DEFAULT_MODEL = "gemini-3.6-flash"
 MAX_ATTEMPTS = 3
+# Gecici HTTP hatalari icin yeniden deneme (503 = model yogun).
+HTTP_RETRIES = 4
+RETRY_BACKOFF = 5  # saniye, her denemede katlaniyor
 
 # Sabit kategori listesi. LLM buradan secer, serbest yazamaz - kicker metni
 # her postta ayni sozluk icinden gelsin diye.
@@ -45,11 +49,11 @@ CATEGORIES = [
 
 # Her uretimde rastgele biri secilir. Sabit acilis kalibi olusmasini engeller.
 WRITING_MODES = {
-    "gözlem": "olayin somut bir detayina odaklan, genel yorum yapma",
-    "karşılaştırma": "benzer bir orneke veya rakibe kiyasla anlat",
-    "tarihsel not": "olayin gecmisiyle baglantisini kur",
-    "sayısal detay": "kaynaktaki rakamlarin ne anlama geldigini ac",
-    "karşı görüş": "olaya supheyle yaklas, zayif tarafini soyle",
+    "gözlem": "olayın somut bir detayına odaklan, genel yorum yapma",
+    "karşılaştırma": "benzer bir örneğe veya rakibe kıyasla anlat",
+    "tarihsel not": "olayın geçmişiyle bağlantısını kur",
+    "sayısal detay": "kaynaktaki rakamların ne anlama geldiğini aç",
+    "karşı görüş": "olaya şüpheyle yaklaş, zayıf tarafını söyle",
 }
 
 
@@ -83,18 +87,37 @@ def api_key() -> str:
 # --------------------------------------------------------------- gemini
 
 def api_call(path: str, payload: dict | None = None) -> dict:
-    """Gemini REST cagrisi. SDK kullanilmiyor - tek bagimliliksiz istek yeter."""
+    """Gemini REST cagrisi. SDK kullanilmiyor - tek bagimliliksiz istek yeter.
+
+    503 ve 429 gecici hatalar: model o an yogun veya kota anlik dolmus.
+    Bot cron ile calistigi icin bunlara dayanmasi lazim, yoksa tek bir
+    yogunluk anı gunun postunu dusurur.
+    """
     url = f"{API_BASE}/{path}"
-    headers = {"x-goog-api-key": api_key(), "Content-Type": "application/json"}
     data = json.dumps(payload).encode("utf-8") if payload is not None else None
-    request = urllib.request.Request(url, data=data, headers=headers,
-                                     method="POST" if data else "GET")
-    try:
-        with urllib.request.urlopen(request, timeout=90) as response:
-            return json.loads(response.read())
-    except urllib.error.HTTPError as exc:
-        body = exc.read().decode("utf-8", "replace")[:600]
-        sys.exit(f"Gemini API hatasi {exc.code}:\n{body}")
+
+    for attempt in range(1, HTTP_RETRIES + 1):
+        headers = {"x-goog-api-key": api_key(), "Content-Type": "application/json"}
+        request = urllib.request.Request(url, data=data, headers=headers,
+                                         method="POST" if data else "GET")
+        try:
+            with urllib.request.urlopen(request, timeout=120) as response:
+                return json.loads(response.read())
+        except urllib.error.HTTPError as exc:
+            body = exc.read().decode("utf-8", "replace")
+            if exc.code in (429, 500, 502, 503) and attempt < HTTP_RETRIES:
+                wait = RETRY_BACKOFF * attempt
+                print(f"  {exc.code} geldi, {wait} sn sonra tekrar "
+                      f"({attempt}/{HTTP_RETRIES - 1})", file=sys.stderr)
+                time.sleep(wait)
+                continue
+            sys.exit(f"Gemini API hatasi {exc.code}:\n{body[:600]}")
+        except urllib.error.URLError as exc:
+            if attempt < HTTP_RETRIES:
+                time.sleep(RETRY_BACKOFF * attempt)
+                continue
+            sys.exit(f"Gemini API'ye ulasilamadi: {exc.reason}")
+    sys.exit("Gemini API: tum denemeler tukendi")
 
 
 def list_models() -> None:
@@ -131,18 +154,18 @@ def generate(prompt: str, model: str, temperature: float) -> dict:
 # ---------------------------------------------------------------- istem
 
 SCHEMA = """{
-  "game": "haberin konusu olan oyunun veya sirketin adi",
+  "game": "haberin konusu olan oyunun veya şirketin adı",
   "category": "listeden biri",
-  "studio": "gorsel kredisi icin studyo adi, bilinmiyorsa null",
+  "studio": "görsel kredisi için stüdyo adı, bilinmiyorsa null",
   "is_leak": true veya false,
   "pages": [
-    {"type": "cover", "title": "kapak basligi, en fazla 8 kelime"},
-    {"type": "text", "title": "3-5 kelime", "paragraph": "2-3 cumle",
+    {"type": "cover", "title": "kapak başlığı, en fazla 8 kelime"},
+    {"type": "text", "title": "3-5 kelime", "paragraph": "2-3 cümle",
      "bullets": ["madde", "madde"]},
     {"type": "numbers", "title": "3-5 kelime",
-     "metrics": [{"value": "18 m$", "label": "ne oldugu, en fazla 8 kelime"}]},
+     "metrics": [{"value": "18 m$", "label": "ne olduğu, en fazla 8 kelime"}]},
     {"type": "outro", "question": "tek soru, 6-12 kelime",
-     "ctas": ["yumusak cagri", "yumusak cagri"]}
+     "ctas": ["yumuşak çağrı", "yumuşak çağrı"]}
   ]
 }"""
 
@@ -153,48 +176,52 @@ def build_prompt(candidate: dict, source_text: str, mode: str,
     mode_hint = WRITING_MODES[mode]
 
     parts = [
-        "Bir Turkce indie oyun haberleri instagram hesabi icin post metni yaziyorsun.",
+        "Bir Türkçe indie oyun haberleri instagram hesabı için post metni yazıyorsun.",
         "",
-        "KAYNAK MATERYAL (Ingilizce, birden fazla haber sitesinden):",
+        "KAYNAK MATERYAL (İngilizce, birden fazla haber sitesinden):",
         source_text,
         "",
-        f"Bu haberi {len(candidate['sources'])} kaynak yazmis: {sources}",
+        f"Bu haberi {len(candidate['sources'])} kaynak yazmış: {sources}",
         "",
-        "GOREV: bu haberi Turkceye cevirip instagram carousel metnine donustur.",
-        f"Yazim modu: {mode} - {mode_hint}",
+        "GÖREV: bu haberi Türkçeye çevirip instagram carousel metnine dönüştür.",
+        f"Yazım modu: {mode} - {mode_hint}",
         "",
         "KURALLAR (hepsi zorunlu):",
-        "1. Tamamen kucuk harf. Ozel isimler de kucuk. Tek istisna yok.",
-        "2. Ceviri degil, yeniden anlatim. Kaynak cumleyi birebir cevirmeyeceksin.",
-        "3. Kaynak metinde GECMEYEN hicbir sayi yazamazsin. Sayi uydurmak yasak.",
-        "   Kaynakta rakam yoksa 'numbers' sayfasini HIC URETME.",
-        "4. Yasak kelimeler: iste, peki, devrim niteliginde, cigir acan, adeta,",
-        "   tam anlamiyla, sonuc olarak, yapay zeka destekli.",
-        "5. Em-dash (uzun cizgi) ve egik tirnak kullanma. Duz tirnak ve kisa cizgi kullan.",
-        "6. Emoji yok. Hashtag yok.",
-        "7. Baslik ve paragraf soru cumlesiyle BASLAMAYACAK. Sadece son sayfada soru olur.",
-        "8. 'a, b ve c' seklinde uc ogeli liste kalibi kurma.",
-        "9. Yabanci ozel isimlere Turkce ek eklerken okunusa gore sec:",
-        "   godot'u (godot'yu DEGIL), steam'de, unity'yi, valve'in, xbox'ta, epic'te.",
-        "10. Son sayfada 'takip et', 'begen', 'paylas' gibi cagrilar yasak.",
-        "    Iki cagri da yumusak olacak: merak/dusunce davet eden cumleler.",
+        "1. TÜRKÇE KARAKTERLERİ DOĞRU KULLAN: ı, ş, ğ, ü, ö, ç. "
+        "\"aynı\" yaz, \"ayni\" yazma. \"hazırlanıyor\" yaz, \"hazirlaniyor\" yazma. "
+        "\"büyük\" yaz, \"buyuk\" yazma. Bu kuralı ihlal eden metin reddedilir.",
+        "2. Tamamen küçük harf. Özel isimler de küçük. Tek istisna yok.",
+        "3. Çeviri değil, yeniden anlatım. Kaynak cümleyi birebir çevirmeyeceksin.",
+        "4. Kaynak metinde GEÇMEYEN hiçbir sayı yazamazsın. Sayı uydurmak yasak.",
+        "   Kaynakta rakam yoksa 'numbers' sayfasını HİÇ ÜRETME.",
+        "5. Yasak kelimeler: işte, peki, devrim niteliğinde, çığır açan, adeta,",
+        "   tam anlamıyla, sonuç olarak, yapay zeka destekli.",
+        "6. Em-dash (uzun çizgi) ve eğik tırnak kullanma. Düz tırnak ve kısa çizgi kullan.",
+        "7. Emoji yok. Hashtag yok.",
+        "8. Başlık ve paragraf soru cümlesiyle BAŞLAMAYACAK. Sadece son sayfada soru olur.",
+        "9. 'a, b ve c' şeklinde üç öğeli liste kalıbı kurma.",
+        "10. Yabancı özel isimlere Türkçe ek eklerken okunuşa göre seç:",
+        "    godot'u (godot'yu DEĞİL), steam'de, unity'yi, valve'ın, xbox'ta, epic'te.",
+        "11. Son sayfada 'takip et', 'beğen', 'paylaş' gibi çağrılar yasak.",
+        "    İki çağrı da yumuşak olacak: merak veya düşünce davet eden cümleler.",
+        "12. Yazım hatası yapma. Metni yazdıktan sonra harf harf kontrol et.",
         "",
-        f"KATEGORI listesi (birini sec): {', '.join(CATEGORIES)}",
+        f"KATEGORİ listesi (birini seç): {', '.join(CATEGORIES)}",
         "",
-        "SAYFA YAPISI: 1 kapak + 1-2 metin sayfasi + (rakam varsa) 1 rakam sayfasi",
+        "SAYFA YAPISI: 1 kapak + 1-2 metin sayfası + (rakam varsa) 1 rakam sayfası",
         "+ 1 son sayfa. Toplam 3-5 sayfa.",
         "",
-        "is_leak: haber sizinti, datamine veya izinsiz sizan materyale dayaniyorsa true.",
-        "Bu durumda kartta gorsel kullanilmayacak, kod bunu kendisi halleder.",
+        "is_leak: haber sızıntı, datamine veya izinsiz sızan materyale dayanıyorsa true.",
+        "Bu durumda kartta görsel kullanılmayacak, kod bunu kendisi halleder.",
         "",
-        "SADECE su semada JSON dondur, baska hicbir sey yazma:",
+        "SADECE şu şemada JSON döndür, başka hiçbir şey yazma:",
         SCHEMA,
     ]
 
     if problems:
         parts += [
             "",
-            "ONCEKI DENEMEN SU HATALARLA REDDEDILDI, bunlari duzelt:",
+            "ÖNCEKİ DENEMEN ŞU HATALARLA REDDEDİLDİ, bunları düzelt:",
             *[f"- {p}" for p in problems],
         ]
 

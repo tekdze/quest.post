@@ -108,8 +108,13 @@ def render(spec: dict, out_dir: Path) -> list[dict]:
 
             target = out_dir / f"{index:02d}.png"
             page.screenshot(path=str(target))
+            # --out proje disinda bir yol olabilir, relative_to patlamasin.
+            try:
+                label = str(target.resolve().relative_to(ROOT))
+            except ValueError:
+                label = str(target)
             written.append({
-                "file": str(target.relative_to(ROOT)),
+                "file": label,
                 "type": spec_page["type"],
                 "scrim_start_pct": (metrics or {}).get("scrim_start_pct"),
                 "scrim_solid_pct": (metrics or {}).get("scrim_solid_pct"),

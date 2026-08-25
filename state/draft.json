@@ -1,0 +1,50 @@
+{
+  "_kaynak": "https://www.polygon.com/gamescom-2026-when-how-to-watch-opening-night-live",
+  "_kaynak_sayisi": 4,
+  "_is_leak": false,
+  "tier": "A",
+  "category": "etkinlik",
+  "game": "gamescom 2026",
+  "credit": null,
+  "pages": [
+    {
+      "type": "cover",
+      "title": "gamescom yine dev reklam maratonuna dönüşüyor",
+      "image": "assets/placeholder.png"
+    },
+    {
+      "type": "text",
+      "title": "yine aynı pazarlama şovu",
+      "paragraph": "geoff keighley önderliğinde düzenlenen açılış gecesi yine dev bütçeli yapımların şovuna sahne olacak. saatlerce süren sunumlarda bağımsız geliştiricilere çok az alan ayrılacak gibi görünüyor.",
+      "bullets": [
+        "büyük bütçeli oyun odaklı",
+        "bağımsız yapımlara kısıtlı süre"
+      ],
+      "image": "assets/placeholder.png"
+    },
+    {
+      "type": "numbers",
+      "title": "yayın süresi ve ayrıntılar",
+      "metrics": [
+        {
+          "value": "2 saat",
+          "label": "durmaksızın sürecek fragman maratonu"
+        },
+        {
+          "value": "30 dk",
+          "label": "ana şov öncesi başlayacak sunum"
+        }
+      ],
+      "image": "assets/placeholder.png"
+    },
+    {
+      "type": "outro",
+      "question": "bu kadar uzun pazarlama yayınları sizce hala heyecan verici mi",
+      "ctas": [
+        "görüşlerinizi yorumlarda belirtebilirsiniz",
+        "konu hakkındaki düşüncelerinizi aktarabilirsiniz"
+      ],
+      "image": "assets/placeholder.png"
+    }
+  ]
+}

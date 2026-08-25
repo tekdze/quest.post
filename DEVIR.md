@@ -3,7 +3,7 @@
 > Yeni bir sohbete geçerken: **önce bu dosyayı oku.** Kararlar burada, kodda değil.
 > Her önemli kararda veya faz bitiminde bu dosya güncellenir.
 
-Son güncelleme: 2026-08-25 (Faz 2 kodu yazıldı)
+Son güncelleme: 2026-08-25 (Faz 2 sonu)
 
 ---
 
@@ -220,7 +220,7 @@ Her faz ayrı ayrı çalıştırılıp doğrulanır, öncekine dönülmez.
 | # | Faz | Bağımlılık | Durum |
 |---|---|---|---|
 | 1 | `feeds.json` + `fetch.py` — RSS çekme, tekrar filtresi | Yok | **✅ 2026-08-25** |
-| 2 | `write.py` — Gemini + üslup filtresi | `GEMINI_API_KEY` | ⚠️ kod hazır, Google erişimi bloke |
+| 2 | `write.py` — Gemini + üslup filtresi | `GEMINI_API_KEY` | **✅ 2026-08-25** |
 | 3 | `render.py` + `card.html` — PNG üretimi | Fontlar | **✅ 2026-08-25** |
 | 4 | `images.py` — IGDB | IGDB anahtarları | |
 | 5 | `telegram.py` — onay döngüsü | TG anahtarları | |
@@ -416,7 +416,7 @@ Bu, "yasak kalıplar" filtresinin ikinci işi oluyor.
 
 ## 12. Faz 2 — metin üretimi ⚠️ (2026-08-25)
 
-**Kod tamamlandı, LLM tarafı Google kaynaklı engelle test edilemedi.**
+**Uçtan uca çalışıyor: haber → Türkçe metin → kart.**
 
 ### Dosyalar
 | Dosya | Sorumluluk |
@@ -509,3 +509,56 @@ isteme ekleniyor. 3'te de temizlenmezse hata dönüyor — kirli metin yayına g
 - Tam makale metni **çekilmiyor**, kümedeki tüm kaynakların RSS özeti
   birleştirilip veriliyor. Kazıma yapmamak için bilinçli tercih; birden fazla
   özet zaten tek özetten zengin.
+
+### Çözüm: hesap değiştirildi (2026-08-25)
+Engel **başka bir Google hesabıyla** aşıldı. Yeni hesapta aynı kod ilk denemede
+çalıştı, model listesi de 37'den 50'ye çıktı (daha geniş erişim).
+
+**Öğrenilen:** engel projeye değil **hesaba** bağlıydı. Yeni Cloud projesi açmak,
+API'yi enable etmek, anahtarı servis hesabına bağlamak — hiçbiri işe yaramadı.
+Bir daha benzer duvara çarpılırsa ilk denenecek şey hesap değiştirmek olmalı,
+proje ayarlarıyla uğraşmak değil. Eski/yerleşik bir hesap tercih edilir;
+sıfır hesaplar "yeni hesap" filtresine takılabiliyor.
+
+`.env` artık bu ikinci hesabın anahtarını tutuyor. Faturalandırma **bağlı değil**,
+yani ücretlendirilme teknik olarak mümkün değil: kota aşılırsa 429 gelir, borç
+birikmez.
+
+### Model: `gemini-3.6-flash`
+`3.7-flash` ısrarla `503 UNAVAILABLE` (kapasite) döndürdüğü için bir sürüm
+geriye alındı. `3.6`, `3.5`, `3-flash-preview` ve `3.1-flash-lite` sorunsuz.
+
+Buna karşı `api_call()` içine yeniden deneme eklendi: 429/500/502/503'te
+artan bekleme ile 3 kez tekrar. Cron ile çalışan bir bot tek bir yoğunluk
+anında günün postunu düşürmemeli.
+
+### ⚠️ Bulunan ve düzeltilen kritik kusur: işaretsiz Türkçe
+İlk gerçek çıktı "gamescom yine ayni reklamlari sunmaya hazirlaniyor" şeklinde,
+**Türkçe karakterler olmadan** geldi. Sebep istemin kendisiydi: istem ASCII
+Türkçesiyle yazılmıştı, model üslubu birebir kopyaladı.
+
+İki katmanlı düzeltildi:
+1. İstemin tamamı düzgün Türkçeyle yeniden yazıldı (kural metinleri, yazım modu
+   açıklamaları, şema açıklamaları dahil). **LLM istemin üslubunu taklit ediyor,
+   bu yüzden istem kusursuz Türkçe olmak zorunda.**
+2. `style.py` içine denetim: 60 karakterden uzun bir metinde ı/ş/ğ/ü/ö/ç
+   harflerinden hiç yoksa ihlal sayılıyor.
+
+Ayrıca rakam denetimine sayı kelimeleri eklendi: kaynak İngilizce "two hours"
+derken çıktı "2 saat" oluyor, filtre bunu uydurma sanıyordu.
+
+### Doğrulanmış uçtan uca akış
+```
+py -3.12 src/fetch.py                      # 701 kayit -> 193 kume
+py -3.12 src/write.py --index 1 --tier A   # ilk denemede temiz, 4 sayfa
+py -3.12 src/render.py state/draft.json    # 4 PNG
+```
+Çıktı örneği `out/ilk_gercek/`. "karşı görüş" modu gerçekten eleştirel bir
+metin üretti, kalıp cümle çıkmadı.
+
+### Sonraki fazda hatırlanacak (güncel)
+- `studio` null gelirse kartta görsel kredisi **hiç görünmüyor**. Tasarım kuralı
+  "her kartta kredi" diyor. Doğru çözüm: krediyi LLM'den değil `images.py`'den
+  (IGDB) almak — görselin sahibini görselle birlikte gelen veri bilir.
+- LLM tek harflik yazım hatası yapabiliyor (bir denemede "düşüncelerinizi" yerine
+  "dusunceleinizi" çıktı). Filtre bunu yakalamaz. Telegram onayı bu yüzden var.
