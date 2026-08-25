@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>quest.post card</title>
+<link rel="stylesheet" href="card.css">
+</head>
+<body>
+<div id="root"></div>
+
+<script>
+/* Tek sablon, tum sayfa tipleri.
+   render.py once window.CARD_DATA'yi basar, sonra buildCard() cagirir,
+   sonra fitScrim() ile gradyan olculur. LLM bu dosyaya dokunmaz. */
+
+function el(tag, cls, text) {
+  const node = document.createElement(tag);
+  if (cls) node.className = cls;
+  if (text !== undefined && text !== null) node.textContent = text;
+  return node;
+}
+
+function buildCard(data) {
+  const page = data.page;
+  const hasImage = Boolean(page.image);
+
+  const card = el("div", `card card--${page.type}` + (hasImage ? "" : " card--typographic"));
+  card.style.setProperty("--tier", data.tier_color);
+
+  if (hasImage) {
+    const img = el("img", "card__image");
+    img.src = page.image;
+    card.appendChild(img);
+    card.appendChild(el("div", "card__scrim"));
+  }
+
+  card.appendChild(el("div", "card__strip"));
+
+  if (data.credit) {
+    card.appendChild(el("div", "credit", "görsel: " + data.credit));
+  }
+
+  const content = el("div", "card__content");
+  content.id = "content";
+
+  if (page.type === "cover") {
+    content.appendChild(el("div", "kicker", `${data.tier_label} · ${data.category}`));
+    content.appendChild(el("h1", "title", page.title));
+    const foot = el("div", "footline");
+    foot.appendChild(el("span", null, data.game));
+    foot.appendChild(el("span", null, page.page_count));
+    content.appendChild(foot);
+  }
+
+  if (page.type === "text") {
+    content.appendChild(el("h2", "title", page.title));
+    if (page.paragraph) content.appendChild(el("p", "body", page.paragraph));
+    if (page.bullets && page.bullets.length) {
+      const list = el("ul", "bullets");
+      page.bullets.forEach(b => list.appendChild(el("li", null, b)));
+      content.appendChild(list);
+    }
+  }
+
+  if (page.type === "numbers") {
+    content.appendChild(el("h2", "title", page.title));
+    const wrap = el("div", "metrics");
+    page.metrics.forEach(m => {
+      const row = el("div", "metric");
+      row.appendChild(el("div", "metric__value", m.value));
+      row.appendChild(el("div", "metric__label", m.label));
+      wrap.appendChild(row);
+    });
+    content.appendChild(wrap);
+  }
+
+  if (page.type === "outro") {
+    content.appendChild(el("h2", "title", page.question));
+    const ctas = el("div", "ctas");
+    page.ctas.forEach(t => ctas.appendChild(el("div", "cta", t)));
+    content.appendChild(ctas);
+
+    const colophon = el("div", "colophon");
+    colophon.appendChild(el("div", "colophon__mark"));
+    const meta = el("div");
+    meta.appendChild(el("div", "colophon__handle", data.handle));
+    meta.appendChild(el("div", "colophon__tagline", data.tagline));
+    colophon.appendChild(meta);
+    content.appendChild(colophon);
+  }
+
+  card.appendChild(content);
+
+  const root = document.getElementById("root");
+  root.textContent = "";
+  root.appendChild(card);
+  return card;
+}
+
+/* Gradyanin baslangici metin blogunun OLCULEN yuksekligine gore hesaplanir.
+   Sabit birakilirsa az metinde fazla beyaz, cok metinde tasma olur. */
+function fitScrim() {
+  const card = document.querySelector(".card");
+  const content = document.getElementById("content");
+  if (!card || !content || card.classList.contains("card--typographic")) return null;
+
+  const H = 1350;
+  const FADE = 330;      // gecisin uzunlugu, piksel
+  const BREATH = 38;     // metnin ustunde kalan nefes payi
+
+  const contentTop = content.getBoundingClientRect().top;
+  const solid = Math.max(contentTop - BREATH, 120);
+  const start = Math.max(solid - FADE, 40);
+  const mid = start + (solid - start) * 0.62;
+
+  const pct = px => (px / H * 100).toFixed(2) + "%";
+  card.style.setProperty("--scrim-start", pct(start));
+  card.style.setProperty("--scrim-mid", pct(mid));
+  card.style.setProperty("--scrim-solid", pct(solid));
+
+  return {
+    content_height: Math.round(content.getBoundingClientRect().height),
+    scrim_start_pct: +(start / H * 100).toFixed(1),
+    scrim_solid_pct: +(solid / H * 100).toFixed(1),
+  };
+}
+
+window.renderCard = function (data) {
+  buildCard(data);
+  return fitScrim();
+};
+
+/* Gorsel ve fontlar yuklendikten sonra render.py yeniden olcturuyor:
+   font yuklenmesi metin blogunun yuksekligini degistirebiliyor. */
+window.fitScrim = fitScrim;
+</script>
+</body>
+</html>

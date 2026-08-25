@@ -221,7 +221,7 @@ Her faz ayrı ayrı çalıştırılıp doğrulanır, öncekine dönülmez.
 |---|---|---|---|
 | 1 | `feeds.json` + `fetch.py` — RSS çekme, tekrar filtresi | Yok | **✅ 2026-08-25** |
 | 2 | `write.py` — Gemini + üslup filtresi | `GEMINI_API_KEY` | sıradaki |
-| 3 | `render.py` + `card.html` — PNG üretimi | Fontlar | |
+| 3 | `render.py` + `card.html` — PNG üretimi | Fontlar | **✅ 2026-08-25** |
 | 4 | `images.py` — IGDB | IGDB anahtarları | |
 | 5 | `telegram.py` — onay döngüsü | TG anahtarları | |
 | 6 | `publish.py` — Instagram | IG anahtarları | |
@@ -333,3 +333,66 @@ Tier'ı `tier.py` hesaplayacak (Faz 2 sonrası).
 - **Kullanıcı yapar:** hesap açma, API anahtarı alma, Secrets girme, Telegram'da
   onay verme, çıktıya bakıp geri bildirim.
 - **Anahtarlar asla sohbete yazılmaz, asla koda girmez** — sadece GitHub Secrets.
+
+---
+
+## 11. Faz 3 — kart üretimi ✅ (2026-08-25)
+
+### Dosyalar
+| Dosya | Sorumluluk |
+|---|---|
+| `templates/card.css` | Tasarım sisteminin tamamı. **Sabit.** LLM buraya dokunmaz |
+| `templates/card.html` | Tek şablon, dört sayfa tipi. Veriyi `window.CARD_DATA` yerine `renderCard(data)` ile alır, DOM'u kendisi kurar |
+| `src/render.py` | Tarayıcıyı sürer: veriyi bas → fontları bekle → gradyanı ölçtür → 1080x1350 PNG |
+| `examples/sample_post.json` | Test tarifi. Metinler elle yazıldı (write.py yok henüz) |
+| `assets/placeholder.png` | Yer tutucu "oyun görseli". IGDB gelene kadar test için. Chromium'un kendisiyle üretildi, ek kütüphane yok |
+
+Çalıştırma: `py -3.12 src/render.py examples/sample_post.json`
+
+### Fontlar
+Variable sürüm kullanılıyor, tek dosya iki iş yapıyor:
+`BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf` · `Outfit-VariableFont_wght.ttf`
+`@font-face` içinde `format("truetype-variations")` ve `font-weight: 200 800` aralığı şart.
+
+⚠️ `fonts/OFL.txt` **eksik**, eklenmeli — lisans şartı.
+
+### Gradyan hesabı — mekanizma
+`card.html` içindeki `fitScrim()` metin bloğunun ekrandaki gerçek yüksekliğini
+ölçüp CSS değişkenlerini basıyor. Sabit yüzde yok.
+
+Zincir: `contentTop = 1350 − alt_boşluk − ölçülen_yükseklik` → `solid = contentTop − 38px`
+(nefes payı) → `start = solid − 330px` (geçiş uzunluğu).
+
+Ölçülen sonuç (krem alanın alttan kapladığı oran):
+kapak %34 · son sayfa %42 · metin sayfası %44 · rakam sayfası %47.
+
+Tasarım notundaki referans "~30% → ~53%" ile tutuyor. **O yüzdeler alttan
+sayılıyor** — üstten sanılırsa ters okunur (az metinde çok krem çıkar).
+Ayar noktaları: `FADE` (geçiş uzunluğu) ve `BREATH` (metnin üstündeki pay).
+
+Font yüklenmesi metin yüksekliğini değiştirdiği için ölçüm **iki kez** yapılıyor:
+bir kez DOM kurulurken, bir kez fontlar ve görsel yüklendikten sonra. Tek ölçümle
+gradyan birkaç piksel kayıyordu.
+
+### Uygulanan tasarım kuralları
+- Tier rengi tam dört yerde: üst şerit (8px), kicker, madde işaretleri, künye karesi
+- `text-transform: lowercase` **CSS'te zorlanıyor** — metin üretiminde bir kaçak
+  olursa tasarım bozulmasın diye
+- Metin gölgesi/konturu yok, okunurluk sadece gradyanla
+- Görsel `object-position: 50% 25%`
+- Görsel kredisi (`görsel: <stüdyo>`) her kartta, sağ üstte
+- **Sızıntı/datamine modu hazır:** sayfada `image` yoksa kart otomatik
+  `card--typographic` oluyor — görsel ve gradyan gizleniyor, düz krem zemin,
+  kredi rengi dönüyor. `render.py` o durumda kredi alanını da boş geçiyor
+
+### Bilinmesi gerekenler
+- Sayfa tipleri ve bekledikleri alanlar: `cover` (title) · `text` (title,
+  paragraph, bullets) · `numbers` (title, metrics[{value,label}]) · `outro`
+  (question, ctas[2]). `write.py` bu şemaya uyan JSON üretecek.
+- Kapaktaki sayfa sayısı otomatik: tarifte `page_count` yoksa `render.py`
+  "4 sayfa" / "tek kare" yazıyor.
+- `out/` klasörü **commit edilir** — mimarinin gereği: PNG repoya girmeli ki
+  `raw.githubusercontent.com` linki Instagram API'sine verilebilsin.
+  `out/sample_post/` sadece test, sonra silinebilir.
+- Tier renk/ad tablosu `render.py` içindeki `TIERS`. `tier.py` yazıldığında
+  eşikler orada olacak, renk/ad burada kalacak — tek kaynak.

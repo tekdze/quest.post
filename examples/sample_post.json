@@ -1,0 +1,43 @@
+{
+  "_not": "Faz 3 test tarifi. Metinler ELLE yazildi, write.py gelene kadar sablonu denemek icin. Gorseller yer tutucu.",
+  "tier": "A",
+  "category": "stüdyo",
+  "game": "w4 games",
+  "credit": "w4 games",
+  "pages": [
+    {
+      "type": "cover",
+      "title": "godot'yu kuranlar 18 milyon dolar topladı",
+      "image": "assets/placeholder.png"
+    },
+    {
+      "type": "text",
+      "title": "kim bu w4",
+      "paragraph": "godot motorunun çekirdek geliştiricileri 2022'de şirket kurdu. amaç motoru satmak değil, motoru kullanan stüdyolara konsol desteği ve ticari servis satmak.",
+      "bullets": [
+        "godot açık kaynak kalıyor, lisans değişmiyor",
+        "para konsol portları ve destek anlaşmalarından geliyor",
+        "unity'nin 2023 fiyatlandırma krizi sonrası motor değiştiren stüdyolar hedefte"
+      ],
+      "image": "assets/placeholder.png"
+    },
+    {
+      "type": "numbers",
+      "title": "rakamlar",
+      "metrics": [
+        { "value": "18 m$", "label": "b serisi yatırım turu" },
+        { "value": "2022", "label": "şirketin kuruluş yılı" }
+      ],
+      "image": "assets/placeholder.png"
+    },
+    {
+      "type": "outro",
+      "question": "motor seçimi bir stüdyonun kaderini ne kadar belirliyor",
+      "ctas": [
+        "bu konuda ne düşündüğünü merak ediyoruz",
+        "benzer hikayeleri burada tutuyoruz"
+      ],
+      "image": "assets/placeholder.png"
+    }
+  ]
+}
