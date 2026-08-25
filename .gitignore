@@ -1,0 +1,16 @@
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# yerel anahtarlar — asla commit edilmez
+.env
+*.local.json
+
+# yerel test cikislari (gercek kartlar out/ altina, onlar commit edilir)
+scratch/
+*.log
+
+# fetch.py ciktisi: her calismada yenilenir, gecmisi sismesin
+state/candidates.json

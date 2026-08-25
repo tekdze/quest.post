@@ -1,0 +1,458 @@
+{
+  "version": 1,
+  "_aciklama": "Kaynak listesi. Her adres 2026-08-25'te elle yoklandi, hepsi o gun canliydi. Olen kaynak cikarsa fetch.py --print ciktisinda 'feed_health' altinda gorunur.",
+  "defaults": {
+    "max_age_hours": 48,
+    "timeout_seconds": 15,
+    "user_agent": "questpost/0.1 (+https://github.com/tekdze/quest.post)"
+  },
+  "_kind_aciklama": {
+    "news": "haber sitesi",
+    "releases": "cikis/yeni yayin akisi — ayristirici kaynak",
+    "devlog": "gelistirici gunlugu — ayristirici kaynak",
+    "community": "topluluk akisi, dogrulama gerektirir"
+  },
+  "_topic_filter_aciklama": "gaming: yalnizca BASLIKTA oyun anahtar kelimesi gecen kayitlar alinir. Ozet metnine bakilmaz - ozette 'game' kelimesi tesadufen gecen her sey sizardi. null: kaynak zaten oyun odakli, filtre yok.",
+  "gaming_keywords": [
+    "game",
+    "games",
+    "gaming",
+    "gamedev",
+    "gamer",
+    "indie",
+    "steam",
+    "playstation",
+    "xbox",
+    "nintendo",
+    "switch",
+    "valve",
+    "epic",
+    "unity",
+    "unreal",
+    "godot",
+    "roguelike",
+    "rpg",
+    "mmo",
+    "fps",
+    "studio",
+    "publisher",
+    "developer",
+    "trailer",
+    "demo",
+    "dlc",
+    "early access",
+    "release",
+    "launch",
+    "console",
+    "playtest",
+    "kickstarter"
+  ],
+  "feeds": [
+    {
+      "id": "dh-oyun",
+      "name": "Donanim Haber Oyun",
+      "url": "https://www.donanimhaber.com/rss/tum/oyun",
+      "lang": "tr",
+      "kind": "news",
+      "weight": 0.8,
+      "tags": [
+        "mainstream",
+        "tr"
+      ],
+      "topic_filter": null,
+      "bucket": "news",
+      "max_items": 40,
+      "enabled": false
+    },
+    {
+      "id": "merlin",
+      "name": "Merlin'in Kazani",
+      "url": "https://www.merlininkazani.com/rss",
+      "lang": "tr",
+      "kind": "news",
+      "weight": 0.9,
+      "tags": [
+        "mainstream",
+        "tr"
+      ],
+      "topic_filter": null,
+      "bucket": "news",
+      "max_items": 40,
+      "enabled": false
+    },
+    {
+      "id": "oyungezer",
+      "name": "Oyungezer",
+      "url": "https://www.oyungezer.com.tr/rss",
+      "lang": "tr",
+      "kind": "news",
+      "weight": 1.0,
+      "tags": [
+        "tr"
+      ],
+      "topic_filter": null,
+      "bucket": "news",
+      "max_items": 40,
+      "enabled": false
+    },
+    {
+      "id": "webtekno",
+      "name": "Webtekno",
+      "url": "https://www.webtekno.com/rss.xml",
+      "lang": "tr",
+      "kind": "news",
+      "weight": 0.6,
+      "tags": [
+        "mainstream",
+        "tr",
+        "genel-teknoloji"
+      ],
+      "topic_filter": "gaming",
+      "bucket": "news",
+      "max_items": 40,
+      "enabled": false
+    },
+    {
+      "id": "technopat",
+      "name": "Technopat",
+      "url": "https://www.technopat.net/feed/",
+      "lang": "tr",
+      "kind": "news",
+      "weight": 0.6,
+      "tags": [
+        "mainstream",
+        "tr",
+        "genel-teknoloji"
+      ],
+      "topic_filter": "gaming",
+      "bucket": "news",
+      "max_items": 40,
+      "enabled": false
+    },
+    {
+      "id": "shiftdelete",
+      "name": "ShiftDelete",
+      "url": "https://shiftdelete.net/feed",
+      "lang": "tr",
+      "kind": "news",
+      "weight": 0.5,
+      "tags": [
+        "mainstream",
+        "tr",
+        "genel-teknoloji"
+      ],
+      "topic_filter": "gaming",
+      "bucket": "news",
+      "max_items": 40,
+      "enabled": false
+    },
+    {
+      "id": "log",
+      "name": "Log",
+      "url": "https://www.log.com.tr/feed/",
+      "lang": "tr",
+      "kind": "news",
+      "weight": 0.6,
+      "tags": [
+        "mainstream",
+        "tr",
+        "genel-teknoloji"
+      ],
+      "topic_filter": "gaming",
+      "bucket": "news",
+      "max_items": 40,
+      "enabled": false
+    },
+    {
+      "id": "itch-newest",
+      "name": "itch.io yeni cikanlar",
+      "url": "https://itch.io/games/newest.xml",
+      "lang": "en",
+      "kind": "releases",
+      "weight": 1.4,
+      "tags": [
+        "indie",
+        "ayristirici"
+      ],
+      "topic_filter": null,
+      "bucket": "discovery",
+      "max_items": 15,
+      "enabled": true
+    },
+    {
+      "id": "itch-devlogs",
+      "name": "itch.io devlog",
+      "url": "https://itch.io/devlogs.xml",
+      "lang": "en",
+      "kind": "devlog",
+      "weight": 1.4,
+      "tags": [
+        "indie",
+        "ayristirici"
+      ],
+      "topic_filter": null,
+      "bucket": "discovery",
+      "max_items": 15,
+      "enabled": true
+    },
+    {
+      "id": "alphabetagamer",
+      "name": "Alpha Beta Gamer",
+      "url": "https://alphabetagamer.com/feed/",
+      "lang": "en",
+      "kind": "releases",
+      "weight": 1.3,
+      "tags": [
+        "indie",
+        "ayristirici",
+        "demo"
+      ],
+      "topic_filter": null,
+      "bucket": "news",
+      "max_items": 30,
+      "enabled": true
+    },
+    {
+      "id": "indiegamesplus",
+      "name": "Indie Games Plus",
+      "url": "https://indiegamesplus.com/feed",
+      "lang": "en",
+      "kind": "news",
+      "weight": 1.3,
+      "tags": [
+        "indie",
+        "ayristirici"
+      ],
+      "topic_filter": null,
+      "bucket": "news",
+      "max_items": 40,
+      "enabled": true
+    },
+    {
+      "id": "indiedb",
+      "name": "IndieDB",
+      "url": "https://rss.indiedb.com/news/feed/rss.xml",
+      "lang": "en",
+      "kind": "devlog",
+      "weight": 1.2,
+      "tags": [
+        "indie",
+        "ayristirici"
+      ],
+      "topic_filter": null,
+      "bucket": "discovery",
+      "max_items": 12,
+      "enabled": true
+    },
+    {
+      "id": "gamingonlinux",
+      "name": "GamingOnLinux",
+      "url": "https://www.gamingonlinux.com/article_rss.php",
+      "lang": "en",
+      "kind": "news",
+      "weight": 1.0,
+      "tags": [
+        "indie",
+        "linux"
+      ],
+      "topic_filter": null,
+      "bucket": "news",
+      "max_items": 40,
+      "enabled": true
+    },
+    {
+      "id": "rps",
+      "name": "Rock Paper Shotgun",
+      "url": "https://www.rockpapershotgun.com/feed",
+      "lang": "en",
+      "kind": "news",
+      "weight": 0.9,
+      "tags": [
+        "mainstream",
+        "pc"
+      ],
+      "topic_filter": null,
+      "bucket": "news",
+      "max_items": 40,
+      "enabled": true
+    },
+    {
+      "id": "gamedeveloper",
+      "name": "Game Developer",
+      "url": "https://www.gamedeveloper.com/rss.xml",
+      "lang": "en",
+      "kind": "news",
+      "weight": 1.0,
+      "tags": [
+        "endustri"
+      ],
+      "topic_filter": null,
+      "bucket": "news",
+      "max_items": 40,
+      "enabled": true
+    },
+    {
+      "id": "superjump",
+      "name": "SuperJump",
+      "url": "https://superjumpmagazine.com/feed/",
+      "lang": "en",
+      "kind": "news",
+      "weight": 1.0,
+      "tags": [
+        "indie",
+        "analiz"
+      ],
+      "topic_filter": null,
+      "bucket": "news",
+      "max_items": 40,
+      "enabled": true
+    },
+    {
+      "id": "eurogamer",
+      "name": "Eurogamer",
+      "url": "https://www.eurogamer.net/feed",
+      "lang": "en",
+      "kind": "news",
+      "weight": 0.7,
+      "tags": [
+        "mainstream"
+      ],
+      "topic_filter": null,
+      "bucket": "news",
+      "max_items": 40,
+      "enabled": true
+    },
+    {
+      "id": "pcgamer",
+      "name": "PC Gamer",
+      "url": "https://www.pcgamer.com/rss/",
+      "lang": "en",
+      "kind": "news",
+      "weight": 0.7,
+      "tags": [
+        "mainstream"
+      ],
+      "topic_filter": null,
+      "bucket": "news",
+      "max_items": 40,
+      "enabled": true
+    },
+    {
+      "id": "reddit-indiegames",
+      "name": "r/indiegames",
+      "url": "https://www.reddit.com/r/indiegames/new/.rss",
+      "lang": "en",
+      "kind": "community",
+      "weight": 0.8,
+      "tags": [
+        "indie",
+        "topluluk"
+      ],
+      "topic_filter": null,
+      "notes": "Reddit veri merkezi IP'lerini siklikla 429 ile geri cevirir. Actions uzerinde calismazsa sorun degil, olmasa da olur.",
+      "bucket": "discovery",
+      "max_items": 15,
+      "enabled": true
+    },
+    {
+      "id": "polygon",
+      "name": "Polygon",
+      "url": "https://www.polygon.com/rss/index.xml",
+      "lang": "en",
+      "kind": "news",
+      "weight": 0.7,
+      "tags": [
+        "mainstream"
+      ],
+      "topic_filter": null,
+      "bucket": "news",
+      "max_items": 40,
+      "enabled": true
+    },
+    {
+      "id": "kotaku",
+      "name": "Kotaku",
+      "url": "https://kotaku.com/rss",
+      "lang": "en",
+      "kind": "news",
+      "weight": 0.6,
+      "tags": [
+        "mainstream"
+      ],
+      "topic_filter": null,
+      "bucket": "news",
+      "max_items": 40,
+      "enabled": true
+    },
+    {
+      "id": "nintendolife",
+      "name": "Nintendo Life",
+      "url": "https://www.nintendolife.com/feeds/latest",
+      "lang": "en",
+      "kind": "news",
+      "weight": 0.7,
+      "tags": [
+        "mainstream",
+        "nintendo"
+      ],
+      "topic_filter": null,
+      "bucket": "news",
+      "max_items": 40,
+      "enabled": true
+    },
+    {
+      "id": "gamesindustry",
+      "name": "GamesIndustry.biz",
+      "url": "https://www.gamesindustry.biz/feed",
+      "lang": "en",
+      "kind": "news",
+      "weight": 0.9,
+      "tags": [
+        "endustri"
+      ],
+      "topic_filter": null,
+      "bucket": "news",
+      "max_items": 40,
+      "enabled": true
+    },
+    {
+      "id": "gamefromscratch",
+      "name": "Game From Scratch",
+      "url": "https://gamefromscratch.com/feed/",
+      "lang": "en",
+      "kind": "devlog",
+      "weight": 1.1,
+      "tags": [
+        "gelistirici",
+        "arac"
+      ],
+      "topic_filter": "gaming",
+      "bucket": "news",
+      "max_items": 20,
+      "enabled": true
+    },
+    {
+      "id": "80lv",
+      "name": "80 Level",
+      "url": "https://80.lv/feed/",
+      "lang": "en",
+      "kind": "news",
+      "weight": 1.0,
+      "tags": [
+        "sanat",
+        "gelistirici"
+      ],
+      "topic_filter": "gaming",
+      "bucket": "news",
+      "max_items": 20,
+      "enabled": true
+    }
+  ],
+  "_eksikler": [
+    "Steam yeni yayinlananlar: RSS'i yok, resmi Steam store API'si ile ayri modul gerekecek.",
+    "TR studyo duyurulari: ortak bir besleme yok, tek tek studyo blogu/haber sayfasi eklenmeli.",
+    "Olu bulunan ve bilerek alinmayanlar: TIGSource (403), Warpdoor (RSS kaldirilmis), Tamindir, multiplayer.com.tr (2024'te durdu), Indie Game Website (2021'de durdu), Steam news feed (bir aylik gecikmeli), itch.io featured (2021'de dondu)."
+  ],
+  "_bucket_aciklama": "news: dogrudan post adayi. discovery: kesif havuzu — tek basina post olmaz, haftalik derleme ve konu fikri icin biriktirilir.",
+  "_enabled_aciklama": "enabled=false olan kaynak hic cekilmez. TR kaynaklar kapatildi: arama Ingilizce yapiliyor, ceviriyi write.py yapacak. Boylece 'kac kaynak yazmis' sinyali dil ayrimindan bozulmuyor."
+}

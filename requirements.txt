@@ -1,0 +1,2 @@
+# Faz 1 — haber toplama
+feedparser==6.0.11
