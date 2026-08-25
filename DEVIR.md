@@ -441,17 +441,33 @@ tek işi olan 8 satırlık kod için paket gereksiz.
 model var. **`gemini-2.5-*` serisi yeni kullanıcılara kapatılmış**
 (`NOT_FOUND: no longer available to new users`), yani 3.x zorunlu.
 
-### ⛔ Açık engel: Gemini API projesi bloke
-Tüm 3.x modellerinde aynı cevap:
-`403 PERMISSION_DENIED — Your project has been denied access.`
+### ⛔ Gemini API bu hesapta kapalı — ARAŞTIRMA KAPANDI (2026-08-25)
+`403 PERMISSION_DENIED — Your project has been denied access. Please contact support.`
 
-Tanı: anahtar **geçerli** (model listesi çekiliyor), engel **proje seviyesinde**.
-Bu, AI Studio'nun daha önce verdiği "Unable to create API key" hatasıyla aynı
-kökten geliyor. Kontrol sırası: hesap yaşı (18 altı → Gemini API tamamen kapalı,
-iki hatayı da açıklar) → Workspace kısıtı → temiz Cloud projesi → API'nin
-etkin olması.
+**Tekrar denemeye gerek yok.** Elenen ihtimaller:
 
-Kod tarafında yapılacak bir şey yok. Engel kalkınca `write.py` olduğu gibi çalışır.
+| Denenen | Sonuç |
+|---|---|
+| Model listesi çekmek (`ListModels`) | ✅ çalışıyor → anahtar geçerli, ağ sorunu yok |
+| `gemini-3.7-flash`, `3.5-flash`, `3.1-flash-lite`, `gemma-4-31b-it` | hepsi 403 → model ailesi fark etmiyor |
+| `v1beta` / `v1` endpoint | ikisi de 403 |
+| Anahtarı header ile / `?key=` ile göndermek | ikisi de 403 |
+| Yeni Cloud projesi (`questpost2`) | 403 |
+| Gemini API'yi Cloud Console'da enable etmek | zaten enabled'dı, 403 |
+| Anahtarı Cloud Console'dan, **servis hesabına bağlı** oluşturmak | 403 |
+| Hesap yaşı / kişisel hesap | sorun yok |
+| AI Studio **sohbet** arayüzü | ✅ çalışıyor |
+
+Kritik ayrım: **AI Studio sohbeti ile Gemini API iki ayrı kapı.** Sohbetin
+çalışması API'nin çalışacağı anlamına gelmiyor, farklı erişim politikaları var.
+
+Not: Google artık Gemini API anahtarlarının bir **servis hesabına bağlı** olmasını
+şart koşuyor. Cloud Console'da API kısıtlaması listesinde "Gemini API" ancak
+"Authenticate API calls through a service account" işaretlendikten sonra
+seçilebilir hale geliyor. Bu yapıldı, engel kalkmadı.
+
+Sonuç: engel proje/hesap seviyesinde bir politika bloğu, kod tarafında
+yapılacak bir şey yok. **Sağlayıcı değiştiriliyor.**
 
 ### İş bölümü — LLM'in dokunamadığı şeyler
 LLM **sadece** şu alanları üretir: `game`, `category` (sabit listeden seçer),
