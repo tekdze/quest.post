@@ -1,0 +1,13 @@
+{
+  "durum": "onay_bekliyor",
+  "draft": "state/draft_witcher.json",
+  "cards_dir": "out/witcher",
+  "message_ids": [
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "tier": "B"
+}

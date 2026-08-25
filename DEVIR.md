@@ -3,7 +3,7 @@
 > Yeni bir sohbete geçerken: **önce bu dosyayı oku.** Kararlar burada, kodda değil.
 > Her önemli kararda veya faz bitiminde bu dosya güncellenir.
 
-Son güncelleme: 2026-08-25 (Faz 4 sonu)
+Son güncelleme: 2026-08-25 (Faz 5 sonu)
 
 ---
 
@@ -223,7 +223,7 @@ Her faz ayrı ayrı çalıştırılıp doğrulanır, öncekine dönülmez.
 | 2 | `write.py` — Gemini + üslup filtresi | `GEMINI_API_KEY` | **✅ 2026-08-25** |
 | 3 | `render.py` + `card.html` — PNG üretimi | Fontlar | **✅ 2026-08-25** |
 | 4 | `images.py` — IGDB | IGDB anahtarları | **✅ 2026-08-25** |
-| 5 | `telegram.py` — onay döngüsü | TG anahtarları | |
+| 5 | `telegram.py` — onay döngüsü | TG anahtarları | **✅ 2026-08-25** |
 | 6 | `publish.py` — Instagram | IG anahtarları | |
 | 7 | Workflow YAML'ları + kuru test | Hepsi | |
 | 8 | Canlı | — | |
@@ -633,3 +633,66 @@ Gerçek görsellerle test edilince aydınlık gökyüzü fotoğraflarında sağ 
 görsel kredisi okunmuyordu. `card__topscrim` eklendi: üstten 170px, %40'tan
 şeffafa inen karartma. Karanlık görsellerde farkedilmiyor, aydınlık olanlarda
 krediyi kurtarıyor. Tipografik kartta gizli.
+
+---
+
+## 14. Faz 5 — Telegram onay döngüsü ✅ (2026-08-25)
+
+`src/telegram.py` — hem taşıma katmanı hem onay durum makinesi.
+
+```
+py -3.12 src/telegram.py send state/draft.json --cards out/witcher
+py -3.12 src/telegram.py poll
+py -3.12 src/telegram.py say "hata bildirimi"
+```
+
+Bot: `@questpostinstagram_bot`. Chat ID `.env` içinde `TG_CHAT_ID`.
+
+### Chat ID nasıl bulundu
+Telegram chat ID'yi ancak bot bir mesaj **aldıktan sonra** veriyor. Sıra:
+bota `/start` yaz → `getUpdates` → `message.chat.id`. Bu yüzden yeni bir kurulumda
+"bota önce yaz" adımı atlanamaz.
+
+### Komutlar
+| Komut | Karar |
+|---|---|
+| `/ok`, `/otomatik` | `yayinla` |
+| `/bana` | `elle` — kartlar **sıkıştırılmamış dosya** olarak geri yollanır |
+| `/iptal` | `iptal` |
+| `/yeniden` | `yeniden_uret` |
+| `/c` `/b` `/a` `/s` | tier ezilir, tarif güncellenir, `yeniden_bas` |
+| `/gorsel 1 3 5` | görsel seçimi tarife yazılır, `gorsel_degisti` |
+
+`/bana` fotoğraf değil `sendDocument` kullanıyor: Telegram fotoğrafları yeniden
+sıkıştırıyor, kullanıcı o dosyayı indirip Instagram'a atacaksa kalite kaybı olmamalı.
+
+### Durum dosyaları
+- `state/pending.json` — onay bekleyen post, karar sonucu buraya yazılıyor
+- `state/tg_offset.json` — `getUpdates` offset'i. **Aynı komutun iki kez
+  işlenmesini bu önlüyor**; `respond.yml` 5 dakikada bir çalışacağı için şart.
+
+Yazma işlemi geçici-dosya-sonra-taşı yöntemiyle: yarım yazılmış bir state dosyası
+botu kilitler.
+
+Başka bir sohbetten gelen mesajlar yok sayılıyor (`chat.id` karşılaştırması) —
+bot linki birine giderse komut veremez.
+
+### ⚠️ Bulunan kritik hata: Windows yolları
+`pending.json` ilk sürümde yolları `state\draft_witcher.json` şeklinde yazıyordu.
+Bot **GitHub Actions'ta Linux'ta** çalışacak, o yollar orada çözülmez ve
+`respond.yml` sessizce başarısız olurdu. Artık `as_posix()` ile yazılıyor.
+
+Bu genel bir risk: state dosyaları Windows'ta üretilip Linux'ta okunuyor.
+Yeni bir state alanı eklerken yol varsa POSIX biçimde yazılmalı.
+
+### Doğrulanan uçtan uca akış
+```
+fetch.py → write.py → images.py → render.py → telegram.py send
+    → (kullanıcı /ok yazar) → telegram.py poll → karar: yayinla
+```
+5 kart albüm olarak gitti, özet ve komut listesi caption'da, `/ok` okundu,
+`pending.json` `yayinla` durumuna geçti, Telegram'a onay bildirimi düştü.
+
+### Faz 6'ya devredilen
+`durum: yayinla` olan bir `pending.json`'ı `publish.py` alıp Instagram'a
+gönderecek. Kararı telegram.py veriyor, paylaşımı publish.py yapacak.
