@@ -42,6 +42,10 @@ CAPTION_LIMIT = 1024
 
 TIER_LABELS = {"C": "sıradan", "B": "büyülü", "A": "sıradışı", "S": "mitik"}
 
+# Telegram'in kendi komutlari. "bilinmeyen komut" diye cevaplanmamali.
+KOMUT_YARDIM = ("/ok onayla · /bana kartları bana yolla · /yeniden metni yeniden yaz\n"
+                "/iptal at · /c /b /a /s tier · /gorsel 1 3 5 görsel değiştir")
+
 
 def load_env() -> None:
     env_file = ROOT / ".env"
@@ -266,16 +270,22 @@ def do_poll() -> int:
     if not pending or pending.get("durum") != "onay_bekliyor":
         for name, _ in commands:
             print(f"komut geldi ama bekleyen post yok: /{name}")
-        send_text("şu an onay bekleyen bir post yok.")
+        if any(name in ("start", "help", "yardim") for name, _ in commands):
+            send_text("hazır postları buraya yollayacağım.\n\n" + KOMUT_YARDIM)
+        else:
+            send_text("şu an onay bekleyen bir post yok.")
         commit_offset(last)
         return 0
 
     draft_path = ROOT / pending["draft"]
     spec = json.loads(draft_path.read_text(encoding="utf-8"))
     karar = None
+    bilinmeyen: list[str] = []
 
     for name, args in commands:
-        if name in ("ok", "otomatik"):
+        if name in ("start", "help", "yardim"):
+            send_text("hazır postları buraya yollayacağım.\n\n" + KOMUT_YARDIM)
+        elif name in ("ok", "otomatik"):
             karar = "yayinla"
         elif name == "bana":
             karar = "elle"
@@ -298,7 +308,12 @@ def do_poll() -> int:
             send_text(f"görsel seçimi kaydedildi: {' '.join(args)}")
             karar = "gorsel_degisti"
         else:
-            send_text(f"bilinmeyen komut: /{name}")
+            bilinmeyen.append(f"/{name}")
+
+    # Tek mesajda topla: her bilinmeyen komuta ayri cevap yazmak sohbeti
+    # bogmakti (uc /start ucu ayri hata mesaji uretti).
+    if bilinmeyen:
+        send_text("anlamadığım komut: " + ", ".join(bilinmeyen) + "\n\n" + KOMUT_YARDIM)
 
     if karar:
         pending["durum"] = karar
