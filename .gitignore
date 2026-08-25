@@ -14,3 +14,7 @@ scratch/
 
 # fetch.py ciktisi: her calismada yenilenir, gecmisi sismesin
 state/candidates.json
+
+# IGDB gorsel onbellegi: kart PNG zaten repoya giriyor, kaynak gorseli
+# ayrica tutmak gereksiz.
+state/img/

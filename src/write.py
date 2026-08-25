@@ -155,6 +155,7 @@ def generate(prompt: str, model: str, temperature: float) -> dict:
 
 SCHEMA = """{
   "game": "haberin konusu olan oyunun veya şirketin adı",
+  "search_name": "IGDB aramasi icin oyunun TAM ve INGILIZCE adi, surum numarasi dahil (ornek: The Witcher 3: Wild Hunt). Haber bir oyun hakkinda degilse null",
   "category": "listeden biri",
   "studio": "görsel kredisi için stüdyo adı, bilinmiyorsa null",
   "is_leak": true veya false,
@@ -205,6 +206,11 @@ def build_prompt(candidate: dict, source_text: str, mode: str,
         "11. Son sayfada 'takip et', 'beğen', 'paylaş' gibi çağrılar yasak.",
         "    İki çağrı da yumuşak olacak: merak veya düşünce davet eden cümleler.",
         "12. Yazım hatası yapma. Metni yazdıktan sonra harf harf kontrol et.",
+        "13. search_name alanı ÇEVİRİLMEZ ve KISALTILMAZ. Kaynakta hangi oyundan",
+        "    bahsediliyorsa onun tam İngilizce adını yaz, sürüm numarası dahil.",
+        "    Haber \"the witcher 3\" hakkındaysa \"The Witcher\" yazmak HATADIR;",
+        "    yanlış oyunun görselleri basılır. Haber bir oyun hakkında değilse",
+        "    (etkinlik, şirket, sektör haberi) null yaz.",
         "",
         f"KATEGORİ listesi (birini seç): {', '.join(CATEGORIES)}",
         "",
@@ -264,6 +270,8 @@ def to_render_spec(draft: dict, tier: str, candidate: dict) -> dict:
         "tier": tier,
         "category": category,
         "game": draft.get("game", ""),
+        # IGDB aramasi bu alanla yapiliyor; goruntude "game" kullanilir.
+        "search_name": draft.get("search_name"),
         "credit": None if is_leak else draft.get("studio"),
         "pages": pages,
     }

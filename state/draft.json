@@ -10,7 +10,7 @@
     {
       "type": "cover",
       "title": "gamescom yine dev reklam maratonuna dönüşüyor",
-      "image": "assets/placeholder.png"
+      "image": null
     },
     {
       "type": "text",
@@ -20,7 +20,7 @@
         "büyük bütçeli oyun odaklı",
         "bağımsız yapımlara kısıtlı süre"
       ],
-      "image": "assets/placeholder.png"
+      "image": null
     },
     {
       "type": "numbers",
@@ -35,7 +35,7 @@
           "label": "ana şov öncesi başlayacak sunum"
         }
       ],
-      "image": "assets/placeholder.png"
+      "image": null
     },
     {
       "type": "outro",
@@ -44,7 +44,7 @@
         "görüşlerinizi yorumlarda belirtebilirsiniz",
         "konu hakkındaki düşüncelerinizi aktarabilirsiniz"
       ],
-      "image": "assets/placeholder.png"
+      "image": null
     }
   ]
 }

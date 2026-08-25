@@ -3,7 +3,7 @@
 > Yeni bir sohbete geçerken: **önce bu dosyayı oku.** Kararlar burada, kodda değil.
 > Her önemli kararda veya faz bitiminde bu dosya güncellenir.
 
-Son güncelleme: 2026-08-25 (Faz 2 sonu)
+Son güncelleme: 2026-08-25 (Faz 4 sonu)
 
 ---
 
@@ -222,7 +222,7 @@ Her faz ayrı ayrı çalıştırılıp doğrulanır, öncekine dönülmez.
 | 1 | `feeds.json` + `fetch.py` — RSS çekme, tekrar filtresi | Yok | **✅ 2026-08-25** |
 | 2 | `write.py` — Gemini + üslup filtresi | `GEMINI_API_KEY` | **✅ 2026-08-25** |
 | 3 | `render.py` + `card.html` — PNG üretimi | Fontlar | **✅ 2026-08-25** |
-| 4 | `images.py` — IGDB | IGDB anahtarları | |
+| 4 | `images.py` — IGDB | IGDB anahtarları | **✅ 2026-08-25** |
 | 5 | `telegram.py` — onay döngüsü | TG anahtarları | |
 | 6 | `publish.py` — Instagram | IG anahtarları | |
 | 7 | Workflow YAML'ları + kuru test | Hepsi | |
@@ -562,3 +562,74 @@ metin üretti, kalıp cümle çıkmadı.
   (IGDB) almak — görselin sahibini görselle birlikte gelen veri bilir.
 - LLM tek harflik yazım hatası yapabiliyor (bir denemede "düşüncelerinizi" yerine
   "dusunceleinizi" çıktı). Filtre bunu yakalamaz. Telegram onayı bu yüzden var.
+
+---
+
+## 13. Faz 4 — IGDB görselleri ✅ (2026-08-25)
+
+`src/images.py` — post tarifini alır, görselleri seçer, indirir, tarifi günceller.
+Boru hattındaki yeri: `write.py` → **`images.py`** → `render.py`
+
+```
+py -3.12 src/images.py state/draft.json
+py -3.12 src/images.py state/draft.json --dry-run   # indirmeden sec
+py -3.12 src/images.py state/draft.json --game "Hollow Knight: Silksong"
+```
+
+### Kimlik doğrulama
+IGDB'yi Twitch satın aldı, kimlik Twitch üzerinden. `.env` içinde
+`IGDB_CLIENT_ID` + `IGDB_CLIENT_SECRET`. Uygulama jetonu **her çalışmada
+yeniden alınıyor** — tek istek, önbellek tutmaya değmez ve süresi dolmuş
+jeton derdi hiç doğmaz. (Ölçüm: jeton 58 gün geçerli veriliyor.)
+
+⚠️ Twitch, iki adımlı doğrulama açık olmayan hesaplara uygulama kaydı
+yaptırmıyor. Yeni ortam kurulurken ilk adım bu.
+
+### Görsel seçimi — kod kararı, LLM değil
+`PREFERENCE` tablosu sayfa tipine göre görsel tipini seçer:
+kapak → artwork/cover, iç sayfalar → screenshot, son sayfa → artwork.
+Her sayfaya farklı görsel atanır, hepsi aynı oyundan (tasarım kuralı).
+Görsel tükenirse baştan dolaşır — tekrar, görselsiz kalmaktan iyidir.
+
+Kredi (`görsel: <stüdyo>`) IGDB'nin `involved_companies` verisinden geliyor,
+önce geliştirici sonra yayıncı. **LLM'in tahminine bırakılmadı** — görselin
+sahibini görselle gelen veri bilir. Faz 2'de açık kalan eksik bu şekilde kapandı.
+
+### İki gerçek doğruluk hatası bulundu ve düzeltildi
+
+**1. Boş kayıtlar.** `search "hollow knight silksong"` iki sonuç döndürdü:
+biri Team Cherry'nin gerçek kaydı (7 artwork, 6 screenshot), diğeri "Elvies"
+adlı hiç görseli olmayan bir kayıt. Çözüm: isim benzerliği + görsel sayısına
+göre sıralama, `MIN_IMAGES` eşiği.
+
+**2. Sürüm karışması — daha tehlikelisi.** Haber "the witcher 3"ün DLC'si
+hakkındaydı, LLM oyun adını "the witcher" diye verdi, IGDB 2007'nin ilk
+oyununu getirdi. **Yanlış oyunun görselleri basılacaktı.** İki katmanlı çözüm:
+
+- `write.py` şemasına `search_name` alanı eklendi: kartta görünen ad (`game`,
+  Türkçe/küçük harf) ile IGDB'de aranan ad (tam, İngilizce, sürüm numaralı)
+  artık **ayrı alanlar.** İstemde bu ayrım açıkça anlatılıyor.
+- `images.py` içinde `version_conflict()`: arama bir sürüm numarası
+  içeriyorsa (rakam veya roma rakamı), eşleşme de aynı numarayı içermek
+  zorunda. Yoksa puanı 0.5 düşüyor. Böylece "witcher 3" araması
+  "The Witcher" veya "The Witcher IV" kaydına düşmüyor.
+
+### Eşleşme bulunamazsa
+`NAME_MATCH_MIN` (0.55) altındaki en iyi benzerlikte, veya `search_name` null
+geldiğinde, **görsel hiç kullanılmıyor** ve kartlar tipografik moda düşüyor.
+Yanlış oyunun görselini basmak, görselsiz basmaktan çok daha kötü.
+
+Doğrulandı: "gamescom 2026" (etkinlik haberi) → eşleşme yok → tipografik.
+"the witcher 3: wild hunt" → doğru kayıt, 16 artwork + 12 screenshot,
+kredi "cd projekt red".
+
+### Görsel önbelleği
+İndirilen JPG'ler `state/img/` altında, **git dışı.** Kart PNG'si zaten repoya
+giriyor (Instagram'ın herkese açık URL şartı), kaynak görseli ayrıca tutmak
+gereksiz. Boyut: `t_1080p`.
+
+### Tasarıma eklenen: üst karartma
+Gerçek görsellerle test edilince aydınlık gökyüzü fotoğraflarında sağ üstteki
+görsel kredisi okunmuyordu. `card__topscrim` eklendi: üstten 170px, %40'tan
+şeffafa inen karartma. Karanlık görsellerde farkedilmiyor, aydınlık olanlarda
+krediyi kurtarıyor. Tipografik kartta gizli.

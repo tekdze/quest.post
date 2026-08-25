@@ -75,8 +75,19 @@ html, body {
   );
 }
 
+/* Ust kenarda ince karartma: aydinlik gokyuzu goruntulerinde gorsel
+   kredisi okunmuyordu. Karanlik gorsellerde farkedilmez. */
+.card__topscrim {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 170px;
+  z-index: 1;
+  background: linear-gradient(to bottom, rgba(23, 21, 26, 0.40), rgba(23, 21, 26, 0));
+}
+
 /* Sizinti/datamine haberi: gorsel yok, sadece tipografi. */
 .card--typographic .card__image,
+.card--typographic .card__topscrim,
 .card--typographic .card__scrim { display: none; }
 
 .card--typographic { background: var(--cream); }

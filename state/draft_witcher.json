@@ -1,0 +1,61 @@
+{
+  "_kaynak": "https://80.lv/articles/the-witcher-3-s-new-songs-of-the-past-dlc-brings-more-gwent",
+  "_kaynak_sayisi": 2,
+  "_is_leak": false,
+  "tier": "B",
+  "category": "güncelleme",
+  "game": "the witcher 3: wild hunt",
+  "search_name": "the witcher 3: wild hunt",
+  "credit": "cd projekt red",
+  "pages": [
+    {
+      "type": "cover",
+      "title": "cd projekt red yeni dlc ile vakit mi kazanıyor",
+      "image": "state/img/the-witcher-3-wild-hunt-ar3lze.jpg"
+    },
+    {
+      "type": "text",
+      "title": "eski oyuna dlc makyajı",
+      "paragraph": "on yıllık the witcher 3 için yeni bir içerik duyuran stüdyo, dikkatleri başka yöne çekmeye çalışıyor gibi görünüyor. karanlık bir hikaye vaat edilse de bu hamle yeni oyunun gecikmesini örtbas etme çabası hissettiriyor.",
+      "bullets": [
+        "eski içeriklerin tekrar sunulması",
+        "yeni oyun öncesi oyalama taktiği"
+      ],
+      "image": "state/img/the-witcher-3-wild-hunt-sctj8u.jpg"
+    },
+    {
+      "type": "text",
+      "title": "yeni oyun için uzun bekleyiş",
+      "paragraph": "serinin yeni halkası için verilen tarih oldukça uzak bir geleceğe işaret ediyor. oyuncuların yıllarca bekletilmesi stüdyonun proje takvimindeki belirsizlikleri öne çıkarıyor.",
+      "bullets": [
+        "uzun geliştirme sürecinin getirdiği riskler",
+        "beklentilerin kontrolsüz yükselmesi"
+      ],
+      "image": "state/img/the-witcher-3-wild-hunt-farvemmmxav0bgt6wx7t.jpg"
+    },
+    {
+      "type": "numbers",
+      "title": "öne çıkan rakamlar",
+      "metrics": [
+        {
+          "value": "2028",
+          "label": "yeni oyun için hedeflenen çıkış yılı"
+        },
+        {
+          "value": "50 saat",
+          "label": "yeni içerik için iddia edilen süre"
+        }
+      ],
+      "image": "state/img/the-witcher-3-wild-hunt-em1y2ugcwy2myuhvb9db.jpg"
+    },
+    {
+      "type": "outro",
+      "question": "eski oyuna içerik çıkarılması yeni oyunu beklerken sizi tatmin eder mi",
+      "ctas": [
+        "düşüncelerinizi yorum kısmında paylaşabilirsiniz",
+        "farklı görüşleri incelemek için tartışmaya katılabilirsiniz"
+      ],
+      "image": "state/img/the-witcher-3-wild-hunt-ar3lzf.jpg"
+    }
+  ]
+}
