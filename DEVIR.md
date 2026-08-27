@@ -3,7 +3,7 @@
 > Yeni bir sohbete geçerken: **önce bu dosyayı oku.** Kararlar burada, kodda değil.
 > Her önemli kararda veya faz bitiminde bu dosya güncellenir.
 
-Son güncelleme: 2026-08-25 (Faz 5 sonu)
+Son güncelleme: 2026-08-27 (tier + orkestratör)
 
 ---
 
@@ -696,3 +696,60 @@ fetch.py → write.py → images.py → render.py → telegram.py send
 ### Faz 6'ya devredilen
 `durum: yayinla` olan bir `pending.json`'ı `publish.py` alıp Instagram'a
 gönderecek. Kararı telegram.py veriyor, paylaşımı publish.py yapacak.
+
+---
+
+## 15. tier.py ve produce.py (2026-08-27)
+
+Faz 7'nin (cron) ön koşulu olan iki parça. `tier.py` dosya yapısında baştan
+vardı ama hiç yazılmamıştı; `produce.py` yol haritasında yoktu, zinciri tek
+komuta indirmek için eklendi.
+
+### `src/tier.py` — tier hesabı
+Ana sinyal **kaç kaynak yazmış**: 4+ → S, 3 → A, 2 → B, 1 → C.
+Üzerine düzelticiler:
+
+| Kural | Etki |
+|---|---|
+| Ayrıştırıcı kaynak (ağırlık ≥ 1.2) | bir kademe yükseltir |
+| indie etiketli kaynak, taban C ise | bir kademe yükseltir |
+| çıkış/devlog haberi, taban C veya B ise | bir kademe yükseltir |
+| yalnızca topluluk kaynağı (reddit) | C'ye sabitler, doğrulanmamış sayılır |
+
+Ölçüm (2026-08-25, 48 saat, 18 kaynak): 4 kaynaklı küme günde 1, 2 kaynaklı 13,
+tek kaynaklı ~180. Yani **S doğal olarak nadir kalıyor**, eşiği zorlamak
+gerekmedi. "Tier eşiklerinin sayısallaştırılması" açık maddesi kapandı.
+
+⚠️ Bilinen tuhaflık: 4 kaynağın yazdığı "gamescom nasıl izlenir" rehberi S
+çıkıyor. Kaynak sayısı haberin **yaygınlığını** ölçüyor, **ilginçliğini**
+değil. Şimdilik kabul: yaygın haber gerçekten büyük haberdir. Rahatsız
+ederse kategori bazlı bir düzeltici eklenir (rehber/liste haberleri bir
+kademe düşürülür).
+
+### `src/produce.py` — üretim zinciri
+`fetch → aday seç → tier → write → images → render → telegram send`
+
+Her aşama **ayrı süreç** olarak koşuyor. Sebep: Actions kaydında hangi
+aşamanın patladığı tek bakışta görünsün.
+
+Kritik davranışlar:
+- **Onay bekleyen post varken yeni üretim yapmıyor.** `pending.json` tek
+  slot; ikinci post birincisini ezerdi.
+- **C kademesi atılmıyor, `state/weekly.json`'a biriktiriliyor** — tasarım
+  kuralı "C tek başına yayınlanmaz, haftalık derleme carousel'ine gider".
+  Eleme değil erteleme.
+- Cevap vermeyen kaynak varsa kayda `UYARI` satırı basıyor.
+- `out/` klasör adı `YYYYMMDD-oyun-adi` biçiminde, çakışma olmuyor.
+
+`--dry-run` Telegram'a yollamadan zinciri deniyor, `--skip-fetch` elde duran
+adaylarla çalışıyor, `--index` aday seçimini elle eziyor.
+
+### Tipografik kart düzeni düzeltildi
+Zincir ilk kez uçtan uca koşunca tipografik kart gerçek veriyle görüldü:
+metin altta, üstte 800px boşluk, kart "bozuk" gibi duruyordu. Görsel olmayan
+kartta içerik artık **dikeyde ortalanıyor** ve başına tier renginde bir çizgi
+konuyor (editoryal afiş düzeni), kapak başlığı 104px'e çıkıyor.
+
+Bu mod sık kullanılacak: sızıntı haberleri **ve** oyun eşleşmeyen her haber
+(etkinlik, şirket, sektör) buraya düşüyor. Ölçüm: gamescom haberi eşleşme
+bulamadı, 5 kartın 5'i tipografik.

@@ -92,6 +92,31 @@ html, body {
 
 .card--typographic { background: var(--cream); }
 
+/* Tipografik kartta gorsel yok, dolayisiyla metni alta yapistirmak
+   ustte kocaman bir bosluk birakiyor ve kart "bozuk" gibi duruyor.
+   Icerik dikeyde ortalaniyor ve basina tier renginde bir cizgi
+   konuyor - editoryal afis duzeni. */
+.card--typographic .card__content {
+  top: 150px;
+  bottom: var(--pad-bottom);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card--typographic .card__content::before {
+  content: "";
+  display: block;
+  width: 104px;
+  height: 6px;
+  background: var(--tier);
+  margin-bottom: 44px;
+  flex: none;
+}
+
+/* Kapak basligi gorselsiz kartta daha fazla nefes alabilir. */
+.card--typographic.card--cover .title { font-size: 104px; }
+
 /* Tier serisi: ust kenarda 8px. Rengin gorundugu 1. yer. */
 .card__strip {
   position: absolute;
