@@ -161,6 +161,7 @@ SCHEMA = """{
   "category": "listeden biri",
   "studio": "görsel kredisi için stüdyo adı, bilinmiyorsa null",
   "is_leak": true veya false,
+  "caption": "Instagram gönderi açıklaması. 2-4 cümle, kartlarda yazanı TEKRARLAMAZ, haberin bağlamını verir. En fazla 2 hashtag, sonda.",
   "pages": [
     {"type": "cover", "title": "kapak başlığı, en fazla 8 kelime"},
     {"type": "text", "title": "3-5 kelime", "paragraph": "2-3 cümle",
@@ -222,7 +223,13 @@ def build_prompt(candidate: dict, source_text: str, mode: str,
         "    temsil eder. Sadece adı GEÇEN oyunları yaz, konuyla ilgisi",
         "    kurulamayan bir oyunu doldurma; okur görseli haberle",
         "    ilişkilendiremezse kart yanıltıcı olur.",
-        "15. series_fallback: konu oyununun görseli az olabilir (henüz",
+        "15. caption Instagram'da kartların altında görünecek metin.",
+        "    Kartlarda yazanı TEKRARLAMA - okur kartları zaten gördü.",
+        "    Haberin bağlamını ver: bu neden önemli, öncesinde ne olmuştu.",
+        "    2-4 cümle. Sonunda en fazla 2 hashtag, küçük harf. Üslup",
+        "    kuralları burada da geçerli: emoji yok, büyük harf yok,",
+        "    \"işte\" gibi kalıplar yok.",
+        "16. series_fallback: konu oyununun görseli az olabilir (henüz",
         "    çıkmamış oyunlarda sık). Aynı serinin/evrenin görsel bakımından",
         "    zengin oyunlarını buraya yaz - haber \"The Elder Scrolls VI\"",
         "    hakkındaysa [\"The Elder Scrolls V: Skyrim\"] gibi. Sadece",
@@ -288,6 +295,10 @@ def to_render_spec(draft: dict, tier: str, candidate: dict, index: int = 0) -> d
         "_is_leak": is_leak,
         "tier": tier,
         "category": category,
+        # Instagram gonderi metni. Faz 6'ya kadar da ise yariyor: /bana ile
+        # kartlari elle alirken caption da Telegram'a dusuyor, kopyalayip
+        # yapistiriyorsun.
+        "caption": draft.get("caption", ""),
         "game": draft.get("game", ""),
         # IGDB aramasi bu alanla yapiliyor; goruntude "game" kullanilir.
         "search_name": draft.get("search_name"),
@@ -301,7 +312,10 @@ def to_render_spec(draft: dict, tier: str, candidate: dict, index: int = 0) -> d
         # Kapak yine konu oyunundan basilir (images.py), kredi sayfa basina.
         "series_fallback": [c for c in (draft.get("series_fallback") or [])
                             if c and str(c).lower() != "none"][:2],
-        "credit": None if is_leak else draft.get("studio"),
+        # Kucuk harfe cevriliyor: studio artik uslup denetiminden muaf
+        # (buyuk harfli Ingilizce ad olabilir) ama karta basilan her sey
+        # kucuk harf. images.py bunu IGDB verisiyle zaten eziyor.
+        "credit": None if is_leak else (draft.get("studio") or "").lower() or None,
         "pages": pages,
     }
 

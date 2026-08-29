@@ -235,6 +235,34 @@ ama seri araması **yalnızca havuz yetersizse** yapılıyor — boşuna IGDB
 Kaynak İngilizce olduğu için sayı kelimeleri de ("two hours" → "2") izinli
 kümeye ekleniyor.
 
+### ⚠️ Üslup filtresi görsel bulmayı sabote ediyordu (2026-08-29, düzeltildi)
+`style.py` **büyük harfi yasaklıyor** ve `strings_of` taslaktaki her metin
+alanını dolaşıyordu. Ama `search_name`, `image_candidates`, `series_fallback`
+IGDB'de aranan **tam İngilizce oyun adları** - büyük harf içermek
+zorundalar. Denetime girdikleri için her üretimde "büyük harf var" hatası
+veriyor, `write.py` üç kez yeniden üretiyor ve LLM sonunda o alanları
+**boş bırakmayı öğreniyordu.**
+
+Yani filtre, görsel bulma özelliğini sessizce çalışmaz hale getiriyordu.
+Xbox haberinde `search_name: None` gelmesinin sebebi muhtemelen buydu.
+
+Düzeltme: bu alanlar + `studio` `NON_PROSE_KEYS`'e alındı (karta
+basılmıyorlar). `studio` yerine krediyi zaten `images.py` IGDB'den yazıyor,
+`to_render_spec` de küçük harfe çeviriyor.
+
+**Ders:** karta basılmayan bir alan üslup denetimine girerse, filtre LLM'i
+o alanı boşaltmaya iter ve arıza hata olarak değil **eksik özellik** olarak
+görünür.
+
+### Instagram gönderi metni (caption)
+`write.py` artık `caption` da üretiyor - **aynı çağrıda**, ek LLM maliyeti
+yok. `style.py` denetiminden geçiyor, yani üslup kuralları burada da
+geçerli. İstemde "kartlarda yazanı tekrarlama, bağlam ver" kuralı var.
+En fazla 2 hashtag.
+
+Faz 6 gelmeden de işe yarıyor: `/bana` ile kartları alırken caption
+**ayrı bir mesaj olarak** düşüyor, tek dokunuşla kopyalanıyor.
+
 ### Metin üslubu — `style.py` filtresi
 Deterministik, LLM çağırmaz. Yakaladıkları:
 em-dash ve eğik tırnak · yasak kelime listesi (işte, peki, devrim

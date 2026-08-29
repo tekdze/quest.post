@@ -55,7 +55,16 @@ SUFFIX_FIXES = {
 
 # Duz metin olmayan alanlar: denetime girmez. "tier" bir kod (C/B/A/S),
 # buyuk harf kurali ona uygulanamaz.
-NON_PROSE_KEYS = {"type", "image", "tier"}
+# Bu alanlar karta BASILMAZ, dolayisiyla uslup denetimine girmezler.
+# search_name / image_candidates / series_fallback IGDB'de aranan tam
+# Ingilizce oyun adlari; buyuk harf iceriyorlar ve icermek ZORUNDALAR.
+# Denetime girdiklerinde "buyuk harf var" hatasi veriyor, write.py uc kez
+# yeniden uretiyor ve LLM sonunda alani bos birakmayi ogreniyordu - yani
+# filtre, gorsel bulma ozelligini sessizce sabote ediyordu.
+# studio da ayni sebeple disarida: krediyi zaten images.py IGDB'nin sirket
+# verisinden yaziyor, to_render_spec kucuk harfe ceviriyor.
+NON_PROSE_KEYS = {"type", "image", "tier", "search_name", "image_candidates",
+                  "series_fallback", "studio"}
 
 # 2) Yasak kalip avinda Turkce isaretler yok sayilir: LLM "iste" yazip
 # noktalari eksik biraktiginda filtre onu da yakalamali.

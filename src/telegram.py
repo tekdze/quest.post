@@ -544,6 +544,12 @@ def do_poll() -> int:
             send_documents(sorted((ROOT / hedef["cards_dir"]).glob("*.png")))
             send_text("kartlar dosya olarak yollandı. instagram'ın kendi müziğiyle "
                       "paylaşabilirsin.")
+            # Caption AYRI mesajda: Telegram'da tek dokunusla kopyalanabilsin,
+            # aciklama metniyle karismasin.
+            caption = (json.loads((ROOT / hedef["draft"]).read_text(encoding="utf-8"))
+                       .get("caption") or "").strip()
+            if caption:
+                send_text(caption)
 
     # Tek mesajda topla: her bilinmeyen komuta ayri cevap yazmak sohbeti
     # bogmakti (uc /start ucu ayri hata mesaji uretti).
