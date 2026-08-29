@@ -89,7 +89,9 @@ def build_page_payload(spec: dict, page: dict, index: int, total: int) -> dict:
         "category": spec.get("category", ""),
         "game": spec.get("game", ""),
         # Sizinti/datamine haberinde gorsel kullanilmaz, kredi de gerekmez.
-        "credit": spec.get("credit") if page["image"] else None,
+        # Kredi once sayfanin kendisinden: seri yedeginden gelen gorselin
+        # studyosu ana oyununkinden farkli olabiliyor (images.py yaziyor).
+        "credit": (page.get("credit") or spec.get("credit")) if page["image"] else None,
         "handle": spec.get("handle", DEFAULT_HANDLE),
         "tagline": spec.get("tagline", DEFAULT_TAGLINE),
         "page": page,

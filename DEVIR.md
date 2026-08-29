@@ -197,6 +197,32 @@ edebilecek oyunlar, önem sırasıyla, en fazla 3).
 IGDB'nin şirket verisinden (`bethesda game studios`, `343 industries`).
 Sızıntı haberinde görsel kullanılmaması kuralı da yerinde.
 
+### ⚠️ Seri yedeği (2026-08-29) — "görsel az" durumu için
+Çıkmamış oyunların IGDB'de 1-2 görseli oluyor ve 4-5 sayfaya yayılınca aynı
+görsel tekrar ediyordu. Artık `write.py` bir alan daha üretiyor:
+`series_fallback` — **aynı serinin** görsel bakımından zengin oyunları.
+Konu oyununun havuzu sayfalara yetmiyorsa oradan tamamlanıyor.
+
+Üç kural bunu güvenli tutuyor:
+
+1. **Kapak ASLA yedekten seçilmez.** İlk kart hesabın vitrini; orada haberin
+   konusu olmayan bir oyunun görseli okuru yanıltır. `assign_images` içinde
+   `page["type"] != "cover"` koşulu.
+2. **Kredi sayfa başına.** Bu kritikti: Pokémon TCG Pocket'ın stüdyosu
+   `the pokémon company`, ana serininki `game freak`. Tek ortak kredi basmak
+   o sayfada **yanlış stüdyoyu** göstermek olurdu — telif kuralının deldiği
+   yer tam burası. Kredi artık görselin kendisinde taşınıyor
+   (`image_pool` yazıyor), `page["credit"]` olarak taslağa geçiyor,
+   `render.py` önce onu basıyor. Ölçüldü: sayfa 1-2 `the pokémon company`,
+   sayfa 3-4 `game freak`.
+3. **Menüde şeffaf:** `görsel VAR (2 + 2 seriden)` ve hangi oyunlardan
+   geldiği yazılı. Kullanıcı bilerek seçiyor.
+
+İstemde "sadece gerçekten AYNI seri olanı yaz, benzer türde başka bir oyun
+okuru yanıltır" kuralı var. Menüde de aynı soru soruluyor (`seri` alanı),
+ama seri araması **yalnızca havuz yetersizse** yapılıyor — boşuna IGDB
+çağrısı yok.
+
 ### Telif
 - Görseller yalnızca IGDB'den (resmi stüdyo materyali)
 - Her görselli kartta kredi, **IGDB'nin şirket verisinden** — LLM tahmininden değil

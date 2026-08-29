@@ -48,6 +48,7 @@ ONERI_SCHEMA = """{
   "adaylar": [
     {"sira": 1,
      "oyun": "haberde gecen oyunun TAM INGILIZCE adi, yoksa null",
+     "seri": "ayni serinin gorsel bakimindan zengin baska oyunu (tam Ingilizce ad), yoksa null",
      "ozet": "haberin NE oldugu, tek cumle, en fazla 12 kelime, kucuk harf"}
   ],
   "oneri": 3,
@@ -65,11 +66,16 @@ def build_prompt(rows: list[dict]) -> str:
 
     return "\n".join([
         "Bir Türkçe oyun haberi hesabı için günün aday haberleri aşağıda.",
-        "İki iş yapacaksın.",
+        "Üç iş yapacaksın.",
         "",
         "BİRİNCİ İŞ: her aday için haberde adı geçen oyunun tam İngilizce",
         "adını çıkar (sürüm numarası dahil). Haberde bir oyun adı geçmiyorsa",
         "null yaz. Bu ad IGDB'de aranacak, o yüzden çevirme ve kısaltma.",
+        "Ayrıca 'seri' alanına aynı serinin görsel bakımından ZENGİN bir",
+        "oyununu yaz (konu oyununun görseli az çıkarsa oradan tamamlanacak).",
+        "Çıkmamış oyunların görseli genelde azdır, asıl orada gerekiyor.",
+        "Sadece gerçekten aynı seri olanı yaz; benzer türde başka bir oyun",
+        "okuru yanıltır. Uygun yoksa null.",
         "",
         "İKİNCİ İŞ: her aday için 'ozet' yaz - haberin NE olduğunu anlatan",
         "tek cümle, Türkçe, küçük harf, en fazla 12 kelime. Başlıkta zaten",
@@ -99,25 +105,46 @@ def build_prompt(rows: list[dict]) -> str:
     ])
 
 
+def havuz_boyu(game: dict) -> int:
+    pool = img.image_pool(game)
+    return len(pool["artwork"]) + len(pool["screenshot"]) + len(pool["cover"])
+
+
 def gorsel_durumu(cid: str, token: str, oyun: str | None,
-                  sayfa_tahmini: int = 4) -> dict:
+                  seri: str | None = None, sayfa_tahmini: int = 4) -> dict:
     """Adayın IGDB'de kullanılabilir görseli var mı, kaç tane.
 
     Menüde "görsel VAR/YOK" yazabilmek için. Metin üretilmeden önce
     bakılıyor: kullanıcı görselsiz bir haberi hiç seçmek zorunda kalmasın.
+
+    Konu oyununun görseli sayfalara yetmiyorsa aynı seriden tamamlanacak
+    (images.py yapıyor). Menü bunu şeffaf gösteriyor: "2 + 21 seriden".
+    Seri araması sadece gerektiğinde yapılıyor, boşuna IGDB çağrısı yok.
     """
+    bos = {"durum": "yok", "sayi": 0, "oyun": None, "seri_sayi": 0, "seri": None}
     if not oyun:
-        return {"durum": "yok", "sayi": 0, "oyun": None}
-    game, score, _ = img.find_game(cid, token, oyun)
+        return bos
+    game, _, _ = img.find_game(cid, token, oyun)
     if game is None:
-        return {"durum": "yok", "sayi": 0, "oyun": None}
-    pool = img.image_pool(game)
-    sayi = len(pool["artwork"]) + len(pool["screenshot"]) + len(pool["cover"])
-    return {
-        "durum": "var" if sayi >= sayfa_tahmini else "az",
-        "sayi": sayi,
-        "oyun": game["name"],
-    }
+        return bos
+
+    sayi = havuz_boyu(game)
+    sonuc = {"durum": "var" if sayi >= sayfa_tahmini else "az", "sayi": sayi,
+             "oyun": game["name"], "seri_sayi": 0, "seri": None}
+    if sayi >= sayfa_tahmini or not seri:
+        return sonuc
+
+    kardes, _, _ = img.find_game(cid, token, seri)
+    if kardes is None:
+        return sonuc
+    seri_sayi = havuz_boyu(kardes)
+    if not seri_sayi:
+        return sonuc
+    sonuc["seri_sayi"] = seri_sayi
+    sonuc["seri"] = kardes["name"]
+    if sayi + seri_sayi >= sayfa_tahmini:
+        sonuc["durum"] = "var"
+    return sonuc
 
 
 def menu_metni(rows: list[dict], oneri: int | None, gerekce: str) -> str:
@@ -132,15 +159,20 @@ def menu_metni(rows: list[dict], oneri: int | None, gerekce: str) -> str:
             satirlar.append(f"   {row['ozet']}")
 
         gorsel = row["gorsel"]
-        if gorsel["durum"] == "var":
-            g = f"görsel VAR ({gorsel['sayi']})"
+        if gorsel["durum"] == "yok":
+            g = "görsel YOK (tipografik olur)"
+        elif gorsel.get("seri_sayi"):
+            # Seriden tamamlanacak: kullanici bunu bilerek secsin.
+            g = f"görsel VAR ({gorsel['sayi']} + {gorsel['seri_sayi']} seriden)"
         elif gorsel["durum"] == "az":
             g = f"görsel AZ ({gorsel['sayi']}, sayfalarda tekrar eder)"
         else:
-            g = "görsel YOK (tipografik olur)"
+            g = f"görsel VAR ({gorsel['sayi']})"
         satir = f"   {row['kaynak_sayisi']} kaynak · {g}"
         if gorsel.get("oyun") and gorsel["durum"] != "yok":
             satir += f" · {gorsel['oyun']}"
+            if gorsel.get("seri"):
+                satir += f" + {gorsel['seri']}"
         satirlar.append(satir)
 
         if row["sira"] == oneri and gerekce:
@@ -187,7 +219,7 @@ def main() -> int:
     print(f"{len(rows)} aday LLM'e soruluyor...")
     cevap = writer.generate(build_prompt(rows), args.model, temperature=0.4)
 
-    oyunlar, ozetler = {}, {}
+    oyunlar, ozetler, seriler = {}, {}, {}
     for row in cevap.get("adaylar", []):
         try:
             sira = int(row.get("sira"))
@@ -195,6 +227,7 @@ def main() -> int:
             continue
         oyunlar[sira] = row.get("oyun")
         ozetler[sira] = (row.get("ozet") or "").strip()
+        seriler[sira] = row.get("seri")
 
     oneri = cevap.get("oneri")
     try:
@@ -214,7 +247,7 @@ def main() -> int:
         oyun = oyunlar.get(row["sira"])
         row["oyun_adi"] = oyun
         row["ozet"] = ozetler.get(row["sira"], "")
-        row["gorsel"] = gorsel_durumu(cid, token, oyun)
+        row["gorsel"] = gorsel_durumu(cid, token, oyun, seriler.get(row["sira"]))
         row["baslik"] = oyun or (row["title"][:52].rstrip() + "..."
                                  if len(row["title"]) > 52 else row["title"])
         isaret = " <- ONERI" if row["sira"] == oneri else ""

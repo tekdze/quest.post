@@ -157,6 +157,7 @@ SCHEMA = """{
   "game": "haberin konusu olan oyunun veya şirketin adı",
   "search_name": "haberin ASIL konusu olan oyunun TAM ve INGILIZCE adi, surum numarasi dahil (ornek: The Witcher 3: Wild Hunt). Haber bir oyunu konu almiyorsa null",
   "image_candidates": ["haber metninde adi gecen ve GORSELI bu haberi temsil edebilecek oyunlarin tam Ingilizce adlari, onem sirasiyla, en fazla 3. search_name doluysa onu buraya tekrar yazma. Uygun oyun yoksa bos liste"],
+  "series_fallback": ["ayni serinin/evrenin gorsel bakimindan zengin baska oyunlarinin tam Ingilizce adlari, en fazla 2. Sadece konu oyununun gorseli yetmezse kullanilacak. Uygun yoksa bos liste"],
   "category": "listeden biri",
   "studio": "görsel kredisi için stüdyo adı, bilinmiyorsa null",
   "is_leak": true veya false,
@@ -221,6 +222,12 @@ def build_prompt(candidate: dict, source_text: str, mode: str,
         "    temsil eder. Sadece adı GEÇEN oyunları yaz, konuyla ilgisi",
         "    kurulamayan bir oyunu doldurma; okur görseli haberle",
         "    ilişkilendiremezse kart yanıltıcı olur.",
+        "15. series_fallback: konu oyununun görseli az olabilir (henüz",
+        "    çıkmamış oyunlarda sık). Aynı serinin/evrenin görsel bakımından",
+        "    zengin oyunlarını buraya yaz - haber \"The Elder Scrolls VI\"",
+        "    hakkındaysa [\"The Elder Scrolls V: Skyrim\"] gibi. Sadece",
+        "    gerçekten AYNI seri olanları yaz; benzer türde başka bir oyunu",
+        "    yazmak okuru yanıltır. Uygun yoksa boş liste.",
         "",
         f"KATEGORİ listesi (birini seç): {', '.join(CATEGORIES)}",
         "",
@@ -290,6 +297,10 @@ def to_render_spec(draft: dict, tier: str, candidate: dict, index: int = 0) -> d
         # IGDB'nin sirket verisinden geliyor, telif kurali degismiyor.
         "image_candidates": [c for c in (draft.get("image_candidates") or [])
                              if c and str(c).lower() != "none"][:3],
+        # Konu oyununun gorseli sayfalara yetmezse ayni seriden tamamlanir.
+        # Kapak yine konu oyunundan basilir (images.py), kredi sayfa basina.
+        "series_fallback": [c for c in (draft.get("series_fallback") or [])
+                            if c and str(c).lower() != "none"][:2],
         "credit": None if is_leak else draft.get("studio"),
         "pages": pages,
     }

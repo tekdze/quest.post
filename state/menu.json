@@ -1,7 +1,7 @@
 {
-  "olusturuldu": "2026-08-29T16:28:22+00:00",
+  "olusturuldu": "2026-08-29T16:39:30+00:00",
   "oneri": 6,
-  "gerekce": "oyun sızıntısı ve şirketin mizahi yanıtı yüksek etkileşim potansiyeli taşıyor",
+  "gerekce": "büyük sızıntı ve mizahi resmi yanıt yüksek etkileşim potansiyeli taşır",
   "adaylar": [
     {
       "sira": 1,
@@ -11,11 +11,13 @@
       "kaynak_sayisi": 2,
       "url": "https://www.polygon.com/star-wars-zero-company-anakin-skywalker-mission",
       "oyun_adi": "Star Wars Zero Company",
-      "ozet": "anakin skywalker bir görevde oyunu jedi güç fantezisine dönüştürüyor",
+      "ozet": "bir görevde anakin skywalker görünüp oyunculara jedi gücü yaşatıyor",
       "gorsel": {
         "durum": "var",
         "sayi": 12,
-        "oyun": "Star Wars Zero Company"
+        "oyun": "Star Wars Zero Company",
+        "seri_sayi": 0,
+        "seri": null
       },
       "baslik": "Star Wars Zero Company"
     },
@@ -26,14 +28,16 @@
       "title": "Silent Hill Townfall taps back into analog horror, but its tech is \"never going to lie to you\"",
       "kaynak_sayisi": 2,
       "url": "https://www.pcgamesn.com/silent-hill-townfall/interview-gamescom-analog-horror",
-      "oyun_adi": "Silent Hill Townfall",
-      "ozet": "oyun crt ekran ve radyo parazitli analog korku ögelerini işliyor",
+      "oyun_adi": "Silent Hill: Townfall",
+      "ozet": "oyundaki crt tv ve teknoloji oyuncunun güvenebileceği tek şey olacak",
       "gorsel": {
         "durum": "var",
         "sayi": 14,
-        "oyun": "Silent Hill: Townfall"
+        "oyun": "Silent Hill: Townfall",
+        "seri_sayi": 0,
+        "seri": null
       },
-      "baslik": "Silent Hill Townfall"
+      "baslik": "Silent Hill: Townfall"
     },
     {
       "sira": 3,
@@ -43,11 +47,13 @@
       "kaynak_sayisi": 2,
       "url": "https://www.eurogamer.net/panic-playdate-tariff-refunds-customers",
       "oyun_adi": null,
-      "ozet": "panic gümrük vergisi iadelerini müşterilerine geri ödeyeceğini açıkladı",
+      "ozet": "panic firması mahkeme kararıyla aldığı gümrük vergisi iadelerini müşterilerine ödeyecek",
       "gorsel": {
         "durum": "yok",
         "sayi": 0,
-        "oyun": null
+        "oyun": null,
+        "seri_sayi": 0,
+        "seri": null
       },
       "baslik": "Playdate maker Panic is passing tariff refunds on to..."
     },
@@ -59,11 +65,13 @@
       "kaynak_sayisi": 2,
       "url": "https://www.nintendolife.com/features/talking-point-what-are-you-playing-this-weekend-29th-august",
       "oyun_adi": null,
-      "ozet": "hafta sonu ne oynuyorsunuz başlığıyla oyunculara soru yöneltiliyor",
+      "ozet": "nintendo hayranları için haftalık sohbet ve oyun değerlendirme yazısı yayınlandı",
       "gorsel": {
         "durum": "yok",
         "sayi": 0,
-        "oyun": null
+        "oyun": null,
+        "seri_sayi": 0,
+        "seri": null
       },
       "baslik": "Talking Point: What Are You Playing This Weekend? (2..."
     },
@@ -75,11 +83,13 @@
       "kaynak_sayisi": 2,
       "url": "https://www.polygon.com/pokemon-tcg-pocket-dual-type-cards",
       "oyun_adi": "Pokémon TCG Pocket",
-      "ozet": "ekim ayında oyuna mega mewtwo x ile çift tipli kartlar geliyor",
+      "ozet": "ekim ayında oyuna mega mewtwo x ex ile çift tipli kartlar eklenecek",
       "gorsel": {
-        "durum": "az",
+        "durum": "var",
         "sayi": 2,
-        "oyun": "Pokémon Trading Card Game Pocket"
+        "oyun": "Pokémon Trading Card Game Pocket",
+        "seri_sayi": 2,
+        "seri": "Pokémon Scarlet"
       },
       "baslik": "Pokémon TCG Pocket"
     },
@@ -91,11 +101,13 @@
       "kaynak_sayisi": 2,
       "url": "https://www.eurogamer.net/ea-motive-iron-man-leak-response-tweet",
       "oyun_adi": "Iron Man",
-      "ozet": "ea sızan oynanış görüntülerini esprili bir açıklamayla doğruladı",
+      "ozet": "ea sızan oyun görüntülerini doğruladı ve esprili bir açıklama yaptı",
       "gorsel": {
         "durum": "var",
         "sayi": 5,
-        "oyun": "Iron Man"
+        "oyun": "Iron Man",
+        "seri_sayi": 0,
+        "seri": null
       },
       "baslik": "Iron Man"
     }

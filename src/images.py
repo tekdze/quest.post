@@ -153,10 +153,18 @@ def image_pool(game: dict, filtered: bool = True) -> dict[str, list[dict]]:
     Kapak gorseli boyut filtresinden muaf: IGDB kapaklari zaten kucuk
     (dikey poster) ve sadece son care olarak kullaniliyor.
     """
+    # Kredi gorselin KENDISINE yaziliyor, tarife degil: seri yedeginden
+    # gelen bir gorselin studyosu ana oyununkinden farkli olabiliyor
+    # (Pokemon TCG Pocket ile ana seri ayri gelistiriciler). Tek ortak
+    # kredi basmak o sayfada yanlis stududyoyu gostermek olurdu.
+    kredi = developer_of(game)
+    oyun_adi = game.get("name")
+
     def topla(entries, kind: str, boyut_filtresi: bool) -> list[dict]:
         rows = [
             {"id": e["image_id"], "kind": kind,
-             "w": e.get("width") or 0, "h": e.get("height") or 0}
+             "w": e.get("width") or 0, "h": e.get("height") or 0,
+             "credit": kredi, "oyun": oyun_adi}
             for e in entries or [] if e.get("image_id")
         ]
         if boyut_filtresi and filtered:
@@ -220,32 +228,57 @@ def find_game(cid: str, token: str, name: str) -> tuple[dict | None, float, list
 
 
 def assign_images(pages: list[dict], pool: dict[str, list[dict]],
-                  rotate: int = 0) -> list[str | None]:
-    """Her sayfaya farkli bir gorsel ata. Hepsi ayni oyundan, tekrar en son.
+                  rotate: int = 0,
+                  yedek: dict[str, list[dict]] | None = None) -> list[dict | None]:
+    """Her sayfaya farkli bir gorsel ata, tekrar en son çare.
 
     `rotate` her tipin listesini kaydiriyor: kullanici "/gorsel" yazip
     "bunlari begenmedim" dediginde ayni havuzdan baska bir set cikiyor.
+
+    `yedek` ayni serinin baska oyunundan gelen havuz. Ana havuz sayfalara
+    yetmediginde devreye giriyor - iki gorseli olan bir oyunu bes sayfaya
+    yaymaktansa seriden tamamlamak daha iyi duruyor.
+
+    KAPAK ASLA YEDEKTEN SECILMEZ: ilk kart hesabin vitrini, orada haberin
+    konusu olmayan bir oyunun gorseli okuru yaniltir. Yanlitici olma riski
+    en cok orada.
     """
     used: set[str] = set()
-    chosen: list[str | None] = []
-    donmus = {kind: rows[rotate % len(rows):] + rows[:rotate % len(rows)] if rows else []
-              for kind, rows in pool.items()}
+    chosen: list[dict | None] = []
+
+    def dondur(havuz: dict[str, list[dict]]) -> dict[str, list[dict]]:
+        return {kind: rows[rotate % len(rows):] + rows[:rotate % len(rows)] if rows else []
+                for kind, rows in havuz.items()}
+
+    donmus = dondur(pool)
+    donmus_yedek = dondur(yedek) if yedek else {}
 
     for page in pages:
+        tercihler = PREFERENCE.get(page["type"], ("screenshot", "artwork", "cover"))
         pick = None
-        for kind in PREFERENCE.get(page["type"], ("screenshot", "artwork", "cover")):
-            available = [r["id"] for r in donmus.get(kind, []) if r["id"] not in used]
+
+        for kind in tercihler:
+            available = [r for r in donmus.get(kind, []) if r["id"] not in used]
             if available:
                 pick = available[0]
                 break
+
+        # Ana havuz tukendi: seriden tamamla. Kapak bunun disinda.
+        if pick is None and donmus_yedek and page["type"] != "cover":
+            for kind in tercihler:
+                available = [r for r in donmus_yedek.get(kind, []) if r["id"] not in used]
+                if available:
+                    pick = available[0]
+                    break
+
         if pick is None:
-            # Gorsel tukendi: bastan dolas, tekrar kullanmak gorselsiz
+            # Her sey tukendi: bastan dolas. Tekrar kullanmak gorselsiz
             # kalmaktan iyidir.
-            everything = [r["id"] for kind in PREFERENCE[page["type"]]
-                          for r in pool.get(kind, [])]
+            everything = [r for kind in tercihler for r in pool.get(kind, [])]
             pick = everything[len(chosen) % len(everything)] if everything else None
+
         if pick:
-            used.add(pick)
+            used.add(pick["id"])
         chosen.append(pick)
     return chosen
 
@@ -399,9 +432,40 @@ def main() -> int:
     spec["credit"] = studio
     print(f"  kredi: {studio or 'bilinmiyor'}")
 
+    # Ana havuz sayfalara yetmiyorsa ayni serinin baska oyunundan tamamla.
+    # LLM'in verdigi seri adaylari sirayla denenir, ilk tutan alinir.
+    ana_boy = len(pool["artwork"]) + len(pool["screenshot"]) + len(pool["cover"])
+    yedek_pool = None
+    gereken = len(spec["pages"])
+    if ana_boy < gereken:
+        for ad in (spec.get("series_fallback") or []):
+            if not ad or str(ad).lower() == "none":
+                continue
+            kardes, kscore, _ = find_game(cid, token, str(ad))
+            if kardes is None:
+                print(f'  seri yedegi bulunamadi: "{ad}"')
+                continue
+            aday_pool = image_pool(kardes)
+            aday_boy = (len(aday_pool["artwork"]) + len(aday_pool["screenshot"])
+                        + len(aday_pool["cover"]))
+            if not aday_boy:
+                continue
+            yedek_pool = aday_pool
+            print(f'  seri yedegi: {kardes["name"]} (+{aday_boy} gorsel, '
+                  f'kredi {developer_of(kardes) or "bilinmiyor"})')
+            break
+        if yedek_pool is None:
+            print(f"  ana havuz {ana_boy} gorsel, {gereken} sayfa icin yetersiz "
+                  "ve seri yedegi yok: gorseller tekrar edecek")
+
     # Havuzu tarife yaz: /gorsel komutu alternatifleri buradan secer.
     # Sira sabit tutulur ki kullanicinin gordugu "3. gorsel" hep ayni olsun.
+    # Seri gorselleri de listeye giriyor: /havuz ciktisinda gorunsunler ki
+    # kullanici onlari da numarayla secebilsin.
     duz_havuz = pool["artwork"] + pool["screenshot"] + pool["cover"]
+    if yedek_pool:
+        duz_havuz += (yedek_pool["artwork"] + yedek_pool["screenshot"]
+                      + yedek_pool["cover"])
     spec["_image_pool"] = duz_havuz
     spec["_slug"] = re.sub(r"[^a-z0-9]+", "-", normalize(game["name"])).strip("-") or "post"
 
@@ -418,37 +482,48 @@ def main() -> int:
         for sira, page in enumerate(spec["pages"]):
             if sira < len(elle):
                 try:
-                    picks.append(duz_havuz[int(elle[sira]) - 1]["id"])
+                    picks.append(duz_havuz[int(elle[sira]) - 1])
                     continue
                 except (ValueError, IndexError):
                     print(f"  uyari: gecersiz gorsel numarasi {elle[sira]!r}, "
                           f"otomatik secim kullanilacak")
             picks.append(None)
-        otomatik = assign_images(spec["pages"], pool, rotate)
+        otomatik = assign_images(spec["pages"], pool, rotate, yedek_pool)
         picks = [p or otomatik[i] for i, p in enumerate(picks)]
         print(f"  elle secim uygulandi: {' '.join(str(x) for x in elle)}")
     else:
-        picks = assign_images(spec["pages"], pool, rotate)
+        picks = assign_images(spec["pages"], pool, rotate, yedek_pool)
 
     slug = spec["_slug"]
 
     print()
-    for index, (page, image_id) in enumerate(zip(spec["pages"], picks), 1):
-        if not image_id:
+    for index, (page, secim) in enumerate(zip(spec["pages"], picks), 1):
+        if not secim:
             page["image"] = None
+            page["credit"] = None
             print(f"  {index}. {page['type']:8} gorsel yok")
             continue
+
+        image_id = secim["id"]
+        # Kredi sayfa basina: seriden gelen gorselin studyosu ana oyununkinden
+        # farkli olabiliyor. render.py once bunu, yoksa spec["credit"]'i basar.
+        page["credit"] = secim.get("credit")
+        seri_notu = ""
+        if secim.get("oyun") and secim["oyun"] != game.get("name"):
+            seri_notu = f"  [seri: {secim['oyun']}]"
+
         rel = f"state/img/{slug}-{image_id}.jpg"
         if args.dry_run:
             page["image"] = rel
-            print(f"  {index}. {page['type']:8} {image_id} (indirilmedi)")
+            print(f"  {index}. {page['type']:8} {image_id} (indirilmedi){seri_notu}")
             continue
         target = ROOT / rel
         if target.exists() or download(image_id, target):
             page["image"] = rel
-            print(f"  {index}. {page['type']:8} {image_id}")
+            print(f"  {index}. {page['type']:8} {image_id}{seri_notu}")
         else:
             page["image"] = None
+            page["credit"] = None
             print(f"  {index}. {page['type']:8} indirilemedi, gorselsiz")
 
     draft_path.write_text(json.dumps(spec, ensure_ascii=False, indent=2), encoding="utf-8")
