@@ -127,6 +127,24 @@ def main() -> int:
             return 1
         return yeniden_bas_ve_sor(pending, draft, cards_dir, gorsel_yeniden=True)
 
+    if durum == "havuz":
+        # Havuzu göster, kuyruğu bozma: kullanıcı bakıp karar verecek.
+        sheet = cards_dir / "havuz.png"
+        if not run("render.py", str(draft), "--sheet", str(sheet)):
+            tg.send_text("bu postta görsel havuzu yok (tipografik kart).")
+        else:
+            tg.send_photo(sheet, "beğendiklerini sayfa sırasına göre yaz: "
+                                 "/gorsel 4 7 2")
+        kuyrugu_temizle(pending, "onay_bekliyor")
+        return 0
+
+    if durum == "gorsel_baska_set":
+        tg.send_text("aynı oyundan başka görseller deneniyor...")
+        if not run("images.py", str(draft), "--rotate", "1"):
+            tg.send_text("görselleri değiştirirken hata oldu.")
+            return 1
+        return yeniden_bas_ve_sor(pending, draft, cards_dir)
+
     if durum in ("yeniden_bas", "gorsel_degisti"):
         tg.send_text("kartlar yeniden basılıyor...")
         return yeniden_bas_ve_sor(pending, draft, cards_dir,

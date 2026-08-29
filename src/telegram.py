@@ -44,7 +44,8 @@ TIER_LABELS = {"C": "sıradan", "B": "büyülü", "A": "sıradışı", "S": "mit
 
 # Telegram'in kendi komutlari. "bilinmeyen komut" diye cevaplanmamali.
 KOMUT_YARDIM = ("/ok onayla · /bana kartları bana yolla · /yeniden metni yeniden yaz\n"
-                "/iptal at · /c /b /a /s tier · /gorsel 1 3 5 görsel değiştir")
+                "/gorsel başka görsel dene · /havuz tüm görselleri numaralı gör\n"
+                "/gorsel 4 7 2 sayfa sayfa seç · /iptal at · /c /b /a /s tier")
 
 
 def load_env() -> None:
@@ -139,7 +140,8 @@ def summarize(spec: dict, cards: list[Path]) -> str:
         lines.append(f"{index}. {baslik}")
 
     lines += ["", "/ok onayla · /bana bana yolla · /yeniden yeniden yaz",
-              "/iptal at · /c /b /a /s tier · /gorsel 1 3 5"]
+              "/gorsel başka görsel · /havuz görselleri gör · /iptal at",
+              "/c /b /a /s tier değiştir"]
 
     text = "\n".join(lines)
     return text[:CAPTION_LIMIT - 3] + "..." if len(text) > CAPTION_LIMIT else text
@@ -168,6 +170,14 @@ def send_cards(spec: dict, cards: list[Path]) -> list[int]:
 def send_text(text: str) -> int:
     _, chat = config()
     return call("sendMessage", {"chat_id": chat, "text": text})["message_id"]
+
+
+def send_photo(path: Path, caption: str = "") -> int:
+    _, chat = config()
+    params = {"chat_id": chat}
+    if caption:
+        params["caption"] = caption
+    return call("sendPhoto", params, {"photo": path})["message_id"]
 
 
 def send_documents(cards: list[Path]) -> None:
@@ -301,12 +311,19 @@ def do_poll() -> int:
             send_text(f"tier {name.upper()} ({TIER_LABELS[name.upper()]}) olarak "
                       f"ayarlandı. kartları yeniden basmam gerekiyor.")
             karar = "yeniden_bas"
-        elif name == "gorsel":
-            spec["_gorsel_secimi"] = args
-            draft_path.write_text(json.dumps(spec, ensure_ascii=False, indent=2),
-                                  encoding="utf-8")
-            send_text(f"görsel seçimi kaydedildi: {' '.join(args)}")
-            karar = "gorsel_degisti"
+        elif name in ("gorsel", "görsel"):
+            if args:
+                spec["_gorsel_secimi"] = args
+                draft_path.write_text(json.dumps(spec, ensure_ascii=False, indent=2),
+                                      encoding="utf-8")
+                send_text(f"görsel seçimi kaydedildi: {' '.join(args)}")
+                karar = "gorsel_degisti"
+            else:
+                # Argumansiz: "bunlari begenmedim, baska bir set dene".
+                # Kullanici havuzdaki numaralari ezberlemek zorunda kalmasin.
+                karar = "gorsel_baska_set"
+        elif name == "havuz":
+            karar = "havuz"
         else:
             bilinmeyen.append(f"/{name}")
 

@@ -28,6 +28,13 @@ TEMPLATE = ROOT / "templates" / "card.html"
 
 WIDTH, HEIGHT = 1080, 1350
 
+# Tasarim 1080x1350 CSS pikseli uzerine kurulu, ama PNG bundan daha yogun
+# basiliyor: 1080*4/3 = 1440, Instagram'in kabul ettigi en buyuk genislik.
+# CSS'e hic dokunulmuyor, sadece piksel yogunlugu artiyor - yazi ve gorsel
+# ikisi de keskinlesiyor. Instagram zaten kendi sikistirmasini uyguluyor,
+# ona daha fazla piksel vermek her zaman daha iyi sonuc veriyor.
+SCALE = 4 / 3
+
 # Tier: renk + Turkce ad. Tier'i KOD hesaplar (tier.py), LLM degil.
 # tier.py yazildiginda esikleri o dosyada tutacak, renk/ad burada kalacak.
 TIERS = {
@@ -86,7 +93,7 @@ def render(spec: dict, out_dir: Path) -> list[dict]:
         browser = pw.chromium.launch()
         page = browser.new_page(
             viewport={"width": WIDTH, "height": HEIGHT},
-            device_scale_factor=1,
+            device_scale_factor=SCALE,
         )
         page.goto(TEMPLATE.as_uri())
         page.wait_for_function("() => typeof window.renderCard === 'function'")
@@ -125,11 +132,83 @@ def render(spec: dict, out_dir: Path) -> list[dict]:
     return written
 
 
+SHEET_THUMB = "https://images.igdb.com/igdb/image/upload/t_screenshot_med/{id}.jpg"
+
+
+def render_sheet(spec: dict, out_path: Path) -> int:
+    """Havuzdaki tum gorselleri numaralandirilmis tek bir izgarada bas.
+
+    Kullanicinin "/gorsel 4 7 2" diyebilmesi icin havuzu gormesi lazim.
+    Kucuk onizlemeler dogrudan IGDB'den cekiliyor, indirilmiyor.
+    """
+    pool = spec.get("_image_pool") or []
+    if not pool:
+        print("havuz bos: bu postta gorsel yok (tipografik kart)")
+        return 1
+
+    tiles = []
+    for number, entry in enumerate(pool, 1):
+        tiles.append(f"""
+        <div class="tile">
+          <img src="{SHEET_THUMB.format(id=entry['id'])}">
+          <div class="num">{number}</div>
+          <div class="meta">{entry.get('kind', '')} · {entry.get('w', 0)}x{entry.get('h', 0)}</div>
+        </div>""")
+
+    html = f"""<!DOCTYPE html><html><head><meta charset="utf-8">
+    <link rel="stylesheet" href="{(ROOT / 'templates' / 'card.css').as_uri()}">
+    <style>
+      body {{ width: 1080px; background: #F1EDE3; padding: 40px; }}
+      .head {{ font-family: "Bricolage Grotesque", sans-serif; font-weight: 800;
+               font-size: 42px; color: #17151A; margin-bottom: 8px; }}
+      .sub {{ font-family: "Outfit", sans-serif; font-size: 24px; color: #8A8378;
+              margin-bottom: 28px; }}
+      .grid {{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }}
+      .tile {{ position: relative; }}
+      .tile img {{ width: 100%; aspect-ratio: 16/9; object-fit: cover;
+                   background: #CFC8B8; display: block; }}
+      .num {{ position: absolute; top: 0; left: 0; background: #17151A; color: #F1EDE3;
+              font-family: "Bricolage Grotesque", sans-serif; font-weight: 800;
+              font-size: 30px; padding: 4px 16px; }}
+      .meta {{ font-family: "Outfit", sans-serif; font-size: 19px; color: #8A8378;
+               margin-top: 6px; }}
+    </style></head><body>
+      <div class="head">görsel havuzu</div>
+      <div class="sub">{spec.get('game', '')} · {len(pool)} görsel ·
+        beğendiklerini sayfa sırasına göre yaz: /gorsel 4 7 2</div>
+      <div class="grid">{''.join(tiles)}</div>
+    </body></html>"""
+
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    with sync_playwright() as pw:
+        browser = pw.chromium.launch()
+        page = browser.new_page(viewport={"width": WIDTH, "height": 800})
+        page.set_content(html)
+        page.evaluate("() => document.fonts.ready")
+        # Onizlemeler agdan geliyor, hepsi inmeden fotograf cekilmemeli.
+        try:
+            page.wait_for_function(
+                "() => Array.from(document.images).every(i => i.complete)", timeout=30000)
+        except Exception:
+            print("uyari: bazi onizlemeler yuklenemedi", file=sys.stderr)
+        page.screenshot(path=str(out_path), full_page=True)
+        browser.close()
+
+    print(f"havuz sayfasi: {out_path} ({len(pool)} gorsel)")
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description="quest.post kart uretici (Faz 3)")
     ap.add_argument("spec", help="post tarifi (JSON)")
     ap.add_argument("--out", default=None, help="cikis klasoru (varsayilan: out/<dosya adi>)")
+    ap.add_argument("--sheet", default=None,
+                    help="kart yerine numarali gorsel havuzu bas, verilen yola yaz")
     args = ap.parse_args()
+
+    if args.sheet:
+        spec = json.loads(Path(args.spec).read_text(encoding="utf-8"))
+        return render_sheet(spec, Path(args.sheet))
 
     spec_path = Path(args.spec)
     spec = json.loads(spec_path.read_text(encoding="utf-8"))

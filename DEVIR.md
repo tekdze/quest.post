@@ -3,7 +3,7 @@
 > Yeni bir sohbete geçerken: **önce bu dosyayı oku.** Kararlar burada, kodda değil.
 > Her önemli kararda veya faz bitiminde bu dosya güncellenir.
 
-Son güncelleme: 2026-08-27 (respond.py, komutlar bağlandı)
+Son güncelleme: 2026-08-27 (görsel kalitesi + havuz)
 
 ---
 
@@ -801,3 +801,51 @@ yazdırabilmek için aday sırası gerekiyor.
 ### Ders
 Komut listesini kullanıcıya göstermek, o komutu **uygulayan** kodu yazmakla
 aynı iş değil. Bir sonraki arayüz eklemesinde önce icra tarafı yazılacak.
+
+---
+
+## 17. Görsel kalitesi ve havuz seçimi (2026-08-27)
+
+Kullanıcı Telegram'daki kartın bulanık olduğunu fark etti. Ölçüldü, sebep
+Telegram sıkıştırması **değildi**; üç ayrı kusur üst üste binmişti.
+
+### Kök sebep: IGDB görsel boyutları uçurum gibi değişiyor
+Ölçüm (Witcher 3 kaydı): aynı oyunun görselleri **600×338 ile 10681×7874**
+arasında. Yanlış kayıtta (bundle) hepsi 600×338. Kod boyuta hiç bakmıyordu,
+sırayla alıyordu.
+
+| Kusur | Düzeltme |
+|---|---|
+| Boyut filtresi yok | `MIN_IMAGE_WIDTH/HEIGHT` (1280×720). Ölçüm: Witcher 3'te 10 görsel elendi |
+| `t_1080p` indiriliyordu | Artık `t_original`, yoksa `t_1080p`'ye düşer. 4K bir artwork varken 1080p istemek anlamsızdı |
+| Kart 1080×1350 basılıyordu | `device_scale_factor = 4/3` → **1440×1800** PNG. Instagram'ın kabul ettiği en büyük genişlik. CSS'e dokunulmadı |
+
+Havuz artık büyükten küçüğe sıralı: **en keskin görsel kapağa gidiyor.**
+
+Kapak (`cover`) tipi boyut filtresinden muaf — IGDB kapakları zaten küçük
+(dikey poster) ve sadece son çare olarak kullanılıyor.
+
+### Telegram önizlemesi ≠ son kalite
+Albüm fotoğrafları Telegram tarafından sıkıştırılıyor. Gerçek dosya `/bana`
+ile `sendDocument` olarak geliyor. Kalite değerlendirmesi albüme bakarak
+yapılmamalı.
+
+### `/gorsel` yeniden tasarlandı
+Eski hâli kullanılamazdı: havuzu görmeden numara vermek isteniyordu.
+Kullanıcı haklı olarak "havuzda ne var bilmiyorum" dedi.
+
+| Komut | Ne yapar |
+|---|---|
+| `/gorsel` (argümansız) | Aynı oyundan **başka bir set** dener. Havuz kaydırılıyor (`--rotate`), numara ezberlemek gerekmiyor. Günlük ihtiyacın çoğu bu |
+| `/havuz` | Havuzdaki tüm görselleri **numaralandırılmış tek ızgarada** yollar: tip + gerçek boyut yazılı |
+| `/gorsel 4 7 2` | Sayfa sayfa kesin seçim. Ancak `/havuz`'dan sonra anlamlı |
+
+Kontakt sayfası `render.py --sheet` ile basılıyor, önizlemeler doğrudan
+IGDB'den (`t_screenshot_med`) çekiliyor — indirme yok.
+
+`_gorsel_turu` sayacı tarifede tutuluyor, her `/gorsel` bir artırıyor.
+Doğrulandı: tur 0/1/2 üç farklı set veriyor.
+
+### Ders
+Arayüz tasarlarken "kullanıcı bu bilgiye nereden erişecek" sorusu
+sorulmamıştı. `/gorsel 1 3 5` teknik olarak çalışsa bile kullanılamazdı.

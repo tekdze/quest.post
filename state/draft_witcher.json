@@ -11,7 +11,7 @@
     {
       "type": "cover",
       "title": "cd projekt red yeni dlc ile vakit mi kazanıyor",
-      "image": "state/img/the-witcher-3-wild-hunt-ar3lzf.jpg"
+      "image": "state/img/the-witcher-3-wild-hunt-ar3lzk.jpg"
     },
     {
       "type": "text",
@@ -21,7 +21,7 @@
         "eski içeriklerin tekrar sunulması",
         "yeni oyun öncesi oyalama taktiği"
       ],
-      "image": "state/img/the-witcher-3-wild-hunt-ar3lzg.jpg"
+      "image": "state/img/the-witcher-3-wild-hunt-sctj8u.jpg"
     },
     {
       "type": "text",
@@ -31,7 +31,7 @@
         "uzun geliştirme sürecinin getirdiği riskler",
         "beklentilerin kontrolsüz yükselmesi"
       ],
-      "image": "state/img/the-witcher-3-wild-hunt-ar6ijr.jpg"
+      "image": "state/img/the-witcher-3-wild-hunt-sctj8t.jpg"
     },
     {
       "type": "numbers",
@@ -46,7 +46,7 @@
           "label": "yeni içerik için iddia edilen süre"
         }
       ],
-      "image": "state/img/the-witcher-3-wild-hunt-ar3lze.jpg"
+      "image": "state/img/the-witcher-3-wild-hunt-farvemmmxav0bgt6wx7t.jpg"
     },
     {
       "type": "outro",
@@ -55,39 +55,125 @@
         "düşüncelerinizi yorum kısmında paylaşabilirsiniz",
         "farklı görüşleri incelemek için tartışmaya katılabilirsiniz"
       ],
-      "image": "state/img/the-witcher-3-wild-hunt-ar3lzj.jpg"
+      "image": "state/img/the-witcher-3-wild-hunt-ar3lzg.jpg"
     }
   ],
   "_image_pool": [
-    "ar6ijr",
-    "ar3lze",
-    "ar3lzf",
-    "ar3lzj",
-    "ar3lzg",
-    "ar3lzl",
-    "ar3lzh",
-    "ar3lzk",
-    "ar3lzd",
-    "ar3lzb",
-    "ar3lzm",
-    "ar3lzc",
-    "ar3lzn",
-    "ar3lzi",
-    "ar3m1h",
-    "ar3m1g",
-    "sctj8u",
-    "farvemmmxav0bgt6wx7t",
-    "em1y2ugcwy2myuhvb9db",
-    "usxccsncekxg0wd1v6ee",
-    "sciabf",
-    "sctj8t",
-    "sciabd",
-    "sciabh",
-    "sciabe",
-    "z5t0yuhyiiui1ickwhgj",
-    "mnljdjtrh44x4snmierh",
-    "sciabg",
-    "coaarl"
+    {
+      "id": "ar3lzk",
+      "kind": "artwork",
+      "w": 10681,
+      "h": 7874
+    },
+    {
+      "id": "ar3lzg",
+      "kind": "artwork",
+      "w": 10000,
+      "h": 6071
+    },
+    {
+      "id": "ar3lze",
+      "kind": "artwork",
+      "w": 7133,
+      "h": 4463
+    },
+    {
+      "id": "ar3m1h",
+      "kind": "artwork",
+      "w": 5736,
+      "h": 2849
+    },
+    {
+      "id": "ar3m1g",
+      "kind": "artwork",
+      "w": 5736,
+      "h": 2849
+    },
+    {
+      "id": "ar3lzn",
+      "kind": "artwork",
+      "w": 4069,
+      "h": 2160
+    },
+    {
+      "id": "sctj8u",
+      "kind": "screenshot",
+      "w": 2560,
+      "h": 1440
+    },
+    {
+      "id": "sctj8t",
+      "kind": "screenshot",
+      "w": 2560,
+      "h": 1440
+    },
+    {
+      "id": "farvemmmxav0bgt6wx7t",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080
+    },
+    {
+      "id": "em1y2ugcwy2myuhvb9db",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080
+    },
+    {
+      "id": "usxccsncekxg0wd1v6ee",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080
+    },
+    {
+      "id": "sciabf",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080
+    },
+    {
+      "id": "sciabd",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080
+    },
+    {
+      "id": "sciabh",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080
+    },
+    {
+      "id": "sciabe",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080
+    },
+    {
+      "id": "z5t0yuhyiiui1ickwhgj",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080
+    },
+    {
+      "id": "mnljdjtrh44x4snmierh",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080
+    },
+    {
+      "id": "sciabg",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080
+    },
+    {
+      "id": "coaarl",
+      "kind": "cover",
+      "w": 600,
+      "h": 800
+    }
   ],
-  "_slug": "the-witcher-3-wild-hunt"
+  "_slug": "the-witcher-3-wild-hunt",
+  "_gorsel_turu": 0
 }
