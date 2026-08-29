@@ -241,6 +241,12 @@ def main() -> int:
             "summary": (cand.get("members") or [{}])[0].get("summary", ""),
             "kaynak_sayisi": cand.get("source_count", 1),
             "url": cand.get("url"),
+            # Adayin TAM kaydi menuyle birlikte tasiniyor. Sebep: uretim
+            # AYRI bir Actions calismasinda yapiliyor ve candidates.json
+            # git disi - o calisma repoyu temiz cekince dosyayi bulamiyor.
+            # Yeniden taratmak cozum degil: sira degisir ve menudeki "1"
+            # baska habere denk gelir.
+            "aday": cand,
         })
 
     # Tek LLM cagrisi: hem oyun adlarini cikariyor hem oneriyi seciyor.

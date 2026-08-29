@@ -491,6 +491,25 @@ ile kademeyi elle ezebiliyor.
 yüksek etkileşim ve yorum potansiyeli yaratıyor"* — tüm adaylar B kaldı,
 yani LLM tier'ı şişirmedi.
 
+### ⚠️ Aday verisi menüyle taşınıyor (2026-08-29, canlıda yakalandı)
+`/uret 1` dendiğinde üretim **"aday bulunamadi (candidates.json bos)"**
+diye patladı. Sebep: `candidates.json` git dışı; menüyü üreten workflow
+çalışması onu oluşturuyor ama commit etmiyor, `/uret`'i işleyen **ayrı**
+çalışma repoyu temiz çekince dosya yok.
+
+Yeniden taratmak çözüm DEĞİL: fetch her çalıştığında sıra değişir ve
+menüdeki "1" başka habere denk gelir. Kullanıcı gördüğü haberi seçmiş
+olmalı.
+
+Çözüm: `menu.py` her adayın **tam kaydını** (`members` dahil, hash'ler
+orada) `menu.json`'a yazıyor; `respond.py` `/uret` işlerken o kayıttan
+`candidates.json`'u yeniden kuruyor ve `--index 1` veriyor.
+Bedeli: menu.json ~10 KB (aday başına ~1,7 KB).
+
+**Ders:** iki ayrı Actions çalışması arasında yalnızca **commit edilen**
+dosyalar taşınır. Git dışı bir dosyaya güvenen her akış er geç bu hatayı
+verir.
+
 ### Posta bağlı olmayan istekler
 `/konular`, `/uret`, `/apideadline` bir posta ait değil; kuyruk post bazlı
 olduğu için oraya sığmıyorlar. `telegram.py` bunları `state/istek.json`'a

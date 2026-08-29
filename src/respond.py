@@ -32,6 +32,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "src"
 POSTED_FILE = ROOT / "state" / "posted.json"
 MENU_FILE = ROOT / "state" / "menu.json"
+CANDIDATES_FILE = ROOT / "state" / "candidates.json"
 ISTEK_FILE = ROOT / "state" / "istek.json"
 
 
@@ -165,9 +166,19 @@ def istekleri_isle() -> int:
             tg.send_text("seçtiğin aday listede bulunamadı. /konular ile "
                          "listeyi yenile.")
             return 1
-        # Menu candidates.json sirasini koruyor; produce.py --index onu bekliyor.
-        if not run("produce.py", "--skip-fetch", "--index",
-                   str(aday.get("aday_index", sira))):
+        # Adayin tam kaydi menude tasiniyor; candidates.json'u ondan kur.
+        # Boylece uretim, menunun gordugu haberin AYNISINI isliyor.
+        index = aday.get("aday_index", sira)
+        tam = aday.get("aday")
+        if tam:
+            tg.write_json(CANDIDATES_FILE, {"candidates": [tam]})
+            index = 1
+        else:
+            tg.send_text("bu menü eski biçimde, aday verisi taşınmamış. "
+                         "/konular ile listeyi yenile.")
+            return 1
+
+        if not run("produce.py", "--skip-fetch", "--index", str(index)):
             tg.send_text("üretim başarısız oldu. actions kaydına bakmak "
                          "gerekebilir.")
             return 1
