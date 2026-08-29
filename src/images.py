@@ -6,7 +6,7 @@ Faz 4 - IGDB_CLIENT_ID ve IGDB_CLIENT_SECRET gerekir.
 Görsel seçimini KOD yapar, LLM değil. Sayfa tipine göre hangi görsel tipinin
 kullanılacağı tasarım kararı, modele bırakılmaz.
 
-Telif: görsel kredisi (`görsel: <stüdyo>`) LLM'in tahmininden değil IGDB'nin
+Telif: görsel kredisi (kartta `@<stüdyo>`) LLM'in tahmininden değil IGDB'nin
 şirket verisinden geliyor. Görselin sahibini görselle gelen veri bilir.
 
 Kullanım:
@@ -28,7 +28,6 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-IMG_DIR = ROOT / "state" / "img"
 
 TOKEN_URL = "https://id.twitch.tv/oauth2/token"
 IGDB_URL = "https://api.igdb.com/v4"

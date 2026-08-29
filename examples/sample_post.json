@@ -1,41 +1,56 @@
 {
-  "_not": "Faz 3 test tarifi. Metinler ELLE yazildi, write.py gelene kadar sablonu denemek icin. Gorseller yer tutucu.",
-  "tier": "A",
-  "category": "stüdyo",
-  "game": "w4 games",
-  "credit": "w4 games",
+  "_not": "render.py'i anahtarsiz denemek icin ornek tarif. Yapisi write.py + images.py ciktisiyla ayni; gorseller yer tutucuya cevrildi.",
+  "tier": "B",
+  "category": "güncelleme",
+  "game": "the witcher 3: wild hunt",
+  "search_name": "the witcher 3: wild hunt",
+  "credit": "cd projekt red",
   "pages": [
     {
       "type": "cover",
-      "title": "godot'yu kuranlar 18 milyon dolar topladı",
+      "title": "cd projekt red yeni dlc ile vakit mi kazanıyor",
       "image": "assets/placeholder.png"
     },
     {
       "type": "text",
-      "title": "kim bu w4",
-      "paragraph": "godot motorunun çekirdek geliştiricileri 2022'de şirket kurdu. amaç motoru satmak değil, motoru kullanan stüdyolara konsol desteği ve ticari servis satmak.",
+      "title": "eski oyuna dlc makyajı",
+      "paragraph": "on yıllık the witcher 3 için yeni bir içerik duyuran stüdyo, dikkatleri başka yöne çekmeye çalışıyor gibi görünüyor. karanlık bir hikaye vaat edilse de bu hamle yeni oyunun gecikmesini örtbas etme çabası hissettiriyor.",
       "bullets": [
-        "godot açık kaynak kalıyor, lisans değişmiyor",
-        "para konsol portları ve destek anlaşmalarından geliyor",
-        "unity'nin 2023 fiyatlandırma krizi sonrası motor değiştiren stüdyolar hedefte"
+        "eski içeriklerin tekrar sunulması",
+        "yeni oyun öncesi oyalama taktiği"
+      ],
+      "image": "assets/placeholder.png"
+    },
+    {
+      "type": "text",
+      "title": "yeni oyun için uzun bekleyiş",
+      "paragraph": "serinin yeni halkası için verilen tarih oldukça uzak bir geleceğe işaret ediyor. oyuncuların yıllarca bekletilmesi stüdyonun proje takvimindeki belirsizlikleri öne çıkarıyor.",
+      "bullets": [
+        "uzun geliştirme sürecinin getirdiği riskler",
+        "beklentilerin kontrolsüz yükselmesi"
       ],
       "image": "assets/placeholder.png"
     },
     {
       "type": "numbers",
-      "title": "rakamlar",
+      "title": "öne çıkan rakamlar",
       "metrics": [
-        { "value": "18 m$", "label": "b serisi yatırım turu" },
-        { "value": "2022", "label": "şirketin kuruluş yılı" }
+        {
+          "value": "2028",
+          "label": "yeni oyun için hedeflenen çıkış yılı"
+        },
+        {
+          "value": "50 saat",
+          "label": "yeni içerik için iddia edilen süre"
+        }
       ],
       "image": "assets/placeholder.png"
     },
     {
       "type": "outro",
-      "question": "motor seçimi bir stüdyonun kaderini ne kadar belirliyor",
+      "question": "eski oyuna içerik çıkarılması yeni oyunu beklerken sizi tatmin eder mi",
       "ctas": [
-        "bu konuda ne düşündüğünü merak ediyoruz",
-        "benzer hikayeleri burada tutuyoruz"
+        "düşüncelerinizi yorum kısmında paylaşabilirsiniz"
       ],
       "image": "assets/placeholder.png"
     }

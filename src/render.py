@@ -37,6 +37,11 @@ SCALE = 4 / 3
 
 # Tier: renk + Turkce ad. Tier'i KOD hesaplar (tier.py), LLM degil.
 # tier.py yazildiginda esikleri o dosyada tutacak, renk/ad burada kalacak.
+# Tier: renk + Turkce ad. Tier'i KOD hesaplar (tier.py), LLM degil.
+# Tier renginin uzerine her zaman KREM yazi gelir. Olculen kontrast:
+# C 7.58 · B 5.38 · A 5.62 · S 2.78. S sinirin altinda kaliyor ama
+# kavram butunlugu icin bilerek boyle birakildi - tek kademenin farkli
+# davranmasi sistemi bozuyordu (bkz. DEVIR, tasarim kararlari).
 TIERS = {
     "C": {"color": "#4A4A4A", "label": "sıradan"},
     "B": {"color": "#2A6398", "label": "büyülü"},
@@ -45,7 +50,8 @@ TIERS = {
 }
 
 DEFAULT_HANDLE = "@quest.post"
-DEFAULT_TAGLINE = "haftada üç indie hikayesi"
+DEFAULT_TAGLINE = "oyun dünyasından her gün 3 yeni haber"
+DEFAULT_FOLLOW = "yenilerini kaçırmamak için takipte kal"
 
 
 def resolve_image(value: str | None) -> str | None:
@@ -67,8 +73,15 @@ def build_page_payload(spec: dict, page: dict, index: int, total: int) -> dict:
 
     page = dict(page)
     page["image"] = resolve_image(page.get("image"))
-    if page["type"] == "cover" and not page.get("page_count"):
-        page["page_count"] = "tek kare" if total == 1 else f"{total} sayfa"
+
+    # Sayfa gostergesi: ilk sayfada kaydirma daveti, sonrakilerde sadece sira.
+    # Tek sayfalik postta "1/1" - kaydirma daveti anlamsiz olurdu.
+    if total <= 1:
+        marker = "1/1"
+    elif index == 1:
+        marker = f"1/{total} · kaydır"
+    else:
+        marker = f"{index}/{total}"
 
     return {
         "tier_color": TIERS[tier]["color"],
@@ -81,6 +94,8 @@ def build_page_payload(spec: dict, page: dict, index: int, total: int) -> dict:
         "tagline": spec.get("tagline", DEFAULT_TAGLINE),
         "page": page,
         "index": index,
+        "page_marker": marker,
+        "follow": spec.get("follow", DEFAULT_FOLLOW),
     }
 
 

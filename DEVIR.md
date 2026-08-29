@@ -3,7 +3,7 @@
 > Yeni bir sohbete geçerken: **önce bu dosyayı oku.** Kararlar burada, kodda değil.
 > Her önemli kararda veya faz bitiminde bu dosya güncellenir.
 
-Son güncelleme: 2026-08-27 (görsel kalitesi + havuz)
+Son güncelleme: 2026-08-27 · Faz 1-5 bitti, tasarım kesinleşti, Faz 6-7 kaldı
 
 ---
 
@@ -11,841 +11,414 @@ Son güncelleme: 2026-08-27 (görsel kalitesi + havuz)
 
 Türkçe indie/oyun haberleri paylaşan, yarı otomatik bir Instagram içerik hattı.
 
-Akış: RSS kaynakları taranır → LLM haberi seçip metne dönüştürür → HTML şablonundan
-PNG kart üretilir → Telegram'dan onay istenir → onaylanırsa Instagram'a paylaşılır.
+Akış: RSS kaynakları taranır → kademe hesaplanır → LLM haberi Türkçe metne
+çevirir → IGDB'den görsel seçilir → HTML şablonundan PNG kart üretilir →
+Telegram'dan onay istenir → onaylanırsa paylaşılır.
 
-**Hesap:** `@quest.post`
-**Dil:** Türkçe, tamamen küçük harf
-**Format:** 1080x1350 (4:5) tek kare ve carousel
+**Hesap:** `@quest.post` · **Dil:** Türkçe, tamamen küçük harf
+**Format:** 1080x1350 tasarım, 1440x1800 çıktı (4:5)
 
 ### Tasarım felsefesi
-
-"AI ürünü" görünmemek birincil kısıt. Bunun teknik karşılığı: **LLM tasarıma hiç
+"AI ürünü" görünmemek birincil kısıt. Teknik karşılığı: **LLM tasarıma hiç
 dokunmaz.** Şablon sabit HTML/CSS'tir, LLM sadece metin alanlarını doldurur.
-Böylece 300. post 1. postla piksel piksel aynı olur.
+
+### Çalışma şekli
+- Küçük ve doğrulanabilir adımlar. Bir fazda kod yazılır → çalıştırılıp
+  çıktısı gözle kontrol edilir → sonra sonraki faz.
+- **Claude yapar:** tüm Python, HTML/CSS, workflow YAML, commit.
+- **Kullanıcı yapar:** hesap açma, API anahtarı alma, Secrets girme,
+  Telegram'da onay, çıktıya bakıp geri bildirim.
+- **Anahtarlar asla sohbete yazılmaz, asla koda girmez** — sadece `.env`
+  (yerel, git dışı) ve GitHub Secrets.
 
 ---
 
-## 2. Tasarım sistemi
+## 2. Durum tablosu
 
-### Fontlar (repoda `fonts/`, OFL lisanslı)
-- **Başlık:** Bricolage Grotesque, weight 800, letter-spacing -0.8px, line-height ~1.0
-- **Gövde:** Outfit, weight 300–400, line-height 1.45
+| Faz | Ne | Durum |
+|---|---|---|
+| 1 | `fetch.py` + `feeds.json` — haber toplama | ✅ |
+| 2 | `write.py` + `style.py` — metin üretimi ve üslup filtresi | ✅ |
+| 3 | `render.py` + `card.html/css` — kart üretimi | ✅ |
+| 4 | `images.py` — IGDB görselleri | ✅ |
+| 5 | `telegram.py` + `respond.py` — onay döngüsü | ✅ |
+| + | `tier.py` + `produce.py` — kademe ve orkestratör | ✅ |
+| + | Tasarım turu — kesinleşti 2026-08-27 | ✅ |
+| **7** | **Workflow'lar (cron) — bot kendi kendine çalışsın** | **sıradaki** |
+| 6 | `publish.py` — Instagram paylaşımı (Meta kurulumu) | en son |
+| + | `qa.py` — görsel denetim (tasarım oturdu, artık yazılabilir) | bekliyor |
+
+**Şu an her şey elle çalışıyor.** Zincirin tamamı test edildi ama komutlar
+elle çalıştırılıyor; bilgisayar kapalıyken hiçbir şey olmuyor. Faz 7 yeni
+yetenek eklemiyor, var olanı saatli hale getiriyor.
+
+### Kullanıcının bekleyen işleri
+1. GitHub Secrets'a beş anahtar: `GEMINI_API_KEY`, `IGDB_CLIENT_ID`,
+   `IGDB_CLIENT_SECRET`, `TG_BOT_TOKEN`, `TG_CHAT_ID`
+2. Repo ayarları → Actions → **Read and write permissions**
+   (atlanırsa bot state commit edemez ve **hata vermeden** çalışmaz)
+3. Bekleyen commit'leri push
+
+---
+
+## 3. Boru hattı
+
+```
+fetch.py    RSS tara, kümele, tekrarları ele    → state/candidates.json
+tier.py     kademe hesapla (kod, LLM değil)
+write.py    Gemini → Türkçe metin + style.py    → state/draft.json
+images.py   IGDB → görsel seç, indir, kredi     → state/img/
+render.py   HTML → Chromium → PNG               → out/<tarih>-<oyun>/
+telegram.py kartları yolla, onay iste           → state/pending.json
+  kullanıcı  /ok /bana /gorsel /havuz /yeniden /iptal /c /b /a /s
+respond.py  kararı uygula
+publish.py  [YOK — Faz 6]
+```
+
+`produce.py` üretim zincirini, `respond.py` karar uygulamayı sürüyor.
+Her aşama **ayrı süreç**: Actions kaydında patlayan aşama tek bakışta
+görünsün diye.
+
+---
+
+## 4. Tasarım sistemi — KESİNLEŞTİ (2026-08-27)
+
+Tüm kararlar kullanıcıyla konsept turları yapılarak alındı. Değiştirmeden önce
+buradaki gerekçeleri oku.
+
+### Fontlar
+`fonts/` altında, OFL lisanslı, variable sürüm:
+`BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf` (başlık, weight 800) ·
+`Outfit-VariableFont_wght.ttf` (gövde, 300-500)
+`@font-face` içinde `format("truetype-variations")` ve ağırlık aralığı şart.
 
 ### Renkler
 | Rol | Hex |
 |---|---|
-| Kırık beyaz (zemin/gradyan) | `#F1EDE3` |
-| Mürekkep (başlık) | `#17151A` |
+| Krem (zemin/gradyan) | `#F1EDE3` |
+| Mürekkep (başlık, tür kutusu) | `#17151A` |
 | Gövde metni | `#3B372F` |
 | İkincil metin | `#8A8378` |
 | Ayraç çizgisi | `#CFC8B8` |
 
-### Tier (nadirlik) sistemi
-| Tier | Ad | Renk | Telegram komutu |
-|---|---|---|---|
-| C | sıradan | `#4A4A4A` | `/c` |
-| B | büyülü | `#2A6398` | `/b` |
-| A | sıradışı | `#6A4CA6` | `/a` |
-| S | mitik | `#D9741F` | `/s` |
+### Kademe (tier)
+| Tier | Ad | Renk |
+|---|---|---|
+| C | sıradan | `#4A4A4A` |
+| B | büyülü | `#2A6398` |
+| A | sıradışı | `#6A4CA6` |
+| S | mitik | `#D9741F` |
 
-Kurallar:
-- **C kademesi tek başına yayınlanmaz.** Haftalık derleme carousel'ine biriktirilir.
-- Tier'ı LLM belirlemez, kod hesaplar. LLM sadece veri çıkarır (kaç kaynak yazmış,
-  oyunun bilinirliği vb.), eşikler Python'da sabittir. LLM'e serbestlik verilirse
-  her haberi S yapar.
-- Bot kendi önerisini Telegram'da söyler, kullanıcı komutla ezebilir.
-- Renk kartta dört yerde görünür: üst şerit (8px), kategori etiketi, madde
-  işaretleri, son sayfa logo bloğu.
+**Kademe rengi kartta üç yerde:** sol dikey şerit (28px, kart boyu), kademe
+kutusu, madde işaretleri. Son sayfada dördüncü yer: künye bandı.
+
+⚠️ **Tier renginin üzerine her zaman KREM yazı gelir.** Ölçülen kontrast:
+C 7.58 · B 5.38 · A 5.62 · **S 2.78**. S erişilebilirlik sınırının (4.5)
+altında. Koyu yazı (5.58) ve turuncuyu koyulaştırma (`#A34D09`, 4.96)
+denendi; kullanıcı **kavram bütünlüğü için krem yazıda karar kıldı** —
+tek kademenin farklı davranması sistemi bozuyordu. Bilinçli bir ödün.
 
 ### Kart anatomisi
-- Arka planda oyun görseli, tam kanama (full-bleed)
-- Alttan yukarı `#F1EDE3` gradyan; metin bu alanda oturur
-- **Gradyanın başlangıç yüzdesi metin bloğunun ölçülen yüksekliğine göre
-  hesaplanır.** Sabit bırakılmaz — az metinde fazla beyaz, çok metinde taşma olur.
-  Referans: ~30% (kapak, az metin) → ~53% (metin yoğun sayfa)
-- Görsel `object-position: 50% 25%` ile üstten hizalanır (karakter yüzleri
-  gradyanın üstünde kalsın)
-- Metin gölgesi/konturu **yok**. Okunurluk gradyanla sağlanır.
-- Carousel'de her sayfa farklı görsel kullanır, ama hepsi aynı oyundan
+- Arka planda oyun görseli, tam kanama
+- Alttan yukarı krem gradyan; **başlangıcı sabit değil**, metin bloğunun
+  ölçülen yüksekliğine göre `card.html` içindeki `fitScrim()` hesaplıyor.
+  Ölçülen krem alan: kapak %47 · metin sayfası %36-40 · son sayfa %50
+- Görsel `object-position: 50% 25%` (yüzler gradyanın üstünde kalsın)
+- Metin gölgesi/konturu **yok**, okunurluk gradyanla
+- Üstte 170px ince karartma: aydınlık gökyüzünde köşe bilgileri okunmuyordu
+
+### Kademe ve tür kutuları (kapakta)
+Alt alta iki kutu, **köşe yuvarlatma yok**, şeritten ayrık, genişlik metne göre:
+- Üst kutu: kademe adı, tier renginde dolu, Bricolage 800, 27px
+- Alt kutu: haber türü, mürekkep dolu, Outfit 500, 23px
+
+Denenip elenenler: tek satır kicker (ızgarada görünmüyordu), geniş üst bant
+(görselden 78px alıyor, tarayıcı çubuğu gibi duruyor), yuvarlatılmış köşe
+(kullanıcının deyimiyle "AI slop"), şeride bitişik kutu, sabit genişlik
+(kısa kelimede boş duruyordu).
+
+### Köşe bilgileri
+- **Sağ üst — görsel kredisi:** `@cd projekt red`. Telif kuralı gereği her
+  görselli kartta. ("görsel: ..." öneki gereksiz bulundu, kaldırıldı.)
+- **Sol üst — sayfa göstergesi:** ilk sayfa `1/5 · kaydır`, sonrakiler
+  `2/5`, `3/5`, son `5/5`. Tek sayfalık postta `1/1`.
+  İkisi de mutlak konumlu: metin bloğu ölçümünü ve gradyanı bozmasınlar diye.
 
 ### Sayfa tipleri
-1. **Kapak** — büyük başlık, kicker (`tier · kategori`), alt satırda oyun adı + sayfa sayısı
-2. **Metin sayfası** — başlık + paragraf + 2-3 madde
-3. **Rakam sayfası** — 2-3 metrik, büyük sayı + açıklama, ayraç çizgileriyle
-4. **Son sayfa** — tek soru + iki yumuşak CTA kutusu + künye bloğu
-   (logo + `@quest.post` + "haftada üç indie hikayesi")
+1. **Kapak** — kademe kutusu + tür kutusu + büyük başlık + oyun adı
+2. **Metin** — başlık + paragraf + 2-3 madde
+3. **Rakam** — 2-3 metrik. Sayı 92px, açıklama 32px koyu, satır aralığı ferah.
+   (Önceden sayı 104px / açıklama 27px gri idi; açıklama sayının yanında
+   kayboluyordu.)
+4. **Son sayfa** — soru + **tek** çağrı kutusu + tier renginde künye bandı
+   (`@quest.post` · "oyun dünyasından her gün 3 yeni haber" · sağda kademe
+   adı) + takip yönlendirmesi.
 
-Son sayfada yasak: "takip et", "beğen", "paylaş", emoji, ok/parmak işaretleri.
+### ⚠️ Değişen kural: takip daveti artık serbest
+Eski kural "son sayfada takip et / beğen / paylaş yasak" idi.
+**Kullanıcı 2026-08-27'de bunu bilerek değiştirdi:** künye bandında
+"yenilerini kaçırmamak için takipte kal" sabit metni var. Yasak listesinde
+"beğen" ve "paylaş" duruyor; sadece takip daveti serbest.
+
+### Tipografik mod
+Görsel eşleşmeyen **her** haber (sızıntı, etkinlik, şirket, sektör) buraya
+düşer. Görsel ve gradyan gizlenir, içerik dikeyde ortalanır, başına tier
+renginde 104x6px çizgi konur, kapak başlığı 104px'e çıkar. Metni alta
+yapıştırmak üstte 800px boşluk bırakıyor ve kart bozuk görünüyordu.
 
 ---
 
-## 3. İçerik kuralları
+## 5. İçerik kuralları
 
 ### Telif
-- Görseller resmi kaynaklardan: IGDB API, Steam basın sayfaları, geliştirici press kit'leri
-- Her kartta kaynak kredisi (`görsel: <stüdyo>`)
-- **Sızıntı / datamine haberlerinde görsel kullanılmaz** — sadece tipografik kart.
-  Sızan materyal paylaşmak DMCA riski. Aynı oyunun resmi key art'ı bile riskli.
+- Görseller yalnızca IGDB'den (resmi stüdyo materyali)
+- Her görselli kartta kredi, **IGDB'nin şirket verisinden** — LLM tahmininden değil
+- **Sızıntı/datamine haberinde görsel kullanılmaz.** `is_leak` LLM'den gelir
+  ama sonucu kod uygular: `images.py` görseli ve krediyi düşürür.
 
 ### Rakamlar
-LLM sayı uydurur. Kural: bir rakam ancak kaynak metninde geçiyorsa karta girer.
-Geçmiyorsa **rakam sayfası hiç üretilmez.**
+Çıktıdaki her rakam kaynak metinde geçmek zorunda. `style.py` denetliyor.
+Kaynak İngilizce olduğu için sayı kelimeleri de ("two hours" → "2") izinli
+kümeye ekleniyor.
 
-### Görsel seçimi
-IGDB görselleri tiplere ayırır (`cover`, `artwork`, `screenshot`, `logo`).
-Sayfa tipine göre kod seçer:
-- Kapak → `artwork` veya `cover`
-- İç sayfalar → `screenshot`
-- Son sayfa → `artwork`
+### Metin üslubu — `style.py` filtresi
+Deterministik, LLM çağırmaz. Yakaladıkları:
+em-dash ve eğik tırnak · yasak kelime listesi (işte, peki, devrim
+niteliğinde, çığır açan, adeta, tam anlamıyla, sonuç olarak, yapay zeka
+destekli) · emoji · büyük harf · 2'den fazla hashtag · üçlük kalıbı
+(a, b ve c) · soru cümlesiyle başlama (son sayfa hariç) · **işaretsiz
+Türkçe** (60+ karakterlik metinde hiç ı/ş/ğ/ü/ö/ç yoksa) · yanlış Türkçe ek.
 
-Son karar kullanıcıda: bot seçtiği görselleri Telegram'a yollar, kullanıcı
-`/1 /3 /5 /2` ile değiştirir veya `/ok` der.
+Ek hataları yeniden üretim istenmeden **otomatik düzeltiliyor**
+(`autofix_suffixes`): godot'yu → godot'u, steam'da → steam'de vb.
 
-### Metin üslubu — yasak kalıplar
-Üretim sonrası filtre bunları yakalar ve yeniden üretim ister:
-em-dash, "işte", "peki", "devrim niteliğinde", "oyunun kurallarını değiştiriyor",
-soru cümlesiyle başlama, 3'lü madde listesi kalıbı, 2'den fazla hashtag, emoji,
-"AI destekli".
-
-Ayrıca her üretimde rastgele bir yazım modu seçilir: gözlem / karşılaştırma /
-tarihsel not / sayısal detay / karşı görüş. Sabit açılış kalıbı oluşmasını engeller.
-
-### Kaynak stratejisi
-Sadece büyük sitelerden beslenirse herkesin yazdığını yazar. Ayrıştırıcı kaynaklara
-ağırlık: itch.io yeni çıkanlar, Steam yeni yayınlananlar, indie geliştirici
-devlog'ları, TR stüdyo duyuruları.
-
-**Botun asıl işi yazmak değil, filtrelemek** — 40 haberden 2'sini seçmek.
-
-### İçerik dağılımı
-| Tip | Oran | İşlev |
-|---|---|---|
-| Günlük haber kartı | %50 | Tutma |
-| Evergreen carousel | %30 | Büyüme (kaydetme/paylaşma) |
-| Liste / karşılaştırma | %15 | Keşfet trafiği |
-| Topluluk sorusu | %5 | Yorum sinyali |
-
-Evergreen içeriği bot tek başına üretmez (doğruluk riski). Kullanıcı konu verir
-(`/evergreen <konu>`), bot taslak hazırlar.
+Yazım modu her üretimde rastgele seçiliyor: gözlem / karşılaştırma /
+tarihsel not / sayısal detay / karşı görüş. Sabit açılış kalıbını engelliyor.
 
 ---
 
-## 4. Mimari
-
-Sunucu yok. Her şey GitHub Actions üzerinde çalışır; kullanıcının bilgisayarı
-kapalı olabilir. Telegram bir program değil, posta kutusudur — betik uyandığında
-`getUpdates` ile sorar.
-
-### Workflow'lar
-| Workflow | Tetik | İş |
-|---|---|---|
-| `produce.yml` | cron, günde 3 kez | RSS tara → seç → metin üret → kart bas → Telegram'a sor → `pending.json` yaz |
-| `respond.yml` | cron, 5 dk | Telegram cevabını oku → paylaş / yeniden üret / iptal → state commit |
-| `refresh_token.yml` | cron, aylık | Instagram uzun ömürlü token'ı yenile |
-| `urgent.yml` | `workflow_dispatch` | **[İSKELET — sonra doldurulacak]** son dakika viral haber kanalı |
-
-### Son dakika viral haber — ayrılan alan
-Tasarımı sonraya bırakıldı, ama iskelet baştan konulacak:
-- `workflow_dispatch` ile elle tetiklenebilen `urgent.yml`
-- Pipeline'da `priority` bayrağı (normal kuyruğu atlar)
-- Telegram'da `/acil <link>` komutu
-
-### Onay akışı
-Bot her postta iki seçenek sunar:
-- `/otomatik` — API ile kendisi paylaşır
-- `/bana` — görselleri Telegram'a atar, kullanıcı indirip uygulamadan
-  **Instagram'ın kendi müziğiyle** paylaşır
-
-Not: Instagram Graph API lisanslı müzik / trending audio eklemeyi **desteklemiyor**.
-S kademesi postlarda `/bana` tercih edilir.
-
-### Durum yönetimi
-Veritabanı yok. Repo içinde JSON, bot kendi commit'ler:
-- `state/posted.json` — yayınlanan URL hash'leri (tekrar önleme)
-- `state/pending.json` — onay bekleyen post
-- `state/tg_offset.json` — Telegram getUpdates offset
-
-### Instagram API notları
-- Görsel yüklenemez; **herkese açık URL** gerekir → PNG repoya commit edilir,
-  `raw.githubusercontent.com` linki API'ye verilir
-- Limit: 24 saatte 100 post (carousel tek sayılır) — kısıt değil
-- App Review gerekmez: app development modunda, hesap Instagram Tester olarak eklenir
-- Uzun ömürlü token 60 günde ölür → `refresh_token.yml` şart
-
----
-
-## 5. Dosya yapısı
+## 6. Dosya yapısı
 
 ```
-.github/workflows/
-  produce.yml
-  respond.yml
-  refresh_token.yml
-  urgent.yml          # iskelet
 src/
-  feeds.json          # RSS kaynak listesi
-  fetch.py            # RSS çek, tekrar filtrele, aday seç
-  write.py            # Gemini çağrısı + yasak kalıp filtresi
-  tier.py             # tier hesaplama (kod, LLM değil)
-  images.py           # IGDB entegrasyonu, görsel seçimi
-  render.py           # HTML şablonu → Playwright → PNG
-  telegram.py         # soru gönder, cevap oku
-  publish.py          # Instagram Graph API
-templates/
-  card.html           # tek şablon, tüm sayfa tipleri
-  card.css
-fonts/                # BricolageGrotesque, Outfit (.ttf)
-assets/               # logo
-state/
+  feeds.json    25 kaynak (18 aktif), her adres elle yoklandı
+  fetch.py      RSS tara, kümele, tekrar filtresi
+  tier.py       kademe hesabı (kod, LLM değil)
+  write.py      Gemini + istem + yeniden üretim döngüsü
+  style.py      üslup filtresi, deterministik
+  images.py     IGDB görsel seçimi ve indirme
+  render.py     HTML sablonu → PNG (--sheet ile görsel havuzu ızgarası)
+  telegram.py   mesaj yolla, komut oku, kararı kaydet
+  respond.py    kararı uygula
+  produce.py    tüm zinciri süren orkestratör
+  publish.py    [YOK — Faz 6]
+templates/      card.html + card.css (tasarım burada, SABİT)
+fonts/          Bricolage Grotesque, Outfit, OFL.txt
+assets/         placeholder.png (anahtarsız render denemesi için)
+examples/       sample_post.json (güncel şema, anahtarsız test)
+state/          posted / pending / tg_offset / draft / weekly
+                candidates.json ve img/ git dışı
+.github/workflows/   [BOŞ — Faz 7]
 ```
 
 ---
 
-## 6. Secrets (GitHub Actions)
+## 7. Anahtarlar ve servisler
 
-`IG_ACCESS_TOKEN`, `IG_USER_ID`, `TG_BOT_TOKEN`, `TG_CHAT_ID`, `GEMINI_API_KEY`,
-`IGDB_CLIENT_ID`, `IGDB_CLIENT_SECRET`, `FB_APP_SECRET`
+`.env` (yerel, git dışı) ve GitHub Secrets'ta aynı beş değer:
+`GEMINI_API_KEY` · `IGDB_CLIENT_ID` · `IGDB_CLIENT_SECRET` ·
+`TG_BOT_TOKEN` · `TG_CHAT_ID`
 
-Repo **public** olmalı (Actions dakikası sınırsız).
-Settings → Actions → Workflow permissions → **Read and write**
-(bot state commit edebilsin diye; atlanırsa sessizce çalışmaz).
-
----
-
-## 7. Geliştirme sırası
-
-Her faz ayrı ayrı çalıştırılıp doğrulanır, öncekine dönülmez.
-
-| # | Faz | Bağımlılık | Durum |
-|---|---|---|---|
-| 1 | `feeds.json` + `fetch.py` — RSS çekme, tekrar filtresi | Yok | **✅ 2026-08-25** |
-| 2 | `write.py` — Gemini + üslup filtresi | `GEMINI_API_KEY` | **✅ 2026-08-25** |
-| 3 | `render.py` + `card.html` — PNG üretimi | Fontlar | **✅ 2026-08-25** |
-| 4 | `images.py` — IGDB | IGDB anahtarları | **✅ 2026-08-25** |
-| 5 | `telegram.py` — onay döngüsü | TG anahtarları | **✅ 2026-08-25** |
-| 6 | `publish.py` — Instagram | IG anahtarları | |
-| 7 | Workflow YAML'ları + kuru test | Hepsi | |
-| 8 | Canlı | — | |
-
----
-
-## 8. Bilinen sınırlar
-
-- **Otomasyon arzı çözer, dağıtımı çözmez.** Hesap yeni olduğu için ilk aylarda
-  erişim düşük olacak. Büyümeyi haber değil evergreen içerik sağlar.
-- Actions cron'u yoğunlukta 5–20 dk gecikebilir; haber botu için sorun değil.
-- Gemini ücretsiz katmanı günlük ihtiyacın çok üstünde, ama Google istekleri
-  ürün geliştirmede kullanabilir.
-- ~~Otomasyona geçmeden önce hesapta elle 3-5 post olmalı.~~
-  **Kullanıcı bunu bilerek atladı (2026-08-25):** deney amacı, riski kabul edildi.
-
----
-
-## 9. Faz 1 — kaynak toplama ✅ (2026-08-25)
-
-### Karar değişikliği: arama dili İngilizce
-
-**Kaynaklar İngilizce, çeviriyi `write.py` yapacak.** Türkçe kaynaklar dosyada
-duruyor ama `enabled: false`. Sebep tek başına dil tercihi değil, teknik:
-kümeleme başlık kelime benzerliğine dayanıyor, TR ve EN başlıklar birbiriyle
-eşleşmiyor. Karışık dil havuzunda aynı haber iki ayrı kümeye düşüyor ve
-**"kaç kaynak yazmış" sinyali bozuluyor** — o sinyal tier hesabının girdisi.
-Tek dile inince sinyal gerçek oldu (ölçüm: 3 → 13 çok kaynaklı küme).
-
-TR kaynakları geri açmak için `feeds.json` içinde `enabled: true` yapmak yeterli.
-
-### `src/feeds.json`
-
-25 kaynak tanımlı, 18'i aktif. Her adres 2026-08-25'te elle yoklandı.
-Alan başına anlam:
-
-| Alan | Ne işe yarar |
+| Servis | Not |
 |---|---|
-| `enabled` | false ise hiç çekilmez |
-| `weight` | 0.5–1.4. Ayrıştırıcı kaynak yüksek, ana akım düşük |
-| `kind` | `news` / `releases` / `devlog` / `community` |
-| `bucket` | `news` = post adayı · `discovery` = keşif havuzu, tek başına post olmaz |
-| `max_items` | Kaynak başına tavan. itch.io günde yüzlerce kayıt döküyor, tavan olmazsa tek kaynak listeyi yutuyor |
-| `topic_filter` | `gaming` = sadece başlıkta oyun anahtar kelimesi geçenler alınır (genel teknoloji/sanat beslemeleri için). Özet metnine **bakılmaz**, neredeyse her özette "game" geçiyor |
+| Gemini | Model **`gemini-3.6-flash`, sürüm sabit.** 3.7 ısrarla 503 dönüyordu. `gemini-2.5-*` yeni kullanıcılara kapalı. Ücretsiz katman, fatura hesabı bağlı değil, ücretlendirilme mümkün değil |
+| IGDB | Twitch üzerinden. Uygulama jetonu her çalışmada yeniden alınıyor. **Twitch, 2FA açık olmayan hesaba uygulama kaydettirmiyor** |
+| Telegram | Bot `@questpostinstagram_bot`, chat id `.env` içinde |
+| GitHub Actions | Public repo, sınırsız dakika |
 
-**Ölü bulunup alınmayanlar** (tekrar denemeye gerek yok): TIGSource (403),
-Warpdoor (RSS kaldırılmış), Tamindir, multiplayer.com.tr (2024'te durdu),
-Indie Game Website (2021'de durdu), Steam news feed (bir aylık gecikmeli),
-itch.io featured (2021'de dondu), IndieDB'nin `www` adresi (404 — çalışan adres
-`rss.indiedb.com`), oyungezer `/feed` (404 — çalışan adres `/rss`).
+### ⚠️ Gemini erişim engeli — çözüldü, tekrar yaşanırsa
+İlk Google hesabında tüm modeller `403 PERMISSION_DENIED — Your project has
+been denied access` döndü. Elenenler: model ailesi, endpoint sürümü, anahtarın
+gönderilme şekli, yeni Cloud projesi, API'yi enable etmek, anahtarı servis
+hesabına bağlamak — **hiçbiri işe yaramadı.**
 
-**Hâlâ eksik:** Steam yeni yayınlananlar (RSS'i yok, Steam store API'si ile ayrı
-modül gerekecek), TR stüdyo duyuruları (ortak besleme yok, tek tek eklenmeli).
+**Engel projeye değil hesaba bağlıydı.** Başka bir Google hesabıyla ilk
+denemede çalıştı. Bir daha benzer duvara çarpılırsa **ilk denenecek şey hesap
+değiştirmek**, proje ayarlarıyla uğraşmak değil. Eski/yerleşik hesap tercih
+edilir; sıfır hesaplar "yeni hesap" filtresine takılabiliyor.
 
-### `src/fetch.py`
-
-Anahtarsız çalışır: `py -3.12 src/fetch.py --print`
-
-Boru hattı: çek (paralel, kaynak hatası tüm çalışmayı düşürmez) → normalize
-(HTML temizle, takip parametrelerini at, başlıktan site adı kuyruğunu sil) →
-yaş penceresi (48 sa) → konu filtresi → kaynak başına tavan → tekrar filtresi
-(`posted.json`) → kümele → sırala → `state/candidates.json`.
-
-**Kümeleme — en çok uğraşılan yer.** Üç deneme yapıldı:
-
-1. Düz Jaccard (0.45): neredeyse hiç birleştirmedi (312 kayıt → 312 küme).
-2. IDF ağırlıklı + "nadir kelime paylaşmak zorunlu": **ters tepti.** Bir haberi
-   ne kadar çok kaynak yazarsa anahtar kelimesi o kadar sık hale geliyor, yani
-   **büyük haber kendini eliyor.** 4 kaynaklı Gamescom kümesi bu yüzden dağıldı.
-3. Çalışan hâl: IDF ağırlıklı oran **+ kanıt kütlesi** (`MIN_SHARED_IDF`)
-   **+ özel isim köprüsü** (nadir kelime paylaşılıyorsa oran eşiği düşer, ama
-   şart değil). Sonuç: 13-14 doğru küme, elle kontrol edildi.
-
-Bilinen sınır: tek dil şartı (yukarıda), ve bir yazıda iki habere değinen
-kaynaklar (RPS'in "Witcher 4 tarihi + Witcher 3 DLC" yazısı gibi) iki kümeyi
-birleştirebilir. Zararsız.
-
-Çıktı `state/candidates.json`: `stats`, `feed_health` (hangi kaynak öldü),
-`candidates` (post adayları), `discovery` (keşif havuzu).
-
-`feed_health` Faz 5'te Telegram'a bağlanacak: "şu kaynak N gündür sessiz".
-
-### Ayarlanabilir eşikler (`fetch.py` başı)
-`CLUSTER_THRESHOLD` 0.30 · `MIN_SHARED_IDF` 3.0 · `BRIDGE_DF` 2 ·
-`BRIDGE_THRESHOLD` 0.15 · `SOURCE_COUNT_WEIGHT` 3.0
-
-`rank_score` **tier değildir.** Sadece "hangisine önce bakılsın" sıralaması.
-Tier'ı `tier.py` hesaplayacak (Faz 2 sonrası).
+Ayrıca: **AI Studio sohbeti ile Gemini API iki ayrı kapı.** Sohbetin
+çalışması API'nin çalışacağı anlamına gelmiyor.
 
 ---
 
-## 10. Kullanıcı tarafı — anahtar durumu (2026-08-25)
-
-| Ne | Durum |
-|---|---|
-| Instagram `@quest.post` | Açıldı, bio + pfp hazır, profesyonel hesaba geçirildi |
-| GitHub kullanıcı | `tekdze` |
-| Telegram bot token | Alındı. **Sohbete yazıldığı için `/revoke` ile yenilenecek**, yeni token doğrudan GitHub Secrets'a girilir |
-| Gemini API key | Alınıyor. "Unable to create API key" hatası = Cloud Console'da ToS kabul edilmemiş + proje yok. Elle proje açılınca geçiyor |
-| IGDB / Twitch | Yapılmadı |
-| Meta developer app | Yapılmadı (Faz 6'ya bırakıldı) |
-
-### Çalışma şekli
-- Küçük ve doğrulanabilir adımlar. Bir fazda kod yazılır → çalıştırılıp çıktısı
-  gözle kontrol edilir → sonra sonraki faz.
-- **Claude yapar:** tüm Python, HTML/CSS şablon, workflow YAML, commit.
-- **Kullanıcı yapar:** hesap açma, API anahtarı alma, Secrets girme, Telegram'da
-  onay verme, çıktıya bakıp geri bildirim.
-- **Anahtarlar asla sohbete yazılmaz, asla koda girmez** — sadece GitHub Secrets.
-
----
-
-## 11. Faz 3 — kart üretimi ✅ (2026-08-25)
-
-### Dosyalar
-| Dosya | Sorumluluk |
-|---|---|
-| `templates/card.css` | Tasarım sisteminin tamamı. **Sabit.** LLM buraya dokunmaz |
-| `templates/card.html` | Tek şablon, dört sayfa tipi. Veriyi `window.CARD_DATA` yerine `renderCard(data)` ile alır, DOM'u kendisi kurar |
-| `src/render.py` | Tarayıcıyı sürer: veriyi bas → fontları bekle → gradyanı ölçtür → 1080x1350 PNG |
-| `examples/sample_post.json` | Test tarifi. Metinler elle yazıldı (write.py yok henüz) |
-| `assets/placeholder.png` | Yer tutucu "oyun görseli". IGDB gelene kadar test için. Chromium'un kendisiyle üretildi, ek kütüphane yok |
-
-Çalıştırma: `py -3.12 src/render.py examples/sample_post.json`
-
-### Fontlar
-Variable sürüm kullanılıyor, tek dosya iki iş yapıyor:
-`BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf` · `Outfit-VariableFont_wght.ttf`
-`@font-face` içinde `format("truetype-variations")` ve `font-weight: 200 800` aralığı şart.
-
-⚠️ `fonts/OFL.txt` **eksik**, eklenmeli — lisans şartı.
-
-### Gradyan hesabı — mekanizma
-`card.html` içindeki `fitScrim()` metin bloğunun ekrandaki gerçek yüksekliğini
-ölçüp CSS değişkenlerini basıyor. Sabit yüzde yok.
-
-Zincir: `contentTop = 1350 − alt_boşluk − ölçülen_yükseklik` → `solid = contentTop − 38px`
-(nefes payı) → `start = solid − 330px` (geçiş uzunluğu).
-
-Ölçülen sonuç (krem alanın alttan kapladığı oran):
-kapak %34 · son sayfa %42 · metin sayfası %44 · rakam sayfası %47.
-
-Tasarım notundaki referans "~30% → ~53%" ile tutuyor. **O yüzdeler alttan
-sayılıyor** — üstten sanılırsa ters okunur (az metinde çok krem çıkar).
-Ayar noktaları: `FADE` (geçiş uzunluğu) ve `BREATH` (metnin üstündeki pay).
-
-Font yüklenmesi metin yüksekliğini değiştirdiği için ölçüm **iki kez** yapılıyor:
-bir kez DOM kurulurken, bir kez fontlar ve görsel yüklendikten sonra. Tek ölçümle
-gradyan birkaç piksel kayıyordu.
-
-### Türkçe ek kuralı — write.py'ın çözmesi gereken sorun (2026-08-25)
-
-Örnek tarifte `godot'yu` yazılmıştı, doğrusu **`godot'u`**. Yabancı özel isimlere
-Türkçe ek eklerken ek **okunuşa** göre seçilir ve bu LLM'in düzenli olarak
-yanlış yaptığı bir yer. Kaynak metin İngilizce olduğu için her postta çıkacak.
-
-Çözüm `write.py` içinde iki katmanlı olacak:
-1. **Kürasyonlu istisna sözlüğü** — sık geçen özel isimler ve doğru ekli hâlleri
-   (godot'u, steam'de, unity'yi, ubisoft'un, valve'ın, xbox'ta, playstation'da).
-   LLM'e bırakılmaz, kod dayatır.
-2. **Üslup filtresi kontrolü** — sözlükte olmayan bir isme ek geldiyse ve
-   apostroftan sonraki ek şüpheliyse yeniden üretim istenir.
-
-Bu, "yasak kalıplar" filtresinin ikinci işi oluyor.
-
-### Uygulanan tasarım kuralları
-- Tier rengi tam dört yerde: üst şerit (8px), kicker, madde işaretleri, künye karesi
-- `text-transform: lowercase` **CSS'te zorlanıyor** — metin üretiminde bir kaçak
-  olursa tasarım bozulmasın diye
-- Metin gölgesi/konturu yok, okunurluk sadece gradyanla
-- Görsel `object-position: 50% 25%`
-- Görsel kredisi (`görsel: <stüdyo>`) her kartta, sağ üstte
-- **Sızıntı/datamine modu hazır:** sayfada `image` yoksa kart otomatik
-  `card--typographic` oluyor — görsel ve gradyan gizleniyor, düz krem zemin,
-  kredi rengi dönüyor. `render.py` o durumda kredi alanını da boş geçiyor
-
-### Bilinmesi gerekenler
-- Sayfa tipleri ve bekledikleri alanlar: `cover` (title) · `text` (title,
-  paragraph, bullets) · `numbers` (title, metrics[{value,label}]) · `outro`
-  (question, ctas[2]). `write.py` bu şemaya uyan JSON üretecek.
-- Kapaktaki sayfa sayısı otomatik: tarifte `page_count` yoksa `render.py`
-  "4 sayfa" / "tek kare" yazıyor.
-- `out/` klasörü **commit edilir** — mimarinin gereği: PNG repoya girmeli ki
-  `raw.githubusercontent.com` linki Instagram API'sine verilebilsin.
-  `out/sample_post/` sadece test, sonra silinebilir.
-- Tier renk/ad tablosu `render.py` içindeki `TIERS`. `tier.py` yazıldığında
-  eşikler orada olacak, renk/ad burada kalacak — tek kaynak.
-
----
-
-## 12. Faz 2 — metin üretimi ⚠️ (2026-08-25)
-
-**Uçtan uca çalışıyor: haber → Türkçe metin → kart.**
-
-### Dosyalar
-| Dosya | Sorumluluk |
-|---|---|
-| `src/write.py` | Gemini çağrısı, istem kurulumu, yeniden üretim döngüsü, render tarifine çevirme |
-| `src/style.py` | Üslup filtresi. **LLM çağırmaz, tamamen deterministik** |
-
-Çalıştırma: `py -3.12 src/write.py --index 1 --tier A`
-Model listesi: `py -3.12 src/write.py --list-models`
-
-### Anahtar yönetimi
-`.env` dosyası proje kökünde, `.gitignore` dışlıyor. `write.py` kendi
-`load_env()` fonksiyonuyla okuyor — `python-dotenv` bağımlılığı eklenmedi,
-tek işi olan 8 satırlık kod için paket gereksiz.
-
-### Model kararı
-`DEFAULT_MODEL = "gemini-3.7-flash"` — **sürüm sabitlendi.**
-`gemini-flash-latest` gibi takma ad kullanılmıyor: model sessizce değişirse
-üslup da değişir, "300. post 1. postla aynı olur" ilkesi bozulur.
-
-Ölçüm (2026-08-25, `--list-models`): hesapta `generateContent` destekleyen 37
-model var. **`gemini-2.5-*` serisi yeni kullanıcılara kapatılmış**
-(`NOT_FOUND: no longer available to new users`), yani 3.x zorunlu.
-
-### ⛔ Gemini API bu hesapta kapalı — ARAŞTIRMA KAPANDI (2026-08-25)
-`403 PERMISSION_DENIED — Your project has been denied access. Please contact support.`
-
-**Tekrar denemeye gerek yok.** Elenen ihtimaller:
-
-| Denenen | Sonuç |
-|---|---|
-| Model listesi çekmek (`ListModels`) | ✅ çalışıyor → anahtar geçerli, ağ sorunu yok |
-| `gemini-3.7-flash`, `3.5-flash`, `3.1-flash-lite`, `gemma-4-31b-it` | hepsi 403 → model ailesi fark etmiyor |
-| `v1beta` / `v1` endpoint | ikisi de 403 |
-| Anahtarı header ile / `?key=` ile göndermek | ikisi de 403 |
-| Yeni Cloud projesi (`questpost2`) | 403 |
-| Gemini API'yi Cloud Console'da enable etmek | zaten enabled'dı, 403 |
-| Anahtarı Cloud Console'dan, **servis hesabına bağlı** oluşturmak | 403 |
-| Hesap yaşı / kişisel hesap | sorun yok |
-| AI Studio **sohbet** arayüzü | ✅ çalışıyor |
-
-Kritik ayrım: **AI Studio sohbeti ile Gemini API iki ayrı kapı.** Sohbetin
-çalışması API'nin çalışacağı anlamına gelmiyor, farklı erişim politikaları var.
-
-Not: Google artık Gemini API anahtarlarının bir **servis hesabına bağlı** olmasını
-şart koşuyor. Cloud Console'da API kısıtlaması listesinde "Gemini API" ancak
-"Authenticate API calls through a service account" işaretlendikten sonra
-seçilebilir hale geliyor. Bu yapıldı, engel kalkmadı.
-
-Sonuç: engel proje/hesap seviyesinde bir politika bloğu, kod tarafında
-yapılacak bir şey yok. **Sağlayıcı değiştiriliyor.**
-
-### İş bölümü — LLM'in dokunamadığı şeyler
-LLM **sadece** şu alanları üretir: `game`, `category` (sabit listeden seçer),
-`studio`, `is_leak`, ve sayfa metinleri. Dokunamadıkları: tier, görsel seçimi,
-tasarım, sayfa sayısı sınırı, gradyan.
-
-`is_leak` LLM'den geliyor ama sonucu **kod uyguluyor**: true ise `render.py`
-görseli ve krediyi tamamen düşürüyor, kart tipografik hale geçiyor. Telif
-kuralı LLM'in iyi niyetine bırakılmadı.
-
-### Üslup filtresi — `style.py`
-Üç denetim, hepsi deterministik:
-
-1. **Yasak kalıp avı** — em-dash ve eğik tırnak, yasak kelime listesi, emoji,
-   büyük harf, 2'den fazla hashtag, "a, b ve c" üçlük kalıbı, soru cümlesiyle
-   başlama (son sayfanın sorusu hariç, o tasarımın parçası).
-2. **Ek denetimi** — yabancı özel isme yanlış Türkçe ek. Sözlükte olan hatalar
-   **yeniden üretim istenmeden otomatik düzeltiliyor** (`autofix_suffixes`):
-   yeniden üretim pahalı ve sonucu belirsiz, ek hatası ise mekanik bir düzeltme.
-3. **Rakam denetimi** — çıktıdaki her rakam dizisi kaynak metinde geçmek zorunda.
-   Geçmiyorsa ihlal. LLM'in en tehlikeli hata tipi bu, çünkü inandırıcı görünüyor.
-
-Doğrulandı (2026-08-25, LLM'siz): uydurma "47 milyon" ve "2019" yakalandı,
-`godot'yu` otomatik `godot'u` oldu, em-dash + emoji + "adeta" yakalandı.
-
-İki kusur bulunup düzeltildi:
-- `tier` alanı ("A") büyük harf denetimine giriyordu. Düz metin olmayan alanlar
-  `NON_PROSE_KEYS` ile ayrıldı.
-- Yasak kelime avı Türkçe işaretlere bağımlıydı: LLM "iste" veya "cigir acan"
-  yazsa filtre kaçırıyordu. Artık karşılaştırma işaretler sadeleştirilerek
-  yapılıyor (`fold()`).
-
-Yeniden üretim döngüsü: en fazla 3 deneme, her denemede önceki ihlal listesi
-isteme ekleniyor. 3'te de temizlenmezse hata dönüyor — kirli metin yayına gitmez.
-
-### Sonraki fazda hatırlanacak
-- `--tier` şu an elle veriliyor. `tier.py` yazılınca oradan gelecek.
-- Görsel `assets/placeholder.png` olarak sabit. `images.py` (Faz 4) devralacak.
-- Tam makale metni **çekilmiyor**, kümedeki tüm kaynakların RSS özeti
-  birleştirilip veriliyor. Kazıma yapmamak için bilinçli tercih; birden fazla
-  özet zaten tek özetten zengin.
-
-### Çözüm: hesap değiştirildi (2026-08-25)
-Engel **başka bir Google hesabıyla** aşıldı. Yeni hesapta aynı kod ilk denemede
-çalıştı, model listesi de 37'den 50'ye çıktı (daha geniş erişim).
-
-**Öğrenilen:** engel projeye değil **hesaba** bağlıydı. Yeni Cloud projesi açmak,
-API'yi enable etmek, anahtarı servis hesabına bağlamak — hiçbiri işe yaramadı.
-Bir daha benzer duvara çarpılırsa ilk denenecek şey hesap değiştirmek olmalı,
-proje ayarlarıyla uğraşmak değil. Eski/yerleşik bir hesap tercih edilir;
-sıfır hesaplar "yeni hesap" filtresine takılabiliyor.
-
-`.env` artık bu ikinci hesabın anahtarını tutuyor. Faturalandırma **bağlı değil**,
-yani ücretlendirilme teknik olarak mümkün değil: kota aşılırsa 429 gelir, borç
-birikmez.
-
-### Model: `gemini-3.6-flash`
-`3.7-flash` ısrarla `503 UNAVAILABLE` (kapasite) döndürdüğü için bir sürüm
-geriye alındı. `3.6`, `3.5`, `3-flash-preview` ve `3.1-flash-lite` sorunsuz.
-
-Buna karşı `api_call()` içine yeniden deneme eklendi: 429/500/502/503'te
-artan bekleme ile 3 kez tekrar. Cron ile çalışan bir bot tek bir yoğunluk
-anında günün postunu düşürmemeli.
-
-### ⚠️ Bulunan ve düzeltilen kritik kusur: işaretsiz Türkçe
-İlk gerçek çıktı "gamescom yine ayni reklamlari sunmaya hazirlaniyor" şeklinde,
-**Türkçe karakterler olmadan** geldi. Sebep istemin kendisiydi: istem ASCII
-Türkçesiyle yazılmıştı, model üslubu birebir kopyaladı.
-
-İki katmanlı düzeltildi:
-1. İstemin tamamı düzgün Türkçeyle yeniden yazıldı (kural metinleri, yazım modu
-   açıklamaları, şema açıklamaları dahil). **LLM istemin üslubunu taklit ediyor,
-   bu yüzden istem kusursuz Türkçe olmak zorunda.**
-2. `style.py` içine denetim: 60 karakterden uzun bir metinde ı/ş/ğ/ü/ö/ç
-   harflerinden hiç yoksa ihlal sayılıyor.
-
-Ayrıca rakam denetimine sayı kelimeleri eklendi: kaynak İngilizce "two hours"
-derken çıktı "2 saat" oluyor, filtre bunu uydurma sanıyordu.
-
-### Doğrulanmış uçtan uca akış
-```
-py -3.12 src/fetch.py                      # 701 kayit -> 193 kume
-py -3.12 src/write.py --index 1 --tier A   # ilk denemede temiz, 4 sayfa
-py -3.12 src/render.py state/draft.json    # 4 PNG
-```
-Çıktı örneği `out/ilk_gercek/`. "karşı görüş" modu gerçekten eleştirel bir
-metin üretti, kalıp cümle çıkmadı.
-
-### Sonraki fazda hatırlanacak (güncel)
-- `studio` null gelirse kartta görsel kredisi **hiç görünmüyor**. Tasarım kuralı
-  "her kartta kredi" diyor. Doğru çözüm: krediyi LLM'den değil `images.py`'den
-  (IGDB) almak — görselin sahibini görselle birlikte gelen veri bilir.
-- LLM tek harflik yazım hatası yapabiliyor (bir denemede "düşüncelerinizi" yerine
-  "dusunceleinizi" çıktı). Filtre bunu yakalamaz. Telegram onayı bu yüzden var.
-
----
-
-## 13. Faz 4 — IGDB görselleri ✅ (2026-08-25)
-
-`src/images.py` — post tarifini alır, görselleri seçer, indirir, tarifi günceller.
-Boru hattındaki yeri: `write.py` → **`images.py`** → `render.py`
-
-```
-py -3.12 src/images.py state/draft.json
-py -3.12 src/images.py state/draft.json --dry-run   # indirmeden sec
-py -3.12 src/images.py state/draft.json --game "Hollow Knight: Silksong"
-```
-
-### Kimlik doğrulama
-IGDB'yi Twitch satın aldı, kimlik Twitch üzerinden. `.env` içinde
-`IGDB_CLIENT_ID` + `IGDB_CLIENT_SECRET`. Uygulama jetonu **her çalışmada
-yeniden alınıyor** — tek istek, önbellek tutmaya değmez ve süresi dolmuş
-jeton derdi hiç doğmaz. (Ölçüm: jeton 58 gün geçerli veriliyor.)
-
-⚠️ Twitch, iki adımlı doğrulama açık olmayan hesaplara uygulama kaydı
-yaptırmıyor. Yeni ortam kurulurken ilk adım bu.
-
-### Görsel seçimi — kod kararı, LLM değil
-`PREFERENCE` tablosu sayfa tipine göre görsel tipini seçer:
-kapak → artwork/cover, iç sayfalar → screenshot, son sayfa → artwork.
-Her sayfaya farklı görsel atanır, hepsi aynı oyundan (tasarım kuralı).
-Görsel tükenirse baştan dolaşır — tekrar, görselsiz kalmaktan iyidir.
-
-Kredi (`görsel: <stüdyo>`) IGDB'nin `involved_companies` verisinden geliyor,
-önce geliştirici sonra yayıncı. **LLM'in tahminine bırakılmadı** — görselin
-sahibini görselle gelen veri bilir. Faz 2'de açık kalan eksik bu şekilde kapandı.
-
-### İki gerçek doğruluk hatası bulundu ve düzeltildi
-
-**1. Boş kayıtlar.** `search "hollow knight silksong"` iki sonuç döndürdü:
-biri Team Cherry'nin gerçek kaydı (7 artwork, 6 screenshot), diğeri "Elvies"
-adlı hiç görseli olmayan bir kayıt. Çözüm: isim benzerliği + görsel sayısına
-göre sıralama, `MIN_IMAGES` eşiği.
-
-**2. Sürüm karışması — daha tehlikelisi.** Haber "the witcher 3"ün DLC'si
-hakkındaydı, LLM oyun adını "the witcher" diye verdi, IGDB 2007'nin ilk
-oyununu getirdi. **Yanlış oyunun görselleri basılacaktı.** İki katmanlı çözüm:
-
-- `write.py` şemasına `search_name` alanı eklendi: kartta görünen ad (`game`,
-  Türkçe/küçük harf) ile IGDB'de aranan ad (tam, İngilizce, sürüm numaralı)
-  artık **ayrı alanlar.** İstemde bu ayrım açıkça anlatılıyor.
-- `images.py` içinde `version_conflict()`: arama bir sürüm numarası
-  içeriyorsa (rakam veya roma rakamı), eşleşme de aynı numarayı içermek
-  zorunda. Yoksa puanı 0.5 düşüyor. Böylece "witcher 3" araması
-  "The Witcher" veya "The Witcher IV" kaydına düşmüyor.
-
-### Eşleşme bulunamazsa
-`NAME_MATCH_MIN` (0.55) altındaki en iyi benzerlikte, veya `search_name` null
-geldiğinde, **görsel hiç kullanılmıyor** ve kartlar tipografik moda düşüyor.
-Yanlış oyunun görselini basmak, görselsiz basmaktan çok daha kötü.
-
-Doğrulandı: "gamescom 2026" (etkinlik haberi) → eşleşme yok → tipografik.
-"the witcher 3: wild hunt" → doğru kayıt, 16 artwork + 12 screenshot,
-kredi "cd projekt red".
-
-### Görsel önbelleği
-İndirilen JPG'ler `state/img/` altında, **git dışı.** Kart PNG'si zaten repoya
-giriyor (Instagram'ın herkese açık URL şartı), kaynak görseli ayrıca tutmak
-gereksiz. Boyut: `t_1080p`.
-
-### Tasarıma eklenen: üst karartma
-Gerçek görsellerle test edilince aydınlık gökyüzü fotoğraflarında sağ üstteki
-görsel kredisi okunmuyordu. `card__topscrim` eklendi: üstten 170px, %40'tan
-şeffafa inen karartma. Karanlık görsellerde farkedilmiyor, aydınlık olanlarda
-krediyi kurtarıyor. Tipografik kartta gizli.
-
----
-
-## 14. Faz 5 — Telegram onay döngüsü ✅ (2026-08-25)
-
-`src/telegram.py` — hem taşıma katmanı hem onay durum makinesi.
-
-```
-py -3.12 src/telegram.py send state/draft.json --cards out/witcher
-py -3.12 src/telegram.py poll
-py -3.12 src/telegram.py say "hata bildirimi"
-```
-
-Bot: `@questpostinstagram_bot`. Chat ID `.env` içinde `TG_CHAT_ID`.
-
-### Chat ID nasıl bulundu
-Telegram chat ID'yi ancak bot bir mesaj **aldıktan sonra** veriyor. Sıra:
-bota `/start` yaz → `getUpdates` → `message.chat.id`. Bu yüzden yeni bir kurulumda
-"bota önce yaz" adımı atlanamaz.
-
-### Komutlar
-| Komut | Karar |
-|---|---|
-| `/ok`, `/otomatik` | `yayinla` |
-| `/bana` | `elle` — kartlar **sıkıştırılmamış dosya** olarak geri yollanır |
-| `/iptal` | `iptal` |
-| `/yeniden` | `yeniden_uret` |
-| `/c` `/b` `/a` `/s` | tier ezilir, tarif güncellenir, `yeniden_bas` |
-| `/gorsel 1 3 5` | görsel seçimi tarife yazılır, `gorsel_degisti` |
-
-`/bana` fotoğraf değil `sendDocument` kullanıyor: Telegram fotoğrafları yeniden
-sıkıştırıyor, kullanıcı o dosyayı indirip Instagram'a atacaksa kalite kaybı olmamalı.
-
-### Durum dosyaları
-- `state/pending.json` — onay bekleyen post, karar sonucu buraya yazılıyor
-- `state/tg_offset.json` — `getUpdates` offset'i. **Aynı komutun iki kez
-  işlenmesini bu önlüyor**; `respond.yml` 5 dakikada bir çalışacağı için şart.
-
-Yazma işlemi geçici-dosya-sonra-taşı yöntemiyle: yarım yazılmış bir state dosyası
-botu kilitler.
-
-Başka bir sohbetten gelen mesajlar yok sayılıyor (`chat.id` karşılaştırması) —
-bot linki birine giderse komut veremez.
-
-### ⚠️ Bulunan kritik hata: Windows yolları
-`pending.json` ilk sürümde yolları `state\draft_witcher.json` şeklinde yazıyordu.
-Bot **GitHub Actions'ta Linux'ta** çalışacak, o yollar orada çözülmez ve
-`respond.yml` sessizce başarısız olurdu. Artık `as_posix()` ile yazılıyor.
-
-Bu genel bir risk: state dosyaları Windows'ta üretilip Linux'ta okunuyor.
-Yeni bir state alanı eklerken yol varsa POSIX biçimde yazılmalı.
-
-### Doğrulanan uçtan uca akış
-```
-fetch.py → write.py → images.py → render.py → telegram.py send
-    → (kullanıcı /ok yazar) → telegram.py poll → karar: yayinla
-```
-5 kart albüm olarak gitti, özet ve komut listesi caption'da, `/ok` okundu,
-`pending.json` `yayinla` durumuna geçti, Telegram'a onay bildirimi düştü.
-
-### Faz 6'ya devredilen
-`durum: yayinla` olan bir `pending.json`'ı `publish.py` alıp Instagram'a
-gönderecek. Kararı telegram.py veriyor, paylaşımı publish.py yapacak.
-
----
-
-## 15. tier.py ve produce.py (2026-08-27)
-
-Faz 7'nin (cron) ön koşulu olan iki parça. `tier.py` dosya yapısında baştan
-vardı ama hiç yazılmamıştı; `produce.py` yol haritasında yoktu, zinciri tek
-komuta indirmek için eklendi.
-
-### `src/tier.py` — tier hesabı
-Ana sinyal **kaç kaynak yazmış**: 4+ → S, 3 → A, 2 → B, 1 → C.
-Üzerine düzelticiler:
-
-| Kural | Etki |
-|---|---|
-| Ayrıştırıcı kaynak (ağırlık ≥ 1.2) | bir kademe yükseltir |
-| indie etiketli kaynak, taban C ise | bir kademe yükseltir |
-| çıkış/devlog haberi, taban C veya B ise | bir kademe yükseltir |
-| yalnızca topluluk kaynağı (reddit) | C'ye sabitler, doğrulanmamış sayılır |
-
-Ölçüm (2026-08-25, 48 saat, 18 kaynak): 4 kaynaklı küme günde 1, 2 kaynaklı 13,
-tek kaynaklı ~180. Yani **S doğal olarak nadir kalıyor**, eşiği zorlamak
-gerekmedi. "Tier eşiklerinin sayısallaştırılması" açık maddesi kapandı.
-
-⚠️ Bilinen tuhaflık: 4 kaynağın yazdığı "gamescom nasıl izlenir" rehberi S
-çıkıyor. Kaynak sayısı haberin **yaygınlığını** ölçüyor, **ilginçliğini**
-değil. Şimdilik kabul: yaygın haber gerçekten büyük haberdir. Rahatsız
-ederse kategori bazlı bir düzeltici eklenir (rehber/liste haberleri bir
-kademe düşürülür).
-
-### `src/produce.py` — üretim zinciri
-`fetch → aday seç → tier → write → images → render → telegram send`
-
-Her aşama **ayrı süreç** olarak koşuyor. Sebep: Actions kaydında hangi
-aşamanın patladığı tek bakışta görünsün.
-
-Kritik davranışlar:
-- **Onay bekleyen post varken yeni üretim yapmıyor.** `pending.json` tek
-  slot; ikinci post birincisini ezerdi.
-- **C kademesi atılmıyor, `state/weekly.json`'a biriktiriliyor** — tasarım
-  kuralı "C tek başına yayınlanmaz, haftalık derleme carousel'ine gider".
-  Eleme değil erteleme.
-- Cevap vermeyen kaynak varsa kayda `UYARI` satırı basıyor.
-- `out/` klasör adı `YYYYMMDD-oyun-adi` biçiminde, çakışma olmuyor.
-
-`--dry-run` Telegram'a yollamadan zinciri deniyor, `--skip-fetch` elde duran
-adaylarla çalışıyor, `--index` aday seçimini elle eziyor.
-
-### Tipografik kart düzeni düzeltildi
-Zincir ilk kez uçtan uca koşunca tipografik kart gerçek veriyle görüldü:
-metin altta, üstte 800px boşluk, kart "bozuk" gibi duruyordu. Görsel olmayan
-kartta içerik artık **dikeyde ortalanıyor** ve başına tier renginde bir çizgi
-konuyor (editoryal afiş düzeni), kapak başlığı 104px'e çıkıyor.
-
-Bu mod sık kullanılacak: sızıntı haberleri **ve** oyun eşleşmeyen her haber
-(etkinlik, şirket, sektör) buraya düşüyor. Ölçüm: gamescom haberi eşleşme
-bulamadı, 5 kartın 5'i tipografik.
-
----
-
-## 16. respond.py — kararların uygulanması (2026-08-27)
-
-### Bulunan kusur
-Faz 5'te Telegram komutları yazıldı ama **sadece `/ok` ve `/bana` gerçekten
-test edildi.** Kullanıcı sordu, bakıldı: `/yeniden`, `/c/b/a/s` ve `/gorsel`
-kararı `pending.json`'a yazıyor ama **hiçbir şey o kararı uygulamıyordu.**
-Kart altındaki komut listesi de bu yüzden çalışmayan düğme gösteriyordu.
-
-`/gorsel` ayrıca teknik olarak da imkânsızdı: `images.py` alternatif görsel
-havuzunu hiç kaydetmiyordu.
-
-### İş bölümü netleşti
-| Dosya | Rol |
-|---|---|
-| `telegram.py` | kayıt memuru — mesaj yollar, komutu okur, kararı `pending.json`'a yazar |
-| `respond.py` | icra — kararı okur, gereken aşamaları çalıştırır |
-
-Bu ayrım olmadan `telegram.py` hem mesajlaşma hem boru hattı yönetimi yapardı.
-
-### Karar tablosu
-| Durum | respond.py ne yapar |
-|---|---|
-| `yayinla` | `publish.py` varsa çağırır; yoksa kullanıcıya "otomatik paylaşım bağlı değil, /bana yaz" der ve kuyruğu **açık bırakır** |
-| `elle` | kartlar zaten yollandı, kuyruğu temizler |
-| `iptal` | kuyruğu temizler |
-| `yeniden_uret` | write → images → render → tekrar sorar |
-| `yeniden_bas` (tier değişti) | render → tekrar sorar |
-| `gorsel_degisti` | images (elle seçimle) → render → tekrar sorar |
-
-`yayinla` durumunda kuyruğun açık bırakılması bilinçli: Faz 6 yokken kuyruğu
-temizlersek post kaybolur, kullanıcı `/bana` diyemez.
-
-### `/gorsel` artık çalışıyor
-`images.py` seçtiği havuzu `_image_pool` olarak tarifeye yazıyor (sıra sabit,
-artwork → screenshot → cover). `--pick 1 3 5` veya tarifedeki `_gorsel_secimi`
-alanı sayfa sayfa havuz sırası alıyor: "1. sayfaya havuzun 1., 2. sayfaya 3.,
-3. sayfaya 5. görseli". Geçersiz numara verilirse o sayfa otomatik seçime
-düşüyor, tüm iş patlamıyor.
-
-`/yeniden` için `write.py` artık `_aday_index` kaydediyor — aynı adayı tekrar
-yazdırabilmek için aday sırası gerekiyor.
-
-### Ders
-Komut listesini kullanıcıya göstermek, o komutu **uygulayan** kodu yazmakla
-aynı iş değil. Bir sonraki arayüz eklemesinde önce icra tarafı yazılacak.
-
----
-
-## 17. Görsel kalitesi ve havuz seçimi (2026-08-27)
-
-Kullanıcı Telegram'daki kartın bulanık olduğunu fark etti. Ölçüldü, sebep
-Telegram sıkıştırması **değildi**; üç ayrı kusur üst üste binmişti.
-
-### Kök sebep: IGDB görsel boyutları uçurum gibi değişiyor
-Ölçüm (Witcher 3 kaydı): aynı oyunun görselleri **600×338 ile 10681×7874**
-arasında. Yanlış kayıtta (bundle) hepsi 600×338. Kod boyuta hiç bakmıyordu,
-sırayla alıyordu.
-
-| Kusur | Düzeltme |
-|---|---|
-| Boyut filtresi yok | `MIN_IMAGE_WIDTH/HEIGHT` (1280×720). Ölçüm: Witcher 3'te 10 görsel elendi |
-| `t_1080p` indiriliyordu | Artık `t_original`, yoksa `t_1080p`'ye düşer. 4K bir artwork varken 1080p istemek anlamsızdı |
-| Kart 1080×1350 basılıyordu | `device_scale_factor = 4/3` → **1440×1800** PNG. Instagram'ın kabul ettiği en büyük genişlik. CSS'e dokunulmadı |
-
-Havuz artık büyükten küçüğe sıralı: **en keskin görsel kapağa gidiyor.**
-
-Kapak (`cover`) tipi boyut filtresinden muaf — IGDB kapakları zaten küçük
-(dikey poster) ve sadece son çare olarak kullanılıyor.
-
-### Telegram önizlemesi ≠ son kalite
-Albüm fotoğrafları Telegram tarafından sıkıştırılıyor. Gerçek dosya `/bana`
-ile `sendDocument` olarak geliyor. Kalite değerlendirmesi albüme bakarak
-yapılmamalı.
-
-### `/gorsel` yeniden tasarlandı
-Eski hâli kullanılamazdı: havuzu görmeden numara vermek isteniyordu.
-Kullanıcı haklı olarak "havuzda ne var bilmiyorum" dedi.
+## 8. Telegram komutları
 
 | Komut | Ne yapar |
 |---|---|
-| `/gorsel` (argümansız) | Aynı oyundan **başka bir set** dener. Havuz kaydırılıyor (`--rotate`), numara ezberlemek gerekmiyor. Günlük ihtiyacın çoğu bu |
-| `/havuz` | Havuzdaki tüm görselleri **numaralandırılmış tek ızgarada** yollar: tip + gerçek boyut yazılı |
-| `/gorsel 4 7 2` | Sayfa sayfa kesin seçim. Ancak `/havuz`'dan sonra anlamlı |
+| `/ok`, `/otomatik` | Onayla. Faz 6 yokken kullanıcıya `/bana` öneriliyor, kuyruk **açık kalıyor** (temizlense post kaybolurdu) |
+| `/bana` | Kartları **sıkıştırılmamış dosya** olarak yollar (`sendDocument`). Telegram fotoğrafları yeniden sıkıştırıyor |
+| `/iptal` | Postu at, kuyruğu boşalt |
+| `/yeniden` | Metni baştan yazdır, kartları bas, tekrar sor |
+| `/c /b /a /s` | Kademeyi ez, kartları yeni renkle bas |
+| `/gorsel` | Aynı oyundan **başka bir set** dene (havuzu kaydırır) |
+| `/gorsel 4 7 2` | Sayfa sayfa kesin seçim |
+| `/havuz` | Havuzdaki tüm görselleri **numaralı ızgarada** yollar (tip + gerçek boyut yazılı) |
+| `/start /help` | Komut listesi |
 
-Kontakt sayfası `render.py --sheet` ile basılıyor, önizlemeler doğrudan
-IGDB'den (`t_screenshot_med`) çekiliyor — indirme yok.
+`state/tg_offset.json` aynı komutun iki kez işlenmesini önlüyor —
+`respond.yml` 5 dakikada bir çalışacağı için şart.
 
-`_gorsel_turu` sayacı tarifede tutuluyor, her `/gorsel` bir artırıyor.
-Doğrulandı: tur 0/1/2 üç farklı set veriyor.
+---
 
-### Ders
-Arayüz tasarlarken "kullanıcı bu bilgiye nereden erişecek" sorusu
-sorulmamıştı. `/gorsel 1 3 5` teknik olarak çalışsa bile kullanılamazdı.
+## 9. Öğrenilen dersler (tekrar etmemek için)
+
+**LLM istemin üslubunu taklit ediyor.** İlk gerçek çıktı Türkçe karakterler
+olmadan geldi ("ayni", "hazirlaniyor") çünkü istem ASCII Türkçesiyle
+yazılmıştı. İstem kusursuz Türkçe olmak zorunda.
+
+**Komut listesini göstermek, o komutu yazmak değildir.** Faz 5'te altı komut
+listelendi ama sadece ikisi çalışıyordu; kararı uygulayan kod yoktu.
+Arayüz eklerken önce icra tarafı yazılmalı.
+
+**Kullanıcının erişemediği bilgi arayüz olamaz.** `/gorsel 1 3 5` teknik
+olarak çalışıyordu ama havuzu göremeyen kullanıcı numara veremezdi.
+`/havuz` bu yüzden var.
+
+**Vision QA "bu iyi mi" diye sorulunca işe yaramıyor.** Bozuk bir kart
+(görsel %25'e inmiş, krem %75) modele soruldu, "tamam" dedi. Aynı kart
+sayısal kriterli ve önce gözlem yaptıran istemle sorulunca doğru yakalandı.
+**Ölçülebilir kriter + gözlem-önce şart.** Ayrıntı: bölüm 11.
+
+**Windows'ta üretilen state Linux'ta okunuyor.** `pending.json` yolları
+ters bölü ile yazılıyordu; Actions'ta sessizce çalışmazdı. Yol yazarken
+`as_posix()`.
+
+**IGDB görsel boyutları uçurum gibi değişiyor.** Aynı oyunun görselleri
+600x338 ile 10681x7874 arasında. Filtre olmadan bulanık kart basılıyordu.
+Ayrıca IGDB kapak metadata'sı küçük boyut raporluyor ama `t_original`
+çok daha büyüğünü veriyor.
+
+**Windows konsolu cp1254.** Betiklerin başında stdout/stderr utf-8'e
+çevriliyor, yoksa Türkçe başlık basarken çöküyor.
+
+**Bash heredoc kaçış karakterlerini bozuyor.** Python dosyalarına metin
+yazarken düzenleme aracı kullanılmalı, heredoc değil.
+
+**Satır içi stil enjekte edilen CSS'i ezer.** `--tier` değişkeni
+`style.setProperty` ile basıldığı için stylesheet'ten değiştirilemiyor.
+
+---
+
+## 10. Ayarlanabilir eşikler
+
+| Dosya | Sabit | Değer | Ne yapar |
+|---|---|---|---|
+| `fetch.py` | `CLUSTER_THRESHOLD` | 0.30 | IDF ağırlıklı başlık benzerliği |
+| | `MIN_SHARED_IDF` | 3.0 | paylaşılan kelimelerin kanıt kütlesi |
+| | `BRIDGE_DF` / `BRIDGE_THRESHOLD` | 2 / 0.15 | özel isim köprüsü |
+| `tier.py` | `SOURCE_TIERS` | 4→S, 3→A, 2→B, 1→C | kademe tabanı |
+| | `DISTINCTIVE_WEIGHT` | 1.2 | ayrıştırıcı kaynak eşiği |
+| `images.py` | `NAME_MATCH_MIN` | 0.55 | oyun adı benzerliği |
+| | `MIN_IMAGE_WIDTH/HEIGHT` | 1280x720 | görsel çözünürlük tabanı |
+| `write.py` | `DEFAULT_MODEL` | gemini-3.6-flash | sürüm sabit |
+| | `MAX_ATTEMPTS` | 3 | üslup filtresi yeniden üretim |
+| `render.py` | `SCALE` | 4/3 | 1080x1350 → 1440x1800 |
+| `card.html` | `FADE` / `BREATH` | 330 / 38 px | gradyan geçişi |
+
+Kümeleme geçmişi: düz Jaccard hiç birleştirmiyordu; "nadir kelime zorunlu"
+kuralı **büyük haberleri eliyordu** (çok kaynak yazınca kelime sıklaşıyor).
+Çalışan hâl: IDF oranı + kanıt kütlesi + özel isim köprüsü.
+Ölçüm: 701 kayıt → 221 pencerede → 193 küme, 13'ü çok kaynaklı.
+
+---
+
+## 11. Sıradaki işler — detay
+
+### Faz 7 · workflow'lar
+- `produce.yml` — cron günde 3 kez, `produce.py` çağırır
+- `respond.yml` — cron 5 dk, `respond.py` çağırır
+- `refresh_token.yml` — aylık, Instagram token yenileme (Faz 6'ya bağlı)
+- `urgent.yml` — `workflow_dispatch` iskeleti, son dakika haberi
+- Playwright/Chromium kurulumu önbelleğe alınmalı, yoksa her çalışmada
+  ~120 MB indirilir
+- Bot state dosyalarını kendi commit'ler, Actions write izni şart
+
+### Faz 6 · Instagram
+Facebook Sayfası + Meta developer app + hesabı Instagram Tester olarak ekleme.
+PNG repoya commit edilip `raw.githubusercontent.com` linki API'ye verilecek
+(Graph API dosya yüklemiyor, herkese açık URL istiyor). Uzun ömürlü token
+60 günde ölüyor.
+
+Not: Graph API lisanslı müzik eklemeyi desteklemiyor; S kademesi postlarda
+`/bana` tercih edilebilir.
+
+### `qa.py` · görsel denetim — tasarım oturdu, artık yazılabilir
+Kullanıcının talebi. Kanıtlanmış tasarım:
+
+**Katman 1 — kod (bedava, anında, tutarlı).** `render.py` zaten metin bloğu
+yüksekliğini ve krem oranını ölçüyor; eşik koymak yeter. Bozuk kart örneği
+krem %78'de yakalanıyordu. Çözünürlük denetimi `images.py` içinde zaten var.
+
+**Katman 2 — vision (kodun göremediği).** Görsel konuya uygun mu, kırpma
+tuhaf mı, yabancı logo veya arayüz var mı. Ölçüm: kart başına **1222 token,
+~9 saniye**; günde 15 görsel ≈ 18 bin token, ücretsiz katmanın çok altında.
+
+Kurallar: rubrik ayrı dosyada (`templates/qa_rubric.md`) — değiştirmek commit
+gerektirsin · `temperature 0` · **sınırlı karar kümesi** (`tamam` /
+`metin_kisalt` / `gorsel_degistir` / `elle_bak`), model çözüm uyduramasın ·
+kararlar `state/qa_log.json` içine yazılsın · **en fazla 2 düzeltme turu**,
+sonra "bot 2 kez denedi" notuyla Telegram'a gitsin.
+
+Ayrıca metin QA düşünülebilir: üslup filtresi yazım hatası yakalayamıyor
+(bir denemede "düşüncelerinizi" yerine "dusunceleinizi" çıktı).
+
+### Esnek sayfa sayısı — KULLANICI İSTEMİ BEKLİYOR
+Şu an `write.py` istemi "3-5 sayfa" diyor. Kullanıcı bunun esnemesini
+istiyor: **flash haber tek sayfa, derin haber 8-10 sayfa.** Sayfa göstergesi
+ve `render.py` zaten esnek (`1/1`, `1/10` sorunsuz çalışıyor); değişecek olan
+tek şey istemdeki sayfa sayısı kuralı ve hangi haberin kaç sayfa hak ettiğine
+dair yönerge. **Kullanıcı bu istemi kendisi verecek.**
+
+---
+
+## 12. Bilinen sınırlar ve açık maddeler
+
+- **Otomasyon arzı çözer, dağıtımı çözmez.** Hesap yeni, ilk aylarda erişim
+  düşük olacak. Büyümeyi haber değil evergreen içerik sağlar.
+- Elle 3-5 post atma tavsiyesi **kullanıcı tarafından bilerek atlandı**
+  (deney amaçlı, risk kabul edildi).
+- Kümeleme tek dilde çalışıyor. TR kaynaklar `feeds.json` içinde
+  `enabled: false` — karışık dilde "kaç kaynak yazmış" sinyali bozuluyordu.
+- Kaynak sayısı haberin **yaygınlığını** ölçüyor, **ilginçliğini** değil.
+  4 kaynağın yazdığı "gamescom nasıl izlenir" rehberi S çıkıyor. Rahatsız
+  ederse kategori bazlı düzeltici eklenebilir.
+- Tam makale metni çekilmiyor, kümedeki kaynakların RSS özetleri
+  birleştiriliyor (kazıma yapmamak için bilinçli tercih).
+- Steam yeni çıkanlar için RSS yok, ayrı modül gerekir. TR stüdyo duyuruları
+  için ortak besleme yok.
+- Evergreen içerik (`/evergreen <konu>`) ve haftalık C derlemesi
+  (`state/weekly.json` doluyor) henüz üretilmiyor.
+- Kart dokusu (grain, hafif baskı kayması) düşünülmüştü, yapılmadı.
+- `telegram.py` içindeki `TIER_LABELS` ile `render.py` içindeki `TIERS`
+  ayrı duruyor; kademe adı iki yerde. Değiştirilirse ikisi de güncellenmeli.
+- `out/` klasörü repoya commit edilir (Instagram'ın herkese açık URL şartı).
+  Şu an boş; üretim çalıştıkça `YYYYAAGG-oyun-adi/` klasörleri birikecek.
+
+---
+
+## 13. Doğrulama komutları
+
+```bash
+py -3.12 -m pip install -r requirements.txt
+py -3.12 -m playwright install chromium
+
+py -3.12 src/fetch.py --print
+py -3.12 src/tier.py
+py -3.12 src/render.py examples/sample_post.json --out out/deneme
+py -3.12 src/write.py --list-models
+py -3.12 src/produce.py --dry-run
+py -3.12 src/respond.py
+```
+
+İlk üçü anahtarsız çalışır. `--dry-run` Telegram'a yollamaz.

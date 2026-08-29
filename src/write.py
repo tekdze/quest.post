@@ -166,7 +166,7 @@ SCHEMA = """{
     {"type": "numbers", "title": "3-5 kelime",
      "metrics": [{"value": "18 m$", "label": "ne olduğu, en fazla 8 kelime"}]},
     {"type": "outro", "question": "tek soru, 6-12 kelime",
-     "ctas": ["yumuşak çağrı", "yumuşak çağrı"]}
+     "ctas": ["tek yumuşak çağrı"]}
   ]
 }"""
 
@@ -203,8 +203,9 @@ def build_prompt(candidate: dict, source_text: str, mode: str,
         "9. 'a, b ve c' şeklinde üç öğeli liste kalıbı kurma.",
         "10. Yabancı özel isimlere Türkçe ek eklerken okunuşa göre seç:",
         "    godot'u (godot'yu DEĞİL), steam'de, unity'yi, valve'ın, xbox'ta, epic'te.",
-        "11. Son sayfada 'takip et', 'beğen', 'paylaş' gibi çağrılar yasak.",
-        "    İki çağrı da yumuşak olacak: merak veya düşünce davet eden cümleler.",
+        "11. Son sayfada TEK çağrı yazılır ve yumuşak olur: okuru düşünmeye",
+        "    veya yorum yazmaya davet eden bir cümle. 'beğen', 'paylaş' yazma;",
+        "    takip daveti zaten kartın kendisinde sabit metin olarak var.",
         "12. Yazım hatası yapma. Metni yazdıktan sonra harf harf kontrol et.",
         "13. search_name alanı ÇEVİRİLMEZ ve KISALTILMAZ. Kaynakta hangi oyundan",
         "    bahsediliyorsa onun tam İngilizce adını yaz, sürüm numarası dahil.",

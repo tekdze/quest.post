@@ -110,8 +110,6 @@ def check_patterns(spec: dict) -> list[str]:
     problems: list[str] = []
 
     for path, text in strings_of(spec):
-        low = text.lower()
-
         for char, name in BANNED_CHARS.items():
             if char in text:
                 problems.append(f"{path}: yasak karakter {name} ({char!r})")

@@ -22,6 +22,7 @@ function el(tag, cls, text) {
 
 function buildCard(data) {
   const page = data.page;
+
   const hasImage = Boolean(page.image);
 
   const card = el("div", `card card--${page.type}` + (hasImage ? "" : " card--typographic"));
@@ -38,18 +39,22 @@ function buildCard(data) {
   card.appendChild(el("div", "card__strip"));
 
   if (data.credit) {
-    card.appendChild(el("div", "credit", "görsel: " + data.credit));
+    card.appendChild(el("div", "credit", "@" + data.credit));
+  }
+
+  if (data.page_marker) {
+    card.appendChild(el("div", "marker", data.page_marker));
   }
 
   const content = el("div", "card__content");
   content.id = "content";
 
   if (page.type === "cover") {
-    content.appendChild(el("div", "kicker", `${data.tier_label} · ${data.category}`));
+    content.appendChild(el("div", "kicker", data.tier_label));
+    content.appendChild(el("div", "category", data.category));
     content.appendChild(el("h1", "title", page.title));
     const foot = el("div", "footline");
     foot.appendChild(el("span", null, data.game));
-    foot.appendChild(el("span", null, page.page_count));
     content.appendChild(foot);
   }
 
@@ -77,17 +82,27 @@ function buildCard(data) {
 
   if (page.type === "outro") {
     content.appendChild(el("h2", "title", page.question));
+
+    // Tek cagri kutusu. Iki kutu vardi, zayif metne esit agirlik veriyordu.
     const ctas = el("div", "ctas");
-    page.ctas.forEach(t => ctas.appendChild(el("div", "cta", t)));
+    ctas.appendChild(el("div", "cta", page.ctas[0]));
     content.appendChild(ctas);
 
     const colophon = el("div", "colophon");
-    colophon.appendChild(el("div", "colophon__mark"));
-    const meta = el("div");
+    const meta = el("div", "colophon__meta");
     meta.appendChild(el("div", "colophon__handle", data.handle));
     meta.appendChild(el("div", "colophon__tagline", data.tagline));
     colophon.appendChild(meta);
-    content.appendChild(colophon);
+    // Tier adi kunyede yaziyla da gecsin: renk tek basina okunmuyor.
+    const tier = el("div", "colophon__tier");
+    tier.appendChild(el("span", "colophon__tierlabel", "haberin kademesi"));
+    tier.appendChild(el("span", "colophon__tiername", data.tier_label));
+    colophon.appendChild(tier);
+
+    const foot = el("div", "outro__foot");
+    foot.appendChild(colophon);
+    foot.appendChild(el("div", "follow", data.follow));
+    content.appendChild(foot);
   }
 
   card.appendChild(content);
