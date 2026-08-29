@@ -1,0 +1,46 @@
+{
+  "_kaynak": "https://kotaku.com/xbox-calls-next-gen-project-helix-a-family-of-devices-but-isnt-ready-to-say-if-elder-scrolls-6-will-be-exclusive-2000729562",
+  "_aday_index": 1,
+  "_kaynak_sayisi": 3,
+  "_is_leak": false,
+  "tier": "A",
+  "category": "tartışma",
+  "game": "xbox",
+  "search_name": null,
+  "credit": null,
+  "pages": [
+    {
+      "type": "cover",
+      "title": "yeni xbox konsol ailesi geliyor",
+      "image": null
+    },
+    {
+      "type": "text",
+      "title": "donanım planları detaylandı",
+      "paragraph": "microsoft yeni nesil cihaz projelerini şekillendirmeye başladı. gamescom etkinliğinde yapılan açıklamalar tek bir konsol yerine geniş bir donanım ailesinin yolda olduğunu gösteriyor.",
+      "bullets": [
+        "project helix tek cihazla sınırlı kalmayacak",
+        "microsoft geniş bir donanım ailesi hazırlıyor"
+      ],
+      "image": null
+    },
+    {
+      "type": "text",
+      "title": "özel oyun belirsizliği sürecek",
+      "paragraph": "yeni oyunların diğer platformlara çıkıp çıkmayacağı sorusu henüz yanıt bulmadı. şirket yönetimi platformların büyümesi için özel içeriklerin şart olduğunu savunuyor.",
+      "bullets": [
+        "the elder scrolls 6 için henüz karar verilmedi",
+        "gears of war e-day özel oyunlar arasında"
+      ],
+      "image": null
+    },
+    {
+      "type": "outro",
+      "question": "sizce yeni konsol neslinde özel oyunlar şart mı",
+      "ctas": [
+        "görüşlerinizi yorumlarda belirtebilirsiniz"
+      ],
+      "image": null
+    }
+  ]
+}
