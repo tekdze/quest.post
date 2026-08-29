@@ -1,19 +1,20 @@
 {
   "kuyruk": [
     {
-      "id": "20260829-squadron-42",
+      "id": "20260829-call-of-duty-modern-warfare-4",
       "etiket": "normal",
       "durum": "onay_bekliyor",
-      "baslik": "squadron 42",
-      "draft": "state/drafts/20260829-squadron-42.json",
-      "cards_dir": "out/20260829-squadron-42",
+      "baslik": "call of duty: modern warfare 4",
+      "draft": "state/drafts/20260829-call-of-duty-modern-warfare-4.json",
+      "cards_dir": "out/20260829-call-of-duty-modern-warfare-4",
       "message_ids": [
-        73,
-        74,
-        75,
-        76
+        86,
+        87,
+        88,
+        89,
+        90
       ],
-      "tier": "B"
+      "tier": "A"
     }
   ]
 }

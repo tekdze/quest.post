@@ -1,0 +1,176 @@
+{
+  "_kaynak": "https://www.alphabetagamer.com/call-of-duty-modern-warfare-4-open-beta",
+  "_aday_index": 1,
+  "_kaynak_sayisi": 2,
+  "_is_leak": false,
+  "_model": "gemini-3.6-flash",
+  "tier": "A",
+  "category": "demo",
+  "caption": "yeni call of duty yapımı açık beta dönemiyle birlikte hilecilere karşı daha sert bir yaklaşım sergiliyor. diğer çok oyunculu yapımların aksine süreç sadece yazılımsal önlemlerle sınırlandırılmıyor. #callofduty #gaming",
+  "game": "call of duty: modern warfare 4",
+  "search_name": "call of duty: modern warfare 4",
+  "image_candidates": [],
+  "series_fallback": [
+    "call of duty: modern warfare iii",
+    "call of duty: modern warfare ii"
+  ],
+  "representative_games": [],
+  "credit": "infinity ward",
+  "pages": [
+    {
+      "type": "cover",
+      "title": "yeni call of duty beta ve hile savaşı",
+      "image": "state/img/call-of-duty-modern-warfare-4-ar604o.jpg",
+      "credit": "infinity ward"
+    },
+    {
+      "type": "text",
+      "title": "küresel kriz ve açık beta",
+      "paragraph": "diğer çevrim içi nişancı oyunları sadece harita çeşitliliğine odaklanırken yeni yapım hikaye aksiyonunu açık betaya taşıyor. kuzey kore işgaliyle başlayan kaos ortamında oyuncular hem cephe savaşını hem de kaptan price eşliğindeki gizli operasyonları deneyimliyor.",
+      "bullets": [
+        "tüm platformlarda açık beta dönemi",
+        "kaptan price ile gizli operasyonlar"
+      ],
+      "image": "state/img/call-of-duty-modern-warfare-4-sc13i3n.jpg",
+      "credit": "infinity ward"
+    },
+    {
+      "type": "text",
+      "title": "rakiplere kıyasla sert hamle",
+      "paragraph": "pazardaki çoğu rakip sadece yazılımsal engellerle yetinirken seri bu kez doğrudan hile üreticilerini hedef alıyor. yasal yaptırımlarla çıkış öncesi daha temiz bir çok oyunculu ortam hedefleniyor.",
+      "bullets": [
+        "yasal süreçlerle doğrudan engelleme",
+        "çıkış öncesi temiz sunucu hedefi"
+      ],
+      "image": "state/img/call-of-duty-modern-warfare-4-sc13i3o.jpg",
+      "credit": "infinity ward"
+    },
+    {
+      "type": "numbers",
+      "title": "hile üreticilerine yasal darbe",
+      "metrics": [
+        {
+          "value": "80",
+          "label": "hile geliştiricisine gönderilen resmi ihtarname"
+        }
+      ],
+      "image": "state/img/call-of-duty-modern-warfare-4-sc13i3p.jpg",
+      "credit": "infinity ward"
+    },
+    {
+      "type": "outro",
+      "question": "yasal adımlar oyunlardaki hile sorununu tamamen çözebilir mi",
+      "ctas": [
+        "düşüncelerinizi yorumlarda paylaşabilirsiniz"
+      ],
+      "image": "state/img/call-of-duty-modern-warfare-4-ar604s.jpg",
+      "credit": "infinity ward"
+    }
+  ],
+  "_hashes": [
+    "3b45bafcea42345b",
+    "648369fe3f9456fc"
+  ],
+  "_kume_key": "3b45bafcea42345b",
+  "_gorsel_temsili": false,
+  "_image_pool": [
+    {
+      "id": "ar604o",
+      "kind": "artwork",
+      "w": 3840,
+      "h": 2160,
+      "credit": "infinity ward",
+      "oyun": "Call of Duty: Modern Warfare 4"
+    },
+    {
+      "id": "ar604s",
+      "kind": "artwork",
+      "w": 3840,
+      "h": 2160,
+      "credit": "infinity ward",
+      "oyun": "Call of Duty: Modern Warfare 4"
+    },
+    {
+      "id": "ar604r",
+      "kind": "artwork",
+      "w": 3840,
+      "h": 2160,
+      "credit": "infinity ward",
+      "oyun": "Call of Duty: Modern Warfare 4"
+    },
+    {
+      "id": "ar5y29",
+      "kind": "artwork",
+      "w": 1496,
+      "h": 842,
+      "credit": "infinity ward",
+      "oyun": "Call of Duty: Modern Warfare 4"
+    },
+    {
+      "id": "sc13i3n",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "infinity ward",
+      "oyun": "Call of Duty: Modern Warfare 4"
+    },
+    {
+      "id": "sc13i3o",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "infinity ward",
+      "oyun": "Call of Duty: Modern Warfare 4"
+    },
+    {
+      "id": "sc13i3p",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "infinity ward",
+      "oyun": "Call of Duty: Modern Warfare 4"
+    },
+    {
+      "id": "sc13i3q",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "infinity ward",
+      "oyun": "Call of Duty: Modern Warfare 4"
+    },
+    {
+      "id": "sc13i3r",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "infinity ward",
+      "oyun": "Call of Duty: Modern Warfare 4"
+    },
+    {
+      "id": "sc13i3s",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "infinity ward",
+      "oyun": "Call of Duty: Modern Warfare 4"
+    },
+    {
+      "id": "sc13i3t",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "infinity ward",
+      "oyun": "Call of Duty: Modern Warfare 4"
+    },
+    {
+      "id": "coc4mu",
+      "kind": "cover",
+      "w": 1440,
+      "h": 1920,
+      "credit": "infinity ward",
+      "oyun": "Call of Duty: Modern Warfare 4"
+    }
+  ],
+  "_slug": "call-of-duty-modern-warfare-4",
+  "_gorsel_turu": 0
+}
