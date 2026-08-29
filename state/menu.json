@@ -1,7 +1,7 @@
 {
-  "olusturuldu": "2026-08-29T16:39:30+00:00",
+  "olusturuldu": "2026-08-29T16:43:36+00:00",
   "oneri": 6,
-  "gerekce": "büyük sızıntı ve mizahi resmi yanıt yüksek etkileşim potansiyeli taşır",
+  "gerekce": "mega mewtwo kartı duyurusu popülerliği sayesinde yüksek etkileşim ve yorum getirir",
   "adaylar": [
     {
       "sira": 1,
@@ -11,7 +11,7 @@
       "kaynak_sayisi": 2,
       "url": "https://www.polygon.com/star-wars-zero-company-anakin-skywalker-mission",
       "oyun_adi": "Star Wars Zero Company",
-      "ozet": "bir görevde anakin skywalker görünüp oyunculara jedi gücü yaşatıyor",
+      "ozet": "anakin skywalker oyundaki bir görevde güçlü bir jedi olarak yer alıyor",
       "gorsel": {
         "durum": "var",
         "sayi": 12,
@@ -28,8 +28,8 @@
       "title": "Silent Hill Townfall taps back into analog horror, but its tech is \"never going to lie to you\"",
       "kaynak_sayisi": 2,
       "url": "https://www.pcgamesn.com/silent-hill-townfall/interview-gamescom-analog-horror",
-      "oyun_adi": "Silent Hill: Townfall",
-      "ozet": "oyundaki crt tv ve teknoloji oyuncunun güvenebileceği tek şey olacak",
+      "oyun_adi": "Silent Hill Townfall",
+      "ozet": "oyundaki crt ekran teknolojisi güvenebileceğiniz nadir unsurlardan biri oluyor",
       "gorsel": {
         "durum": "var",
         "sayi": 14,
@@ -37,7 +37,7 @@
         "seri_sayi": 0,
         "seri": null
       },
-      "baslik": "Silent Hill: Townfall"
+      "baslik": "Silent Hill Townfall"
     },
     {
       "sira": 3,
@@ -47,7 +47,7 @@
       "kaynak_sayisi": 2,
       "url": "https://www.eurogamer.net/panic-playdate-tariff-refunds-customers",
       "oyun_adi": null,
-      "ozet": "panic firması mahkeme kararıyla aldığı gümrük vergisi iadelerini müşterilerine ödeyecek",
+      "ozet": "panic mahkeme kararıyla aldığı gümrük vergisi iadelerini müşterilerine aktarıyor",
       "gorsel": {
         "durum": "yok",
         "sayi": 0,
@@ -65,7 +65,7 @@
       "kaynak_sayisi": 2,
       "url": "https://www.nintendolife.com/features/talking-point-what-are-you-playing-this-weekend-29th-august",
       "oyun_adi": null,
-      "ozet": "nintendo hayranları için haftalık sohbet ve oyun değerlendirme yazısı yayınlandı",
+      "ozet": "hafta sonu oyun planlarını tartışmaya açan topluluk sohbet başlığı yayımlandı",
       "gorsel": {
         "durum": "yok",
         "sayi": 0,
@@ -79,37 +79,37 @@
       "sira": 5,
       "aday_index": 5,
       "tier": "B",
-      "title": "Pokémon TCG Pocket adds a game-changing new kind of card this October",
+      "title": "A Modern Warfare 4 open beta update adds the new big-team Combat Outpost mode",
       "kaynak_sayisi": 2,
-      "url": "https://www.polygon.com/pokemon-tcg-pocket-dual-type-cards",
-      "oyun_adi": "Pokémon TCG Pocket",
-      "ozet": "ekim ayında oyuna mega mewtwo x ex ile çift tipli kartlar eklenecek",
+      "url": "https://www.pcgamesn.com/call-of-duty-modern-warfare-4/mw4-open-beta-patch-notes-august-29",
+      "oyun_adi": "Call of Duty: Modern Warfare 4",
+      "ozet": "açık betaya yeni combat outpost modu haritalar ve silah dengelemeleri eklendi",
       "gorsel": {
         "durum": "var",
-        "sayi": 2,
-        "oyun": "Pokémon Trading Card Game Pocket",
-        "seri_sayi": 2,
-        "seri": "Pokémon Scarlet"
+        "sayi": 12,
+        "oyun": "Call of Duty: Modern Warfare 4",
+        "seri_sayi": 0,
+        "seri": null
       },
-      "baslik": "Pokémon TCG Pocket"
+      "baslik": "Call of Duty: Modern Warfare 4"
     },
     {
       "sira": 6,
       "aday_index": 6,
       "tier": "B",
-      "title": "EA breaks its silence after Iron Man gameplay leak, admitting \"well, that didn't go as planned\"",
+      "title": "Pokémon TCG Pocket adds a game-changing new kind of card this October",
       "kaynak_sayisi": 2,
-      "url": "https://www.eurogamer.net/ea-motive-iron-man-leak-response-tweet",
-      "oyun_adi": "Iron Man",
-      "ozet": "ea sızan oyun görüntülerini doğruladı ve esprili bir açıklama yaptı",
+      "url": "https://www.polygon.com/pokemon-tcg-pocket-dual-type-cards",
+      "oyun_adi": "Pokémon TCG Pocket",
+      "ozet": "çift tür kartlar ekim ayında mega mewtwo x ex ile geliyor",
       "gorsel": {
         "durum": "var",
-        "sayi": 5,
-        "oyun": "Iron Man",
-        "seri_sayi": 0,
-        "seri": null
+        "sayi": 2,
+        "oyun": "Pokémon Trading Card Game Pocket",
+        "seri_sayi": 10,
+        "seri": "Pokémon: Let's Go, Eevee!"
       },
-      "baslik": "Iron Man"
+      "baslik": "Pokémon TCG Pocket"
     }
   ]
 }

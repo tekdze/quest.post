@@ -251,8 +251,11 @@ def main() -> int:
         row["baslik"] = oyun or (row["title"][:52].rstrip() + "..."
                                  if len(row["title"]) > 52 else row["title"])
         isaret = " <- ONERI" if row["sira"] == oneri else ""
+        sayim = str(row["gorsel"]["sayi"])
+        if row["gorsel"].get("seri_sayi"):
+            sayim += f"+{row['gorsel']['seri_sayi']} seri"
         print(f"  {row['sira']}. [{row['tier']}] {row['baslik']} "
-              f"| gorsel {row['gorsel']['durum']} ({row['gorsel']['sayi']}){isaret}")
+              f"| gorsel {row['gorsel']['durum']} ({sayim}){isaret}")
 
     metin = menu_metni(rows, oneri, gerekce)
 
