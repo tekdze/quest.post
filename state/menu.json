@@ -1,7 +1,7 @@
 {
-  "olusturuldu": "2026-08-29T16:06:36+00:00",
+  "olusturuldu": "2026-08-29T16:18:34+00:00",
   "oneri": 6,
-  "gerekce": "gta 6'yı suçlamaları yüksek etkileşim ve yorum potansiyeli yaratıyor.",
+  "gerekce": "sızıntı sonrası ea'in esprili ve samimi yanıtı yüksek etkileşim çeker.",
   "adaylar": [
     {
       "sira": 1,
@@ -46,7 +46,7 @@
         "sayi": 0,
         "oyun": null
       },
-      "baslik": "Playdate maker Panic is passing tariff refunds on to"
+      "baslik": "Playdate maker Panic is passing tariff refunds on to..."
     },
     {
       "sira": 4,
@@ -61,15 +61,30 @@
         "sayi": 0,
         "oyun": null
       },
-      "baslik": "Talking Point: What Are You Playing This Weekend? (2"
+      "baslik": "Talking Point: What Are You Playing This Weekend? (2..."
     },
     {
       "sira": 5,
       "aday_index": 5,
       "tier": "B",
-      "title": "EA Acknowledges Iron Man Gameplay Leak: \"Well, That Didn't Go As Planned\"",
+      "title": "Pokémon TCG Pocket adds a game-changing new kind of card this October",
       "kaynak_sayisi": 2,
-      "url": "https://www.polygon.com/ea-acknowledges-iron-man-leak",
+      "url": "https://www.polygon.com/pokemon-tcg-pocket-dual-type-cards",
+      "oyun_adi": "Pokémon TCG Pocket",
+      "gorsel": {
+        "durum": "az",
+        "sayi": 2,
+        "oyun": "Pokémon Trading Card Game Pocket"
+      },
+      "baslik": "Pokémon TCG Pocket"
+    },
+    {
+      "sira": 6,
+      "aday_index": 6,
+      "tier": "B",
+      "title": "EA breaks its silence after Iron Man gameplay leak, admitting \"well, that didn't go as planned\"",
+      "kaynak_sayisi": 2,
+      "url": "https://www.eurogamer.net/ea-motive-iron-man-leak-response-tweet",
       "oyun_adi": "Iron Man",
       "gorsel": {
         "durum": "var",
@@ -77,21 +92,6 @@
         "oyun": "Iron Man"
       },
       "baslik": "Iron Man"
-    },
-    {
-      "sira": 6,
-      "aday_index": 6,
-      "tier": "B",
-      "title": "Squadron 42 delayed to 2027, with Star Citizen dev blaming GTA 6",
-      "kaynak_sayisi": 2,
-      "url": "https://www.eurogamer.net/squadron-42-delayed-2027-gta-6",
-      "oyun_adi": "Squadron 42",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 25,
-        "oyun": "Squadron 42"
-      },
-      "baslik": "Squadron 42"
     }
   ]
 }
