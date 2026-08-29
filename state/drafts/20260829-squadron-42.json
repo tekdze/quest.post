@@ -1,0 +1,271 @@
+{
+  "_kaynak": "https://www.rockpapershotgun.com/star-citizen-spinoff-squadron-42-has-been-delayed-yet-again-citing-everyone-going-gaga-for-gta-6-even-if-it-isnt-coming-to-pc-yet",
+  "_aday_index": 1,
+  "_kaynak_sayisi": 2,
+  "_is_leak": false,
+  "_model": "gemini-3.6-flash",
+  "tier": "B",
+  "category": "güncelleme",
+  "caption": "star citizen evreninde geçen tek kişilik hikaye modu squadron 42 belirsizliğe sürüklenmeye devam ediyor. stüdyo başkanı chris roberts oyunun gta 6 fırtınasında kaybolmasından çekindiklerini belirtti. yıllardır bitmeyen geliştirme süreciyle bilinen proje bir kez daha takvim değiştirdi. #squadron42 #gta6",
+  "game": "squadron 42",
+  "search_name": "Squadron 42",
+  "image_candidates": [
+    "Grand Theft Auto VI",
+    "Star Citizen"
+  ],
+  "series_fallback": [
+    "Star Citizen"
+  ],
+  "representative_games": [],
+  "credit": "cloud imperium games corporation",
+  "pages": [
+    {
+      "type": "cover",
+      "title": "gta 6 fırtınası squadron 42 projesini erteletti",
+      "image": "state/img/squadron-42-ar459y.jpg",
+      "credit": "cloud imperium games corporation"
+    },
+    {
+      "type": "text",
+      "title": "rakip devlerin çakışma çekincesi",
+      "paragraph": "yıllardır çıkışı beklenen squadron 42 erteleme serisine bir yenisini ekledi. stüdyo yönetimi gta 6 gibi dev bir yapımın yaratacağı ilginin gölgesinde kalmak istemediğini belirtti.",
+      "bullets": [
+        "tek kişilik hikaye modu gecikiyor",
+        "dev rakibin gölgesinde kalma çekincesi"
+      ],
+      "image": "state/img/squadron-42-scvgzj.jpg",
+      "credit": "cloud imperium games corporation"
+    },
+    {
+      "type": "numbers",
+      "title": "açıklanan yeni tarih",
+      "metrics": [
+        {
+          "value": "2027",
+          "label": "squadron 42 için duyurulan ertelenmiş çıkış yılı"
+        }
+      ],
+      "image": "state/img/squadron-42-scvgzl.jpg",
+      "credit": "cloud imperium games corporation"
+    },
+    {
+      "type": "outro",
+      "question": "sizce bu ertelemenin arkasında gta 6 mı yoksa bitmeyen geliştirme süreci mi var",
+      "ctas": [
+        "düşüncelerinizi yorumlarda yazabilirsiniz"
+      ],
+      "image": "state/img/squadron-42-ar4d6p.jpg",
+      "credit": "cloud imperium games corporation"
+    }
+  ],
+  "_hashes": [
+    "7f77e7c121027759",
+    "95f263c4b69a6a79"
+  ],
+  "_kume_key": "7f77e7c121027759",
+  "_gorsel_temsili": false,
+  "_image_pool": [
+    {
+      "id": "ar459y",
+      "kind": "artwork",
+      "w": 12267,
+      "h": 6900,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    },
+    {
+      "id": "ar4d6p",
+      "kind": "artwork",
+      "w": 2710,
+      "h": 1638,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    },
+    {
+      "id": "ar48j8",
+      "kind": "artwork",
+      "w": 2048,
+      "h": 1152,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    },
+    {
+      "id": "ar3me1",
+      "kind": "artwork",
+      "w": 2048,
+      "h": 899,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    },
+    {
+      "id": "scvgzj",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 1636,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    },
+    {
+      "id": "scvgzl",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 1636,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    },
+    {
+      "id": "scvgzn",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 1636,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    },
+    {
+      "id": "scvgzk",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 1636,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    },
+    {
+      "id": "scvgzo",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 1636,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    },
+    {
+      "id": "scwx5j",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 1624,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    },
+    {
+      "id": "scwx5n",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 1624,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    },
+    {
+      "id": "scwx5o",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 1624,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    },
+    {
+      "id": "scwx5k",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 1624,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    },
+    {
+      "id": "scwx5l",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 1624,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    },
+    {
+      "id": "scwx5m",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 1624,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    },
+    {
+      "id": "scwx5p",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 1624,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    },
+    {
+      "id": "scwx5q",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 1624,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    },
+    {
+      "id": "scwx5r",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 1624,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    },
+    {
+      "id": "scwx5s",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 1624,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    },
+    {
+      "id": "scwx5x",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 1624,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    },
+    {
+      "id": "scwx5t",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 1624,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    },
+    {
+      "id": "scwx5u",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 1624,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    },
+    {
+      "id": "scwx5v",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 1624,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    },
+    {
+      "id": "scwx5w",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 1624,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    },
+    {
+      "id": "co90ek",
+      "kind": "cover",
+      "w": 600,
+      "h": 800,
+      "credit": "cloud imperium games corporation",
+      "oyun": "Squadron 42"
+    }
+  ],
+  "_slug": "squadron-42",
+  "_gorsel_turu": 0
+}

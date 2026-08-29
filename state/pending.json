@@ -1,3 +1,19 @@
 {
-  "kuyruk": []
+  "kuyruk": [
+    {
+      "id": "20260829-squadron-42",
+      "etiket": "normal",
+      "durum": "onay_bekliyor",
+      "baslik": "squadron 42",
+      "draft": "state/drafts/20260829-squadron-42.json",
+      "cards_dir": "out/20260829-squadron-42",
+      "message_ids": [
+        73,
+        74,
+        75,
+        76
+      ],
+      "tier": "B"
+    }
+  ]
 }
