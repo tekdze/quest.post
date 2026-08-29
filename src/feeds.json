@@ -446,6 +446,67 @@
       "bucket": "news",
       "max_items": 20,
       "enabled": true
+    },
+    {
+      "id": "gamespot",
+      "name": "GameSpot",
+      "url": "https://www.gamespot.com/feeds/news/",
+      "lang": "en",
+      "kind": "news",
+      "weight": 0.7,
+      "tags": [
+        "mainstream"
+      ],
+      "topic_filter": null,
+      "bucket": "news",
+      "max_items": 40,
+      "enabled": true
+    },
+    {
+      "id": "ign",
+      "name": "IGN",
+      "url": "https://www.ign.com/rss/articles/feed",
+      "lang": "en",
+      "kind": "news",
+      "weight": 0.6,
+      "tags": [
+        "mainstream"
+      ],
+      "topic_filter": "gaming",
+      "bucket": "news",
+      "max_items": 40,
+      "enabled": true
+    },
+    {
+      "id": "vg247",
+      "name": "VG247",
+      "url": "https://www.vg247.com/feed",
+      "lang": "en",
+      "kind": "news",
+      "weight": 0.7,
+      "tags": [
+        "mainstream"
+      ],
+      "topic_filter": null,
+      "bucket": "news",
+      "max_items": 40,
+      "enabled": true
+    },
+    {
+      "id": "pcgamesn",
+      "name": "PCGamesN",
+      "url": "https://www.pcgamesn.com/mainrss.xml",
+      "lang": "en",
+      "kind": "news",
+      "weight": 0.7,
+      "tags": [
+        "mainstream",
+        "pc"
+      ],
+      "topic_filter": null,
+      "bucket": "news",
+      "max_items": 40,
+      "enabled": true
     }
   ],
   "_eksikler": [

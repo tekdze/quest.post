@@ -1,0 +1,51 @@
+# Bot kendi ürettiği durum dosyalarını repoya yazar. Üç workflow da aynı işi
+# yaptığı için ortak adım: kopyalanan üç blok birbirinden sapardı.
+#
+# Actions'ın "Read and write permissions" ayarı açık olmalı; kapalıysa push
+# sessizce başarısız olur ve bot hiçbir şeyi hatırlamaz.
+name: durumu kaydet
+description: state/ ve out/ altındaki değişiklikleri commit edip push eder
+
+inputs:
+  message:
+    description: commit mesajı
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      env:
+        # Shell'e dogrudan gomulmez: mesaj env uzerinden gecer.
+        COMMIT_MESAJI: ${{ inputs.message }}
+      run: |
+        set -euo pipefail
+
+        git config user.name "quest.post bot"
+        git config user.email "bot@users.noreply.github.com"
+
+        # out/ da eklenir: kartlar Instagram'a herkese açık URL ile
+        # verilecek (Graph API dosya yüklemiyor).
+        git add state out 2>/dev/null || true
+
+        if git diff --cached --quiet; then
+          echo "degisiklik yok, commit atlaniyor"
+          exit 0
+        fi
+
+        git commit -m "$COMMIT_MESAJI"
+
+        # Aynı anda başka bir workflow push etmiş olabilir. Rebase edip
+        # yeniden dene; üç denemede olmuyorsa gerçekten bir sorun vardır.
+        for deneme in 1 2 3; do
+          if git push; then
+            echo "push tamam (deneme $deneme)"
+            exit 0
+          fi
+          echo "push reddedildi, rebase edilip yeniden denenecek ($deneme)"
+          git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+          sleep 3
+        done
+
+        echo "push uc denemede basarisiz oldu"
+        exit 1

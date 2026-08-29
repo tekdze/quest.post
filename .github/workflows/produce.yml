@@ -1,0 +1,87 @@
+# produce.yml — üretim zinciri: haber tara, yaz, kart bas, onay iste.
+name: produce
+
+on:
+  schedule:
+    # Türkiye saatiyle 12:10, 18:10, 21:10 (UTC+3).
+    # Tam saat başı Actions'ın en yoğun anı; 10 dakika kaydırmak
+    # kuyrukta bekleme süresini kısaltıyor.
+    - cron: "10 9,15,18 * * *"
+  workflow_dispatch:
+    inputs:
+      index:
+        description: "aday sırası (boş bırakılırsa bot seçer)"
+        required: false
+        type: string
+      acil:
+        description: "acil: bekleyen normal post olsa da üret"
+        required: false
+        type: boolean
+        default: false
+
+concurrency:
+  group: quest-post-state
+  cancel-in-progress: false
+
+jobs:
+  produce:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: bağımlılıklar
+        run: pip install -r requirements.txt
+
+      - name: chromium önbelleği
+        id: pw-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-1.56.0
+
+      - name: chromium kur
+        if: steps.pw-cache.outputs.cache-hit != 'true'
+        run: python -m playwright install --with-deps chromium
+
+      - name: üretim zinciri
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          IGDB_CLIENT_ID: ${{ secrets.IGDB_CLIENT_ID }}
+          IGDB_CLIENT_SECRET: ${{ secrets.IGDB_CLIENT_SECRET }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+        run: |
+          ekler=""
+          if [ -n "${{ inputs.index }}" ]; then
+            ekler="$ekler --index ${{ inputs.index }}"
+          fi
+          if [ "${{ inputs.acil }}" = "true" ]; then
+            ekler="$ekler --acil"
+          fi
+          python src/produce.py $ekler
+
+      # Zincir patlarsa sessiz kalmasın: Actions kaydına bakmak zorunda
+      # kalmadan Telegram'dan haberdar ol.
+      - name: hata bildir
+        if: failure()
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+        run: >
+          python src/telegram.py say
+          "üretim zinciri hata verdi. actions kaydı:
+          ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+      - name: durumu kaydet
+        if: always()
+        uses: ./.github/actions/commit-state
+        with:
+          message: "produce: yeni post uretildi"

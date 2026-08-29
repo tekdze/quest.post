@@ -1,0 +1,63 @@
+# respond.yml — Telegram'dan gelen komutları oku ve uygula.
+name: respond
+
+# Cron GitHub'da en sık 5 dakikada bir çalışabilir; */1 yazılsa sessizce
+# atlanır. 5 dakika da garanti değil, pratikte 5-30 dk gecikme normal.
+# Bu yüzden telegram.py komutu görür görmez "işleme alındı" mesajı atıyor.
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+# produce ve respond aynı anda state/ dosyalarını yazarsa git çakışır.
+# Aynı grupta sıraya girsinler; çalışan iş iptal edilmesin.
+concurrency:
+  group: quest-post-state
+  cancel-in-progress: false
+
+jobs:
+  respond:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: bağımlılıklar
+        run: pip install -r requirements.txt
+
+      # Chromium ~120 MB. Önbelleğe alınmazsa her çalışmada baştan iner;
+      # respond 5 dakikada bir çalıştığı için bu çok ağır olurdu.
+      - name: chromium önbelleği
+        id: pw-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-1.56.0
+
+      - name: chromium kur
+        if: steps.pw-cache.outputs.cache-hit != 'true'
+        run: python -m playwright install --with-deps chromium
+
+      - name: komutları uygula
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          IGDB_CLIENT_ID: ${{ secrets.IGDB_CLIENT_ID }}
+          IGDB_CLIENT_SECRET: ${{ secrets.IGDB_CLIENT_SECRET }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+        run: python src/respond.py
+
+      # Hata durumunda da kaydedilir: yarim kalan kuyruk durumu diske
+      # yazilmis olabilir, bir sonraki calisma onu gormeli.
+      - name: durumu kaydet
+        if: always()
+        uses: ./.github/actions/commit-state
+        with:
+          message: "respond: komut uygulandi"
