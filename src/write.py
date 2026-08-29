@@ -35,6 +35,11 @@ API_BASE = "https://generativelanguage.googleapis.com/v1beta"
 # Surum SABITLENDI (3.7-flash surekli 503 donuyordu, 3.6 stabil). "gemini-flash-latest" gibi takma ad kullanilmiyor:
 # model sessizce degisirse uslup da degisir, 300. post 1. postla ayni olmaz.
 DEFAULT_MODEL = "gemini-3.6-flash"
+# QA ve menu gibi yardimci isler AYRI modelde. Sebep kota: gunluk limit
+# model basina ve esit degil - 3.6-flash gunde 20 istek, flash-lite 500
+# (AI Studio rate limit panelinden okundu). Kart METNI 3.6'da kaliyor
+# (surum sabit karari, uslup), yardimci isler bol havuzda.
+HELPER_MODEL = "gemini-3.5-flash-lite"
 MAX_ATTEMPTS = 3
 # Gecici HTTP hatalari icin yeniden deneme (503 = model yogun).
 HTTP_RETRIES = 4
@@ -223,13 +228,14 @@ def qa_prompt(spec: dict, source_text: str) -> str:
     ])
 
 
-def llm_review(spec: dict, source_text: str, model: str) -> list[str]:
+def llm_review(spec: dict, source_text: str, model: str | None = None) -> list[str]:
     """LLM ikinci gozu. Bos liste = temiz.
 
     Hata durumunda BOS liste doner: QA'nin kendisi uretimi durdurmamali.
     """
     try:
-        cevap = generate(qa_prompt(spec, source_text), model, temperature=0.0)
+        cevap = generate(qa_prompt(spec, source_text), model or HELPER_MODEL,
+                         temperature=0.0)
     except SystemExit:
         print("  qa: model cevap vermedi, atlaniyor")
         return []
@@ -425,11 +431,11 @@ def main() -> int:
     ap.add_argument("--tier", default="B", choices=list("CBAS"),
                     help="gecici: tier.py yazilana kadar elle veriliyor")
     ap.add_argument("--model", default=os.environ.get("GEMINI_MODEL", DEFAULT_MODEL))
-    # VARSAYILAN KAPALI: gunluk kota 20 istek ve her post icin ek bir cagri
-    # butcenin besde birini yiyor. Kullanici revizeyi zaten /yeniden ile
-    # kendisi istiyor, karar onda kaliyor.
-    ap.add_argument("--qa", action="store_true",
-                    help="LLM ikinci gozunu ac (ek 1 cagri/post)")
+    # VARSAYILAN ACIK: QA ayri modelde calisiyor (HELPER_MODEL, gunde 500
+    # istek) ve uretim butcesini yemiyor. Yazim hatasi karta basilmadan
+    # yakalansin.
+    ap.add_argument("--no-qa", dest="qa", action="store_false", default=True,
+                    help="LLM ikinci gozunu kapat")
     ap.add_argument("--temperature", type=float, default=0.95)
     ap.add_argument("--mode", choices=list(WRITING_MODES), default=None)
     ap.add_argument("--out", default=str(DEFAULT_OUT))
@@ -466,7 +472,7 @@ def main() -> int:
         # calissin diye sonra: yasak kalip varken QA'ya para harcamanin
         # anlami yok, metin zaten yeniden yazilacak.
         if not problems and args.qa:
-            problems = llm_review(draft, source_text, args.model)
+            problems = llm_review(draft, source_text, HELPER_MODEL)
             if problems:
                 print(f"deneme {attempt}: filtre temiz, qa {len(problems)} sorun buldu")
 

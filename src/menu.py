@@ -50,10 +50,12 @@ DEFAULT_LIMIT = 6
 # yiyor. Ayri model = ayri havuz, ve bu ToS'a uygun: ayni hesap, ayni
 # proje, sadece farkli model.
 #
-# Hafif model yeterli: menunun isi oyun adi cikarmak, tek cumle ozet ve
-# aday secmek. Kart METNI yazan write.py surum sabit kalmali (uslup),
-# menu icin ayni hassasiyet gerekmiyor.
-MENU_MODEL = "gemini-3.1-flash-lite"
+# Hafif model hem yeterli hem COK daha genis: 3.6-flash gunde 20 istek,
+# flash-lite 500 (AI Studio rate limit panelinden okundu). Menunun isi
+# oyun adi cikarmak, tek cumle ozet ve aday secmek. Kart METNI yazan
+# write.py surum sabit kalmali (uslup), menu icin ayni hassasiyet
+# gerekmiyor.
+MENU_MODEL = "gemini-3.5-flash-lite"
 
 ONERI_SCHEMA = """{
   "adaylar": [

@@ -351,13 +351,26 @@ Kota adı `GenerateRequestsPerDayPerProjectPerModel` diyor ve gerçekten
 öyle: `gemini-3.6-flash` tükenmişken `gemini-3.1-flash-lite` çalışıyordu
 (ölçüldü). Yani her modelin ayrı 20 hakkı var.
 
+⚠️ **Limitler eşit DEĞİL.** AI Studio'daki "Gemini API Rate Limit"
+panelinden okundu (Project seçicisinden doğru proje seçilmeli):
+
+| Model | RPD (günlük istek) |
+|---|---|
+| `gemini-3.6-flash` | **20** |
+| `gemini-3.5-flash-lite` | **500** |
+| `gemini-2.5-flash` | 20 (zaten 404 veriyor) |
+
 | İş | Model | Neden |
 |---|---|---|
 | Post metni (`write.py`) | `gemini-3.6-flash` | **Sürüm sabit** - model değişirse üslup değişir, 300. post 1. postla aynı olmaz |
-| Menü (`menu.py`) | `gemini-3.1-flash-lite` | Basit iş: oyun adı çıkar, tek cümle özet, aday seç. Ayrı havuz |
+| Menü + QA (`HELPER_MODEL`) | `gemini-3.5-flash-lite` | Yardımcı işler. 500'lük havuz, üretim bütçesini yemiyor |
 
-Kazanç: menünün günde 3 çağrısı artık üretim bütçesinden yemiyor.
-Efektif kapasite 20 değil 40.
+Kazanç sadece "ayrı havuz" değil, **25 kat daha geniş havuz**. QA bu yüzden
+açılabildi. Yeni bir LLM işi eklenecekse önce HELPER_MODEL'e bakılmalı.
+
+Panelde bir modelin görünmesi **çağrılabildiği anlamına gelmiyor**:
+`gemini-2.5-*` panelde var, `models.list` çıktısında var, ama çağrılınca
+404 dönüyor. Yeni model seçerken canlı çağrıyla doğrula.
 
 ⚠️ **Bu, çoklu HESAP açmakla karıştırılmamalı.** Kotayı aşmak için ikinci
 Google hesabı/projesi açmak ToS ihlali ve zaten işe yaramıyor - kota hesap
@@ -368,11 +381,25 @@ kota yapısı; aynı hesap, aynı proje.
 çağrılınca **404** dönüyor. Listede olması erişilebilir olduğu anlamına
 gelmiyor.
 
-### QA varsayılan KAPALI (kullanıcı kararı)
-`write.py --qa` ile açılıyor ama varsayılan kapalı: her post için ek bir
-çağrı günlük bütçenin beşte birini yiyor. Kullanıcı revizeyi zaten
-`/yeniden` ile kendisi istiyor, karar onda kalıyor. Kod duruyor,
-gerektiğinde açılır.
+### Metin QA — varsayılan AÇIK
+`style.py` deterministik ve yazım hatası yakalayamıyor (bir üretimde
+"dusunceleinizi" karta basılmıştı). `llm_review` ikinci göz oluyor,
+`HELPER_MODEL` üzerinde çalışıyor - üretim bütçesini yemiyor.
+`--no-qa` ile kapatılır.
+
+Karar kümesi **sınırlı**: `yazim` / `kaynak_disi` / `anlamsiz`. Üslup
+yorumu ve "daha iyi olabilir" açıkça yasaklandı - serbest bırakılan model
+her metinde bir şey bulur ve her post boşuna yeniden yazdırılır.
+Ayrıca gözlem-önce: modelden önce metni özetlemesi isteniyor.
+
+Ölçüldü: kasıtlı bozuk metinde "47 farklı canavar türü" (kaynakta yok) ve
+"dusunceleinizi" (yazım) yakalandı; temiz metinde **0 sorun** dedi, yani
+yanlış alarm vermedi. Kusursuz değil - aynı cümledeki "gelistirci"
+hatasını kaçırdı.
+
+Sorunlar mevcut `problems` kanalından geri besleniyor, ayrı bir mekanizma
+yok. Model cevap vermezse boş liste dönüyor: QA'nın kendisi üretimi
+durdurmamalı.
 
 ### ⚠️ Gemini erişim engeli — çözüldü, tekrar yaşanırsa
 İlk Google hesabında tüm modeller `403 PERMISSION_DENIED — Your project has
