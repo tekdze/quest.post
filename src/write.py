@@ -155,7 +155,8 @@ def generate(prompt: str, model: str, temperature: float) -> dict:
 
 SCHEMA = """{
   "game": "haberin konusu olan oyunun veya şirketin adı",
-  "search_name": "IGDB aramasi icin oyunun TAM ve INGILIZCE adi, surum numarasi dahil (ornek: The Witcher 3: Wild Hunt). Haber bir oyun hakkinda degilse null",
+  "search_name": "haberin ASIL konusu olan oyunun TAM ve INGILIZCE adi, surum numarasi dahil (ornek: The Witcher 3: Wild Hunt). Haber bir oyunu konu almiyorsa null",
+  "image_candidates": ["haber metninde adi gecen ve GORSELI bu haberi temsil edebilecek oyunlarin tam Ingilizce adlari, onem sirasiyla, en fazla 3. search_name doluysa onu buraya tekrar yazma. Uygun oyun yoksa bos liste"],
   "category": "listeden biri",
   "studio": "görsel kredisi için stüdyo adı, bilinmiyorsa null",
   "is_leak": true veya false,
@@ -207,11 +208,19 @@ def build_prompt(candidate: dict, source_text: str, mode: str,
         "    veya yorum yazmaya davet eden bir cümle. 'beğen', 'paylaş' yazma;",
         "    takip daveti zaten kartın kendisinde sabit metin olarak var.",
         "12. Yazım hatası yapma. Metni yazdıktan sonra harf harf kontrol et.",
-        "13. search_name alanı ÇEVİRİLMEZ ve KISALTILMAZ. Kaynakta hangi oyundan",
+        "13. search_name ÇEVİRİLMEZ ve KISALTILMAZ. Kaynakta hangi oyundan",
         "    bahsediliyorsa onun tam İngilizce adını yaz, sürüm numarası dahil.",
         "    Haber \"the witcher 3\" hakkındaysa \"The Witcher\" yazmak HATADIR;",
-        "    yanlış oyunun görselleri basılır. Haber bir oyun hakkında değilse",
-        "    (etkinlik, şirket, sektör haberi) null yaz.",
+        "    yanlış oyunun görselleri basılır. Haberin konusu bir oyun değilse",
+        "    (etkinlik, şirket, konsol, sektör haberi) null yaz.",
+        "14. image_candidates: haberin konusu bir oyun OLMASA BİLE, metinde adı",
+        "    geçen ve görseli bu haberi temsil edebilecek oyunları buraya yaz.",
+        "    Örnek: haber yeni bir konsol ailesi hakkında ama içinde \"Elder",
+        "    Scrolls 6 o konsola özel mi olacak\" tartışılıyorsa",
+        "    [\"The Elder Scrolls VI\"] yazılır - o oyunun görseli haberi",
+        "    temsil eder. Sadece adı GEÇEN oyunları yaz, konuyla ilgisi",
+        "    kurulamayan bir oyunu doldurma; okur görseli haberle",
+        "    ilişkilendiremezse kart yanıltıcı olur.",
         "",
         f"KATEGORİ listesi (birini seç): {', '.join(CATEGORIES)}",
         "",
@@ -275,6 +284,12 @@ def to_render_spec(draft: dict, tier: str, candidate: dict, index: int = 0) -> d
         "game": draft.get("game", ""),
         # IGDB aramasi bu alanla yapiliyor; goruntude "game" kullanilir.
         "search_name": draft.get("search_name"),
+        # Haberin konusu bir oyun olmasa da metinde gecen oyunlar gorsel
+        # icin kullanilabilir: "xbox konsol ailesi" haberi Elder Scrolls 6'yi
+        # tartisiyorsa o oyunun gorseli haberi temsil eder. Kredi yine
+        # IGDB'nin sirket verisinden geliyor, telif kurali degismiyor.
+        "image_candidates": [c for c in (draft.get("image_candidates") or [])
+                             if c and str(c).lower() != "none"][:3],
         "credit": None if is_leak else draft.get("studio"),
         "pages": pages,
     }

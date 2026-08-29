@@ -171,6 +171,32 @@ yapıştırmak üstte 800px boşluk bırakıyor ve kart bozuk görünüyordu.
 
 ## 5. İçerik kuralları
 
+### ⚠️ Görsel adayları (2026-08-29) — haberin konusu oyun olmasa da görsel bulunur
+Eskiden `search_name` boşsa kart doğrudan tipografik oluyordu. Ölçülen sonuç:
+"yeni xbox konsol ailesi" haberi görselsiz basıldı, oysa haber metninde
+**Elder Scrolls 6** tartışılıyordu ve o oyunun IGDB'de görseli vardı.
+İstem fazla katıydı — "haber bir oyun hakkında değilse null" kuralı LLM'i
+haberdeki oyunları hiç aramamaya itiyordu.
+
+Artık `write.py` iki alan üretiyor: `search_name` (haberin **asıl konusu**)
+ve `image_candidates` (metinde **adı geçen**, görseli haberi temsil
+edebilecek oyunlar, önem sırasıyla, en fazla 3).
+
+`images.py` seçim sırası:
+1. `search_name` tutuyorsa tartışmasız o kullanılır — haberin konusu odur
+2. Tutmazsa adaylar **LLM'in sırasıyla** denenir, ilk **yeterli** olan alınır.
+   Yeterli = her sayfaya farklı görsel düşecek kadar (`>= sayfa sayısı`)
+3. Hiçbiri yeterli değilse en zengin havuzlu aday seçilir — iki görseli olan
+   çıkmamış bir oyunu beş sayfaya yaymaktansa
+4. Hiçbiri tutmazsa tipografik
+
+Ölçüm: Elder Scrolls VI (2 görsel) atlandı, Halo Infinite (12) seçildi,
+üçüncü aday hiç sorgulanmadı. Tek aday yetersiz olsa da kullanılıyor.
+
+⚠️ **Telif kuralı değişmedi:** görsel yine yalnızca IGDB'den, kredi yine
+IGDB'nin şirket verisinden (`bethesda game studios`, `343 industries`).
+Sızıntı haberinde görsel kullanılmaması kuralı da yerinde.
+
 ### Telif
 - Görseller yalnızca IGDB'den (resmi stüdyo materyali)
 - Her görselli kartta kredi, **IGDB'nin şirket verisinden** — LLM tahmininden değil

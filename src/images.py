@@ -308,31 +308,78 @@ def main() -> int:
     token = get_token(cid, secret)
     # Arama icin search_name kullaniliyor: "game" alani karta basilan
     # Turkce/kucuk harf gorunum adi, IGDB'de aranamaz.
-    wanted = args.game or spec.get("search_name") or spec.get("game", "")
-    if not wanted or str(wanted).lower() == "none":
+    #
+    # search_name bossa is bitmiyor: haberin KONUSU bir oyun olmasa bile
+    # (konsol, sirket, etkinlik haberi) metinde adi gecen oyunlarin gorseli
+    # haberi temsil edebilir. Onlar image_candidates'ta, sirayla denenir.
+    if args.game:
+        adaylar = [args.game]
+    else:
+        adaylar = [spec.get("search_name")] + list(spec.get("image_candidates") or [])
+    adaylar = [a for a in adaylar if a and str(a).lower() != "none"]
+
+    def gorselsiz(mesaj: str) -> int:
         for page in spec["pages"]:
             page["image"] = None
         spec["credit"] = None
-        draft_path.write_text(json.dumps(spec, ensure_ascii=False, indent=2), encoding="utf-8")
-        print("search_name bos: haber bir oyun hakkinda degil, kartlar tipografik olacak")
+        draft_path.write_text(json.dumps(spec, ensure_ascii=False, indent=2),
+                              encoding="utf-8")
+        print(mesaj)
         return 0
 
-    game, score, report = find_game(cid, token, wanted)
+    if not adaylar:
+        return gorselsiz("aranacak oyun adi yok: kartlar tipografik olacak")
 
-    print(f'arama: "{wanted}"')
-    for name, s, n in report[:5]:
-        print(f"  {s:.2f} benzerlik | {n:2} gorsel | {name}")
+    def havuz_boyu(g: dict) -> int:
+        p = image_pool(g)
+        return len(p["artwork"]) + len(p["screenshot"]) + len(p["cover"])
+
+    # Haberin ASIL konusu olan oyun tutuyorsa tartisma yok: kart onun
+    # gorseliyle basilir. Ancak o tutmazsa, metinde gecen oyunlar arasinda
+    # havuzu en zengin olan secilir - ilk tutani almak, iki gorseli olan
+    # cikmamis bir oyunu 5 sayfaya yaymak demek olabiliyor.
+    game = None
+    kalan = list(adaylar)
+    if spec.get("search_name") and not args.game:
+        wanted = kalan.pop(0)
+        game, score, report = find_game(cid, token, wanted)
+        print(f'arama (konu): "{wanted}"')
+        for name, s, n in report[:5]:
+            print(f"  {s:.2f} benzerlik | {n:2} gorsel | {name}")
+        if game is None:
+            print(f"  eslesme yok (en iyi {score:.2f} < {NAME_MATCH_MIN})")
 
     if game is None:
-        # Eslesme yok: haber bir oyun hakkinda olmayabilir (etkinlik, sirket,
-        # sektor haberi). Yanlis gorsel basmaktan iyisi gorselsiz basmak.
-        for page in spec["pages"]:
-            page["image"] = None
-        spec["credit"] = None
-        draft_path.write_text(json.dumps(spec, ensure_ascii=False, indent=2), encoding="utf-8")
-        print(f"\neslesme yok (en iyi benzerlik {score:.2f} < {NAME_MATCH_MIN}). "
-              "kartlar tipografik olacak.")
-        return 0
+        # LLM adaylari onem sirasiyla yaziyor, o sira korunur: ilk YETERLI
+        # aday alinir. "Yeterli" = her sayfaya farkli gorsel dusecek kadar.
+        # Hicbiri yeterli degilse en zengini secilir - iki gorseli olan
+        # cikmamis bir oyunu bes sayfaya yaymaktansa.
+        gereken = len(spec["pages"])
+        bulunanlar: list[tuple[dict, int]] = []
+        for wanted in kalan:
+            aday, score, report = find_game(cid, token, wanted)
+            print(f'arama (aday): "{wanted}"')
+            for name, s, n in report[:5]:
+                print(f"  {s:.2f} benzerlik | {n:2} gorsel | {name}")
+            if aday is None:
+                print(f"  eslesme yok (en iyi {score:.2f} < {NAME_MATCH_MIN})")
+                continue
+            boy = havuz_boyu(aday)
+            bulunanlar.append((aday, boy))
+            print(f"  -> {aday['name']}: kullanilabilir {boy} gorsel")
+            if boy >= gereken:
+                game = aday
+                print(f"  yeterli ({boy} >= {gereken} sayfa), bu secildi")
+                break
+        if game is None and bulunanlar:
+            game, boy = max(bulunanlar, key=lambda row: row[1])
+            print(f"\nhicbiri {gereken} gorsele ulasmadi, en zengini secildi: "
+                  f"{game['name']} ({boy} gorsel)")
+
+    if game is None:
+        # Hicbir aday tutmadi. Yanlis gorsel basmaktansa gorselsiz basilir.
+        return gorselsiz(f"\n{len(adaylar)} aday denendi, eslesme yok. "
+                         "kartlar tipografik olacak.")
 
     pool = image_pool(game)
     print(f'\nsecilen: {game["name"]} (benzerlik {score:.2f})')
