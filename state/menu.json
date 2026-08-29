@@ -1,22 +1,99 @@
 {
-  "olusturuldu": "2026-08-29T19:48:08+00:00",
-  "oneri": 3,
-  "gerekce": "şirketlerin para iadesi yapması oyuncuların dikkatini çeken nadir bir olaydır",
+  "olusturuldu": "2026-08-29T19:59:42+00:00",
+  "oneri": 1,
+  "gerekce": "gta 6 bahanesiyle ertelenmesi sosyal medyada etkileşim ve mizah yaratır",
   "adaylar": [
     {
       "sira": 1,
       "aday_index": 1,
       "tier": "B",
-      "title": "Star Wars Zero Company Uses Anakin Skywalker for So Much More than a Cameo",
+      "title": "Star Citizen spinoff Squadron 42 has been delayed yet again, citing everyone going gaga for GTA 6, even if it isn't coming to PC yet",
       "kaynak_sayisi": 2,
-      "url": "https://www.polygon.com/star-wars-zero-company-anakin-skywalker-mission",
+      "url": "https://www.rockpapershotgun.com/star-citizen-spinoff-squadron-42-has-been-delayed-yet-again-citing-everyone-going-gaga-for-gta-6-even-if-it-isnt-coming-to-pc-yet",
       "aday": {
-        "key": "2990d35bf79ca4a7",
-        "title": "Star Wars Zero Company Uses Anakin Skywalker for So Much More than a Cameo",
-        "url": "https://www.polygon.com/star-wars-zero-company-anakin-skywalker-mission",
-        "summary": "Star Wars Zero Company features great tactical gameplay. During one mission, the game turns into a Jedi power fantasy when Anakin Skywalker pops up.",
-        "published": "2026-08-29T12:00:16+00:00",
-        "age_hours": 4.7,
+        "key": "7f77e7c121027759",
+        "title": "Star Citizen spinoff Squadron 42 has been delayed yet again, citing everyone going gaga for GTA 6, even if it isn't coming to PC yet",
+        "url": "https://www.rockpapershotgun.com/star-citizen-spinoff-squadron-42-has-been-delayed-yet-again-citing-everyone-going-gaga-for-gta-6-even-if-it-isnt-coming-to-pc-yet",
+        "summary": "There is a big part of me that doesn't really believe any aspect of Star Citizen is real. It's never really a game I've given all that much of my attention to, the thing gives off pyramid scheme energy in a way I can't quite explain. Probably something to do with the numerous promises developer Cloud Imperium Games have made over the years that haven't always come to fruition in the way they said, or when they said, they would. And here's yet another example of that: Squadron 42 , the story-based single-player spinoff of Star Citizen, has been delayed in 2027, all because of a pesky game calle",
+        "published": "2026-08-29T17:31:19+00:00",
+        "age_hours": 2.5,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream",
+          "pc"
+        ],
+        "source_count": 2,
+        "sources": [
+          "eurogamer",
+          "rps"
+        ],
+        "rank_score": 4.85,
+        "members": [
+          {
+            "hash": "7f77e7c121027759",
+            "url": "https://www.rockpapershotgun.com/star-citizen-spinoff-squadron-42-has-been-delayed-yet-again-citing-everyone-going-gaga-for-gta-6-even-if-it-isnt-coming-to-pc-yet",
+            "title": "Star Citizen spinoff Squadron 42 has been delayed yet again, citing everyone going gaga for GTA 6, even if it isn't coming to PC yet",
+            "summary": "There is a big part of me that doesn't really believe any aspect of Star Citizen is real. It's never really a game I've given all that much of my attention to, the thing gives off pyramid scheme energy in a way I can't quite explain. Probably something to do with the numerous promises developer Cloud Imperium Games have made over the years that haven't always come to fruition in the way they said, or when they said, they would. And here's yet another example of that: Squadron 42 , the story-based single-player spinoff of Star Citizen, has been delayed in 2027, all because of a pesky game calle",
+            "published": "2026-08-29T17:31:19+00:00",
+            "age_hours": 2.5,
+            "source_id": "rps",
+            "source_name": "Rock Paper Shotgun",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.9,
+            "tags": [
+              "mainstream",
+              "pc"
+            ]
+          },
+          {
+            "hash": "95f263c4b69a6a79",
+            "url": "https://www.eurogamer.net/squadron-42-delayed-2027-gta-6",
+            "title": "Squadron 42 delayed to 2027, with Star Citizen dev blaming GTA 6",
+            "summary": "Cloud Imperium Games has delayed Squadron 42, its long-in-development Star Citizen spin-off, to Q2 2027, with studio boss Chris Roberts arguing the game would be drowned out by GTA 6 . Read more",
+            "published": "2026-08-29T12:09:49+00:00",
+            "age_hours": 7.8,
+            "source_id": "eurogamer",
+            "source_name": "Eurogamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "Squadron 42",
+      "ozet": "gta 6 heyecanı nedeniyle oyunun çıkışı bir kez daha ertelendi",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 25,
+        "oyun": "Squadron 42",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": false
+      },
+      "baslik": "Squadron 42"
+    },
+    {
+      "sira": 2,
+      "aday_index": 2,
+      "tier": "B",
+      "title": "Playdate maker Panic is passing tariff refunds on to customers",
+      "kaynak_sayisi": 2,
+      "url": "https://www.eurogamer.net/panic-playdate-tariff-refunds-customers",
+      "aday": {
+        "key": "23ddd14300cd429a",
+        "title": "Playdate maker Panic is passing tariff refunds on to customers",
+        "url": "https://www.eurogamer.net/panic-playdate-tariff-refunds-customers",
+        "summary": "Panic, maker of the crank-powered handheld Playdate , is forwarding Supreme Court-ordered tariff refunds back to customers. Read more",
+        "published": "2026-08-29T10:51:33+00:00",
+        "age_hours": 9.1,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -25,20 +102,20 @@
         ],
         "source_count": 2,
         "sources": [
-          "gamingonlinux",
-          "polygon"
+          "eurogamer",
+          "gamedeveloper"
         ],
-        "rank_score": 5.3,
+        "rank_score": 4.81,
         "members": [
           {
-            "hash": "2990d35bf79ca4a7",
-            "url": "https://www.polygon.com/star-wars-zero-company-anakin-skywalker-mission",
-            "title": "Star Wars Zero Company Uses Anakin Skywalker for So Much More than a Cameo",
-            "summary": "Star Wars Zero Company features great tactical gameplay. During one mission, the game turns into a Jedi power fantasy when Anakin Skywalker pops up.",
-            "published": "2026-08-29T12:00:16+00:00",
-            "age_hours": 4.7,
-            "source_id": "polygon",
-            "source_name": "Polygon",
+            "hash": "23ddd14300cd429a",
+            "url": "https://www.eurogamer.net/panic-playdate-tariff-refunds-customers",
+            "title": "Playdate maker Panic is passing tariff refunds on to customers",
+            "summary": "Panic, maker of the crank-powered handheld Playdate , is forwarding Supreme Court-ordered tariff refunds back to customers. Read more",
+            "published": "2026-08-29T10:51:33+00:00",
+            "age_hours": 9.1,
+            "source_id": "eurogamer",
+            "source_name": "Eurogamer",
             "lang": "en",
             "kind": "news",
             "bucket": "news",
@@ -48,40 +125,39 @@
             ]
           },
           {
-            "hash": "6634c33b5fe4707e",
-            "url": "https://www.gamingonlinux.com/2026/08/star-wars-zero-company-is-out-now",
-            "title": "STAR WARS Zero Company is out now",
-            "summary": "STAR WARS Zero Company has been released today from Bit Reactor / Electronic Arts, and it's very much Star Wars XCOM with a little extra sauce. Read the full article on GamingOnLinux .",
-            "published": "2026-08-27T17:07:42+00:00",
-            "age_hours": 47.6,
-            "source_id": "gamingonlinux",
-            "source_name": "GamingOnLinux",
+            "hash": "1d1e5df58027bfc8",
+            "url": "https://www.gamedeveloper.com/business/panic-refunds-tariff-fees-1047-games-pivots-from-splitgate-and-gamescom-dev-grows-patch-notes-67",
+            "title": "Panic refunds tariff fees, 1047 Games pivots from Splitgate, and Gamescom Dev grows - Patch Notes #67",
+            "summary": "Plus: No More Room in Hell 2 surpasses 1 million players after exiting a pivotal Early Access period.",
+            "published": "2026-08-28T13:47:47+00:00",
+            "age_hours": 30.2,
+            "source_id": "gamedeveloper",
+            "source_name": "Game Developer",
             "lang": "en",
             "kind": "news",
             "bucket": "news",
             "weight": 1.0,
             "tags": [
-              "indie",
-              "linux"
+              "endustri"
             ]
           }
         ]
       },
-      "oyun_adi": "Star Wars Zero Company",
-      "ozet": "anakin skywalker oyunda basit bir konuk oyuncudan çok daha fazlası",
+      "oyun_adi": "Playdate",
+      "ozet": "şirket mahkeme kararıyla aldığı gümrük iadelerini müşterilere geri veriyor",
       "gorsel": {
-        "durum": "var",
-        "sayi": 12,
-        "oyun": "Star Wars Zero Company",
+        "durum": "yok",
+        "sayi": 0,
+        "oyun": null,
         "seri_sayi": 0,
         "seri": null,
         "temsili": false
       },
-      "baslik": "Star Wars Zero Company"
+      "baslik": "Playdate"
     },
     {
-      "sira": 2,
-      "aday_index": 2,
+      "sira": 3,
+      "aday_index": 3,
       "tier": "B",
       "title": "Silent Hill Townfall taps back into analog horror, but its tech is \"never going to lie to you\"",
       "kaynak_sayisi": 2,
@@ -92,7 +168,7 @@
         "url": "https://www.pcgamesn.com/silent-hill-townfall/interview-gamescom-analog-horror",
         "summary": "Silent Hill Townfall evokes the classic horror radio static with its CRTV, and its technology will be one of the only things you can trust.",
         "published": "2026-08-29T13:31:51+00:00",
-        "age_hours": 3.2,
+        "age_hours": 6.5,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -105,7 +181,7 @@
           "pcgamesn",
           "rps"
         ],
-        "rank_score": 4.83,
+        "rank_score": 4.76,
         "members": [
           {
             "hash": "672339898fb6cab6",
@@ -113,7 +189,7 @@
             "title": "Silent Hill Townfall taps back into analog horror, but its tech is \"never going to lie to you\"",
             "summary": "Silent Hill Townfall evokes the classic horror radio static with its CRTV, and its technology will be one of the only things you can trust.",
             "published": "2026-08-29T13:31:51+00:00",
-            "age_hours": 3.2,
+            "age_hours": 6.5,
             "source_id": "pcgamesn",
             "source_name": "PCGamesN",
             "lang": "en",
@@ -131,7 +207,7 @@
             "title": "I found solace from Silent Hill: Townfall's stealthy horror in the soothing Britishness of its abandoned homes",
             "summary": "I suppose, in a way, I asked for this. Crouched and cowering behind a garden fence, inches away from the thrashing, cleaver-faced miscreation who’d quite comfortably win in a fight against my splintering plank of rotten wood, I can almost hear Silent Hill: Townfall whisper mocking in my ear: not too much combat now, eh? Read more",
             "published": "2026-08-28T13:00:00+00:00",
-            "age_hours": 27.7,
+            "age_hours": 31.0,
             "source_id": "rps",
             "source_name": "Rock Paper Shotgun",
             "lang": "en",
@@ -146,7 +222,7 @@
         ]
       },
       "oyun_adi": "Silent Hill Townfall",
-      "ozet": "yapımcılar oyun içindeki analog teknolojinin oyuncuyu kandırmayacağını açıkladı",
+      "ozet": "oyun analog korku unsurlarına ve güvenilir teknolojilere odaklanacak",
       "gorsel": {
         "durum": "var",
         "sayi": 14,
@@ -158,19 +234,19 @@
       "baslik": "Silent Hill Townfall"
     },
     {
-      "sira": 3,
-      "aday_index": 3,
+      "sira": 4,
+      "aday_index": 4,
       "tier": "B",
-      "title": "Playdate maker Panic is passing tariff refunds on to customers",
+      "title": "Valve assures Deadlock players hungry for its next big update that it will notify them, 'or order a ton of pizza', when it's ready",
       "kaynak_sayisi": 2,
-      "url": "https://www.eurogamer.net/panic-playdate-tariff-refunds-customers",
+      "url": "https://www.pcgamer.com/games/moba/valve-assures-deadlock-players-hungry-for-its-next-big-update-that-it-will-notify-them-or-order-a-ton-of-pizza-when-its-ready",
       "aday": {
-        "key": "23ddd14300cd429a",
-        "title": "Playdate maker Panic is passing tariff refunds on to customers",
-        "url": "https://www.eurogamer.net/panic-playdate-tariff-refunds-customers",
-        "summary": "Panic, maker of the crank-powered handheld Playdate , is forwarding Supreme Court-ordered tariff refunds back to customers. Read more",
-        "published": "2026-08-29T10:51:33+00:00",
-        "age_hours": 5.9,
+        "key": "bbf94a5f8bc20adb",
+        "title": "Valve assures Deadlock players hungry for its next big update that it will notify them, 'or order a ton of pizza', when it's ready",
+        "url": "https://www.pcgamer.com/games/moba/valve-assures-deadlock-players-hungry-for-its-next-big-update-that-it-will-notify-them-or-order-a-ton-of-pizza-when-its-ready",
+        "summary": "Yoshi said to expect the new big update by the end of September.",
+        "published": "2026-08-29T18:44:53+00:00",
+        "age_hours": 1.2,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -179,20 +255,20 @@
         ],
         "source_count": 2,
         "sources": [
-          "eurogamer",
-          "gamesindustry"
+          "pcgamer",
+          "pcgamesn"
         ],
-        "rank_score": 4.78,
+        "rank_score": 4.67,
         "members": [
           {
-            "hash": "23ddd14300cd429a",
-            "url": "https://www.eurogamer.net/panic-playdate-tariff-refunds-customers",
-            "title": "Playdate maker Panic is passing tariff refunds on to customers",
-            "summary": "Panic, maker of the crank-powered handheld Playdate , is forwarding Supreme Court-ordered tariff refunds back to customers. Read more",
-            "published": "2026-08-29T10:51:33+00:00",
-            "age_hours": 5.9,
-            "source_id": "eurogamer",
-            "source_name": "Eurogamer",
+            "hash": "bbf94a5f8bc20adb",
+            "url": "https://www.pcgamer.com/games/moba/valve-assures-deadlock-players-hungry-for-its-next-big-update-that-it-will-notify-them-or-order-a-ton-of-pizza-when-its-ready",
+            "title": "Valve assures Deadlock players hungry for its next big update that it will notify them, 'or order a ton of pizza', when it's ready",
+            "summary": "Yoshi said to expect the new big update by the end of September.",
+            "published": "2026-08-29T18:44:53+00:00",
+            "age_hours": 1.2,
+            "source_id": "pcgamer",
+            "source_name": "PC Gamer",
             "lang": "en",
             "kind": "news",
             "bucket": "news",
@@ -202,39 +278,40 @@
             ]
           },
           {
-            "hash": "79c68811194955ca",
-            "url": "https://www.gamesindustry.biz/playdate-maker-panic-refunds-tariff-surcharges-to-customers",
-            "title": "Playdate maker Panic refunds tariff surcharges to customers",
-            "summary": "Playdate maker Panic is refunding tariff surcharges to customers after receiving its own refund from the US government after the Supreme Court ruled that President Trump's tariffs were an unlawful use of emergency powers. Read more",
-            "published": "2026-08-27T18:26:08+00:00",
-            "age_hours": 46.3,
-            "source_id": "gamesindustry",
-            "source_name": "GamesIndustry.biz",
+            "hash": "e68c90df9ef6bdf2",
+            "url": "https://www.pcgamesn.com/deadlock/next-update-september-2026",
+            "title": "Don't expect the next Deadlock update until \"late September,\" Valve announces",
+            "summary": "After hopes that a new Deadlock update was imminent, Valve developer ‘Yoshi’ confirms it has “taken longer than expected” in playtesting.",
+            "published": "2026-08-29T11:21:42+00:00",
+            "age_hours": 8.6,
+            "source_id": "pcgamesn",
+            "source_name": "PCGamesN",
             "lang": "en",
             "kind": "news",
             "bucket": "news",
-            "weight": 0.9,
+            "weight": 0.7,
             "tags": [
-              "endustri"
+              "mainstream",
+              "pc"
             ]
           }
         ]
       },
-      "oyun_adi": "Playdate",
-      "ozet": "şirket mahkeme kararıyla aldığı gümrük vergisi iadelerini müşterilere ödüyor",
+      "oyun_adi": "Deadlock",
+      "ozet": "yapımcılar büyük güncelleme hazır olduğunda pizza sipariş edeceklerini söyledi",
       "gorsel": {
-        "durum": "yok",
-        "sayi": 0,
-        "oyun": null,
+        "durum": "var",
+        "sayi": 14,
+        "oyun": "Deadlock",
         "seri_sayi": 0,
         "seri": null,
         "temsili": false
       },
-      "baslik": "Playdate"
+      "baslik": "Deadlock"
     },
     {
-      "sira": 4,
-      "aday_index": 4,
+      "sira": 5,
+      "aday_index": 5,
       "tier": "B",
       "title": "Talking Point: What Are You Playing This Weekend? (29th August)",
       "kaynak_sayisi": 2,
@@ -245,7 +322,7 @@
         "url": "https://www.nintendolife.com/features/talking-point-what-are-you-playing-this-weekend-29th-august",
         "summary": "Kept you waiting, huh? Well folks, the weekend is here, which means it's time to kick back, forget the stress of the working week, and play some games. It's been quite the week for Nintendo fans. Gamescom ONL revealed some pretty sweet treats for us, not least in the form of The Witcher III: Wild Hunt- Remastered for Switch 2, an improved version of Geralt's most recent adventure that's absolutely free for current owners of the Switch game. Read the full article on nintendolife.com",
         "published": "2026-08-29T09:00:00+00:00",
-        "age_hours": 7.7,
+        "age_hours": 11.0,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -258,7 +335,7 @@
           "nintendolife",
           "rps"
         ],
-        "rank_score": 4.74,
+        "rank_score": 4.67,
         "members": [
           {
             "hash": "55676750d30a5b94",
@@ -266,7 +343,7 @@
             "title": "Talking Point: What Are You Playing This Weekend? (29th August)",
             "summary": "Kept you waiting, huh? Well folks, the weekend is here, which means it's time to kick back, forget the stress of the working week, and play some games. It's been quite the week for Nintendo fans. Gamescom ONL revealed some pretty sweet treats for us, not least in the form of The Witcher III: Wild Hunt- Remastered for Switch 2, an improved version of Geralt's most recent adventure that's absolutely free for current owners of the Switch game. Read the full article on nintendolife.com",
             "published": "2026-08-29T09:00:00+00:00",
-            "age_hours": 7.7,
+            "age_hours": 11.0,
             "source_id": "nintendolife",
             "source_name": "Nintendo Life",
             "lang": "en",
@@ -284,7 +361,7 @@
             "title": "What are we all playing this weekend?",
             "summary": "Saturdays are for actually remembering that it's a Bank Holiday weekend , rather than forgetting and coming in on Monday and getting viciously annoyed with Julian and Mark for seeming to ignore your Gchat messages. (They do that anyway, regardless of whether it's a day off.) Read more",
             "published": "2026-08-29T07:00:00+00:00",
-            "age_hours": 9.7,
+            "age_hours": 13.0,
             "source_id": "rps",
             "source_name": "Rock Paper Shotgun",
             "lang": "en",
@@ -299,16 +376,92 @@
         ]
       },
       "oyun_adi": null,
-      "ozet": "nintendo hayranları için yoğun geçen haftanın ardından hafta sonu oynananlar soruluyor",
+      "ozet": "hafta sonu oyuncuların oynayacağı yapımlar üzerine sohbet başlatılıyor",
       "gorsel": {
-        "durum": "yok",
-        "sayi": 0,
-        "oyun": null,
+        "durum": "var",
+        "sayi": 8,
+        "oyun": "Nintendo Switch Sports",
         "seri_sayi": 0,
         "seri": null,
-        "temsili": false
+        "temsili": true
       },
       "baslik": "Talking Point: What Are You Playing This Weekend? (2..."
+    },
+    {
+      "sira": 6,
+      "aday_index": 6,
+      "tier": "B",
+      "title": "Pokémon TCG Pocket adds a game-changing new kind of card this October",
+      "kaynak_sayisi": 2,
+      "url": "https://www.polygon.com/pokemon-tcg-pocket-dual-type-cards",
+      "aday": {
+        "key": "35994b72fe9b2856",
+        "title": "Pokémon TCG Pocket adds a game-changing new kind of card this October",
+        "url": "https://www.polygon.com/pokemon-tcg-pocket-dual-type-cards",
+        "summary": "Dual-type cards are finally making their way into Pokémon TCG Pocket this October, starting with a Mega Mewtwo X ex card",
+        "published": "2026-08-29T15:16:36+00:00",
+        "age_hours": 4.7,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream"
+        ],
+        "source_count": 2,
+        "sources": [
+          "nintendolife",
+          "polygon"
+        ],
+        "rank_score": 4.6,
+        "members": [
+          {
+            "hash": "35994b72fe9b2856",
+            "url": "https://www.polygon.com/pokemon-tcg-pocket-dual-type-cards",
+            "title": "Pokémon TCG Pocket adds a game-changing new kind of card this October",
+            "summary": "Dual-type cards are finally making their way into Pokémon TCG Pocket this October, starting with a Mega Mewtwo X ex card",
+            "published": "2026-08-29T15:16:36+00:00",
+            "age_hours": 4.7,
+            "source_id": "polygon",
+            "source_name": "Polygon",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "b7e1b22e547453b8",
+            "url": "https://www.nintendolife.com/news/2026/08/pokemon-tcg-pocket-adds-dual-type-cards-october-2026",
+            "title": "Pokémon TCG Pocket Adds Dual-Type Cards October 2026",
+            "summary": "\"Starting with Mega Mewtwo X ex\". At PokémonXP this weekend, The Pokémon Company announced its popular mobile game Pokémon TCG Pocket will be adding Dual-type cards this October. This will be \"starting with Mega Mewtwo X ex\". This Pokémon card will be a dual Psychic and Fighting-type. Here's a first look: Read the full article on nintendolife.com",
+            "published": "2026-08-29T12:45:00+00:00",
+            "age_hours": 7.2,
+            "source_id": "nintendolife",
+            "source_name": "Nintendo Life",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream",
+              "nintendo"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "Pokémon TCG Pocket",
+      "ozet": "ekim ayında oyuna ilk kez çift tipli kartlar eklenecek",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 2,
+        "oyun": "Pokémon Trading Card Game Pocket",
+        "seri_sayi": 9,
+        "seri": "Pokémon Sword & Pokémon Shield Double Pack",
+        "temsili": false
+      },
+      "baslik": "Pokémon TCG Pocket"
     }
   ]
 }
