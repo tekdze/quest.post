@@ -43,6 +43,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 PENDING_FILE = ROOT / "state" / "pending.json"
 OFFSET_FILE = ROOT / "state" / "tg_offset.json"
+MENU_FILE = ROOT / "state" / "menu.json"
+# Posta bagli olmayan istekler burada bekler: telegram.py kaydeder,
+# respond.py icra eder. Kuyruk post bazli oldugu icin bunlar oraya sigmiyor.
+ISTEK_FILE = ROOT / "state" / "istek.json"
 
 API = "https://api.telegram.org/bot{token}/{method}"
 CAPTION_LIMIT = 1024
@@ -68,11 +72,19 @@ ACK = {
     "iptal": "post atılıyor.",
 }
 
+# Posta bagli olmayan istekler ve bildirimleri.
+ISTEK_ACK = {
+    "uret": "seçimin alındı. metin yazılıp kartlar basılacak, ~2-3 dk.",
+    "konular": "adaylar taranıyor, menü hazırlanıyor, ~1-2 dk.",
+    "api": "anahtarlar yoklanıyor, ~1 dk.",
+}
+
 # Telegram'in kendi komutlari. "bilinmeyen komut" diye cevaplanmamali.
-KOMUT_YARDIM = ("/ok onayla · /bana kartları bana yolla · /yeniden metni yeniden yaz\n"
+KOMUT_YARDIM = ("/konular günün adaylarını listele · /uret 2 seçileni üret\n"
+                "/ok onayla · /bana kartları bana yolla · /yeniden metni yeniden yaz\n"
                 "/gorsel başka görsel dene · /havuz tüm görselleri numaralı gör\n"
                 "/gorsel 4 7 2 sayfa sayfa seç · /iptal at · /c /b /a /s tier\n"
-                "/kuyruk bekleyen postlar\n\n"
+                "/kuyruk bekleyen postlar · /apideadline anahtar durumu\n\n"
                 "birden fazla post beklerken: komutu o postun mesajına yanıt "
                 "olarak yaz.")
 
@@ -294,6 +306,35 @@ def hedef_bul(queue: list[dict], reply_to: int | None) -> dict | None:
     return None
 
 
+def istek_yaz(ne: str, ek: dict | None = None) -> None:
+    """Posta bağlı olmayan bir işi respond.py'ye bırak."""
+    kayit = {"istek": ne}
+    kayit.update(ek or {})
+    write_json(ISTEK_FILE, kayit)
+
+
+def uret_hedefi(args: list[str]) -> int | None:
+    """/uret <numara> doğrulaması. Menü yoksa veya numara geçersizse uyarır."""
+    menu = read_json(MENU_FILE, None)
+    if not menu or not menu.get("adaylar"):
+        send_text("elimde güncel bir aday listesi yok. önce /konular yaz.")
+        return None
+    if not args:
+        send_text("hangi adayı üreteyim? örnek: /uret 2\n\n"
+                  "listeyi yeniden görmek için /konular")
+        return None
+    try:
+        sira = int(args[0])
+    except ValueError:
+        send_text(f"'{args[0]}' bir numara değil. örnek: /uret 2")
+        return None
+    if not any(row.get("sira") == sira for row in menu["adaylar"]):
+        send_text(f"listede {sira} numaralı aday yok "
+                  f"(1-{len(menu['adaylar'])} arası bir numara yaz).")
+        return None
+    return sira
+
+
 def kuyruk_ozeti(queue: list[dict]) -> str:
     satirlar = []
     for index, entry in enumerate(bekleyenler(queue), 1):
@@ -443,6 +484,21 @@ def do_poll() -> int:
             continue
         if name == "kuyruk":
             send_text(kuyruk_ozeti(queue))
+            continue
+        if name in ("konular", "menu", "menü"):
+            istek_yaz("konular")
+            send_text(ISTEK_ACK["konular"])
+            continue
+        if name in ("apideadline", "api"):
+            istek_yaz("api")
+            send_text(ISTEK_ACK["api"])
+            continue
+        if name in ("uret", "üret"):
+            hedef_sira = uret_hedefi(args)
+            if hedef_sira is None:
+                continue
+            istek_yaz("uret", {"sira": hedef_sira})
+            send_text(ISTEK_ACK["uret"])
             continue
 
         # Komutun adresi: once yanit, sonra "tek bekleyen varsa o".

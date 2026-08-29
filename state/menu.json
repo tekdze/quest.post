@@ -1,0 +1,97 @@
+{
+  "olusturuldu": "2026-08-29T16:06:36+00:00",
+  "oneri": 6,
+  "gerekce": "gta 6'yı suçlamaları yüksek etkileşim ve yorum potansiyeli yaratıyor.",
+  "adaylar": [
+    {
+      "sira": 1,
+      "aday_index": 1,
+      "tier": "B",
+      "title": "Star Wars Zero Company Uses Anakin Skywalker for So Much More than a Cameo",
+      "kaynak_sayisi": 2,
+      "url": "https://www.polygon.com/star-wars-zero-company-anakin-skywalker-mission",
+      "oyun_adi": "Star Wars Zero Company",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 12,
+        "oyun": "Star Wars Zero Company"
+      },
+      "baslik": "Star Wars Zero Company"
+    },
+    {
+      "sira": 2,
+      "aday_index": 2,
+      "tier": "B",
+      "title": "Silent Hill Townfall taps back into analog horror, but its tech is \"never going to lie to you\"",
+      "kaynak_sayisi": 2,
+      "url": "https://www.pcgamesn.com/silent-hill-townfall/interview-gamescom-analog-horror",
+      "oyun_adi": "Silent Hill Townfall",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 14,
+        "oyun": "Silent Hill: Townfall"
+      },
+      "baslik": "Silent Hill Townfall"
+    },
+    {
+      "sira": 3,
+      "aday_index": 3,
+      "tier": "B",
+      "title": "Playdate maker Panic is passing tariff refunds on to customers",
+      "kaynak_sayisi": 2,
+      "url": "https://www.eurogamer.net/panic-playdate-tariff-refunds-customers",
+      "oyun_adi": null,
+      "gorsel": {
+        "durum": "yok",
+        "sayi": 0,
+        "oyun": null
+      },
+      "baslik": "Playdate maker Panic is passing tariff refunds on to"
+    },
+    {
+      "sira": 4,
+      "aday_index": 4,
+      "tier": "B",
+      "title": "Talking Point: What Are You Playing This Weekend? (29th August)",
+      "kaynak_sayisi": 2,
+      "url": "https://www.nintendolife.com/features/talking-point-what-are-you-playing-this-weekend-29th-august",
+      "oyun_adi": null,
+      "gorsel": {
+        "durum": "yok",
+        "sayi": 0,
+        "oyun": null
+      },
+      "baslik": "Talking Point: What Are You Playing This Weekend? (2"
+    },
+    {
+      "sira": 5,
+      "aday_index": 5,
+      "tier": "B",
+      "title": "EA Acknowledges Iron Man Gameplay Leak: \"Well, That Didn't Go As Planned\"",
+      "kaynak_sayisi": 2,
+      "url": "https://www.polygon.com/ea-acknowledges-iron-man-leak",
+      "oyun_adi": "Iron Man",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 5,
+        "oyun": "Iron Man"
+      },
+      "baslik": "Iron Man"
+    },
+    {
+      "sira": 6,
+      "aday_index": 6,
+      "tier": "B",
+      "title": "Squadron 42 delayed to 2027, with Star Citizen dev blaming GTA 6",
+      "kaynak_sayisi": 2,
+      "url": "https://www.eurogamer.net/squadron-42-delayed-2027-gta-6",
+      "oyun_adi": "Squadron 42",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 25,
+        "oyun": "Squadron 42"
+      },
+      "baslik": "Squadron 42"
+    }
+  ]
+}

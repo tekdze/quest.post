@@ -1,0 +1,69 @@
+# menu.yml — günün adaylarını tara ve seçim menüsünü Telegram'a yolla.
+#
+# Bu, produce.yml'in yerine geçen ana akış: bot artık kendi seçtiği haberi
+# doğrudan üretmiyor, önce menüyü sunuyor. Metin üretimi ancak kullanıcı
+# /uret <numara> yazdıktan sonra başlıyor (respond.py çalıştırıyor).
+# Kazanç: görselsiz veya ilgisiz bir haber için LLM ve render bedeli
+# harcanmıyor, karar kullanıcıda.
+name: menu
+
+on:
+  schedule:
+    # Türkiye saatiyle 11:10, 17:10, 20:10 — postu görüp seçmen için
+    # paylaşım saatlerinden bir saat önce.
+    - cron: "10 8,14,17 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: quest-post-state
+  cancel-in-progress: false
+
+jobs:
+  menu:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: bağımlılıklar
+        run: pip install -r requirements.txt
+
+      # Menu Chromium kullanmiyor (kart basmiyor), kurulum yok.
+
+      - name: adayları tara
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+        run: python src/fetch.py
+
+      - name: menüyü yolla
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          IGDB_CLIENT_ID: ${{ secrets.IGDB_CLIENT_ID }}
+          IGDB_CLIENT_SECRET: ${{ secrets.IGDB_CLIENT_SECRET }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+        run: python src/menu.py
+
+      - name: hata bildir
+        if: failure()
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+        run: >
+          python src/telegram.py say
+          "menü hazırlanamadı. actions kaydı:
+          ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+      - name: durumu kaydet
+        if: always()
+        uses: ./.github/actions/commit-state
+        with:
+          message: "menu: gunun adaylari"

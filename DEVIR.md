@@ -236,8 +236,10 @@ src/
   images.py     IGDB görsel seçimi ve indirme
   render.py     HTML sablonu → PNG (--sheet ile görsel havuzu ızgarası)
   telegram.py   mesaj yolla, komut oku, kararı kaydet
-  respond.py    kararı uygula
+  respond.py    kararı uygula + posta bağlı olmayan istekleri icra et
   produce.py    tüm zinciri süren orkestratör
+  menu.py       aday menüsü: tier + görsel durumu + LLM önerisi
+  apicheck.py   anahtarları canlı yokla, süre ve kota durumu
   publish.py    [YOK — Faz 6]
 templates/      card.html + card.css (tasarım burada, SABİT)
 fonts/          Bricolage Grotesque, Outfit, OFL.txt
@@ -313,8 +315,45 @@ okunur okunmaz. Kuyrukta birden fazla post varsa mesajın başına
 yazdıktan sonra değil, **botun uyandığı anda** gelir. Cron gecikmesi (5-30 dk)
 bu şekilde kapanmıyor; ack sadece "uyandım, işlemi başlattım" der.
 
+### ⚠️ Ana akış değişti (2026-08-29): önce menü, sonra üretim
+Bot artık kendi seçtiği haberi doğrudan üretmiyor. `menu.yml` günde 3 kez
+(11:10 / 17:10 / 20:10 TRT) adayları listeliyor, kullanıcı `/uret <numara>`
+yazınca üretim başlıyor. **`produce.yml`'in cron'u kaldırıldı**, sadece elle
+tetikleme için duruyor.
+
+Gerekçe: görselsiz veya ilgisiz bir haber için LLM ve render bedeli boşa
+gidiyordu; karar kullanıcıya öne alındı. Bedeli: kullanıcı seçmezse o turda
+post üretilmiyor — bilinçli.
+
+Menüde üç bilgi bir arada:
+- **tier** — KOD hesaplar, LLM değil (kart rengi buna bağlı)
+- **görsel durumu** — IGDB'de gerçekten kaç kullanılabilir görsel var
+  (metin üretilmeden önce bakılıyor)
+- **⭐ öneri** — LLM, tek soru: *"Instagram gönderisi olarak görünürlük
+  açısından ilginç mi"*
+
+⚠️ **LLM'e verilen bütçe sınırlı: tam olarak 1 aday seçmek zorunda.** Serbest
+bırakılırsa hepsini işaretler ve öneri değersizleşir — `tier.py`'nin "LLM'e
+serbestlik verilirse her haberi S yapar" dersi burada da geçerli. İstemde
+açıkça yazılı: *"Birden fazla öneremezsin. Hiçbirini öneremem diyemezsin."*
+**Öneri tier'a dokunmaz**, ayrı bir sinyaldir; kullanıcı zaten `/c /b /a /s`
+ile kademeyi elle ezebiliyor.
+
+İlk ölçüm: 6 adaydan Squadron 42 seçildi, gerekçe *"gta 6'yı suçlamaları
+yüksek etkileşim ve yorum potansiyeli yaratıyor"* — tüm adaylar B kaldı,
+yani LLM tier'ı şişirmedi.
+
+### Posta bağlı olmayan istekler
+`/konular`, `/uret`, `/apideadline` bir posta ait değil; kuyruk post bazlı
+olduğu için oraya sığmıyorlar. `telegram.py` bunları `state/istek.json`'a
+yazıyor, `respond.py` icra edip dosyayı **hemen siliyor** — cron 5 dakikada
+bir çalıştığı için kalan bir istek her turda yeniden üretim tetiklerdi.
+
 | Komut | Ne yapar |
 |---|---|
+| `/konular` | Kaynakları tarar, aday menüsünü yollar |
+| `/uret 2` | Menüden seçileni üretir. Menü yoksa, numara geçersizse veya aralık dışıysa reddediyor |
+| `/apideadline`, `/api` | Anahtar durumu: 🟢 çalışıyor · 🟡 süre yaklaştı veya kota sınırı · 🔴 çalışmıyor / doldu |
 | `/ok`, `/otomatik` | Onayla. Faz 6 yokken kullanıcıya `/bana` öneriliyor, kuyruk **açık kalıyor** (temizlense post kaybolurdu) |
 | `/kuyruk` | Bekleyen postları listeler |
 | `/bana` | Kartları **sıkıştırılmamış dosya** olarak yollar (`sendDocument`). Telegram fotoğrafları yeniden sıkıştırıyor |

@@ -31,6 +31,8 @@ import telegram as tg  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "src"
 POSTED_FILE = ROOT / "state" / "posted.json"
+MENU_FILE = ROOT / "state" / "menu.json"
+ISTEK_FILE = ROOT / "state" / "istek.json"
 
 
 def run(script: str, *args: str) -> bool:
@@ -123,6 +125,55 @@ def yeniden_bas_ve_sor(entry: dict, draft: Path, cards_dir: Path,
     if not run("telegram.py", "send", str(draft), "--cards", str(cards_dir),
                "--etiket", entry.get("etiket", "normal")):
         return 1
+    return 0
+
+
+def istekleri_isle() -> int:
+    """Posta bağlı olmayan istekleri uygula: /konular, /uret, /apideadline.
+
+    İstek dosyası işlenir işlenmez siliniyor: cron 5 dakikada bir çalıştığı
+    için kalan bir istek her turda yeniden üretim tetiklerdi.
+    """
+    istek = tg.read_json(ISTEK_FILE, None)
+    if not istek:
+        return 0
+    ne = istek.get("istek")
+    ISTEK_FILE.unlink(missing_ok=True)
+    print(f"\nistek: {ne}")
+
+    if ne == "konular":
+        if not run("fetch.py"):
+            tg.send_text("kaynakları tararken hata oldu.")
+            return 1
+        if not run("menu.py"):
+            tg.send_text("menüyü hazırlarken hata oldu.")
+            return 1
+        return 0
+
+    if ne == "api":
+        if not run("apicheck.py"):
+            tg.send_text("anahtarları yoklarken hata oldu.")
+            return 1
+        return 0
+
+    if ne == "uret":
+        menu = tg.read_json(MENU_FILE, None)
+        sira = istek.get("sira")
+        aday = next((r for r in (menu or {}).get("adaylar", [])
+                     if r.get("sira") == sira), None)
+        if not aday:
+            tg.send_text("seçtiğin aday listede bulunamadı. /konular ile "
+                         "listeyi yenile.")
+            return 1
+        # Menu candidates.json sirasini koruyor; produce.py --index onu bekliyor.
+        if not run("produce.py", "--skip-fetch", "--index",
+                   str(aday.get("aday_index", sira))):
+            tg.send_text("üretim başarısız oldu. actions kaydına bakmak "
+                         "gerekebilir.")
+            return 1
+        return 0
+
+    print(f"bilinmeyen istek: {ne}")
     return 0
 
 
@@ -230,10 +281,14 @@ def main() -> int:
     if not args.skip_poll and not run("telegram.py", "poll"):
         return 1
 
+    # Posta bagli olmayan istekler (menu, uretim, anahtar durumu) once:
+    # kuyruk bos olsa da calisirlar.
+    sonuc_istek = istekleri_isle()
+
     queue = tg.load_queue()
     if not queue:
         print("bekleyen post yok")
-        return 0
+        return sonuc_istek
 
     # Karara baglanmis girdiler. Kuyrukta iki post olabilir ve ikisine de
     # ayri komut verilmis olabilir; her turda hepsi islenir.

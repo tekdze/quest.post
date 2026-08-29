@@ -1,12 +1,11 @@
 # produce.yml — üretim zinciri: haber tara, yaz, kart bas, onay iste.
 name: produce
 
+# Cron YOK: gunluk akis artik menu.yml uzerinden yuruyor (menu gelir,
+# kullanici /uret <numara> yazar, respond.py uretir). Burasi elle
+# tetikleme icin duruyor - son dakika haberi ya da menuyu atlamak
+# istedigin durumlar.
 on:
-  schedule:
-    # Türkiye saatiyle 12:10, 18:10, 21:10 (UTC+3).
-    # Tam saat başı Actions'ın en yoğun anı; 10 dakika kaydırmak
-    # kuyrukta bekleme süresini kısaltıyor.
-    - cron: "10 9,15,18 * * *"
   workflow_dispatch:
     inputs:
       index:
