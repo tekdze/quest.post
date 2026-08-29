@@ -6,6 +6,12 @@ Faz 5 - TG_BOT_TOKEN ve TG_CHAT_ID gerekir.
 Telegram bir program değil, posta kutusu. Betik uyandığında `getUpdates` ile
 "cevap geldi mi" diye sorar, işini yapar, uyur. Sürekli çalışan bir süreç yok.
 
+Kuyruk çok girdili: normal post onay beklerken acil bir haber girebilsin diye.
+İki post aynı anda beklerken komutun hangisine ait olduğu şöyle çözülür:
+kullanıcı o postun mesajını YANITLARSA komut ona gider; yanıtlamazsa ve
+bekleyen tek post varsa ona gider; birden fazlaysa bot hangisi diye sorar.
+Yanlış posta /iptal uygulanmasındansa bir kez fazla sorulsun.
+
 Kullanım:
     py -3.12 src/telegram.py send state/draft.json    # kartlari yolla, sor
     py -3.12 src/telegram.py poll                     # cevabi oku, karari uygula
@@ -18,6 +24,7 @@ Komutlar (kullanicinin Telegram'a yazacaklari):
     /yeniden    metni yeniden uret
     /c /b /a /s tier'i ez
     /gorsel 1 3 5   sayfalara sirasiyla havuzdaki N. gorseli ata
+    /kuyruk     bekleyen postlari listele
 """
 
 from __future__ import annotations
@@ -42,10 +49,32 @@ CAPTION_LIMIT = 1024
 
 TIER_LABELS = {"C": "sıradan", "B": "büyülü", "A": "sıradışı", "S": "mitik"}
 
+# Kuyrukta en fazla bu kadar post bekleyebilir. Sinirsiz birakilirsa unutulan
+# postlar birikir ve hangi komutun nereye gittigi takip edilemez hale gelir.
+MAX_KUYRUK = 3
+
+# Komut alindi bildirimi. Bot cron ile uyandigi icin kullanici komutu yazip
+# bir sure bekliyor; uyandiginda once "gordum, calisiyorum" demeli, yoksa
+# sistemin calisip calismadigi belirsiz kaliyor. Sureler olculen degerler.
+ACK = {
+    "havuz": "havuz işleme alındı. görselleri numaralı ızgarada yollayacağım, ~1 dk.",
+    "gorsel_baska_set": "başka bir görsel seti deneniyor. kartlar yeniden basılıp "
+                        "yollanacak, ~1-2 dk.",
+    "gorsel_degisti": "görsel seçimin alındı. kartlar yeniden basılıyor, ~1-2 dk.",
+    "yeniden_bas": "tier değişikliği alındı. kartlar yeniden basılıyor, ~1 dk.",
+    "yeniden_uret": "yeniden yazım işleme alındı. önce metin, sonra kartlar, ~2-3 dk.",
+    "elle": "kartlar sıkıştırılmamış dosya olarak yollanıyor...",
+    "yayinla": "onay alındı, paylaşıma bakılıyor.",
+    "iptal": "post atılıyor.",
+}
+
 # Telegram'in kendi komutlari. "bilinmeyen komut" diye cevaplanmamali.
 KOMUT_YARDIM = ("/ok onayla · /bana kartları bana yolla · /yeniden metni yeniden yaz\n"
                 "/gorsel başka görsel dene · /havuz tüm görselleri numaralı gör\n"
-                "/gorsel 4 7 2 sayfa sayfa seç · /iptal at · /c /b /a /s tier")
+                "/gorsel 4 7 2 sayfa sayfa seç · /iptal at · /c /b /a /s tier\n"
+                "/kuyruk bekleyen postlar\n\n"
+                "birden fazla post beklerken: komutu o postun mesajına yanıt "
+                "olarak yaz.")
 
 
 def load_env() -> None:
@@ -119,10 +148,14 @@ def build_multipart(fields: dict, files: dict[str, Path]) -> tuple[bytes, str]:
 
 # -------------------------------------------------------------------- ozet
 
-def summarize(spec: dict, cards: list[Path]) -> str:
+def summarize(spec: dict, cards: list[Path], etiket: str = "normal",
+              baska_bekleyen: int = 0) -> str:
     """Onay mesajinin metni. Kullanici karara bakarak karar verecek."""
     tier = spec.get("tier", "?")
-    lines = [
+    lines = []
+    if etiket == "acil":
+        lines.append("ACİL")
+    lines += [
         f"{spec.get('game', '?')}",
         f"{tier} · {TIER_LABELS.get(tier, '?')} · {spec.get('category', '?')}",
         f"{len(cards)} kart · {spec.get('_kaynak_sayisi', '?')} kaynak yazmış",
@@ -143,14 +176,20 @@ def summarize(spec: dict, cards: list[Path]) -> str:
               "/gorsel başka görsel · /havuz görselleri gör · /iptal at",
               "/c /b /a /s tier değiştir"]
 
+    # Baska post da beklerken komutun adresi belirsiz kalmasin.
+    if baska_bekleyen:
+        lines.append("")
+        lines.append("başka post da bekliyor: komutu bu mesaja yanıt olarak yaz.")
+
     text = "\n".join(lines)
     return text[:CAPTION_LIMIT - 3] + "..." if len(text) > CAPTION_LIMIT else text
 
 
-def send_cards(spec: dict, cards: list[Path]) -> list[int]:
+def send_cards(spec: dict, cards: list[Path], etiket: str = "normal",
+               baska_bekleyen: int = 0) -> list[int]:
     """Kartlari albüm olarak yolla. Caption ilk karta bindirilir."""
     _, chat = config()
-    caption = summarize(spec, cards)
+    caption = summarize(spec, cards, etiket, baska_bekleyen)
 
     media, files = [], {}
     for index, card in enumerate(cards):
@@ -211,6 +250,59 @@ def write_json(path: Path, data) -> None:
     temp.replace(path)
 
 
+# ------------------------------------------------------------------ kuyruk
+
+def load_queue() -> list[dict]:
+    """pending.json'daki kuyruğu oku.
+
+    Eski tek slotlu biçim de okunur: {"durum": ..., "draft": ...} bir girdilik
+    kuyruğa çevrilir. Böylece elde duran bir post sürüm geçişinde kaybolmaz.
+    """
+    data = read_json(PENDING_FILE, None)
+    if not data:
+        return []
+    if isinstance(data, dict) and "kuyruk" in data:
+        return data["kuyruk"]
+    if isinstance(data, dict) and data.get("draft"):
+        entry = dict(data)
+        entry.setdefault("id", Path(data["draft"]).stem)
+        entry.setdefault("etiket", "normal")
+        return [entry]
+    return []
+
+
+def save_queue(queue: list[dict]) -> None:
+    write_json(PENDING_FILE, {"kuyruk": queue})
+
+
+def bekleyenler(queue: list[dict]) -> list[dict]:
+    return [e for e in queue if e.get("durum") == "onay_bekliyor"]
+
+
+def hedef_bul(queue: list[dict], reply_to: int | None) -> dict | None:
+    """Komutun hangi posta ait olduğunu bul.
+
+    Yanıtlanan mesajın id'si o postun kart mesajlarından biriyse hedef odur.
+    Kartlar albüm olarak gidiyor, yani bir postun birden çok message_id'si var;
+    kullanıcı hangisini yanıtlarsa yanıtlasın aynı posta düşer.
+    """
+    if reply_to is None:
+        return None
+    for entry in queue:
+        if reply_to in (entry.get("message_ids") or []):
+            return entry
+    return None
+
+
+def kuyruk_ozeti(queue: list[dict]) -> str:
+    satirlar = []
+    for index, entry in enumerate(bekleyenler(queue), 1):
+        etiket = "ACİL · " if entry.get("etiket") == "acil" else ""
+        satirlar.append(f"{index}. {etiket}{entry.get('baslik') or entry.get('id')} "
+                        f"({entry.get('tier', '?')})")
+    return "\n".join(satirlar) if satirlar else "kuyruk boş."
+
+
 # ---------------------------------------------------------------- komutlar
 
 def parse_command(text: str) -> tuple[str, list[str]] | None:
@@ -223,8 +315,12 @@ def parse_command(text: str) -> tuple[str, list[str]] | None:
     return parts[0].lower(), parts[1:]
 
 
-def fetch_commands() -> tuple[list[tuple[str, list[str]]], int | None]:
-    """Yeni komutlari oku. Offset dosyasi ayni komutu iki kez islemeyi onler."""
+def fetch_commands() -> tuple[list[tuple[str, list[str], int | None]], int | None]:
+    """Yeni komutlari oku. Offset dosyasi ayni komutu iki kez islemeyi onler.
+
+    Ucuncu alan: komut bir mesaji yanitliyorsa o mesajin id'si. Kuyrukta
+    birden fazla post varken komutun adresi bundan cozuluyor.
+    """
     _, chat = config()
     offset = read_json(OFFSET_FILE, {}).get("offset", 0)
     updates = call("getUpdates", {"offset": offset, "timeout": 0})
@@ -237,7 +333,8 @@ def fetch_commands() -> tuple[list[tuple[str, list[str]]], int | None]:
             continue  # baska sohbetten gelen mesaj yok sayilir
         parsed = parse_command(message.get("text", ""))
         if parsed:
-            commands.append(parsed)
+            reply_to = (message.get("reply_to_message") or {}).get("message_id")
+            commands.append((parsed[0], parsed[1], reply_to))
     return commands, last
 
 
@@ -248,28 +345,88 @@ def commit_offset(last: int | None) -> None:
 
 # ------------------------------------------------------------------- akis
 
-def do_send(draft_path: Path, cards_dir: Path) -> int:
+def do_send(draft_path: Path, cards_dir: Path, etiket: str = "normal") -> int:
     spec = json.loads(draft_path.read_text(encoding="utf-8"))
     cards = sorted(cards_dir.glob("*.png"))
     if not cards:
         sys.exit(f"kart bulunamadi: {cards_dir} (once render.py)")
 
-    message_ids = send_cards(spec, cards)
+    queue = load_queue()
+    post_id = draft_path.stem
+
+    # Ayni post yeniden basildiginda (tier degisti, gorsel degisti) kuyruga
+    # ikinci girdi eklenmemeli: var olan guncellenir, eski message_id'ler
+    # yerine yenileri yazilir.
+    onceki = next((e for e in queue if e.get("id") == post_id), None)
+    if onceki is None and len(bekleyenler(queue)) >= MAX_KUYRUK:
+        sys.exit(f"kuyruk dolu ({MAX_KUYRUK}). once bekleyen postlari karara bagla.")
+
+    message_ids = send_cards(spec, cards, etiket, len(bekleyenler(queue)))
     # Yollar POSIX bicimde yazilir: bot GitHub Actions'ta Linux'ta calisiyor,
     # Windows'ta uretilen "state\draft.json" orada cozulmuyor.
-    write_json(PENDING_FILE, {
+    entry = {
+        "id": post_id,
+        "etiket": onceki.get("etiket", etiket) if onceki else etiket,
         "durum": "onay_bekliyor",
+        "baslik": spec.get("game", post_id),
         "draft": draft_path.relative_to(ROOT).as_posix(),
         "cards_dir": cards_dir.relative_to(ROOT).as_posix(),
         "message_ids": message_ids,
         "tier": spec.get("tier"),
-    })
-    print(f"{len(cards)} kart yollandi, onay bekleniyor. pending.json yazildi.")
+    }
+    if onceki:
+        queue[queue.index(onceki)] = entry
+    else:
+        queue.append(entry)
+    save_queue(queue)
+
+    print(f"{len(cards)} kart yollandi ({entry['etiket']}), onay bekleniyor. "
+          f"kuyruk: {len(bekleyenler(queue))}")
     return 0
 
 
+def komutu_uygula(entry: dict, name: str, args: list[str]) -> str | None:
+    """Tek bir komutu tek bir posta uygula, kararı döndür.
+
+    Karar sadece kaydedilir; icrayı respond.py yapar. Bu ayrım korunuyor.
+    """
+    draft_path = ROOT / entry["draft"]
+
+    if name in ("ok", "otomatik"):
+        return "yayinla"
+    if name == "bana":
+        return "elle"
+    if name == "iptal":
+        return "iptal"
+    if name == "yeniden":
+        return "yeniden_uret"
+    if name == "havuz":
+        return "havuz"
+
+    if name.upper() in TIER_LABELS:
+        spec = json.loads(draft_path.read_text(encoding="utf-8"))
+        spec["tier"] = name.upper()
+        draft_path.write_text(json.dumps(spec, ensure_ascii=False, indent=2),
+                              encoding="utf-8")
+        entry["tier"] = name.upper()
+        return "yeniden_bas"
+
+    if name in ("gorsel", "görsel"):
+        if args:
+            spec = json.loads(draft_path.read_text(encoding="utf-8"))
+            spec["_gorsel_secimi"] = args
+            draft_path.write_text(json.dumps(spec, ensure_ascii=False, indent=2),
+                                  encoding="utf-8")
+            return "gorsel_degisti"
+        # Argumansiz: "bunlari begenmedim, baska bir set dene".
+        # Kullanici havuzdaki numaralari ezberlemek zorunda kalmasin.
+        return "gorsel_baska_set"
+
+    return None
+
+
 def do_poll() -> int:
-    pending = read_json(PENDING_FILE, None)
+    queue = load_queue()
     commands, last = fetch_commands()
 
     if not commands:
@@ -277,73 +434,65 @@ def do_poll() -> int:
         commit_offset(last)
         return 0
 
-    if not pending or pending.get("durum") != "onay_bekliyor":
-        for name, _ in commands:
-            print(f"komut geldi ama bekleyen post yok: /{name}")
-        if any(name in ("start", "help", "yardim") for name, _ in commands):
-            send_text("hazır postları buraya yollayacağım.\n\n" + KOMUT_YARDIM)
-        else:
-            send_text("şu an onay bekleyen bir post yok.")
-        commit_offset(last)
-        return 0
-
-    draft_path = ROOT / pending["draft"]
-    spec = json.loads(draft_path.read_text(encoding="utf-8"))
-    karar = None
     bilinmeyen: list[str] = []
 
-    for name, args in commands:
+    for name, args, reply_to in commands:
+        # Posta bagli olmayan komutlar once: bunlar kuyruk bos olsa da calisir.
         if name in ("start", "help", "yardim"):
             send_text("hazır postları buraya yollayacağım.\n\n" + KOMUT_YARDIM)
-        elif name in ("ok", "otomatik"):
-            karar = "yayinla"
-        elif name == "bana":
-            karar = "elle"
-        elif name == "iptal":
-            karar = "iptal"
-        elif name == "yeniden":
-            karar = "yeniden_uret"
-        elif name.upper() in TIER_LABELS:
-            spec["tier"] = name.upper()
-            pending["tier"] = name.upper()
-            draft_path.write_text(json.dumps(spec, ensure_ascii=False, indent=2),
-                                  encoding="utf-8")
-            send_text(f"tier {name.upper()} ({TIER_LABELS[name.upper()]}) olarak "
-                      f"ayarlandı. kartları yeniden basmam gerekiyor.")
-            karar = "yeniden_bas"
-        elif name in ("gorsel", "görsel"):
-            if args:
-                spec["_gorsel_secimi"] = args
-                draft_path.write_text(json.dumps(spec, ensure_ascii=False, indent=2),
-                                      encoding="utf-8")
-                send_text(f"görsel seçimi kaydedildi: {' '.join(args)}")
-                karar = "gorsel_degisti"
-            else:
-                # Argumansiz: "bunlari begenmedim, baska bir set dene".
-                # Kullanici havuzdaki numaralari ezberlemek zorunda kalmasin.
-                karar = "gorsel_baska_set"
-        elif name == "havuz":
-            karar = "havuz"
-        else:
+            continue
+        if name == "kuyruk":
+            send_text(kuyruk_ozeti(queue))
+            continue
+
+        # Komutun adresi: once yanit, sonra "tek bekleyen varsa o".
+        hedef = hedef_bul(queue, reply_to)
+        if hedef is None:
+            aktif = bekleyenler(queue)
+            if not aktif:
+                print(f"komut geldi ama bekleyen post yok: /{name}")
+                send_text("şu an onay bekleyen bir post yok.")
+                continue
+            if len(aktif) > 1:
+                # Yanlis posta /iptal uygulamaktansa sormak iyidir.
+                send_text(f"/{name} hangi posta? komutu o postun mesajına yanıt "
+                          f"olarak yaz.\n\n" + kuyruk_ozeti(queue))
+                continue
+            hedef = aktif[0]
+
+        if hedef.get("durum") != "onay_bekliyor":
+            send_text(f"o post zaten karara bağlanmış ({hedef.get('durum')}).")
+            continue
+
+        karar = komutu_uygula(hedef, name, args)
+        if karar is None:
             bilinmeyen.append(f"/{name}")
+            continue
+
+        hedef["durum"] = karar
+        save_queue(queue)
+        print(f"karar: {karar} -> {hedef.get('id')}")
+
+        # Komut alindi bildirimi. Bot cron ile uyandigi icin kullanici bu
+        # mesaji gorene kadar sistemin calisip calismadigini bilmiyor.
+        # Etiket kuyrugun TAMAMINA bakar, bekleyenlere degil: karar yazilinca
+        # bu post "bekleyen" olmaktan cikiyor ve etiket dusuyordu.
+        mesaj = ACK.get(karar)
+        if mesaj:
+            if len(queue) > 1:
+                mesaj = f"[{hedef.get('baslik') or hedef.get('id')}] {mesaj}"
+            send_text(mesaj)
+
+        if karar == "elle":
+            # Kisa is, beklemeye deger degil: hemen burada yapilir.
+            send_documents(sorted((ROOT / hedef["cards_dir"]).glob("*.png")))
+            send_text("kartlar dosya olarak yollandı. instagram'ın kendi müziğiyle "
+                      "paylaşabilirsin.")
 
     # Tek mesajda topla: her bilinmeyen komuta ayri cevap yazmak sohbeti
     # bogmakti (uc /start ucu ayri hata mesaji uretti).
     if bilinmeyen:
         send_text("anlamadığım komut: " + ", ".join(bilinmeyen) + "\n\n" + KOMUT_YARDIM)
-
-    if karar:
-        pending["durum"] = karar
-        write_json(PENDING_FILE, pending)
-        print(f"karar: {karar}")
-        if karar == "elle":
-            send_documents(sorted((ROOT / pending["cards_dir"]).glob("*.png")))
-            send_text("kartlar dosya olarak yollandı. instagram'ın kendi müziğiyle "
-                      "paylaşabilirsin.")
-        elif karar == "yayinla":
-            send_text("onaylandı, paylaşıma alınıyor.")
-        elif karar == "iptal":
-            send_text("post atıldı.")
 
     commit_offset(last)
     return 0
@@ -362,6 +511,8 @@ def main() -> int:
     p_send = sub.add_parser("send", help="kartlari yolla ve onay sor")
     p_send.add_argument("draft")
     p_send.add_argument("--cards", default=None, help="kart klasoru (varsayilan: out/<draft adi>)")
+    p_send.add_argument("--etiket", default="normal", choices=["normal", "acil"],
+                        help="acil: kuyrukta bekleyen post olsa da yollanir")
 
     sub.add_parser("poll", help="cevabi oku")
 
@@ -373,7 +524,7 @@ def main() -> int:
     if args.komut == "send":
         draft_path = Path(args.draft).resolve()
         cards_dir = Path(args.cards).resolve() if args.cards else ROOT / "out" / draft_path.stem
-        return do_send(draft_path, cards_dir)
+        return do_send(draft_path, cards_dir, args.etiket)
     if args.komut == "poll":
         return do_poll()
     if args.komut == "say":

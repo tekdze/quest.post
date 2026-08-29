@@ -25,14 +25,14 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import telegram as tg  # noqa: E402
 import tier as tier_module  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "src"
 CANDIDATES_FILE = ROOT / "state" / "candidates.json"
-DRAFT_FILE = ROOT / "state" / "draft.json"
+DRAFTS_DIR = ROOT / "state" / "drafts"
 WEEKLY_FILE = ROOT / "state" / "weekly.json"
-PENDING_FILE = ROOT / "state" / "pending.json"
 
 # Aday havuzunda bu kadar sirayi gecince aramayi birakiyoruz: daha
 # asagisi ya cok eski ya cok zayif.
@@ -124,15 +124,27 @@ def main() -> int:
     ap.add_argument("--skip-fetch", action="store_true")
     ap.add_argument("--dry-run", action="store_true", help="Telegram'a yollamaz")
     ap.add_argument("--index", type=int, default=None, help="aday secimini elle ez")
+    ap.add_argument("--acil", action="store_true",
+                    help="son dakika haberi: bekleyen normal post olsa da uret")
     args = ap.parse_args()
 
-    # Onay bekleyen bir post varken yenisini üretmek kuyruğu karıştırır:
-    # pending.json tek slot, ikinci post birincisini ezerdi.
-    pending = read_json(PENDING_FILE, None)
-    if pending and pending.get("durum") == "onay_bekliyor":
-        print("onay bekleyen bir post var, yeni uretim yapilmadi.")
-        print(f"  {pending.get('draft')}")
-        return 0
+    etiket = "acil" if args.acil else "normal"
+
+    # Kuyruk kurali: normal uretim, onay bekleyen normal bir post varken
+    # ikincisini uretmez - kullanici karar vermeden yigilmasin. ACIL uretim
+    # bu kuraldan muaf: bekleyen post ertelenmez, acil post yanina girer.
+    bekleyen = tg.bekleyenler(tg.load_queue())
+    if args.acil:
+        if len(bekleyen) >= tg.MAX_KUYRUK:
+            print(f"kuyruk dolu ({tg.MAX_KUYRUK}), acil post da eklenemiyor.")
+            return 0
+    else:
+        normaller = [e for e in bekleyen if e.get("etiket") != "acil"]
+        if normaller:
+            print("onay bekleyen normal post var, yeni uretim yapilmadi.")
+            for row in normaller:
+                print(f"  {row.get('id')}")
+            return 0
 
     if not args.skip_fetch:
         run("fetch.py")
@@ -159,21 +171,34 @@ def main() -> int:
             return 0
         candidate, computed, index = picked
 
-    run("write.py", "--index", str(index), "--tier", computed,
-        "--out", str(DRAFT_FILE))
-    run("images.py", str(DRAFT_FILE))
-
-    spec = read_json(DRAFT_FILE, {})
+    # Taslak once gecici adla yazilir: dosya adindaki oyun adi ancak write.py
+    # calistiktan sonra biliniyor. Her postun kendi taslagi olmali, yoksa
+    # kuyrukta iki post varken ikincisi birincisinin metnini ezerdi.
     stamp = datetime.now(timezone.utc).strftime("%Y%m%d")
-    out_dir = ROOT / "out" / f"{stamp}-{slugify(spec.get('game', 'post'))}"
-    run("render.py", str(DRAFT_FILE), "--out", str(out_dir))
+    DRAFTS_DIR.mkdir(parents=True, exist_ok=True)
+    gecici = DRAFTS_DIR / f"_uretiliyor-{stamp}.json"
+    run("write.py", "--index", str(index), "--tier", computed, "--out", str(gecici))
+
+    spec = read_json(gecici, {})
+    post_id = f"{stamp}-{slugify(spec.get('game', 'post'))}"
+    # Ayni gun ayni oyundan ikinci post: kuyrukta id cakismasin.
+    if any(e.get("id") == post_id for e in tg.load_queue()):
+        post_id = f"{post_id}-2"
+    draft_file = DRAFTS_DIR / f"{post_id}.json"
+    gecici.replace(draft_file)
+
+    run("images.py", str(draft_file))
+
+    out_dir = ROOT / "out" / post_id
+    run("render.py", str(draft_file), "--out", str(out_dir))
 
     if args.dry_run:
         print(f"\n--dry-run: Telegram'a yollanmadi. kartlar: {out_dir}")
         return 0
 
-    run("telegram.py", "send", str(DRAFT_FILE), "--cards", str(out_dir))
-    print("\nzincir tamamlandi, onay bekleniyor.")
+    run("telegram.py", "send", str(draft_file), "--cards", str(out_dir),
+        "--etiket", etiket)
+    print(f"\nzincir tamamlandi ({etiket}), onay bekleniyor.")
     return 0
 
 

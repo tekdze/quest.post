@@ -18,3 +18,6 @@ state/candidates.json
 # IGDB gorsel onbellegi: kart PNG zaten repoya giriyor, kaynak gorseli
 # ayrica tutmak gereksiz.
 state/img/
+
+# uretim sirasinda olusan gecici taslak
+state/drafts/_uretiliyor-*.json

@@ -29,7 +29,6 @@ import telegram as tg  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "src"
-PENDING_FILE = ROOT / "state" / "pending.json"
 
 
 def run(script: str, *args: str) -> bool:
@@ -38,22 +37,130 @@ def run(script: str, *args: str) -> bool:
     return subprocess.run(command, cwd=ROOT).returncode == 0
 
 
-def kuyrugu_temizle(pending: dict, durum: str) -> None:
-    pending["durum"] = durum
-    tg.write_json(PENDING_FILE, pending)
+def durumu_yaz(entry: dict, durum: str) -> None:
+    """Girdinin durumunu güncelle ve kuyruğu diske yaz."""
+    queue = tg.load_queue()
+    for row in queue:
+        if row.get("id") == entry.get("id"):
+            row["durum"] = durum
+            break
+    tg.save_queue(queue)
+    entry["durum"] = durum
 
 
-def yeniden_bas_ve_sor(pending: dict, draft: Path, cards_dir: Path,
+def kuyruktan_cikar(entry: dict) -> None:
+    """İşi biten postu kuyruktan düşür.
+
+    Tek slotlu dönemde durum "tamam" yazılıp bırakılıyordu; çok girdili
+    kuyrukta bitmiş postu tutmak listeyi şişirir ve /kuyruk çıktısını bozar.
+    """
+    queue = [row for row in tg.load_queue() if row.get("id") != entry.get("id")]
+    tg.save_queue(queue)
+
+
+def etiketle(entry: dict, mesaj: str) -> str:
+    """Birden fazla post kuyruktayken mesajın hangi posta ait olduğu belli olsun.
+
+    Kuyruğun tamamına bakılır, bekleyenlere değil: işlenen postun durumu
+    "onay_bekliyor" olmaktan çıktığı için bekleyen sayısı yanıltıcı olurdu.
+    """
+    if len(tg.load_queue()) > 1:
+        return f"[{entry.get('baslik') or entry.get('id')}] {mesaj}"
+    return mesaj
+
+
+def yeniden_bas_ve_sor(entry: dict, draft: Path, cards_dir: Path,
                        gorsel_yeniden: bool = False) -> int:
     """Kartları yeniden bas ve onayı tekrar sor."""
     if gorsel_yeniden and not run("images.py", str(draft)):
-        tg.send_text("görselleri yeniden seçerken hata oldu.")
+        tg.send_text(etiketle(entry, "görselleri yeniden seçerken hata oldu."))
         return 1
     if not run("render.py", str(draft), "--out", str(cards_dir)):
-        tg.send_text("kartları basarken hata oldu.")
+        tg.send_text(etiketle(entry, "kartları basarken hata oldu."))
         return 1
-    if not run("telegram.py", "send", str(draft), "--cards", str(cards_dir)):
+    # Etiket korunmali: acil post yeniden basildiginda normale dusmesin.
+    if not run("telegram.py", "send", str(draft), "--cards", str(cards_dir),
+               "--etiket", entry.get("etiket", "normal")):
         return 1
+    return 0
+
+
+def girdiyi_isle(entry: dict) -> int:
+    """Tek bir postun kararını uygula."""
+    durum = entry.get("durum")
+    draft = ROOT / entry["draft"]
+    cards_dir = ROOT / entry["cards_dir"]
+    print(f"\n[{entry.get('id')}] durum: {durum}")
+
+    if durum == "yayinla":
+        # Faz 6 (publish.py) yazilana kadar otomatik paylasim yok.
+        # Sessizce basarisiz olmaktansa kullaniciya durumu soyle.
+        if (SRC / "publish.py").exists():
+            if not run("publish.py", str(draft), "--cards", str(cards_dir)):
+                tg.send_text(etiketle(entry, "paylaşım başarısız oldu, /bana ile "
+                                             "elle atabilirsin."))
+                durumu_yaz(entry, "onay_bekliyor")
+                return 1
+            tg.send_text(etiketle(entry, "paylaşıldı."))
+            kuyruktan_cikar(entry)
+            return 0
+        tg.send_text(etiketle(entry, "otomatik paylaşım henüz bağlı değil "
+                                     "(instagram kurulumu yapılmadı). kartları "
+                                     "almak için /bana yaz."))
+        durumu_yaz(entry, "onay_bekliyor")
+        return 0
+
+    if durum == "elle":
+        # Kartlar telegram.py tarafindan zaten dosya olarak yollandi.
+        kuyruktan_cikar(entry)
+        print("kuyruktan cikarildi")
+        return 0
+
+    if durum == "iptal":
+        kuyruktan_cikar(entry)
+        print("post iptal edildi, kuyruktan cikarildi")
+        return 0
+
+    if durum == "yeniden_uret":
+        spec = json.loads(draft.read_text(encoding="utf-8"))
+        index = spec.get("_aday_index")
+        if not index:
+            tg.send_text(etiketle(entry, "bu postun aday sırası kayıtlı değil, "
+                                         "yeniden üretemiyorum. /iptal yazıp yeni "
+                                         "üretim bekle."))
+            durumu_yaz(entry, "onay_bekliyor")
+            return 1
+        if not run("write.py", "--index", str(index), "--tier", spec["tier"],
+                   "--out", str(draft)):
+            tg.send_text(etiketle(entry, "yeniden üretim başarısız oldu."))
+            durumu_yaz(entry, "onay_bekliyor")
+            return 1
+        return yeniden_bas_ve_sor(entry, draft, cards_dir, gorsel_yeniden=True)
+
+    if durum == "havuz":
+        # Havuzu göster, kuyruğu bozma: kullanıcı bakıp karar verecek.
+        sheet = cards_dir / "havuz.png"
+        if not run("render.py", str(draft), "--sheet", str(sheet)):
+            tg.send_text(etiketle(entry, "bu postta görsel havuzu yok "
+                                         "(tipografik kart)."))
+        else:
+            tg.send_photo(sheet, "beğendiklerini sayfa sırasına göre yaz: "
+                                 "/gorsel 4 7 2")
+        durumu_yaz(entry, "onay_bekliyor")
+        return 0
+
+    if durum == "gorsel_baska_set":
+        if not run("images.py", str(draft), "--rotate", "1"):
+            tg.send_text(etiketle(entry, "görselleri değiştirirken hata oldu."))
+            durumu_yaz(entry, "onay_bekliyor")
+            return 1
+        return yeniden_bas_ve_sor(entry, draft, cards_dir)
+
+    if durum in ("yeniden_bas", "gorsel_degisti"):
+        return yeniden_bas_ve_sor(entry, draft, cards_dir,
+                                  gorsel_yeniden=(durum == "gorsel_degisti"))
+
+    print(f"bilinmeyen durum: {durum}")
     return 0
 
 
@@ -72,86 +179,26 @@ def main() -> int:
     if not args.skip_poll and not run("telegram.py", "poll"):
         return 1
 
-    pending = tg.read_json(PENDING_FILE, None)
-    if not pending:
+    queue = tg.load_queue()
+    if not queue:
         print("bekleyen post yok")
         return 0
 
-    durum = pending.get("durum")
-    print(f"\ndurum: {durum}")
-
-    if durum in (None, "onay_bekliyor", "tamam", "iptal_edildi"):
-        print("uygulanacak karar yok")
+    # Karara baglanmis girdiler. Kuyrukta iki post olabilir ve ikisine de
+    # ayri komut verilmis olabilir; her turda hepsi islenir.
+    bekleyen_durumlar = {None, "onay_bekliyor"}
+    isler = [e for e in queue if e.get("durum") not in bekleyen_durumlar]
+    if not isler:
+        print(f"uygulanacak karar yok ({len(queue)} post onay bekliyor)")
         return 0
 
-    draft = ROOT / pending["draft"]
-    cards_dir = ROOT / pending["cards_dir"]
-
-    if durum == "yayinla":
-        # Faz 6 (publish.py) yazilana kadar otomatik paylasim yok.
-        # Sessizce basarisiz olmaktansa kullaniciya durumu soyle.
-        if (SRC / "publish.py").exists():
-            if not run("publish.py", str(draft), "--cards", str(cards_dir)):
-                tg.send_text("paylaşım başarısız oldu, /bana ile elle atabilirsin.")
-                return 1
-            kuyrugu_temizle(pending, "tamam")
-            tg.send_text("paylaşıldı.")
-            return 0
-        tg.send_text("otomatik paylaşım henüz bağlı değil (instagram kurulumu "
-                     "yapılmadı). kartları almak için /bana yaz.")
-        kuyrugu_temizle(pending, "onay_bekliyor")
-        return 0
-
-    if durum == "elle":
-        # Kartlar telegram.py tarafindan zaten dosya olarak yollandi.
-        kuyrugu_temizle(pending, "tamam")
-        print("kuyruk temizlendi, yeni uretime hazir")
-        return 0
-
-    if durum == "iptal":
-        kuyrugu_temizle(pending, "iptal_edildi")
-        print("post iptal edildi, kuyruk bos")
-        return 0
-
-    if durum == "yeniden_uret":
-        spec = json.loads(draft.read_text(encoding="utf-8"))
-        index = spec.get("_aday_index")
-        if not index:
-            tg.send_text("bu postun aday sırası kayıtlı değil, yeniden "
-                         "üretemiyorum. /iptal yazıp yeni üretim bekle.")
-            return 1
-        tg.send_text("metin yeniden yazılıyor...")
-        if not run("write.py", "--index", str(index), "--tier", spec["tier"],
-                   "--out", str(draft)):
-            tg.send_text("yeniden üretim başarısız oldu.")
-            return 1
-        return yeniden_bas_ve_sor(pending, draft, cards_dir, gorsel_yeniden=True)
-
-    if durum == "havuz":
-        # Havuzu göster, kuyruğu bozma: kullanıcı bakıp karar verecek.
-        sheet = cards_dir / "havuz.png"
-        if not run("render.py", str(draft), "--sheet", str(sheet)):
-            tg.send_text("bu postta görsel havuzu yok (tipografik kart).")
-        else:
-            tg.send_photo(sheet, "beğendiklerini sayfa sırasına göre yaz: "
-                                 "/gorsel 4 7 2")
-        kuyrugu_temizle(pending, "onay_bekliyor")
-        return 0
-
-    if durum == "gorsel_baska_set":
-        tg.send_text("aynı oyundan başka görseller deneniyor...")
-        if not run("images.py", str(draft), "--rotate", "1"):
-            tg.send_text("görselleri değiştirirken hata oldu.")
-            return 1
-        return yeniden_bas_ve_sor(pending, draft, cards_dir)
-
-    if durum in ("yeniden_bas", "gorsel_degisti"):
-        tg.send_text("kartlar yeniden basılıyor...")
-        return yeniden_bas_ve_sor(pending, draft, cards_dir,
-                                  gorsel_yeniden=(durum == "gorsel_degisti"))
-
-    print(f"bilinmeyen durum: {durum}")
-    return 0
+    sonuc = 0
+    for entry in isler:
+        # girdiyi_isle kuyrugu diske yeniden yaziyor; elimizdeki kopya
+        # uzerinden calismak guvenli cunku her girdi kendi id'siyle bulunuyor.
+        if girdiyi_isle(entry) != 0:
+            sonuc = 1
+    return sonuc
 
 
 if __name__ == "__main__":

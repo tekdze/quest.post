@@ -3,7 +3,8 @@
 > Yeni bir sohbete geçerken: **önce bu dosyayı oku.** Kararlar burada, kodda değil.
 > Her önemli kararda veya faz bitiminde bu dosya güncellenir.
 
-Son güncelleme: 2026-08-27 · Faz 1-5 bitti, tasarım kesinleşti, Faz 6-7 kaldı
+Son güncelleme: 2026-08-29 · Çok girdili kuyruk + reply yönlendirme + ack eklendi,
+Faz 7 workflow'ları yazılacak
 
 ---
 
@@ -216,7 +217,8 @@ templates/      card.html + card.css (tasarım burada, SABİT)
 fonts/          Bricolage Grotesque, Outfit, OFL.txt
 assets/         placeholder.png (anahtarsız render denemesi için)
 examples/       sample_post.json (güncel şema, anahtarsız test)
-state/          posted / pending / tg_offset / draft / weekly
+state/          posted / pending (kuyruk) / tg_offset / weekly
+                drafts/<id>.json — her postun kendi taslağı
                 candidates.json ve img/ git dışı
 .github/workflows/   [BOŞ — Faz 7]
 ```
@@ -254,9 +256,41 @@ Ayrıca: **AI Studio sohbeti ile Gemini API iki ayrı kapı.** Sohbetin
 
 ## 8. Telegram komutları
 
+### ⚠️ Kuyruk çok girdili (2026-08-29)
+`pending.json` artık tek slot değil, `{"kuyruk": [...]}`. Sebep: acil haber
+geldiğinde onay bekleyen normal post **ertelenmesin**, ikisi yan yana dursun
+(kullanıcı kararı). En fazla `MAX_KUYRUK = 3` post bekleyebilir.
+
+Her postun kendi taslağı var: `state/drafts/<id>.json`. Tek `draft.json`
+kalsaydı ikinci post birincinin metnini ezerdi. `id` = `YYYYAAGG-oyun-adi`,
+kart klasörüyle aynı.
+
+**Komutun adresi** şu sırayla çözülür:
+1. Komut bir postun kart mesajına **yanıt** olarak yazılmışsa → o posta gider
+   (`reply_to_message.message_id`, albümdeki hangi kart olursa olsun)
+2. Yanıt yoksa ve bekleyen **tek** post varsa → ona gider (tek post varken
+   deneyim hiç değişmiyor, olağan hâl bu)
+3. Yanıt yoksa ve **birden fazla** post bekliyorsa → bot uygulamaz, "hangisi?"
+   diye sorar ve kuyruğu listeler. Yanlış posta `/iptal` uygulanmasındansa
+   bir kez fazla sorulsun.
+
+Eski tek slotlu biçim `load_queue()` içinde hâlâ okunuyor (geçişte elde post
+kalmasın diye).
+
+### Komut alındı bildirimi (ack)
+Bot cron ile uyandığı için kullanıcı komutu yazıp bekliyor. Uyandığında önce
+"gördüm, çalışıyorum" diyor: `telegram.py` içindeki `ACK` sözlüğü, komut
+okunur okunmaz. Kuyrukta birden fazla post varsa mesajın başına
+`[oyun adı]` konuyor.
+
+⚠️ **Sınırı bilinerek kabul edildi:** bot uyumadan mesaj atamaz. Ack, komutu
+yazdıktan sonra değil, **botun uyandığı anda** gelir. Cron gecikmesi (5-30 dk)
+bu şekilde kapanmıyor; ack sadece "uyandım, işlemi başlattım" der.
+
 | Komut | Ne yapar |
 |---|---|
 | `/ok`, `/otomatik` | Onayla. Faz 6 yokken kullanıcıya `/bana` öneriliyor, kuyruk **açık kalıyor** (temizlense post kaybolurdu) |
+| `/kuyruk` | Bekleyen postları listeler |
 | `/bana` | Kartları **sıkıştırılmamış dosya** olarak yollar (`sendDocument`). Telegram fotoğrafları yeniden sıkıştırıyor |
 | `/iptal` | Postu at, kuyruğu boşalt |
 | `/yeniden` | Metni baştan yazdır, kartları bas, tekrar sor |
@@ -338,11 +372,39 @@ kuralı **büyük haberleri eliyordu** (çok kaynak yazınca kelime sıklaşıyo
 ### Faz 7 · workflow'lar
 - `produce.yml` — cron günde 3 kez, `produce.py` çağırır
 - `respond.yml` — cron 5 dk, `respond.py` çağırır
+- `watch.yml` — cron 10-15 dk, **sadece `fetch.py`**: patlama tespiti.
+  Ölçüt kaç kaynak değil, **ne kadar sürede**: küme içi ilk-son kayıt farkı
+  `< 90 dk` ve `source_count >= 3` ise son dakika sayılır, `produce.py --acil`
+  tetiklenir. `tier.py` bu sinyali henüz hesaplamıyor, eklenecek.
 - `refresh_token.yml` — aylık, Instagram token yenileme (Faz 6'ya bağlı)
 - `urgent.yml` — `workflow_dispatch` iskeleti, son dakika haberi
 - Playwright/Chromium kurulumu önbelleğe alınmalı, yoksa her çalışmada
   ~120 MB indirilir
-- Bot state dosyalarını kendi commit'ler, Actions write izni şart
+- Bot state dosyalarını kendi commit'ler, Actions write izni şart.
+  State commit'lerinde `pull --rebase` retry'ı olmalı: `produce` ve `respond`
+  aynı anda çalışırsa git çakışır.
+
+### ⚠️ Cron gecikmesi — mimari kısıt, bilinerek kabul edildi
+GitHub Actions cron **minimum 5 dakika**; `*/1` yazılırsa sessizce atlanır.
+Üstelik 5 dk bile garanti değil: pratikte 5-30 dk gecikme normal, yoğun
+saatlerde daha fazla. Yani `/havuz` yazıp 25 dakika beklemek gerçek bir
+senaryo.
+
+**Elenen alternatifler (2026-08-29, kullanıcı kararı):**
+- *Telegram webhook + Cloudflare Worker*: ücretsiz (100k istek/gün, bizim
+  kullanım günde ~200) ve tek seferlik kurulum, ama **kullanıcı istemedi**.
+  Ayrıca ölçüldüğünde beklendiği kadar hızlı da değil: Telegram→Worker→GitHub
+  dispatch anlık, fakat arkasındaki runner soğuk başlangıcı (kuyruk + checkout
+  + pip) ~1-2 dk ekliyor. Yan etkisi: webhook aktifken `getUpdates` **409**
+  döner, yani elle `respond.py` çalıştırma bozulur (`deleteWebhook` ile geri
+  alınır). Worker ayrıca ikinci bir sır (GitHub PAT) ve ikinci bir platform
+  demek; PAT süresi dolarsa bot **hata vermeden** susar.
+- *Uzun yoklama (6 saatlik job, `getUpdates timeout=50`)*: saniyeler mertebesinde
+  cevap verirdi ve harici servis gerektirmezdi; kullanıcı basitlik için
+  cron'da kaldı.
+
+Gecikme kabul edildiği için **ack mesajı** eklendi (bkz. bölüm 8): sistemin
+çalıştığını görmenin yolu bu.
 
 ### Faz 6 · Instagram
 Facebook Sayfası + Meta developer app + hesabı Instagram Tester olarak ekleme.
@@ -397,6 +459,17 @@ dair yönerge. **Kullanıcı bu istemi kendisi verecek.**
   birleştiriliyor (kazıma yapmamak için bilinçli tercih).
 - Steam yeni çıkanlar için RSS yok, ayrı modül gerekir. TR stüdyo duyuruları
   için ortak besleme yok.
+- **Twitter/X kaynak olarak — Faz 7'den sonraya ertelendi (kullanıcı kararı).**
+  Ücretsiz okuma katmanı yok: Şubat 2026'da kullanım başına ödemeye geçildi,
+  **okuma başına $0.005**, eski $200/ay Basic yeni kayıtlara kapalı. 20 hesabı
+  15 dk'da bir taramak ≈ günde $48. Ücretsiz yollar (RSS köprüleri, üçüncü
+  parti scraping API'leri) `feeds.json` şemasına dokunmadan oturur ama
+  kırılgan. Tasarım kararı: **Twitter kaynak değil, erken uyarı sensörü
+  olmalı** — viral tweet doğrudan post olmaz, bot RSS'te doğrulama arar,
+  bulamazsa Telegram'a *post değil bildirim* gönderir. `tier.py` içindeki
+  `kinds == {"community"} -> C` kuralı zaten bunu söylüyor, korunacak.
+  Gerekçe: viral olmak doğru olmak değil, ve viral tweetin görseli
+  "görseller yalnızca IGDB'den" telif kuralını deler.
 - Evergreen içerik (`/evergreen <konu>`) ve haftalık C derlemesi
   (`state/weekly.json` doluyor) henüz üretilmiyor.
 - Kart dokusu (grain, hafif baskı kayması) düşünülmüştü, yapılmadı.
