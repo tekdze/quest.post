@@ -180,6 +180,13 @@ def main() -> int:
     run("write.py", "--index", str(index), "--tier", computed, "--out", str(gecici))
 
     spec = read_json(gecici, {})
+    # Kumedeki her kaydin hash'i taslaga yaziliyor: post karara baglandiginda
+    # (yayinlandi ya da iptal edildi) respond.py bunlari posted.json'a
+    # gecirecek ve fetch.py ayni haberi bir daha aday yapmayacak.
+    spec["_hashes"] = [m["hash"] for m in candidate.get("members", []) if "hash" in m]
+    spec["_kume_key"] = candidate.get("key")
+    write_json(gecici, spec)
+
     post_id = f"{stamp}-{slugify(spec.get('game', 'post'))}"
     # Ayni gun ayni oyundan ikinci post: kuyrukta id cakismasin.
     if any(e.get("id") == post_id for e in tg.load_queue()):

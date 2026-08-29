@@ -22,6 +22,7 @@ import argparse
 import json
 import subprocess
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -29,6 +30,7 @@ import telegram as tg  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "src"
+POSTED_FILE = ROOT / "state" / "posted.json"
 
 
 def run(script: str, *args: str) -> bool:
@@ -46,6 +48,45 @@ def durumu_yaz(entry: dict, durum: str) -> None:
             break
     tg.save_queue(queue)
     entry["durum"] = durum
+
+
+def arsivle(entry: dict, sonuc: str) -> None:
+    """Karara bağlanan haberi posted.json'a yaz: bir daha aday olmasın.
+
+    Eksikti: posted.json'u hiçbir kod yazmıyordu, sadece fetch.py okuyordu.
+    Bu yüzden /iptal denen haber bir sonraki üretimde yine en üstte çıkıyordu.
+    İptal de arşive girer - "istemedim" demek "bir daha sorma" demektir.
+    """
+    draft = ROOT / entry["draft"]
+    try:
+        spec = json.loads(draft.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        print("uyari: taslak okunamadi, arsivlenemedi")
+        return
+
+    hashes = spec.get("_hashes") or []
+    if not hashes:
+        # Eski taslaklarda _hashes yok. Sessizce gecmek yerine soyle:
+        # bu haber tekrar aday olabilir.
+        print(f"uyari: {entry.get('id')} icin hash yok, tekrar filtresine girmedi")
+        return
+
+    arsiv = tg.read_json(POSTED_FILE, {"posted": []})
+    kayitli = {row.get("hash") for row in arsiv.get("posted", [])}
+    eklendi = 0
+    for h in hashes:
+        if h in kayitli:
+            continue
+        arsiv["posted"].append({
+            "hash": h,
+            "id": entry.get("id"),
+            "baslik": entry.get("baslik"),
+            "sonuc": sonuc,
+            "tarih": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        })
+        eklendi += 1
+    tg.write_json(POSTED_FILE, arsiv)
+    print(f"arsivlendi ({sonuc}): {eklendi} kayit -> posted.json")
 
 
 def kuyruktan_cikar(entry: dict) -> None:
@@ -102,6 +143,7 @@ def girdiyi_isle(entry: dict) -> int:
                 durumu_yaz(entry, "onay_bekliyor")
                 return 1
             tg.send_text(etiketle(entry, "paylaşıldı."))
+            arsivle(entry, "yayinlandi")
             kuyruktan_cikar(entry)
             return 0
         tg.send_text(etiketle(entry, "otomatik paylaşım henüz bağlı değil "
@@ -112,11 +154,13 @@ def girdiyi_isle(entry: dict) -> int:
 
     if durum == "elle":
         # Kartlar telegram.py tarafindan zaten dosya olarak yollandi.
+        arsivle(entry, "elle_alindi")
         kuyruktan_cikar(entry)
         print("kuyruktan cikarildi")
         return 0
 
     if durum == "iptal":
+        arsivle(entry, "iptal")
         kuyruktan_cikar(entry)
         print("post iptal edildi, kuyruktan cikarildi")
         return 0
@@ -135,6 +179,13 @@ def girdiyi_isle(entry: dict) -> int:
             tg.send_text(etiketle(entry, "yeniden üretim başarısız oldu."))
             durumu_yaz(entry, "onay_bekliyor")
             return 1
+        # write.py taslagi sifirdan yaziyor: kume hash'leri silinirdi ve
+        # post karara baglandiginda arsive girmezdi. Geri koyuluyor.
+        yeni = json.loads(draft.read_text(encoding="utf-8"))
+        yeni["_hashes"] = spec.get("_hashes", [])
+        yeni["_kume_key"] = spec.get("_kume_key")
+        draft.write_text(json.dumps(yeni, ensure_ascii=False, indent=2),
+                         encoding="utf-8")
         return yeniden_bas_ve_sor(entry, draft, cards_dir, gorsel_yeniden=True)
 
     if durum == "havuz":

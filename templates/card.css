@@ -138,6 +138,10 @@ html, body {
   display: table;
   border-radius: 0;
   letter-spacing: 0;
+  /* Tipografik kartta .card__content flex container oluyor; flex cocugu
+     varsayilan "stretch" ile satiri kapliyordu ve kutular tarayici
+     cubuguna donuyordu. Genislik her zaman metne gore kalmali. */
+  align-self: flex-start;
 }
 
 .kicker {
