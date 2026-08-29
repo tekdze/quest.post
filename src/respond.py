@@ -166,6 +166,18 @@ def istekleri_isle() -> int:
             tg.send_text("seçtiğin aday listede bulunamadı. /konular ile "
                          "listeyi yenile.")
             return 1
+
+        # produce.py "onay bekleyen normal post varken uretme" diyor ve
+        # sessizce cikiyor - kullanici bosuna bekliyordu. Sebebi burada
+        # soyleniyor, cunku istegi alan taraf burasi.
+        bekleyen = [e for e in tg.bekleyenler(tg.load_queue())
+                    if e.get("etiket") != "acil"]
+        if bekleyen:
+            adlar = ", ".join(e.get("baslik") or e.get("id") for e in bekleyen)
+            tg.send_text(f"kuyrukta onay bekleyen post var: {adlar}\n\n"
+                         "önce onu karara bağla (/ok · /bana · /iptal), "
+                         "sonra tekrar /uret yaz.")
+            return 0
         # Adayin tam kaydi menude tasiniyor; candidates.json'u ondan kur.
         # Boylece uretim, menunun gordugu haberin AYNISINI isliyor.
         index = aday.get("aday_index", sira)
