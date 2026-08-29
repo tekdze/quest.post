@@ -11,7 +11,7 @@
     {
       "type": "cover",
       "title": "cd projekt red yeni dlc ile vakit mi kazanıyor",
-      "image": "state/img/the-witcher-3-wild-hunt-ar3lze.jpg"
+      "image": "state/img/the-witcher-3-wild-hunt-ar3lzf.jpg"
     },
     {
       "type": "text",
@@ -21,7 +21,7 @@
         "eski içeriklerin tekrar sunulması",
         "yeni oyun öncesi oyalama taktiği"
       ],
-      "image": "state/img/the-witcher-3-wild-hunt-sctj8u.jpg"
+      "image": "state/img/the-witcher-3-wild-hunt-ar3lzg.jpg"
     },
     {
       "type": "text",
@@ -31,7 +31,7 @@
         "uzun geliştirme sürecinin getirdiği riskler",
         "beklentilerin kontrolsüz yükselmesi"
       ],
-      "image": "state/img/the-witcher-3-wild-hunt-farvemmmxav0bgt6wx7t.jpg"
+      "image": "state/img/the-witcher-3-wild-hunt-ar6ijr.jpg"
     },
     {
       "type": "numbers",
@@ -46,7 +46,7 @@
           "label": "yeni içerik için iddia edilen süre"
         }
       ],
-      "image": "state/img/the-witcher-3-wild-hunt-em1y2ugcwy2myuhvb9db.jpg"
+      "image": "state/img/the-witcher-3-wild-hunt-ar3lze.jpg"
     },
     {
       "type": "outro",
@@ -55,7 +55,39 @@
         "düşüncelerinizi yorum kısmında paylaşabilirsiniz",
         "farklı görüşleri incelemek için tartışmaya katılabilirsiniz"
       ],
-      "image": "state/img/the-witcher-3-wild-hunt-ar3lzf.jpg"
+      "image": "state/img/the-witcher-3-wild-hunt-ar3lzj.jpg"
     }
-  ]
+  ],
+  "_image_pool": [
+    "ar6ijr",
+    "ar3lze",
+    "ar3lzf",
+    "ar3lzj",
+    "ar3lzg",
+    "ar3lzl",
+    "ar3lzh",
+    "ar3lzk",
+    "ar3lzd",
+    "ar3lzb",
+    "ar3lzm",
+    "ar3lzc",
+    "ar3lzn",
+    "ar3lzi",
+    "ar3m1h",
+    "ar3m1g",
+    "sctj8u",
+    "farvemmmxav0bgt6wx7t",
+    "em1y2ugcwy2myuhvb9db",
+    "usxccsncekxg0wd1v6ee",
+    "sciabf",
+    "sctj8t",
+    "sciabd",
+    "sciabh",
+    "sciabe",
+    "z5t0yuhyiiui1ickwhgj",
+    "mnljdjtrh44x4snmierh",
+    "sciabg",
+    "coaarl"
+  ],
+  "_slug": "the-witcher-3-wild-hunt"
 }

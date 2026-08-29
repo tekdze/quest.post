@@ -235,6 +235,8 @@ def main() -> int:
     ap.add_argument("draft", help="write.py'nin urettigi tarif (JSON)")
     ap.add_argument("--dry-run", action="store_true", help="indirme yapma, sadece sec")
     ap.add_argument("--game", default=None, help="arama adini elle ez")
+    ap.add_argument("--pick", nargs="*", default=None,
+                    help="sayfa sayfa havuz sirasi, ornek: --pick 1 3 5")
     args = ap.parse_args()
 
     draft_path = Path(args.draft)
@@ -288,8 +290,33 @@ def main() -> int:
     spec["credit"] = studio
     print(f"  kredi: {studio or 'bilinmiyor'}")
 
-    picks = assign_images(spec["pages"], pool)
-    slug = re.sub(r"[^a-z0-9]+", "-", normalize(game["name"])).strip("-") or "post"
+    # Havuzu tarife yaz: /gorsel komutu alternatifleri buradan secer.
+    # Sira sabit tutulur ki kullanicinin gordugu "3. gorsel" hep ayni olsun.
+    duz_havuz = pool["artwork"] + pool["screenshot"] + pool["cover"]
+    spec["_image_pool"] = duz_havuz
+    spec["_slug"] = re.sub(r"[^a-z0-9]+", "-", normalize(game["name"])).strip("-") or "post"
+
+    elle = spec.pop("_gorsel_secimi", None) or args.pick
+    if elle:
+        # Kullanici sayfa sayfa havuz sirasi verdi: "1 3 5" -> 1. sayfaya
+        # havuzun 1., 2. sayfaya 3., 3. sayfaya 5. gorseli.
+        picks = []
+        for sira, page in enumerate(spec["pages"]):
+            if sira < len(elle):
+                try:
+                    picks.append(duz_havuz[int(elle[sira]) - 1])
+                    continue
+                except (ValueError, IndexError):
+                    print(f"  uyari: gecersiz gorsel numarasi {elle[sira]!r}, "
+                          f"otomatik secim kullanilacak")
+            picks.append(None)
+        otomatik = assign_images(spec["pages"], pool)
+        picks = [p or otomatik[i] for i, p in enumerate(picks)]
+        print(f"  elle secim uygulandi: {' '.join(str(x) for x in elle)}")
+    else:
+        picks = assign_images(spec["pages"], pool)
+
+    slug = spec["_slug"]
 
     print()
     for index, (page, image_id) in enumerate(zip(spec["pages"], picks), 1):

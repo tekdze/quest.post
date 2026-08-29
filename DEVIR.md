@@ -3,7 +3,7 @@
 > Yeni bir sohbete geçerken: **önce bu dosyayı oku.** Kararlar burada, kodda değil.
 > Her önemli kararda veya faz bitiminde bu dosya güncellenir.
 
-Son güncelleme: 2026-08-27 (tier + orkestratör)
+Son güncelleme: 2026-08-27 (respond.py, komutlar bağlandı)
 
 ---
 
@@ -753,3 +753,51 @@ konuyor (editoryal afiş düzeni), kapak başlığı 104px'e çıkıyor.
 Bu mod sık kullanılacak: sızıntı haberleri **ve** oyun eşleşmeyen her haber
 (etkinlik, şirket, sektör) buraya düşüyor. Ölçüm: gamescom haberi eşleşme
 bulamadı, 5 kartın 5'i tipografik.
+
+---
+
+## 16. respond.py — kararların uygulanması (2026-08-27)
+
+### Bulunan kusur
+Faz 5'te Telegram komutları yazıldı ama **sadece `/ok` ve `/bana` gerçekten
+test edildi.** Kullanıcı sordu, bakıldı: `/yeniden`, `/c/b/a/s` ve `/gorsel`
+kararı `pending.json`'a yazıyor ama **hiçbir şey o kararı uygulamıyordu.**
+Kart altındaki komut listesi de bu yüzden çalışmayan düğme gösteriyordu.
+
+`/gorsel` ayrıca teknik olarak da imkânsızdı: `images.py` alternatif görsel
+havuzunu hiç kaydetmiyordu.
+
+### İş bölümü netleşti
+| Dosya | Rol |
+|---|---|
+| `telegram.py` | kayıt memuru — mesaj yollar, komutu okur, kararı `pending.json`'a yazar |
+| `respond.py` | icra — kararı okur, gereken aşamaları çalıştırır |
+
+Bu ayrım olmadan `telegram.py` hem mesajlaşma hem boru hattı yönetimi yapardı.
+
+### Karar tablosu
+| Durum | respond.py ne yapar |
+|---|---|
+| `yayinla` | `publish.py` varsa çağırır; yoksa kullanıcıya "otomatik paylaşım bağlı değil, /bana yaz" der ve kuyruğu **açık bırakır** |
+| `elle` | kartlar zaten yollandı, kuyruğu temizler |
+| `iptal` | kuyruğu temizler |
+| `yeniden_uret` | write → images → render → tekrar sorar |
+| `yeniden_bas` (tier değişti) | render → tekrar sorar |
+| `gorsel_degisti` | images (elle seçimle) → render → tekrar sorar |
+
+`yayinla` durumunda kuyruğun açık bırakılması bilinçli: Faz 6 yokken kuyruğu
+temizlersek post kaybolur, kullanıcı `/bana` diyemez.
+
+### `/gorsel` artık çalışıyor
+`images.py` seçtiği havuzu `_image_pool` olarak tarifeye yazıyor (sıra sabit,
+artwork → screenshot → cover). `--pick 1 3 5` veya tarifedeki `_gorsel_secimi`
+alanı sayfa sayfa havuz sırası alıyor: "1. sayfaya havuzun 1., 2. sayfaya 3.,
+3. sayfaya 5. görseli". Geçersiz numara verilirse o sayfa otomatik seçime
+düşüyor, tüm iş patlamıyor.
+
+`/yeniden` için `write.py` artık `_aday_index` kaydediyor — aynı adayı tekrar
+yazdırabilmek için aday sırası gerekiyor.
+
+### Ders
+Komut listesini kullanıcıya göstermek, o komutu **uygulayan** kodu yazmakla
+aynı iş değil. Bir sonraki arayüz eklemesinde önce icra tarafı yazılacak.

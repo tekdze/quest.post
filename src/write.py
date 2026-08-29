@@ -248,7 +248,7 @@ def source_text_of(candidate: dict) -> str:
     return "\n\n".join(blocks)
 
 
-def to_render_spec(draft: dict, tier: str, candidate: dict) -> dict:
+def to_render_spec(draft: dict, tier: str, candidate: dict, index: int = 0) -> dict:
     """LLM ciktisini render.py'in bekledigi tarife cevir."""
     is_leak = bool(draft.get("is_leak"))
     category = draft.get("category", "")
@@ -265,6 +265,8 @@ def to_render_spec(draft: dict, tier: str, candidate: dict) -> dict:
 
     return {
         "_kaynak": candidate["url"],
+        # /yeniden komutu ayni adayi tekrar yazdirabilsin diye sira saklaniyor.
+        "_aday_index": index,
         "_kaynak_sayisi": candidate["source_count"],
         "_is_leak": is_leak,
         "tier": tier,
@@ -323,7 +325,7 @@ def main() -> int:
         problems = style.review(draft, source_text)
 
         if not problems:
-            spec = to_render_spec(draft, args.tier, candidate)
+            spec = to_render_spec(draft, args.tier, candidate, args.index)
             out_path = Path(args.out)
             out_path.parent.mkdir(parents=True, exist_ok=True)
             out_path.write_text(json.dumps(spec, ensure_ascii=False, indent=2), encoding="utf-8")
