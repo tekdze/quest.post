@@ -158,6 +158,7 @@ SCHEMA = """{
   "search_name": "haberin ASIL konusu olan oyunun TAM ve INGILIZCE adi, surum numarasi dahil (ornek: The Witcher 3: Wild Hunt). Haber bir oyunu konu almiyorsa null",
   "image_candidates": ["haber metninde adi gecen ve GORSELI bu haberi temsil edebilecek oyunlarin tam Ingilizce adlari, onem sirasiyla, en fazla 3. search_name doluysa onu buraya tekrar yazma. Uygun oyun yoksa bos liste"],
   "series_fallback": ["ayni serinin/evrenin gorsel bakimindan zengin baska oyunlarinin tam Ingilizce adlari, en fazla 2. Sadece konu oyununun gorseli yetmezse kullanilacak. Uygun yoksa bos liste"],
+  "representative_games": ["haberde adi GECMESE BILE bu haberi gorsel olarak temsil edebilecek oyunlarin tam Ingilizce adlari, en fazla 3, en uygundan baslayarak. Yalnizca yukaridakilerin hicbiri tutmazsa kullanilir"],
   "category": "listeden biri",
   "studio": "görsel kredisi için stüdyo adı, bilinmiyorsa null",
   "is_leak": true veya false,
@@ -172,6 +173,80 @@ SCHEMA = """{
      "ctas": ["tek yumuşak çağrı"]}
   ]
 }"""
+
+
+# style.py deterministik: yasak kalip, emoji, buyuk harf yakalar ama YAZIM
+# HATASI yakalayamaz - bir uretimde "dusunceleinizi" cikip karta basilmisti.
+# Bu ikinci goz onu yakalamak icin. Karar kumesi SINIRLI ve somut: serbest
+# birakilan model her metinde "daha iyi olabilir" der, yeniden uretim
+# tetiklenir ve kota bosa gider.
+QA_SCHEMA = """{
+  "gozlem": "metni okudugunu gosteren tek cumle - neyi anlatiyor",
+  "sorunlar": [
+    {"alan": "pages[1].paragraph gibi yol",
+     "tur": "yazim | kaynak_disi | anlamsiz",
+     "aciklama": "tek cumle, somut"}
+  ]
+}"""
+
+
+def qa_prompt(spec: dict, source_text: str) -> str:
+    metinler = []
+    for path, text in style.strings_of(spec):
+        metinler.append(f"{path}: {text}")
+    return "\n".join([
+        "Asagida bir Instagram gonderisi icin uretilmis Turkce metinler var.",
+        "Kaynak haber Ingilizce, metinler ondan yazildi.",
+        "",
+        "ONCE OKU, SONRA KARAR VER. 'gozlem' alanina metnin neyi anlattigini",
+        "tek cumleyle yaz - bu, metne gercekten baktigindan emin olmak icin.",
+        "",
+        "SADECE su uc seyi bildir:",
+        "  yazim      - yazim/imla hatasi, dusuk cumle, bozuk kelime",
+        "               (ornek: 'dusunceleinizi', 'gelistirci')",
+        "  kaynak_disi - kaynakta OLMAYAN bir iddia, sayi veya isim",
+        "  anlamsiz   - cevrilirken anlami kaymis, Turkcesi tuhaf cumle",
+        "",
+        "BILDIRME: uslup tercihleri, 'daha iyi olabilir', 'daha vurucu",
+        "olabilirdi', uzunluk yorumu, baslik onerisi. Bunlar senin isin degil.",
+        "Metin kusursuz degilse bile bu uc kategoriye girmiyorsa SUS.",
+        "Hicbir sorun yoksa 'sorunlar' bos liste olsun - bu normaldir.",
+        "",
+        "KAYNAK METIN:",
+        source_text[:3000],
+        "",
+        "URETILEN METINLER:",
+        *metinler,
+        "",
+        "SADECE su semada JSON dondur:",
+        QA_SCHEMA,
+    ])
+
+
+def llm_review(spec: dict, source_text: str, model: str) -> list[str]:
+    """LLM ikinci gozu. Bos liste = temiz.
+
+    Hata durumunda BOS liste doner: QA'nin kendisi uretimi durdurmamali.
+    """
+    try:
+        cevap = generate(qa_prompt(spec, source_text), model, temperature=0.0)
+    except SystemExit:
+        print("  qa: model cevap vermedi, atlaniyor")
+        return []
+
+    gozlem = (cevap.get("gozlem") or "").strip()
+    if gozlem:
+        print(f"  qa gozlem: {gozlem[:70]}")
+
+    problems = []
+    for row in cevap.get("sorunlar") or []:
+        tur = (row.get("tur") or "").strip()
+        if tur not in ("yazim", "kaynak_disi", "anlamsiz"):
+            continue  # karar kumesi disina cikmis, yok sayilir
+        alan = (row.get("alan") or "?").strip()
+        aciklama = (row.get("aciklama") or "").strip()
+        problems.append(f"{alan}: [{tur}] {aciklama}")
+    return problems
 
 
 def build_prompt(candidate: dict, source_text: str, mode: str,
@@ -229,7 +304,20 @@ def build_prompt(candidate: dict, source_text: str, mode: str,
         "    2-4 cümle. Sonunda en fazla 2 hashtag, küçük harf. Üslup",
         "    kuralları burada da geçerli: emoji yok, büyük harf yok,",
         "    \"işte\" gibi kalıplar yok.",
-        "16. series_fallback: konu oyununun görseli az olabilir (henüz",
+        "16. representative_games: bazı haberlerin konusu bir oyun değildir",
+        "    (konsol, şirket, etkinlik, sektör, donanım). Bu kartlar şu ana",
+        "    kadar görselsiz basılıyordu ve sayfa boş duruyordu.",
+        "    Bu alana, haberi GÖRSEL OLARAK temsil edebilecek oyunları yaz.",
+        "    Ölçütü sen belirle - sana konu konu kural vermiyorum, çünkü her",
+        "    haber farklı ve doğru bağı sen kurabilirsin. Tek şart: okur",
+        "    görseli gördüğünde haberle bağ kurabilmeli.",
+        "    Bağ kurmanın yolu çoktur: haber bir platform/konsol hakkındaysa",
+        "    o platformla özdeşleşmiş bir oyun, bir stüdyo hakkındaysa o",
+        "    stüdyonun bilinen işi, bir tür veya topluluk konusuysa o türün",
+        "    tanınmış örneği. Bunlar örnek, liste değil - kendi bağını kur.",
+        "    Önce gerçekten dene. Yalnızca hiçbir makul bağ kuramıyorsan boş",
+        "    bırak; ilgisiz bir oyun yazmak görselsiz bırakmaktan kötüdür.",
+        "17. series_fallback: konu oyununun görseli az olabilir (henüz",
         "    çıkmamış oyunlarda sık). Aynı serinin/evrenin görsel bakımından",
         "    zengin oyunlarını buraya yaz - haber \"The Elder Scrolls VI\"",
         "    hakkındaysa [\"The Elder Scrolls V: Skyrim\"] gibi. Sadece",
@@ -312,6 +400,10 @@ def to_render_spec(draft: dict, tier: str, candidate: dict, index: int = 0) -> d
         # Kapak yine konu oyunundan basilir (images.py), kredi sayfa basina.
         "series_fallback": [c for c in (draft.get("series_fallback") or [])
                             if c and str(c).lower() != "none"][:2],
+        # Konusu oyun olmayan haberler (konsol, sirket, etkinlik) icin son
+        # care. Adi gecen oyun yoksa kart gorselsiz kaliyordu.
+        "representative_games": [c for c in (draft.get("representative_games") or [])
+                                 if c and str(c).lower() != "none"][:3],
         # Kucuk harfe cevriliyor: studio artik uslup denetiminden muaf
         # (buyuk harfli Ingilizce ad olabilir) ama karta basilan her sey
         # kucuk harf. images.py bunu IGDB verisiyle zaten eziyor.
@@ -333,6 +425,8 @@ def main() -> int:
     ap.add_argument("--tier", default="B", choices=list("CBAS"),
                     help="gecici: tier.py yazilana kadar elle veriliyor")
     ap.add_argument("--model", default=os.environ.get("GEMINI_MODEL", DEFAULT_MODEL))
+    ap.add_argument("--skip-qa", action="store_true",
+                    help="LLM ikinci gozunu atla (sadece style.py denetler)")
     ap.add_argument("--temperature", type=float, default=0.95)
     ap.add_argument("--mode", choices=list(WRITING_MODES), default=None)
     ap.add_argument("--out", default=str(DEFAULT_OUT))
@@ -364,6 +458,14 @@ def main() -> int:
         draft = generate(prompt, args.model, args.temperature)
         draft = style.autofix_suffixes(draft)
         problems = style.review(draft, source_text)
+
+        # Deterministik filtre temizse ikinci goz devreye girer. Once o
+        # calissin diye sonra: yasak kalip varken QA'ya para harcamanin
+        # anlami yok, metin zaten yeniden yazilacak.
+        if not problems and not args.skip_qa:
+            problems = llm_review(draft, source_text, args.model)
+            if problems:
+                print(f"deneme {attempt}: filtre temiz, qa {len(problems)} sorun buldu")
 
         if not problems:
             spec = to_render_spec(draft, args.tier, candidate, args.index)

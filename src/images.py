@@ -347,8 +347,14 @@ def main() -> int:
     # haberi temsil edebilir. Onlar image_candidates'ta, sirayla denenir.
     if args.game:
         adaylar = [args.game]
+        temsili_baslangic = len(adaylar)
     else:
         adaylar = [spec.get("search_name")] + list(spec.get("image_candidates") or [])
+        adaylar = [a for a in adaylar if a and str(a).lower() != "none"]
+        # Temsili oyunlar SON CARE: haberde adi gecmiyor, sadece konuyu
+        # gorsel olarak temsil ediyor. Once gercekten ilgili olanlar denenir.
+        temsili_baslangic = len(adaylar)
+        adaylar += list(spec.get("representative_games") or [])
     adaylar = [a for a in adaylar if a and str(a).lower() != "none"]
 
     def gorselsiz(mesaj: str) -> int:
@@ -372,6 +378,7 @@ def main() -> int:
     # havuzu en zengin olan secilir - ilk tutani almak, iki gorseli olan
     # cikmamis bir oyunu 5 sayfaya yaymak demek olabiliyor.
     game = None
+    secim_temsili = False
     kalan = list(adaylar)
     if spec.get("search_name") and not args.game:
         wanted = kalan.pop(0)
@@ -388,10 +395,12 @@ def main() -> int:
         # Hicbiri yeterli degilse en zengini secilir - iki gorseli olan
         # cikmamis bir oyunu bes sayfaya yaymaktansa.
         gereken = len(spec["pages"])
-        bulunanlar: list[tuple[dict, int]] = []
-        for wanted in kalan:
+        bulunanlar: list[tuple[dict, int, bool]] = []
+        for sira, wanted in enumerate(kalan):
+            # Kacinci aday oldugu, temsili sinirinin neresinde duruyor?
+            temsili = (len(adaylar) - len(kalan) + sira) >= temsili_baslangic
             aday, score, report = find_game(cid, token, wanted)
-            print(f'arama (aday): "{wanted}"')
+            print(f'arama ({"temsili" if temsili else "aday"}): "{wanted}"')
             for name, s, n in report[:5]:
                 print(f"  {s:.2f} benzerlik | {n:2} gorsel | {name}")
             if aday is None:
@@ -427,6 +436,12 @@ def main() -> int:
     en_iyi = (pool["artwork"] + pool["screenshot"])[:1]
     if en_iyi:
         print(f'  en buyuk: {en_iyi[0]["w"]}x{en_iyi[0]["h"]}')
+
+    # Temsili gorsel: haberde adi gecmeyen ama konuyu temsil eden oyun.
+    # Menu bunu "temsili" diye gosteriyor, kullanici bilerek seciyor.
+    spec["_gorsel_temsili"] = bool(secim_temsili)
+    if secim_temsili:
+        print("  NOT: bu gorsel TEMSILI - haberde adi gecmiyor")
 
     studio = developer_of(game)
     spec["credit"] = studio

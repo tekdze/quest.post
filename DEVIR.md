@@ -316,10 +316,35 @@ state/          posted / pending (kuyruk) / tg_offset / weekly
 
 | Servis | Not |
 |---|---|
-| Gemini | Model **`gemini-3.6-flash`, sürüm sabit.** 3.7 ısrarla 503 dönüyordu. `gemini-2.5-*` yeni kullanıcılara kapalı. Ücretsiz katman, fatura hesabı bağlı değil, ücretlendirilme mümkün değil |
+| Gemini | ⚠️ **Günde 20 istek** (ölçüldü, aşağıya bak). Model **`gemini-3.6-flash`, sürüm sabit.** 3.7 ısrarla 503 dönüyordu. `gemini-2.5-*` yeni kullanıcılara kapalı. Ücretsiz katman, fatura hesabı bağlı değil, ücretlendirilme mümkün değil |
 | IGDB | Twitch üzerinden. Uygulama jetonu her çalışmada yeniden alınıyor. **Twitch, 2FA açık olmayan hesaba uygulama kaydettirmiyor** |
 | Telegram | Bot `@questpostinstagram_bot`, chat id `.env` içinde |
 | GitHub Actions | Public repo, sınırsız dakika |
+
+### ⚠️ Gemini günlük kota: 20 istek (2026-08-29 ölçüldü)
+İnternetteki "ücretsiz katman 1500 istek/gün" bilgisi bu modele UYMUYOR.
+429 hatasının gövdesindeki gerçek değer:
+
+    GenerateRequestsPerDayPerProjectPerModel-FreeTier | deger: 20
+
+Bu, LLM'i daha çok kullanma fikrini doğrudan sınırlıyor. Bütçe:
+
+| İş | Çağrı/gün |
+|---|---|
+| Menü (günde 3 kez) | 3 |
+| Post üretimi (3 post × 1-3 deneme) | 3-9 |
+| **Toplam** | **6-12** |
+| Kalan | 8-14 |
+
+Sığanlar: metin QA (+3). **Sığmayanlar:** kart QA / vision (+15),
+görsel-sayfa eşleştirme (+3).
+
+Bu yüzden `caption` ayrı çağrı DEĞİL, ana üretim çağrısına eklendi -
+ek maliyeti sıfır. Yeni bir LLM işi eklenecekse önce "mevcut bir çağrıya
+sığar mı" diye sorulmalı.
+
+Kotayı ölçmenin yolu: 429 gövdesindeki `violations[].quotaValue`.
+Tahmin etme, oku.
 
 ### ⚠️ Gemini erişim engeli — çözüldü, tekrar yaşanırsa
 İlk Google hesabında tüm modeller `403 PERMISSION_DENIED — Your project has
