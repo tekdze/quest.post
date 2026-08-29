@@ -425,8 +425,11 @@ def main() -> int:
     ap.add_argument("--tier", default="B", choices=list("CBAS"),
                     help="gecici: tier.py yazilana kadar elle veriliyor")
     ap.add_argument("--model", default=os.environ.get("GEMINI_MODEL", DEFAULT_MODEL))
-    ap.add_argument("--skip-qa", action="store_true",
-                    help="LLM ikinci gozunu atla (sadece style.py denetler)")
+    # VARSAYILAN KAPALI: gunluk kota 20 istek ve her post icin ek bir cagri
+    # butcenin besde birini yiyor. Kullanici revizeyi zaten /yeniden ile
+    # kendisi istiyor, karar onda kaliyor.
+    ap.add_argument("--qa", action="store_true",
+                    help="LLM ikinci gozunu ac (ek 1 cagri/post)")
     ap.add_argument("--temperature", type=float, default=0.95)
     ap.add_argument("--mode", choices=list(WRITING_MODES), default=None)
     ap.add_argument("--out", default=str(DEFAULT_OUT))
@@ -462,7 +465,7 @@ def main() -> int:
         # Deterministik filtre temizse ikinci goz devreye girer. Once o
         # calissin diye sonra: yasak kalip varken QA'ya para harcamanin
         # anlami yok, metin zaten yeniden yazilacak.
-        if not problems and not args.skip_qa:
+        if not problems and args.qa:
             problems = llm_review(draft, source_text, args.model)
             if problems:
                 print(f"deneme {attempt}: filtre temiz, qa {len(problems)} sorun buldu")

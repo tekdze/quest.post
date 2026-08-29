@@ -346,6 +346,34 @@ sığar mı" diye sorulmalı.
 Kotayı ölçmenin yolu: 429 gövdesindeki `violations[].quotaValue`.
 Tahmin etme, oku.
 
+### ⚠️ Kota MODEL BAŞINA — işler modellere bölündü (2026-08-29)
+Kota adı `GenerateRequestsPerDayPerProjectPerModel` diyor ve gerçekten
+öyle: `gemini-3.6-flash` tükenmişken `gemini-3.1-flash-lite` çalışıyordu
+(ölçüldü). Yani her modelin ayrı 20 hakkı var.
+
+| İş | Model | Neden |
+|---|---|---|
+| Post metni (`write.py`) | `gemini-3.6-flash` | **Sürüm sabit** - model değişirse üslup değişir, 300. post 1. postla aynı olmaz |
+| Menü (`menu.py`) | `gemini-3.1-flash-lite` | Basit iş: oyun adı çıkar, tek cümle özet, aday seç. Ayrı havuz |
+
+Kazanç: menünün günde 3 çağrısı artık üretim bütçesinden yemiyor.
+Efektif kapasite 20 değil 40.
+
+⚠️ **Bu, çoklu HESAP açmakla karıştırılmamalı.** Kotayı aşmak için ikinci
+Google hesabı/projesi açmak ToS ihlali ve zaten işe yaramıyor - kota hesap
+katmanı bazında da uygulanıyor. Farklı MODEL kullanmak Google'ın kendi
+kota yapısı; aynı hesap, aynı proje.
+
+⚠️ `gemini-2.5-*` modelleri `models.list` çıktısında görünüyor ama
+çağrılınca **404** dönüyor. Listede olması erişilebilir olduğu anlamına
+gelmiyor.
+
+### QA varsayılan KAPALI (kullanıcı kararı)
+`write.py --qa` ile açılıyor ama varsayılan kapalı: her post için ek bir
+çağrı günlük bütçenin beşte birini yiyor. Kullanıcı revizeyi zaten
+`/yeniden` ile kendisi istiyor, karar onda kalıyor. Kod duruyor,
+gerektiğinde açılır.
+
 ### ⚠️ Gemini erişim engeli — çözüldü, tekrar yaşanırsa
 İlk Google hesabında tüm modeller `403 PERMISSION_DENIED — Your project has
 been denied access` döndü. Elenenler: model ailesi, endpoint sürümü, anahtarın

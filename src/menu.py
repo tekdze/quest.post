@@ -44,11 +44,23 @@ MENU_FILE = ROOT / "state" / "menu.json"
 # yapiyor ve LLM'in secim isini zorlastiriyor.
 DEFAULT_LIMIT = 6
 
+# Menu AYRI bir model kullaniyor. Sebep: Gemini kotasi model basina
+# (GenerateRequestsPerDayPerProjectPerModel, gunde 20). Menu ile post
+# uretimi ayni modeli paylasirsa gunun uc menusu uretim butcesinden
+# yiyor. Ayri model = ayri havuz, ve bu ToS'a uygun: ayni hesap, ayni
+# proje, sadece farkli model.
+#
+# Hafif model yeterli: menunun isi oyun adi cikarmak, tek cumle ozet ve
+# aday secmek. Kart METNI yazan write.py surum sabit kalmali (uslup),
+# menu icin ayni hassasiyet gerekmiyor.
+MENU_MODEL = "gemini-3.1-flash-lite"
+
 ONERI_SCHEMA = """{
   "adaylar": [
     {"sira": 1,
      "oyun": "haberde gecen oyunun TAM INGILIZCE adi, yoksa null",
      "seri": "ayni serinin gorsel bakimindan zengin baska oyunu (tam Ingilizce ad), yoksa null",
+     "temsili": "haberin konusu bir oyun DEGILSE (konsol, sirket, etkinlik), haberi gorsel olarak temsil edebilecek bir oyun. Oyun varsa null",
      "ozet": "haberin NE oldugu, tek cumle, en fazla 12 kelime, kucuk harf"}
   ],
   "oneri": 3,
@@ -111,7 +123,8 @@ def havuz_boyu(game: dict) -> int:
 
 
 def gorsel_durumu(cid: str, token: str, oyun: str | None,
-                  seri: str | None = None, sayfa_tahmini: int = 4) -> dict:
+                  seri: str | None = None, sayfa_tahmini: int = 4,
+                  temsili: str | None = None) -> dict:
     """Adayın IGDB'de kullanılabilir görseli var mı, kaç tane.
 
     Menüde "görsel VAR/YOK" yazabilmek için. Metin üretilmeden önce
@@ -121,16 +134,26 @@ def gorsel_durumu(cid: str, token: str, oyun: str | None,
     (images.py yapıyor). Menü bunu şeffaf gösteriyor: "2 + 21 seriden".
     Seri araması sadece gerektiğinde yapılıyor, boşuna IGDB çağrısı yok.
     """
-    bos = {"durum": "yok", "sayi": 0, "oyun": None, "seri_sayi": 0, "seri": None}
-    if not oyun:
-        return bos
-    game, _, _ = img.find_game(cid, token, oyun)
+    bos = {"durum": "yok", "sayi": 0, "oyun": None, "seri_sayi": 0, "seri": None,
+           "temsili": False}
+    game = None
+    temsili_mi = False
+
+    if oyun:
+        game, _, _ = img.find_game(cid, token, oyun)
+    # Haberin konusu oyun degilse temsili oyun denenir - images.py uretimde
+    # zaten bunu yapiyor, menu de ayni sonucu gostermeli. Aksi halde menu
+    # "gorsel YOK" derken uretimde gorsel cikiyordu.
+    if game is None and temsili:
+        game, _, _ = img.find_game(cid, token, temsili)
+        temsili_mi = game is not None
     if game is None:
         return bos
 
     sayi = havuz_boyu(game)
     sonuc = {"durum": "var" if sayi >= sayfa_tahmini else "az", "sayi": sayi,
-             "oyun": game["name"], "seri_sayi": 0, "seri": None}
+             "oyun": game["name"], "seri_sayi": 0, "seri": None,
+             "temsili": temsili_mi}
     if sayi >= sayfa_tahmini or not seri:
         return sonuc
 
@@ -170,7 +193,11 @@ def menu_metni(rows: list[dict], oneri: int | None, gerekce: str) -> str:
             g = f"görsel VAR ({gorsel['sayi']})"
         satir = f"   {row['kaynak_sayisi']} kaynak · {g}"
         if gorsel.get("oyun") and gorsel["durum"] != "yok":
+            # Temsili oldugu yaziliyor: haberin konusu o oyun degil, sadece
+            # onu gorsel olarak temsil ediyor. Kullanici bilerek secsin.
             satir += f" · {gorsel['oyun']}"
+            if gorsel.get("temsili"):
+                satir += " (temsili)"
             if gorsel.get("seri"):
                 satir += f" + {gorsel['seri']}"
         satirlar.append(satir)
@@ -193,7 +220,7 @@ def main() -> int:
     ap = argparse.ArgumentParser(description="quest.post aday menusu")
     ap.add_argument("--limit", type=int, default=DEFAULT_LIMIT)
     ap.add_argument("--dry-run", action="store_true", help="Telegram'a yollamaz")
-    ap.add_argument("--model", default=writer.DEFAULT_MODEL)
+    ap.add_argument("--model", default=MENU_MODEL)
     args = ap.parse_args()
 
     data = tg.read_json(CANDIDATES_FILE, None)
@@ -219,7 +246,7 @@ def main() -> int:
     print(f"{len(rows)} aday LLM'e soruluyor...")
     cevap = writer.generate(build_prompt(rows), args.model, temperature=0.4)
 
-    oyunlar, ozetler, seriler = {}, {}, {}
+    oyunlar, ozetler, seriler, temsililer = {}, {}, {}, {}
     for row in cevap.get("adaylar", []):
         try:
             sira = int(row.get("sira"))
@@ -228,6 +255,7 @@ def main() -> int:
         oyunlar[sira] = row.get("oyun")
         ozetler[sira] = (row.get("ozet") or "").strip()
         seriler[sira] = row.get("seri")
+        temsililer[sira] = row.get("temsili")
 
     oneri = cevap.get("oneri")
     try:
@@ -247,7 +275,8 @@ def main() -> int:
         oyun = oyunlar.get(row["sira"])
         row["oyun_adi"] = oyun
         row["ozet"] = ozetler.get(row["sira"], "")
-        row["gorsel"] = gorsel_durumu(cid, token, oyun, seriler.get(row["sira"]))
+        row["gorsel"] = gorsel_durumu(cid, token, oyun, seriler.get(row["sira"]),
+                                      temsili=temsililer.get(row["sira"]))
         row["baslik"] = oyun or (row["title"][:52].rstrip() + "..."
                                  if len(row["title"]) > 52 else row["title"])
         isaret = " <- ONERI" if row["sira"] == oneri else ""

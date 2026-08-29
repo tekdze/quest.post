@@ -1,7 +1,7 @@
 {
-  "olusturuldu": "2026-08-29T16:43:36+00:00",
-  "oneri": 6,
-  "gerekce": "mega mewtwo kartı duyurusu popülerliği sayesinde yüksek etkileşim ve yorum getirir",
+  "olusturuldu": "2026-08-29T19:17:06+00:00",
+  "oneri": 3,
+  "gerekce": "şirketin müşterisine para iadesi yapması sosyal medyada güven ve takdir toplar",
   "adaylar": [
     {
       "sira": 1,
@@ -11,13 +11,14 @@
       "kaynak_sayisi": 2,
       "url": "https://www.polygon.com/star-wars-zero-company-anakin-skywalker-mission",
       "oyun_adi": "Star Wars Zero Company",
-      "ozet": "anakin skywalker oyundaki bir görevde güçlü bir jedi olarak yer alıyor",
+      "ozet": "anakin skywalker oyunun bir görevinde oynanabilir karakter olarak karşımıza çıkıyor",
       "gorsel": {
         "durum": "var",
         "sayi": 12,
         "oyun": "Star Wars Zero Company",
         "seri_sayi": 0,
-        "seri": null
+        "seri": null,
+        "temsili": false
       },
       "baslik": "Star Wars Zero Company"
     },
@@ -29,13 +30,14 @@
       "kaynak_sayisi": 2,
       "url": "https://www.pcgamesn.com/silent-hill-townfall/interview-gamescom-analog-horror",
       "oyun_adi": "Silent Hill Townfall",
-      "ozet": "oyundaki crt ekran teknolojisi güvenebileceğiniz nadir unsurlardan biri oluyor",
+      "ozet": "oyun analog korku atmosferini teknolojik unsurlarla destekleyerek oyuncuya sunuyor",
       "gorsel": {
         "durum": "var",
         "sayi": 14,
         "oyun": "Silent Hill: Townfall",
         "seri_sayi": 0,
-        "seri": null
+        "seri": null,
+        "temsili": false
       },
       "baslik": "Silent Hill Townfall"
     },
@@ -47,13 +49,14 @@
       "kaynak_sayisi": 2,
       "url": "https://www.eurogamer.net/panic-playdate-tariff-refunds-customers",
       "oyun_adi": null,
-      "ozet": "panic mahkeme kararıyla aldığı gümrük vergisi iadelerini müşterilerine aktarıyor",
+      "ozet": "panic şirketi mahkeme kararıyla aldığı gümrük iadelerini müşterilerine geri ödüyor",
       "gorsel": {
         "durum": "yok",
         "sayi": 0,
         "oyun": null,
         "seri_sayi": 0,
-        "seri": null
+        "seri": null,
+        "temsili": false
       },
       "baslik": "Playdate maker Panic is passing tariff refunds on to..."
     },
@@ -65,13 +68,14 @@
       "kaynak_sayisi": 2,
       "url": "https://www.nintendolife.com/features/talking-point-what-are-you-playing-this-weekend-29th-august",
       "oyun_adi": null,
-      "ozet": "hafta sonu oyun planlarını tartışmaya açan topluluk sohbet başlığı yayımlandı",
+      "ozet": "hafta sonu oyun planlarını ve nintendo duyurularını içeren haftalık sohbet içeriği",
       "gorsel": {
-        "durum": "yok",
-        "sayi": 0,
-        "oyun": null,
+        "durum": "var",
+        "sayi": 9,
+        "oyun": "The Legend of Zelda: Echoes of Wisdom",
         "seri_sayi": 0,
-        "seri": null
+        "seri": null,
+        "temsili": true
       },
       "baslik": "Talking Point: What Are You Playing This Weekend? (2..."
     },
@@ -83,33 +87,16 @@
       "kaynak_sayisi": 2,
       "url": "https://www.pcgamesn.com/call-of-duty-modern-warfare-4/mw4-open-beta-patch-notes-august-29",
       "oyun_adi": "Call of Duty: Modern Warfare 4",
-      "ozet": "açık betaya yeni combat outpost modu haritalar ve silah dengelemeleri eklendi",
+      "ozet": "açık betaya yeni büyük takım modu ve haritalar eklenerek dengelemeler yapıldı",
       "gorsel": {
         "durum": "var",
         "sayi": 12,
         "oyun": "Call of Duty: Modern Warfare 4",
         "seri_sayi": 0,
-        "seri": null
+        "seri": null,
+        "temsili": false
       },
       "baslik": "Call of Duty: Modern Warfare 4"
-    },
-    {
-      "sira": 6,
-      "aday_index": 6,
-      "tier": "B",
-      "title": "Pokémon TCG Pocket adds a game-changing new kind of card this October",
-      "kaynak_sayisi": 2,
-      "url": "https://www.polygon.com/pokemon-tcg-pocket-dual-type-cards",
-      "oyun_adi": "Pokémon TCG Pocket",
-      "ozet": "çift tür kartlar ekim ayında mega mewtwo x ex ile geliyor",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 2,
-        "oyun": "Pokémon Trading Card Game Pocket",
-        "seri_sayi": 10,
-        "seri": "Pokémon: Let's Go, Eevee!"
-      },
-      "baslik": "Pokémon TCG Pocket"
     }
   ]
 }
