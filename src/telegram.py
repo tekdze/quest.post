@@ -178,6 +178,10 @@ def summarize(spec: dict, cards: list[Path], etiket: str = "normal",
         lines.append("görsel yok (tipografik kart)")
     if spec.get("_kaynak"):
         lines.append(spec["_kaynak"])
+    # Yedek modelle yazildiysa soyle: uslup farki fark edilirse sebebi belli
+    # olsun, kullanici isterse /yeniden ile tekrar denesin.
+    if spec.get("_model") and spec["_model"] != "gemini-3.6-flash":
+        lines.append(f"NOT: yedek modelle yazıldı ({spec['_model']})")
 
     lines.append("")
     for index, page in enumerate(spec["pages"], 1):

@@ -366,7 +366,8 @@ def source_text_of(candidate: dict) -> str:
     return "\n\n".join(blocks)
 
 
-def to_render_spec(draft: dict, tier: str, candidate: dict, index: int = 0) -> dict:
+def to_render_spec(draft: dict, tier: str, candidate: dict, index: int = 0,
+                   model: str | None = None) -> dict:
     """LLM ciktisini render.py'in bekledigi tarife cevir."""
     is_leak = bool(draft.get("is_leak"))
     category = draft.get("category", "")
@@ -387,6 +388,10 @@ def to_render_spec(draft: dict, tier: str, candidate: dict, index: int = 0) -> d
         "_aday_index": index,
         "_kaynak_sayisi": candidate["source_count"],
         "_is_leak": is_leak,
+        # Hangi model yazdi. Ana modelin kotasi dolunca yedege dusuluyor;
+        # Telegram ozetinde gorunsun ki uslup farki fark edilirse sebebi
+        # bilinsin.
+        "_model": model,
         "tier": tier,
         "category": category,
         # Instagram gonderi metni. Faz 6'ya kadar da ise yariyor: /bana ile
@@ -462,9 +467,22 @@ def main() -> int:
     print(f"yazim modu: {mode}\n")
 
     problems: list[str] = []
+    aktif_model = args.model
     for attempt in range(1, MAX_ATTEMPTS + 1):
         prompt = build_prompt(candidate, source_text, mode, problems or None)
-        draft = generate(prompt, args.model, args.temperature)
+        try:
+            draft = generate(prompt, aktif_model, args.temperature)
+        except SystemExit as exc:
+            # Ana modelin gunluk kotasi 20; dolunca post hic uretilemiyordu.
+            # Yedek modelin hakki 500. Uslup birebir ayni olmayabilir ama
+            # style.py filtresi, QA ve kullanicinin onayi devrede - post
+            # uretememektense farkli tonda uretmek daha iyi.
+            if "429" not in str(exc) or aktif_model == HELPER_MODEL:
+                raise
+            print(f"\n{aktif_model} kotasi doldu, yedek modele geciliyor: "
+                  f"{HELPER_MODEL}\n")
+            aktif_model = HELPER_MODEL
+            draft = generate(prompt, aktif_model, args.temperature)
         draft = style.autofix_suffixes(draft)
         problems = style.review(draft, source_text)
 
@@ -477,7 +495,8 @@ def main() -> int:
                 print(f"deneme {attempt}: filtre temiz, qa {len(problems)} sorun buldu")
 
         if not problems:
-            spec = to_render_spec(draft, args.tier, candidate, args.index)
+            spec = to_render_spec(draft, args.tier, candidate, args.index,
+                                  aktif_model)
             out_path = Path(args.out)
             out_path.parent.mkdir(parents=True, exist_ok=True)
             out_path.write_text(json.dumps(spec, ensure_ascii=False, indent=2), encoding="utf-8")

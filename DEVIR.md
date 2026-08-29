@@ -368,6 +368,19 @@ panelinden okundu (Project seçicisinden doğru proje seçilmeli):
 Kazanç sadece "ayrı havuz" değil, **25 kat daha geniş havuz**. QA bu yüzden
 açılabildi. Yeni bir LLM işi eklenecekse önce HELPER_MODEL'e bakılmalı.
 
+### Kota dolunca yedek model (2026-08-29, kullanıcı kararı)
+Ana modelin günlük hakkı 20; dolduğunda post **hiç** üretilemiyordu ve acil
+bir haber çıksa çaresiz kalınıyordu. Artık `write.py` 429 alınca
+`HELPER_MODEL`'e düşüp üretmeye devam ediyor.
+
+Üslup birebir aynı olmayabilir, ama üç güvenlik ağı yerinde: `style.py`
+filtresi, metin QA, ve kullanıcının Telegram onayı. Post üretememektense
+farklı tonda üretmek tercih edildi.
+
+Hangi modelin yazdığı taslakta `_model` alanında duruyor ve **Telegram
+özetinde gösteriliyor** (`NOT: yedek modelle yazıldı`). Üslup farkı fark
+edilirse sebebi belli olsun, kullanıcı isterse `/yeniden` desin.
+
 Panelde bir modelin görünmesi **çağrılabildiği anlamına gelmiyor**:
 `gemini-2.5-*` panelde var, `models.list` çıktısında var, ama çağrılınca
 404 dönüyor. Yeni model seçerken canlı çağrıyla doğrula.
