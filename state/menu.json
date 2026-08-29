@@ -1,7 +1,7 @@
 {
-  "olusturuldu": "2026-08-29T16:28:22+00:00",
+  "olusturuldu": "2026-08-29T16:31:13+00:00",
   "oneri": 6,
-  "gerekce": "oyun sızıntısı ve şirketin mizahi yanıtı yüksek etkileşim potansiyeli taşıyor",
+  "gerekce": "mega mewtwo x kartı duyurusu yüksek oyuncu etkileşimi ve paylaşım getirir",
   "adaylar": [
     {
       "sira": 1,
@@ -11,7 +11,7 @@
       "kaynak_sayisi": 2,
       "url": "https://www.polygon.com/star-wars-zero-company-anakin-skywalker-mission",
       "oyun_adi": "Star Wars Zero Company",
-      "ozet": "anakin skywalker bir görevde oyunu jedi güç fantezisine dönüştürüyor",
+      "ozet": "bir görevde oyuncular anakin skywalker ile jedi gücü fantezisi yaşıyor",
       "gorsel": {
         "durum": "var",
         "sayi": 12,
@@ -27,7 +27,7 @@
       "kaynak_sayisi": 2,
       "url": "https://www.pcgamesn.com/silent-hill-townfall/interview-gamescom-analog-horror",
       "oyun_adi": "Silent Hill Townfall",
-      "ozet": "oyun crt ekran ve radyo parazitli analog korku ögelerini işliyor",
+      "ozet": "crt televizyon parazitleriyle analog korku teması ve güvenilir teknoloji sunuluyor",
       "gorsel": {
         "durum": "var",
         "sayi": 14,
@@ -43,7 +43,7 @@
       "kaynak_sayisi": 2,
       "url": "https://www.eurogamer.net/panic-playdate-tariff-refunds-customers",
       "oyun_adi": null,
-      "ozet": "panic gümrük vergisi iadelerini müşterilerine geri ödeyeceğini açıkladı",
+      "ozet": "gümrük vergisi iadeleri mahkeme kararı sonrası müşterilere geri aktarılıyor",
       "gorsel": {
         "durum": "yok",
         "sayi": 0,
@@ -59,7 +59,7 @@
       "kaynak_sayisi": 2,
       "url": "https://www.nintendolife.com/features/talking-point-what-are-you-playing-this-weekend-29th-august",
       "oyun_adi": null,
-      "ozet": "hafta sonu ne oynuyorsunuz başlığıyla oyunculara soru yöneltiliyor",
+      "ozet": "hafta sonu için oyuncuların ne oynadığını tartışan topluluk başlığı açıldı",
       "gorsel": {
         "durum": "yok",
         "sayi": 0,
@@ -71,33 +71,33 @@
       "sira": 5,
       "aday_index": 5,
       "tier": "B",
+      "title": "A Modern Warfare 4 open beta update adds the new big-team Combat Outpost mode",
+      "kaynak_sayisi": 2,
+      "url": "https://www.pcgamesn.com/call-of-duty-modern-warfare-4/mw4-open-beta-patch-notes-august-29",
+      "oyun_adi": "Call of Duty: Modern Warfare 4",
+      "ozet": "güncellemeyle betaya combat outpost modu iki harita ve silah dengesi eklendi",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 12,
+        "oyun": "Call of Duty: Modern Warfare 4"
+      },
+      "baslik": "Call of Duty: Modern Warfare 4"
+    },
+    {
+      "sira": 6,
+      "aday_index": 6,
+      "tier": "B",
       "title": "Pokémon TCG Pocket adds a game-changing new kind of card this October",
       "kaynak_sayisi": 2,
       "url": "https://www.polygon.com/pokemon-tcg-pocket-dual-type-cards",
       "oyun_adi": "Pokémon TCG Pocket",
-      "ozet": "ekim ayında oyuna mega mewtwo x ile çift tipli kartlar geliyor",
+      "ozet": "ekim ayında mega mewtwo x kartıyla oyuna çift tipli kartlar eklenecek",
       "gorsel": {
         "durum": "az",
         "sayi": 2,
         "oyun": "Pokémon Trading Card Game Pocket"
       },
       "baslik": "Pokémon TCG Pocket"
-    },
-    {
-      "sira": 6,
-      "aday_index": 6,
-      "tier": "B",
-      "title": "EA breaks its silence after Iron Man gameplay leak, admitting \"well, that didn't go as planned\"",
-      "kaynak_sayisi": 2,
-      "url": "https://www.eurogamer.net/ea-motive-iron-man-leak-response-tweet",
-      "oyun_adi": "Iron Man",
-      "ozet": "ea sızan oynanış görüntülerini esprili bir açıklamayla doğruladı",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 5,
-        "oyun": "Iron Man"
-      },
-      "baslik": "Iron Man"
     }
   ]
 }
