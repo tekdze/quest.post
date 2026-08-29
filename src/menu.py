@@ -46,10 +46,12 @@ DEFAULT_LIMIT = 6
 
 ONERI_SCHEMA = """{
   "adaylar": [
-    {"sira": 1, "oyun": "haberde gecen oyunun TAM INGILIZCE adi, yoksa null"}
+    {"sira": 1,
+     "oyun": "haberde gecen oyunun TAM INGILIZCE adi, yoksa null",
+     "ozet": "haberin NE oldugu, tek cumle, en fazla 12 kelime, kucuk harf"}
   ],
   "oneri": 3,
-  "gerekce": "tek cumle, en fazla 12 kelime, kucuk harf"
+  "gerekce": "neden bu secildi, tek cumle, en fazla 12 kelime, kucuk harf"
 }"""
 
 
@@ -69,7 +71,15 @@ def build_prompt(rows: list[dict]) -> str:
         "adını çıkar (sürüm numarası dahil). Haberde bir oyun adı geçmiyorsa",
         "null yaz. Bu ad IGDB'de aranacak, o yüzden çevirme ve kısaltma.",
         "",
-        "İKİNCİ İŞ: TAM OLARAK BİR aday öner. Ölçüt tek: bu haber bir",
+        "İKİNCİ İŞ: her aday için 'ozet' yaz - haberin NE olduğunu anlatan",
+        "tek cümle, Türkçe, küçük harf, en fazla 12 kelime. Başlıkta zaten",
+        "yazan şeyi tekrarlama; başlığın söylemediği asıl olayı söyle.",
+        "Örnek: başlık 'EA Acknowledges Iron Man Gameplay Leak' ise özet",
+        "'ea sızan oyun görüntülerini doğruladı ve espriyle karşılık verdi'",
+        "olur. Bu özet listeye bakıp seçim yapmak için, merak uyandırmak",
+        "için değil - abartma, süsleme, soru sorma.",
+        "",
+        "ÜÇÜNCÜ İŞ: TAM OLARAK BİR aday öner. Ölçüt tek: bu haber bir",
         "Instagram gönderisi olarak GÖRÜNÜRLÜK açısından ilginç mi -",
         "insanlar durup okur mu, paylaşır mı, yorum yazar mı.",
         "",
@@ -116,6 +126,11 @@ def menu_metni(rows: list[dict], oneri: int | None, gerekce: str) -> str:
         isaret = "  ⭐" if row["sira"] == oneri else ""
         satirlar.append(f"{row['sira']}. [{row['tier']}] {row['baslik']}{isaret}")
 
+        # Ozet basligin hemen altinda: listede gezerken once "ne haberi bu"
+        # sorusu cevaplanmali, teknik ayrintilar sonra.
+        if row.get("ozet"):
+            satirlar.append(f"   {row['ozet']}")
+
         gorsel = row["gorsel"]
         if gorsel["durum"] == "var":
             g = f"görsel VAR ({gorsel['sayi']})"
@@ -123,12 +138,13 @@ def menu_metni(rows: list[dict], oneri: int | None, gerekce: str) -> str:
             g = f"görsel AZ ({gorsel['sayi']}, sayfalarda tekrar eder)"
         else:
             g = "görsel YOK (tipografik olur)"
-        satirlar.append(f"   {row['kaynak_sayisi']} kaynak · {g}")
-
+        satir = f"   {row['kaynak_sayisi']} kaynak · {g}"
         if gorsel.get("oyun") and gorsel["durum"] != "yok":
-            satirlar.append(f"   görsel kaynağı: {gorsel['oyun']}")
+            satir += f" · {gorsel['oyun']}"
+        satirlar.append(satir)
+
         if row["sira"] == oneri and gerekce:
-            satirlar.append(f"   \"{gerekce}\"")
+            satirlar.append(f"   ⭐ {gerekce}")
         satirlar.append("")
 
     satirlar.append("üretmek için: /uret <numara>")
@@ -171,12 +187,14 @@ def main() -> int:
     print(f"{len(rows)} aday LLM'e soruluyor...")
     cevap = writer.generate(build_prompt(rows), args.model, temperature=0.4)
 
-    oyunlar = {}
+    oyunlar, ozetler = {}, {}
     for row in cevap.get("adaylar", []):
         try:
-            oyunlar[int(row.get("sira"))] = row.get("oyun")
+            sira = int(row.get("sira"))
         except (TypeError, ValueError):
             continue
+        oyunlar[sira] = row.get("oyun")
+        ozetler[sira] = (row.get("ozet") or "").strip()
 
     oneri = cevap.get("oneri")
     try:
@@ -195,6 +213,7 @@ def main() -> int:
     for row in rows:
         oyun = oyunlar.get(row["sira"])
         row["oyun_adi"] = oyun
+        row["ozet"] = ozetler.get(row["sira"], "")
         row["gorsel"] = gorsel_durumu(cid, token, oyun)
         row["baslik"] = oyun or (row["title"][:52].rstrip() + "..."
                                  if len(row["title"]) > 52 else row["title"])

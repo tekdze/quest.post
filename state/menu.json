@@ -1,7 +1,7 @@
 {
-  "olusturuldu": "2026-08-29T16:18:34+00:00",
+  "olusturuldu": "2026-08-29T16:28:22+00:00",
   "oneri": 6,
-  "gerekce": "sızıntı sonrası ea'in esprili ve samimi yanıtı yüksek etkileşim çeker.",
+  "gerekce": "oyun sızıntısı ve şirketin mizahi yanıtı yüksek etkileşim potansiyeli taşıyor",
   "adaylar": [
     {
       "sira": 1,
@@ -11,6 +11,7 @@
       "kaynak_sayisi": 2,
       "url": "https://www.polygon.com/star-wars-zero-company-anakin-skywalker-mission",
       "oyun_adi": "Star Wars Zero Company",
+      "ozet": "anakin skywalker bir görevde oyunu jedi güç fantezisine dönüştürüyor",
       "gorsel": {
         "durum": "var",
         "sayi": 12,
@@ -26,6 +27,7 @@
       "kaynak_sayisi": 2,
       "url": "https://www.pcgamesn.com/silent-hill-townfall/interview-gamescom-analog-horror",
       "oyun_adi": "Silent Hill Townfall",
+      "ozet": "oyun crt ekran ve radyo parazitli analog korku ögelerini işliyor",
       "gorsel": {
         "durum": "var",
         "sayi": 14,
@@ -41,6 +43,7 @@
       "kaynak_sayisi": 2,
       "url": "https://www.eurogamer.net/panic-playdate-tariff-refunds-customers",
       "oyun_adi": null,
+      "ozet": "panic gümrük vergisi iadelerini müşterilerine geri ödeyeceğini açıkladı",
       "gorsel": {
         "durum": "yok",
         "sayi": 0,
@@ -56,6 +59,7 @@
       "kaynak_sayisi": 2,
       "url": "https://www.nintendolife.com/features/talking-point-what-are-you-playing-this-weekend-29th-august",
       "oyun_adi": null,
+      "ozet": "hafta sonu ne oynuyorsunuz başlığıyla oyunculara soru yöneltiliyor",
       "gorsel": {
         "durum": "yok",
         "sayi": 0,
@@ -71,6 +75,7 @@
       "kaynak_sayisi": 2,
       "url": "https://www.polygon.com/pokemon-tcg-pocket-dual-type-cards",
       "oyun_adi": "Pokémon TCG Pocket",
+      "ozet": "ekim ayında oyuna mega mewtwo x ile çift tipli kartlar geliyor",
       "gorsel": {
         "durum": "az",
         "sayi": 2,
@@ -86,6 +91,7 @@
       "kaynak_sayisi": 2,
       "url": "https://www.eurogamer.net/ea-motive-iron-man-leak-response-tweet",
       "oyun_adi": "Iron Man",
+      "ozet": "ea sızan oynanış görüntülerini esprili bir açıklamayla doğruladı",
       "gorsel": {
         "durum": "var",
         "sayi": 5,
