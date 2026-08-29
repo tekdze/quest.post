@@ -3,8 +3,9 @@
 > Yeni bir sohbete geçerken: **önce bu dosyayı oku.** Kararlar burada, kodda değil.
 > Her önemli kararda veya faz bitiminde bu dosya güncellenir.
 
-Son güncelleme: 2026-08-29 · Çok girdili kuyruk + reply yönlendirme + ack eklendi,
-Faz 7 workflow'ları yazılacak
+Son güncelleme: 2026-08-29 · **Faz 7 bitti.** Bot kendi kendine dönüyor:
+menü → seçim → üretim → onay. Tetikleme cron-job.org'da (GitHub cron çalışmadı).
+Sırada Faz 6 (Instagram).
 
 ---
 
@@ -45,20 +46,20 @@ dokunmaz.** Şablon sabit HTML/CSS'tir, LLM sadece metin alanlarını doldurur.
 | 5 | `telegram.py` + `respond.py` — onay döngüsü | ✅ |
 | + | `tier.py` + `produce.py` — kademe ve orkestratör | ✅ |
 | + | Tasarım turu — kesinleşti 2026-08-27 | ✅ |
-| **7** | **Workflow'lar (cron) — bot kendi kendine çalışsın** | **sıradaki** |
-| 6 | `publish.py` — Instagram paylaşımı (Meta kurulumu) | en son |
+| 7 | Workflow'lar — bot kendi kendine çalışıyor | ✅ |
+| **6** | **`publish.py` — Instagram paylaşımı (Meta kurulumu)** | **sıradaki** |
 | + | `qa.py` — görsel denetim (tasarım oturdu, artık yazılabilir) | bekliyor |
 
-**Şu an her şey elle çalışıyor.** Zincirin tamamı test edildi ama komutlar
-elle çalıştırılıyor; bilgisayar kapalıyken hiçbir şey olmuyor. Faz 7 yeni
-yetenek eklemiyor, var olanı saatli hale getiriyor.
+**Bot artık bilgisayar kapalıyken de çalışıyor.** Günde 3 kez menü geliyor,
+`/uret <numara>` ile seçiyorsun, kartlar basılıp onaya sunuluyor. Eksik olan
+tek şey paylaşımın kendisi: `/ok` desen bile Instagram'a gönderemiyor,
+`/bana` ile elle atıyorsun. Faz 6 bunu kapatacak.
 
-### Kullanıcının bekleyen işleri
-1. GitHub Secrets'a beş anahtar: `GEMINI_API_KEY`, `IGDB_CLIENT_ID`,
-   `IGDB_CLIENT_SECRET`, `TG_BOT_TOKEN`, `TG_CHAT_ID`
-2. Repo ayarları → Actions → **Read and write permissions**
-   (atlanırsa bot state commit edemez ve **hata vermeden** çalışmaz)
-3. Bekleyen commit'leri push
+### Kurulumu tamamlanmış olanlar
+- GitHub Secrets'ta beş anahtar
+- Actions → Read and write permissions
+- cron-job.org'da iki tetikleyici iş (bkz. bölüm 11)
+- Instagram hesabı açık ve profesyonel hesaba geçirilmiş
 
 ---
 
@@ -474,6 +475,49 @@ kuralı **büyük haberleri eliyordu** (çok kaynak yazınca kelime sıklaşıyo
 - Bot state dosyalarını kendi commit'ler, Actions write izni şart.
   State commit'lerinde `pull --rebase` retry'ı olmalı: `produce` ve `respond`
   aynı anda çalışırsa git çakışır.
+
+### ⚠️ GitHub cron ÇALIŞMADI — tetikleme cron-job.org'a taşındı (2026-08-29)
+`respond.yml` ve `menu.yml` push edildikten sonra **2.5 saat boyunca tek bir
+`schedule` çalışması olmadı.** Actions kaydında sadece elle atılan
+`workflow_dispatch` çalışmaları vardı. Yapılandırma doğruydu: repo public,
+default branch `main`, workflow dosyaları uzakta, saatler UTC, repo 4 günlük
+(60 gün inaktivite kuralı geçerli değil).
+
+Yaygın çözüm olan **"bir kez elle çalıştır, cron aktifleşir" numarası bu
+repoda işe yaramadı** — elle çalıştırdıktan sonra da tetiklenmedi.
+
+**Çözüm: harici tetikleyici.** cron-job.org GitHub API'yi çağırıyor,
+`workflow_dispatch` ile workflow'u başlatıyor. Ölçüldü: 17:19, 17:20, 17:25,
+17:29 — beşer dakika arayla, hepsi başarılı.
+
+| İş | Ne zaman | URL |
+|---|---|---|
+| `quest.post respond` | 5 dakikada bir | `.../workflows/respond.yml/dispatches` |
+| `quest.post menu` | `10 11,17,20 * * *` (Istanbul) | `.../workflows/menu.yml/dispatches` |
+
+İstek: `POST`, başlıklar `Authorization: Bearer <PAT>`,
+`Accept: application/vnd.github+json`, gövde `{"ref":"main"}`.
+cron-job.org'un **IMPORT FROM CURL** düğmesi üçünü birden dolduruyor.
+
+**Token:** GitHub fine-grained PAT, **süresiz**, yalnızca `quest.post`
+reposunda, yalnızca `Actions: Read and write`. Sızarsa yapabileceği:
+workflow tetiklemek (Telegram spam + Gemini kotası tüketmek), çalışma
+kaydı okumak. **Yapamayacağı:** Secrets okumak, kod değiştirmek, repo
+silmek. Süresiz seçildi çünkü hasar sınırlı ve iptal etmek saniyelik iş
+(Settings → Developer settings → Fine-grained tokens → Revoke).
+
+⚠️ **1 dakikalık tetikleme denenmemeli:** her çalışma runner açılışıyla
+1-2 dakika sürüyor, `concurrency` grubu bir öncekiler bitmeden yenileri
+kuyruğa alıyor ve gecikme **artıyor**. 5 dakika ölçülmüş dengeli değer.
+
+GitHub'ın kendi cron'u workflow dosyalarında **bırakıldı**: bir gün
+kendiliğinden çalışırsa çift tetikleme olur ama `concurrency` sıraya
+soktuğu için zararsız, yedek görevi görür.
+
+`/apideadline` çıktısındaki **"Tetikleme (Actions)"** satırı bunu
+izliyor: son çalışma 30 dakikayı geçerse sarı, 2 saati geçerse kırmızı.
+Harici tetikleyici sessizce durursa (token iptal, servis hesabı kapanma,
+iş silinme) tek belirti bu olurdu.
 
 ### ⚠️ Cron gecikmesi — mimari kısıt, bilinerek kabul edildi
 GitHub Actions cron **minimum 5 dakika**; `*/1` yazılırsa sessizce atlanır.
