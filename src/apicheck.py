@@ -106,11 +106,51 @@ def yokla_instagram() -> tuple[str, str]:
     return sari("publish.py var ama yoklama yazılmadı")
 
 
+# Bot en son ne zaman tetiklendi. Harici tetikleyici (cron-job.org) sessizce
+# durursa - token iptal olmus, servis hesabi kapanmis, is silinmis - bot
+# hicbir sey soylemeden olur. Tek belirti calisma kaydinin eskimesidir.
+TETIK_SARI_DK = 30
+TETIK_KIRMIZI_DK = 120
+RUNS_URL = ("https://api.github.com/repos/tekdze/quest.post/actions/runs"
+            "?per_page=1")
+
+
+def yokla_tetikleme() -> tuple[str, str]:
+    """Son workflow çalışmasının üstünden ne kadar geçti."""
+    try:
+        request = urllib.request.Request(
+            RUNS_URL, headers={"User-Agent": "questpost/0.1",
+                               "Accept": "application/vnd.github+json"})
+        with urllib.request.urlopen(request, timeout=30) as response:
+            data = json.loads(response.read())
+    except (urllib.error.URLError, OSError, json.JSONDecodeError) as exc:
+        return sari(f"kontrol edilemedi ({type(exc).__name__})")
+
+    runs = data.get("workflow_runs") or []
+    if not runs:
+        return kirmizi("hiç çalışma yok")
+
+    son = runs[0]
+    try:
+        an = datetime.fromisoformat(son["created_at"].replace("Z", "+00:00"))
+    except (KeyError, ValueError):
+        return sari("son çalışma zamanı okunamadı")
+
+    dakika = int((datetime.now(timezone.utc) - an).total_seconds() // 60)
+    ad = son.get("name", "?")
+    if dakika >= TETIK_KIRMIZI_DK:
+        return kirmizi(f"son çalışma {dakika} dk önce ({ad}) - tetikleyici durmuş olabilir")
+    if dakika >= TETIK_SARI_DK:
+        return sari(f"son çalışma {dakika} dk önce ({ad})")
+    return yesil(f"son çalışma {dakika} dk önce ({ad})")
+
+
 YOKLAMALAR = [
     ("gemini", "Gemini (metin)", yokla_gemini),
     ("igdb", "IGDB (görsel)", yokla_igdb),
     ("telegram", "Telegram (bot)", yokla_telegram),
     ("instagram", "Instagram (paylaşım)", yokla_instagram),
+    ("tetikleme", "Tetikleme (Actions)", yokla_tetikleme),
 ]
 
 
