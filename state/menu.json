@@ -1,7 +1,7 @@
 {
-  "olusturuldu": "2026-08-30T17:11:00+00:00",
-  "oneri": 3,
-  "gerekce": "şirketin hile satıcısının kapısına dayanması çok dikkat çekici",
+  "olusturuldu": "2026-08-30T18:02:52+00:00",
+  "oneri": 2,
+  "gerekce": "şirketin hile satıcısının kapısına bizzat gidip kaydetmesi çok dikkat çekici",
   "adaylar": [
     {
       "sira": 1,
@@ -16,7 +16,7 @@
         "url": "https://www.eurogamer.net/valve-steam2-leak-12tb-portal-2-half-life-episode-three",
         "summary": "A leaked archive said to contain around 12TB of old Valve development files, dated between 2003 and 2013, has surfaced online, and fans are already combing through it for any trace of the long-cancelled Half-Life 2 : Episode Three. Read more",
         "published": "2026-08-30T13:26:42+00:00",
-        "age_hours": 3.7,
+        "age_hours": 4.6,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -29,7 +29,7 @@
           "kotaku",
           "pcgamer"
         ],
-        "rank_score": 7.62,
+        "rank_score": 7.6,
         "members": [
           {
             "hash": "ba019debcea4c192",
@@ -37,7 +37,7 @@
             "title": "12TB Valve archive leak includes early Portal 2 builds and hints of Half-Life 2: Episode Three",
             "summary": "A leaked archive said to contain around 12TB of old Valve development files, dated between 2003 and 2013, has surfaced online, and fans are already combing through it for any trace of the long-cancelled Half-Life 2 : Episode Three. Read more",
             "published": "2026-08-30T13:26:42+00:00",
-            "age_hours": 3.7,
+            "age_hours": 4.6,
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
             "lang": "en",
@@ -54,7 +54,7 @@
             "title": "Colossal 13TB Steam Leak Reportedly Includes Beta Builds Of Portal 2, Left 4 Dead 2, And Much More",
             "summary": "The alleged Steam depot data reportedly spans from 2003 to 2013, and contains pre-release builds of potentially thousands of first and third-party games",
             "published": "2026-08-30T13:22:19+00:00",
-            "age_hours": 3.8,
+            "age_hours": 4.7,
             "source_id": "kotaku",
             "source_name": "Kotaku",
             "lang": "en",
@@ -71,7 +71,7 @@
             "title": "A massive cache of Valve data has reportedly leaked online, appearing to include Portal 2's elusive beta build and a potential weapon from Half-Life 2: Episode 3",
             "summary": "The leak purportedly includes files that date between 2003 and 2013.",
             "published": "2026-08-30T11:41:11+00:00",
-            "age_hours": 5.5,
+            "age_hours": 6.4,
             "source_id": "pcgamer",
             "source_name": "PC Gamer",
             "lang": "en",
@@ -85,7 +85,7 @@
         ]
       },
       "oyun_adi": "Portal 2",
-      "ozet": "12 terabaytlık sızıntıda iptal edilen oyunun izleri arandı",
+      "ozet": "12 terabaytlık arşiv sızıntısı iptal edilen oyunlara dair erken yapımlar içeriyor",
       "gorsel": {
         "durum": "var",
         "sayi": 6,
@@ -99,99 +99,6 @@
     {
       "sira": 2,
       "aday_index": 2,
-      "tier": "A",
-      "title": "EA breaks its silence after Iron Man gameplay leak, admitting \"well, that didn't go as planned\"",
-      "kaynak_sayisi": 3,
-      "url": "https://www.eurogamer.net/ea-motive-iron-man-leak-response-tweet",
-      "aday": {
-        "key": "3793469b4657c5d4",
-        "title": "EA breaks its silence after Iron Man gameplay leak, admitting \"well, that didn't go as planned\"",
-        "url": "https://www.eurogamer.net/ea-motive-iron-man-leak-response-tweet",
-        "summary": "EA has broken its silence on the leaked Iron Man footage that surfaced yesterday , admitting, \"well, that didn't go as planned\". Read more",
-        "published": "2026-08-29T14:56:18+00:00",
-        "age_hours": 26.2,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "mainstream"
-        ],
-        "source_count": 3,
-        "sources": [
-          "eurogamer",
-          "kotaku",
-          "pcgamer"
-        ],
-        "rank_score": 7.15,
-        "members": [
-          {
-            "hash": "3793469b4657c5d4",
-            "url": "https://www.eurogamer.net/ea-motive-iron-man-leak-response-tweet",
-            "title": "EA breaks its silence after Iron Man gameplay leak, admitting \"well, that didn't go as planned\"",
-            "summary": "EA has broken its silence on the leaked Iron Man footage that surfaced yesterday , admitting, \"well, that didn't go as planned\". Read more",
-            "published": "2026-08-29T14:56:18+00:00",
-            "age_hours": 26.2,
-            "source_id": "eurogamer",
-            "source_name": "Eurogamer",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream"
-            ]
-          },
-          {
-            "hash": "53f07ad53af15700",
-            "url": "https://www.pcgamer.com/games/action/well-that-didnt-go-as-planned-says-ea-as-it-footage-of-its-iron-man-game-leaks-online",
-            "title": "'Well, that didn't go as planned' says EA as it footage of its Iron Man game leaks online",
-            "summary": "\"But now you know, we've got a lot more to show you.\"",
-            "published": "2026-08-29T11:45:59+00:00",
-            "age_hours": 29.4,
-            "source_id": "pcgamer",
-            "source_name": "PC Gamer",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream"
-            ]
-          },
-          {
-            "hash": "cd4b5e9e66a5b0cb",
-            "url": "https://kotaku.com/ea-iron-man-leaked-footage-flying-anthem-2000729417",
-            "title": "The First Footage Of EA’s Iron Man Game Just Leaked, And Man, Flying Looks Really Fun",
-            "summary": "Anthem with more juice",
-            "published": "2026-08-28T18:07:00+00:00",
-            "age_hours": 47.1,
-            "source_id": "kotaku",
-            "source_name": "Kotaku",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.6,
-            "tags": [
-              "mainstream"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": "Iron Man",
-      "ozet": "ea sızan görüntüler hakkında ilk kez konuştu",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 5,
-        "oyun": "Iron Man",
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": false
-      },
-      "baslik": "Iron Man"
-    },
-    {
-      "sira": 3,
-      "aday_index": 3,
       "tier": "B",
       "title": "Activision sends a legal rep to a Call of Duty cheat seller's front door, films the whole thing, posts it online",
       "kaynak_sayisi": 2,
@@ -202,7 +109,7 @@
         "url": "https://www.eurogamer.net/activision-cease-and-desist-call-of-duty-cheat-maker-elocarry-video",
         "summary": "Activision has posted footage of one of its legal representatives turning up at the Ohio home of a notorious Call of Duty cheat seller and handing over a cease-and-desist order. Read more",
         "published": "2026-08-30T16:48:46+00:00",
-        "age_hours": 0.4,
+        "age_hours": 1.2,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -214,7 +121,7 @@
           "eurogamer",
           "pcgamer"
         ],
-        "rank_score": 4.69,
+        "rank_score": 4.67,
         "members": [
           {
             "hash": "1dd95b99bdf367f5",
@@ -222,7 +129,7 @@
             "title": "Activision sends a legal rep to a Call of Duty cheat seller's front door, films the whole thing, posts it online",
             "summary": "Activision has posted footage of one of its legal representatives turning up at the Ohio home of a notorious Call of Duty cheat seller and handing over a cease-and-desist order. Read more",
             "published": "2026-08-30T16:48:46+00:00",
-            "age_hours": 0.4,
+            "age_hours": 1.2,
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
             "lang": "en",
@@ -239,7 +146,7 @@
             "title": "Activision serves cease and desist to infamous Call of Duty cheat maker—and films the whole thing: 'We will find you'",
             "summary": "The publisher says it has disrupted 375 reseller operations so far.",
             "published": "2026-08-30T10:05:20+00:00",
-            "age_hours": 7.1,
+            "age_hours": 8.0,
             "source_id": "pcgamer",
             "source_name": "PC Gamer",
             "lang": "en",
@@ -253,7 +160,7 @@
         ]
       },
       "oyun_adi": "Call of Duty",
-      "ozet": "activision hile satıcısının evine gidip o anları kaydetti",
+      "ozet": "activision hile satıcısının evine avukat gönderip o anları kaydetti",
       "gorsel": {
         "durum": "var",
         "sayi": 4,
@@ -265,8 +172,8 @@
       "baslik": "Call of Duty"
     },
     {
-      "sira": 4,
-      "aday_index": 4,
+      "sira": 3,
+      "aday_index": 3,
       "tier": "B",
       "title": "Rockstar confirms GTA 6 won't have microtransactions or generative AI at launch",
       "kaynak_sayisi": 2,
@@ -277,7 +184,7 @@
         "url": "https://www.eurogamer.net/gta-6-microtransactions-generative-ai-rockstar",
         "summary": "Rockstar has confirmed Grand Theft Auto 6 will launch without microtransactions or generative AI. Read more",
         "published": "2026-08-30T10:48:08+00:00",
-        "age_hours": 6.4,
+        "age_hours": 7.2,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -289,7 +196,7 @@
           "eurogamer",
           "ign"
         ],
-        "rank_score": 4.57,
+        "rank_score": 4.55,
         "members": [
           {
             "hash": "90255a1e782ebeb8",
@@ -297,7 +204,7 @@
             "title": "Rockstar confirms GTA 6 won't have microtransactions or generative AI at launch",
             "summary": "Rockstar has confirmed Grand Theft Auto 6 will launch without microtransactions or generative AI. Read more",
             "published": "2026-08-30T10:48:08+00:00",
-            "age_hours": 6.4,
+            "age_hours": 7.2,
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
             "lang": "en",
@@ -314,7 +221,7 @@
             "title": "GTA 6 Will Have No Microtransactions or Generative AI at Launch, Rockstar Says",
             "summary": "Rockstar Games has said Grand Theft Auto 6 will have no microtransactions or generative AI when it launches in November.",
             "published": "2026-08-29T22:16:08+00:00",
-            "age_hours": 18.9,
+            "age_hours": 19.8,
             "source_id": "ign",
             "source_name": "IGN",
             "lang": "en",
@@ -327,8 +234,8 @@
           }
         ]
       },
-      "oyun_adi": "Grand Theft Auto 6",
-      "ozet": "oyunun çıkışında mikro ödeme ve yapay zeka olmayacak",
+      "oyun_adi": "Grand Theft Auto VI",
+      "ozet": "oyun çıkışında mikro ödeme ve yapay zeka içermeyecek",
       "gorsel": {
         "durum": "var",
         "sayi": 34,
@@ -337,11 +244,11 @@
         "seri": null,
         "temsili": false
       },
-      "baslik": "Grand Theft Auto 6"
+      "baslik": "Grand Theft Auto VI"
     },
     {
-      "sira": 5,
-      "aday_index": 5,
+      "sira": 4,
+      "aday_index": 4,
       "tier": "B",
       "title": "Talking Point: What Are You Playing This Weekend? (29th August)",
       "kaynak_sayisi": 2,
@@ -352,7 +259,7 @@
         "url": "https://www.nintendolife.com/features/talking-point-what-are-you-playing-this-weekend-29th-august",
         "summary": "Kept you waiting, huh? Well folks, the weekend is here, which means it's time to kick back, forget the stress of the working week, and play some games. It's been quite the week for Nintendo fans. Gamescom ONL revealed some pretty sweet treats for us, not least in the form of The Witcher III: Wild Hunt- Remastered for Switch 2, an improved version of Geralt's most recent adventure that's absolutely free for current owners of the Switch game. Read the full article on nintendolife.com",
         "published": "2026-08-29T09:00:00+00:00",
-        "age_hours": 32.2,
+        "age_hours": 33.0,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -365,7 +272,7 @@
           "nintendolife",
           "rps"
         ],
-        "rank_score": 4.23,
+        "rank_score": 4.21,
         "members": [
           {
             "hash": "55676750d30a5b94",
@@ -373,7 +280,7 @@
             "title": "Talking Point: What Are You Playing This Weekend? (29th August)",
             "summary": "Kept you waiting, huh? Well folks, the weekend is here, which means it's time to kick back, forget the stress of the working week, and play some games. It's been quite the week for Nintendo fans. Gamescom ONL revealed some pretty sweet treats for us, not least in the form of The Witcher III: Wild Hunt- Remastered for Switch 2, an improved version of Geralt's most recent adventure that's absolutely free for current owners of the Switch game. Read the full article on nintendolife.com",
             "published": "2026-08-29T09:00:00+00:00",
-            "age_hours": 32.2,
+            "age_hours": 33.0,
             "source_id": "nintendolife",
             "source_name": "Nintendo Life",
             "lang": "en",
@@ -391,7 +298,7 @@
             "title": "What are we all playing this weekend?",
             "summary": "Saturdays are for actually remembering that it's a Bank Holiday weekend , rather than forgetting and coming in on Monday and getting viciously annoyed with Julian and Mark for seeming to ignore your Gchat messages. (They do that anyway, regardless of whether it's a day off.) Read more",
             "published": "2026-08-29T07:00:00+00:00",
-            "age_hours": 34.2,
+            "age_hours": 35.0,
             "source_id": "rps",
             "source_name": "Rock Paper Shotgun",
             "lang": "en",
@@ -406,7 +313,7 @@
         ]
       },
       "oyun_adi": null,
-      "ozet": "hafta sonu oynanan oyunlar üzerine bir tartışma başlatıldı",
+      "ozet": "hafta sonu oynanan oyunlar hakkında haftalık topluluk sohbeti",
       "gorsel": {
         "durum": "var",
         "sayi": 8,
@@ -416,6 +323,81 @@
         "temsili": true
       },
       "baslik": "Talking Point: What Are You Playing This Weekend? (2..."
+    },
+    {
+      "sira": 5,
+      "aday_index": 5,
+      "tier": "B",
+      "title": "EA breaks its silence after Iron Man gameplay leak, admitting \"well, that didn't go as planned\"",
+      "kaynak_sayisi": 2,
+      "url": "https://www.eurogamer.net/ea-motive-iron-man-leak-response-tweet",
+      "aday": {
+        "key": "3793469b4657c5d4",
+        "title": "EA breaks its silence after Iron Man gameplay leak, admitting \"well, that didn't go as planned\"",
+        "url": "https://www.eurogamer.net/ea-motive-iron-man-leak-response-tweet",
+        "summary": "EA has broken its silence on the leaked Iron Man footage that surfaced yesterday , admitting, \"well, that didn't go as planned\". Read more",
+        "published": "2026-08-29T14:56:18+00:00",
+        "age_hours": 27.1,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream"
+        ],
+        "source_count": 2,
+        "sources": [
+          "eurogamer",
+          "pcgamer"
+        ],
+        "rank_score": 4.14,
+        "members": [
+          {
+            "hash": "3793469b4657c5d4",
+            "url": "https://www.eurogamer.net/ea-motive-iron-man-leak-response-tweet",
+            "title": "EA breaks its silence after Iron Man gameplay leak, admitting \"well, that didn't go as planned\"",
+            "summary": "EA has broken its silence on the leaked Iron Man footage that surfaced yesterday , admitting, \"well, that didn't go as planned\". Read more",
+            "published": "2026-08-29T14:56:18+00:00",
+            "age_hours": 27.1,
+            "source_id": "eurogamer",
+            "source_name": "Eurogamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "53f07ad53af15700",
+            "url": "https://www.pcgamer.com/games/action/well-that-didnt-go-as-planned-says-ea-as-it-footage-of-its-iron-man-game-leaks-online",
+            "title": "'Well, that didn't go as planned' says EA as it footage of its Iron Man game leaks online",
+            "summary": "\"But now you know, we've got a lot more to show you.\"",
+            "published": "2026-08-29T11:45:59+00:00",
+            "age_hours": 30.3,
+            "source_id": "pcgamer",
+            "source_name": "PC Gamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "Iron Man",
+      "ozet": "yayımcı sızan erken oynanış görüntüleri hakkında esprili bir açıklama yaptı",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 5,
+        "oyun": "Iron Man",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": false
+      },
+      "baslik": "Iron Man"
     },
     {
       "sira": 6,
@@ -430,7 +412,7 @@
         "url": "https://www.pcgamer.com/games/strategy/i-played-just-one-hour-of-total-war-warhammer-40-000-and-it-was-the-highlight-of-my-year",
         "summary": "Living the grimdark dream.",
         "published": "2026-08-29T13:34:03+00:00",
-        "age_hours": 27.6,
+        "age_hours": 28.5,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -442,7 +424,7 @@
           "eurogamer",
           "pcgamer"
         ],
-        "rank_score": 4.12,
+        "rank_score": 4.11,
         "members": [
           {
             "hash": "4b4d4a022efbf333",
@@ -450,7 +432,7 @@
             "title": "I played just an hour of Total War: Warhammer 40,000 and it was the highlight of my year",
             "summary": "Living the grimdark dream.",
             "published": "2026-08-29T13:34:03+00:00",
-            "age_hours": 27.6,
+            "age_hours": 28.5,
             "source_id": "pcgamer",
             "source_name": "PC Gamer",
             "lang": "en",
@@ -467,7 +449,7 @@
             "title": "Total War: Warhammer 40,000 is aiming to be the \"definitive\" game for the setting, and I think it might be exactly that",
             "summary": "In a small room inside a crowded Koelnesse convention centre, a short presentation on Total War: Warhammer 40,000 is shown to a gaggle of tired writers. Creative Assembly's brand manager says they're hoping to make the definitive game in the 40k universe. After playing the game for a little while, I think they may have pulled it off. Read more",
             "published": "2026-08-29T09:01:15+00:00",
-            "age_hours": 32.2,
+            "age_hours": 33.0,
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
             "lang": "en",
@@ -481,7 +463,7 @@
         ]
       },
       "oyun_adi": "Total War: Warhammer 40,000",
-      "ozet": "oyunun erken oynanış deneyimi yılın en iyisi olarak tanımlandı",
+      "ozet": "yazar saatler süren deneyiminin ardından oyunu yılın olayı ilan etti",
       "gorsel": {
         "durum": "var",
         "sayi": 12,
