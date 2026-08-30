@@ -35,15 +35,44 @@ runs:
 
         git commit -m "$COMMIT_MESAJI"
 
-        # Aynı anda başka bir workflow push etmiş olabilir. Rebase edip
-        # yeniden dene; üç denemede olmuyorsa gerçekten bir sorun vardır.
+        # Aynı anda başka biri push etmiş olabilir: başka bir workflow ya da
+        # kullanıcının kendi commit'leri. Rebase edip yeniden dene.
+        #
+        # ⚠️ Çakışma olursa state dosyalarında BİZİM sürüm kazanır. Bunlar
+        # üretilmiş durum dosyaları; satır satır birleştirmek anlamsız,
+        # doğru olan "en son yazan geçerli". Rebase yarıda kalınca bot
+        # sessizce hafızasını kaybediyordu.
+        #
+        # posted.json istisna: yayınlanan/iptal edilen haberlerin arşivi ve
+        # ekleme yapılan bir dosya. İki taraf da kayıt eklemiş olabilir,
+        # birinin sürümünü almak haberin tekrar aday olmasına yol açar.
         for deneme in 1 2 3; do
           if git push; then
             echo "push tamam (deneme $deneme)"
             exit 0
           fi
-          echo "push reddedildi, rebase edilip yeniden denenecek ($deneme)"
-          git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+          echo "push reddedildi, rebase deneniyor ($deneme)"
+          git fetch origin "${GITHUB_REF_NAME}"
+
+          if ! git rebase "origin/${GITHUB_REF_NAME}"; then
+            echo "cakisma var, state dosyalarinda bizim surum aliniyor"
+
+            # posted.json'u once birlestir: iki taraftaki hash'ler toplanir.
+            if git ls-files -u | grep -q "state/posted.json"; then
+              python "${GITHUB_ACTION_PATH}/merge_posted.py"
+              git add state/posted.json
+            fi
+
+            # Kalan cakismalarda bizim surum (rebase'de --theirs = uygulanan
+            # commit, yani bot'un yazdigi).
+            git checkout --theirs -- state out 2>/dev/null || true
+            git add -A
+            GIT_EDITOR=true git rebase --continue || {
+              echo "rebase cozulemedi, iptal ediliyor"
+              git rebase --abort || true
+              exit 1
+            }
+          fi
           sleep 3
         done
 

@@ -763,6 +763,65 @@ dair yönerge. **Kullanıcı bu istemi kendisi verecek.**
 
 ---
 
+## 11.5 Değerlendirme — sistem nerede duruyor (2026-08-30)
+
+İlk gönderi yayınlandıktan sonra yapılan durum tespiti. Buradaki yargılar
+ölçüme dayanıyor, sonraki kararlarda başlangıç noktası olarak kullanılmalı.
+
+### Sağlam kurulan taraf
+- **LLM dar tutuldu.** Tasarıma dokunmuyor, kademeyi kod hesaplıyor,
+  görseli kod seçiyor. 300. postun 1. postla aynı görünmesini sağlayacak
+  olan şey bu kısıt.
+- **Üslup filtresi çalışıyor.** O kadar sıkı ki LLM'i `search_name`
+  alanını boşaltmaya itmişti (bkz. bölüm 5) - istenmeyen bir yan etkiydi
+  ama filtrenin gerçekten bağladığının kanıtı.
+- **Telif disiplini** yerinde: IGDB, sayfa başına kredi, sızıntıda görsel yok.
+- **Karar kaydı** faydasını verdi: Gemini hesap engeli ve `gemini-2.5-*`
+  kapalılığı notları aynı hatayı tekrar aramayı önledi.
+
+### Zayıf taraf
+- ⚠️ **Kademe sistemi fiilen ölü.** Hesabın vitrindeki fikri bu, ama
+  ölçüldü: üretilen postların hepsi B çıkıyor, S neredeyse hiç gelmiyor.
+  Sebep bölüm 11'de: sinyal "kaç kaynak aynı BAŞLIĞI yazdı" ve büyük
+  haberler dokuz ayrı kümeye bölünüyor. **En öncelikli açık bu.**
+- **Kaynak havuzu tek tip:** 22 RSS, hepsi İngilizce haber sitesi. Steam,
+  Twitter, TR stüdyoları yok. Ayırt edici olan itch.io/devlog kaynakları
+  azınlıkta.
+- **Metin derinliği sınırlı:** tam makale çekilmiyor, RSS özetleri
+  birleştiriliyor. "Haberi duyuran" seviyesinde, "anlatan" değil.
+- **Görsel içerikle ilişkili değil:** kod görselleri sayfa TİPİNE göre
+  dağıtıyor, konuyla bağı tesadüf.
+- **Tek format:** hep 4-5 sayfalık carousel.
+
+### Büyüme değerlendirmesi — dürüst tahmin
+Bu içerikle **yavaş büyür, ve sebebi kalite değil format.** Instagram
+haber içeriğinde yapısal olarak dezavantajlı: algoritma kaydetme,
+paylaşma ve yorumu ödüllendiriyor, haber ise tüketilip geçiliyor.
+Kimse günlük bir oyun haberini kaydetmez.
+
+Kırılma iki şeyden biriyle gelir: ya bir post tesadüfen viral olur, ya da
+**kaydedilebilir içerik** eklenir. Altyapı hazır - kartlar temiz, metin
+"AI yazmış" gibi kokmuyor; eksik olan içerik TÜRÜ çeşitliliği.
+
+### Öncelik sırası (büyüme etkisine göre)
+1. **Evergreen içerik** - en yüksek getirili eksik. "2026'da çıkacak 8
+   indie oyun" gibi; kaydediliyor, aranıyor, aylarca erişim getiriyor.
+   Aynı kart sistemi, sadece farklı içerik kaynağı.
+2. **Haftalık derleme** - `weekly.json` doluyor ama hiç kullanılmıyor.
+3. **Konu ısısı** - kademe sistemini canlandırır.
+4. **Tek görsel postlar** - carousel yavaş tüketiliyor.
+5. Vision QA + görsel-sayfa eşleştirme + esnek sayfa sayısı.
+
+### ⚠️ Asıl risk teknik değil: kullanıcının ilgisi
+Sistem her turda onay bekliyor; günde 15 dakika, üç ayrı zamanda. İki
+hafta sürdürülebilir, altı ay şüpheli. Bir gün bakılmazsa post çıkmıyor.
+
+İki çıkış yolu: belirli koşullarda otomatik onay (B kademesi + görsel var
++ QA temiz → sorma, yayınla) ya da tempoyu düşürmek (günde 3 yerine 1).
+**İkincisi daha sağlıklı** - az ve düzenli, çok ve düzensizden iyidir.
+
+---
+
 ## 12. Bilinen sınırlar ve açık maddeler
 
 - **Otomasyon arzı çözer, dağıtımı çözmez.** Hesap yeni, ilk aylarda erişim
