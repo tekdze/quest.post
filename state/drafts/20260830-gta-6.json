@@ -1,0 +1,395 @@
+{
+  "_kaynak": "https://kotaku.com/pet-dog-gta-6-throw-poop-2000729352",
+  "_aday_index": 1,
+  "_aday": {
+    "key": "73ccc69e2edaa4b1",
+    "title": "You Can Pet The Dog In GTA 6 And Also Throw Its Poop At NPCs",
+    "url": "https://kotaku.com/pet-dog-gta-6-throw-poop-2000729352",
+    "summary": "It can also apparently help you win the lottery?",
+    "published": "2026-08-28T19:00:32+00:00",
+    "age_hours": 43.2,
+    "lang": "en",
+    "kind": "news",
+    "bucket": "news",
+    "tags": [
+      "mainstream"
+    ],
+    "source_count": 2,
+    "sources": [
+      "gamespot",
+      "kotaku"
+    ],
+    "rank_score": 3.8,
+    "members": [
+      {
+        "hash": "73ccc69e2edaa4b1",
+        "url": "https://kotaku.com/pet-dog-gta-6-throw-poop-2000729352",
+        "title": "You Can Pet The Dog In GTA 6 And Also Throw Its Poop At NPCs",
+        "summary": "It can also apparently help you win the lottery?",
+        "published": "2026-08-28T19:00:32+00:00",
+        "age_hours": 43.2,
+        "source_id": "kotaku",
+        "source_name": "Kotaku",
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "weight": 0.6,
+        "tags": [
+          "mainstream"
+        ]
+      },
+      {
+        "hash": "153166aa9f92f460",
+        "url": "https://www.gamespot.com/articles/gta-6-lets-you-throw-dog-poop-at-people",
+        "title": "GTA 6 Lets You Throw Dog Poop At People",
+        "summary": "A very important piece of news has come to light about GTA 6 : You can pick up dog poop and throw it at people in the upcoming open-world crime game. YouTuber TGG visited Rockstar North's offices and spoke with the team, and one of the things he learned was how dog poop can be a weapon. \"If someone is out on the street and they're walking their dog, and the dog takes a dump, you can wait for the person to pick up the dog sh** with a doggie bag, and then you can hit that person, making them drop that doggie bag full of dog crap, and then you can actually pick that up and throw it at people,\" he",
+        "published": "2026-08-28T16:16:13+00:00",
+        "age_hours": 45.9,
+        "source_id": "gamespot",
+        "source_name": "GameSpot",
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "weight": 0.7,
+        "tags": [
+          "mainstream"
+        ]
+      }
+    ]
+  },
+  "_kaynak_sayisi": 2,
+  "_is_leak": false,
+  "_model": "gemini-3.6-flash",
+  "tier": "B",
+  "category": "güncelleme",
+  "caption": "rockstar north ofisini ziyaret eden içerik üreticilerinin aktardığı detaylar gta 6 dünyasının garip etkileşimlere sahne olacağını gösteriyor. açık dünyadaki bu sıra dışı özgürlük oyundaki etkileşim çeşitliliğini gözler önüne seriyor. #gta6 #rockstargames",
+  "game": "gta 6",
+  "search_name": "Grand Theft Auto VI",
+  "image_candidates": [],
+  "series_fallback": [
+    "Grand Theft Auto V"
+  ],
+  "representative_games": [],
+  "credit": "rockstar games",
+  "pages": [
+    {
+      "type": "cover",
+      "title": "gta 6 oyunundaki sıra dışı detaylar",
+      "image": "state/img/grand-theft-auto-vi-ar6i4l.jpg",
+      "credit": "rockstar games"
+    },
+    {
+      "type": "text",
+      "title": "köpekler ve alışılmadık bir silah",
+      "paragraph": "rockstar north ekibiyle görüşen içerik üreticisi tgg oyun dünyasına dair garip bir etkileşimi paylaştı. serinin yeni oyununda sokaktaki köpekleri sevmenin yanı sıra çevreyle ilginç etkileşimler kurulabiliyor.",
+      "bullets": [
+        "evcil hayvanları sevme özelliği",
+        "çevreyle ilginç temaslar"
+      ],
+      "image": "state/img/grand-theft-auto-vi-scwpqj.jpg",
+      "credit": "rockstar games"
+    },
+    {
+      "type": "text",
+      "title": "etkileşim mekaniği nasıl işliyor",
+      "paragraph": "sokakta köpeğini gezdiren birini gördüğünüzde hayvanın bıraktığı atığı sahibinin poşetle toplamasını beklemek gerekiyor. ardından sahibine müdahale edip poşeti düşürterek bu poşeti başkalarına fırlatmak mümkün hale geliyor.",
+      "bullets": [
+        "atık poşetini ele geçirme",
+        "yoldan geçenlere fırlatabilme"
+      ],
+      "image": "state/img/grand-theft-auto-vi-sc10vlj.jpg",
+      "credit": "rockstar games"
+    },
+    {
+      "type": "outro",
+      "question": "açık dünyadaki bu tarz garip etkileşimler ilginizi çekiyor mu",
+      "ctas": [
+        "düşüncelerinizi yorumlarda paylaşabilirsiniz"
+      ],
+      "image": "state/img/grand-theft-auto-vi-ar6i4r.jpg",
+      "credit": "rockstar games"
+    }
+  ],
+  "_hashes": [
+    "73ccc69e2edaa4b1",
+    "153166aa9f92f460"
+  ],
+  "_kume_key": "73ccc69e2edaa4b1",
+  "_gorsel_temsili": false,
+  "_image_pool": [
+    {
+      "id": "ar6i4l",
+      "kind": "artwork",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "ar6i4r",
+      "kind": "artwork",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "ar6i4m",
+      "kind": "artwork",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "ar6i4q",
+      "kind": "artwork",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "ar6i4n",
+      "kind": "artwork",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "ar6i4p",
+      "kind": "artwork",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "ar52fz",
+      "kind": "artwork",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "ar52g1",
+      "kind": "artwork",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "ar64ek",
+      "kind": "artwork",
+      "w": 3404,
+      "h": 2303,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "ar64ej",
+      "kind": "artwork",
+      "w": 3404,
+      "h": 2303,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "ar6451",
+      "kind": "artwork",
+      "w": 2160,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "ar6455",
+      "kind": "artwork",
+      "w": 2160,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "ar6458",
+      "kind": "artwork",
+      "w": 2160,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "ar6i4o",
+      "kind": "artwork",
+      "w": 2160,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "ar6459",
+      "kind": "artwork",
+      "w": 1620,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "ar646w",
+      "kind": "artwork",
+      "w": 1620,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "scwpqj",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "sc10vlj",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "sc10vlr",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "sc10vls",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "sc10vlt",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "sc10vlm",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "sc10vlp",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "sc10vlu",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "sc10vlk",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "sc10vll",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "sc10vln",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "sc10vlo",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "sc10vlq",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "sc10vlv",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "scpsp8",
+      "kind": "screenshot",
+      "w": 2558,
+      "h": 1322,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "scpsp7",
+      "kind": "screenshot",
+      "w": 2048,
+      "h": 1154,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "scpsp9",
+      "kind": "screenshot",
+      "w": 1658,
+      "h": 1064,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    },
+    {
+      "id": "cocaa5",
+      "kind": "cover",
+      "w": 1581,
+      "h": 2108,
+      "credit": "rockstar games",
+      "oyun": "Grand Theft Auto VI"
+    }
+  ],
+  "_slug": "grand-theft-auto-vi",
+  "_gorsel_turu": 0
+}
