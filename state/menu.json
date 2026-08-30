@@ -1,22 +1,115 @@
 {
-  "olusturuldu": "2026-08-30T09:31:01+00:00",
-  "oneri": 3,
-  "gerekce": "şirketin vergi iadesini doğrudan kullanıcılara ödemesi dikkat çekici bir hareket.",
+  "olusturuldu": "2026-08-30T13:46:42+00:00",
+  "oneri": 1,
+  "gerekce": "yarım kalan oyunların gizli dosyalarının sızması oyuncuların büyük ilgisini çeker",
   "adaylar": [
     {
       "sira": 1,
       "aday_index": 1,
       "tier": "A",
-      "title": "Fibbage Card Game Review",
-      "kaynak_sayisi": 2,
-      "url": "https://www.ign.com/articles/fibbage-card-game-review",
+      "title": "12TB Valve archive leak includes early Portal 2 builds and hints of Half-Life 2: Episode Three",
+      "kaynak_sayisi": 3,
+      "url": "https://www.eurogamer.net/valve-steam2-leak-12tb-portal-2-half-life-episode-three",
       "aday": {
-        "key": "e2b99d198c2a2910",
-        "title": "Fibbage Card Game Review",
-        "url": "https://www.ign.com/articles/fibbage-card-game-review",
-        "summary": "",
-        "published": "2026-08-29T16:30:00+00:00",
-        "age_hours": 17.0,
+        "key": "ba019debcea4c192",
+        "title": "12TB Valve archive leak includes early Portal 2 builds and hints of Half-Life 2: Episode Three",
+        "url": "https://www.eurogamer.net/valve-steam2-leak-12tb-portal-2-half-life-episode-three",
+        "summary": "A leaked archive said to contain around 12TB of old Valve development files, dated between 2003 and 2013, has surfaced online, and fans are already combing through it for any trace of the long-cancelled Half-Life 2 : Episode Three. Read more",
+        "published": "2026-08-30T13:26:42+00:00",
+        "age_hours": 0.3,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream"
+        ],
+        "source_count": 3,
+        "sources": [
+          "eurogamer",
+          "kotaku",
+          "pcgamer"
+        ],
+        "rank_score": 7.69,
+        "members": [
+          {
+            "hash": "ba019debcea4c192",
+            "url": "https://www.eurogamer.net/valve-steam2-leak-12tb-portal-2-half-life-episode-three",
+            "title": "12TB Valve archive leak includes early Portal 2 builds and hints of Half-Life 2: Episode Three",
+            "summary": "A leaked archive said to contain around 12TB of old Valve development files, dated between 2003 and 2013, has surfaced online, and fans are already combing through it for any trace of the long-cancelled Half-Life 2 : Episode Three. Read more",
+            "published": "2026-08-30T13:26:42+00:00",
+            "age_hours": 0.3,
+            "source_id": "eurogamer",
+            "source_name": "Eurogamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "a06bb6e5af7094c6",
+            "url": "https://kotaku.com/colossal-13tb-steam-leak-reportedly-includes-beta-builds-of-portal-2-left-4-dead-2-and-much-more-2000729638",
+            "title": "Colossal 13TB Steam Leak Reportedly Includes Beta Builds Of Portal 2, Left 4 Dead 2, And Much More",
+            "summary": "The alleged Steam depot data reportedly spans from 2003 to 2013, and contains pre-release builds of potentially thousands of first and third-party games",
+            "published": "2026-08-30T13:22:19+00:00",
+            "age_hours": 0.4,
+            "source_id": "kotaku",
+            "source_name": "Kotaku",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.6,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "7ede29b572ec7cb2",
+            "url": "https://www.pcgamer.com/games/fps/a-massive-cache-of-valve-data-has-reportedly-leaked-online-appearing-to-include-portal-2s-elusive-beta-build-and-a-potential-weapon-from-half-life-2-episode-3",
+            "title": "A massive cache of Valve data has reportedly leaked online, appearing to include Portal 2's elusive beta build and a potential weapon from Half-Life 2: Episode 3",
+            "summary": "The leak purportedly includes files that date between 2003 and 2013.",
+            "published": "2026-08-30T11:41:11+00:00",
+            "age_hours": 2.1,
+            "source_id": "pcgamer",
+            "source_name": "PC Gamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "Portal 2",
+      "ozet": "12 terabaytlık arşiv sızıntısı iptal edilen oyunlara dair erken yapım dosyaları içeriyor",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 6,
+        "oyun": "Portal 2",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": false
+      },
+      "baslik": "Portal 2"
+    },
+    {
+      "sira": 2,
+      "aday_index": 2,
+      "tier": "B",
+      "title": "Rockstar confirms GTA 6 won't have microtransactions or generative AI at launch",
+      "kaynak_sayisi": 2,
+      "url": "https://www.eurogamer.net/gta-6-microtransactions-generative-ai-rockstar",
+      "aday": {
+        "key": "90255a1e782ebeb8",
+        "title": "Rockstar confirms GTA 6 won't have microtransactions or generative AI at launch",
+        "url": "https://www.eurogamer.net/gta-6-microtransactions-generative-ai-rockstar",
+        "summary": "Rockstar has confirmed Grand Theft Auto 6 will launch without microtransactions or generative AI. Read more",
+        "published": "2026-08-30T10:48:08+00:00",
+        "age_hours": 3.0,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -25,36 +118,35 @@
         ],
         "source_count": 2,
         "sources": [
-          "ign",
-          "itch-newest"
+          "eurogamer",
+          "ign"
         ],
-        "rank_score": 6.05,
+        "rank_score": 4.64,
         "members": [
           {
-            "hash": "2eabc1f1952e1200",
-            "url": "https://gatng.itch.io/porticullis",
-            "title": "Portcullis [Free] [Card Game]",
-            "summary": "A Medieval Cardgame for Brackeys Game Jam",
-            "published": "2026-08-30T07:26:38+00:00",
-            "age_hours": 2.1,
-            "source_id": "itch-newest",
-            "source_name": "itch.io yeni cikanlar",
+            "hash": "90255a1e782ebeb8",
+            "url": "https://www.eurogamer.net/gta-6-microtransactions-generative-ai-rockstar",
+            "title": "Rockstar confirms GTA 6 won't have microtransactions or generative AI at launch",
+            "summary": "Rockstar has confirmed Grand Theft Auto 6 will launch without microtransactions or generative AI. Read more",
+            "published": "2026-08-30T10:48:08+00:00",
+            "age_hours": 3.0,
+            "source_id": "eurogamer",
+            "source_name": "Eurogamer",
             "lang": "en",
-            "kind": "releases",
-            "bucket": "discovery",
-            "weight": 1.4,
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
             "tags": [
-              "indie",
-              "ayristirici"
+              "mainstream"
             ]
           },
           {
-            "hash": "e2b99d198c2a2910",
-            "url": "https://www.ign.com/articles/fibbage-card-game-review",
-            "title": "Fibbage Card Game Review",
-            "summary": "",
-            "published": "2026-08-29T16:30:00+00:00",
-            "age_hours": 17.0,
+            "hash": "437e4d353e67b51a",
+            "url": "https://www.ign.com/articles/gta-6-will-have-no-microtransactions-or-generative-ai-at-launch-rockstar-says",
+            "title": "GTA 6 Will Have No Microtransactions or Generative AI at Launch, Rockstar Says",
+            "summary": "Rockstar Games has said Grand Theft Auto 6 will have no microtransactions or generative AI when it launches in November.",
+            "published": "2026-08-29T22:16:08+00:00",
+            "age_hours": 15.5,
             "source_id": "ign",
             "source_name": "IGN",
             "lang": "en",
@@ -67,94 +159,17 @@
           }
         ]
       },
-      "oyun_adi": "Fibbage Card Game",
-      "ozet": "brackeys game jam için geliştirilen orta çağ temalı kart oyunu.",
-      "gorsel": {
-        "durum": "yok",
-        "sayi": 0,
-        "oyun": null,
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": false
-      },
-      "baslik": "Fibbage Card Game"
-    },
-    {
-      "sira": 2,
-      "aday_index": 2,
-      "tier": "B",
-      "title": "Bandai Namco Is Bringing My Hero Academia: All's Justice To Switch 2",
-      "kaynak_sayisi": 2,
-      "url": "https://www.nintendolife.com/news/2026/08/bandai-namco-is-bringing-my-hero-academia-alls-justice-to-switch-2",
-      "aday": {
-        "key": "4446364f8d8e2902",
-        "title": "Bandai Namco Is Bringing My Hero Academia: All's Justice To Switch 2",
-        "url": "https://www.nintendolife.com/news/2026/08/bandai-namco-is-bringing-my-hero-academia-alls-justice-to-switch-2",
-        "summary": "Update: Performance & resolution revealed. : Bandai Namco this week announced it would be releasing a Switch 2 version of MY HERO ACADEMIA: All's Justice . Read the full article on nintendolife.com",
-        "published": "2026-08-30T07:00:00+00:00",
-        "age_hours": 2.5,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "mainstream",
-          "nintendo"
-        ],
-        "source_count": 2,
-        "sources": [
-          "gamesindustry",
-          "nintendolife"
-        ],
-        "rank_score": 4.85,
-        "members": [
-          {
-            "hash": "4446364f8d8e2902",
-            "url": "https://www.nintendolife.com/news/2026/08/bandai-namco-is-bringing-my-hero-academia-alls-justice-to-switch-2",
-            "title": "Bandai Namco Is Bringing My Hero Academia: All's Justice To Switch 2",
-            "summary": "Update: Performance & resolution revealed. : Bandai Namco this week announced it would be releasing a Switch 2 version of MY HERO ACADEMIA: All's Justice . Read the full article on nintendolife.com",
-            "published": "2026-08-30T07:00:00+00:00",
-            "age_hours": 2.5,
-            "source_id": "nintendolife",
-            "source_name": "Nintendo Life",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream",
-              "nintendo"
-            ]
-          },
-          {
-            "hash": "5359ee7d40cf5f66",
-            "url": "https://www.gamesindustry.biz/limbic-entertainment-on-life-after-bandai-namco",
-            "title": "Limbic Entertainment on life after Bandai Namco",
-            "summary": "In December 2025, German developer Limbic Entertainment was sold by Bandai Namco to a \"private investor\" . This news came just over three years after the Japanese giant acquired a majority stake in the studio for an undisclosed sum . Read more",
-            "published": "2026-08-28T12:05:08+00:00",
-            "age_hours": 45.4,
-            "source_id": "gamesindustry",
-            "source_name": "GamesIndustry.biz",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.9,
-            "tags": [
-              "endustri"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": "MY HERO ACADEMIA: All's Justice",
-      "ozet": "oyunun switch 2 sürümüne ait performans ve çözünürlük bilgileri açıklandı.",
+      "oyun_adi": "Grand Theft Auto VI",
+      "ozet": "rockstar oyunun çıkışta mikro ödeme ve yapay zeka barındırmayacağını duyurdu",
       "gorsel": {
         "durum": "var",
-        "sayi": 12,
-        "oyun": "My Hero Academia: All's Justice",
+        "sayi": 34,
+        "oyun": "Grand Theft Auto VI",
         "seri_sayi": 0,
         "seri": null,
         "temsili": false
       },
-      "baslik": "MY HERO ACADEMIA: All's Justice"
+      "baslik": "Grand Theft Auto VI"
     },
     {
       "sira": 3,
@@ -169,7 +184,7 @@
         "url": "https://www.eurogamer.net/panic-playdate-tariff-refunds-customers",
         "summary": "Panic, maker of the crank-powered handheld Playdate , is forwarding Supreme Court-ordered tariff refunds back to customers. Read more",
         "published": "2026-08-29T10:51:33+00:00",
-        "age_hours": 22.7,
+        "age_hours": 26.9,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -181,7 +196,7 @@
           "eurogamer",
           "gamedeveloper"
         ],
-        "rank_score": 4.53,
+        "rank_score": 4.44,
         "members": [
           {
             "hash": "23ddd14300cd429a",
@@ -189,7 +204,7 @@
             "title": "Playdate maker Panic is passing tariff refunds on to customers",
             "summary": "Panic, maker of the crank-powered handheld Playdate , is forwarding Supreme Court-ordered tariff refunds back to customers. Read more",
             "published": "2026-08-29T10:51:33+00:00",
-            "age_hours": 22.7,
+            "age_hours": 26.9,
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
             "lang": "en",
@@ -206,7 +221,7 @@
             "title": "Panic refunds tariff fees, 1047 Games pivots from Splitgate, and Gamescom Dev grows - Patch Notes #67",
             "summary": "Plus: No More Room in Hell 2 surpasses 1 million players after exiting a pivotal Early Access period.",
             "published": "2026-08-28T13:47:47+00:00",
-            "age_hours": 43.7,
+            "age_hours": 48.0,
             "source_id": "gamedeveloper",
             "source_name": "Game Developer",
             "lang": "en",
@@ -219,8 +234,8 @@
           }
         ]
       },
-      "oyun_adi": "Playdate",
-      "ozet": "şirket, mahkeme kararıyla aldığı gümrük vergisi iadelerini müşterilerine ödüyor.",
+      "oyun_adi": null,
+      "ozet": "elde taşınan konsolun üreticisi mahkeme kararlı vergi iadelerini müşterilerine aktarıyor",
       "gorsel": {
         "durum": "yok",
         "sayi": 0,
@@ -229,164 +244,11 @@
         "seri": null,
         "temsili": false
       },
-      "baslik": "Playdate"
+      "baslik": "Playdate maker Panic is passing tariff refunds on to..."
     },
     {
       "sira": 4,
       "aday_index": 4,
-      "tier": "B",
-      "title": "Silent Hill Townfall taps back into analog horror, but its tech is \"never going to lie to you\"",
-      "kaynak_sayisi": 2,
-      "url": "https://www.pcgamesn.com/silent-hill-townfall/interview-gamescom-analog-horror",
-      "aday": {
-        "key": "672339898fb6cab6",
-        "title": "Silent Hill Townfall taps back into analog horror, but its tech is \"never going to lie to you\"",
-        "url": "https://www.pcgamesn.com/silent-hill-townfall/interview-gamescom-analog-horror",
-        "summary": "Silent Hill Townfall evokes the classic horror radio static with its CRTV, and its technology will be one of the only things you can trust.",
-        "published": "2026-08-29T13:31:51+00:00",
-        "age_hours": 20.0,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "mainstream",
-          "pc"
-        ],
-        "source_count": 2,
-        "sources": [
-          "pcgamesn",
-          "rps"
-        ],
-        "rank_score": 4.48,
-        "members": [
-          {
-            "hash": "672339898fb6cab6",
-            "url": "https://www.pcgamesn.com/silent-hill-townfall/interview-gamescom-analog-horror",
-            "title": "Silent Hill Townfall taps back into analog horror, but its tech is \"never going to lie to you\"",
-            "summary": "Silent Hill Townfall evokes the classic horror radio static with its CRTV, and its technology will be one of the only things you can trust.",
-            "published": "2026-08-29T13:31:51+00:00",
-            "age_hours": 20.0,
-            "source_id": "pcgamesn",
-            "source_name": "PCGamesN",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream",
-              "pc"
-            ]
-          },
-          {
-            "hash": "c243549500f92f7c",
-            "url": "https://www.rockpapershotgun.com/i-found-solace-from-silent-hill-townfalls-stealthy-horror-in-the-soothing-britishness-of-its-abandoned-homes",
-            "title": "I found solace from Silent Hill: Townfall's stealthy horror in the soothing Britishness of its abandoned homes",
-            "summary": "I suppose, in a way, I asked for this. Crouched and cowering behind a garden fence, inches away from the thrashing, cleaver-faced miscreation who’d quite comfortably win in a fight against my splintering plank of rotten wood, I can almost hear Silent Hill: Townfall whisper mocking in my ear: not too much combat now, eh? Read more",
-            "published": "2026-08-28T13:00:00+00:00",
-            "age_hours": 44.5,
-            "source_id": "rps",
-            "source_name": "Rock Paper Shotgun",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.9,
-            "tags": [
-              "mainstream",
-              "pc"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": "Silent Hill Townfall",
-      "ozet": "yapım analog korku unsurları barındıracak ve teknolojiye odaklanacak.",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 14,
-        "oyun": "Silent Hill: Townfall",
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": false
-      },
-      "baslik": "Silent Hill Townfall"
-    },
-    {
-      "sira": 5,
-      "aday_index": 5,
-      "tier": "B",
-      "title": "EA Motive's Iron Man Game Reveal 'Didn't Go as Planned,' But the Leak Has Marvel Fans More Excited Than Ever",
-      "kaynak_sayisi": 2,
-      "url": "https://www.ign.com/articles/ea-motives-iron-man-game-reveal-didnt-go-as-planned-but-the-leak-has-marvel-fans-more-excited-than-ever",
-      "aday": {
-        "key": "3d82c43d69153084",
-        "title": "EA Motive's Iron Man Game Reveal 'Didn't Go as Planned,' But the Leak Has Marvel Fans More Excited Than Ever",
-        "url": "https://www.ign.com/articles/ea-motives-iron-man-game-reveal-didnt-go-as-planned-but-the-leak-has-marvel-fans-more-excited-than-ever",
-        "summary": "EA Motive Studio's Iron Man game suffered an unexpected leak, but it may have resulted in Marvel fans being more excited about it than ever.",
-        "published": "2026-08-29T20:37:20+00:00",
-        "age_hours": 12.9,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "mainstream"
-        ],
-        "source_count": 2,
-        "sources": [
-          "eurogamer",
-          "ign"
-        ],
-        "rank_score": 4.43,
-        "members": [
-          {
-            "hash": "3d82c43d69153084",
-            "url": "https://www.ign.com/articles/ea-motives-iron-man-game-reveal-didnt-go-as-planned-but-the-leak-has-marvel-fans-more-excited-than-ever",
-            "title": "EA Motive's Iron Man Game Reveal 'Didn't Go as Planned,' But the Leak Has Marvel Fans More Excited Than Ever",
-            "summary": "EA Motive Studio's Iron Man game suffered an unexpected leak, but it may have resulted in Marvel fans being more excited about it than ever.",
-            "published": "2026-08-29T20:37:20+00:00",
-            "age_hours": 12.9,
-            "source_id": "ign",
-            "source_name": "IGN",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.6,
-            "tags": [
-              "mainstream"
-            ]
-          },
-          {
-            "hash": "fccdc0612136f769",
-            "url": "https://www.eurogamer.net/ea-motive-iron-man-gameplay-footage-leak",
-            "title": "Footage of new Iron Man game from EA Motive appears to leak, showing blistering speed and freedom, as MIA superhero game finally reappears",
-            "summary": "What appears to be footage from EA Motive's long-in-development - and somewhat missing-in-development - Iron Man game has leaked. Read more",
-            "published": "2026-08-28T14:31:10+00:00",
-            "age_hours": 43.0,
-            "source_id": "eurogamer",
-            "source_name": "Eurogamer",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": "Iron Man Game",
-      "ozet": "beklenmedik sızıntı hayranların oyunla ilgili heyecanını daha da artırdı.",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 2,
-        "oyun": "Untitled Iron Man Game",
-        "seri_sayi": 16,
-        "seri": "Marvel's Spider-Man 2",
-        "temsili": false
-      },
-      "baslik": "Iron Man Game"
-    },
-    {
-      "sira": 6,
-      "aday_index": 6,
       "tier": "B",
       "title": "Talking Point: What Are You Playing This Weekend? (29th August)",
       "kaynak_sayisi": 2,
@@ -397,7 +259,7 @@
         "url": "https://www.nintendolife.com/features/talking-point-what-are-you-playing-this-weekend-29th-august",
         "summary": "Kept you waiting, huh? Well folks, the weekend is here, which means it's time to kick back, forget the stress of the working week, and play some games. It's been quite the week for Nintendo fans. Gamescom ONL revealed some pretty sweet treats for us, not least in the form of The Witcher III: Wild Hunt- Remastered for Switch 2, an improved version of Geralt's most recent adventure that's absolutely free for current owners of the Switch game. Read the full article on nintendolife.com",
         "published": "2026-08-29T09:00:00+00:00",
-        "age_hours": 24.5,
+        "age_hours": 28.8,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -410,7 +272,7 @@
           "nintendolife",
           "rps"
         ],
-        "rank_score": 4.39,
+        "rank_score": 4.3,
         "members": [
           {
             "hash": "55676750d30a5b94",
@@ -418,7 +280,7 @@
             "title": "Talking Point: What Are You Playing This Weekend? (29th August)",
             "summary": "Kept you waiting, huh? Well folks, the weekend is here, which means it's time to kick back, forget the stress of the working week, and play some games. It's been quite the week for Nintendo fans. Gamescom ONL revealed some pretty sweet treats for us, not least in the form of The Witcher III: Wild Hunt- Remastered for Switch 2, an improved version of Geralt's most recent adventure that's absolutely free for current owners of the Switch game. Read the full article on nintendolife.com",
             "published": "2026-08-29T09:00:00+00:00",
-            "age_hours": 24.5,
+            "age_hours": 28.8,
             "source_id": "nintendolife",
             "source_name": "Nintendo Life",
             "lang": "en",
@@ -436,7 +298,7 @@
             "title": "What are we all playing this weekend?",
             "summary": "Saturdays are for actually remembering that it's a Bank Holiday weekend , rather than forgetting and coming in on Monday and getting viciously annoyed with Julian and Mark for seeming to ignore your Gchat messages. (They do that anyway, regardless of whether it's a day off.) Read more",
             "published": "2026-08-29T07:00:00+00:00",
-            "age_hours": 26.5,
+            "age_hours": 30.8,
             "source_id": "rps",
             "source_name": "Rock Paper Shotgun",
             "lang": "en",
@@ -451,7 +313,7 @@
         ]
       },
       "oyun_adi": null,
-      "ozet": "hafta sonu oyuncuların hangi yapımlarla vakit geçireceği soruluyor.",
+      "ozet": "editörler bu hafta sonu hangi oyunları oynayacaklarını takipçilerle paylaşıyor",
       "gorsel": {
         "durum": "var",
         "sayi": 9,
@@ -461,6 +323,156 @@
         "temsili": true
       },
       "baslik": "Talking Point: What Are You Playing This Weekend? (2..."
+    },
+    {
+      "sira": 5,
+      "aday_index": 5,
+      "tier": "B",
+      "title": "EA breaks its silence after Iron Man gameplay leak, admitting \"well, that didn't go as planned\"",
+      "kaynak_sayisi": 2,
+      "url": "https://www.eurogamer.net/ea-motive-iron-man-leak-response-tweet",
+      "aday": {
+        "key": "3793469b4657c5d4",
+        "title": "EA breaks its silence after Iron Man gameplay leak, admitting \"well, that didn't go as planned\"",
+        "url": "https://www.eurogamer.net/ea-motive-iron-man-leak-response-tweet",
+        "summary": "EA has broken its silence on the leaked Iron Man footage that surfaced yesterday , admitting, \"well, that didn't go as planned\". Read more",
+        "published": "2026-08-29T14:56:18+00:00",
+        "age_hours": 22.8,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream"
+        ],
+        "source_count": 2,
+        "sources": [
+          "eurogamer",
+          "pcgamer"
+        ],
+        "rank_score": 4.22,
+        "members": [
+          {
+            "hash": "3793469b4657c5d4",
+            "url": "https://www.eurogamer.net/ea-motive-iron-man-leak-response-tweet",
+            "title": "EA breaks its silence after Iron Man gameplay leak, admitting \"well, that didn't go as planned\"",
+            "summary": "EA has broken its silence on the leaked Iron Man footage that surfaced yesterday , admitting, \"well, that didn't go as planned\". Read more",
+            "published": "2026-08-29T14:56:18+00:00",
+            "age_hours": 22.8,
+            "source_id": "eurogamer",
+            "source_name": "Eurogamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "53f07ad53af15700",
+            "url": "https://www.pcgamer.com/games/action/well-that-didnt-go-as-planned-says-ea-as-it-footage-of-its-iron-man-game-leaks-online",
+            "title": "'Well, that didn't go as planned' says EA as it footage of its Iron Man game leaks online",
+            "summary": "\"But now you know, we've got a lot more to show you.\"",
+            "published": "2026-08-29T11:45:59+00:00",
+            "age_hours": 26.0,
+            "source_id": "pcgamer",
+            "source_name": "PC Gamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "Marvel's Iron Man",
+      "ozet": "yayımcı firma sızan erken oynanış görüntüleri hakkında esprili bir açıklama yaptı",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 7,
+        "oyun": "Marvel's Iron Man VR",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": false
+      },
+      "baslik": "Marvel's Iron Man"
+    },
+    {
+      "sira": 6,
+      "aday_index": 6,
+      "tier": "B",
+      "title": "I played just an hour of Total War: Warhammer 40,000 and it was the highlight of my year",
+      "kaynak_sayisi": 2,
+      "url": "https://www.pcgamer.com/games/strategy/i-played-just-one-hour-of-total-war-warhammer-40-000-and-it-was-the-highlight-of-my-year",
+      "aday": {
+        "key": "4b4d4a022efbf333",
+        "title": "I played just an hour of Total War: Warhammer 40,000 and it was the highlight of my year",
+        "url": "https://www.pcgamer.com/games/strategy/i-played-just-one-hour-of-total-war-warhammer-40-000-and-it-was-the-highlight-of-my-year",
+        "summary": "Living the grimdark dream.",
+        "published": "2026-08-29T13:34:03+00:00",
+        "age_hours": 24.2,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream"
+        ],
+        "source_count": 2,
+        "sources": [
+          "eurogamer",
+          "pcgamer"
+        ],
+        "rank_score": 4.2,
+        "members": [
+          {
+            "hash": "4b4d4a022efbf333",
+            "url": "https://www.pcgamer.com/games/strategy/i-played-just-one-hour-of-total-war-warhammer-40-000-and-it-was-the-highlight-of-my-year",
+            "title": "I played just an hour of Total War: Warhammer 40,000 and it was the highlight of my year",
+            "summary": "Living the grimdark dream.",
+            "published": "2026-08-29T13:34:03+00:00",
+            "age_hours": 24.2,
+            "source_id": "pcgamer",
+            "source_name": "PC Gamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "dae033f9097e366a",
+            "url": "https://www.eurogamer.net/total-war-warhammer-40000-impressions-gamescom",
+            "title": "Total War: Warhammer 40,000 is aiming to be the \"definitive\" game for the setting, and I think it might be exactly that",
+            "summary": "In a small room inside a crowded Koelnesse convention centre, a short presentation on Total War: Warhammer 40,000 is shown to a gaggle of tired writers. Creative Assembly's brand manager says they're hoping to make the definitive game in the 40k universe. After playing the game for a little while, I think they may have pulled it off. Read more",
+            "published": "2026-08-29T09:01:15+00:00",
+            "age_hours": 28.8,
+            "source_id": "eurogamer",
+            "source_name": "Eurogamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "Total War: Warhammer 40,000",
+      "ozet": "incelemeci yeni strateji oyununu erken deneyimleyerek yılın en iyisi seçti",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 12,
+        "oyun": "Total War: Warhammer 40,000",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": false
+      },
+      "baslik": "Total War: Warhammer 40,000"
     }
   ]
 }
