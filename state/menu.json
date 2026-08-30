@@ -1,7 +1,7 @@
 {
-  "olusturuldu": "2026-08-30T14:10:56+00:00",
+  "olusturuldu": "2026-08-30T14:46:40+00:00",
   "oneri": 6,
-  "gerekce": "alışılmadık ve eğlenceli detaylar etkileşimi artırır",
+  "gerekce": "alışılmadık ve eğlenceli detaylar içeren bu haber etkileşimi artırır",
   "adaylar": [
     {
       "sira": 1,
@@ -16,7 +16,7 @@
         "url": "https://www.eurogamer.net/valve-steam2-leak-12tb-portal-2-half-life-episode-three",
         "summary": "A leaked archive said to contain around 12TB of old Valve development files, dated between 2003 and 2013, has surfaced online, and fans are already combing through it for any trace of the long-cancelled Half-Life 2 : Episode Three. Read more",
         "published": "2026-08-30T13:26:42+00:00",
-        "age_hours": 0.7,
+        "age_hours": 1.3,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -29,7 +29,7 @@
           "kotaku",
           "pcgamer"
         ],
-        "rank_score": 7.69,
+        "rank_score": 7.67,
         "members": [
           {
             "hash": "ba019debcea4c192",
@@ -37,7 +37,7 @@
             "title": "12TB Valve archive leak includes early Portal 2 builds and hints of Half-Life 2: Episode Three",
             "summary": "A leaked archive said to contain around 12TB of old Valve development files, dated between 2003 and 2013, has surfaced online, and fans are already combing through it for any trace of the long-cancelled Half-Life 2 : Episode Three. Read more",
             "published": "2026-08-30T13:26:42+00:00",
-            "age_hours": 0.7,
+            "age_hours": 1.3,
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
             "lang": "en",
@@ -54,7 +54,7 @@
             "title": "Colossal 13TB Steam Leak Reportedly Includes Beta Builds Of Portal 2, Left 4 Dead 2, And Much More",
             "summary": "The alleged Steam depot data reportedly spans from 2003 to 2013, and contains pre-release builds of potentially thousands of first and third-party games",
             "published": "2026-08-30T13:22:19+00:00",
-            "age_hours": 0.8,
+            "age_hours": 1.4,
             "source_id": "kotaku",
             "source_name": "Kotaku",
             "lang": "en",
@@ -71,7 +71,7 @@
             "title": "A massive cache of Valve data has reportedly leaked online, appearing to include Portal 2's elusive beta build and a potential weapon from Half-Life 2: Episode 3",
             "summary": "The leak purportedly includes files that date between 2003 and 2013.",
             "published": "2026-08-30T11:41:11+00:00",
-            "age_hours": 2.5,
+            "age_hours": 3.1,
             "source_id": "pcgamer",
             "source_name": "PC Gamer",
             "lang": "en",
@@ -85,7 +85,7 @@
         ]
       },
       "oyun_adi": "Portal 2",
-      "ozet": "12 terabaytlık sızıntıda iptal edilen oyunun izleri arandı",
+      "ozet": "12 terabaytlık sızıntıda iptal edilen oyunlara ait eski dosyalar ortaya çıktı",
       "gorsel": {
         "durum": "var",
         "sayi": 6,
@@ -109,7 +109,7 @@
         "url": "https://www.eurogamer.net/gta-6-microtransactions-generative-ai-rockstar",
         "summary": "Rockstar has confirmed Grand Theft Auto 6 will launch without microtransactions or generative AI. Read more",
         "published": "2026-08-30T10:48:08+00:00",
-        "age_hours": 3.4,
+        "age_hours": 4.0,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -121,7 +121,7 @@
           "eurogamer",
           "ign"
         ],
-        "rank_score": 4.63,
+        "rank_score": 4.62,
         "members": [
           {
             "hash": "90255a1e782ebeb8",
@@ -129,7 +129,7 @@
             "title": "Rockstar confirms GTA 6 won't have microtransactions or generative AI at launch",
             "summary": "Rockstar has confirmed Grand Theft Auto 6 will launch without microtransactions or generative AI. Read more",
             "published": "2026-08-30T10:48:08+00:00",
-            "age_hours": 3.4,
+            "age_hours": 4.0,
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
             "lang": "en",
@@ -146,7 +146,7 @@
             "title": "GTA 6 Will Have No Microtransactions or Generative AI at Launch, Rockstar Says",
             "summary": "Rockstar Games has said Grand Theft Auto 6 will have no microtransactions or generative AI when it launches in November.",
             "published": "2026-08-29T22:16:08+00:00",
-            "age_hours": 15.9,
+            "age_hours": 16.5,
             "source_id": "ign",
             "source_name": "IGN",
             "lang": "en",
@@ -159,8 +159,8 @@
           }
         ]
       },
-      "oyun_adi": "Grand Theft Auto 6",
-      "ozet": "stüdyo çıkışta mikro ödeme ve yapay zeka olmayacağını duyurdu",
+      "oyun_adi": "Grand Theft Auto VI",
+      "ozet": "oyun çıkışında mikro ödeme ve yapay zeka barındırmayacak",
       "gorsel": {
         "durum": "var",
         "sayi": 34,
@@ -169,7 +169,7 @@
         "seri": null,
         "temsili": false
       },
-      "baslik": "Grand Theft Auto 6"
+      "baslik": "Grand Theft Auto VI"
     },
     {
       "sira": 3,
@@ -184,7 +184,7 @@
         "url": "https://www.nintendolife.com/features/talking-point-what-are-you-playing-this-weekend-29th-august",
         "summary": "Kept you waiting, huh? Well folks, the weekend is here, which means it's time to kick back, forget the stress of the working week, and play some games. It's been quite the week for Nintendo fans. Gamescom ONL revealed some pretty sweet treats for us, not least in the form of The Witcher III: Wild Hunt- Remastered for Switch 2, an improved version of Geralt's most recent adventure that's absolutely free for current owners of the Switch game. Read the full article on nintendolife.com",
         "published": "2026-08-29T09:00:00+00:00",
-        "age_hours": 29.2,
+        "age_hours": 29.8,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -197,7 +197,7 @@
           "nintendolife",
           "rps"
         ],
-        "rank_score": 4.29,
+        "rank_score": 4.28,
         "members": [
           {
             "hash": "55676750d30a5b94",
@@ -205,7 +205,7 @@
             "title": "Talking Point: What Are You Playing This Weekend? (29th August)",
             "summary": "Kept you waiting, huh? Well folks, the weekend is here, which means it's time to kick back, forget the stress of the working week, and play some games. It's been quite the week for Nintendo fans. Gamescom ONL revealed some pretty sweet treats for us, not least in the form of The Witcher III: Wild Hunt- Remastered for Switch 2, an improved version of Geralt's most recent adventure that's absolutely free for current owners of the Switch game. Read the full article on nintendolife.com",
             "published": "2026-08-29T09:00:00+00:00",
-            "age_hours": 29.2,
+            "age_hours": 29.8,
             "source_id": "nintendolife",
             "source_name": "Nintendo Life",
             "lang": "en",
@@ -223,7 +223,7 @@
             "title": "What are we all playing this weekend?",
             "summary": "Saturdays are for actually remembering that it's a Bank Holiday weekend , rather than forgetting and coming in on Monday and getting viciously annoyed with Julian and Mark for seeming to ignore your Gchat messages. (They do that anyway, regardless of whether it's a day off.) Read more",
             "published": "2026-08-29T07:00:00+00:00",
-            "age_hours": 31.2,
+            "age_hours": 31.8,
             "source_id": "rps",
             "source_name": "Rock Paper Shotgun",
             "lang": "en",
@@ -238,7 +238,7 @@
         ]
       },
       "oyun_adi": null,
-      "ozet": "hafta sonu oynanan oyunlar üzerine sohbet başlatıldı",
+      "ozet": "hafta sonu oynadığınız oyunları diğer oyuncularla paylaşmaça",
       "gorsel": {
         "durum": "var",
         "sayi": 8,
@@ -262,7 +262,7 @@
         "url": "https://www.eurogamer.net/ea-motive-iron-man-leak-response-tweet",
         "summary": "EA has broken its silence on the leaked Iron Man footage that surfaced yesterday , admitting, \"well, that didn't go as planned\". Read more",
         "published": "2026-08-29T14:56:18+00:00",
-        "age_hours": 23.2,
+        "age_hours": 23.8,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -274,7 +274,7 @@
           "eurogamer",
           "pcgamer"
         ],
-        "rank_score": 4.22,
+        "rank_score": 4.2,
         "members": [
           {
             "hash": "3793469b4657c5d4",
@@ -282,7 +282,7 @@
             "title": "EA breaks its silence after Iron Man gameplay leak, admitting \"well, that didn't go as planned\"",
             "summary": "EA has broken its silence on the leaked Iron Man footage that surfaced yesterday , admitting, \"well, that didn't go as planned\". Read more",
             "published": "2026-08-29T14:56:18+00:00",
-            "age_hours": 23.2,
+            "age_hours": 23.8,
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
             "lang": "en",
@@ -299,7 +299,7 @@
             "title": "'Well, that didn't go as planned' says EA as it footage of its Iron Man game leaks online",
             "summary": "\"But now you know, we've got a lot more to show you.\"",
             "published": "2026-08-29T11:45:59+00:00",
-            "age_hours": 26.4,
+            "age_hours": 27.0,
             "source_id": "pcgamer",
             "source_name": "PC Gamer",
             "lang": "en",
@@ -312,17 +312,17 @@
           }
         ]
       },
-      "oyun_adi": "Marvel's Iron Man",
-      "ozet": "şirket sızan oynanış görüntüleri hakkında esprili bir açıklama yaptı",
+      "oyun_adi": "Iron Man",
+      "ozet": "şirket sızan erken aşama oynanış görüntüleri hakkında açıklama yaptı",
       "gorsel": {
         "durum": "var",
-        "sayi": 7,
-        "oyun": "Marvel's Iron Man VR",
+        "sayi": 5,
+        "oyun": "Iron Man",
         "seri_sayi": 0,
         "seri": null,
         "temsili": false
       },
-      "baslik": "Marvel's Iron Man"
+      "baslik": "Iron Man"
     },
     {
       "sira": 5,
@@ -337,7 +337,7 @@
         "url": "https://www.pcgamer.com/games/strategy/i-played-just-one-hour-of-total-war-warhammer-40-000-and-it-was-the-highlight-of-my-year",
         "summary": "Living the grimdark dream.",
         "published": "2026-08-29T13:34:03+00:00",
-        "age_hours": 24.6,
+        "age_hours": 25.2,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -349,7 +349,7 @@
           "eurogamer",
           "pcgamer"
         ],
-        "rank_score": 4.19,
+        "rank_score": 4.17,
         "members": [
           {
             "hash": "4b4d4a022efbf333",
@@ -357,7 +357,7 @@
             "title": "I played just an hour of Total War: Warhammer 40,000 and it was the highlight of my year",
             "summary": "Living the grimdark dream.",
             "published": "2026-08-29T13:34:03+00:00",
-            "age_hours": 24.6,
+            "age_hours": 25.2,
             "source_id": "pcgamer",
             "source_name": "PC Gamer",
             "lang": "en",
@@ -374,7 +374,7 @@
             "title": "Total War: Warhammer 40,000 is aiming to be the \"definitive\" game for the setting, and I think it might be exactly that",
             "summary": "In a small room inside a crowded Koelnesse convention centre, a short presentation on Total War: Warhammer 40,000 is shown to a gaggle of tired writers. Creative Assembly's brand manager says they're hoping to make the definitive game in the 40k universe. After playing the game for a little while, I think they may have pulled it off. Read more",
             "published": "2026-08-29T09:01:15+00:00",
-            "age_hours": 29.2,
+            "age_hours": 29.7,
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
             "lang": "en",
@@ -388,7 +388,7 @@
         ]
       },
       "oyun_adi": "Total War: Warhammer 40,000",
-      "ozet": "oyuncu strateji yapımını yılın en iyi deneyimi olarak tanımladı",
+      "ozet": "bir saatlik deneyim yılın en iyi anı olarak değerlendirildi",
       "gorsel": {
         "durum": "var",
         "sayi": 12,
@@ -412,7 +412,7 @@
         "url": "https://kotaku.com/pet-dog-gta-6-throw-poop-2000729352",
         "summary": "It can also apparently help you win the lottery?",
         "published": "2026-08-28T19:00:32+00:00",
-        "age_hours": 43.2,
+        "age_hours": 43.8,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -424,7 +424,7 @@
           "gamespot",
           "kotaku"
         ],
-        "rank_score": 3.8,
+        "rank_score": 3.79,
         "members": [
           {
             "hash": "73ccc69e2edaa4b1",
@@ -432,7 +432,7 @@
             "title": "You Can Pet The Dog In GTA 6 And Also Throw Its Poop At NPCs",
             "summary": "It can also apparently help you win the lottery?",
             "published": "2026-08-28T19:00:32+00:00",
-            "age_hours": 43.2,
+            "age_hours": 43.8,
             "source_id": "kotaku",
             "source_name": "Kotaku",
             "lang": "en",
@@ -449,7 +449,7 @@
             "title": "GTA 6 Lets You Throw Dog Poop At People",
             "summary": "A very important piece of news has come to light about GTA 6 : You can pick up dog poop and throw it at people in the upcoming open-world crime game. YouTuber TGG visited Rockstar North's offices and spoke with the team, and one of the things he learned was how dog poop can be a weapon. \"If someone is out on the street and they're walking their dog, and the dog takes a dump, you can wait for the person to pick up the dog sh** with a doggie bag, and then you can hit that person, making them drop that doggie bag full of dog crap, and then you can actually pick that up and throw it at people,\" he",
             "published": "2026-08-28T16:16:13+00:00",
-            "age_hours": 45.9,
+            "age_hours": 46.5,
             "source_id": "gamespot",
             "source_name": "GameSpot",
             "lang": "en",
@@ -462,8 +462,8 @@
           }
         ]
       },
-      "oyun_adi": "Grand Theft Auto 6",
-      "ozet": "oyuncuların köpekleri sevip dışkılarını fırlatabileceği iddia edildi",
+      "oyun_adi": "Grand Theft Auto VI",
+      "ozet": "köpekleri sevme ve dışkılarını karakterlere fırlatma mekaniği olacak",
       "gorsel": {
         "durum": "var",
         "sayi": 34,
@@ -472,7 +472,7 @@
         "seri": null,
         "temsili": false
       },
-      "baslik": "Grand Theft Auto 6"
+      "baslik": "Grand Theft Auto VI"
     }
   ]
 }
