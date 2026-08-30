@@ -1,0 +1,177 @@
+{
+  "_kaynak": "https://www.pcgamer.com/games/rpg/elden-ring-players-are-hard-at-work-putting-the-new-tarnished-edition-dlcs-new-gear-to-the-test",
+  "_aday_index": 1,
+  "_kaynak_sayisi": 2,
+  "_is_leak": false,
+  "_model": "gemini-3.6-flash",
+  "tier": "B",
+  "category": "güncelleme",
+  "caption": "fromsoftware'in devasa açık dünya yapımı çıktığı günden bu yana oyuncuları geniş bir dünyada tutmayı başardı. nintendo platformlarına ilk kez adım atan bu yapım, mevcut oyunculara da yeni teçhizatlar sunuyor. #eldenring #gaming",
+  "game": "elden ring tarnished edition",
+  "search_name": "Elden Ring",
+  "image_candidates": [],
+  "series_fallback": [],
+  "representative_games": [],
+  "credit": "fromsoftware",
+  "pages": [
+    {
+      "type": "cover",
+      "title": "elden ring nintendo platformlarına geliyor",
+      "image": "state/img/elden-ring-ar3m1o.jpg",
+      "credit": "fromsoftware"
+    },
+    {
+      "type": "text",
+      "title": "yıllar sonra gelen genişleme",
+      "paragraph": "zamanında açık dünya türüne getirdiği yaklaşımla geniş kitlelere ulaşan yapım, ilk defa bir nintendo konsolunda boy göstermeye hazırlanıyor. tarnished edition adıyla duyurulan bu sürüm, ana oyunun yanında yeni içerikler barındırıyor.",
+      "bullets": [
+        "yeni zırh setleri ve silahlar",
+        "npc işgalleri ve binek özelleştirmeleri"
+      ],
+      "image": "state/img/elden-ring-scu5kw.jpg",
+      "credit": "fromsoftware"
+    },
+    {
+      "type": "text",
+      "title": "topluluk yeni ekstraları sınıyor",
+      "paragraph": "yeni içerikler pc ve diğer konsol sahipleri için ayrı bir dlc paketi olarak erişime açıldı. oyuncular yeni teçhizatları zorlu patronlar üzerinde denemeye başladı bile.",
+      "bullets": [
+        "diğer platformlar için ayrı dlc seçeneği",
+        "yeni binek görünümleri ve teçhizatlar"
+      ],
+      "image": "state/img/elden-ring-scu5kx.jpg",
+      "credit": "fromsoftware"
+    },
+    {
+      "type": "outro",
+      "question": "nintendo platformunda bu deneyimi tekrar yaşamak ister miydiniz",
+      "ctas": [
+        "yeni paket hakkındaki düşüncelerinizi yorumlarda paylaşabilirsiniz"
+      ],
+      "image": "state/img/elden-ring-ar3m1p.jpg",
+      "credit": "fromsoftware"
+    }
+  ],
+  "_hashes": [
+    "a926cb9e0b52cba7",
+    "7c6ce5886f4d33c2"
+  ],
+  "_kume_key": "a926cb9e0b52cba7",
+  "_gorsel_temsili": false,
+  "_image_pool": [
+    {
+      "id": "ar3m1o",
+      "kind": "artwork",
+      "w": 5981,
+      "h": 920,
+      "credit": "fromsoftware",
+      "oyun": "Elden Ring"
+    },
+    {
+      "id": "ar3m1p",
+      "kind": "artwork",
+      "w": 5981,
+      "h": 920,
+      "credit": "fromsoftware",
+      "oyun": "Elden Ring"
+    },
+    {
+      "id": "ar3m1n",
+      "kind": "artwork",
+      "w": 5981,
+      "h": 920,
+      "credit": "fromsoftware",
+      "oyun": "Elden Ring"
+    },
+    {
+      "id": "scu5kw",
+      "kind": "screenshot",
+      "w": 2560,
+      "h": 1440,
+      "credit": "fromsoftware",
+      "oyun": "Elden Ring"
+    },
+    {
+      "id": "scu5kx",
+      "kind": "screenshot",
+      "w": 2560,
+      "h": 1440,
+      "credit": "fromsoftware",
+      "oyun": "Elden Ring"
+    },
+    {
+      "id": "scf2s1",
+      "kind": "screenshot",
+      "w": 2160,
+      "h": 1215,
+      "credit": "fromsoftware",
+      "oyun": "Elden Ring"
+    },
+    {
+      "id": "scagdo",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "fromsoftware",
+      "oyun": "Elden Ring"
+    },
+    {
+      "id": "scagdq",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "fromsoftware",
+      "oyun": "Elden Ring"
+    },
+    {
+      "id": "scagdr",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "fromsoftware",
+      "oyun": "Elden Ring"
+    },
+    {
+      "id": "scagds",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "fromsoftware",
+      "oyun": "Elden Ring"
+    },
+    {
+      "id": "scagdm",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "fromsoftware",
+      "oyun": "Elden Ring"
+    },
+    {
+      "id": "scagdp",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "fromsoftware",
+      "oyun": "Elden Ring"
+    },
+    {
+      "id": "scagdn",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "fromsoftware",
+      "oyun": "Elden Ring"
+    },
+    {
+      "id": "co4jni",
+      "kind": "cover",
+      "w": 1851,
+      "h": 2468,
+      "credit": "fromsoftware",
+      "oyun": "Elden Ring"
+    }
+  ],
+  "_slug": "elden-ring",
+  "_gorsel_turu": 0
+}

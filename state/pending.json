@@ -1,3 +1,19 @@
 {
-  "kuyruk": []
+  "kuyruk": [
+    {
+      "id": "20260830-elden-ring-tarnished-edition",
+      "etiket": "normal",
+      "durum": "onay_bekliyor",
+      "baslik": "elden ring tarnished edition",
+      "draft": "state/drafts/20260830-elden-ring-tarnished-edition.json",
+      "cards_dir": "out/20260830-elden-ring-tarnished-edition",
+      "message_ids": [
+        103,
+        104,
+        105,
+        106
+      ],
+      "tier": "B"
+    }
+  ]
 }
