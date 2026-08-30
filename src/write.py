@@ -475,6 +475,13 @@ def to_render_spec(draft: dict, tier: str, candidate: dict, index: int = 0,
         "_kaynak": candidate["url"],
         # /yeniden komutu ayni adayi tekrar yazdirabilsin diye sira saklaniyor.
         "_aday_index": index,
+        # Adayin TAM kaydi taslakta duruyor. Sebep: /yeniden AYRI bir Actions
+        # calismasinda isleniyor ve candidates.json git disi - orada dosya
+        # hic yok, yani sira numarasi tek basina ise yaramiyordu (uretim
+        # "basarisiz" diyordu). Yeniden taratmak da cozum degil: sira degisir
+        # ve ayni numara baska habere denk gelir. menu.json ayni sebeple
+        # adayin tamamini tasiyor.
+        "_aday": candidate,
         "_kaynak_sayisi": candidate["source_count"],
         "_is_leak": is_leak,
         # Hangi model yazdi. Ana modelin kotasi dolunca yedege dusuluyor;
@@ -533,20 +540,36 @@ def main() -> int:
     ap.add_argument("--temperature", type=float, default=0.95)
     ap.add_argument("--mode", choices=list(WRITING_MODES), default=None)
     ap.add_argument("--out", default=str(DEFAULT_OUT))
+    ap.add_argument("--draft", default=None,
+                    help="var olan taslagi AYNI haberle bastan yaz (/yeniden)")
     args = ap.parse_args()
 
     if args.list_models:
         list_models()
         return 0
 
-    if not CANDIDATES_FILE.exists():
-        sys.exit("state/candidates.json yok. Once: py -3.12 src/fetch.py")
+    if args.draft:
+        # Yeniden yazim: kaynak candidates.json degil, taslagin KENDISI.
+        # O dosya git disi ve /yeniden ayri bir Actions calismasinda
+        # islendigi icin orada hic bulunmuyor.
+        draft_path = Path(args.draft)
+        eski = json.loads(draft_path.read_text(encoding="utf-8"))
+        candidate = eski.get("_aday")
+        if not candidate:
+            sys.exit("taslakta kaynak kaydi (_aday) yok: bu taslak eski bicimde "
+                     "uretilmis, yeniden yazilamiyor.")
+        index = eski.get("_aday_index", 0)
+        print(f"yeniden yazim: {draft_path.name}")
+    else:
+        if not CANDIDATES_FILE.exists():
+            sys.exit("state/candidates.json yok. Once: py -3.12 src/fetch.py")
 
-    data = json.loads(CANDIDATES_FILE.read_text(encoding="utf-8"))
-    candidates = data["candidates"]
-    if not 1 <= args.index <= len(candidates):
-        sys.exit(f"--index 1..{len(candidates)} arasinda olmali")
-    candidate = candidates[args.index - 1]
+        data = json.loads(CANDIDATES_FILE.read_text(encoding="utf-8"))
+        candidates = data["candidates"]
+        if not 1 <= args.index <= len(candidates):
+            sys.exit(f"--index 1..{len(candidates)} arasinda olmali")
+        candidate = candidates[args.index - 1]
+        index = args.index
 
     source_text = source_text_of(candidate)
     mode = args.mode or random.choice(list(WRITING_MODES))
@@ -586,7 +609,7 @@ def main() -> int:
                 print(f"deneme {attempt}: filtre temiz, qa {len(problems)} sorun buldu")
 
         if not problems:
-            spec = to_render_spec(draft, args.tier, candidate, args.index,
+            spec = to_render_spec(draft, args.tier, candidate, index,
                                   aktif_model)
             out_path = Path(args.out)
             out_path.parent.mkdir(parents=True, exist_ok=True)

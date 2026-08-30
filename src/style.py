@@ -64,7 +64,7 @@ SUFFIX_FIXES = {
 # studio da ayni sebeple disarida: krediyi zaten images.py IGDB'nin sirket
 # verisinden yaziyor, to_render_spec kucuk harfe ceviriyor.
 NON_PROSE_KEYS = {"type", "image", "tier", "search_name", "image_candidates",
-                  "series_fallback", "studio"}
+                  "series_fallback", "representative_games", "studio"}
 
 # 2) Yasak kalip avinda Turkce isaretler yok sayilir: LLM "iste" yazip
 # noktalari eksik biraktiginda filtre onu da yakalamali.

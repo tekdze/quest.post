@@ -241,14 +241,18 @@ def girdiyi_isle(entry: dict) -> int:
 
     if durum == "yeniden_uret":
         spec = json.loads(draft.read_text(encoding="utf-8"))
-        index = spec.get("_aday_index")
-        if not index:
-            tg.send_text(etiketle(entry, "bu postun aday sırası kayıtlı değil, "
-                                         "yeniden üretemiyorum. /iptal yazıp yeni "
-                                         "üretim bekle."))
+        # Kaynak taslagin KENDISINDE (_aday). Eskiden candidates.json'daki
+        # sira numarasi kullaniliyordu ama o dosya git disi: /yeniden ayri
+        # bir Actions calismasinda islendigi icin orada hic bulunmuyordu ve
+        # komut her seferinde "uretim basarisiz" diyordu.
+        if not spec.get("_aday"):
+            tg.send_text(etiketle(entry, "bu post kaynak kaydı taşımayan eski "
+                                         "biçimde üretilmiş, yeniden yazamıyorum. "
+                                         "görselleri değiştirmek için /gorsel, "
+                                         "atmak için /iptal."))
             durumu_yaz(entry, "onay_bekliyor")
             return 1
-        if not run("write.py", "--index", str(index), "--tier", spec["tier"],
+        if not run("write.py", "--draft", str(draft), "--tier", spec["tier"],
                    "--out", str(draft)):
             tg.send_text(etiketle(entry, "yeniden üretim başarısız oldu."))
             durumu_yaz(entry, "onay_bekliyor")

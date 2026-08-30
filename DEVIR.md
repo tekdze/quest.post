@@ -188,7 +188,8 @@ Yazım modu her üretimde rastgele seçiliyor (gözlem / karşılaştırma / tar
 not / sayısal detay / karşı görüş) — sabit açılış kalıbı oluşmasın.
 
 ⚠️ **Karta basılmayan alanlar `NON_PROSE_KEYS`'e girmeli.** `search_name`,
-`image_candidates`, `series_fallback`, `studio` İngilizce oyun adları ve
+`image_candidates`, `series_fallback`, `representative_games`, `studio`
+İngilizce oyun adları ve
 büyük harf içermek zorundalar. Denetime girdiklerinde filtre LLM'i o alanları
 **boşaltmaya itiyor** ve arıza hata olarak değil *eksik özellik* olarak
 görünüyor.
@@ -332,6 +333,16 @@ ama havuzu göremeyen kullanıcı numara veremezdi; `/havuz` bu yüzden var.
 **İki ayrı Actions çalışması arasında yalnızca commit edilen dosyalar
 taşınır.** `candidates.json` git dışı olduğu için `/uret` "aday bulunamadı"
 diye patlamıştı. Çözüm: adayın tam kaydı `menu.json` ile taşınıyor.
+
+⚠️ **Aynı hata `/yeniden`'de tekrarlandı ve aylarca görülmedi (2026-08-30).**
+Komut `write.py --index <n>` çağırıyordu, yani yine `candidates.json`'a
+bakıyordu; o dosya runner'da hiç yok. `/yeniden` Actions'ta **hiçbir zaman
+çalışmamıştı**, her seferinde "üretim başarısız oldu" diyordu. Yerelde
+çalıştığı için fark edilmedi. Çözüm aynı kalıp: adayın tam kaydı artık
+taslakta (`_aday`), `write.py --draft` onu okuyor, `candidates.json`
+gerekmiyor. **Ders: bir komut yerelde çalışıyorsa Actions'ta da çalışıyor
+demek değil — git dışı her dosya orada yok sayılmalı.**
+Eski biçim taslaklarda (`_aday` yok) `/yeniden` artık sebebini söylüyor.
 
 **State çakışmasında "en son yazan geçerli".** Bot push ederken kullanıcı da
 push edebilir; `commit-state` çakışmada botun sürümünü alıyor. **`posted.json`
