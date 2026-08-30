@@ -3,8 +3,12 @@
 
 GEMINI_API_KEY gerekir (.env dosyasindan veya ortam degiskeninden).
 
-Is bolumu net: LLM SADECE metin yazar. Tasarima, tier'a, gorsel secimine,
-sayfa sayisina karisamaz. Cikti dogrudan render.py'in bekledigi semaya oturur.
+Is bolumu net: LLM SADECE metin yazar. Tasarima, tier'a, gorsel secimine
+karisamaz. Cikti dogrudan render.py'in bekledigi semaya oturur.
+
+Tek istisna uzunluk: kac sayfa yazilacagina model karar veriyor, cunku bunu
+ancak metni yazan bilir. Ama SINIRLARI kod uyguluyor (check_structure):
+1-10 sayfa, ilk sayfa cover, son sayfa outro, en fazla bir rakam sayfasi.
 
 Kullanim:
     py -3.12 src/write.py --list-models          # once bunu calistir
@@ -42,6 +46,17 @@ DEFAULT_MODEL = "gemini-3.6-flash"
 # (surum sabit karari, uslup), yardimci isler bol havuzda.
 HELPER_MODEL = "gemini-3.5-flash-lite"
 MAX_ATTEMPTS = 3
+
+# Sayfa sayisi ARTIK SABIT DEGIL. Eskiden istem "3-5 sayfa" diyordu ve tek
+# cumlelik bir duyuru da, uc kaynagin ayrinti verdigi bir haber de ayni
+# uzunlukta cikiyordu: birinde dolgu, digerinde eksik anlatim.
+# Uzunlugu haberin derinligi belirler, SINIRLARI kod uygular - modele
+# "ne kadar gerekiyorsa" demek yeterli degil (bkz. tier dersi: serbestlik
+# verilirse abartir). Ust sinir Instagram carousel siniri.
+MIN_PAGES = 1
+MAX_PAGES = 10
+PAGE_TYPES = {"cover", "text", "numbers", "outro"}
+
 # Gecici HTTP hatalari icin yeniden deneme (503 = model yogun).
 HTTP_RETRIES = 4
 RETRY_BACKOFF = 5  # saniye, her denemede katlaniyor
@@ -170,6 +185,9 @@ SCHEMA = """{
   "is_leak": true veya false,
   "caption": "Instagram gönderi açıklaması. 2-4 cümle, kartlarda yazanı TEKRARLAMAZ, haberin bağlamını verir. En fazla 2 hashtag, sonda.",
   "pages": [
+    (asagidakiler sayfa TIPLERININ bicimi, sabit bir liste degil. kac sayfa
+     ve hangi tipte yazacagini SAYFA SAYISI kurali soyluyor. text sayfasi
+     birden fazla olabilir, numbers ve outro hic olmayabilir.)
     {"type": "cover", "title": "kapak başlığı, en fazla 8 kelime"},
     {"type": "text", "title": "3-5 kelime", "paragraph": "2-3 cümle",
      "bullets": ["madde", "madde"]},
@@ -256,6 +274,60 @@ def llm_review(spec: dict, source_text: str, model: str | None = None) -> list[s
     return problems
 
 
+def check_structure(draft: dict) -> list[str]:
+    """Sayfa düzeni denetimi. Sayfa SAYISI serbest, DÜZENİ değil.
+
+    Uzunluk kararı modelde ama sınırı kodda: üst sınır olmadan uzun haberde
+    14 sayfa yazıyor ve Instagram 10'dan fazlasını almıyor. Eksik alan da
+    burada yakalanıyor - render.py'de yakalanırsa zincir kırılır, burada
+    yakalanırsa yeniden üretim tetiklenir.
+    """
+    pages = draft.get("pages")
+    if not isinstance(pages, list) or not pages:
+        return ["pages: sayfa yok"]
+
+    problems: list[str] = []
+    if len(pages) > MAX_PAGES:
+        problems.append(f"pages: {len(pages)} sayfa var, en fazla {MAX_PAGES} olabilir")
+
+    for index, page in enumerate(pages):
+        yol = f"pages[{index}]"
+        if not isinstance(page, dict):
+            problems.append(f"{yol}: sayfa bir nesne degil")
+            continue
+        tur = page.get("type")
+        if tur not in PAGE_TYPES:
+            problems.append(f"{yol}: bilinmeyen sayfa tipi {tur!r}")
+            continue
+        if index == 0 and tur != "cover":
+            problems.append(f"{yol}: ilk sayfa cover olmali ({tur} yazilmis)")
+        if index > 0 and tur == "cover":
+            problems.append(f"{yol}: ikinci bir cover sayfasi var")
+        if tur == "outro" and index != len(pages) - 1:
+            problems.append(f"{yol}: outro yalnizca son sayfa olabilir")
+        # Bos alanlar: card.html bunlari basmaya calisirken bos kutu birakir
+        # ya da patlar.
+        if tur in ("cover", "text", "numbers") and not (page.get("title") or "").strip():
+            problems.append(f"{yol}: {tur} sayfasinin basligi bos")
+        if tur == "numbers" and not (page.get("metrics") or []):
+            problems.append(f"{yol}: numbers sayfasinda metrics bos")
+        if tur == "outro":
+            if not (page.get("question") or "").strip():
+                problems.append(f"{yol}: outro sorusu bos")
+            if not (page.get("ctas") or []):
+                problems.append(f"{yol}: outro cagrisi bos")
+
+    if len(pages) == 1 and pages[0].get("type") != "cover":
+        problems.append("pages: tek sayfalik post yalnizca cover olabilir")
+    if len(pages) > 1 and pages[-1].get("type") != "outro":
+        problems.append("pages: tek sayfadan uzun postta son sayfa outro olmali")
+
+    rakam = sum(1 for p in pages if isinstance(p, dict) and p.get("type") == "numbers")
+    if rakam > 1:
+        problems.append(f"pages: {rakam} rakam sayfasi var, en fazla 1 olmali")
+    return problems
+
+
 def build_prompt(candidate: dict, source_text: str, mode: str,
                  problems: list[str] | None = None) -> str:
     sources = ", ".join(candidate["sources"])
@@ -333,11 +405,28 @@ def build_prompt(candidate: dict, source_text: str, mode: str,
         "",
         f"KATEGORİ listesi (birini seç): {', '.join(CATEGORIES)}",
         "",
-        "SAYFA YAPISI: 1 kapak + 1-2 metin sayfası + (rakam varsa) 1 rakam sayfası",
-        "+ 1 son sayfa. Toplam 3-5 sayfa.",
+        f"SAYFA SAYISI SABİT DEĞİL. Kaynakta ne kadar anlatacak şey varsa o "
+        f"kadar sayfa yaz, en az {MIN_PAGES} en fazla {MAX_PAGES}.",
+        "Ölçü senin değerlendirmen: sayfayı ancak söyleyecek yeni bir şeyin",
+        "varsa aç. Dolgu sayfa üretme, anlatılacak şeyi de sayfa dolsun diye",
+        "kısma. Kabaca:",
+        "  - tek cümlelik duyuru, kaynakta tek bir gerçek var: 1 sayfa",
+        "  - kısa haber, bir iki ayrıntı: 2-3 sayfa",
+        "  - normal haber: 4-5 sayfa",
+        "  - birkaç kaynağın ayrıntı verdiği, geçmişi ve sonuçları olan",
+        "    haber: 6-10 sayfa",
+        "",
+        "SAYFA DÜZENİ (bu kısım sabit):",
+        "  - ilk sayfa her zaman cover",
+        "  - 1 sayfadan uzunsa son sayfa outro, arada text sayfaları",
+        "  - kaynakta anlamlı rakam varsa EN FAZLA bir numbers sayfası",
+        "  - tek sayfalık postta SADECE cover olur, outro yazma",
         "",
         "is_leak: haber sızıntı, datamine veya izinsiz sızan materyale dayanıyorsa true.",
-        "Bu durumda kartta görsel kullanılmayacak, kod bunu kendisi halleder.",
+        "Bu yalnızca kartın kategori etiketini belirler. GÖRSEL ALANLARINI",
+        "ETKİLEMEZ: sızıntı haberinde de search_name, image_candidates,",
+        "series_fallback ve representative_games doldurulur. Görsel yine",
+        "resmi materyalden seçilecek, seçimi kod yapıyor.",
         "",
         "SADECE şu şemada JSON döndür, başka hiçbir şey yazma:",
         SCHEMA,
@@ -378,9 +467,8 @@ def to_render_spec(draft: dict, tier: str, candidate: dict, index: int = 0,
     pages = []
     for page in draft["pages"]:
         page = dict(page)
-        # Gorsel secimi images.py'nin isi. Burasi yer tutucu, ama
-        # sizinti haberinde ASLA gorsel konmaz - telif kurali.
-        page["image"] = None if is_leak else "assets/placeholder.png"
+        # Gorsel secimi images.py'nin isi, burasi sadece yer tutucu.
+        page["image"] = "assets/placeholder.png"
         pages.append(page)
 
     return {
@@ -419,7 +507,7 @@ def to_render_spec(draft: dict, tier: str, candidate: dict, index: int = 0,
         # Kucuk harfe cevriliyor: studio artik uslup denetiminden muaf
         # (buyuk harfli Ingilizce ad olabilir) ama karta basilan her sey
         # kucuk harf. images.py bunu IGDB verisiyle zaten eziyor.
-        "credit": None if is_leak else (draft.get("studio") or "").lower() or None,
+        "credit": (draft.get("studio") or "").lower() or None,
         "pages": pages,
     }
 
@@ -485,7 +573,9 @@ def main() -> int:
             aktif_model = HELPER_MODEL
             draft = generate(prompt, aktif_model, args.temperature)
         draft = style.autofix_suffixes(draft)
-        problems = style.review(draft, source_text)
+        # Yapi denetimi once: sayfa duzeni bozuksa uslup zaten yeniden
+        # yazilacak, QA'ya kota harcamanin anlami yok.
+        problems = check_structure(draft) + style.review(draft, source_text)
 
         # Deterministik filtre temizse ikinci goz devreye girer. Once o
         # calissin diye sonra: yasak kalip varken QA'ya para harcamanin

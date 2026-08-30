@@ -4,6 +4,7 @@
 > Önemli bir karar alındığında burası güncellenir.
 
 Son güncelleme: 2026-08-30 · **Sistem çalışıyor, ilk gönderi yayınlandı.**
+Bugün eklendi: esnek sayfa sayısı (bkz. bölüm 4).
 
 ---
 
@@ -124,6 +125,12 @@ işaretleri. Son sayfada dördüncü: künye bandı.
 2-3 madde) · **rakam** (sayı 92px, açıklama 32px) · **son sayfa** (soru +
 tek çağrı kutusu + künye bandı)
 
+Sayfa **sayısı** sabit değil (1-10, bkz. bölüm 4). Düzen sabit: ilk sayfa
+kapak, son sayfa (birden uzunsa) son sayfa, en fazla bir rakam sayfası.
+**Tek sayfalık postta künye yok** — künye bandı yalnızca son sayfada duruyor
+ve tek sayfalıkta o sayfa hiç basılmıyor. Bilinçli karar: flaş haberde tek
+kartın sadeliği, marka bandını sıkıştırmaktan iyi.
+
 ### Tipografik mod
 Görsel bulunamayan haberlerde: görsel ve gradyan gizlenir, içerik dikeyde
 ortalanır, kapak başlığı 104px'e çıkar. Temsili görsel geldiğinden beri
@@ -145,8 +152,18 @@ bozulmamalı.
 - **Kredi sayfa başına**: seri yedeğinden gelen görselin stüdyosu farklı
   olabiliyor (Pokémon TCG Pocket ≠ ana seri). Tek ortak kredi basmak o
   sayfada yanlış stüdyoyu göstermek olurdu
-- **Sızıntı haberinde görsel kullanılmaz.** `is_leak` LLM'den gelir, sonucu
-  kod uygular
+- **Sızıntı haberinde de görsel kullanılır** (karar 2026-08-30, değişti).
+  Eskiden `is_leak` bütün görselleri kaldırıyordu ve sızıntı postları
+  tipografik basılıyordu. Gerekçe "sızan materyali yeniden yayımlamayalım"dı
+  ama kural gerekçesinden genişti: görseller **zaten yalnızca IGDB'den**,
+  yani resmi stüdyo materyalinden geliyor. `is_leak` artık sadece kartın
+  kategori etiketini ("sızıntı") belirliyor.
+  ⚠️ Kabul edilen risk: duyurulmamış bir oyunun IGDB kaydındaki iki üç görsel
+  sızıntının kendisinden gelmiş olabilir. Bilinçli ödün.
+  ⚠️ İstem de değişti: modele "sızıntıda görsel kullanılmayacak" denince
+  görsel alanlarını (`image_candidates`, `representative_games`) **boş
+  bırakıyordu**. Kural kalkarken o cümle de düzeltilmek zorundaydı, yoksa
+  engel kalkar ama aday listesi boş gelir.
 
 ### Görsel seçim sırası (`images.py`)
 1. `search_name` — haberin asıl konusu olan oyun
@@ -185,6 +202,21 @@ her post boşuna yeniden yazdırılır. `--no-qa` ile kapatılır.
 ### Rakamlar
 Çıktıdaki her rakam kaynak metinde geçmek zorunda, `style.py` denetliyor.
 
+### Post uzunluğu — LLM karar verir, kod sınırlar
+Eskiden istem "3-5 sayfa" diyordu: tek cümlelik duyuru da, üç kaynağın
+ayrıntı verdiği haber de aynı uzunlukta çıkıyordu. Artık uzunluğu haberin
+derinliği belirliyor (1 sayfa flaş → 10 sayfa derin), **sınırları kod
+uyguluyor**: `write.check_structure` sayfa sayısını, sıralamayı ve boş alanı
+denetliyor, ihlalde yeniden üretim tetikleniyor.
+
+⚠️ Bu, "LLM tasarıma dokunmaz" kuralının **tek istisnası** ve bilinçli:
+metnin kaç sayfa sürdüğünü ancak metni yazan bilir. Ama ölçüt modelde,
+**sınır kodda** — serbest bırakılırsa her haberi 10 sayfa yapar.
+
+Denetlenenler: 1-10 sayfa · ilk sayfa kapak · birden uzunsa son sayfa outro ·
+en fazla bir rakam sayfası · ikinci kapak yok · başlık/metrik/soru/çağrı boş
+değil (bunlar eskiden `render.py`'de patlıyordu).
+
 ---
 
 ## 5. Dosya yapısı
@@ -207,7 +239,7 @@ src/
   refresh_token.py
 templates/      card.html + card.css (tasarım burada, SABİT)
 fonts/          Bricolage, Outfit, OFL.txt
-state/          pending (kuyruk) · posted · menu · tg_offset · weekly
+state/          pending (kuyruk) · posted · menu · tg_offset
                 drafts/<id>.json · api_sure.json
                 candidates.json ve img/ git dışı
 out/            <id>/01.png... — repoya commit edilir (Instagram URL şartı)
@@ -333,14 +365,23 @@ metadata'sı küçük boyut raporluyor ama `t_original` büyüğünü veriyor.
 | `images.py` | `NAME_MATCH_MIN` | 0.55 | oyun adı benzerliği |
 | | `MIN_IMAGE_WIDTH/HEIGHT` | 1280x720 | çözünürlük tabanı |
 | `write.py` | `MAX_ATTEMPTS` | 3 | üslup filtresi yeniden üretim |
+| | `MIN_PAGES` / `MAX_PAGES` | 1 / 10 | post uzunluğu sınırı |
 | `telegram.py` | `MAX_KUYRUK` | 3 | kuyrukta en fazla post |
 | `render.py` | `SCALE` | 4/3 | 1080x1350 → 1440x1800 |
 
 ---
 
-## 9. Sıradaki işler — hepsi karar aşamasında
+## 9. Sıradaki işler
 
-Hiçbiri başlanmadı. Sıra **büyüme etkisine** göre.
+Sıra **büyüme etkisine** göre.
+
+**Bitti (2026-08-30):** esnek sayfa sayısı (bkz. bölüm 4). Canlıda
+denenmedi: ilk `/uret`te görülecek.
+
+⚠️ **Haftalık derleme İSTENMEDİ (2026-08-30).** Yazıldı, çalıştı, sonra
+kullanıcı istemediğini söyledi ve tamamen geri alındı. Yeniden önerilmesin.
+`state/weekly.json` da hiç oluşmuyor: `produce.py`'deki biriktirme kodu
+duruyor ama menü akışı `--index` ile çağırdığı için o döngüye girilmiyor.
 
 ### Sistem değerlendirmesi (2026-08-30)
 **Sağlam olan:** LLM'in dar tutulması, üslup filtresi, telif disiplini.
@@ -351,7 +392,7 @@ Hiçbiri başlanmadı. Sıra **büyüme etkisine** göre.
 - Kaynak havuzu tek tip (22 RSS, hepsi İngilizce haber sitesi)
 - Tam makale çekilmiyor, RSS özetleri birleştiriliyor — "duyuran" seviyede
 - Görsel sayfa **tipine** göre dağıtılıyor, içerikle bağı tesadüf
-- Tek format: hep 4-5 sayfalık carousel
+- Tek format: hep haber. Uzunluk artık değişken ama format tek
 
 **Büyüme tahmini:** Bu içerikle yavaş büyür ve sebebi kalite değil **format**.
 Instagram kaydetme/paylaşma/yorumu ödüllendiriyor, haber ise tüketilip
@@ -366,11 +407,7 @@ Haber 24 saatte ölüyor, evergreen aylarca erişim getiriyor ve kaydediliyor.
 Altyapı hazır (aynı kart sistemi); değişecek olan içerik kaynağı — RSS değil
 konu havuzu. Tier burada anlamsız, farklı bir görsel işaret gerekebilir.
 
-### 2. Haftalık derleme
-`state/weekly.json` C kademesi haberlerle doluyor ama hiç kullanılmıyor.
-Haftada bir "bu hafta olanlar" postu, neredeyse sıfır ek maliyet.
-
-### 3. Konu ısısı — kademe sistemini canlandırır
+### 2. Konu ısısı — kademe sistemini canlandırır
 Sorun: sinyal "kaç kaynak aynı **başlığı** yazdı". GTA 6 tanıtımı gibi büyük
 haberler dokuz ayrı kümeye bölünüyor, hiçbiri 3 kaynağa ulaşmıyor.
 
@@ -384,21 +421,25 @@ Sebep: istatistik "gta" ile "shows"u ayıramıyor, ikisi de nadir. Soru
 LLM veri verir ("bu haber hangi oyun hakkında"), ısıyı ve tier'ı kod hesaplar.
 `menu.py` zaten oyun adı alıyor.
 
-### 4. Profil ızgarasında tier şeridi
+### 3. Profil ızgarasında tier şeridi
 Bkz. bölüm 3'teki açık sorun.
 
-### 5. Esnek sayfa sayısı — KULLANICI İSTEMİ BEKLİYOR
-Şu an istem "3-5 sayfa" diyor. İstenen: flash haber tek sayfa, derin haber
-8-10. `render.py` ve sayfa göstergesi zaten esnek (`1/1`, `1/10` çalışıyor);
-değişecek tek şey istemdeki kural. **Kullanıcı bu istemi kendisi verecek.**
+### 4. Evergreen için kademe işareti
+Evergreen içerikte kademe anlamsız (bölüm 9.1) ama kart bir kademe rengi
+ve adı istiyor.
 
-### 6. Vision QA (`qa.py`)
+⚠️ Kolay görünen çözüm tuzaklı: `render.py`'de kademe adını ezmek kapak
+kickerını düzeltir ama **son sayfadaki künyeyi de bozar** ("haberin
+kademesi: ..."). İkisi `card.html` içinde aynı alandan (`data.tier_label`)
+besleniyor. Ayırmak için şablona dokunmak gerekiyor - tasarım kararı.
+
+### 5. Vision QA (`qa.py`)
 Kod krem oranını ve çözünürlüğü zaten ölçüyor. LLM'in bakacağı: görsel konuya
 uygun mu, kırpma tuhaf mı, yabancı logo var mı. Kota artık engel değil
 (`HELPER_MODEL` 500/gün). Kurallar: rubrik ayrı dosyada, `temperature 0`,
 sınırlı karar kümesi, en fazla 2 düzeltme turu.
 
-### 7. Görsel-sayfa eşleştirme
+### 6. Görsel-sayfa eşleştirme
 LLM "3. sayfa savaş sisteminden bahsediyor, şu görsel ona uyar" diyebilir.
 
 ### Sonraya bırakılanlar

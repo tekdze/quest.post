@@ -328,14 +328,18 @@ def main() -> int:
     draft_path = Path(args.draft)
     spec = json.loads(draft_path.read_text(encoding="utf-8"))
 
-    # Sizinti haberinde gorsel KULLANILMAZ. Telif kurali, tartisilmaz.
+    # Sizinti haberi de gorsel alir (karar 2026-08-30). Eskiden burada
+    # kosulsuz bir engel vardi ve butun sizinti postlari tipografik
+    # basiliyordu. Gerekce "sizan materyali yeniden yayimlamayalim"di ama
+    # kural gerekcesinden genisti: gorseller ZATEN yalnizca IGDB'den, yani
+    # resmi studyo materyalinden geliyor. Sizinti haberini resmi bir
+    # gorselle basmak sizintiyi yayimlamak degil.
+    #
+    # ⚠️ Kalan incelik: duyurulmamis bir oyunun IGDB kaydindaki iki uc
+    # gorsel sizintinin kendisinden gelmis olabiliyor. Bugunku karar bu
+    # riski kabul ediyor (bkz. DEVIR bolum 4).
     if spec.get("_is_leak"):
-        for page in spec["pages"]:
-            page["image"] = None
-        spec["credit"] = None
-        draft_path.write_text(json.dumps(spec, ensure_ascii=False, indent=2), encoding="utf-8")
-        print("sizinti haberi: gorsel kullanilmadi, kartlar tipografik olacak")
-        return 0
+        print("sizinti haberi: gorsel kullaniliyor (resmi IGDB materyali)")
 
     cid, secret = credentials()
     token = get_token(cid, secret)
