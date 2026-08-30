@@ -14,12 +14,13 @@
     "Marvel's Iron Man VR"
   ],
   "representative_games": [],
-  "credit": null,
+  "credit": "camouflaj",
   "pages": [
     {
       "type": "cover",
       "title": "ea motive iron man sızıntısı",
-      "image": null
+      "image": "state/img/marvel-s-iron-man-vr-ar5z1.jpg",
+      "credit": "camouflaj"
     },
     {
       "type": "text",
@@ -29,7 +30,8 @@
         "yüksek uçuş hızı dikkati çekiyor",
         "serbest hareket mekaniği görülüyor"
       ],
-      "image": null
+      "image": "state/img/marvel-s-iron-man-vr-sc6v2w.jpg",
+      "credit": "camouflaj"
     },
     {
       "type": "text",
@@ -39,7 +41,8 @@
         "beklenmedik şekilde ortaya çıktı",
         "hayran beklentisi artış gösterdi"
       ],
-      "image": null
+      "image": "state/img/marvel-s-iron-man-vr-sc6v2t.jpg",
+      "credit": "camouflaj"
     },
     {
       "type": "outro",
@@ -47,12 +50,74 @@
       "ctas": [
         "düşüncelerinizi yorumlarda paylaşabilirsiniz"
       ],
-      "image": null
+      "image": "state/img/marvel-s-iron-man-vr-sc6v2u.jpg",
+      "credit": "camouflaj"
     }
   ],
   "_hashes": [
     "3d82c43d69153084",
     "fccdc0612136f769"
   ],
-  "_kume_key": "3d82c43d69153084"
+  "_kume_key": "3d82c43d69153084",
+  "_gorsel_temsili": false,
+  "_image_pool": [
+    {
+      "id": "ar5z1",
+      "kind": "artwork",
+      "w": 1919,
+      "h": 1080,
+      "credit": "camouflaj",
+      "oyun": "Marvel's Iron Man VR"
+    },
+    {
+      "id": "sc6v2x",
+      "kind": "screenshot",
+      "w": 1919,
+      "h": 1080,
+      "credit": "camouflaj",
+      "oyun": "Marvel's Iron Man VR"
+    },
+    {
+      "id": "sc6v2w",
+      "kind": "screenshot",
+      "w": 1919,
+      "h": 1080,
+      "credit": "camouflaj",
+      "oyun": "Marvel's Iron Man VR"
+    },
+    {
+      "id": "sc6v2t",
+      "kind": "screenshot",
+      "w": 1919,
+      "h": 1080,
+      "credit": "camouflaj",
+      "oyun": "Marvel's Iron Man VR"
+    },
+    {
+      "id": "sc6v2u",
+      "kind": "screenshot",
+      "w": 1919,
+      "h": 1080,
+      "credit": "camouflaj",
+      "oyun": "Marvel's Iron Man VR"
+    },
+    {
+      "id": "sc6v2v",
+      "kind": "screenshot",
+      "w": 1919,
+      "h": 1080,
+      "credit": "camouflaj",
+      "oyun": "Marvel's Iron Man VR"
+    },
+    {
+      "id": "co97rg",
+      "kind": "cover",
+      "w": 600,
+      "h": 800,
+      "credit": "camouflaj",
+      "oyun": "Marvel's Iron Man VR"
+    }
+  ],
+  "_slug": "marvel-s-iron-man-vr",
+  "_gorsel_turu": 1
 }
