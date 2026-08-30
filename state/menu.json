@@ -1,167 +1,11 @@
 {
-  "olusturuldu": "2026-08-29T20:40:38+00:00",
-  "oneri": 3,
-  "gerekce": "şirketin vergi iadesini müşterilere ödemesi ilginç ve merak uyandırıcı",
+  "olusturuldu": "2026-08-30T01:51:24+00:00",
+  "oneri": 6,
+  "gerekce": "geliştiricinin güncelleme duyurusu için pizza esprisi yapması instagram etkileşimini artırır",
   "adaylar": [
     {
       "sira": 1,
       "aday_index": 1,
-      "tier": "A",
-      "title": "Call of Duty: Modern Warfare 4",
-      "kaynak_sayisi": 2,
-      "url": "https://www.alphabetagamer.com/call-of-duty-modern-warfare-4-open-beta",
-      "aday": {
-        "key": "3b45bafcea42345b",
-        "title": "Call of Duty: Modern Warfare 4",
-        "url": "https://www.alphabetagamer.com/call-of-duty-modern-warfare-4-open-beta",
-        "summary": "Playstation, Xbox and PC owners can now join in the Call of Duty: Modern Warfare 4 open Beta, the latest CoD installment, that throws players into a global crisis as North Korea launches a full scale invasion threatening world stability. In Call of Duty: Modern Warfare 4 a young South Korean squad fights collapsing front lines while Captain Price wages a personal shadow war. Multiplayer … Read More The post Call of Duty: Modern Warfare 4 – Open Beta first appeared on Alpha Beta Gamer .",
-        "published": "2026-08-29T20:34:47+00:00",
-        "age_hours": 0.1,
-        "lang": "en",
-        "kind": "releases",
-        "bucket": "news",
-        "tags": [
-          "indie",
-          "ayristirici",
-          "demo"
-        ],
-        "source_count": 2,
-        "sources": [
-          "alphabetagamer",
-          "polygon"
-        ],
-        "rank_score": 6.3,
-        "members": [
-          {
-            "hash": "3b45bafcea42345b",
-            "url": "https://www.alphabetagamer.com/call-of-duty-modern-warfare-4-open-beta",
-            "title": "Call of Duty: Modern Warfare 4",
-            "summary": "Playstation, Xbox and PC owners can now join in the Call of Duty: Modern Warfare 4 open Beta, the latest CoD installment, that throws players into a global crisis as North Korea launches a full scale invasion threatening world stability. In Call of Duty: Modern Warfare 4 a young South Korean squad fights collapsing front lines while Captain Price wages a personal shadow war. Multiplayer … Read More The post Call of Duty: Modern Warfare 4 – Open Beta first appeared on Alpha Beta Gamer .",
-            "published": "2026-08-29T20:34:47+00:00",
-            "age_hours": 0.1,
-            "source_id": "alphabetagamer",
-            "source_name": "Alpha Beta Gamer",
-            "lang": "en",
-            "kind": "releases",
-            "bucket": "news",
-            "weight": 1.3,
-            "tags": [
-              "indie",
-              "ayristirici",
-              "demo"
-            ]
-          },
-          {
-            "hash": "648369fe3f9456fc",
-            "url": "https://www.polygon.com/call-of-duty-modern-warfare-4-ricochet-anti-cheat",
-            "title": "Call of Duty Touts Anti-Cheat Commitment Ahead Of Modern Warfare 4",
-            "summary": "Call of Duty has served 80 cease-and-desist letters to cheat developers in an attempt to stop them from continuing to distribute their software.",
-            "published": "2026-08-29T17:22:11+00:00",
-            "age_hours": 3.3,
-            "source_id": "polygon",
-            "source_name": "Polygon",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": "Call of Duty: Modern Warfare 4",
-      "ozet": "açık beta süreci başladı ve kuzey kore işgalini konu alıyor",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 12,
-        "oyun": "Call of Duty: Modern Warfare 4",
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": false
-      },
-      "baslik": "Call of Duty: Modern Warfare 4"
-    },
-    {
-      "sira": 2,
-      "aday_index": 2,
-      "tier": "B",
-      "title": "Star Citizen spinoff Squadron 42 has been delayed yet again, citing everyone going gaga for GTA 6, even if it isn't coming to PC yet",
-      "kaynak_sayisi": 2,
-      "url": "https://www.rockpapershotgun.com/star-citizen-spinoff-squadron-42-has-been-delayed-yet-again-citing-everyone-going-gaga-for-gta-6-even-if-it-isnt-coming-to-pc-yet",
-      "aday": {
-        "key": "7f77e7c121027759",
-        "title": "Star Citizen spinoff Squadron 42 has been delayed yet again, citing everyone going gaga for GTA 6, even if it isn't coming to PC yet",
-        "url": "https://www.rockpapershotgun.com/star-citizen-spinoff-squadron-42-has-been-delayed-yet-again-citing-everyone-going-gaga-for-gta-6-even-if-it-isnt-coming-to-pc-yet",
-        "summary": "There is a big part of me that doesn't really believe any aspect of Star Citizen is real. It's never really a game I've given all that much of my attention to, the thing gives off pyramid scheme energy in a way I can't quite explain. Probably something to do with the numerous promises developer Cloud Imperium Games have made over the years that haven't always come to fruition in the way they said, or when they said, they would. And here's yet another example of that: Squadron 42 , the story-based single-player spinoff of Star Citizen, has been delayed in 2027, all because of a pesky game calle",
-        "published": "2026-08-29T17:31:19+00:00",
-        "age_hours": 3.2,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "mainstream",
-          "pc"
-        ],
-        "source_count": 2,
-        "sources": [
-          "eurogamer",
-          "rps"
-        ],
-        "rank_score": 4.83,
-        "members": [
-          {
-            "hash": "7f77e7c121027759",
-            "url": "https://www.rockpapershotgun.com/star-citizen-spinoff-squadron-42-has-been-delayed-yet-again-citing-everyone-going-gaga-for-gta-6-even-if-it-isnt-coming-to-pc-yet",
-            "title": "Star Citizen spinoff Squadron 42 has been delayed yet again, citing everyone going gaga for GTA 6, even if it isn't coming to PC yet",
-            "summary": "There is a big part of me that doesn't really believe any aspect of Star Citizen is real. It's never really a game I've given all that much of my attention to, the thing gives off pyramid scheme energy in a way I can't quite explain. Probably something to do with the numerous promises developer Cloud Imperium Games have made over the years that haven't always come to fruition in the way they said, or when they said, they would. And here's yet another example of that: Squadron 42 , the story-based single-player spinoff of Star Citizen, has been delayed in 2027, all because of a pesky game calle",
-            "published": "2026-08-29T17:31:19+00:00",
-            "age_hours": 3.2,
-            "source_id": "rps",
-            "source_name": "Rock Paper Shotgun",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.9,
-            "tags": [
-              "mainstream",
-              "pc"
-            ]
-          },
-          {
-            "hash": "95f263c4b69a6a79",
-            "url": "https://www.eurogamer.net/squadron-42-delayed-2027-gta-6",
-            "title": "Squadron 42 delayed to 2027, with Star Citizen dev blaming GTA 6",
-            "summary": "Cloud Imperium Games has delayed Squadron 42, its long-in-development Star Citizen spin-off, to Q2 2027, with studio boss Chris Roberts arguing the game would be drowned out by GTA 6 . Read more",
-            "published": "2026-08-29T12:09:49+00:00",
-            "age_hours": 8.5,
-            "source_id": "eurogamer",
-            "source_name": "Eurogamer",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": "Squadron 42",
-      "ozet": "gta 6'nın gölgesinde kalmamak için çıkışı bir kez daha ertelendi",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 25,
-        "oyun": "Squadron 42",
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": false
-      },
-      "baslik": "Squadron 42"
-    },
-    {
-      "sira": 3,
-      "aday_index": 3,
       "tier": "B",
       "title": "Playdate maker Panic is passing tariff refunds on to customers",
       "kaynak_sayisi": 2,
@@ -172,7 +16,7 @@
         "url": "https://www.eurogamer.net/panic-playdate-tariff-refunds-customers",
         "summary": "Panic, maker of the crank-powered handheld Playdate , is forwarding Supreme Court-ordered tariff refunds back to customers. Read more",
         "published": "2026-08-29T10:51:33+00:00",
-        "age_hours": 9.8,
+        "age_hours": 15.0,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -184,7 +28,7 @@
           "eurogamer",
           "gamedeveloper"
         ],
-        "rank_score": 4.8,
+        "rank_score": 4.69,
         "members": [
           {
             "hash": "23ddd14300cd429a",
@@ -192,7 +36,7 @@
             "title": "Playdate maker Panic is passing tariff refunds on to customers",
             "summary": "Panic, maker of the crank-powered handheld Playdate , is forwarding Supreme Court-ordered tariff refunds back to customers. Read more",
             "published": "2026-08-29T10:51:33+00:00",
-            "age_hours": 9.8,
+            "age_hours": 15.0,
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
             "lang": "en",
@@ -209,7 +53,7 @@
             "title": "Panic refunds tariff fees, 1047 Games pivots from Splitgate, and Gamescom Dev grows - Patch Notes #67",
             "summary": "Plus: No More Room in Hell 2 surpasses 1 million players after exiting a pivotal Early Access period.",
             "published": "2026-08-28T13:47:47+00:00",
-            "age_hours": 30.9,
+            "age_hours": 36.0,
             "source_id": "gamedeveloper",
             "source_name": "Game Developer",
             "lang": "en",
@@ -223,7 +67,7 @@
         ]
       },
       "oyun_adi": null,
-      "ozet": "mahkeme kararıyla alınan gümrük vergisi iadelerini müşterilerine geri veriyor",
+      "ozet": "şirket mahkeme kararıyla aldığı gümrük vergisi iadesini müşterilerine geri ödüyor",
       "gorsel": {
         "durum": "yok",
         "sayi": 0,
@@ -235,8 +79,83 @@
       "baslik": "Playdate maker Panic is passing tariff refunds on to..."
     },
     {
-      "sira": 4,
-      "aday_index": 4,
+      "sira": 2,
+      "aday_index": 2,
+      "tier": "B",
+      "title": "PSA: Swap the radial ability menu in Star Wars Zero Company for more of a trad XCOM-style experience",
+      "kaynak_sayisi": 2,
+      "url": "https://www.pcgamer.com/games/strategy/psa-swap-the-radial-ability-menu-in-star-wars-zero-company-for-more-of-a-trad-xcom-style-experience",
+      "aday": {
+        "key": "8e6ebe116fcdd808",
+        "title": "PSA: Swap the radial ability menu in Star Wars Zero Company for more of a trad XCOM-style experience",
+        "url": "https://www.pcgamer.com/games/strategy/psa-swap-the-radial-ability-menu-in-star-wars-zero-company-for-more-of-a-trad-xcom-style-experience",
+        "summary": "It's the Runa-approved way to play.",
+        "published": "2026-08-30T00:06:05+00:00",
+        "age_hours": 1.7,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream"
+        ],
+        "source_count": 2,
+        "sources": [
+          "eurogamer",
+          "pcgamer"
+        ],
+        "rank_score": 4.66,
+        "members": [
+          {
+            "hash": "8e6ebe116fcdd808",
+            "url": "https://www.pcgamer.com/games/strategy/psa-swap-the-radial-ability-menu-in-star-wars-zero-company-for-more-of-a-trad-xcom-style-experience",
+            "title": "PSA: Swap the radial ability menu in Star Wars Zero Company for more of a trad XCOM-style experience",
+            "summary": "It's the Runa-approved way to play.",
+            "published": "2026-08-30T00:06:05+00:00",
+            "age_hours": 1.7,
+            "source_id": "pcgamer",
+            "source_name": "PC Gamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "9d6444cbb1542899",
+            "url": "https://www.eurogamer.net/star-wars-zero-company-impressions-toys-movies",
+            "title": "Star Wars Zero Company understands that Star Wars games should feel less like the movies and more like the toys",
+            "summary": "I'm still early days on Star Wars Zero Company, but I think I'm in love. And this is kind of expected and also kind of strange. It's kind of expected because this is XCOM: Star Wars at first glance, and jeepers I love XCOM. I love moving my little units around, pondering when to advance and when to hang back, and I even love missing a shot that surely was almost a dead cert. Read more",
+            "published": "2026-08-28T09:06:26+00:00",
+            "age_hours": 40.7,
+            "source_id": "eurogamer",
+            "source_name": "Eurogamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "Star Wars Zero Company",
+      "ozet": "oyuncular klasik xcom deneyimi için radyal yetenek menüsünü değiştirmeyi öneriyor",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 12,
+        "oyun": "Star Wars Zero Company",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": false
+      },
+      "baslik": "Star Wars Zero Company"
+    },
+    {
+      "sira": 3,
+      "aday_index": 3,
       "tier": "B",
       "title": "Silent Hill Townfall taps back into analog horror, but its tech is \"never going to lie to you\"",
       "kaynak_sayisi": 2,
@@ -247,7 +166,7 @@
         "url": "https://www.pcgamesn.com/silent-hill-townfall/interview-gamescom-analog-horror",
         "summary": "Silent Hill Townfall evokes the classic horror radio static with its CRTV, and its technology will be one of the only things you can trust.",
         "published": "2026-08-29T13:31:51+00:00",
-        "age_hours": 7.1,
+        "age_hours": 12.3,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -260,7 +179,7 @@
           "pcgamesn",
           "rps"
         ],
-        "rank_score": 4.75,
+        "rank_score": 4.64,
         "members": [
           {
             "hash": "672339898fb6cab6",
@@ -268,7 +187,7 @@
             "title": "Silent Hill Townfall taps back into analog horror, but its tech is \"never going to lie to you\"",
             "summary": "Silent Hill Townfall evokes the classic horror radio static with its CRTV, and its technology will be one of the only things you can trust.",
             "published": "2026-08-29T13:31:51+00:00",
-            "age_hours": 7.1,
+            "age_hours": 12.3,
             "source_id": "pcgamesn",
             "source_name": "PCGamesN",
             "lang": "en",
@@ -286,7 +205,7 @@
             "title": "I found solace from Silent Hill: Townfall's stealthy horror in the soothing Britishness of its abandoned homes",
             "summary": "I suppose, in a way, I asked for this. Crouched and cowering behind a garden fence, inches away from the thrashing, cleaver-faced miscreation who’d quite comfortably win in a fight against my splintering plank of rotten wood, I can almost hear Silent Hill: Townfall whisper mocking in my ear: not too much combat now, eh? Read more",
             "published": "2026-08-28T13:00:00+00:00",
-            "age_hours": 31.7,
+            "age_hours": 36.8,
             "source_id": "rps",
             "source_name": "Rock Paper Shotgun",
             "lang": "en",
@@ -301,7 +220,7 @@
         ]
       },
       "oyun_adi": "Silent Hill Townfall",
-      "ozet": "analog korku unsurları ve güvenilmez teknolojilerle oyuncuların karşısına çıkacak",
+      "ozet": "yapımcılar analog korku temalı oyunun teknolojisinin asla yalan söylemeyeceğini belirtti",
       "gorsel": {
         "durum": "var",
         "sayi": 14,
@@ -311,6 +230,81 @@
         "temsili": false
       },
       "baslik": "Silent Hill Townfall"
+    },
+    {
+      "sira": 4,
+      "aday_index": 4,
+      "tier": "B",
+      "title": "EA Motive's Iron Man Game Reveal 'Didn't Go as Planned,' But the Leak Has Marvel Fans More Excited Than Ever",
+      "kaynak_sayisi": 2,
+      "url": "https://www.ign.com/articles/ea-motives-iron-man-game-reveal-didnt-go-as-planned-but-the-leak-has-marvel-fans-more-excited-than-ever",
+      "aday": {
+        "key": "3d82c43d69153084",
+        "title": "EA Motive's Iron Man Game Reveal 'Didn't Go as Planned,' But the Leak Has Marvel Fans More Excited Than Ever",
+        "url": "https://www.ign.com/articles/ea-motives-iron-man-game-reveal-didnt-go-as-planned-but-the-leak-has-marvel-fans-more-excited-than-ever",
+        "summary": "EA Motive Studio's Iron Man game suffered an unexpected leak, but it may have resulted in Marvel fans being more excited about it than ever.",
+        "published": "2026-08-29T20:37:20+00:00",
+        "age_hours": 5.2,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream"
+        ],
+        "source_count": 2,
+        "sources": [
+          "eurogamer",
+          "ign"
+        ],
+        "rank_score": 4.59,
+        "members": [
+          {
+            "hash": "3d82c43d69153084",
+            "url": "https://www.ign.com/articles/ea-motives-iron-man-game-reveal-didnt-go-as-planned-but-the-leak-has-marvel-fans-more-excited-than-ever",
+            "title": "EA Motive's Iron Man Game Reveal 'Didn't Go as Planned,' But the Leak Has Marvel Fans More Excited Than Ever",
+            "summary": "EA Motive Studio's Iron Man game suffered an unexpected leak, but it may have resulted in Marvel fans being more excited about it than ever.",
+            "published": "2026-08-29T20:37:20+00:00",
+            "age_hours": 5.2,
+            "source_id": "ign",
+            "source_name": "IGN",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.6,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "fccdc0612136f769",
+            "url": "https://www.eurogamer.net/ea-motive-iron-man-gameplay-footage-leak",
+            "title": "Footage of new Iron Man game from EA Motive appears to leak, showing blistering speed and freedom, as MIA superhero game finally reappears",
+            "summary": "What appears to be footage from EA Motive's long-in-development - and somewhat missing-in-development - Iron Man game has leaked. Read more",
+            "published": "2026-08-28T14:31:10+00:00",
+            "age_hours": 35.3,
+            "source_id": "eurogamer",
+            "source_name": "Eurogamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "Iron Man",
+      "ozet": "beklenmeyen sızıntı planları bozsa da marvel hayranlarının heyecanını katladı",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 5,
+        "oyun": "Iron Man",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": false
+      },
+      "baslik": "Iron Man"
     },
     {
       "sira": 5,
@@ -325,7 +319,7 @@
         "url": "https://www.pcgamer.com/games/rpg/elden-ring-players-are-hard-at-work-putting-the-new-tarnished-edition-dlcs-new-gear-to-the-test",
         "summary": "Some poor bosses are getting \"the Matador treatment\".",
         "published": "2026-08-29T20:17:04+00:00",
-        "age_hours": 0.4,
+        "age_hours": 5.6,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -337,7 +331,7 @@
           "nintendolife",
           "pcgamer"
         ],
-        "rank_score": 4.69,
+        "rank_score": 4.58,
         "members": [
           {
             "hash": "a926cb9e0b52cba7",
@@ -345,7 +339,7 @@
             "title": "Elden Ring players are hard at work putting the new Tarnished Edition DLC's gear to the test",
             "summary": "Some poor bosses are getting \"the Matador treatment\".",
             "published": "2026-08-29T20:17:04+00:00",
-            "age_hours": 0.4,
+            "age_hours": 5.6,
             "source_id": "pcgamer",
             "source_name": "PC Gamer",
             "lang": "en",
@@ -362,7 +356,7 @@
             "title": "Guide: Elden Ring Tarnished Edition New Content Locations: All New Weapons, Armour Sets, NPC Invasions & Horse Armour",
             "summary": "The Lands Between has more to find. Elden Ring's Tarnished Edition adds more content to an already-packed world - from new Armour Sets to Weapons, NPC Invasions, and Spectral Steed Attire options (new looks for Torrent, in other words). It's all available either as part of the Elden Ring: Tarnished Edition - which sees FromSoftware's modern masterpiece make its way to a Nintendo platform for the first time - or as a separate Tarnished Pack DLC for the PC, PS5 and Xbox versions. (If you're playing on one of these platforms with an existing save file, then as well as buying the DLC pack, you als",
             "published": "2026-08-28T15:51:00+00:00",
-            "age_hours": 28.8,
+            "age_hours": 34.0,
             "source_id": "nintendolife",
             "source_name": "Nintendo Life",
             "lang": "en",
@@ -377,7 +371,7 @@
         ]
       },
       "oyun_adi": "Elden Ring",
-      "ozet": "oyuncular yeni tarnish edition dlc eşyalarını bosslar üzerinde test ediyor",
+      "ozet": "oyuncular yeni ek paket ekipmanlarını acımadan bosslar üzerinde test ediyor",
       "gorsel": {
         "durum": "var",
         "sayi": 14,
@@ -401,7 +395,7 @@
         "url": "https://www.pcgamer.com/games/moba/valve-assures-deadlock-players-hungry-for-its-next-big-update-that-it-will-notify-them-or-order-a-ton-of-pizza-when-its-ready",
         "summary": "Yoshi said to expect the new big update by the end of September.",
         "published": "2026-08-29T18:44:53+00:00",
-        "age_hours": 1.9,
+        "age_hours": 7.1,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -413,7 +407,7 @@
           "pcgamer",
           "pcgamesn"
         ],
-        "rank_score": 4.66,
+        "rank_score": 4.55,
         "members": [
           {
             "hash": "bbf94a5f8bc20adb",
@@ -421,7 +415,7 @@
             "title": "Valve assures Deadlock players hungry for its next big update that it will notify them, 'or order a ton of pizza', when it's ready",
             "summary": "Yoshi said to expect the new big update by the end of September.",
             "published": "2026-08-29T18:44:53+00:00",
-            "age_hours": 1.9,
+            "age_hours": 7.1,
             "source_id": "pcgamer",
             "source_name": "PC Gamer",
             "lang": "en",
@@ -438,7 +432,7 @@
             "title": "Don't expect the next Deadlock update until \"late September,\" Valve announces",
             "summary": "After hopes that a new Deadlock update was imminent, Valve developer ‘Yoshi’ confirms it has “taken longer than expected” in playtesting.",
             "published": "2026-08-29T11:21:42+00:00",
-            "age_hours": 9.3,
+            "age_hours": 14.5,
             "source_id": "pcgamesn",
             "source_name": "PCGamesN",
             "lang": "en",
@@ -453,7 +447,7 @@
         ]
       },
       "oyun_adi": "Deadlock",
-      "ozet": "yeni büyük güncelleme için eylül sonunu işaret edip pizza esprisi yaptı",
+      "ozet": "yapımcılar büyük güncelleme geldiğinde oyunculara pizza sipariş ederek haber verecek",
       "gorsel": {
         "durum": "var",
         "sayi": 14,
