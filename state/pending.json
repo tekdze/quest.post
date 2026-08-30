@@ -3,15 +3,15 @@
     {
       "id": "20260830-gta-6",
       "etiket": "normal",
-      "durum": "yeniden_bas",
+      "durum": "onay_bekliyor",
       "baslik": "gta 6",
       "draft": "state/drafts/20260830-gta-6.json",
       "cards_dir": "out/20260830-gta-6",
       "message_ids": [
-        177,
-        178,
-        179,
-        180
+        264,
+        265,
+        266,
+        267
       ],
       "tier": "S"
     }
