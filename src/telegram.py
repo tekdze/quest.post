@@ -116,6 +116,11 @@ KOMUT_REHBERI = [
     ]),
 ]
 
+# Bir POSTA uygulanan komutlar. Bunun disindakiler ya global (yukarida
+# islenir) ya da yazim hatasi.
+POST_KOMUTLARI = {"ok", "otomatik", "bana", "iptal", "yeniden", "havuz",
+                  "gorsel", "görsel", "c", "b", "a", "s"}
+
 # Birden fazla post beklerken komutun adresi.
 REPLY_NOTU = ("birden fazla post beklerken: komutu o postun mesajına YANIT "
               "olarak yaz. yanıtlamazsan ve tek post bekliyorsa ona uygulanır; "
@@ -559,6 +564,13 @@ def do_poll() -> int:
                 continue
             istek_yaz("uret", {"sira": hedef_sira})
             send_text(ISTEK_ACK["uret"])
+            continue
+
+        # Bilinmeyen komut kontrolu ADRES aramadan once: kuyruk bosken
+        # "/zart" yazilinca "onay bekleyen post yok" deniyordu ve kullanici
+        # yazim hatasi yaptigini anlamiyordu.
+        if name not in POST_KOMUTLARI:
+            bilinmeyen.append(f"/{name}")
             continue
 
         # Komutun adresi: once yanit, sonra "tek bekleyen varsa o".
