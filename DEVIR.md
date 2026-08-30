@@ -356,7 +356,13 @@ saatlerce. Sorun tek bir hata değil, **hatanın sonsuz mesaja dönüşebilmesi*
    "(bu uyarı 47 kez daha tekrarlandı)" ekleniyor - sorun sessizce
    kaybolmuyor, sadece sohbeti boğmuyor. **Hangi koddan gelirse gelsin
    çalışır**, çünkü hatanın kendisini değil tekrarını kesiyor.
-3. **Workflow mesajları sabit anahtarlı.** Metinde Actions run numarası
+3. **Takılan posta ulaşılabiliyor.** Komutlar yalnızca `onay_bekliyor`
+   durumundaki postlara gidiyordu; `yeniden_bas`ta kilitlenen post
+   Telegram'dan **erişilemez** oluyordu (`/gorsel` -> "onay bekleyen
+   post yok", yanıt versen bile ikinci kontrol engelliyordu). Artık
+   `/iptal` her durumda geçerli - kilitli postun çıkış kapısı - ve
+   diğer komutlar gerçek durumu söylüyor.
+4. **Workflow mesajları sabit anahtarlı.** Metinde Actions run numarası
    olduğu için her seferinde farklı görünüyorlardı ve 2. katmana takılmazlardı.
    `telegram.py say --tekrarsiz menu-workflow` sabit kimlik veriyor.
 

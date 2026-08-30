@@ -638,20 +638,33 @@ def do_poll() -> int:
         hedef = hedef_bul(queue, reply_to)
         if hedef is None:
             aktif = bekleyenler(queue)
-            if not aktif:
-                print(f"komut geldi ama bekleyen post yok: /{name}")
-                send_text("şu an onay bekleyen bir post yok.")
+            # Bekleyen yoksa TAKILMIS girdi olabilir: durumu onay_bekliyor
+            # olmayan ama kuyrukta duran post. Eskiden burada "onay bekleyen
+            # post yok" deniyordu ve kullanicinin o postu kurtarma yolu
+            # kalmiyordu - kart basilamayan post kuyrukta kilitleniyor,
+            # /iptal bile ona ulasamiyordu.
+            aday = aktif or queue
+            if not aday:
+                print(f"komut geldi ama kuyruk bos: /{name}")
+                send_text("şu an kuyrukta post yok.")
                 continue
-            if len(aktif) > 1:
+            if len(aday) > 1:
                 # Yanlis posta /iptal uygulamaktansa sormak iyidir.
                 send_text(f"/{name} hangi posta? komutu o postun mesajına yanıt "
                           f"olarak yaz.\n\n" + kuyruk_ozeti(queue))
                 continue
-            hedef = aktif[0]
+            hedef = aday[0]
 
         if hedef.get("durum") != "onay_bekliyor":
-            send_text(f"o post zaten karara bağlanmış ({hedef.get('durum')}).")
-            continue
+            # /iptal her durumda gecerli: kilitli postun tek cikis kapisi.
+            # Digerleri icin gercek durumu SOYLE - "karara baglanmis" cumlesi
+            # takilmis bir postta yaniltiyordu.
+            if name != "iptal":
+                send_text(f"bu post \"{hedef.get('durum')}\" durumunda, komut "
+                          "uygulanamaz.\n\nişlem sürüyorsa birkaç dakika bekle. "
+                          "takıldıysa /iptal ile atabilirsin.")
+                continue
+            print(f"takilmis post iptal ediliyor (durum: {hedef.get('durum')})")
 
         karar = komutu_uygula(hedef, name, args)
         if karar is None:
