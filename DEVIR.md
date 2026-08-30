@@ -3,9 +3,9 @@
 > Yeni bir sohbete geçerken: **önce bu dosyayı oku.** Kararlar burada, kodda değil.
 > Her önemli kararda veya faz bitiminde bu dosya güncellenir.
 
-Son güncelleme: 2026-08-29 · **Faz 7 bitti.** Bot kendi kendine dönüyor:
-menü → seçim → üretim → onay. Tetikleme cron-job.org'da (GitHub cron çalışmadı).
-Sırada Faz 6 (Instagram).
+Son güncelleme: 2026-08-30 · **Tüm fazlar bitti.** Zincir uçtan uca çalışıyor:
+haber tara → menü → seçim → metin → görsel → kart → onay → **Instagram'a paylaş**.
+İlk otomatik gönderi 2026-08-30'da yayınlandı.
 
 ---
 
@@ -47,13 +47,14 @@ dokunmaz.** Şablon sabit HTML/CSS'tir, LLM sadece metin alanlarını doldurur.
 | + | `tier.py` + `produce.py` — kademe ve orkestratör | ✅ |
 | + | Tasarım turu — kesinleşti 2026-08-27 | ✅ |
 | 7 | Workflow'lar — bot kendi kendine çalışıyor | ✅ |
-| 6 | `publish.py` — Instagram paylaşımı | ✅ yazıldı, ilk canlı yayın bekliyor |
+| 6 | `publish.py` — Instagram paylaşımı | ✅ **ilk gönderi 2026-08-30'da yayınlandı** |
 | + | `qa.py` — görsel denetim (tasarım oturdu, artık yazılabilir) | bekliyor |
 
-**Bot artık bilgisayar kapalıyken de çalışıyor.** Günde 3 kez menü geliyor,
-`/uret <numara>` ile seçiyorsun, kartlar basılıp onaya sunuluyor. Eksik olan
-tek şey paylaşımın kendisi: `/ok` desen bile Instagram'a gönderemiyor,
-`/bana` ile elle atıyorsun. Faz 6 bunu kapatacak.
+**Bot artık bilgisayar kapalıyken de çalışıyor ve paylaşabiliyor.**
+Günde 3 kez menü geliyor, `/uret <numara>` ile seçiyorsun, kartlar basılıp
+onaya sunuluyor, `/ok` deyince Instagram'a düşüyor. `/bana` hâlâ duruyor:
+Graph API lisanslı müzik eklemediği için S kademesi postlarda elle
+paylaşmak tercih edilebilir.
 
 ### Kurulumu tamamlanmış olanlar
 - GitHub Secrets'ta beş anahtar
