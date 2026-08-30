@@ -1,0 +1,177 @@
+{
+  "_kaynak": "https://www.pcgamer.com/games/moba/valve-assures-deadlock-players-hungry-for-its-next-big-update-that-it-will-notify-them-or-order-a-ton-of-pizza-when-its-ready",
+  "_aday_index": 1,
+  "_kaynak_sayisi": 2,
+  "_is_leak": false,
+  "_model": "gemini-3.6-flash",
+  "tier": "B",
+  "category": "güncelleme",
+  "caption": "valve yeni oyunu deadlock için geniş kapsamlı güncellemeyi test süreçleri uzadığı için eylül sonuna erteledi. rekabette aceleci davranmak yerine dengeli içerik sunmayı seçen ekip toplulukla iletişimi de sıcak tutuyor. #deadlock #valve",
+  "game": "deadlock",
+  "search_name": "Deadlock",
+  "image_candidates": [],
+  "series_fallback": [],
+  "representative_games": [],
+  "credit": "valve",
+  "pages": [
+    {
+      "type": "cover",
+      "title": "deadlock güncelleniyor valve'ın temposu fark yaratıyor",
+      "image": "state/img/deadlock-cobc7s.jpg",
+      "credit": "valve"
+    },
+    {
+      "type": "text",
+      "title": "sektörün aksine acele edilmiyor",
+      "paragraph": "birçok canlı servis oyunu hızlı ve eksik paketler sunarken valve işi ağırdan alıyor. deadlock için beklenen yeni yama test aşamasının uzaması sebebiyle eylül sonuna ertelendi.",
+      "bullets": [
+        "test sürecinde titiz yaklaşım",
+        "toplulukla doğrudan ve samimi iletişim"
+      ],
+      "image": "state/img/deadlock-scuhla.jpg",
+      "credit": "valve"
+    },
+    {
+      "type": "text",
+      "title": "pizza teklifiyle gelen duyuru",
+      "paragraph": "geliştirici ekipten yoshi büyük güncellemenin hazır olduğunda haber verileceğini esprili bir dille açıkladı. rakiplerin resmi duyurularına kıyasla topluluğa pizza söyleme vaadi bile farklı bir yaklaşım sunuyor.",
+      "bullets": [
+        "eylül sonu hedefleniyor",
+        "oyun dengesi ön planda tutuluyor"
+      ],
+      "image": "state/img/deadlock-scuhlc.jpg",
+      "credit": "valve"
+    },
+    {
+      "type": "outro",
+      "question": "canlı servis oyunlarında acele güncellemeler mi yoksa geç gelen temiz yamalar mı daha iyi",
+      "ctas": [
+        "düşüncelerinizi yorumlarda paylaşabilirsiniz"
+      ],
+      "image": "state/img/deadlock-scuhle.jpg",
+      "credit": "valve"
+    }
+  ],
+  "_hashes": [
+    "bbf94a5f8bc20adb",
+    "e68c90df9ef6bdf2"
+  ],
+  "_kume_key": "bbf94a5f8bc20adb",
+  "_gorsel_temsili": false,
+  "_image_pool": [
+    {
+      "id": "scuhla",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "valve",
+      "oyun": "Deadlock"
+    },
+    {
+      "id": "scuhlc",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "valve",
+      "oyun": "Deadlock"
+    },
+    {
+      "id": "scuhle",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "valve",
+      "oyun": "Deadlock"
+    },
+    {
+      "id": "scuhld",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "valve",
+      "oyun": "Deadlock"
+    },
+    {
+      "id": "scuhl9",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "valve",
+      "oyun": "Deadlock"
+    },
+    {
+      "id": "scuhlb",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "valve",
+      "oyun": "Deadlock"
+    },
+    {
+      "id": "scuhv6",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "valve",
+      "oyun": "Deadlock"
+    },
+    {
+      "id": "sc12j8t",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "valve",
+      "oyun": "Deadlock"
+    },
+    {
+      "id": "sc12j8u",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "valve",
+      "oyun": "Deadlock"
+    },
+    {
+      "id": "sc12j8v",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "valve",
+      "oyun": "Deadlock"
+    },
+    {
+      "id": "sc12j8w",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "valve",
+      "oyun": "Deadlock"
+    },
+    {
+      "id": "sc12j8x",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "valve",
+      "oyun": "Deadlock"
+    },
+    {
+      "id": "scuhl8",
+      "kind": "screenshot",
+      "w": 1840,
+      "h": 978,
+      "credit": "valve",
+      "oyun": "Deadlock"
+    },
+    {
+      "id": "cobc7s",
+      "kind": "cover",
+      "w": 600,
+      "h": 800,
+      "credit": "valve",
+      "oyun": "Deadlock"
+    }
+  ],
+  "_slug": "deadlock",
+  "_gorsel_turu": 0
+}
