@@ -48,7 +48,8 @@ dokunmaz.** Şablon sabit HTML/CSS'tir, LLM sadece metin alanlarını doldurur.
 | + | Tasarım turu — kesinleşti 2026-08-27 | ✅ |
 | 7 | Workflow'lar — bot kendi kendine çalışıyor | ✅ |
 | 6 | `publish.py` — Instagram paylaşımı | ✅ **ilk gönderi 2026-08-30'da yayınlandı** |
-| + | `qa.py` — görsel denetim (tasarım oturdu, artık yazılabilir) | bekliyor |
+| + | Metin QA (`llm_review`) — yazım/kaynak denetimi | ✅ |
+| + | `qa.py` — görsel denetim (vision) | bekliyor |
 
 **Bot artık bilgisayar kapalıyken de çalışıyor ve paylaşabiliyor.**
 Günde 3 kez menü geliyor, `/uret <numara>` ile seçiyorsun, kartlar basılıp
@@ -74,9 +75,15 @@ images.py   IGDB → görsel seç, indir, kredi     → state/img/
 render.py   HTML → Chromium → PNG               → out/<tarih>-<oyun>/
 telegram.py kartları yolla, onay iste           → state/pending.json
   kullanıcı  /ok /bana /gorsel /havuz /yeniden /iptal /c /b /a /s
-respond.py  kararı uygula
-publish.py  [YOK — Faz 6]
+respond.py  kararı uygula + posta bağlı olmayan istekleri icra et
+menu.py     aday menüsü: tier + görsel durumu + LLM önerisi
+publish.py  kartları Instagram'a carousel olarak yayınla
+apicheck.py anahtarları canlı yokla (/apideadline)
 ```
+
+Menü akışı: `menu.yml` günde 3 kez adayları sunar → kullanıcı `/uret N`
+yazar → `respond.py` üretimi başlatır → kartlar onaya gelir → `/ok`
+Instagram'a gönderir.
 
 `produce.py` üretim zincirini, `respond.py` karar uygulamayı sürüyor.
 Her aşama **ayrı süreç**: Actions kaydında patlayan aşama tek bakışta
@@ -617,22 +624,71 @@ kuralı **büyük haberleri eliyordu** (çok kaynak yazınca kelime sıklaşıyo
 
 ---
 
-## 11. Sıradaki işler — detay
+## 11. Sıradaki işler — öncelik sırasıyla
 
-### Faz 7 · workflow'lar
-- `produce.yml` — cron günde 3 kez, `produce.py` çağırır
-- `respond.yml` — cron 5 dk, `respond.py` çağırır
-- `watch.yml` — cron 10-15 dk, **sadece `fetch.py`**: patlama tespiti.
-  Ölçüt kaç kaynak değil, **ne kadar sürede**: küme içi ilk-son kayıt farkı
-  `< 90 dk` ve `source_count >= 3` ise son dakika sayılır, `produce.py --acil`
-  tetiklenir. `tier.py` bu sinyali henüz hesaplamıyor, eklenecek.
-- `refresh_token.yml` — aylık, Instagram token yenileme (Faz 6'ya bağlı)
-- `urgent.yml` — `workflow_dispatch` iskeleti, son dakika haberi
-- Playwright/Chromium kurulumu önbelleğe alınmalı, yoksa her çalışmada
-  ~120 MB indirilir
-- Bot state dosyalarını kendi commit'ler, Actions write izni şart.
-  State commit'lerinde `pull --rebase` retry'ı olmalı: `produce` ve `respond`
-  aynı anda çalışırsa git çakışır.
+Tüm fazlar bitti. Buradakiler yeni işler; sıra **büyüme etkisine** göre,
+gerekçeler bölüm 11.5'te.
+
+### 1. Evergreen içerik — en yüksek getirili eksik
+Haber 24 saatte ölüyor, evergreen aylarca erişim getiriyor ve
+**kaydediliyor** - Instagram'ın ödüllendirdiği davranış bu.
+"2026'da çıkacak 8 indie oyun", "steam'de kaçırdığın 5 yapım" gibi.
+
+Altyapı hazır: aynı kart sistemi, aynı üslup filtresi. Değişecek olan
+**içerik kaynağı** - RSS değil, konu havuzu. Muhtemelen `/evergreen <konu>`
+komutu ve ayrı bir istem. Tier sistemi burada anlamsız, farklı bir
+görsel işaret gerekebilir.
+
+### 2. Haftalık derleme — veri zaten birikiyor
+`state/weekly.json` C kademesi haberlerle doluyor ama **hiç
+kullanılmıyor**. Haftada bir "bu hafta olanlar" postu, neredeyse sıfır
+ek maliyet. Tek karar: kaç haber, hangi formatta.
+
+### 3. Konu ısısı — kademe sistemini canlandırır
+⚠️ Kademe hesabı fiilen ölü (bkz. 11.5). Sebep: sinyal "kaç kaynak aynı
+BAŞLIĞI yazdı" ve GTA 6 tanıtımı gibi büyük haberler dokuz ayrı kümeye
+bölünüyor, hiçbiri 3 kaynağa ulaşmıyor.
+
+**İki yaklaşım denendi ve ikisi de başarısız oldu:**
+- *Union-find ile konu grubu:* zincirleme birleşti, 28 alakasız küme tek
+  gruba düştü ("lets", "leak" gibi kelimeler üzerinden)
+- *Token sıcaklığı:* en sıcak kelimeler `shows, dev, version, tech, team,
+  says` çıktı - hiçbiri konu değil
+
+**Sebep:** istatistik "gta" ile "shows"u ayıramıyor, ikisi de havuzda
+nadir. "Bu kelime bir oyun/şirket adı mı" sorusu **semantik**.
+
+**Çalışacak yol:** LLM'e sormak. Ama tier'ı LLM'e teslim etmeden -
+LLM veri verir ("bu haber hangi oyun hakkında"), ısıyı ve tier'ı kod
+hesaplar. `menu.py` zaten her aday için oyun adı alıyor; aday sayısını
+artırıp aynı adı paylaşanları saymak yeterli.
+
+### 4. Profil ızgarasında tier şeridi (tasarım)
+Bkz. bölüm 4'teki açık sorun. Instagram ızgarada kartı yanlardan kırpıyor,
+28px'lik sol şerit kesiliyor.
+
+### 5. Esnek sayfa sayısı — KULLANICI İSTEMİ BEKLİYOR
+Bkz. aşağıdaki başlık.
+
+### 6. Vision QA (`qa.py`) — kota artık engel değil
+Bkz. aşağıdaki başlık. `HELPER_MODEL` günde 500 istek, sığar.
+
+### 7. Görsel-sayfa eşleştirme
+Kod görselleri sayfa **tipine** göre dağıtıyor (kapağa artwork, metne
+screenshot) ama içerikle ilgisi yok. LLM "3. sayfa savaş sisteminden
+bahsediyor, şu görsel ona uyar" diyebilir. Kartın anlamlılığını artırır.
+
+### Sonraya bırakılanlar
+- **`watch.yml` · acil haber tespiti.** Tasarım: 10-15 dk'da bir sadece
+  `fetch.py`, ölçüt kaç kaynak değil **ne kadar sürede** - küme içi
+  ilk-son kayıt farkı `< 90 dk` ve `source_count >= 3` ise son dakika,
+  `produce.py --acil` tetiklenir. **Konu ısısına bağımlı:** o çalışmadan
+  bu da GTA 6 tanıtımını bile yakalayamaz.
+- **Twitter/X** — bkz. bölüm 12, kaynak değil erken uyarı sensörü olmalı.
+- **Steam yeni çıkanlar** — RSS'i yok, store API'siyle ayrı modül.
+- **Otomatik onay** — belirli koşullarda (B kademesi + görsel var + QA
+  temiz) sormadan yayınlamak. ⚠️ 11.5'teki "asıl risk" maddesiyle bağlantılı;
+  önce tempoyu düşürmeyi denemek daha sağlıklı.
 
 ### ⚠️ GitHub cron ÇALIŞMADI — tetikleme cron-job.org'a taşındı (2026-08-29)
 `respond.yml` ve `menu.yml` push edildikten sonra **2.5 saat boyunca tek bir
