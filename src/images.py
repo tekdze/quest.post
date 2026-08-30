@@ -306,6 +306,53 @@ def download(image_id: str, target: Path) -> bool:
     return False
 
 
+# -------------------------------------------------------- yeniden indirme
+
+def redownload(spec: dict, draft_path: Path, dry_run: bool = False) -> int:
+    """Taslakta YAZILI görselleri geri indir. Yeniden seçim yapmaz.
+
+    `state/img/` git dışı: üretim sırasında inen dosyalar bir sonraki Actions
+    çalışmasında yok. Tier değişikliği gibi yalnızca yeniden BASIM isteyen
+    işlerde `render.py` "görsel bulunamadı" diye patlıyordu ve komut sonsuza
+    kadar yeniden deneniyordu.
+
+    Seçim tekrarlanmıyor, aynı görsel id'leri indiriliyor: yeniden seçilse
+    kullanıcının `/gorsel 4 7 2` ile elle koyduğu kareler değişebilirdi.
+    Kimlik dosya adında duruyor: state/img/<slug>-<image_id>.jpg
+    """
+    eksik = [p for p in spec["pages"]
+             if p.get("image") and not (ROOT / p["image"]).exists()]
+    if not eksik:
+        print("gorsellerin hepsi yerinde, indirme gerekmedi")
+        return 0
+
+    print(f"{len(eksik)} gorsel eksik (state/img git disi), geri indiriliyor:")
+    kayip = 0
+    for page in eksik:
+        rel = page["image"]
+        image_id = Path(rel).stem.rsplit("-", 1)[-1]
+        if dry_run:
+            print(f"  {image_id} (indirilmedi, --dry-run)")
+            continue
+        if download(image_id, ROOT / rel):
+            print(f"  {image_id} -> {rel}")
+            continue
+        # Indirilemezse o sayfa gorselsiz basilir. Zinciri durdurmak
+        # bildirim dongusune geri donmek olurdu.
+        print(f"  {image_id} INDIRILEMEDI, sayfa gorselsiz basilacak",
+              file=sys.stderr)
+        page["image"] = None
+        page["credit"] = None
+        kayip += 1
+
+    if not dry_run:
+        draft_path.write_text(json.dumps(spec, ensure_ascii=False, indent=2),
+                              encoding="utf-8")
+    if kayip:
+        print(f"uyari: {kayip} gorsel geri getirilemedi")
+    return 0
+
+
 # ------------------------------------------------------------------- akis
 
 def main() -> int:
@@ -323,10 +370,15 @@ def main() -> int:
                     help="sayfa sayfa havuz sirasi, ornek: --pick 1 3 5")
     ap.add_argument("--rotate", type=int, default=0,
                     help="havuzu kaydir: ayni oyundan baska bir set")
+    ap.add_argument("--redownload", action="store_true",
+                    help="secim yapma, taslaktaki gorselleri geri indir")
     args = ap.parse_args()
 
     draft_path = Path(args.draft)
     spec = json.loads(draft_path.read_text(encoding="utf-8"))
+
+    if args.redownload:
+        return redownload(spec, draft_path, args.dry_run)
 
     # Sizinti haberi de gorsel alir (karar 2026-08-30). Eskiden burada
     # kosulsuz bir engel vardi ve butun sizinti postlari tipografik

@@ -334,6 +334,20 @@ ama havuzu göremeyen kullanıcı numara veremezdi; `/havuz` bu yüzden var.
 taşınır.** `candidates.json` git dışı olduğu için `/uret` "aday bulunamadı"
 diye patlamıştı. Çözüm: adayın tam kaydı `menu.json` ile taşınıyor.
 
+⚠️ **Aynı kök sebep üçüncü kez: `/c /b /a /s` de patlıyordu (2026-08-30).**
+Tier değişikliği yalnızca "yeniden bas" diyor, `images.py` çalıştırmıyordu.
+Ama `state/img/` git dışı: üretimde inen görseller bir sonraki çalışmada
+yok ve `render.py` "görsel bulunamadı" diye patlıyordu. Çözüm
+`images.py --redownload`: **seçim tekrarlanmıyor**, taslakta yazılı aynı
+görsel id'leri geri indiriliyor (yeniden seçilse `/gorsel 4 7 2` ile elle
+konan kareler değişirdi). Kimlik dosya adında: `<slug>-<image_id>.jpg`.
+
+⚠️ **Hata durumunda girdinin durumu GERİ ALINMALI.** `yeniden_bas` durumunda
+takılan post her respond çalışmasında yeniden deneniyor ve aynı hatayı
+bildiriyordu: tek bozuk post günde **288 bildirim**. Artık
+`yeniden_bas_ve_sor` her hata yolunda `onay_bekliyor`a dönüyor - kullanıcı
+bir kez uyarılıyor, döngü kurulmuyor.
+
 ⚠️ **Aynı hata `/yeniden`'de tekrarlandı ve aylarca görülmedi (2026-08-30).**
 Komut `write.py --index <n>` çağırıyordu, yani yine `candidates.json`'a
 bakıyordu; o dosya runner'da hiç yok. `/yeniden` Actions'ta **hiçbir zaman

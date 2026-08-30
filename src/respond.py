@@ -115,17 +115,36 @@ def etiketle(entry: dict, mesaj: str) -> str:
 
 def yeniden_bas_ve_sor(entry: dict, draft: Path, cards_dir: Path,
                        gorsel_yeniden: bool = False) -> int:
-    """Kartları yeniden bas ve onayı tekrar sor."""
-    if gorsel_yeniden and not run("images.py", str(draft)):
-        tg.send_text(etiketle(entry, "görselleri yeniden seçerken hata oldu."))
+    """Kartları yeniden bas ve onayı tekrar sor.
+
+    Hata durumunda girdi HER ZAMAN "onay_bekliyor"a döner. Eskiden durum
+    olduğu gibi kalıyordu ve respond 5 dakikada bir aynı işi yeniden
+    deneyip aynı hatayı bildiriyordu: tek bir bozuk post günde 288
+    bildirim üretiyordu.
+    """
+    def hata(mesaj: str) -> int:
+        tg.send_text(etiketle(entry, mesaj))
+        durumu_yaz(entry, "onay_bekliyor")
         return 1
+
+    if gorsel_yeniden:
+        if not run("images.py", str(draft)):
+            return hata("görselleri yeniden seçerken hata oldu.")
+    # Gorseller yeniden secilmiyorsa bile diskte olmayabilir: state/img
+    # git disi, yani onceki calismada inen dosyalar bu calismada yok.
+    # render.py onlari bulamayinca patliyordu (tier degistirince kart
+    # basilamamasinin sebebi buydu).
+    elif not run("images.py", str(draft), "--redownload"):
+        return hata("görselleri geri indirirken hata oldu.")
+
     if not run("render.py", str(draft), "--out", str(cards_dir)):
-        tg.send_text(etiketle(entry, "kartları basarken hata oldu."))
-        return 1
+        return hata("kartları basarken hata oldu.")
     # Etiket korunmali: acil post yeniden basildiginda normale dusmesin.
     if not run("telegram.py", "send", str(draft), "--cards", str(cards_dir),
                "--etiket", entry.get("etiket", "normal")):
-        return 1
+        # Kartlar basildi ama yollanamadi. Durum geri alinmazsa bir sonraki
+        # calisma her seyi bastan yapar ve dongu kurulur.
+        return hata("kartlar basıldı ama yollanamadı.")
     return 0
 
 
