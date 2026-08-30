@@ -542,7 +542,13 @@ bir çalıştığı için kalan bir istek her turda yeniden üretim tetiklerdi.
 | `/gorsel` | Aynı oyundan **başka bir set** dene (havuzu kaydırır) |
 | `/gorsel 4 7 2` | Sayfa sayfa kesin seçim |
 | `/havuz` | Havuzdaki tüm görselleri **numaralı ızgarada** yollar (tip + gerçek boyut yazılı) |
-| `/start /help` | Komut listesi |
+| `/komutlar` | Gruplu, açıklamalı tam komut rehberi |
+| `/start /help` | Kısa komut listesi + `/komutlar` yönlendirmesi |
+
+⚠️ **Komutlar tek kaynaktan üretiliyor:** `telegram.py` içindeki
+`KOMUT_REHBERI` listesi. Yeni komut eklerken **sadece oraya** yazılır;
+`/komutlar` rehberi de kısa yardım metni de ondan türüyor. İki yeri
+güncelleme derdi olmasın diye böyle.
 
 `state/tg_offset.json` aynı komutun iki kez işlenmesini önlüyor —
 `respond.yml` 5 dakikada bir çalışacağı için şart.

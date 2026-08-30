@@ -79,14 +79,66 @@ ISTEK_ACK = {
     "api": "anahtarlar yoklanıyor, ~1 dk.",
 }
 
-# Telegram'in kendi komutlari. "bilinmeyen komut" diye cevaplanmamali.
-KOMUT_YARDIM = ("/konular günün adaylarını listele · /uret 2 seçileni üret\n"
-                "/ok onayla · /bana kartları bana yolla · /yeniden metni yeniden yaz\n"
-                "/gorsel başka görsel dene · /havuz tüm görselleri numaralı gör\n"
-                "/gorsel 4 7 2 sayfa sayfa seç · /iptal at · /c /b /a /s tier\n"
-                "/kuyruk bekleyen postlar · /apideadline anahtar durumu\n\n"
-                "birden fazla post beklerken: komutu o postun mesajına yanıt "
-                "olarak yaz.")
+# TEK KAYNAK: hem /komutlar rehberi hem kisa yardim buradan uretiliyor.
+# Yeni komut eklerken SADECE buraya yazilir; iki yeri guncelleme derdi
+# olmasin diye. Kisa yardim ilk sutundan, rehber tamamindan.
+KOMUT_REHBERI = [
+    ("günlük akış", [
+        ("/konular", "günün aday haberlerini listeler. her aday için ne haberi "
+                     "olduğu, kaç kaynağın yazdığı ve görsel durumu yazılı. "
+                     "⭐ işareti botun önerisi"),
+        ("/uret 2", "listeden seçtiğin numarayı üretir. metin yazılır, görseller "
+                    "seçilir, kartlar basılır ve onayına sunulur"),
+    ]),
+    ("kartlar geldiğinde", [
+        ("/ok", "onayla ve instagram'a paylaş"),
+        ("/bana", "kartları sıkıştırılmamış dosya olarak yolla, elle paylaşacaksan. "
+                  "gönderi açıklaması da ayrı mesaj olarak gelir"),
+        ("/yeniden", "metni baştan yazdır, görselleri ve kartları yenile"),
+        ("/iptal", "postu at. atılan haber bir daha aday olarak gelmez"),
+    ]),
+    ("görsel değiştirme", [
+        ("/havuz", "o oyunun tüm görsellerini numaralı ızgarada gösterir"),
+        ("/gorsel", "aynı oyundan başka bir set dener"),
+        ("/gorsel 4 7 2", "havuzdaki numaraları sayfa sırasına göre atar"),
+    ]),
+    ("kademe", [
+        ("/c /b /a /s", "kademeyi elle değiştir (sıradan · büyülü · sıradışı · "
+                        "mitik). kartlar yeni renkle yeniden basılır"),
+    ]),
+    ("durum", [
+        ("/kuyruk", "onay bekleyen postları listeler"),
+        ("/apideadline", "anahtarların durumu: çalışıyor mu, kotası doldu mu, "
+                         "süresi bitiyor mu"),
+    ]),
+    ("yardım", [
+        ("/komutlar", "bu liste"),
+    ]),
+]
+
+# Birden fazla post beklerken komutun adresi.
+REPLY_NOTU = ("birden fazla post beklerken: komutu o postun mesajına YANIT "
+              "olarak yaz. yanıtlamazsan ve tek post bekliyorsa ona uygulanır; "
+              "birden fazlaysa bot hangisi diye sorar.")
+
+
+def komut_rehberi() -> str:
+    """`/komutlar` çıktısı: gruplu, açıklamalı tam liste."""
+    satirlar = ["quest.post komutları", ""]
+    for baslik, komutlar in KOMUT_REHBERI:
+        satirlar.append(f"— {baslik} —")
+        for komut, aciklama in komutlar:
+            satirlar.append(f"{komut}")
+            satirlar.append(f"   {aciklama}")
+        satirlar.append("")
+    satirlar.append(REPLY_NOTU)
+    return "\n".join(satirlar)
+
+
+# Kisa yardim: bilinmeyen komut ve /start icin. Rehberin tamami uzun,
+# her hatada yollamak sohbeti boguyor.
+KOMUT_YARDIM = (" · ".join(k for _, komutlar in KOMUT_REHBERI for k, _ in komutlar)
+                + "\n\ntam açıklama için /komutlar")
 
 
 def load_env() -> None:
@@ -188,9 +240,10 @@ def summarize(spec: dict, cards: list[Path], etiket: str = "normal",
         baslik = page.get("title") or page.get("question") or page["type"]
         lines.append(f"{index}. {baslik}")
 
+    # Kart mesajinda kisa liste: caption siniri 1024, tam rehber sigmaz.
     lines += ["", "/ok onayla · /bana bana yolla · /yeniden yeniden yaz",
               "/gorsel başka görsel · /havuz görselleri gör · /iptal at",
-              "/c /b /a /s tier değiştir"]
+              "/c /b /a /s tier · /komutlar tüm komutlar"]
 
     # Baska post da beklerken komutun adresi belirsiz kalmasin.
     if baska_bekleyen:
@@ -485,6 +538,9 @@ def do_poll() -> int:
         # Posta bagli olmayan komutlar once: bunlar kuyruk bos olsa da calisir.
         if name in ("start", "help", "yardim"):
             send_text("hazır postları buraya yollayacağım.\n\n" + KOMUT_YARDIM)
+            continue
+        if name in ("komutlar", "yardim2"):
+            send_text(komut_rehberi())
             continue
         if name == "kuyruk":
             send_text(kuyruk_ozeti(queue))
