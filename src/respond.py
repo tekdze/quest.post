@@ -5,7 +5,7 @@
 uygular (icra). Bu ayrım olmadan telegram.py hem mesajlaşma hem boru hattı
 yönetimi yapardı.
 
-    /ok      -> yayınla (Faz 6'ya kadar: kullanıcıya /bana öner)
+    /ok      -> yayınla (publish.py yoksa kullanıcıya /bana öner)
     /bana    -> kartlar zaten yollandı, kuyruk temizlenir
     /iptal   -> kuyruk temizlenir
     /yeniden -> metin baştan yazılır, kartlar yeniden basılır, tekrar sorulur
@@ -208,7 +208,7 @@ def girdiyi_isle(entry: dict) -> int:
     print(f"\n[{entry.get('id')}] durum: {durum}")
 
     if durum == "yayinla":
-        # Faz 6 (publish.py) yazilana kadar otomatik paylasim yok.
+        # publish.py yoksa otomatik paylasim yapilamaz.
         # Sessizce basarisiz olmaktansa kullaniciya durumu soyle.
         if (SRC / "publish.py").exists():
             if not run("publish.py", str(draft), "--cards", str(cards_dir)):

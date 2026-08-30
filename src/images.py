@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """IGDB'den oyun görselleri seçer ve post tarifine işler.
 
-Faz 4 - IGDB_CLIENT_ID ve IGDB_CLIENT_SECRET gerekir.
+IGDB_CLIENT_ID ve IGDB_CLIENT_SECRET gerekir.
 
 Görsel seçimini KOD yapar, LLM değil. Sayfa tipine göre hangi görsel tipinin
 kullanılacağı tasarım kararı, modele bırakılmaz.
@@ -315,7 +315,7 @@ def main() -> int:
         except (AttributeError, ValueError):
             pass
 
-    ap = argparse.ArgumentParser(description="quest.post gorsel secici (Faz 4)")
+    ap = argparse.ArgumentParser(description="quest.post gorsel secici")
     ap.add_argument("draft", help="write.py'nin urettigi tarif (JSON)")
     ap.add_argument("--dry-run", action="store_true", help="indirme yapma, sadece sec")
     ap.add_argument("--game", default=None, help="arama adini elle ez")

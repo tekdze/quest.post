@@ -40,7 +40,7 @@ SURE_FILE = ROOT / "state" / "api_sure.json"
 # onlar icin sadece canli yoklama anlamli.
 OMURLER = {
     # Instagram uzun omurlu jeton 60 gunde oluyor, refresh_token.yml
-    # yenileyecek. Su an Faz 6 yazilmadigi icin listede pasif duruyor.
+    # yenileyecek.
     "instagram": 60,
 }
 # Kalan gun bu esigin altina duserse sari.
@@ -103,7 +103,7 @@ def yokla_telegram() -> tuple[str, str]:
 def yokla_instagram() -> tuple[str, str]:
     """Jeton gecerli mi. Suresi 60 gun ve doldugu gun bot sessizce susuyor."""
     if not (ROOT / "src" / "publish.py").exists():
-        return "⚪", "henüz kurulmadı (Faz 6)"
+        return "⚪", "henüz kurulmadı"
     try:
         import publish
         _, user_id = publish.credentials()

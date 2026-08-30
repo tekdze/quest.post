@@ -21,3 +21,6 @@ state/img/
 
 # uretim sirasinda olusan gecici taslak
 state/drafts/_uretiliyor-*.json
+
+# elle calistirma ciktisi (produce.py kendi id'ini kullaniyor)
+state/drafts/_elle.json

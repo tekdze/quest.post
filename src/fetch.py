@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """RSS kaynaklarini tara, tekrarlari at, aday haber kumeleri uret.
 
-Faz 1 - hicbir API anahtari gerekmez.
+Hicbir API anahtari gerekmez.
 
 Botun asil isi yazmak degil filtrelemek: 40 haberden 2'sini secmek.
 Bu dosya o 40 haberi toplayip ayni haberi yazan kaynaklari tek kumede
@@ -337,7 +337,7 @@ def main() -> int:
         except (AttributeError, ValueError):
             pass
 
-    ap = argparse.ArgumentParser(description="quest.post haber toplayici (Faz 1)")
+    ap = argparse.ArgumentParser(description="quest.post haber toplayici")
     ap.add_argument("--max-age-hours", type=int, default=None)
     ap.add_argument("--limit", type=int, default=40, help="kaydedilecek aday kumesi sayisi")
     ap.add_argument("--print", action="store_true", dest="do_print", help="ozeti ekrana bas")

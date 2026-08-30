@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Instagram uzun ömürlü jetonunu yeniler ve durumunu bildirir. Faz 6.
+"""Instagram uzun ömürlü jetonunu yeniler ve durumunu bildirir.
 
 Jeton 60 günde ölüyor ve kendiliğinden yenilenmiyor. Öldüğü gün bot
 paylaşamaz hale gelir; üstelik sessizce, çünkü kimse `/ok` demeden fark

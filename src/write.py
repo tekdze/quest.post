@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Aday haberi Turkce post metnine cevirir. Gemini + uslup filtresi.
 
-Faz 2 - GEMINI_API_KEY gerekir (.env dosyasindan veya ortam degiskeninden).
+GEMINI_API_KEY gerekir (.env dosyasindan veya ortam degiskeninden).
 
 Is bolumu net: LLM SADECE metin yazar. Tasarima, tier'a, gorsel secimine,
 sayfa sayisina karisamaz. Cikti dogrudan render.py'in bekledigi semaya oturur.
@@ -29,7 +29,8 @@ import style  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 CANDIDATES_FILE = ROOT / "state" / "candidates.json"
-DEFAULT_OUT = ROOT / "state" / "draft.json"
+# Elle calistirma ciktisi. produce.py kendi id'siyle drafts/ altina yaziyor.
+DEFAULT_OUT = ROOT / "state" / "drafts" / "_elle.json"
 
 API_BASE = "https://generativelanguage.googleapis.com/v1beta"
 # Surum SABITLENDI (3.7-flash surekli 503 donuyordu, 3.6 stabil). "gemini-flash-latest" gibi takma ad kullanilmiyor:
@@ -377,7 +378,7 @@ def to_render_spec(draft: dict, tier: str, candidate: dict, index: int = 0,
     pages = []
     for page in draft["pages"]:
         page = dict(page)
-        # Gorsel secimi Faz 4'un isi (images.py). Simdilik yer tutucu, ama
+        # Gorsel secimi images.py'nin isi. Burasi yer tutucu, ama
         # sizinti haberinde ASLA gorsel konmaz - telif kurali.
         page["image"] = None if is_leak else "assets/placeholder.png"
         pages.append(page)
@@ -394,7 +395,7 @@ def to_render_spec(draft: dict, tier: str, candidate: dict, index: int = 0,
         "_model": model,
         "tier": tier,
         "category": category,
-        # Instagram gonderi metni. Faz 6'ya kadar da ise yariyor: /bana ile
+        # Instagram gonderi metni. Elle paylasimda da ise yariyor: /bana ile
         # kartlari elle alirken caption da Telegram'a dusuyor, kopyalayip
         # yapistiriyorsun.
         "caption": draft.get("caption", ""),
@@ -430,7 +431,7 @@ def main() -> int:
         except (AttributeError, ValueError):
             pass
 
-    ap = argparse.ArgumentParser(description="quest.post metin uretici (Faz 2)")
+    ap = argparse.ArgumentParser(description="quest.post metin uretici")
     ap.add_argument("--list-models", action="store_true", help="kullanilabilir modelleri listele")
     ap.add_argument("--index", type=int, default=1, help="candidates.json'daki sira (1'den baslar)")
     ap.add_argument("--tier", default="B", choices=list("CBAS"),

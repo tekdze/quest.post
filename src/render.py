@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Post tarifini (JSON) alip 1080x1350 PNG kartlara cevirir.
 
-Faz 3 - API anahtari gerekmez, sadece Playwright + fontlar.
+API anahtari gerekmez, sadece Playwright + fontlar.
 
 Tasarim templates/card.html + card.css icinde SABIT durur. Bu dosya sadece
 tarayiciyi surer: veriyi basar, gradyani olcturur, ekran goruntusu alir.
@@ -216,7 +216,7 @@ def render_sheet(spec: dict, out_path: Path) -> int:
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="quest.post kart uretici (Faz 3)")
+    ap = argparse.ArgumentParser(description="quest.post kart uretici")
     ap.add_argument("spec", help="post tarifi (JSON)")
     ap.add_argument("--out", default=None, help="cikis klasoru (varsayilan: out/<dosya adi>)")
     ap.add_argument("--sheet", default=None,

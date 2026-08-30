@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Kartları Instagram'a carousel gönderi olarak yayınlar. Faz 6.
+"""Kartları Instagram'a carousel gönderi olarak yayınlar.
 
 IG_ACCESS_TOKEN ve IG_USER_ID gerekir.
 

@@ -1,5 +1,2 @@
-# Faz 1 — haber toplama
-feedparser==6.0.11
-
-# Faz 3 - kart uretimi
-playwright==1.56.0
+feedparser==6.0.11     # RSS okuma
+playwright==1.56.0     # HTML -> PNG kart uretimi

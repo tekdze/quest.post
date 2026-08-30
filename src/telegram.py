@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Telegram onay kanalı: hazır postu sorar, cevabı okur.
 
-Faz 5 - TG_BOT_TOKEN ve TG_CHAT_ID gerekir.
+TG_BOT_TOKEN ve TG_CHAT_ID gerekir.
 
 Telegram bir program değil, posta kutusu. Betik uyandığında `getUpdates` ile
 "cevap geldi mi" diye sorar, işini yapar, uyur. Sürekli çalışan bir süreç yok.
@@ -13,7 +13,7 @@ bekleyen tek post varsa ona gider; birden fazlaysa bot hangisi diye sorar.
 Yanlış posta /iptal uygulanmasındansa bir kez fazla sorulsun.
 
 Kullanım:
-    py -3.12 src/telegram.py send state/draft.json    # kartlari yolla, sor
+    py -3.12 src/telegram.py send state/drafts/<id>.json  # kartlari yolla, sor
     py -3.12 src/telegram.py poll                     # cevabi oku, karari uygula
     py -3.12 src/telegram.py say "metin"              # duz mesaj (hata bildirimi)
 
@@ -639,7 +639,7 @@ def main() -> int:
         except (AttributeError, ValueError):
             pass
 
-    ap = argparse.ArgumentParser(description="quest.post Telegram onay kanali (Faz 5)")
+    ap = argparse.ArgumentParser(description="quest.post Telegram onay kanali")
     sub = ap.add_subparsers(dest="komut", required=True)
 
     p_send = sub.add_parser("send", help="kartlari yolla ve onay sor")
