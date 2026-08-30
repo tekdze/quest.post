@@ -1,11 +1,88 @@
 {
-  "olusturuldu": "2026-08-30T01:51:24+00:00",
-  "oneri": 6,
-  "gerekce": "geliştiricinin güncelleme duyurusu için pizza esprisi yapması instagram etkileşimini artırır",
+  "olusturuldu": "2026-08-30T08:27:39+00:00",
+  "oneri": 3,
+  "gerekce": "oynanis deneyimini dogrudan degistiren ipucu oyuncularin dikkatini ceker",
   "adaylar": [
     {
       "sira": 1,
       "aday_index": 1,
+      "tier": "B",
+      "title": "Bandai Namco Is Bringing My Hero Academia: All's Justice To Switch 2",
+      "kaynak_sayisi": 2,
+      "url": "https://www.nintendolife.com/news/2026/08/bandai-namco-is-bringing-my-hero-academia-alls-justice-to-switch-2",
+      "aday": {
+        "key": "4446364f8d8e2902",
+        "title": "Bandai Namco Is Bringing My Hero Academia: All's Justice To Switch 2",
+        "url": "https://www.nintendolife.com/news/2026/08/bandai-namco-is-bringing-my-hero-academia-alls-justice-to-switch-2",
+        "summary": "Update: Performance & resolution revealed. : Bandai Namco this week announced it would be releasing a Switch 2 version of MY HERO ACADEMIA: All's Justice . Read the full article on nintendolife.com",
+        "published": "2026-08-30T07:00:00+00:00",
+        "age_hours": 1.5,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream",
+          "nintendo"
+        ],
+        "source_count": 2,
+        "sources": [
+          "gamesindustry",
+          "nintendolife"
+        ],
+        "rank_score": 4.87,
+        "members": [
+          {
+            "hash": "4446364f8d8e2902",
+            "url": "https://www.nintendolife.com/news/2026/08/bandai-namco-is-bringing-my-hero-academia-alls-justice-to-switch-2",
+            "title": "Bandai Namco Is Bringing My Hero Academia: All's Justice To Switch 2",
+            "summary": "Update: Performance & resolution revealed. : Bandai Namco this week announced it would be releasing a Switch 2 version of MY HERO ACADEMIA: All's Justice . Read the full article on nintendolife.com",
+            "published": "2026-08-30T07:00:00+00:00",
+            "age_hours": 1.5,
+            "source_id": "nintendolife",
+            "source_name": "Nintendo Life",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream",
+              "nintendo"
+            ]
+          },
+          {
+            "hash": "5359ee7d40cf5f66",
+            "url": "https://www.gamesindustry.biz/limbic-entertainment-on-life-after-bandai-namco",
+            "title": "Limbic Entertainment on life after Bandai Namco",
+            "summary": "In December 2025, German developer Limbic Entertainment was sold by Bandai Namco to a \"private investor\" . This news came just over three years after the Japanese giant acquired a majority stake in the studio for an undisclosed sum . Read more",
+            "published": "2026-08-28T12:05:08+00:00",
+            "age_hours": 44.4,
+            "source_id": "gamesindustry",
+            "source_name": "GamesIndustry.biz",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.9,
+            "tags": [
+              "endustri"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "MY HERO ACADEMIA: All's Justice",
+      "ozet": "switch 2 versiyonunun performans ve cozunurluk detaylari aciklandi",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 12,
+        "oyun": "My Hero Academia: All's Justice",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": false
+      },
+      "baslik": "MY HERO ACADEMIA: All's Justice"
+    },
+    {
+      "sira": 2,
+      "aday_index": 2,
       "tier": "B",
       "title": "Playdate maker Panic is passing tariff refunds on to customers",
       "kaynak_sayisi": 2,
@@ -16,7 +93,7 @@
         "url": "https://www.eurogamer.net/panic-playdate-tariff-refunds-customers",
         "summary": "Panic, maker of the crank-powered handheld Playdate , is forwarding Supreme Court-ordered tariff refunds back to customers. Read more",
         "published": "2026-08-29T10:51:33+00:00",
-        "age_hours": 15.0,
+        "age_hours": 21.6,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -28,7 +105,7 @@
           "eurogamer",
           "gamedeveloper"
         ],
-        "rank_score": 4.69,
+        "rank_score": 4.55,
         "members": [
           {
             "hash": "23ddd14300cd429a",
@@ -36,7 +113,7 @@
             "title": "Playdate maker Panic is passing tariff refunds on to customers",
             "summary": "Panic, maker of the crank-powered handheld Playdate , is forwarding Supreme Court-ordered tariff refunds back to customers. Read more",
             "published": "2026-08-29T10:51:33+00:00",
-            "age_hours": 15.0,
+            "age_hours": 21.6,
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
             "lang": "en",
@@ -53,7 +130,7 @@
             "title": "Panic refunds tariff fees, 1047 Games pivots from Splitgate, and Gamescom Dev grows - Patch Notes #67",
             "summary": "Plus: No More Room in Hell 2 surpasses 1 million players after exiting a pivotal Early Access period.",
             "published": "2026-08-28T13:47:47+00:00",
-            "age_hours": 36.0,
+            "age_hours": 42.7,
             "source_id": "gamedeveloper",
             "source_name": "Game Developer",
             "lang": "en",
@@ -66,8 +143,8 @@
           }
         ]
       },
-      "oyun_adi": null,
-      "ozet": "şirket mahkeme kararıyla aldığı gümrük vergisi iadesini müşterilerine geri ödüyor",
+      "oyun_adi": "Playdate",
+      "ozet": "mahkeme karariyla alinan vergi iadeleri musterilere geri gonderiliyor",
       "gorsel": {
         "durum": "yok",
         "sayi": 0,
@@ -76,11 +153,11 @@
         "seri": null,
         "temsili": false
       },
-      "baslik": "Playdate maker Panic is passing tariff refunds on to..."
+      "baslik": "Playdate"
     },
     {
-      "sira": 2,
-      "aday_index": 2,
+      "sira": 3,
+      "aday_index": 3,
       "tier": "B",
       "title": "PSA: Swap the radial ability menu in Star Wars Zero Company for more of a trad XCOM-style experience",
       "kaynak_sayisi": 2,
@@ -91,7 +168,7 @@
         "url": "https://www.pcgamer.com/games/strategy/psa-swap-the-radial-ability-menu-in-star-wars-zero-company-for-more-of-a-trad-xcom-style-experience",
         "summary": "It's the Runa-approved way to play.",
         "published": "2026-08-30T00:06:05+00:00",
-        "age_hours": 1.7,
+        "age_hours": 8.4,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -103,7 +180,7 @@
           "eurogamer",
           "pcgamer"
         ],
-        "rank_score": 4.66,
+        "rank_score": 4.53,
         "members": [
           {
             "hash": "8e6ebe116fcdd808",
@@ -111,7 +188,7 @@
             "title": "PSA: Swap the radial ability menu in Star Wars Zero Company for more of a trad XCOM-style experience",
             "summary": "It's the Runa-approved way to play.",
             "published": "2026-08-30T00:06:05+00:00",
-            "age_hours": 1.7,
+            "age_hours": 8.4,
             "source_id": "pcgamer",
             "source_name": "PC Gamer",
             "lang": "en",
@@ -128,7 +205,7 @@
             "title": "Star Wars Zero Company understands that Star Wars games should feel less like the movies and more like the toys",
             "summary": "I'm still early days on Star Wars Zero Company, but I think I'm in love. And this is kind of expected and also kind of strange. It's kind of expected because this is XCOM: Star Wars at first glance, and jeepers I love XCOM. I love moving my little units around, pondering when to advance and when to hang back, and I even love missing a shot that surely was almost a dead cert. Read more",
             "published": "2026-08-28T09:06:26+00:00",
-            "age_hours": 40.7,
+            "age_hours": 47.4,
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
             "lang": "en",
@@ -142,7 +219,7 @@
         ]
       },
       "oyun_adi": "Star Wars Zero Company",
-      "ozet": "oyuncular klasik xcom deneyimi için radyal yetenek menüsünü değiştirmeyi öneriyor",
+      "ozet": "klasik xcom deneyimi icin radyal yetenek menusunu degistirebilirsiniz",
       "gorsel": {
         "durum": "var",
         "sayi": 12,
@@ -154,8 +231,8 @@
       "baslik": "Star Wars Zero Company"
     },
     {
-      "sira": 3,
-      "aday_index": 3,
+      "sira": 4,
+      "aday_index": 4,
       "tier": "B",
       "title": "Silent Hill Townfall taps back into analog horror, but its tech is \"never going to lie to you\"",
       "kaynak_sayisi": 2,
@@ -166,7 +243,7 @@
         "url": "https://www.pcgamesn.com/silent-hill-townfall/interview-gamescom-analog-horror",
         "summary": "Silent Hill Townfall evokes the classic horror radio static with its CRTV, and its technology will be one of the only things you can trust.",
         "published": "2026-08-29T13:31:51+00:00",
-        "age_hours": 12.3,
+        "age_hours": 18.9,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -179,7 +256,7 @@
           "pcgamesn",
           "rps"
         ],
-        "rank_score": 4.64,
+        "rank_score": 4.51,
         "members": [
           {
             "hash": "672339898fb6cab6",
@@ -187,7 +264,7 @@
             "title": "Silent Hill Townfall taps back into analog horror, but its tech is \"never going to lie to you\"",
             "summary": "Silent Hill Townfall evokes the classic horror radio static with its CRTV, and its technology will be one of the only things you can trust.",
             "published": "2026-08-29T13:31:51+00:00",
-            "age_hours": 12.3,
+            "age_hours": 18.9,
             "source_id": "pcgamesn",
             "source_name": "PCGamesN",
             "lang": "en",
@@ -205,7 +282,7 @@
             "title": "I found solace from Silent Hill: Townfall's stealthy horror in the soothing Britishness of its abandoned homes",
             "summary": "I suppose, in a way, I asked for this. Crouched and cowering behind a garden fence, inches away from the thrashing, cleaver-faced miscreation who’d quite comfortably win in a fight against my splintering plank of rotten wood, I can almost hear Silent Hill: Townfall whisper mocking in my ear: not too much combat now, eh? Read more",
             "published": "2026-08-28T13:00:00+00:00",
-            "age_hours": 36.8,
+            "age_hours": 43.5,
             "source_id": "rps",
             "source_name": "Rock Paper Shotgun",
             "lang": "en",
@@ -220,7 +297,7 @@
         ]
       },
       "oyun_adi": "Silent Hill Townfall",
-      "ozet": "yapımcılar analog korku temalı oyunun teknolojisinin asla yalan söylemeyeceğini belirtti",
+      "ozet": "analog korku hissiyatini crtv teknolojisiyle yeniden oyunculara tasiyor",
       "gorsel": {
         "durum": "var",
         "sayi": 14,
@@ -232,8 +309,8 @@
       "baslik": "Silent Hill Townfall"
     },
     {
-      "sira": 4,
-      "aday_index": 4,
+      "sira": 5,
+      "aday_index": 5,
       "tier": "B",
       "title": "EA Motive's Iron Man Game Reveal 'Didn't Go as Planned,' But the Leak Has Marvel Fans More Excited Than Ever",
       "kaynak_sayisi": 2,
@@ -244,7 +321,7 @@
         "url": "https://www.ign.com/articles/ea-motives-iron-man-game-reveal-didnt-go-as-planned-but-the-leak-has-marvel-fans-more-excited-than-ever",
         "summary": "EA Motive Studio's Iron Man game suffered an unexpected leak, but it may have resulted in Marvel fans being more excited about it than ever.",
         "published": "2026-08-29T20:37:20+00:00",
-        "age_hours": 5.2,
+        "age_hours": 11.8,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -256,7 +333,7 @@
           "eurogamer",
           "ign"
         ],
-        "rank_score": 4.59,
+        "rank_score": 4.45,
         "members": [
           {
             "hash": "3d82c43d69153084",
@@ -264,7 +341,7 @@
             "title": "EA Motive's Iron Man Game Reveal 'Didn't Go as Planned,' But the Leak Has Marvel Fans More Excited Than Ever",
             "summary": "EA Motive Studio's Iron Man game suffered an unexpected leak, but it may have resulted in Marvel fans being more excited about it than ever.",
             "published": "2026-08-29T20:37:20+00:00",
-            "age_hours": 5.2,
+            "age_hours": 11.8,
             "source_id": "ign",
             "source_name": "IGN",
             "lang": "en",
@@ -281,7 +358,7 @@
             "title": "Footage of new Iron Man game from EA Motive appears to leak, showing blistering speed and freedom, as MIA superhero game finally reappears",
             "summary": "What appears to be footage from EA Motive's long-in-development - and somewhat missing-in-development - Iron Man game has leaked. Read more",
             "published": "2026-08-28T14:31:10+00:00",
-            "age_hours": 35.3,
+            "age_hours": 41.9,
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
             "lang": "en",
@@ -295,7 +372,7 @@
         ]
       },
       "oyun_adi": "Iron Man",
-      "ozet": "beklenmeyen sızıntı planları bozsa da marvel hayranlarının heyecanını katladı",
+      "ozet": "beklenmedik sizinti marvel hayranlarini oyun icin daha da heyecanlandirdi",
       "gorsel": {
         "durum": "var",
         "sayi": 5,
@@ -305,82 +382,6 @@
         "temsili": false
       },
       "baslik": "Iron Man"
-    },
-    {
-      "sira": 5,
-      "aday_index": 5,
-      "tier": "B",
-      "title": "Elden Ring players are hard at work putting the new Tarnished Edition DLC's gear to the test",
-      "kaynak_sayisi": 2,
-      "url": "https://www.pcgamer.com/games/rpg/elden-ring-players-are-hard-at-work-putting-the-new-tarnished-edition-dlcs-new-gear-to-the-test",
-      "aday": {
-        "key": "a926cb9e0b52cba7",
-        "title": "Elden Ring players are hard at work putting the new Tarnished Edition DLC's gear to the test",
-        "url": "https://www.pcgamer.com/games/rpg/elden-ring-players-are-hard-at-work-putting-the-new-tarnished-edition-dlcs-new-gear-to-the-test",
-        "summary": "Some poor bosses are getting \"the Matador treatment\".",
-        "published": "2026-08-29T20:17:04+00:00",
-        "age_hours": 5.6,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "mainstream"
-        ],
-        "source_count": 2,
-        "sources": [
-          "nintendolife",
-          "pcgamer"
-        ],
-        "rank_score": 4.58,
-        "members": [
-          {
-            "hash": "a926cb9e0b52cba7",
-            "url": "https://www.pcgamer.com/games/rpg/elden-ring-players-are-hard-at-work-putting-the-new-tarnished-edition-dlcs-new-gear-to-the-test",
-            "title": "Elden Ring players are hard at work putting the new Tarnished Edition DLC's gear to the test",
-            "summary": "Some poor bosses are getting \"the Matador treatment\".",
-            "published": "2026-08-29T20:17:04+00:00",
-            "age_hours": 5.6,
-            "source_id": "pcgamer",
-            "source_name": "PC Gamer",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream"
-            ]
-          },
-          {
-            "hash": "7c6ce5886f4d33c2",
-            "url": "https://www.nintendolife.com/guides/elden-ring-tarnished-edition-weapons-armor-npc-invasions-steed-attire-content",
-            "title": "Guide: Elden Ring Tarnished Edition New Content Locations: All New Weapons, Armour Sets, NPC Invasions & Horse Armour",
-            "summary": "The Lands Between has more to find. Elden Ring's Tarnished Edition adds more content to an already-packed world - from new Armour Sets to Weapons, NPC Invasions, and Spectral Steed Attire options (new looks for Torrent, in other words). It's all available either as part of the Elden Ring: Tarnished Edition - which sees FromSoftware's modern masterpiece make its way to a Nintendo platform for the first time - or as a separate Tarnished Pack DLC for the PC, PS5 and Xbox versions. (If you're playing on one of these platforms with an existing save file, then as well as buying the DLC pack, you als",
-            "published": "2026-08-28T15:51:00+00:00",
-            "age_hours": 34.0,
-            "source_id": "nintendolife",
-            "source_name": "Nintendo Life",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream",
-              "nintendo"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": "Elden Ring",
-      "ozet": "oyuncular yeni ek paket ekipmanlarını acımadan bosslar üzerinde test ediyor",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 14,
-        "oyun": "Elden Ring",
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": false
-      },
-      "baslik": "Elden Ring"
     },
     {
       "sira": 6,
@@ -395,7 +396,7 @@
         "url": "https://www.pcgamer.com/games/moba/valve-assures-deadlock-players-hungry-for-its-next-big-update-that-it-will-notify-them-or-order-a-ton-of-pizza-when-its-ready",
         "summary": "Yoshi said to expect the new big update by the end of September.",
         "published": "2026-08-29T18:44:53+00:00",
-        "age_hours": 7.1,
+        "age_hours": 13.7,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -407,7 +408,7 @@
           "pcgamer",
           "pcgamesn"
         ],
-        "rank_score": 4.55,
+        "rank_score": 4.41,
         "members": [
           {
             "hash": "bbf94a5f8bc20adb",
@@ -415,7 +416,7 @@
             "title": "Valve assures Deadlock players hungry for its next big update that it will notify them, 'or order a ton of pizza', when it's ready",
             "summary": "Yoshi said to expect the new big update by the end of September.",
             "published": "2026-08-29T18:44:53+00:00",
-            "age_hours": 7.1,
+            "age_hours": 13.7,
             "source_id": "pcgamer",
             "source_name": "PC Gamer",
             "lang": "en",
@@ -432,7 +433,7 @@
             "title": "Don't expect the next Deadlock update until \"late September,\" Valve announces",
             "summary": "After hopes that a new Deadlock update was imminent, Valve developer ‘Yoshi’ confirms it has “taken longer than expected” in playtesting.",
             "published": "2026-08-29T11:21:42+00:00",
-            "age_hours": 14.5,
+            "age_hours": 21.1,
             "source_id": "pcgamesn",
             "source_name": "PCGamesN",
             "lang": "en",
@@ -447,7 +448,7 @@
         ]
       },
       "oyun_adi": "Deadlock",
-      "ozet": "yapımcılar büyük güncelleme geldiğinde oyunculara pizza sipariş ederek haber verecek",
+      "ozet": "valve yeni guncelleme icin oyunculara esprili bir dille soz verdi",
       "gorsel": {
         "durum": "var",
         "sayi": 14,
