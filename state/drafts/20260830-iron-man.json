@@ -1,0 +1,58 @@
+{
+  "_kaynak": "https://www.ign.com/articles/ea-motives-iron-man-game-reveal-didnt-go-as-planned-but-the-leak-has-marvel-fans-more-excited-than-ever",
+  "_aday_index": 1,
+  "_kaynak_sayisi": 2,
+  "_is_leak": true,
+  "_model": "gemini-3.6-flash",
+  "tier": "B",
+  "category": "sızıntı",
+  "caption": "uzun süredir sessizliğini koruyan ea motive imzalı iron man projesi sızdırılan oynanış videosuyla yeniden gündeme geldi. planlanmayan bu sızıntı projenin mevcut durumu hakkında ilk somut fikirleri verdi. #ironman #eamotive",
+  "game": "iron man",
+  "search_name": "Marvel's Iron Man",
+  "image_candidates": [],
+  "series_fallback": [
+    "Marvel's Iron Man VR"
+  ],
+  "representative_games": [],
+  "credit": null,
+  "pages": [
+    {
+      "type": "cover",
+      "title": "ea motive iron man sızıntısı",
+      "image": null
+    },
+    {
+      "type": "text",
+      "title": "sızdırılan oynanış görüntüleri",
+      "paragraph": "ea motive tarafından geliştirilen yeni iron man oyununa ait ilk oynanış videosu internete düştü. görüntülerde karakterin yüksek uçuş hızı ve harita üzerindeki serbest hareketi öne çıkıyor.",
+      "bullets": [
+        "yüksek uçuş hızı dikkati çekiyor",
+        "serbest hareket mekaniği görülüyor"
+      ],
+      "image": null
+    },
+    {
+      "type": "text",
+      "title": "oyuncuların ilk tepkisi",
+      "paragraph": "stüdyonun duyuru planı beklenmedik bu sızıntıyla bozulsa da paylaşılan görüntüler marvel hayranları arasında heyecan yarattı. erteleme ve sessizlik döneminin ardından proje ilk kez bu kadar net görüldü.",
+      "bullets": [
+        "beklenmedik şekilde ortaya çıktı",
+        "hayran beklentisi artış gösterdi"
+      ],
+      "image": null
+    },
+    {
+      "type": "outro",
+      "question": "yeni iron man sızıntısındaki uçuş mekaniklerini nasıl buldunuz?",
+      "ctas": [
+        "düşüncelerinizi yorumlarda paylaşabilirsiniz"
+      ],
+      "image": null
+    }
+  ],
+  "_hashes": [
+    "3d82c43d69153084",
+    "fccdc0612136f769"
+  ],
+  "_kume_key": "3d82c43d69153084"
+}

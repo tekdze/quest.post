@@ -1,3 +1,19 @@
 {
-  "kuyruk": []
+  "kuyruk": [
+    {
+      "id": "20260830-iron-man",
+      "etiket": "normal",
+      "durum": "onay_bekliyor",
+      "baslik": "iron man",
+      "draft": "state/drafts/20260830-iron-man.json",
+      "cards_dir": "out/20260830-iron-man",
+      "message_ids": [
+        142,
+        143,
+        144,
+        145
+      ],
+      "tier": "B"
+    }
+  ]
 }
