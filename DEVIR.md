@@ -115,6 +115,17 @@ buradaki gerekçeleri oku.
 **Kademe rengi kartta üç yerde:** sol dikey şerit (28px, kart boyu), kademe
 kutusu, madde işaretleri. Son sayfada dördüncü yer: künye bandı.
 
+⚠️ **Açık sorun (2026-08-30): şerit profil ızgarasında görünmüyor.**
+İlk gönderi yayınlandıktan sonra fark edildi: Instagram profil ızgarasında
+kartı yanlardan kırpıyor ve 28px'lik sol şerit kesiliyor. Kullanıcı
+gönderiye girmeden tier rengini şeritten göremiyor. Kademe kutusu
+görünmeye devam ediyor, yani renk tamamen kaybolmuyor ama şerit
+tasarımın üç taşıyıcısından biriydi.
+
+Düşünülecek yönler (henüz karar yok): şeridi kenardan içeri almak ·
+ızgarada görünen orta bölgeye tier işareti koymak · şeridi kalınlaştırmak.
+Karar verilirken ölçüt: kart tek başına açıldığında da bozulmamalı.
+
 ⚠️ **Tier renginin üzerine her zaman KREM yazı gelir.** Ölçülen kontrast:
 C 7.58 · B 5.38 · A 5.62 · **S 2.78**. S erişilebilirlik sınırının (4.5)
 altında. Koyu yazı (5.58) ve turuncuyu koyulaştırma (`#A34D09`, 4.96)
