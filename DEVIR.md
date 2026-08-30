@@ -47,7 +47,7 @@ dokunmaz.** Şablon sabit HTML/CSS'tir, LLM sadece metin alanlarını doldurur.
 | + | `tier.py` + `produce.py` — kademe ve orkestratör | ✅ |
 | + | Tasarım turu — kesinleşti 2026-08-27 | ✅ |
 | 7 | Workflow'lar — bot kendi kendine çalışıyor | ✅ |
-| **6** | **`publish.py` — Instagram paylaşımı (Meta kurulumu)** | **sıradaki** |
+| 6 | `publish.py` — Instagram paylaşımı | ✅ yazıldı, ilk canlı yayın bekliyor |
 | + | `qa.py` — görsel denetim (tasarım oturdu, artık yazılabilir) | bekliyor |
 
 **Bot artık bilgisayar kapalıyken de çalışıyor.** Günde 3 kez menü geliyor,
@@ -681,11 +681,37 @@ senaryo.
 Gecikme kabul edildiği için **ack mesajı** eklendi (bkz. bölüm 8): sistemin
 çalıştığını görmenin yolu bu.
 
-### Faz 6 · Instagram
-Facebook Sayfası + Meta developer app + hesabı Instagram Tester olarak ekleme.
-PNG repoya commit edilip `raw.githubusercontent.com` linki API'ye verilecek
-(Graph API dosya yüklemiyor, herkese açık URL istiyor). Uzun ömürlü token
-60 günde ölüyor.
+### Faz 6 · Instagram — kuruldu (2026-08-30)
+⚠️ **Facebook Sayfası GEREKMEDİ.** Meta'nın yeni "Instagram API with
+Instagram Login" yolu kullanıldı; DEVIR'deki eski plan (Sayfa açıp
+bağlama) geçersiz.
+
+Kurulum: Meta app (`questpostapp`, Business tipi) → use case
+**"Manage messaging & content on Instagram"** → izinler
+(`instagram_business_basic` + **`instagram_business_content_publish`**) →
+hesabı **Instagram Tester** olarak ekle → Instagram'da
+`instagram.com/accounts/manage_access/` adresinden daveti **kabul et**
+(bu adım atlanınca jeton üretilmiyor) → jeton üret.
+
+Secrets: `IG_ACCESS_TOKEN`, `IG_USER_ID`. App Review gerekmedi -
+kendi hesabına tester olarak paylaşım geliştirme modunda çalışıyor.
+
+**Yayınlama üç adım** (Meta'nın dayattığı sıra), `publish.py`:
+1. Her kart için container (`is_carousel_item`)
+2. Container'ların **FINISHED** olmasını bekle - Instagram görseli kendi
+   indiriyor, hemen publish edilirse hata veriyor
+3. Carousel container + `media_publish`
+
+Kartlar `raw.githubusercontent.com` üzerinden veriliyor (Instagram dosya
+yükletmiyor). Üretim ve yayınlama **ayrı** Actions çalışmaları olduğu için
+`/ok` denildiğinde kartlar çoktan push edilmiş oluyor; `publish.py` yine de
+adresleri HEAD ile yokluyor - Instagram'ın "erişemedim" hatası anlaşılmaz.
+
+⚠️ **Jeton 60 günde ölüyor.** `refresh_token.yml` ayın 1'inde çalışıp
+tazeliyor, ama **Actions kendi secret'ını yazamaz**: yeni jeton elle
+girilmeli. Betik jetonu Telegram'a **yollamıyor** (sohbete sır düşmesin),
+sadece "yenile" diyor. Yerelde `refresh_token.py --goster` ile alınıp
+Secrets'a yapıştırılıyor. `/apideadline` jetonu canlı yokluyor.
 
 Not: Graph API lisanslı müzik eklemeyi desteklemiyor; S kademesi postlarda
 `/bana` tercih edilebilir.

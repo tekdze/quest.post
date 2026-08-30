@@ -1,0 +1,62 @@
+# refresh_token.yml — Instagram jetonunu tazele, süresi dolmadan haber ver.
+#
+# Jeton 60 günde ölüyor ve öldüğü gün bot sessizce paylaşamaz hale gelir.
+# Ayda bir çalışıp jetonu yeniliyor ve Telegram'a hatırlatma yolluyor.
+#
+# ⚠️ Actions kendi secret'ını yazamaz: yenilenen jetonu IG_ACCESS_TOKEN'a
+# elle girmek gerekiyor. Betik jetonu Telegram'a YOLLAMIYOR (sohbete sır
+# düşmesin), sadece ne yapılacağını söylüyor.
+name: refresh_token
+
+on:
+  schedule:
+    # Ayın 1'i, 07:23 UTC. Garip bir dakika bilerek seçildi: tam saat
+    # başları Actions'ın en yoğun anı.
+    - cron: "23 7 1 * *"
+  workflow_dispatch:
+
+concurrency:
+  group: quest-post-state
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: bağımlılıklar
+        run: pip install -r requirements.txt
+
+      - name: jetonu yenile
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+        run: python src/refresh_token.py
+
+      - name: hata bildir
+        if: failure()
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
+        run: >
+          python src/telegram.py say
+          "instagram jetonu yenilenemedi - süresi dolmuş olabilir, elle
+          yeni jeton almak gerekiyor. actions kaydı:
+          ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+      - name: durumu kaydet
+        if: always()
+        uses: ./.github/actions/commit-state
+        with:
+          message: "refresh_token: jeton tazelendi"

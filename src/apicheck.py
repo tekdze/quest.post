@@ -101,9 +101,23 @@ def yokla_telegram() -> tuple[str, str]:
 
 
 def yokla_instagram() -> tuple[str, str]:
+    """Jeton gecerli mi. Suresi 60 gun ve doldugu gun bot sessizce susuyor."""
     if not (ROOT / "src" / "publish.py").exists():
         return "⚪", "henüz kurulmadı (Faz 6)"
-    return sari("publish.py var ama yoklama yazılmadı")
+    try:
+        import publish
+        _, user_id = publish.credentials()
+        hesap = publish.call(user_id, {"fields": "username"}, method="GET")
+    except SystemExit as exc:
+        metin = str(exc)
+        if "gerekli" in metin:
+            return "⚪", "anahtarlar girilmemiş (IG_ACCESS_TOKEN / IG_USER_ID)"
+        if "suresi dolmus" in metin or "OAuthException" in metin:
+            return kirmizi("jeton geçersiz veya süresi dolmuş")
+        return kirmizi(metin.split("\n")[0][:60])
+    except Exception as exc:                              # noqa: BLE001
+        return kirmizi(f"{type(exc).__name__}: {str(exc)[:50]}")
+    return yesil(f"çalışıyor (@{hesap.get('username', '?')})")
 
 
 # Bot en son ne zaman tetiklendi. Harici tetikleyici (cron-job.org) sessizce
