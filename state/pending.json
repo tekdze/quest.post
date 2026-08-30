@@ -3,7 +3,7 @@
     {
       "id": "20260830-gta-6",
       "etiket": "normal",
-      "durum": "onay_bekliyor",
+      "durum": "yeniden_bas",
       "baslik": "gta 6",
       "draft": "state/drafts/20260830-gta-6.json",
       "cards_dir": "out/20260830-gta-6",
@@ -13,7 +13,7 @@
         179,
         180
       ],
-      "tier": "B"
+      "tier": "S"
     }
   ]
 }
