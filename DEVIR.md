@@ -240,7 +240,7 @@ src/
   refresh_token.py
 templates/      card.html + card.css (tasarım burada, SABİT)
 fonts/          Bricolage, Outfit, OFL.txt
-state/          pending (kuyruk) · posted · menu · tg_offset
+state/          pending (kuyruk) · posted · menu · tg_offset · uyari
                 drafts/<id>.json · api_sure.json
                 candidates.json ve img/ git dışı
 out/            <id>/01.png... — repoya commit edilir (Instagram URL şartı)
@@ -342,11 +342,28 @@ yok ve `render.py` "görsel bulunamadı" diye patlıyordu. Çözüm
 görsel id'leri geri indiriliyor (yeniden seçilse `/gorsel 4 7 2` ile elle
 konan kareler değişirdi). Kimlik dosya adında: `<slug>-<image_id>.jpg`.
 
-⚠️ **Hata durumunda girdinin durumu GERİ ALINMALI.** `yeniden_bas` durumunda
-takılan post her respond çalışmasında yeniden deneniyor ve aynı hatayı
-bildiriyordu: tek bozuk post günde **288 bildirim**. Artık
-`yeniden_bas_ve_sor` her hata yolunda `onay_bekliyor`a dönüyor - kullanıcı
-bir kez uyarılıyor, döngü kurulmuyor.
+### ⚠️ Bildirim döngüsüne karşı üç katman (2026-08-30)
+Takılan tek bir post 5 dakikada bir "kartları basarken hata oldu" yolladı,
+saatlerce. Sorun tek bir hata değil, **hatanın sonsuz mesaja dönüşebilmesi**.
+Üç ayrı yerde kesiliyor, biri delinirse diğerleri tutuyor:
+
+1. **Durum geri alınıyor.** `yeniden_bas_ve_sor` her hata yolunda girdiyi
+   `onay_bekliyor`a döndürüyor. Eskiden durum olduğu gibi kalıyor ve her
+   respond çalışması aynı işi baştan deniyordu: günde **288 mesaj**.
+2. **Aynı uyarı saatte bir kez.** `telegram.hata_bildir` son gönderimi
+   `state/uyari.json`'da tutuyor; aynı uyarı `UYARI_SUSTURMA_DK` (60 dk)
+   içinde tekrar gelirse yollanmıyor, sayılıyor. Yeniden yollandığında
+   "(bu uyarı 47 kez daha tekrarlandı)" ekleniyor - sorun sessizce
+   kaybolmuyor, sadece sohbeti boğmuyor. **Hangi koddan gelirse gelsin
+   çalışır**, çünkü hatanın kendisini değil tekrarını kesiyor.
+3. **Workflow mesajları sabit anahtarlı.** Metinde Actions run numarası
+   olduğu için her seferinde farklı görünüyorlardı ve 2. katmana takılmazlardı.
+   `telegram.py say --tekrarsiz menu-workflow` sabit kimlik veriyor.
+
+Ayrıca **hata sebebi mesaja giriyor**: `respond.run` alt sürecin son stderr
+satırını saklıyor, `sebepli()` onu uyarıya ekliyor. "kartları basarken hata
+oldu" cümlesi tek başına hiçbir şey söylemiyordu; sebebi görmek için Actions
+kaydını açmak gerekiyordu.
 
 ⚠️ **Aynı hata `/yeniden`'de tekrarlandı ve aylarca görülmedi (2026-08-30).**
 Komut `write.py --index <n>` çağırıyordu, yani yine `candidates.json`'a
@@ -392,6 +409,7 @@ metadata'sı küçük boyut raporluyor ama `t_original` büyüğünü veriyor.
 | `write.py` | `MAX_ATTEMPTS` | 3 | üslup filtresi yeniden üretim |
 | | `MIN_PAGES` / `MAX_PAGES` | 1 / 10 | post uzunluğu sınırı |
 | `telegram.py` | `MAX_KUYRUK` | 3 | kuyrukta en fazla post |
+| | `UYARI_SUSTURMA_DK` | 60 | aynı uyarı bu süre içinde bir kez |
 | `render.py` | `SCALE` | 4/3 | 1080x1350 → 1440x1800 |
 
 ---

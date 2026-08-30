@@ -38,6 +38,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 import uuid
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -47,6 +48,8 @@ MENU_FILE = ROOT / "state" / "menu.json"
 # Posta bagli olmayan istekler burada bekler: telegram.py kaydeder,
 # respond.py icra eder. Kuyruk post bazli oldugu icin bunlar oraya sigmiyor.
 ISTEK_FILE = ROOT / "state" / "istek.json"
+# Tekrarlayan hata uyarilarinin kaydi (bkz. hata_bildir).
+UYARI_FILE = ROOT / "state" / "uyari.json"
 
 API = "https://api.telegram.org/bot{token}/{method}"
 CAPTION_LIMIT = 1024
@@ -283,6 +286,64 @@ def send_cards(spec: dict, cards: list[Path], etiket: str = "normal",
 def send_text(text: str) -> int:
     _, chat = config()
     return call("sendMessage", {"chat_id": chat, "text": text})["message_id"]
+
+
+# Ayni uyariyi bu sure boyunca bir kez yolla. Bot 5 dakikada bir uyandigi
+# icin takilan tek bir is gunde 288 mesaj uretebiliyor (2026-08-30'da
+# uretti). Asil cozum hatanin kendisini duzeltmek ama her hatayi onceden
+# bilemeyiz: bu, hangi yoldan gelirse gelsin tekrari kesen son emniyet.
+UYARI_SUSTURMA_DK = 60
+# Kayit bu kadar sonra unutulur: dosya sonsuza kadar sismesin.
+UYARI_OMRU_SAAT = 24
+
+
+def hata_bildir(text: str, anahtar: str | None = None) -> bool:
+    """Hata uyarısı yolla, ama aynısını tekrarlama. True = yollandı.
+
+    `anahtar`: metin her seferinde değişiyorsa (workflow mesajlarında
+    Actions run numarası var) aynı iş olarak sayılması için sabit bir
+    kimlik. Verilmezse metnin kendisi kimlik olur.
+
+    Susturulan tekrar sayılıyor ve uyarı yeniden yollandığında yazılıyor:
+    "(bu uyarı 47 kez daha tekrarlandı)". Böylece sorun sessizce kaybolmuyor,
+    sadece sohbeti boğmuyor.
+    """
+    simdi = datetime.now(timezone.utc)
+    kimlik = anahtar or text
+    kayit = read_json(UYARI_FILE, {})
+    satir = kayit.get(kimlik)
+
+    if satir:
+        try:
+            son = datetime.fromisoformat(satir["son"])
+        except (ValueError, KeyError):
+            son = None
+        if son and (simdi - son) < timedelta(minutes=UYARI_SUSTURMA_DK):
+            satir["bastirilan"] = satir.get("bastirilan", 0) + 1
+            satir["son"] = simdi.isoformat(timespec="seconds")
+            kayit[kimlik] = satir
+            write_json(UYARI_FILE, kayit)
+            print(f"uyari bastirildi ({satir['bastirilan']}. tekrar): {text[:60]}")
+            return False
+
+    bastirilan = (satir or {}).get("bastirilan", 0)
+    govde = text
+    if bastirilan:
+        govde += f"\n\n(bu uyarı {bastirilan} kez daha tekrarlandı)"
+    send_text(govde)
+
+    # Eskimis kayitlari at, yenisini yaz.
+    sinir = simdi - timedelta(hours=UYARI_OMRU_SAAT)
+    temiz = {}
+    for anahtar, deger in kayit.items():
+        try:
+            if datetime.fromisoformat(deger["son"]) >= sinir:
+                temiz[anahtar] = deger
+        except (ValueError, KeyError, TypeError):
+            continue
+    temiz[kimlik] = {"son": simdi.isoformat(timespec="seconds"), "bastirilan": 0}
+    write_json(UYARI_FILE, temiz)
+    return True
 
 
 def send_photo(path: Path, caption: str = "") -> int:
@@ -652,6 +713,8 @@ def main() -> int:
 
     p_say = sub.add_parser("say", help="duz mesaj yolla")
     p_say.add_argument("text")
+    p_say.add_argument("--tekrarsiz", default=None, metavar="ANAHTAR",
+                       help="ayni anahtarli uyari saatte bir kez yollanir")
 
     args = ap.parse_args()
 
@@ -662,6 +725,10 @@ def main() -> int:
     if args.komut == "poll":
         return do_poll()
     if args.komut == "say":
+        if args.tekrarsiz:
+            yollandi = hata_bildir(args.text, args.tekrarsiz)
+            print("gonderildi" if yollandi else "bastirildi (tekrar)")
+            return 0
         send_text(args.text)
         print("gonderildi")
         return 0

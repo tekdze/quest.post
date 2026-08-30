@@ -36,10 +36,36 @@ CANDIDATES_FILE = ROOT / "state" / "candidates.json"
 ISTEK_FILE = ROOT / "state" / "istek.json"
 
 
+# Son patlayan asamanin hata satiri. Telegram'a "kartlari basarken hata oldu"
+# yaziyorduk ve bu cumle tek basina hicbir sey soylemiyordu: sebebi gormek
+# icin Actions kaydini acmak gerekiyordu. Artik sebep mesaja giriyor.
+SON_HATA = ""
+
+
 def run(script: str, *args: str) -> bool:
+    """Bir aşamayı çalıştır. Çıktı hem Actions kaydına hem belleğe gider."""
+    global SON_HATA
     command = [sys.executable, str(SRC / script), *args]
     print(f"\n$ {script} {' '.join(args)}", flush=True)
-    return subprocess.run(command, cwd=ROOT).returncode == 0
+    sonuc = subprocess.run(command, cwd=ROOT, capture_output=True,
+                           text=True, encoding="utf-8", errors="replace")
+    # Yakalanan cikti kayda geri basiliyor: Actions log'u eskisi gibi dolu
+    # kalsin, sadece surec bitiminde yazilsin.
+    if sonuc.stdout:
+        print(sonuc.stdout, end="", flush=True)
+    if sonuc.stderr:
+        print(sonuc.stderr, end="", file=sys.stderr, flush=True)
+
+    if sonuc.returncode == 0:
+        return True
+    satirlar = [s.strip() for s in (sonuc.stderr or "").splitlines() if s.strip()]
+    SON_HATA = satirlar[-1][:180] if satirlar else f"{script} cikis kodu {sonuc.returncode}"
+    return False
+
+
+def sebepli(mesaj: str) -> str:
+    """Hata mesajına son aşamanın gerçek hata satırını ekle."""
+    return f"{mesaj}\n\n{SON_HATA}" if SON_HATA else mesaj
 
 
 def durumu_yaz(entry: dict, durum: str) -> None:
@@ -123,7 +149,7 @@ def yeniden_bas_ve_sor(entry: dict, draft: Path, cards_dir: Path,
     bildirim üretiyordu.
     """
     def hata(mesaj: str) -> int:
-        tg.send_text(etiketle(entry, mesaj))
+        tg.hata_bildir(etiketle(entry, sebepli(mesaj)))
         durumu_yaz(entry, "onay_bekliyor")
         return 1
 
@@ -163,16 +189,16 @@ def istekleri_isle() -> int:
 
     if ne == "konular":
         if not run("fetch.py"):
-            tg.send_text("kaynakları tararken hata oldu.")
+            tg.hata_bildir(sebepli("kaynakları tararken hata oldu."))
             return 1
         if not run("menu.py"):
-            tg.send_text("menüyü hazırlarken hata oldu.")
+            tg.hata_bildir(sebepli("menüyü hazırlarken hata oldu."))
             return 1
         return 0
 
     if ne == "api":
         if not run("apicheck.py"):
-            tg.send_text("anahtarları yoklarken hata oldu.")
+            tg.hata_bildir(sebepli("anahtarları yoklarken hata oldu."))
             return 1
         return 0
 
@@ -210,8 +236,7 @@ def istekleri_isle() -> int:
             return 1
 
         if not run("produce.py", "--skip-fetch", "--index", str(index)):
-            tg.send_text("üretim başarısız oldu. actions kaydına bakmak "
-                         "gerekebilir.")
+            tg.hata_bildir(sebepli("üretim başarısız oldu."))
             return 1
         return 0
 
@@ -231,8 +256,8 @@ def girdiyi_isle(entry: dict) -> int:
         # Sessizce basarisiz olmaktansa kullaniciya durumu soyle.
         if (SRC / "publish.py").exists():
             if not run("publish.py", str(draft), "--cards", str(cards_dir)):
-                tg.send_text(etiketle(entry, "paylaşım başarısız oldu, /bana ile "
-                                             "elle atabilirsin."))
+                tg.hata_bildir(etiketle(entry, sebepli(
+                    "paylaşım başarısız oldu, /bana ile elle atabilirsin.")))
                 durumu_yaz(entry, "onay_bekliyor")
                 return 1
             tg.send_text(etiketle(entry, "paylaşıldı."))
@@ -273,7 +298,7 @@ def girdiyi_isle(entry: dict) -> int:
             return 1
         if not run("write.py", "--draft", str(draft), "--tier", spec["tier"],
                    "--out", str(draft)):
-            tg.send_text(etiketle(entry, "yeniden üretim başarısız oldu."))
+            tg.hata_bildir(etiketle(entry, sebepli("yeniden üretim başarısız oldu.")))
             durumu_yaz(entry, "onay_bekliyor")
             return 1
         # write.py taslagi sifirdan yaziyor: kume hash'leri silinirdi ve
@@ -299,7 +324,7 @@ def girdiyi_isle(entry: dict) -> int:
 
     if durum == "gorsel_baska_set":
         if not run("images.py", str(draft), "--rotate", "1"):
-            tg.send_text(etiketle(entry, "görselleri değiştirirken hata oldu."))
+            tg.hata_bildir(etiketle(entry, sebepli("görselleri değiştirirken hata oldu.")))
             durumu_yaz(entry, "onay_bekliyor")
             return 1
         return yeniden_bas_ve_sor(entry, draft, cards_dir)

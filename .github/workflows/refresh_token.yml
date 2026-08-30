@@ -50,7 +50,7 @@ jobs:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
         run: >
-          python src/telegram.py say
+          python src/telegram.py say --tekrarsiz refresh-token-workflow
           "instagram jetonu yenilenemedi - süresi dolmuş olabilir, elle
           yeni jeton almak gerekiyor. actions kaydı:
           ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"

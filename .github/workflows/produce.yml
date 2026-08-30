@@ -75,7 +75,7 @@ jobs:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
         run: >
-          python src/telegram.py say
+          python src/telegram.py say --tekrarsiz produce-workflow
           "üretim zinciri hata verdi. actions kaydı:
           ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
 
