@@ -472,6 +472,65 @@ def diakritik_onar(spec: dict, model: str) -> dict:
     return style.replace_strings(spec, guvenli)
 
 
+def hedefli_onar(spec: dict, problems: list[str], source_text: str,
+                 model: str) -> dict:
+    """Takılan alanları onar. Metni BAŞTAN yazdırmaz.
+
+    Neden: bir ihlal yüzünden bütün postu çöpe atmak hem kotayı yakıyor
+    hem de sonucu belirsiz - model yeni metinde başka bir kurala takılıyor.
+    Ölçüldü (2026-08-31): iki üretim üst üste "3 denemede temiz çıktı
+    alınamadı" diye düştü ve hiç post çıkmadı.
+
+    İş bölümü aynı: LLM ÖNERİR, KOD DOĞRULAR. Onarılmış metin ancak
+    ihlal SAYISINI düşürüyorsa kabul ediliyor; artırıyorsa ya da
+    değiştirmiyorsa eski metin kalıyor. Yani bu tur postu bozamaz.
+    """
+    orijinal = [t for _, t in style.strings_of(spec)]
+    if not orijinal or not problems:
+        return spec
+
+    prompt = "\n".join([
+        "Aşağıdaki Instagram gönderisi metinleri üslup denetiminden geçemedi.",
+        "",
+        "BULUNAN SORUNLAR:",
+        *[f"- {p}" for p in problems[:10]],
+        "",
+        "GÖREV: SADECE sorunlu metinleri düzelt. Sorunu olmayan metni",
+        "OLDUĞU GİBİ geri ver - değiştirme, güzelleştirme, kısaltma.",
+        "Düzeltirken anlamı koru: aynı şeyi kurallara uyarak söyle.",
+        "",
+        "Girdiyle AYNI SAYIDA ve AYNI SIRADA metin döndür.",
+        "",
+        "METİNLER:",
+        *[f"{i}. {t}" for i, t in enumerate(orijinal, 1)],
+        "",
+        "SADECE şu şemada JSON döndür:",
+        DIAKRITIK_SEMA,
+    ])
+
+    try:
+        cevap = generate(prompt, model, temperature=0.3)
+    except (SystemExit, GecersizCevap):
+        print("  hedefli onarim yapilamadi, atlaniyor")
+        return spec
+
+    gelen = cevap.get("metinler") or []
+    if not gelen:
+        return spec
+    yeni = [gelen[i] if i < len(gelen) and isinstance(gelen[i], str) else eski
+            for i, eski in enumerate(orijinal)]
+    aday = style.autofix_suffixes(style.autofix_lowercase(
+        style.replace_strings(spec, yeni)))
+
+    onceki = len(problems)
+    sonraki = len(check_structure(aday) + style.review(aday, source_text))
+    if sonraki < onceki:
+        print(f"  hedefli onarim: {onceki} ihlal -> {sonraki}")
+        return aday
+    print(f"  hedefli onarim ise yaramadi ({onceki} -> {sonraki}), eski metin kaldi")
+    return spec
+
+
 def build_prompt(candidate: dict, source_text: str, mode: str,
                  problems: list[str] | None = None,
                  soru_tipi: str = "tercih") -> str:
@@ -531,13 +590,13 @@ def build_prompt(candidate: dict, source_text: str, mode: str,
         "16. Metnin bir yerinde TAVIR olsun: neyi tuhaf, komik, şüpheli ya da",
         "    beklenmedik buluyoruz. Haber bültenleri tarafsızdır, bu hesap",
         "    değil. Abartma ve reklam dili değil - gözlem.",
-        "12. Yazım hatası yapma. Metni yazdıktan sonra harf harf kontrol et.",
-        "13. search_name ÇEVİRİLMEZ ve KISALTILMAZ. Kaynakta hangi oyundan",
+        "17. Yazım hatası yapma. Metni yazdıktan sonra harf harf kontrol et.",
+        "18. search_name ÇEVİRİLMEZ ve KISALTILMAZ. Kaynakta hangi oyundan",
         "    bahsediliyorsa onun tam İngilizce adını yaz, sürüm numarası dahil.",
         "    Haber \"the witcher 3\" hakkındaysa \"The Witcher\" yazmak HATADIR;",
         "    yanlış oyunun görselleri basılır. Haberin konusu bir oyun değilse",
         "    (etkinlik, şirket, konsol, sektör haberi) null yaz.",
-        "14. image_candidates: haberin konusu bir oyun OLMASA BİLE, metinde adı",
+        "19. image_candidates: haberin konusu bir oyun OLMASA BİLE, metinde adı",
         "    geçen ve görseli bu haberi temsil edebilecek oyunları buraya yaz.",
         "    Örnek: haber yeni bir konsol ailesi hakkında ama içinde \"Elder",
         "    Scrolls 6 o konsola özel mi olacak\" tartışılıyorsa",
@@ -545,13 +604,13 @@ def build_prompt(candidate: dict, source_text: str, mode: str,
         "    temsil eder. Sadece adı GEÇEN oyunları yaz, konuyla ilgisi",
         "    kurulamayan bir oyunu doldurma; okur görseli haberle",
         "    ilişkilendiremezse kart yanıltıcı olur.",
-        "15. caption Instagram'da kartların altında görünecek metin.",
+        "20. caption Instagram'da kartların altında görünecek metin.",
         "    Kartlarda yazanı TEKRARLAMA - okur kartları zaten gördü.",
         "    Haberin bağlamını ver: bu neden önemli, öncesinde ne olmuştu.",
         "    2-4 cümle. Sonunda en fazla 2 hashtag, küçük harf. Üslup",
         "    kuralları burada da geçerli: emoji yok, büyük harf yok,",
         "    \"işte\" gibi kalıplar yok.",
-        "16. representative_games: bazı haberlerin konusu bir oyun değildir",
+        "21. representative_games: bazı haberlerin konusu bir oyun değildir",
         "    (konsol, şirket, etkinlik, sektör, donanım). Bu kartlar şu ana",
         "    kadar görselsiz basılıyordu ve sayfa boş duruyordu.",
         "    Bu alana, haberi GÖRSEL OLARAK temsil edebilecek oyunları yaz.",
@@ -564,7 +623,7 @@ def build_prompt(candidate: dict, source_text: str, mode: str,
         "    tanınmış örneği. Bunlar örnek, liste değil - kendi bağını kur.",
         "    Önce gerçekten dene. Yalnızca hiçbir makul bağ kuramıyorsan boş",
         "    bırak; ilgisiz bir oyun yazmak görselsiz bırakmaktan kötüdür.",
-        "17. series_fallback: konu oyununun görseli az olabilir (henüz",
+        "22. series_fallback: konu oyununun görseli az olabilir (henüz",
         "    çıkmamış oyunlarda sık). Aynı serinin/evrenin görsel bakımından",
         "    zengin oyunlarını buraya yaz - haber \"The Elder Scrolls VI\"",
         "    hakkındaysa [\"The Elder Scrolls V: Skyrim\"] gibi. Sadece",
@@ -750,6 +809,8 @@ def main() -> int:
     print(f"yazim modu: {mode} | soru tipi: {soru_tipi}\n")
 
     problems: list[str] = []
+    # Hicbir deneme temiz cikmazsa en az ihlalli taslak yollanir.
+    en_iyi: tuple[int, dict, list[str]] | None = None
     aktif_model = args.model
     for attempt in range(1, MAX_ATTEMPTS + 1):
         prompt = build_prompt(candidate, source_text, mode,
@@ -811,11 +872,44 @@ def main() -> int:
         for problem in problems[:8]:
             print(f"  - {problem}")
 
+        # Once HEDEFLI ONARIM: tum metni bastan yazdirmadan sadece takilan
+        # alanlari duzelttir. Basarirsa bu denemede biter, kota yanmaz.
+        draft = hedefli_onar(draft, problems, source_text, HELPER_MODEL)
+        problems = check_structure(draft) + style.review(draft, source_text)
+        if not problems:
+            spec = to_render_spec(draft, args.tier, candidate, index, aktif_model)
+            Path(args.out).parent.mkdir(parents=True, exist_ok=True)
+            Path(args.out).write_text(json.dumps(spec, ensure_ascii=False, indent=2),
+                                      encoding="utf-8")
+            print(f"deneme {attempt}: hedefli onarimla temiz. "
+                  f"{len(spec['pages'])} sayfa -> {args.out}")
+            return 0
+
+        # En az ihlalli taslagi sakla: hicbir deneme temiz cikmazsa bunu
+        # yollayacagiz. Hic post cikmamasi, kusurlu post cikmasindan kotu.
+        if en_iyi is None or len(problems) < en_iyi[0]:
+            en_iyi = (len(problems), draft, list(problems))
+
+    ozet = " | ".join(p.split(": ", 1)[-1][:60] for p in problems[:3])
+
+    if en_iyi is not None:
+        # KUSURLU AMA YAYINA ADAY. Kullanici kartlarda gorup karar verir;
+        # begenmezse /yeniden yazar. Eskiden bu durumda hicbir sey
+        # cikmiyordu ve kullanici sebebini de bilmiyordu.
+        _, draft, kalan = en_iyi
+        spec = to_render_spec(draft, args.tier, candidate, index, aktif_model)
+        spec["_ihlaller"] = kalan[:5]
+        out_path = Path(args.out)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        out_path.write_text(json.dumps(spec, ensure_ascii=False, indent=2),
+                            encoding="utf-8")
+        print(f"\n{MAX_ATTEMPTS} denemede temiz cikmadi. en az ihlalli taslak "
+              f"({len(kalan)} ihlal) onaya yollaniyor -> {out_path}")
+        print(f"kalan ihlaller: {ozet}", file=sys.stderr)
+        return 0
+
     # Son denemenin ihlalleri STDERR'e de yaziliyor: produce.py alt surecin
     # son stderr satirini yukari tasiyor ve Telegram mesajina o giriyor.
-    # Eskiden kullaniciya sadece "3 denemede temiz cikti alinamadi" ulasiyor,
-    # HANGI kuralin takildigi Actions kaydini acmadan bilinmiyordu.
-    ozet = " | ".join(p.split(": ", 1)[-1][:60] for p in problems[:3])
     print(f"\n{MAX_ATTEMPTS} denemede temiz cikti alinamadi. "
           f"son ihlaller: {ozet}", file=sys.stderr)
     return 1

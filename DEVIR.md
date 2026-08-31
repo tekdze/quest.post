@@ -325,6 +325,30 @@ Postlar "haber ajansı" gibi okunuyordu. Ölçülen kusurlar ve kod karşılıkl
   karakterlik bir paragrafı geçirebiliyordu. Artık 45 karakterde en az bir
   işaret bekleniyor.
 
+### Üretim artık boş dönmüyor (2026-08-31)
+Filtre sıkılaştıkça iki üretim üst üste "3 denemede temiz çıktı alınamadı"
+diye düştü ve **hiç post çıkmadı**. İki katman eklendi:
+
+1. **Hedefli onarım** (`write.hedefli_onar`): bir ihlal yüzünden bütün postu
+   çöpe atmak yerine sadece takılan alanları düzelttiriyor. İşaretsiz Türkçe
+   onarımıyla aynı desen - LLM önerir, **kod doğrular**: onarılmış metin
+   ancak ihlal SAYISINI düşürüyorsa kabul ediliyor, artırıyorsa eski metin
+   kalıyor. Yani bu tur postu bozamaz.
+2. **En az ihlalli taslak yayına aday.** Hiçbir deneme temiz çıkmazsa en az
+   sorunlu olan yollanıyor ve Telegram özetinde "üslup filtresi N sorun
+   buldu, düzeltilemedi" uyarısı çıkıyor. Kullanıcı kartlarda görüp karar
+   veriyor; beğenmezse `/yeniden`. **Hiç post çıkmaması, kusurlu post
+   çıkmasından kötü.**
+
+⚠️ **Kural eklerken ret olasılığı çarpılıyor.** Artık dört ret kaynağı var:
+sayfa yapısı, üslup kalıpları, ses kuralları, LLM yazım denetimi. Üç hakla
+üçünün de takılması artık ihmal edilebilir değil - yeni kural eklerken
+mekanik düzeltme (autofix) ya da hedefli onarım tercih edilmeli.
+
+⚠️ **İstem kural numaraları çakışmıştı.** Ses kuralları 11-16 olarak
+eklenince eski 12-17 ile üst üste bindi ve modele iki tane "12. kural"
+gidiyordu. Kural eklerken numaraları baştan sona kontrol et.
+
 ⚠️ **Kalan zayıf nokta:** çağrı kutusu hâlâ kalıba kaçıyor. "yorumlarda
 paylaş" yasaklandı, model "aşağıda paylaşabilirsin" yazdı. Kutuyu posta
 özel olmaya zorlamak ya da kaldırmak açık soru - kullanıcı kaldırmak

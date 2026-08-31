@@ -243,6 +243,16 @@ def summarize(spec: dict, cards: list[Path], etiket: str = "normal",
     if spec.get("_model") and spec["_model"] != "gemini-3.6-flash":
         lines.append(f"NOT: yedek modelle yazıldı ({spec['_model']})")
 
+    # Uslup filtresi temiz cikti alamadi ama en az ihlalli taslak yollandi:
+    # hic post cikmamasindansa kusurluyu gorup karar vermek iyidir.
+    ihlaller = spec.get("_ihlaller") or []
+    if ihlaller:
+        lines.append(f"UYARI: üslup filtresi {len(ihlaller)} sorun buldu, "
+                     "düzeltilemedi:")
+        for satir in ihlaller[:2]:
+            lines.append(f"  {satir[:90]}")
+        lines.append("beğenmezsen /yeniden yaz.")
+
     lines.append("")
     for index, page in enumerate(spec["pages"], 1):
         baslik = page.get("title") or page.get("question") or page["type"]
