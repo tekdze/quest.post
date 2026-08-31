@@ -707,6 +707,24 @@ istek.** `reddit.py` ayrıca 30 dakikalık önbellek tutuyor — çağıran kod
 ne kadar sık çalışırsa çalışsın hacim yapısal olarak sınırlı (`watch.yml`
 gibi bir iş eklenirse sessizce çarpılmasın diye).
 
+### Araştırılacak: Reddit RSS (2026-09-01, kullanıcı notu)
+Reddit listeleme adreslerinin sonuna `.rss` eklenerek veri çekilebiliyor
+(`reddit.com/r/gaming/top/.rss?t=day`). Anahtar ve kayıt gerektirmiyor.
+
+⚠️ **Önce şu ölçülmeli: RSS oy sayısını veriyor mu?** Bildiğim kadarıyla
+vermiyor — RSS başlık, bağlantı, yazar ve tarih taşıyor. Oy sayısı yoksa
+bize hiçbir faydası yok, çünkü **ihtiyacımız olan tek şey o sayı.**
+Başlık listesi zaten RSS kaynaklarımızda var.
+
+Kontrol yolu tek istek: `curl` ile bir `.rss` çekip içinde `score`,
+`ups` ya da benzeri bir alan var mı bak. Varsa `reddit.py` bu yola
+geçirilir ve anahtar derdi tamamen biter. Yoksa OAuth yolu tek seçenek.
+
+⚠️ **RSS "izinsiz" demek değil.** Aynı Data API Terms geçerli;
+kimlik doğrulamasız erişim daha düşük hız sınırına tabi (bildiğim
+kadarıyla dakikada 10) ve bulut IP'lerinden engellenebiliyor - Actions
+runner'ları tam olarak bulut IP'si.
+
 ⚠️ **Ticari kullanım eşiği ileride sorun olabilir.** Hesap bugün para
 kazanmıyor, yani "ticari değil" savunulabilir. Sponsorlu içerik veya
 ortaklık geliri gelirse bu cümle geçersiz olur ve Reddit'in Data API
