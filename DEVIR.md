@@ -130,6 +130,12 @@ kayboluyordu (gta kapağında köy ve karakterler gidip gökyüzü kalıyordu).
 Geniş bant, karenin kendi oranına yakın: hem daha çok görsel hem daha iyi
 kadraj.
 
+✔ **Oran onaylandı (2026-08-31).** Kapakta %56-63, metin sayfasında
+%60-67. Başta %80 hedeflenmişti; kapakta kademe kutusu, tür kutusu,
+başlık ve oyun adı satırının toplamı buna izin vermiyor. Kullanıcı bu
+oranı yeterli buldu - yükseltmek için başlığı küçültmek ya da oyun adı
+satırını kaldırmak gerekir, ikisi de istenmedi.
+
 ⚠️ **Sabit oran denendi, olmadı.** %80/%20 kapakta güzel duruyor ama metin
 sayfasında başlığı görselin üstüne taşırıyor ve son maddeyi kesiyor.
 Paragraf + 2 madde 270 piksele sığmıyor.
