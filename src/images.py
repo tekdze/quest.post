@@ -286,6 +286,54 @@ def assign_images(pages: list[dict], pool: dict[str, list[dict]],
     return chosen
 
 
+def haber_gorselleri(spec: dict, oyun: str | None) -> list[dict]:
+    """Kümedeki haberlerin kendi görsellerini havuz satırına çevir.
+
+    Boyut denetimi burada da geçerli: kaynakların bir kısmı 690px'e
+    küçültülmüş sürüm veriyor ve o kare kartta bulanık çıkar (ölçüldü:
+    10 kaynağın 4'ü 1280x720 eşiğini geçiyor). Bulanık kart, ilgisiz
+    görselden daha kötü görünüyor.
+
+    Boyut dosyanın ilk parçasından okunuyor - indirmeye gerek yok.
+    """
+    uyeler = ((spec.get("_aday") or {}).get("members")) or []
+    satirlar: list[dict] = []
+    gorulen: set[str] = set()
+
+    for uye in uyeler:
+        url = uye.get("image")
+        if not url or url in gorulen:
+            continue
+        gorulen.add(url)
+        if url.startswith("//"):
+            url = "https:" + url
+        try:
+            request = urllib.request.Request(
+                url, headers={"User-Agent": "questpost/0.1",
+                              "Range": f"bytes=0-{steam.BASLIK_BAYT}"})
+            with urllib.request.urlopen(request, timeout=20) as response:
+                olcu = steam.goruntu_boyutu(response.read())
+        except (urllib.error.URLError, OSError):
+            continue
+        if not olcu or olcu[0] < MIN_IMAGE_WIDTH or olcu[1] < MIN_IMAGE_HEIGHT:
+            continue
+        kaynak = uye.get("source_id") or "haber"
+        satirlar.append({
+            "id": f"haber-{uye.get('hash', len(satirlar))}",
+            "kind": "screenshot",
+            "w": olcu[0], "h": olcu[1],
+            # Kredi KAYNAGA yaziliyor, studyoya degil: kare o yayinin
+            # haberinden geliyor ve bazen kendi kurgusu oluyor (logo, kolaj).
+            # "@polygon" her durumda dogru; "@ubisoft" olmayabilir.
+            "credit": kaynak,
+            "oyun": oyun,
+            "url": url,
+            "thumb": url,
+            "_kaynak": kaynak,
+        })
+    return satirlar
+
+
 # ---------------------------------------------------------------- indirme
 
 def download(image_id: str, target: Path, url: str | None = None) -> bool:
@@ -531,6 +579,18 @@ def main() -> int:
     # kredi de kendi verisinden geliyor (bkz. DEVIR bolum 4).
     # IGDB kareleri once kaliyor: cozunurlukleri daha yuksek (4K artwork'e
     # karsi 1920x1080).
+    # HABERIN KENDI GORSELLERI. Bir editor o kareyi O HABER icin secmis,
+    # yani konuyla ilgisi garanti - magaza karesi ise pazarlama fotografi ve
+    # olayla bagi tesadufi ("kopek postu" haberine arabadaki adam dusuyordu).
+    # Havuzun BASINA giriyorlar ki eslestirme once onlari gorsun.
+    # Kredi: karede gorunen sey oyunun kendisi, o yuzden studyo yaziliyor;
+    # oyun eslesmediyse kaynak adi (bkz. DEVIR bolum 4).
+    haber_kare = haber_gorselleri(spec, game["name"])
+    if haber_kare:
+        pool["screenshot"] = haber_kare + pool["screenshot"]
+        print(f"  haber gorseli: +{len(haber_kare)} kare "
+              f"({', '.join(sorted({r['_kaynak'] for r in haber_kare}))})")
+
     steam_kare = steam.havuz(game["name"])
     if steam_kare:
         var_olan = {r["id"] for kind in pool for r in pool[kind]}

@@ -217,6 +217,26 @@ def passes_topic_filter(feed: dict, title: str, keywords: list[str]) -> bool:
     )
 
 
+def entry_image(entry) -> str | None:
+    """Haberin kendi görseli. Kartta kullanılacak en ilgili kare.
+
+    Bir editör o kareyi O HABER için seçmiş: konuyla ilgisi garanti,
+    oysa mağaza karesi pazarlama fotoğrafı ve olayla bağı tesadüf.
+    Ölçüm (2026-08-31): İngilizce haber kaynaklarının 10/10'u RSS'te
+    görsel veriyor, 4'ü karta basılacak çözünürlükte (boyut denetimi
+    images.py tarafında).
+    """
+    for alan in ("media_content", "media_thumbnail"):
+        for row in entry.get(alan) or []:
+            url = row.get("url")
+            if url:
+                return url
+    for link in entry.get("links") or []:
+        if "image" in (link.get("type") or "") and link.get("href"):
+            return link["href"]
+    return None
+
+
 def normalize(entry, feed: dict, keywords: list[str], now: datetime, max_age: timedelta):
     link = entry.get("link") or ""
     title = clean_title(entry.get("title") or "", feed["name"])
@@ -243,6 +263,7 @@ def normalize(entry, feed: dict, keywords: list[str], now: datetime, max_age: ti
         "summary": summary,
         "published": published.isoformat() if published else None,
         "age_hours": round(max(age_hours, 0.0), 1),
+        "image": entry_image(entry),
         "source_id": feed["id"],
         "source_name": feed["name"],
         "lang": feed["lang"],

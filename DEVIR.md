@@ -188,6 +188,21 @@ bozulmamalı.
 ⚠️ **Kapak ASLA yedekten/temsiliden seçilmez.** İlk kart vitrindir, orada
 haberin konusu olmayan bir oyun okuru yanıltır.
 
+### Haberin kendi görselleri
+Havuzdaki en ilgili kare, haberi yazan yayının o haber için seçtiği kare:
+bir editör zaten "bu haberi hangi görsel anlatır" sorusunu cevaplamış.
+Mağaza karesi ise pazarlama fotoğrafı, olayla bağı tesadüf ("köpek
+poşetı" haberine arabadaki adam düşüyordu). `fetch.py` RSS'ten çekiyor
+(`media_content`/`enclosure`), havuzun **başına** giriyorlar.
+
+- Ölçüm (2026-08-31): İngilizce haber kaynaklarının **10/10**'u görsel
+  veriyor, ama yalnızca **4**'ü 1280x720 eşiğini geçiyor (pcgamer, ign,
+  polygon, pcgamesn). Gerisi 690-1166px küçültülmüş sürüm.
+  ⚠️ `width=` parametresini büyütmek çözmüyor: gnwcdn'de kaynak asset
+  zaten 1140px. Bulanık kart, ilgisiz görselden daha kötü görünüyor.
+- **Kredi kaynağa yazılıyor** (`@polygon`), stüdyoya değil: kare o
+  yayının haberinden geliyor ve bazen kendi kurgusu oluyor.
+
 ### Steam havuzu (`steam.py`)
 IGDB tek kaynakken havuz bazı oyunlarda 3-4 kareye düşüyordu ve
 eşleştirme ancak havuzdaki kadar iyi olabiliyor. Steam oyun başına
