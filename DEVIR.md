@@ -3,8 +3,13 @@
 > Yeni sohbete geçerken **önce bunu oku.** Kararlar burada, kodda değil.
 > Önemli bir karar alındığında burası güncellenir.
 
-Son güncelleme: 2026-08-30 · **Sistem çalışıyor, ilk gönderi yayınlandı.**
-Bugün eklendi: esnek sayfa sayısı (bkz. bölüm 4).
+Son güncelleme: 2026-09-01 · **Sistem çalışıyor, gönderiler yayınlanıyor.**
+
+**Son iki günde değişen** (hepsi canlıda, ayrıntısı ilgili bölümlerde):
+kart tasarımı gradyansız bölme düzenine geçti (bölüm 3) · görsel havuzu üç
+kaynaktan besleniyor (bölüm 4) · görsel-sayfa eşleştirme ve kart denetimi
+eklendi (`qa.py`) · metin sesi değişti: "sen" dili, evet/hayır sorusu yasak
+(bölüm 4) · üretim artık boş dönmüyor ve hata mesajları sebep taşıyor.
 
 ---
 
@@ -400,6 +405,17 @@ yerine oturur. Diakritik onarımında bunu `fold` karşılaştırması engelliyo
 (kelime değişmişse reddediliyor) ama hedefli onarım serbestçe yeniden
 yazdığı için içerik kıyaslanamıyor - tek koruma uzunluk denetimi.
 
+⚠️ **Yedeğe geçiş "429" aramamalı.** Ana modelin günlük kotası dolunca
+önce 429 geliyor, `api_call` tekrar deniyor ve SON hata 503 olabiliyor.
+Koşul yalnızca "429" arayınca yedeğe geçmeden ölüyordu (ölçüm 2026-09-01,
+`/uret 2`). Artık 429/500/502/503'ün hepsi yedeğe düşürüyor.
+
+⚠️ **Hata mesajında SON satır işe yaramıyor.** Gemini hatası JSON gövdesiyle
+geliyor ve son satır `}` - Telegram'a "write.py: }" düşüyordu.
+`telegram.hata_satiri` yapısal satırları eliyor ve içinde
+hata/error/message geçeni seçiyor; `produce.py` ve `respond.py` ortak
+kullanıyor.
+
 ⚠️ **Kural eklerken ret olasılığı çarpılıyor.** Artık dört ret kaynağı var:
 sayfa yapısı, üslup kalıpları, ses kuralları, LLM yazım denetimi. Üç hakla
 üçünün de takılması artık ihmal edilebilir değil - yeni kural eklerken
@@ -667,8 +683,11 @@ metadata'sı küçük boyut raporluyor ama `t_original` büyüğünü veriyor.
 
 Sıra **büyüme etkisine** göre.
 
-**Bitti:** esnek sayfa sayısı · sızıntı postlarında görsel · görsel-sayfa
-eşleştirme (`qa.py`) · Steam havuzu (`steam.py`) · işaretsiz Türkçe onarımı.
+**Bitti (2026-08-30/09-01):** esnek sayfa sayısı · sızıntı postlarında
+görsel · görsel-sayfa eşleştirme ve kart denetimi (`qa.py`) · Steam havuzu
+(`steam.py`) · haberin kendi görselleri · işaretsiz Türkçe onarımı · ses
+kuralları · gradyansız kart tasarımı · üretim dayanıklılığı (hedefli onarım,
+en az ihlalli taslak, yedek modele geçiş, hata sebebinin taşınması).
 
 ⚠️ **Haftalık derleme İSTENMEDİ (2026-08-30).** Yazıldı, çalıştı, sonra
 kullanıcı istemediğini söyledi ve tamamen geri alındı. Yeniden önerilmesin.
@@ -678,13 +697,18 @@ duruyor ama menü akışı `--index` ile çağırdığı için o döngüye giril
 ### Sistem değerlendirmesi (2026-08-30)
 **Sağlam olan:** LLM'in dar tutulması, üslup filtresi, telif disiplini.
 
-**Zayıf olan:**
+**Zayıf olan (2026-09-01 itibarıyla):**
 - ⚠️ **Kademe sistemi fiilen ölü.** Üretilen postların hepsi B çıkıyor, S
-  neredeyse hiç gelmiyor. Vitrindeki fikir çalışmıyor.
-- Kaynak havuzu tek tip (22 RSS, hepsi İngilizce haber sitesi)
+  neredeyse hiç gelmiyor. Vitrindeki fikir çalışmıyor. **En büyük açık bu.**
+- ⚠️ **Seçim ölçütü yaygınlık, ilginçlik değil.** "Kaç kaynak yazdı" sinyali
+  en çok tekrarlanan, yani en sıradan haberi öne çıkarıyor. Paylaşılabilir
+  haberi (köpek poşeti mekaniği gibi) genelde bir iki kaynak yazar, o da C
+  kademesine düşüp hiç üretilmez. Menüdeki ⭐ öneri "ilginç mi" diye
+  soruyor ama tier hesabını ezmiyor.
+- Kaynak havuzu tek tip (RSS, hepsi haber sitesi)
 - Tam makale çekilmiyor, RSS özetleri birleştiriliyor — "duyuran" seviyede
-- Görsel sayfa **tipine** göre dağıtılıyor, içerikle bağı tesadüf
-- Tek format: hep haber. Uzunluk artık değişken ama format tek
+- Tek format: hep haber. Uzunluk ve ses değişti ama format tek
+- Görsel-içerik bağı DÜZELDİ (`qa.py` eşleştirme + kart denetimi)
 
 **Büyüme tahmini:** Bu içerikle yavaş büyür ve sebebi kalite değil **format**.
 Instagram kaydetme/paylaşma/yorumu ödüllendiriyor, haber ise tüketilip
