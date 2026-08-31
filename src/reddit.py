@@ -68,6 +68,18 @@ SUBREDDITS = ["Games", "pcgaming", "GamingLeaksAndRumours"]
 # diske yaziliyor: Actions'ta gunde ~300 calisma var.
 TOKEN_FILE = ROOT / "state" / "reddit_token.json"
 
+# Gonderi onbellegi. Su an fetch.py gunde 3 kez calisiyor, yani gunde 9
+# istek - ucretsiz katmanin (dakikada 100) binde biri. Ama bu sayi
+# fetch.py'nin cagrilma sikligina bagli ve o degisebilir: watch.yml gibi
+# bir is eklenirse istek sayisi sessizce carpilir.
+#
+# Onbellek hacmi CAGIRAN KODDAN BAGIMSIZ sinirliyor - kim ne kadar sik
+# cagirirsa cagirsin, reddit'e 30 dakikada birden fazla gidilmiyor.
+# Sicak gonderi listesi zaten 30 dakikada anlamli olcude degismiyor,
+# yani hicbir sey kaybetmiyoruz.
+ONBELLEK_FILE = ROOT / "state" / "reddit_cache.json"
+ONBELLEK_DK = 30
+
 # Baslik eslestirmede sayilmayan kelimeler. Haber basliklarinin yarisi
 # bunlardan olusuyor ve dahil edilirse her sey her seye benziyor.
 STOPWORDS = {
@@ -177,6 +189,14 @@ def sicak_gonderiler(limit: int = 50, sure: str = "day") -> list[dict]:
     Bos liste dondurmek NORMAL: anahtar yoksa ya da reddit erisilemezse
     sistem sinyalsiz calismaya devam eder.
     """
+    if ONBELLEK_FILE.exists():
+        try:
+            kayit = json.loads(ONBELLEK_FILE.read_text(encoding="utf-8"))
+            if kayit.get("zaman", 0) > time.time() - ONBELLEK_DK * 60:
+                return kayit["gonderiler"]
+        except (json.JSONDecodeError, KeyError):
+            pass          # bozuk onbellek: yenisini cek, patlatma
+
     jeton = token()
     if jeton is None:
         return []
@@ -202,6 +222,15 @@ def sicak_gonderiler(limit: int = 50, sure: str = "day") -> list[dict]:
                 "url": veri.get("url") or "",
                 "permalink": "https://reddit.com" + (veri.get("permalink") or ""),
             })
+
+    # Bos sonuc ONBELLEGE YAZILMIYOR: butun subredditler hata verdiyse
+    # yarim saat boyunca sinyalsiz kalmanin anlami yok, bir sonraki
+    # calisma tekrar denesin.
+    if gonderiler:
+        ONBELLEK_FILE.parent.mkdir(parents=True, exist_ok=True)
+        ONBELLEK_FILE.write_text(json.dumps(
+            {"zaman": time.time(), "gonderiler": gonderiler},
+            ensure_ascii=False), encoding="utf-8")
     return gonderiler
 
 

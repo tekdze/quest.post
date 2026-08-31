@@ -24,3 +24,7 @@ state/drafts/_uretiliyor-*.json
 
 # elle calistirma ciktisi (produce.py kendi id'ini kullaniyor)
 state/drafts/_elle.json
+
+# Reddit jetonu ve onbellegi: sir ve gecici veri, repoya girmez
+state/reddit_token.json
+state/reddit_cache.json

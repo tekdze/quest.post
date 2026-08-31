@@ -627,6 +627,22 @@ out/            <id>/01.png... — repoya commit edilir (Instagram URL şartı)
 **Bekleyen (ikisi de opsiyonel, yokken sistem eskisi gibi çalışır):**
 `REDDIT_CLIENT_ID` · `REDDIT_CLIENT_SECRET` — ilgi sinyali için.
 reddit.com/prefs/apps → "script" tipi uygulama → ücretsiz, salt okuma.
+
+### ⚠️ Reddit politika duruşu
+Kullanım bilinçli olarak **sensör**: gönderi metni, yorum ve görsel
+alınmıyor, karta Reddit'ten hiçbir şey basılmıyor. Yalnızca oy sayısı
+sıralama için okunuyor. İçerik yeniden yayınlamak politikaların asıl
+konusu ve biz onu hiç yapmıyoruz.
+
+Hacim: subreddit başına 1 istek × 3 subreddit × günde 3 menü = **günde 9
+istek.** `reddit.py` ayrıca 30 dakikalık önbellek tutuyor — çağıran kod
+ne kadar sık çalışırsa çalışsın hacim yapısal olarak sınırlı (`watch.yml`
+gibi bir iş eklenirse sessizce çarpılmasın diye).
+
+⚠️ **Ticari kullanım eşiği ileride sorun olabilir.** Hesap bugün para
+kazanmıyor, yani "ticari değil" savunulabilir. Sponsorlu içerik veya
+ortaklık geliri gelirse bu cümle geçersiz olur ve Reddit'in Data API
+Terms'i yeniden okunmalı. Şimdiden bilinsin diye yazıldı.
 `GH_MODELS_TOKEN` yalnızca yerel deneme için; Actions'ta `GITHUB_TOKEN`
 zaten var ve `permissions: models: read` yeterli.
 
