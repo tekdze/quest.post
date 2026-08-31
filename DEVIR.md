@@ -300,6 +300,36 @@ yani bu tur metni bozamaz, en kötü ihtimalle bir şey düzeltmez.
 Ölçüm (2026-08-31): dün düşen haber yedek modelle üretildi, 13 metin
 onarıldı, filtre temiz geçti.
 
+### Ses ve hitap (2026-08-31)
+Postlar "haber ajansı" gibi okunuyordu. Ölçülen kusurlar ve kod karşılıkları:
+
+- **Son sayfa sorusu evet/hayır sorusuydu** ("ister miydiniz", "dener
+  miydiniz"). Okurun söyleyecek bir şeyi kalmıyor, yorum gelmiyor.
+  `EVET_HAYIR` soru ekine KİŞİ eki eklenmiş halleri yasaklıyor.
+  ⚠️ Çıplak "mı/mi" yasak DEĞİL: "kötü olmak mı, sevimli olmak mı" iyi bir
+  tercih sorusu ve aynı eki taşıyor.
+- **`SORU_TIPLERI`**: tercih · karşıt görüş · kişisel deneyim · sebep ·
+  somut ayrıntı. Her üretimde rastgele biri, `WRITING_MODES` gibi. Sabit
+  bırakılınca model her postta aynı kalıbı yazıyordu.
+- **"siz" dili yasak**, okura "sen" denir. Kartlar küçük harfli ve samimi;
+  resmi çoğul dil tasarımla çelişiyordu. Denetim yalnızca okura seslenilen
+  alanlarda (soru + çağrı) - gövdeye uygulansa filtre çok sıkı olurdu.
+- **Gazeteci kelimeleri yasak**: "yapım" (oyuna oyun de), "söz konusu",
+  "dikkat çekiyor", "imza attı", "hayata geçiriyor". "yapımcı" muaf.
+- **Maddeler etiket değil cümle**: "detaylı dekorasyon seçenekleri" bir şey
+  söylemiyor. Fiil işareti aranıyor (`yor/acak/abilir/mış`...).
+  ⚠️ Kısa geçmiş zaman ekleri ("dı", "di") listede YOK: "kaydıyla" gibi
+  isimlerde de geçip yanlış onay veriyorlardı.
+- **İşaretsiz Türkçe kuralı yoğunluğa çevrildi.** Eskiden "hiç işaret yok"
+  deniyordu ve tek bir "minyatür" kelimesi, gerisi tamamen işaretsiz 185
+  karakterlik bir paragrafı geçirebiliyordu. Artık 45 karakterde en az bir
+  işaret bekleniyor.
+
+⚠️ **Kalan zayıf nokta:** çağrı kutusu hâlâ kalıba kaçıyor. "yorumlarda
+paylaş" yasaklandı, model "aşağıda paylaşabilirsin" yazdı. Kutuyu posta
+özel olmaya zorlamak ya da kaldırmak açık soru - kullanıcı kaldırmak
+istemedi (takip daveti ayrı bir sabit satır, o kalıyor).
+
 Yazım modu her üretimde rastgele seçiliyor (gözlem / karşılaştırma / tarihsel
 not / sayısal detay / karşı görüş) — sabit açılış kalıbı oluşmasın.
 

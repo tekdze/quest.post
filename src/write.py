@@ -69,6 +69,25 @@ CATEGORIES = [
     "finansman", "kapanma", "demo", "tartışma",
 ]
 
+# Son sayfanin soru tipi. Her uretimde rastgele biri secilir.
+#
+# Neden var: model serbest birakilinca her postta ayni kalibi yaziyordu -
+# "... ister miydiniz?", "... dener miydiniz". Bunlar cevabi "evet" olan
+# sorular, yani okurun soyleyecek bir seyi olmuyor ve yorum gelmiyor.
+# Tip vermek kalibi kiriyor; yasagi style.py uyguluyor.
+SORU_TIPLERI = {
+    "tercih": "iki seçenek sun, okur birini seçsin "
+              "(ornek: \"kotu olmak mi daha eglenceli, sevimli olmak mi\")",
+    "karşıt görüş": "olayin tartismali yanini sor, okuru taraf tutmaya cagir "
+                    "(ornek: \"bu bir ozellik mi yoksa zaman kaybi mi\")",
+    "kişisel deneyim": "okurun kendi hikayesini cagir "
+                       "(ornek: \"senin rafinda boyle bir kose olsa ne koyardin\")",
+    "sebep": "okura NEDEN diye sor, aciklama istesin "
+             "(ornek: \"gezegeni hastalik gibi sarmak neden bu kadar cekici\")",
+    "somut ayrıntı": "haberdeki BELIRLI bir detay uzerine sor, genel konu "
+                     "uzerine degil",
+}
+
 # Her uretimde rastgele biri secilir. Sabit acilis kalibi olusmasini engeller.
 WRITING_MODES = {
     "gözlem": "olayın somut bir detayına odaklan, genel yorum yapma",
@@ -454,7 +473,8 @@ def diakritik_onar(spec: dict, model: str) -> dict:
 
 
 def build_prompt(candidate: dict, source_text: str, mode: str,
-                 problems: list[str] | None = None) -> str:
+                 problems: list[str] | None = None,
+                 soru_tipi: str = "tercih") -> str:
     sources = ", ".join(candidate["sources"])
     mode_hint = WRITING_MODES[mode]
 
@@ -485,9 +505,32 @@ def build_prompt(candidate: dict, source_text: str, mode: str,
         "9. 'a, b ve c' şeklinde üç öğeli liste kalıbı kurma.",
         "10. Yabancı özel isimlere Türkçe ek eklerken okunuşa göre seç:",
         "    godot'u (godot'yu DEĞİL), steam'de, unity'yi, valve'ın, xbox'ta, epic'te.",
-        "11. Son sayfada TEK çağrı yazılır ve yumuşak olur: okuru düşünmeye",
-        "    veya yorum yazmaya davet eden bir cümle. 'beğen', 'paylaş' yazma;",
-        "    takip daveti zaten kartın kendisinde sabit metin olarak var.",
+        "11. Son sayfanın SORUSU cevabı \"evet\" olan bir soru OLAMAZ.",
+        "    \"... ister misin\", \"... dener miydiniz\", \"... merak ediyor",
+        "    musun\" gibi kalıplar YASAK: okurun söyleyecek bir şeyi kalmıyor.",
+        "    Soru, cevaplamak için düşünmeyi gerektirmeli.",
+        f"    Bu postun soru tipi: {soru_tipi} - {SORU_TIPLERI[soru_tipi]}",
+        "    Soru haberdeki SOMUT bir şeye değsin, genel temenniye değil.",
+        "12. Son sayfadaki çağrı SORUYU TEKRARLAMAZ. Soru zaten yorum",
+        "    davetidir; çağrı ondan farklı bir cümle olmalı ya da okura",
+        "    somut bir şey söylemeli. 'düşüncelerini yorumlarda paylaş' gibi",
+        "    her posta uyan bir cümle yazma - o cümle her postta aynı çıkıyor",
+        "    ve hesabı otomatik gösteriyor. 'beğen', 'paylaş', 'takip et'",
+        "    yazma; takip daveti kartın kendisinde sabit metin olarak var.",
+        "13. Okura \"SEN\" diye hitap et, \"siz\" değil. \"ne düşünüyorsun\"",
+        "    yaz, \"ne düşünüyorsunuz\" yazma; \"senin rafında\" yaz,",
+        "    \"raflarınızda\" yazma. Kartlar samimi ve küçük harfli; resmi",
+        "    çoğul dil o tasarımla çelişiyor ve metni bülten gibi gösteriyor.",
+        "14. GAZETECİ KELİMELERİ yasak: 'yapım' (oyuna oyun de), 'söz konusu',",
+        "    'dikkat çekiyor', 'yer alıyor', 'imza attı', 'hayata geçiriyor'.",
+        "    Edilgen kalıplardan kaç: 'taşınıyor' yerine 'taşıyor', 'sunuluyor'",
+        "    yerine 'sunuyor'. Kim ne yapıyorsa onu yaz.",
+        "15. Maddeler ETİKET DEĞİL, cümle olacak. 'detaylı dekorasyon",
+        "    seçenekleri' bir şey söylemiyor; 'raflara istediğin maketi",
+        "    yerleştirebiliyorsun' söylüyor. Her maddede bir fiil olsun.",
+        "16. Metnin bir yerinde TAVIR olsun: neyi tuhaf, komik, şüpheli ya da",
+        "    beklenmedik buluyoruz. Haber bültenleri tarafsızdır, bu hesap",
+        "    değil. Abartma ve reklam dili değil - gözlem.",
         "12. Yazım hatası yapma. Metni yazdıktan sonra harf harf kontrol et.",
         "13. search_name ÇEVİRİLMEZ ve KISALTILMAZ. Kaynakta hangi oyundan",
         "    bahsediliyorsa onun tam İngilizce adını yaz, sürüm numarası dahil.",
@@ -698,15 +741,19 @@ def main() -> int:
 
     source_text = source_text_of(candidate)
     mode = args.mode or random.choice(list(WRITING_MODES))
+    # Son sayfanin soru tipi de her uretimde degisiyor: sabit birakilinca
+    # model her postta ayni kalibi ("... ister miydiniz") yaziyordu.
+    soru_tipi = random.choice(list(SORU_TIPLERI))
 
     print(f"aday: {candidate['title'][:70]}")
     print(f"kaynak sayisi: {candidate['source_count']} ({', '.join(candidate['sources'])})")
-    print(f"yazim modu: {mode}\n")
+    print(f"yazim modu: {mode} | soru tipi: {soru_tipi}\n")
 
     problems: list[str] = []
     aktif_model = args.model
     for attempt in range(1, MAX_ATTEMPTS + 1):
-        prompt = build_prompt(candidate, source_text, mode, problems or None)
+        prompt = build_prompt(candidate, source_text, mode,
+                              problems or None, soru_tipi)
         try:
             draft = generate(prompt, aktif_model, args.temperature)
         except SystemExit as exc:

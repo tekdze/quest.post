@@ -140,10 +140,16 @@ def check_patterns(spec: dict) -> list[str]:
             problems.append(f"{path}: 2'den fazla hashtag")
 
         # Isaretsiz Turkce: LLM "ayni", "hazirlaniyor", "buyuk" yaziyor.
-        # 60 karakterden uzun bir Turkce metinde ı/ş/ğ/ü/ö/ç harflerinden
-        # HIC yoksa metin neredeyse kesin isaretsiz yazilmis.
-        if len(text) > 60 and not TR_CHARS & set(text):
-            problems.append(f"{path}: Turkce karakter hic yok, isaretsiz yazilmis")
+        # Eskiden kural "HIC isaret yok" idi ve fazla gevsekti: tek bir
+        # "minyatür" kelimesi, gerisi tamamen isaretsiz olan 185 karakterlik
+        # bir paragrafi gecirebiliyordu (olcum 2026-08-31). Artik YOGUNLUK
+        # olculuyor - duzgun Turkce metinde isaretli harf seyrek degildir.
+        if len(text) > 60:
+            gereken = max(1, len(text) // 45)
+            varolan = sum(1 for ch in text if ch in TR_CHARS)
+            if varolan < gereken:
+                problems.append(f"{path}: Turkce isaretler eksik "
+                                f"({varolan}/{gereken}), isaretsiz yazilmis")
 
         # Ucluk kalibi: "a, b ve c" - metnin her yerinde tekrarlayan bir tik.
         if re.search(r"\w+, [^,.]{3,40}, [^,.]{3,40} ve ", folded):
@@ -162,6 +168,112 @@ def check_patterns(spec: dict) -> list[str]:
             if first.endswith("?"):
                 problems.append(f"{page['type']}.{field}: soru cumlesiyle basliyor")
 
+    return problems
+
+
+# Evet/hayir sorusu kalibi: soru ekine KISI eki eklenmis haller.
+# "ister miydiniz", "dener misin", "merak ediyor musun" - cevabi "evet"
+# olan sorular, okurun soyleyecek bir seyi kalmiyor.
+# Cipilak "mi/mi" YASAK DEGIL: "kotu olmak mi, sevimli olmak mi" iyi bir
+# tercih sorusu ve ayni eki tasiyor.
+EVET_HAYIR = re.compile(
+    r"\b(mı|mi|mu|mü)(sın|sin|sun|sün|sınız|siniz|sunuz|sünüz|ydı|ydi|ydu|ydü)\w*",
+    re.IGNORECASE)
+
+# Okura resmi cogul hitap. Kartlar kucuk harfli ve samimi; "siz" dili
+# tasarimla celisiyor ve metni bulten gibi gosteriyor.
+SIZ_DILI = re.compile(r"\w{3,}(nız|niz|nuz|nüz|sınız|siniz|sunuz|sünüz)\b",
+                      re.IGNORECASE)
+# "deniz" gibi kelimeler yanlislikla yakalanmasin.
+SIZ_ISTISNA = {"deniz", "peniz", "beniz"}
+
+# Gazeteci doldurmalari. Kok halinde araniyor: "yapım", "yapımın",
+# "yapımı" hepsi yakalanir ama "yapımcı" (gercek bir meslek) muaf.
+GAZETECI_KALIPLARI = [
+    (re.compile(r"(^|\W)yapim(?!ci)\w*", re.IGNORECASE), "yapım (oyuna oyun de)"),
+    (re.compile(r"(^|\W)soz konusu", re.IGNORECASE), "söz konusu"),
+    (re.compile(r"(^|\W)dikkat cek\w*", re.IGNORECASE), "dikkat çekiyor"),
+    (re.compile(r"(^|\W)imza at\w*", re.IGNORECASE), "imza attı"),
+    (re.compile(r"(^|\W)hayata gecir\w*", re.IGNORECASE), "hayata geçiriyor"),
+]
+
+# Maddede fiil var mi? Turkce fiiller bu eklerden birini tasiyor.
+# Kisa gecmis zaman ekleri ("dı", "di") LISTEDE YOK: "kaydıyla" gibi
+# isimlerde de geciyor ve yanlis onay veriyorlardi.
+FIIL_ISARETLERI = ("yor", "acak", "ecek", "abilir", "ebilir",
+                   "malı", "meli", "mış", "miş", "muş", "müş")
+
+
+def check_ses(spec: dict) -> list[str]:
+    """Ses ve hitap denetimi: son sayfa sorusu, çağrı, maddeler.
+
+    Dar tutuluyor - yalnızca okura seslenilen ve kalıplaşan yerler.
+    Gövde metnine uygulansa filtre çok sıkı olur ve üç deneme de yanar
+    (2026-08-31'de büyük harf kuralı yüzünden bir üretim böyle düştü).
+    """
+    problems: list[str] = []
+
+    for page in spec.get("pages", []):
+        if not isinstance(page, dict):
+            continue
+
+        if page.get("type") == "outro":
+            soru = (page.get("question") or "").strip()
+            if soru and EVET_HAYIR.search(soru):
+                problems.append(
+                    "outro.question: cevabı \"evet\" olan soru "
+                    "(\"... misin / miydiniz\"). Düşünmeyi gerektiren soru yaz")
+            cagrilar = page.get("ctas") or []
+            for sira, cagri in enumerate(cagrilar):
+                if not isinstance(cagri, str):
+                    continue
+                if fold(cagri) in fold(soru) or fold(soru) in fold(cagri):
+                    problems.append(f"outro.ctas[{sira}]: soruyu tekrarlıyor")
+                # Her posta uyan cagri = her postta ayni cumle. Hesabi
+                # otomatik gosteren sey buydu.
+                if "yorumlarda paylas" in fold(cagri) or "yorum yaz" in fold(cagri):
+                    problems.append(
+                        f"outro.ctas[{sira}]: kalıp çağrı (\"yorumlarda "
+                        f"paylaş\"). Bu posta özel bir şey söyle")
+
+        # Maddeler etiket degil cumle olmali.
+        for sira, madde in enumerate(page.get("bullets") or []):
+            if not isinstance(madde, str) or not madde.strip():
+                continue
+            if not any(isaret in fold(madde) for isaret in
+                       (fold(x) for x in FIIL_ISARETLERI)):
+                problems.append(
+                    f"{page.get('type')}.bullets[{sira}]: fiil yok, etiket gibi "
+                    f"(\"{madde[:34]}\")")
+
+    # "siz" dili: yalnizca okura seslenen alanlarda.
+    for page in spec.get("pages", []):
+        if not isinstance(page, dict) or page.get("type") != "outro":
+            continue
+        for alan, metin in (("question", page.get("question")),
+                            *((f"ctas[{i}]", c) for i, c in
+                              enumerate(page.get("ctas") or []))):
+            if not isinstance(metin, str):
+                continue
+            for kelime in re.findall(r"\w+", metin):
+                if kelime.lower() in SIZ_ISTISNA:
+                    continue
+                if SIZ_DILI.fullmatch(kelime):
+                    problems.append(f"outro.{alan}: \"siz\" dili (\"{kelime}\"), "
+                                    f"okura \"sen\" diye hitap et")
+                    break
+
+    return problems
+
+
+def check_gazeteci(spec: dict) -> list[str]:
+    """Haber bülteni doldurmaları. Hesabın sesi değil."""
+    problems: list[str] = []
+    for path, text in strings_of(spec):
+        folded = fold(text)
+        for desen, ad in GAZETECI_KALIPLARI:
+            if desen.search(folded):
+                problems.append(f"{path}: gazeteci kalıbı \"{ad}\"")
     return problems
 
 
@@ -221,7 +333,9 @@ def check_numbers(spec: dict, source_text: str) -> list[str]:
 
 def review(spec: dict, source_text: str) -> list[str]:
     """Tum denetimler. Bos liste = temiz."""
-    return check_patterns(spec) + check_suffixes(spec) + check_numbers(spec, source_text)
+    return (check_patterns(spec) + check_suffixes(spec)
+            + check_ses(spec) + check_gazeteci(spec)
+            + check_numbers(spec, source_text))
 
 
 def replace_strings(spec: dict, yeni: list[str]) -> dict:
@@ -247,8 +361,15 @@ def replace_strings(spec: dict, yeni: list[str]) -> dict:
 
 
 def isaretsiz(text: str) -> bool:
-    """Türkçe işaretleri düşmüş uzun metin mi? (`ı, ş, ğ, ü, ö, ç` hiç yok)"""
-    return len(text) > 40 and not TR_CHARS & set(text)
+    """Türkçe işaretleri düşmüş uzun metin mi?
+
+    Ölçü YOĞUNLUK: tek bir "minyatür" kelimesi, gerisi tamamen işaretsiz
+    olan bir paragrafı geçiremesin (ölçüm 2026-08-31). `check_patterns`
+    ile aynı eşik.
+    """
+    if len(text) <= 40:
+        return False
+    return sum(1 for ch in text if ch in TR_CHARS) < max(1, len(text) // 45)
 
 
 def tr_lower(text: str) -> str:
