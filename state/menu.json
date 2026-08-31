@@ -1,7 +1,7 @@
 {
-  "olusturuldu": "2026-08-31T16:07:41+00:00",
-  "oneri": 6,
-  "gerekce": "aktivision un hileciye evinde ihtarname vermesi çok konuşulur",
+  "olusturuldu": "2026-08-31T17:10:39+00:00",
+  "oneri": 5,
+  "gerekce": "şirketin hileciye evinde tebligat yapıp bunu videoya kaydetmesi çok dikkat çekici.",
   "adaylar": [
     {
       "sira": 1,
@@ -16,7 +16,7 @@
         "url": "https://www.eurogamer.net/onimusha-way-of-the-sword-review",
         "summary": "Legendary swordsman Miyamoto Musashi considered himself more an artist than a fighter. A keen strategist and a self-proclaimed master of war, I think it's Musashi's art that hits more keenly than his katana: it's minimalist, monochromatic, a study of nature defined by its simple brilliance. Less is more. Whether intentional or not, I think Capcom may have internalised this philosophy when creating Onimusha: Way of the Sword - a game based loosely on the life and conquests of Musashi. Seldom over-complicated and often composed with artisanal skill, Way of the Sword takes the philosophies of 16t",
         "published": "2026-08-31T15:05:47+00:00",
-        "age_hours": 1.0,
+        "age_hours": 2.1,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -29,9 +29,9 @@
           "kotaku",
           "nintendolife",
           "pcgamer",
-          "polygon"
+          "pcgamesn"
         ],
-        "rank_score": 13.68,
+        "rank_score": 13.66,
         "members": [
           {
             "hash": "3087504708d86671",
@@ -39,7 +39,7 @@
             "title": "Onimusha: Way of the Sword review",
             "summary": "Legendary swordsman Miyamoto Musashi considered himself more an artist than a fighter. A keen strategist and a self-proclaimed master of war, I think it's Musashi's art that hits more keenly than his katana: it's minimalist, monochromatic, a study of nature defined by its simple brilliance. Less is more. Whether intentional or not, I think Capcom may have internalised this philosophy when creating Onimusha: Way of the Sword - a game based loosely on the life and conquests of Musashi. Seldom over-complicated and often composed with artisanal skill, Way of the Sword takes the philosophies of 16t",
             "published": "2026-08-31T15:05:47+00:00",
-            "age_hours": 1.0,
+            "age_hours": 2.1,
             "image": "https://assetsio.gnwcdn.com/onimusha-header.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
@@ -52,33 +52,34 @@
             ]
           },
           {
-            "hash": "2a8597eae20faf7c",
-            "url": "https://www.pcgamer.com/games/action/onimusha-way-of-the-sword-review",
-            "title": "Onimusha: Way of the Sword review",
-            "summary": "Ferociously good combat brings this long-dormant series back from the afterlife.",
-            "published": "2026-08-31T15:00:00+00:00",
-            "age_hours": 1.1,
-            "image": "https://cdn.mos.cms.futurecdn.net/n4Yy5DBDuYQkZPMBnZ5RXF-1280-80.jpg",
-            "source_id": "pcgamer",
-            "source_name": "PC Gamer",
+            "hash": "9312085de4cdf16c",
+            "url": "https://www.pcgamesn.com/onimusha-way-of-the-sword/review",
+            "title": "Onimusha: Way of the Sword review - A sword saintly samurai thriller",
+            "summary": "Onimusha is finally back, and Capcom’s penchant for sound storytelling and moreish combat shine through a bleak, Genma-infested Kyoto.",
+            "published": "2026-08-31T15:02:00+00:00",
+            "age_hours": 2.1,
+            "image": "https://www.pcgamesn.com/wp-content/sites/pcgamesn/2026/08/onimusha-way-of-face.jpg",
+            "source_id": "pcgamesn",
+            "source_name": "PCGamesN",
             "lang": "en",
             "kind": "news",
             "bucket": "news",
             "weight": 0.7,
             "tags": [
-              "mainstream"
+              "mainstream",
+              "pc"
             ]
           },
           {
-            "hash": "0e734e6699734c04",
-            "url": "https://www.polygon.com/onimusha-way-of-the-sword-review",
-            "title": "Onimusha: Way of the Sword Review: Capcom’s Samurai Epic Overstays Its Welcome",
-            "summary": "Onimusha: Way of the Sword impresses with its thrilling duels, but it’s bogged down by a glut of recycled content.",
-            "published": "2026-08-31T15:00:14+00:00",
-            "age_hours": 1.1,
-            "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/08/onimusha-way-of-the-sword-feather-battle.jpg",
-            "source_id": "polygon",
-            "source_name": "Polygon",
+            "hash": "2a8597eae20faf7c",
+            "url": "https://www.pcgamer.com/games/action/onimusha-way-of-the-sword-review",
+            "title": "Onimusha: Way of the Sword review",
+            "summary": "Ferociously good combat brings this long-dormant series back from the afterlife.",
+            "published": "2026-08-31T15:00:00+00:00",
+            "age_hours": 2.2,
+            "image": "https://cdn.mos.cms.futurecdn.net/n4Yy5DBDuYQkZPMBnZ5RXF-1280-80.jpg",
+            "source_id": "pcgamer",
+            "source_name": "PC Gamer",
             "lang": "en",
             "kind": "news",
             "bucket": "news",
@@ -93,7 +94,7 @@
             "title": "Review: Onimusha: Way Of The Sword (Switch 2) - Capcom Delivers A Superb Samurai Revival",
             "summary": "Dawn of a new dream. There’s a lot riding on Onimusha: Way of the Sword . Capcom has a few dormant franchises in its dusty closets just waiting to be revived, yet this one feels particularly significant. Despite never really taking off commercially, Onimusha commanded a passionate fanbase that continues to hold the series in the highest regard – right up there with the likes of Resident Evil and Devil May Cry . So to bring back Onimusha with a brand-new mainline entry in 2026 — two decades after the last game — feels especially risky, but it’s one that I’m happy to report has largely paid off.",
             "published": "2026-08-31T15:00:00+00:00",
-            "age_hours": 1.1,
+            "age_hours": 2.2,
             "image": "https://images.nintendolife.com/adc91c5fcf5a8/large.jpg",
             "source_id": "nintendolife",
             "source_name": "Nintendo Life",
@@ -112,7 +113,7 @@
             "title": "Onimusha: Way Of The Sword: The Kotaku Review",
             "summary": "Capcom buries something special beneath a lot of compromises",
             "published": "2026-08-31T15:00:47+00:00",
-            "age_hours": 1.1,
+            "age_hours": 2.2,
             "image": "https://kotaku.com/app/uploads/2026/08/image-2026-08-31T090445.966-1280x720.jpg",
             "source_id": "kotaku",
             "source_name": "Kotaku",
@@ -127,7 +128,7 @@
         ]
       },
       "oyun_adi": "Onimusha: Way of the Sword",
-      "ozet": "oyunun incelemesi minimalik ve monotonik sanat tasarimini övüyor",
+      "ozet": "yazar oyunun minimalist ve monokromatik sanat tarzını övüyor.",
       "gorsel": {
         "durum": "var",
         "sayi": 14,
@@ -142,37 +143,57 @@
       "sira": 2,
       "aday_index": 2,
       "tier": "A",
-      "title": "The Blood of Dawnwalker review",
+      "title": "The Blood of Dawnwalker review - worthy to sip blood at the top RPGs' table",
       "kaynak_sayisi": 3,
-      "url": "https://www.eurogamer.net/the-blood-of-dawnwalker-review-rebel-wolves",
+      "url": "https://www.rockpapershotgun.com/the-blood-of-dawnwalker-review-worthy-to-sip-blood-at-the-top-rpgs-table",
       "aday": {
-        "key": "45434c025bda3eb4",
-        "title": "The Blood of Dawnwalker review",
-        "url": "https://www.eurogamer.net/the-blood-of-dawnwalker-review-rebel-wolves",
-        "summary": "CD Projekt Red alumni create a familiar dark fantasy adventure, but one with bold and provocative ideas of its own, that's mostly, enormously successful. Read more",
-        "published": "2026-08-31T15:00:00+00:00",
-        "age_hours": 1.1,
+        "key": "567577dee3703eed",
+        "title": "The Blood of Dawnwalker review - worthy to sip blood at the top RPGs' table",
+        "url": "https://www.rockpapershotgun.com/the-blood-of-dawnwalker-review-worthy-to-sip-blood-at-the-top-rpgs-table",
+        "summary": "The moment I knew The Blood of Dawnwalker had it came when, not far in, one of the local peat diggers fell into a big hole. Tasked with finding him by his brother at the start of what seemed a fairly mundane early fetch quest, I rolled my eyes a bit as I slid in to try and locate the poor sod. He was, predictably, cowering in a corner of the cave complex. Right, now to get out of here and claim a lifetime supply of partially decayed vegetation. Wait, what was that noise? I’ll not spoil the rest of the quest, but suffice it to say that it provided the first taste of Rebel Wolves’ vampire RPG of",
+        "published": "2026-08-31T16:19:26+00:00",
+        "age_hours": 0.9,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
         "tags": [
-          "mainstream"
+          "mainstream",
+          "pc"
         ],
         "source_count": 3,
         "sources": [
           "eurogamer",
           "pcgamer",
-          "pcgamesn"
+          "rps"
         ],
-        "rank_score": 7.68,
+        "rank_score": 7.88,
         "members": [
+          {
+            "hash": "567577dee3703eed",
+            "url": "https://www.rockpapershotgun.com/the-blood-of-dawnwalker-review-worthy-to-sip-blood-at-the-top-rpgs-table",
+            "title": "The Blood of Dawnwalker review - worthy to sip blood at the top RPGs' table",
+            "summary": "The moment I knew The Blood of Dawnwalker had it came when, not far in, one of the local peat diggers fell into a big hole. Tasked with finding him by his brother at the start of what seemed a fairly mundane early fetch quest, I rolled my eyes a bit as I slid in to try and locate the poor sod. He was, predictably, cowering in a corner of the cave complex. Right, now to get out of here and claim a lifetime supply of partially decayed vegetation. Wait, what was that noise? I’ll not spoil the rest of the quest, but suffice it to say that it provided the first taste of Rebel Wolves’ vampire RPG of",
+            "published": "2026-08-31T16:19:26+00:00",
+            "age_hours": 0.9,
+            "image": "https://assetsio.gnwcdn.com/the-blood-of-dawnwalker-review-best-01.jpg?width=690&quality=85&format=jpg&auto=webp",
+            "source_id": "rps",
+            "source_name": "Rock Paper Shotgun",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.9,
+            "tags": [
+              "mainstream",
+              "pc"
+            ]
+          },
           {
             "hash": "45434c025bda3eb4",
             "url": "https://www.eurogamer.net/the-blood-of-dawnwalker-review-rebel-wolves",
             "title": "The Blood of Dawnwalker review",
             "summary": "CD Projekt Red alumni create a familiar dark fantasy adventure, but one with bold and provocative ideas of its own, that's mostly, enormously successful. Read more",
             "published": "2026-08-31T15:00:00+00:00",
-            "age_hours": 1.1,
+            "age_hours": 2.2,
             "image": "https://assetsio.gnwcdn.com/dawnwalker-brencis-header.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
@@ -190,7 +211,7 @@
             "title": "The Blood of Dawnwalker review",
             "summary": "A horror RPG with novel ideas of its own, even if it doesn’t always have the courage to follow them through.",
             "published": "2026-08-31T15:00:00+00:00",
-            "age_hours": 1.1,
+            "age_hours": 2.2,
             "image": "https://cdn.mos.cms.futurecdn.net/9uoTLJEVZx9wV2t2ArctQk-1280-80.jpg",
             "source_id": "pcgamer",
             "source_name": "PC Gamer",
@@ -201,30 +222,11 @@
             "tags": [
               "mainstream"
             ]
-          },
-          {
-            "hash": "87212747d57b2d0c",
-            "url": "https://www.pcgamesn.com/dawnwalker/review",
-            "title": "The Blood of Dawnwalker review - Time well spent",
-            "summary": "The Blood of Dawnwalker is a captivating vampire RPG that insists you don’t need to see it all, and largely succeeds in that bold approach.",
-            "published": "2026-08-31T15:00:00+00:00",
-            "age_hours": 1.1,
-            "image": "https://www.pcgamesn.com/wp-content/sites/pcgamesn/2026/08/the-blood-of-dawnwalker-review-time-well-spent-pcgamesn-rebel-wolves-vampire-rpg.jpg",
-            "source_id": "pcgamesn",
-            "source_name": "PCGamesN",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream",
-              "pc"
-            ]
           }
         ]
       },
       "oyun_adi": "The Blood of Dawnwalker",
-      "ozet": "eski cd projekt red çalışanları cesur fikirli bir macera sunuyor",
+      "ozet": "oyun erken aşamada karşılaşılan basit görevlerle dikkat çekiyor.",
       "gorsel": {
         "durum": "var",
         "sayi": 19,
@@ -248,7 +250,7 @@
         "url": "https://www.gamespot.com/articles/aggressively-selling-ps5s-isnt-needed-as-sony-focuses-on-making-more-from-existing-owners",
         "summary": "This November will mark the sixth anniversary of the PlayStation 5 console's launch, but in the years since its arrival, the gaming market has changed dramatically. The trend of consoles becoming cheaper over time has vanished this generation, as the PS5 now costs more today than it did in 2020, and the expectation is that Sony's hardware sales could slow down over time. Sony doesn't seem too worried about that, as company president and CEO Hiroki Totoki explained that there's no need to \"aggressively\" sell the console. \"We are in the latter half of the lifetime cycle of a PS console,\" Totoki ",
         "published": "2026-08-31T14:07:41+00:00",
-        "age_hours": 2.0,
+        "age_hours": 3.0,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -260,7 +262,7 @@
           "gamespot",
           "kotaku"
         ],
-        "rank_score": 4.66,
+        "rank_score": 4.64,
         "members": [
           {
             "hash": "20e96f60d44149d8",
@@ -268,7 +270,7 @@
             "title": "“Aggressively” Selling PS5s Isn’t Needed, As Sony Focuses On Making More From Existing Owners",
             "summary": "This November will mark the sixth anniversary of the PlayStation 5 console's launch, but in the years since its arrival, the gaming market has changed dramatically. The trend of consoles becoming cheaper over time has vanished this generation, as the PS5 now costs more today than it did in 2020, and the expectation is that Sony's hardware sales could slow down over time. Sony doesn't seem too worried about that, as company president and CEO Hiroki Totoki explained that there's no need to \"aggressively\" sell the console. \"We are in the latter half of the lifetime cycle of a PS console,\" Totoki ",
             "published": "2026-08-31T14:07:41+00:00",
-            "age_hours": 2.0,
+            "age_hours": 3.0,
             "image": "https://www.gamespot.com/wp-content/uploads/2026/08/PS5-consoles.jpg?w=300",
             "source_id": "gamespot",
             "source_name": "GameSpot",
@@ -286,7 +288,7 @@
             "title": "Sony Says Selling More PS5s Is Now Secondary To Getting Its Players To Spend More",
             "summary": "125 million PS Plus users turns out to be enough",
             "published": "2026-08-31T13:52:38+00:00",
-            "age_hours": 2.2,
+            "age_hours": 3.3,
             "image": "https://kotaku.com/app/uploads/2026/08/PS5-consoleTIPS-1280x720.jpg",
             "source_id": "kotaku",
             "source_name": "Kotaku",
@@ -301,7 +303,7 @@
         ]
       },
       "oyun_adi": null,
-      "ozet": "sony playstation 5 satışlarında yeni stratejilere odaklanıyor",
+      "ozet": "şirket mevcut kullanıcılardan daha fazla gelir elde etmeye odaklanıyor.",
       "gorsel": {
         "durum": "var",
         "sayi": 6,
@@ -316,83 +318,6 @@
       "sira": 4,
       "aday_index": 4,
       "tier": "B",
-      "title": "Fable Reboot’s Main Story Is About 20 Hours Long, Dev Says",
-      "kaynak_sayisi": 2,
-      "url": "https://www.gamespot.com/articles/fable-reboots-main-story-is-about-20-hours-long-dev-says",
-      "aday": {
-        "key": "f8e82b1291132de8",
-        "title": "Fable Reboot’s Main Story Is About 20 Hours Long, Dev Says",
-        "url": "https://www.gamespot.com/articles/fable-reboots-main-story-is-about-20-hours-long-dev-says",
-        "summary": "The upcoming Fable reboot from developer Playground Games will have a main story that should take about 15-20 hours to complete, the developers have stated. However, as with any game, your mileage may vary, and Playground believes the new Fable game can be played forever if players want to. Associate game director Will Kennedy told Polygon , \"We have around 15-20 hours of mainline quest gameplay.\" He added that the game has another 15-20 hours worth of \"side and open-world exploration content gameplay.\" \"And then, of course, the life systems are limitless, so you can play them for as long as y",
-        "published": "2026-08-31T14:02:46+00:00",
-        "age_hours": 2.1,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "mainstream"
-        ],
-        "source_count": 2,
-        "sources": [
-          "eurogamer",
-          "gamespot"
-        ],
-        "rank_score": 4.66,
-        "members": [
-          {
-            "hash": "f8e82b1291132de8",
-            "url": "https://www.gamespot.com/articles/fable-reboots-main-story-is-about-20-hours-long-dev-says",
-            "title": "Fable Reboot’s Main Story Is About 20 Hours Long, Dev Says",
-            "summary": "The upcoming Fable reboot from developer Playground Games will have a main story that should take about 15-20 hours to complete, the developers have stated. However, as with any game, your mileage may vary, and Playground believes the new Fable game can be played forever if players want to. Associate game director Will Kennedy told Polygon , \"We have around 15-20 hours of mainline quest gameplay.\" He added that the game has another 15-20 hours worth of \"side and open-world exploration content gameplay.\" \"And then, of course, the life systems are limitless, so you can play them for as long as y",
-            "published": "2026-08-31T14:02:46+00:00",
-            "age_hours": 2.1,
-            "image": "https://www.gamespot.com/wp-content/uploads/2026/08/fablereboot.jpg?w=300",
-            "source_id": "gamespot",
-            "source_name": "GameSpot",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream"
-            ]
-          },
-          {
-            "hash": "ebccd03b98343bec",
-            "url": "https://www.eurogamer.net/fable-main-story-length-15-20-hours-xbox",
-            "title": "Fable's main story will take around 15 to 20 hours to complete",
-            "summary": "Xbox and Playground Games have given a rough idea of how long Fable will take to finish: 15-20 hours. Read more",
-            "published": "2026-08-31T11:05:50+00:00",
-            "age_hours": 5.0,
-            "image": "https://assetsio.gnwcdn.com/01_Fable_Choices.jpg?width=690&quality=85&format=jpg&auto=webp",
-            "source_id": "eurogamer",
-            "source_name": "Eurogamer",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": "Fable",
-      "ozet": "geliştiriciler yeni oyunun ana hikaye süresini açıkladı",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 17,
-        "oyun": "Fable",
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": false
-      },
-      "baslik": "Fable"
-    },
-    {
-      "sira": 5,
-      "aday_index": 5,
-      "tier": "B",
       "title": "Sony's next PlayStation State of Play coming this Thursday, followed by a Japan and Asia-dedicated showcase",
       "kaynak_sayisi": 2,
       "url": "https://www.eurogamer.net/sony-playstation-state-of-play-september-date-time",
@@ -402,7 +327,7 @@
         "url": "https://www.eurogamer.net/sony-playstation-state-of-play-september-date-time",
         "summary": "Our next port of call when it comes to major livestreams filled with game reveals isn't too far off. Sonytoday announced the date of the next PlayStation State of Play presentation. The showcase airs Thursday, 3rd September. Read more",
         "published": "2026-08-31T12:50:46+00:00",
-        "age_hours": 3.3,
+        "age_hours": 4.3,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -414,7 +339,7 @@
           "eurogamer",
           "kotaku"
         ],
-        "rank_score": 4.63,
+        "rank_score": 4.61,
         "members": [
           {
             "hash": "6e1ab1aedd6f1ecd",
@@ -422,7 +347,7 @@
             "title": "Sony's next PlayStation State of Play coming this Thursday, followed by a Japan and Asia-dedicated showcase",
             "summary": "Our next port of call when it comes to major livestreams filled with game reveals isn't too far off. Sonytoday announced the date of the next PlayStation State of Play presentation. The showcase airs Thursday, 3rd September. Read more",
             "published": "2026-08-31T12:50:46+00:00",
-            "age_hours": 3.3,
+            "age_hours": 4.3,
             "image": "https://assetsio.gnwcdn.com/state-of-play-september-2026-double-header-1.jpeg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
@@ -440,7 +365,7 @@
             "title": "September State Of Play PlayStation Showcase Has Been Revealed With Fans Hoping Intergalactic: The Heretic Prophet Makes An Appearence",
             "summary": "Back-to-back broadcasts will kick off September",
             "published": "2026-08-31T12:26:04+00:00",
-            "age_hours": 3.7,
+            "age_hours": 4.7,
             "image": "https://kotaku.com/app/uploads/2026/08/prophet.jpg",
             "source_id": "kotaku",
             "source_name": "Kotaku",
@@ -455,11 +380,11 @@
         ]
       },
       "oyun_adi": null,
-      "ozet": "yeni playstation sunumunun tarihi resmi olarak duyuruldu",
+      "ozet": "yeni etkinlik perşembe günü ve ardından asya özel yayını yapılacak.",
       "gorsel": {
-        "durum": "az",
-        "sayi": 2,
-        "oyun": "Astro Bot",
+        "durum": "var",
+        "sayi": 9,
+        "oyun": "Gran Turismo 7",
         "seri_sayi": 0,
         "seri": null,
         "temsili": true
@@ -467,8 +392,8 @@
       "baslik": "Sony's next PlayStation State of Play coming this Th..."
     },
     {
-      "sira": 6,
-      "aday_index": 6,
+      "sira": 5,
+      "aday_index": 5,
       "tier": "B",
       "title": "Activision sends a legal rep to a Call of Duty cheat seller's front door, films the whole thing, posts it online",
       "kaynak_sayisi": 2,
@@ -479,7 +404,7 @@
         "url": "https://www.eurogamer.net/activision-cease-and-desist-call-of-duty-cheat-maker-elocarry-video",
         "summary": "Activision has posted footage of one of its legal representatives turning up at the Ohio home of a notorious Call of Duty cheat seller and handing over a cease-and-desist order. Read more",
         "published": "2026-08-30T16:48:46+00:00",
-        "age_hours": 23.3,
+        "age_hours": 24.4,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -491,7 +416,7 @@
           "eurogamer",
           "pcgamer"
         ],
-        "rank_score": 4.21,
+        "rank_score": 4.19,
         "members": [
           {
             "hash": "1dd95b99bdf367f5",
@@ -499,7 +424,7 @@
             "title": "Activision sends a legal rep to a Call of Duty cheat seller's front door, films the whole thing, posts it online",
             "summary": "Activision has posted footage of one of its legal representatives turning up at the Ohio home of a notorious Call of Duty cheat seller and handing over a cease-and-desist order. Read more",
             "published": "2026-08-30T16:48:46+00:00",
-            "age_hours": 23.3,
+            "age_hours": 24.4,
             "image": "https://assetsio.gnwcdn.com/Screenshot-2026-08-30-at-17.38.39.png?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
@@ -517,7 +442,7 @@
             "title": "Activision serves cease and desist to infamous Call of Duty cheat maker—and films the whole thing: 'We will find you'",
             "summary": "The publisher says it has disrupted 375 reseller operations so far.",
             "published": "2026-08-30T10:05:20+00:00",
-            "age_hours": 30.0,
+            "age_hours": 31.1,
             "image": "https://cdn.mos.cms.futurecdn.net/cVjMH6DYTqWjxyLVZXJrj6-1280-80.jpg",
             "source_id": "pcgamer",
             "source_name": "PC Gamer",
@@ -532,7 +457,7 @@
         ]
       },
       "oyun_adi": "Call of Duty",
-      "ozet": "aktivision hile satıcısının evine gidip ihtarnameyi kameraya kaydetti",
+      "ozet": "şirket bir hile satıcısının evine avukat gönderip videoya kaydetti.",
       "gorsel": {
         "durum": "var",
         "sayi": 4,
@@ -542,6 +467,83 @@
         "temsili": false
       },
       "baslik": "Call of Duty"
+    },
+    {
+      "sira": 6,
+      "aday_index": 6,
+      "tier": "B",
+      "title": "12TB Valve archive leak includes early Portal 2 builds and hints of Half-Life 2: Episode Three",
+      "kaynak_sayisi": 2,
+      "url": "https://www.eurogamer.net/valve-steam2-leak-12tb-portal-2-half-life-episode-three",
+      "aday": {
+        "key": "ba019debcea4c192",
+        "title": "12TB Valve archive leak includes early Portal 2 builds and hints of Half-Life 2: Episode Three",
+        "url": "https://www.eurogamer.net/valve-steam2-leak-12tb-portal-2-half-life-episode-three",
+        "summary": "A leaked archive said to contain around 12TB of old Valve development files, dated between 2003 and 2013, has surfaced online, and fans are already combing through it for any trace of the long-cancelled Half-Life 2 : Episode Three. Read more",
+        "published": "2026-08-30T13:26:42+00:00",
+        "age_hours": 27.7,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream"
+        ],
+        "source_count": 2,
+        "sources": [
+          "eurogamer",
+          "pcgamer"
+        ],
+        "rank_score": 4.12,
+        "members": [
+          {
+            "hash": "ba019debcea4c192",
+            "url": "https://www.eurogamer.net/valve-steam2-leak-12tb-portal-2-half-life-episode-three",
+            "title": "12TB Valve archive leak includes early Portal 2 builds and hints of Half-Life 2: Episode Three",
+            "summary": "A leaked archive said to contain around 12TB of old Valve development files, dated between 2003 and 2013, has surfaced online, and fans are already combing through it for any trace of the long-cancelled Half-Life 2 : Episode Three. Read more",
+            "published": "2026-08-30T13:26:42+00:00",
+            "age_hours": 27.7,
+            "image": "https://assetsio.gnwcdn.com/HQ6xhIdWcAAMhTL.jpeg?width=690&quality=85&format=jpg&auto=webp",
+            "source_id": "eurogamer",
+            "source_name": "Eurogamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "7ede29b572ec7cb2",
+            "url": "https://www.pcgamer.com/games/fps/a-massive-cache-of-valve-data-has-reportedly-leaked-online-appearing-to-include-portal-2s-elusive-beta-build-and-a-potential-weapon-from-half-life-2-episode-3",
+            "title": "A massive cache of Valve data has reportedly leaked online, appearing to include Portal 2's elusive beta build and a potential weapon from Half-Life 2: Episode 3",
+            "summary": "The leak purportedly includes files that date between 2003 and 2013.",
+            "published": "2026-08-30T11:41:11+00:00",
+            "age_hours": 29.5,
+            "image": "https://cdn.mos.cms.futurecdn.net/VrZsFJMgUJrMXFZLYZmGCQ-1280-80.jpg",
+            "source_id": "pcgamer",
+            "source_name": "PC Gamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "Portal 2",
+      "ozet": "sızan arşivde iptal edilen projeler ve erken yapım dosyaları yer alıyor.",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 6,
+        "oyun": "Portal 2",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": false
+      },
+      "baslik": "Portal 2"
     }
   ]
 }
