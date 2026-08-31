@@ -1,0 +1,170 @@
+{
+  "_kaynak": "https://www.alphabetagamer.com/into-the-planets-flesh-beta-sign-up",
+  "_aday_index": 1,
+  "_aday": {
+    "key": "03f12d516ae67ec4",
+    "title": "Into the Planet’s Flesh",
+    "url": "https://www.alphabetagamer.com/into-the-planets-flesh-beta-sign-up",
+    "summary": "Into the Planet’s Flesh is a cozy yet creepy incremental game where you hatch parasites to infest the earth and spread your colony like a disease through the planet’s surface. In Into the Planet’s Flesh you click to harvest resources and unlock parasites that work in unique ways to gather grotesque materials. You build veined structures and manage unique buildings while the environment visually changes … Read More The post Into the Planet’s Flesh – Beta Sign Up first appeared on Alpha Beta Gamer .",
+    "published": "2026-08-30T04:53:50+00:00",
+    "age_hours": 28.3,
+    "lang": "en",
+    "kind": "releases",
+    "bucket": "news",
+    "tags": [
+      "indie",
+      "ayristirici",
+      "demo"
+    ],
+    "source_count": 1,
+    "sources": [
+      "alphabetagamer"
+    ],
+    "rank_score": 2.71,
+    "members": [
+      {
+        "hash": "03f12d516ae67ec4",
+        "url": "https://www.alphabetagamer.com/into-the-planets-flesh-beta-sign-up",
+        "title": "Into the Planet’s Flesh",
+        "summary": "Into the Planet’s Flesh is a cozy yet creepy incremental game where you hatch parasites to infest the earth and spread your colony like a disease through the planet’s surface. In Into the Planet’s Flesh you click to harvest resources and unlock parasites that work in unique ways to gather grotesque materials. You build veined structures and manage unique buildings while the environment visually changes … Read More The post Into the Planet’s Flesh – Beta Sign Up first appeared on Alpha Beta Gamer .",
+        "published": "2026-08-30T04:53:50+00:00",
+        "age_hours": 28.3,
+        "source_id": "alphabetagamer",
+        "source_name": "Alpha Beta Gamer",
+        "lang": "en",
+        "kind": "releases",
+        "bucket": "news",
+        "weight": 1.3,
+        "tags": [
+          "indie",
+          "ayristirici",
+          "demo"
+        ]
+      }
+    ]
+  },
+  "_kaynak_sayisi": 1,
+  "_is_leak": false,
+  "_model": "gemini-3.6-flash",
+  "tier": "A",
+  "category": "demo",
+  "caption": "tıklama türü genelde sevimli temalarla karşımıza çıkarken into the planet's flesh bu kalıbı kırıp tuhaf bir parazit kolonisi yönetimi sunuyor. gezegen yüzeyini istila ettiğimiz yapımın beta süreçleri başladı. #indiegame #gaming",
+  "game": "into the planet's flesh",
+  "search_name": "Into the Planet's Flesh",
+  "image_candidates": [],
+  "series_fallback": [],
+  "representative_games": [],
+  "credit": "chugget",
+  "pages": [
+    {
+      "type": "cover",
+      "title": "rahatlatıcı ama ürkütücü bir tıklama tecrübesi",
+      "image": "state/img/into-the-planet-s-flesh-ar5yc8.jpg",
+      "credit": "chugget"
+    },
+    {
+      "type": "text",
+      "title": "bahçe bakımı yerine parazit üretimi",
+      "paragraph": "geleneksel tıklama oyunlarında çiftlik kurup sevimli bitkiler büyütürüz. bu yapımda ise dünya yüzeyine parazitler yayarak gezegeni parça parça ele geçiriyoruz.",
+      "bullets": [
+        "kaynak toplayıp parazit üretme",
+        "gezegenin görünümünü zamanla değiştirme"
+      ],
+      "image": "state/img/into-the-planet-s-flesh-sc13bm3.jpg",
+      "credit": "chugget"
+    },
+    {
+      "type": "text",
+      "title": "damarlı yapılar ve kaynaklar",
+      "paragraph": "tipik şehir kurma oyunlarındaki binaların aksine damarlı yapılar inşa edip garip malzemeler topluyoruz. gezegeni bir hastalık gibi sarmak tamamen bizim idaremizde ilerliyor.",
+      "bullets": [
+        "özel binaları yönetme",
+        "beta kaydıyla erken deneme"
+      ],
+      "image": "state/img/into-the-planet-s-flesh-sc13bm4.jpg",
+      "credit": "chugget"
+    },
+    {
+      "type": "outro",
+      "question": "sevimli çiftlik simülasyonları yerine böyle bir parazit temasını dener miydiniz",
+      "ctas": [
+        "düşüncelerinizi yorumlarda paylaşabilirsiniz"
+      ],
+      "image": "state/img/into-the-planet-s-flesh-ar5yc9.jpg",
+      "credit": "chugget"
+    }
+  ],
+  "_hashes": [
+    "03f12d516ae67ec4"
+  ],
+  "_kume_key": "03f12d516ae67ec4",
+  "_gorsel_temsili": false,
+  "_image_pool": [
+    {
+      "id": "ar5yc8",
+      "kind": "artwork",
+      "w": 3840,
+      "h": 1240,
+      "credit": "chugget",
+      "oyun": "Into the Planet's Flesh"
+    },
+    {
+      "id": "ar5yc9",
+      "kind": "artwork",
+      "w": 1280,
+      "h": 720,
+      "credit": "chugget",
+      "oyun": "Into the Planet's Flesh"
+    },
+    {
+      "id": "sc13bm3",
+      "kind": "screenshot",
+      "w": 1671,
+      "h": 1080,
+      "credit": "chugget",
+      "oyun": "Into the Planet's Flesh"
+    },
+    {
+      "id": "sc13bm4",
+      "kind": "screenshot",
+      "w": 1671,
+      "h": 1080,
+      "credit": "chugget",
+      "oyun": "Into the Planet's Flesh"
+    },
+    {
+      "id": "sc13bm5",
+      "kind": "screenshot",
+      "w": 1671,
+      "h": 1080,
+      "credit": "chugget",
+      "oyun": "Into the Planet's Flesh"
+    },
+    {
+      "id": "sc13bm6",
+      "kind": "screenshot",
+      "w": 1671,
+      "h": 1080,
+      "credit": "chugget",
+      "oyun": "Into the Planet's Flesh"
+    },
+    {
+      "id": "sc13bm7",
+      "kind": "screenshot",
+      "w": 1671,
+      "h": 1080,
+      "credit": "chugget",
+      "oyun": "Into the Planet's Flesh"
+    },
+    {
+      "id": "coc2bh",
+      "kind": "cover",
+      "w": 600,
+      "h": 800,
+      "credit": "chugget",
+      "oyun": "Into the Planet's Flesh"
+    }
+  ],
+  "_slug": "into-the-planet-s-flesh",
+  "_gorsel_turu": 0
+}
