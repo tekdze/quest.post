@@ -419,6 +419,22 @@ def main() -> int:
         key=lambda c: -c["rank_score"],
     )
     candidates = [c for c in summaries if c["bucket"] == "news"][: args.limit]
+
+    # REDDIT ILGI SINYALI. Kaynak sayisi yaygınlığı olcuyor, ilgincligi
+    # degil; reddit oyu o eksigi kapatan tek olcu (bkz. reddit.py).
+    # Anahtar yoksa ya da reddit erisilemezse SESSIZCE atlaniyor: sinyal
+    # bir iyilestirme, bagimlilik degil - fetch hicbir kosulda bunun
+    # yuzunden dusmemeli, yoksa gunun butun postu gider.
+    try:
+        import reddit as reddit_mod
+        if reddit_mod.kimlik() is not None:
+            gonderiler = reddit_mod.sicak_gonderiler()
+            reddit_mod.isi_ekle(candidates, gonderiler)
+            eslesen = sum(1 for c in candidates if c.get("reddit_oy"))
+            print(f"reddit: {len(gonderiler)} gonderi tarandi, "
+                  f"{eslesen} aday eslesti")
+    except Exception as exc:                       # noqa: BLE001
+        print(f"reddit sinyali atlandi: {exc}", file=sys.stderr)
     discovery = [c for c in summaries if c["bucket"] == "discovery"][: args.limit]
 
     payload = {

@@ -212,6 +212,13 @@ def menu_metni(rows: list[dict], oneri: int | None, gerekce: str) -> str:
         else:
             g = f"görsel VAR ({gorsel['sayi']})"
         satir = f"   {row['kaynak_sayisi']} kaynak · {g}"
+        # Reddit ilgisi menude GORUNMEK ZORUNDA: tier hesabini artik o da
+        # etkiliyor ve kullanicinin goremedigi bir sinyal arayuz degildir
+        # (bkz. /havuz dersi). Sinyal yoksa satir da yok.
+        if row.get("reddit_oy"):
+            satir += f" · reddit {row['reddit_oy']} oy"
+            if row.get("reddit_yorum"):
+                satir += f"/{row['reddit_yorum']} yorum"
         if gorsel.get("oyun") and gorsel["durum"] != "yok":
             # Temsili oldugu yaziliyor: haberin konusu o oyun degil, sadece
             # onu gorsel olarak temsil ediyor. Kullanici bilerek secsin.
@@ -258,6 +265,8 @@ def main() -> int:
             "title": cand["title"],
             "summary": (cand.get("members") or [{}])[0].get("summary", ""),
             "kaynak_sayisi": cand.get("source_count", 1),
+            "reddit_oy": cand.get("reddit_oy", 0),
+            "reddit_yorum": cand.get("reddit_yorum", 0),
             "url": cand.get("url"),
             # Adayin TAM kaydi menuyle birlikte tasiniyor. Sebep: uretim
             # AYRI bir Actions calismasinda yapiliyor ve candidates.json

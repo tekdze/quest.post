@@ -38,6 +38,31 @@ SOURCE_TIERS = [
 # kimsenin görmediğini bulmak".
 DISTINCTIVE_WEIGHT = 1.2
 
+# ⚠️ REDDIT ILGISI - kaynak sayisinin duzeltmesi.
+#
+# Kaynak sayisi YAYGINLIGI olcuyor, ilgincligi degil ve ikisi cogu zaman
+# TERS: her yayin ayni duyuruyu yazar (yaygin ama siradan), paylasilabilir
+# tuhaflik ise bir iki yerde cikar (nadir ama ilginc). Sistemin en buyuk
+# acigi buydu.
+#
+# Konu isisi icin iki istatistiksel yontem denenmis ve ikisi de basarisiz
+# olmustu (union-find zincirleme birlesti; token sicakligi "shows, dev,
+# version" cikardi). Sebep: istatistik "gta" ile "shows"u ayiramiyor.
+# Soru semantik ve reddit oyu o soruyu insanlarla ZATEN cevaplamis.
+#
+# Sinyal yalnizca YUKARI itiyor, asagi cekmiyor. Sebep: reddit ingilizce
+# ve pc/konsol agirlikli, oradaki sessizlik ilgisizlik anlamina gelmiyor -
+# ceza yazsak turkiye'de konusulan bir haberi cezalandirabilirdik.
+# Ayrica anahtar yoksa alan hic gelmiyor ve hesap eskisi gibi calisiyor.
+REDDIT_ESIKLERI = [
+    (5000, 2),      # cok konusulan: iki kademe
+    (1500, 1),      # dikkat cekmis: bir kademe
+]
+# Yorum/oy orani yuksekse haber TARTISMA yaratmis demek. Instagram'da
+# yorum en degerli etkilesim, o yuzden ayri bir yukseltme sebebi.
+REDDIT_TARTISMA_ORANI = 0.10
+REDDIT_TARTISMA_MIN_OY = 800
+
 TIER_ORDER = ["C", "B", "A", "S"]
 TIER_LABELS = {"C": "sıradan", "B": "büyülü", "A": "sıradışı", "S": "mitik"}
 
@@ -77,6 +102,20 @@ def compute(candidate: dict) -> tuple[str, list[str]]:
     if kinds & {"releases", "devlog"} and tier in ("C", "B"):
         tier = bump(tier)
         reasons.append(f"çıkış/devlog haberi -> {tier}")
+
+    # Reddit ilgisi. Alan yoksa (anahtar tanimlanmamis) hic calismaz.
+    oy = candidate.get("reddit_oy") or 0
+    yorum = candidate.get("reddit_yorum") or 0
+    if oy:
+        for esik, adim in REDDIT_ESIKLERI:
+            if oy >= esik:
+                tier = bump(tier, adim)
+                reasons.append(f"reddit'te {oy} oy -> {tier}")
+                break
+        if (oy >= REDDIT_TARTISMA_MIN_OY
+                and yorum / oy >= REDDIT_TARTISMA_ORANI):
+            tier = bump(tier)
+            reasons.append(f"tartisma yaratmis ({yorum} yorum / {oy} oy) -> {tier}")
 
     # Topluluk kaynağı tek başına doğrulanmamış sayılır, yükseltmez.
     if kinds == {"community"}:
