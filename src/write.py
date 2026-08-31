@@ -155,6 +155,16 @@ def list_models() -> None:
         print(f"  {name:44} girdi limiti {limit}")
 
 
+class GecersizCevap(Exception):
+    """Model cevap verdi ama kullanilabilir JSON degil.
+
+    Cokme sebebi degil, YENIDEN DENEME sebebi: uzun postlarda cikti
+    sinirina takilip yarim JSON gelebiliyor (sayfa sayisi 10'a kadar
+    cikabildigi icin risk artti). Traceback'le olmek yerine dongu bir
+    daha deniyor ve modele "kisalt" diyor.
+    """
+
+
 def generate(prompt: str, model: str, temperature: float) -> dict:
     payload = {
         "contents": [{"role": "user", "parts": [{"text": prompt}]}],
@@ -164,12 +174,24 @@ def generate(prompt: str, model: str, temperature: float) -> dict:
         },
     }
     data = api_call(f"models/{model}:generateContent", payload)
+    aday = (data.get("candidates") or [{}])[0]
+    # Neden bittigi onemli: MAX_TOKENS ise cikti yarim kaldi demektir,
+    # SAFETY ise icerik engellenmis. Ikisi ayri sorun, mesajda gorunsun.
+    bitis = aday.get("finishReason", "?")
     try:
-        text = data["candidates"][0]["content"]["parts"][0]["text"]
+        text = aday["content"]["parts"][0]["text"]
     except (KeyError, IndexError):
-        reason = data.get("promptFeedback", {}).get("blockReason", "bilinmiyor")
+        reason = data.get("promptFeedback", {}).get("blockReason", bitis)
+        if bitis == "MAX_TOKENS":
+            raise GecersizCevap("cikti sinira takildi, hic metin donmedi")
         sys.exit(f"Gemini bos cevap dondu (sebep: {reason})\n{json.dumps(data)[:400]}")
-    return json.loads(text)
+
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError as exc:
+        raise GecersizCevap(
+            f"gecersiz JSON ({exc.msg}), bitis={bitis}, {len(text)} karakter"
+        ) from exc
 
 
 # ---------------------------------------------------------------- istem
@@ -595,6 +617,12 @@ def main() -> int:
                   f"{HELPER_MODEL}\n")
             aktif_model = HELPER_MODEL
             draft = generate(prompt, aktif_model, args.temperature)
+        except GecersizCevap as exc:
+            # Yarim/bozuk cevap: cokme degil, yeniden deneme sebebi.
+            print(f"deneme {attempt}: {exc}")
+            problems = [f"cevap kullanilamadi ({exc}). daha KISA yaz: "
+                        "sayfa sayisini azalt, paragraflari kisalt."]
+            continue
         draft = style.autofix_suffixes(draft)
         # Yapi denetimi once: sayfa duzeni bozuksa uslup zaten yeniden
         # yazilacak, QA'ya kota harcamanin anlami yok.

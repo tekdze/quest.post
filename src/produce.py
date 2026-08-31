@@ -40,12 +40,25 @@ MAX_TRIES = 8
 
 
 def run(script: str, *args: str) -> None:
-    """Bir aşamayı çalıştır. Patlarsa zinciri durdur."""
+    """Bir aşamayı çalıştır. Patlarsa SEBEBİYLE birlikte zinciri durdur.
+
+    Eskiden sadece "write.py basarisiz oldu (cikis kodu 1)" yazıyordu ve
+    gerçek sebep burada kayboluyordu: respond.py bu satırı Telegram'a
+    taşıyor, yani kullanıcı "üretim başarısız" görüp Actions kaydını açmak
+    zorunda kalıyordu. Alt sürecin son hata satırı artık yukarı çıkıyor.
+    """
     command = [sys.executable, str(SRC / script), *args]
     print(f"\n$ {script} {' '.join(args)}", flush=True)
-    result = subprocess.run(command, cwd=ROOT)
+    result = subprocess.run(command, cwd=ROOT, capture_output=True,
+                            text=True, encoding="utf-8", errors="replace")
+    if result.stdout:
+        print(result.stdout, end="", flush=True)
+    if result.stderr:
+        print(result.stderr, end="", file=sys.stderr, flush=True)
     if result.returncode != 0:
-        sys.exit(f"\n{script} basarisiz oldu (cikis kodu {result.returncode})")
+        satirlar = [s.strip() for s in (result.stderr or "").splitlines() if s.strip()]
+        sebep = satirlar[-1][:160] if satirlar else f"cikis kodu {result.returncode}"
+        sys.exit(f"\n{script}: {sebep}")
 
 
 def read_json(path: Path, default):

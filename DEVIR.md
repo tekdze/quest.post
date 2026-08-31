@@ -366,6 +366,17 @@ saatlerce. Sorun tek bir hata değil, **hatanın sonsuz mesaja dönüşebilmesi*
    olduğu için her seferinde farklı görünüyorlardı ve 2. katmana takılmazlardı.
    `telegram.py say --tekrarsiz menu-workflow` sabit kimlik veriyor.
 
+⚠️ **Sebep zincirin dibinden gelmeli.** `respond -> produce -> write`
+üç katmanlı ve produce, write'ın hatasını yutup "cikis kodu 1" diyordu:
+Telegram'a düşen mesaj sebebi taşımıyordu. `produce.run` artık alt
+sürecin son stderr satırını kendi çıkış mesajına koyuyor.
+
+⚠️ **Yarım JSON çökme değil, yeniden deneme sebebi.** Sayfa sayısı 10'a
+kadar çıkabildiği için model çıktı sınırına takılıp yarım JSON
+döndürebiliyor; eskiden bu traceback'le ölürdü. `GecersizCevap`
+yakalanıyor ve modele "daha kısa yaz" denip tekrar deneniyor.
+`finishReason` mesaja giriyor: MAX_TOKENS ile SAFETY ayrı sorunlar.
+
 Ayrıca **hata sebebi mesaja giriyor**: `respond.run` alt sürecin son stderr
 satırını saklıyor, `sebepli()` onu uyarıya ekliyor. "kartları basarken hata
 oldu" cümlesi tek başına hiçbir şey söylemiyordu; sebebi görmek için Actions
