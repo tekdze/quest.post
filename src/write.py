@@ -23,6 +23,7 @@ import base64
 import json
 import os
 import random
+import re
 import sys
 import time
 import urllib.error
@@ -68,9 +69,14 @@ RETRY_BACKOFF = 5  # saniye, her denemede katlaniyor
 
 # Sabit kategori listesi. LLM buradan secer, serbest yazamaz - kicker metni
 # her postta ayni sozluk icinden gelsin diye.
+# Hepsi OLAY tipi: kutu haberde NE OLDUGUNU soyler, konunun ne oldugunu
+# degil. Eskiden listede "studyo" vardi ve o bir olay degil bir OZNE'ydi;
+# olcum (20260831-the-blood-of-dawnwalker): haber uc ayri yayinin INCELEMESI
+# idi ama listede "inceleme" yoktu, model mecburen "studyo" secti ve kapak
+# kutusu haberi yanlis bildirdi. Kusur modelde degil, sozlukte eksiklikti.
 CATEGORIES = [
-    "çıkış", "stüdyo", "güncelleme", "sızıntı", "etkinlik",
-    "finansman", "kapanma", "demo", "tartışma",
+    "duyuru", "çıkış", "inceleme", "fragman", "güncelleme", "gecikme",
+    "sızıntı", "etkinlik", "finansman", "kapanma", "demo", "tartışma",
 ]
 
 # Son sayfanin soru tipi. Her uretimde rastgele biri secilir.
@@ -271,6 +277,10 @@ def generate(prompt: str, model: str, temperature: float) -> dict:
 # ---------------------------------------------------------------- istem
 
 SCHEMA = """{
+  "cikarim": [
+    {"olgu": "kaynaktaki SOMUT bir bilgi, tek cümle Türkçe",
+     "alinti": "bu bilginin dayandığı kaynak metinden BIREBIR kopyalanmış İngilizce parça, en az 5 kelime"}
+  ],
   "game": "haberin konusu olan oyunun veya şirketin adı",
   "search_name": "haberin ASIL konusu olan oyunun TAM ve INGILIZCE adi, surum numarasi dahil (ornek: The Witcher 3: Wild Hunt). Haber bir oyunu konu almiyorsa null",
   "image_candidates": ["haber metninde adi gecen ve GORSELI bu haberi temsil edebilecek oyunlarin tam Ingilizce adlari, onem sirasiyla, en fazla 3. search_name doluysa onu buraya tekrar yazma. Uygun oyun yoksa bos liste"],
@@ -286,7 +296,8 @@ SCHEMA = """{
      birden fazla olabilir, numbers ve outro hic olmayabilir.)
     {"type": "cover", "title": "kapak başlığı, en fazla 8 kelime"},
     {"type": "text", "title": "3-5 kelime", "paragraph": "2-3 cümle",
-     "bullets": ["madde", "madde"]},
+     "dayanak": 0,
+     "bullets": ["madde", "madde"], "bullet_dayanak": [1, 2]},
     {"type": "numbers", "title": "3-5 kelime",
      "metrics": [{"value": "18 m$", "label": "ne olduğu, en fazla 8 kelime"}]},
     {"type": "outro", "question": "tek soru, 6-12 kelime",
@@ -368,6 +379,229 @@ def llm_review(spec: dict, source_text: str, model: str | None = None) -> list[s
         aciklama = (row.get("aciklama") or "").strip()
         problems.append(f"{alan}: [{tur}] {aciklama}")
     return problems
+
+
+# Alintinin kaynakta gectigini dogrularken aranan kelime orani. Birebir
+# eslesme istenmiyor: model tirnak, kesme isareti ve bosluklari sessizce
+# duzeltiyor ve tam eslesme sarti ret oranini gereksiz sisiriyor. Ama
+# %70 esik uydurmayi geciremez - uydurulmus alintinin kaynakla ortak
+# kelimesi bu kadar olmuyor.
+ALINTI_ESIK = 0.7
+ALINTI_MIN_KELIME = 4
+# Postun ayakta kalmasi icin gereken en az dogrulanmis olgu sayisi.
+# Kaynagin uzunluguna gore olceklenir: model serbest birakilinca AZ olgu
+# cikariyor (olcum: 1100 karakterlik uc kaynakli bir incelemeden yalnizca
+# 3 olgu cikardi ve incelemelerin YARGISI - yani haberin ta kendisi -
+# listeye hic girmedi). "kac bulursan o kadar" demek yetmiyor; tier
+# dersinin tersi bu: serbestlik abartmaya degil TEMBELLIGE goturuyor
+# cunku az olgu cikarmak az is demek.
+MIN_OLGU = 2
+BOL_KAYNAK_ESIK = 600      # karakter
+MIN_OLGU_BOL = 4
+
+
+def olgu_hedefi(source_text: str) -> int:
+    return MIN_OLGU_BOL if len(source_text) > BOL_KAYNAK_ESIK else MIN_OLGU
+
+
+# Kategori basina, postta MUTLAKA cevaplanmasi gereken soru. Kategori bir
+# OLAY tipi oldugu icin her tipin kendi zorunlu bilgisi var ve bunlar
+# birbirinin yerine gecmiyor: inceleme postunda "oyun nasil bulunmus"
+# yoksa post haberi hic vermemis olur, duyuru postunda "ne zaman" yoksa
+# okurun elinde bir sey kalmaz.
+KATEGORI_SLOTLARI = {
+    "inceleme": "kaynaklar oyunu NASIL buldu (genel yargi) ve en cok neyi elestirdi",
+    "duyuru": "tam olarak NE duyuruldu ve ne zaman gelecegi belliyse o",
+    "çıkış": "oyun NEREDE cikti (platformlar) ve fiyat/erisim bilgisi varsa o",
+    "fragman": "fragmanda GORULEN somut sey - genel izlenim degil",
+    "güncelleme": "NE degisti ve bu kimi etkiliyor",
+    "gecikme": "yeni tarih ne ve gerekce aciklandi mi",
+    "sızıntı": "ne sizdi ve kaynagin ne kadar guvenilir oldugu",
+    "kapanma": "kac kisi etkilendi ve sebep aciklandi mi",
+    "finansman": "ne kadar ve kimden",
+}
+
+
+def _kelimeler(text: str) -> list[str]:
+    return re.findall(r"[a-z0-9']+", text.lower())
+
+
+def dogrulanmis_olgular(draft: dict, source_text: str) -> tuple[set[int], list[str]]:
+    """`cikarim` icindeki hangi olgular gercekten kaynaga dayaniyor?
+
+    LLM veri verir, KOD dogrular - diakritik onarimindaki `fold`
+    karsilastirmasiyla ayni desen. Model bir olguyu uydurursa alintisini
+    kaynakta gosteremez ve o olgu dusur.
+    """
+    kaynak = set(_kelimeler(source_text))
+    gecerli: set[int] = set()
+    problems: list[str] = []
+
+    for i, olgu in enumerate(draft.get("cikarim") or []):
+        if not isinstance(olgu, dict):
+            problems.append(f"cikarim[{i}]: nesne degil")
+            continue
+        alinti = str(olgu.get("alinti") or "")
+        kelimeler = _kelimeler(alinti)
+        if len(kelimeler) < ALINTI_MIN_KELIME:
+            problems.append(f"cikarim[{i}]: alinti cok kisa "
+                            f"({len(kelimeler)} kelime), en az {ALINTI_MIN_KELIME} olmali")
+            continue
+        oran = sum(1 for k in kelimeler if k in kaynak) / len(kelimeler)
+        if oran < ALINTI_ESIK:
+            problems.append(f"cikarim[{i}]: alinti kaynakta bulunamadi "
+                            f"(kelimelerin %{oran * 100:.0f}'i tutuyor). "
+                            f"kaynaktan BIREBIR kopyala, kendi cumleni yazma")
+            continue
+        gecerli.add(i)
+
+    return gecerli, problems
+
+
+def check_dayanak(draft: dict, source_text: str) -> list[str]:
+    """Her govde cumlesi kaynaktan AYRI bir olguya dayanmak zorunda.
+
+    Neden var: 22 kuralin hepsi YASAKTI ve hicbir sey soylemeyen cumle
+    hicbir yasagi ihlal edemez. Olcum (20260831-the-blood-of-dawnwalker):
+    "siradan gozuken arayislar oyuncuyu hizlica karanlik atmosfere cekiyor"
+    maddesi 22 kuralin 22'sini de gecti. Oysa kaynakta o maddenin yerini
+    alacak SOMUT bir anekdot vardi (turba kazicisi cukura dusuyor, magarada
+    bir ses duyuluyor) ve model onu soyutlayip attigi icin post bosaldi.
+
+    Mekanizma: model once `cikarim` listesini yaziyor (semada ilk sirada,
+    yani metni kendi cikarimina KOSULLANARAK yaziyor), sonra her paragraf
+    ve her madde o listeden bir numara gosteriyor.
+
+    Numara TEKRAR EDILEMEZ. Bunun yan etkisi tasarim geregi: kaynakta 6
+    olgu varsa post 6 govde alanindan uzun olamaz. Yani sayfa sayisi artik
+    modelin tahminine degil kaynagin YOGUNLUGUNA bagli - dolgu sayfa
+    yazmak yapisal olarak imkansiz.
+    """
+    gecerli, problems = dogrulanmis_olgular(draft, source_text)
+
+    # ⚠️ Olgu SAYISI bilerek ret sebebi DEGIL. Denendi ve geri alindi
+    # (olcum 2026-09-01): "en az 4 olgu" kurali konunca uretim uc denemenin
+    # ucunde de takildi, cunku hedefli_onar metin yazar - LISTEYE OLGU
+    # EKLEYEMEZ. Yani onarilamaz bir ihlaldi ve her seferinde bir deneme
+    # yakiyordu. DEVIR kurali: onarilamayan kural eklenmez.
+    #
+    # Uzerine dusununce esik zaten yanlis kaldirac: model 3 olgu cikarip
+    # 3 govde alani yazdiysa post KISA ama durust. Asil onemli olan her
+    # alanin AYRI bir olguya dayanmasi ve o zaten asagida zorunlu.
+    # "Daha derin kaz" baskisi istemde duruyor, filtrede degil.
+    if len(gecerli) < MIN_OLGU:
+        problems.append(
+            f"cikarim: yalnizca {len(gecerli)} dogrulanmis olgu var, en az "
+            f"{MIN_OLGU} gerekli. alintilari kaynaktan BIREBIR kopyala")
+        return problems
+
+    kullanilan: dict[int, str] = {}
+
+    def kullan(idx, yol: str) -> None:
+        if not isinstance(idx, int) or isinstance(idx, bool):
+            problems.append(f"{yol}: dayanak numarasi yok. "
+                            f"cikarim listesinden bir numara yaz")
+            return
+        if idx not in gecerli:
+            problems.append(f"{yol}: dayanak {idx} gecerli bir olgu degil "
+                            f"(gecerliler: {sorted(gecerli)})")
+            return
+        if idx in kullanilan:
+            problems.append(f"{yol}: dayanak {idx} zaten {kullanilan[idx]} "
+                            f"tarafindan kullanildi. her alan AYRI bir olgu "
+                            f"anlatmali, ayni seyi iki kez soyleme")
+            return
+        kullanilan[idx] = yol
+
+    for index, page in enumerate(draft.get("pages") or []):
+        if not isinstance(page, dict) or page.get("type") != "text":
+            continue
+        yol = f"pages[{index}]"
+        if (page.get("paragraph") or "").strip():
+            kullan(page.get("dayanak"), f"{yol}.paragraph")
+        bullets = page.get("bullets") or []
+        dayanaklar = page.get("bullet_dayanak") or []
+        if len(dayanaklar) != len(bullets):
+            problems.append(
+                f"{yol}: {len(bullets)} madde var ama {len(dayanaklar)} "
+                f"dayanak yazilmis. her maddenin bir dayanagi olmali")
+            continue
+        for i, idx in enumerate(dayanaklar):
+            kullan(idx, f"{yol}.bullets[{i}]")
+
+    return problems
+
+
+def autofix_dayanak(draft: dict, source_text: str) -> dict:
+    """Tekrar eden dayanak gosteren MADDELERI sil. Yeniden uretim isteme.
+
+    DEVIR kurali: "kural mutlaksa ve duzeltmesi belirsizlik tasimiyorsa
+    filtre duzeltir, modeli yeniden calistirmaz" (buyuk harf dersi).
+    Burada da oyle: bir madde zaten kullanilmis bir olguyu gosteriyorsa
+    o madde TANIMI GEREGI tekrardir, silmek postu bozamaz - sadece
+    soylenmis bir seyi ikinci kez soylemekten kurtarir.
+
+    Paragraflara dokunulmuyor: sayfanin govdesi silinemez, orada tekrar
+    varsa yeniden uretim gerekir.
+    """
+    gecerli, _ = dogrulanmis_olgular(draft, source_text)
+    kullanilan: set[int] = set()
+    silinen = 0
+    dusen_sayfa = 0
+    kalan_sayfalar = []
+
+    for page in draft.get("pages") or []:
+        if not isinstance(page, dict) or page.get("type") != "text":
+            kalan_sayfalar.append(page)
+            continue
+
+        # SAYFANIN GOVDESI tekrar mi? Paragraf zaten soylenmis bir olguyu
+        # anlatiyorsa o sayfa dolgudur; maddeleri de ikincil kalir.
+        # Sayfayi dusurmek metni bozmaz - soylenmis bir seyi ikinci kez
+        # soylemekten kurtarir. "Dolgu sayfa uretme" kurali boylece
+        # istemde ricadan cikip kodda kurala donusuyor.
+        # Yalnizca text sayfasi dusuyor: cover ilk, outro son kaliyor,
+        # yani sayfa duzeni bozulmuyor.
+        idx = page.get("dayanak")
+        gecerli_mi = (isinstance(idx, int) and not isinstance(idx, bool)
+                      and idx in gecerli)
+        if (page.get("paragraph") or "").strip() and gecerli_mi and idx in kullanilan:
+            dusen_sayfa += 1
+            continue
+        if gecerli_mi:
+            kullanilan.add(idx)
+        kalan_sayfalar.append(page)
+
+        bullets = page.get("bullets") or []
+        dayanaklar = page.get("bullet_dayanak") or []
+        if len(dayanaklar) != len(bullets):
+            # Model duzenli olarak 2 madde yazip 1 dayanak veriyor. Bu da
+            # mekanik: dayanagi olmayan madde, dayanagi olmadigi icin
+            # zaten "kaynakta karsiligi gosterilememis" demektir - kisa
+            # kesip atiyoruz. Model yeniden calistirilmiyor.
+            kes = min(len(dayanaklar), len(bullets))
+            silinen += len(bullets) - kes
+            bullets, dayanaklar = bullets[:kes], dayanaklar[:kes]
+        kalan_b, kalan_d = [], []
+        for bullet, idx in zip(bullets, dayanaklar):
+            if (isinstance(idx, int) and not isinstance(idx, bool)
+                    and idx in gecerli and idx not in kullanilan):
+                kullanilan.add(idx)
+                kalan_b.append(bullet)
+                kalan_d.append(idx)
+            else:
+                silinen += 1
+        # Butun maddeler dusmusse sayfa paragrafiyla ayakta kalir; bos
+        # `bullets` listesi card.html'i bozmuyor.
+        page["bullets"] = kalan_b
+        page["bullet_dayanak"] = kalan_d
+
+    if dusen_sayfa:
+        draft["pages"] = kalan_sayfalar
+    if silinen or dusen_sayfa:
+        print(f"  dayanak onarimi: {silinen} tekrar eden madde, "
+              f"{dusen_sayfa} dolgu sayfa silindi")
+    return draft
 
 
 def check_structure(draft: dict) -> list[str]:
@@ -549,7 +783,8 @@ def hedefli_onar(spec: dict, problems: list[str], source_text: str,
         style.replace_strings(spec, yeni)))
 
     onceki = len(problems)
-    sonraki = len(check_structure(aday) + style.review(aday, source_text))
+    sonraki = len(check_structure(aday) + check_dayanak(aday, source_text)
+                  + style.review(aday, source_text))
     if sonraki < onceki:
         print(f"  hedefli onarim: {onceki} ihlal -> {sonraki}")
         return aday
@@ -573,6 +808,31 @@ def build_prompt(candidate: dict, source_text: str, mode: str,
         "",
         "GÖREV: bu haberi Türkçeye çevirip instagram carousel metnine dönüştür.",
         f"Yazım modu: {mode} - {mode_hint}",
+        "",
+        "ÖNCE ÇIKARIM, SONRA YAZIM. Bu sıra zorunlu ve şemada da bu sırada.",
+        "Metni yazmadan önce 'cikarim' listesini doldur: kaynakta okurun",
+        "bilmediği SOMUT bilgiler. En çarpıcı olan en başa.",
+        "  - somut = belirli bir olay, isim, sayı, anekdot, karşılaştırma.",
+        "    \"oyun karanlık bir atmosfere sahip\" somut DEĞİL, yorumdur.",
+        "    \"turba kazıcısını aramaya gidiyorsun, mağarada bir ses",
+        "    duyuyorsun\" somuttur.",
+        "  - her olgu için 'alinti' alanına o bilginin dayandığı kaynak",
+        "    parçasını BİREBİR kopyala. İngilizce kalsın, çevirme, kısaltma.",
+        "    Kaynakta olmayan bir cümle yazarsan kod yakalar ve o olgu düşer.",
+        "  - kaç olgu bulursan o kadar yaz. Uydurma, ama aramadan da geçme:",
+        "    kaynağın en ilginç ayrıntısı genelde en kolay atlanandır.",
+        "",
+        "SONRA her gövde alanı bu listeden BİR numara gösterir:",
+        "  - 'dayanak': o sayfanın paragrafının dayandığı olgunun numarası",
+        "  - 'bullet_dayanak': maddelerin numaraları, maddelerle AYNI sırada",
+        "    ve aynı sayıda",
+        "  - BİR NUMARA İKİ KEZ KULLANILAMAZ. Her paragraf ve her madde",
+        "    kaynaktan AYRI bir şey anlatmak zorunda.",
+        "  - Bunun doğal sonucu: 5 olgu çıkardıysan 5 gövde alanından uzun",
+        "    post yazamazsın. Sayfa sayısını kaynağın verdiği malzeme",
+        "    belirler. Az malzeme varsa KISA yaz, sayfa doldurmak için",
+        "    aynı şeyi başka kelimelerle tekrar etme.",
+        "  - cover ve outro sayfaları dayanak istemez.",
         "",
         "KURALLAR (hepsi zorunlu):",
         "1. TÜRKÇE KARAKTERLERİ DOĞRU KULLAN: ı, ş, ğ, ü, ö, ç. "
@@ -657,6 +917,14 @@ def build_prompt(candidate: dict, source_text: str, mode: str,
         "    yazmak okuru yanıltır. Uygun yoksa boş liste.",
         "",
         f"KATEGORİ listesi (birini seç): {', '.join(CATEGORIES)}",
+        "Kategori haberde NE OLDUĞUNU söyler, haberin KONUSUNU değil.",
+        "Seçtiğin kategorinin ZORUNLU bilgisi postta mutlaka bulunmalı -",
+        "kaynakta varsa çıkarım listesine girer ve bir gövde alanında anlatılır:",
+        *[f"  {k}: {v}" for k, v in KATEGORI_SLOTLARI.items()],
+        "Kaynaklar bir oyunu değerlendiriyorsa kategori \"inceleme\"dir;",
+        "oyunun hangi stüdyodan geldiği kategoriyi değiştirmez. Bu kutu",
+        "kapakta basılıyor ve okurun olayı anlamasını sağlayan tek yer,",
+        "çünkü başlık genelde oyunu tanıtır, olayı değil.",
         "",
         f"SAYFA SAYISI SABİT DEĞİL. Kaynakta ne kadar anlatacak şey varsa o "
         f"kadar sayfa yaz, en az {MIN_PAGES} en fazla {MAX_PAGES}.",
@@ -736,6 +1004,12 @@ def to_render_spec(draft: dict, tier: str, candidate: dict, index: int = 0,
         # adayin tamamini tasiyor.
         "_aday": candidate,
         "_kaynak_sayisi": candidate["source_count"],
+        # Cikarim listesi taslakta KALIYOR (alt cizgi: karta basilmaz, uslup
+        # denetimine girmez). Sebep: bir postun neden zayif ciktigini sonradan
+        # anlamanin tek yolu, modelin kaynaktan NE cikardigini gormek. Kotu
+        # post ya kotu cikarimdan gelir ya iyi cikarimin kotu kullanilmasindan
+        # ve ikisi tamamen farkli sorunlar.
+        "_cikarim": draft.get("cikarim") or [],
         "_is_leak": is_leak,
         # Hangi model yazdi. Ana modelin kotasi dolunca yedege dusuluyor;
         # Telegram ozetinde gorunsun ki uslup farki fark edilirse sebebi
@@ -871,16 +1145,21 @@ def main() -> int:
         # Mekanik hatalar once duzeltilir: buyuk harf ve Turkce ek hatasi
         # yuzunden yeniden uretim istemek kotayi bosa harciyordu.
         draft = style.autofix_suffixes(style.autofix_lowercase(draft))
+        # Tekrar eden madde silmek mekanik bir duzeltme: yeniden uretim
+        # istemeye degmez ve kotayi yakar (bkz. buyuk harf dersi).
+        draft = autofix_dayanak(draft, source_text)
         # Yapi denetimi once: sayfa duzeni bozuksa uslup zaten yeniden
         # yazilacak, QA'ya kota harcamanin anlami yok.
-        problems = check_structure(draft) + style.review(draft, source_text)
+        problems = (check_structure(draft) + check_dayanak(draft, source_text)
+                    + style.review(draft, source_text))
 
         # Isaretsiz Turkce mekanik degil ama COZULEBILIR: metni yeniden
         # yazdirmak yerine isaretleri geri koyduruyoruz (ucuz model, sonucu
         # kod dogruluyor). Yedek modelin tek engeli buydu.
         if any("Turkce karakter" in p for p in problems):
             draft = diakritik_onar(draft, HELPER_MODEL)
-            problems = check_structure(draft) + style.review(draft, source_text)
+            problems = (check_structure(draft) + check_dayanak(draft, source_text)
+                    + style.review(draft, source_text))
 
         # Deterministik filtre temizse ikinci goz devreye girer. Once o
         # calissin diye sonra: yasak kalip varken QA'ya para harcamanin
@@ -909,7 +1188,8 @@ def main() -> int:
         # Once HEDEFLI ONARIM: tum metni bastan yazdirmadan sadece takilan
         # alanlari duzelttir. Basarirsa bu denemede biter, kota yanmaz.
         draft = hedefli_onar(draft, problems, source_text, HELPER_MODEL)
-        problems = check_structure(draft) + style.review(draft, source_text)
+        problems = (check_structure(draft) + check_dayanak(draft, source_text)
+                    + style.review(draft, source_text))
         if not problems:
             spec = to_render_spec(draft, args.tier, candidate, index, aktif_model)
             Path(args.out).parent.mkdir(parents=True, exist_ok=True)

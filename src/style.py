@@ -63,8 +63,13 @@ SUFFIX_FIXES = {
 # filtre, gorsel bulma ozelligini sessizce sabote ediyordu.
 # studio da ayni sebeple disarida: krediyi zaten images.py IGDB'nin sirket
 # verisinden yaziyor, to_render_spec kucuk harfe ceviriyor.
+# cikarim ayni sebeple disarida ve sebebi daha guclu: icindeki `alinti`
+# alani KAYNAKTAN BIREBIR kopyalanmis Ingilizce metin. Denetime girseydi
+# buyuk harf, isaretsiz Turkce ve yasak kalip kurallarinin ucune birden
+# takilirdi - yani dogrulama mekanizmasinin kendisi filtreye yem olurdu.
 NON_PROSE_KEYS = {"type", "image", "tier", "search_name", "image_candidates",
-                  "series_fallback", "representative_games", "studio"}
+                  "series_fallback", "representative_games", "studio",
+                  "cikarim", "dayanak", "bullet_dayanak"}
 
 # 2) Yasak kalip avinda Turkce isaretler yok sayilir: LLM "iste" yazip
 # noktalari eksik biraktiginda filtre onu da yakalamali.
@@ -335,7 +340,7 @@ def review(spec: dict, source_text: str) -> list[str]:
     """Tum denetimler. Bos liste = temiz."""
     return (check_patterns(spec) + check_suffixes(spec)
             + check_ses(spec) + check_gazeteci(spec)
-            + check_numbers(spec, source_text))
+            + check_numbers(spec, source_text) + check_tekrar(spec))
 
 
 def replace_strings(spec: dict, yeni: list[str]) -> dict:
@@ -428,3 +433,79 @@ def autofix_suffixes(spec: dict) -> dict:
         return node
 
     return walk(spec)
+
+
+# ----------------------------------------------------------- tekrar avi
+
+# Ayni fikrin farkli kelimelerle tekrar edilmesi filtreye takilmiyordu.
+# Olcum (20260831-the-blood-of-dawnwalker): "karanlik" dort, "fikir" uc
+# ayri alanda gecti; post ilerledikce yeni bir sey soylemiyordu ama hicbir
+# kural ihlal edilmemisti. Kural yoklugu degil, kural TURU eksikti:
+# mevcut denetimlerin hepsi TEK metne bakiyor, hicbiri metinler ARASINA
+# bakmiyordu.
+TEKRAR_ESIK = 3          # ayni kok bu kadar AYRI alanda gecerse tekrar
+KOK_UZUNLUK = 5          # Turkce eklemeli: ilk 5 harf govdeyi yakaliyor
+                         # ("karanlik/karanliga" -> "karan", "fikirlerini" -> "fikir")
+                         # 4 harf cok kaba: "karanlik" ile "karakter" cakisiyordu
+
+# Tekrari dogal olan kelimeler. Bunlari saymak gurultu uretir: bir oyun
+# haberinde "oyun" ve "oyuncu" her sayfada gecebilir.
+TEKRAR_MUAF = {
+    "oyunu", "oyunc", "oyunl", "oyuna", "oyund", "stüdy", "sürüm", "şirke",
+    "kayna", "yapım", "ekibi", "ekipl", "insan", "kulla", "yenid", "zaman",
+    "birli", "kadar", "sonra", "önced", "bunun", "böyle", "başka", "kendi",
+    "diğer", "olara", "olduğ", "olaca", "değil", "ayrıc", "hepsi", "aynıs",
+}
+
+
+def _koklar(text: str) -> set[str]:
+    """Metindeki icerik kelimelerinin kaba koklerini cikar.
+
+    Turkce eklemeli oldugu icin tam eslesme ise yaramaz: "karanlik",
+    "karanliga", "karanligin" ayni kelimedir ama uc farkli dizedir.
+    Govde olarak ilk KOK_UZUNLUK harf aliniyor - basit ama olculdugu
+    kadariyla yeterli, ve deterministik.
+    """
+    kokler = set()
+    for word in re.findall(r"[a-zçğıöşü]+", fold(text).replace("i̇", "i")):
+        if len(word) < KOK_UZUNLUK:
+            continue          # kisa kelimeler zaten edat/baglac
+        kokler.add(word[:KOK_UZUNLUK])
+    return kokler
+
+
+def check_tekrar(spec: dict) -> list[str]:
+    """Kartlar arasi fikir tekrari. LLM cagirmaz.
+
+    Yalnizca `pages` altina bakar: caption ayri bir yuzey, orada haberin
+    baglamini vermek icin kart kelimelerinin gecmesi normal.
+
+    Oyunun kendi adi muaf: ondan bahsetmek kacinilmaz.
+    """
+    muaf = set(TEKRAR_MUAF)
+    for alan in ("game", "search_name"):
+        muaf |= _koklar(str(spec.get(alan) or ""))
+
+    sayac: dict[str, list[str]] = {}
+    for path, text in strings_of(spec):
+        # YALNIZCA GOVDE. Baslik ve son sayfa sorusu haric: haberin konu
+        # kelimesinin kapakta, bir paragrafta ve soruda gecmesi tekrar
+        # degil, tutarlilik ("sizinti" haberinde "sizinti" gecer).
+        # Olculdu: bu ayrim yapilmadan dokuz taslagin dokuzu da isaretlendi,
+        # yani filtre hicbir sey ayirt etmiyordu. credit de disarida -
+        # sayfa basina yazilan ayni studyo adi tekrar degil.
+        if ".paragraph" not in path and ".bullets[" not in path:
+            continue
+        for kok in _koklar(text):
+            if kok in muaf:
+                continue
+            sayac.setdefault(kok, []).append(path)
+
+    problems = []
+    for kok, yerler in sorted(sayac.items()):
+        if len(yerler) >= TEKRAR_ESIK:
+            problems.append(
+                f"tekrar: \"{kok}...\" koku {len(yerler)} ayri alanda geciyor "
+                f"({', '.join(y.split('.', 1)[-1] for y in yerler[:4])}). "
+                f"her kart yeni bir sey soylemeli")
+    return problems
