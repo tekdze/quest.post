@@ -1,0 +1,253 @@
+{
+  "_kaynak": "https://www.pcgamer.com/games/the-witcher/after-the-debacle-of-cyberpunk-2077-cd-projekt-says-the-witcher-4-is-already-running-on-pc-and-consoles-promises-its-going-to-run-on-all-target-platforms",
+  "_aday_index": 1,
+  "_aday": {
+    "key": "13b8ada3d27f3a52",
+    "title": "After the debacle of Cyberpunk 2077, CD Projekt says The Witcher 4 is already running on PC and consoles, promises 'it's going to run' on all target platforms",
+    "url": "https://www.pcgamer.com/games/the-witcher/after-the-debacle-of-cyberpunk-2077-cd-projekt-says-the-witcher-4-is-already-running-on-pc-and-consoles-promises-its-going-to-run-on-all-target-platforms",
+    "summary": "Sure, it's a low bar, but after the Cyberpunk 2077 fiasco you can understand why CD Projekt Red would want to make the point.",
+    "published": "2026-08-31T21:43:46+00:00",
+    "age_hours": 1.7,
+    "lang": "en",
+    "kind": "news",
+    "bucket": "news",
+    "tags": [
+      "mainstream"
+    ],
+    "source_count": 2,
+    "sources": [
+      "eurogamer",
+      "pcgamer"
+    ],
+    "rank_score": 4.66,
+    "members": [
+      {
+        "hash": "13b8ada3d27f3a52",
+        "url": "https://www.pcgamer.com/games/the-witcher/after-the-debacle-of-cyberpunk-2077-cd-projekt-says-the-witcher-4-is-already-running-on-pc-and-consoles-promises-its-going-to-run-on-all-target-platforms",
+        "title": "After the debacle of Cyberpunk 2077, CD Projekt says The Witcher 4 is already running on PC and consoles, promises 'it's going to run' on all target platforms",
+        "summary": "Sure, it's a low bar, but after the Cyberpunk 2077 fiasco you can understand why CD Projekt Red would want to make the point.",
+        "published": "2026-08-31T21:43:46+00:00",
+        "age_hours": 1.7,
+        "image": "https://cdn.mos.cms.futurecdn.net/9rNJr8Y9XjNoMZDu2ndCnc-1280-80.jpg",
+        "source_id": "pcgamer",
+        "source_name": "PC Gamer",
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "weight": 0.7,
+        "tags": [
+          "mainstream"
+        ]
+      },
+      {
+        "hash": "02d243276ecc4b6d",
+        "url": "https://www.eurogamer.net/the-witcher-4-runs-on-pc-ps5-xbox-cyberpunk-2077-lessons",
+        "title": "The Witcher 4 already runs on all target platforms - CD Projekt Red not taking any chances after Cyberpunk 2077",
+        "summary": "The Witcher 4 , CD Projekt Red's next major game, will hopefully not suffer the performance problems of the studio's former major release, Cyberpunk 2077 . The developer, keenly aware of the latter's disastrous launch, has adopted a new approach to game optimisation for the former. Read more",
+        "published": "2026-08-31T10:10:17+00:00",
+        "age_hours": 13.3,
+        "image": "https://assetsio.gnwcdn.com/The-Witcher-4-%E2%80%93-Cinematic-Reveal-Trailer-%E2%80%93-Behind-the-scenes-1-6-screenshot.png?width=690&quality=85&format=jpg&auto=webp",
+        "source_id": "eurogamer",
+        "source_name": "Eurogamer",
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "weight": 0.7,
+        "tags": [
+          "mainstream"
+        ]
+      }
+    ]
+  },
+  "_kaynak_sayisi": 2,
+  "_cikarim": [
+    {
+      "olgu": "cd projekt red, the witcher 4'ün şimdiden pc ve konsollarda çalıştığını duyurdu.",
+      "alinti": "CD Projekt says The Witcher 4 is already running on PC and consoles"
+    },
+    {
+      "olgu": "cyberpunk 2077 fiyaskosunun ardından stüdyo optimizasyon sürecini geliştirmenin erken aşamalarına taşıdı.",
+      "alinti": "The developer, keenly aware of the latter's disastrous launch, has adopted a new approach to game optimisation for the former."
+    },
+    {
+      "olgu": "ekip yeni oyunun hedeflenen bütün platformlarda sorunsuz çalışacağına dair garanti veriyor.",
+      "alinti": "promises 'it's going to run' on all target platforms"
+    }
+  ],
+  "_is_leak": false,
+  "_model": "gemini-3.6-flash",
+  "tier": "B",
+  "category": "duyuru",
+  "caption": "cyberpunk 2077 çıkışında konsol tarafında yaşanan teknik kriz hafızalardaki tazeliğini koruyor. cd projekt red bu kez aynı felaketi yaşamamak adına yeni witcher oyununu geliştirme sürecinin başından itibaren konsollarda test ediyor. bakalım erken başlayan bu optimizasyon mesaisi oyun çıktığında karşılığını bulacak mı. #thewitcher4 #cdprojektred",
+  "game": "the witcher 4",
+  "search_name": "The Witcher 4",
+  "image_candidates": [
+    "Cyberpunk 2077"
+  ],
+  "series_fallback": [
+    "The Witcher 3: Wild Hunt"
+  ],
+  "representative_games": [],
+  "credit": "cd projekt red",
+  "pages": [
+    {
+      "type": "cover",
+      "title": "witcher ekibinden performans sözü",
+      "image": "state/img/the-witcher-iv-ar3nks.jpg",
+      "credit": "cd projekt red"
+    },
+    {
+      "type": "text",
+      "title": "konsollarda şimdiden çalışıyor",
+      "paragraph": "cd projekt red, yeni witcher oyununun hedeflenen tüm platformlarda şimdiden çalıştığını açıkladı. cyberpunk 2077 çıkışında yaşananların ardından şirket aynı hatayı tekrarlamamak için ders almış görünüyor.",
+      "dayanak": 0,
+      "bullets": [
+        "stüdyo optimizasyon sürecini son aşamaya bırakmayıp doğrudan geliştirme sürecine yaydı.",
+        "ekip oyunun çıkacağı her cihazda sorunsuz çalışacağına dair net garanti veriyor."
+      ],
+      "bullet_dayanak": [
+        1,
+        2
+      ],
+      "image": "state/img/the-witcher-iv-scx6qk.jpg",
+      "credit": "cd projekt red"
+    },
+    {
+      "type": "outro",
+      "question": "stüdyoların henüz çıkmamış oyunlar için performans garantisi vermesi neden şüpheyle karşılanıyor?",
+      "ctas": [
+        "sen de benzer bir optimizasyon vakası yaşadıysan anlat"
+      ],
+      "image": "state/img/the-witcher-iv-co95i0.jpg",
+      "credit": "cd projekt red"
+    }
+  ],
+  "_ihlaller": [
+    "text.bullets[0]: fiil yok, etiket gibi (\"stüdyo optimizasyon sürecini son a\")"
+  ],
+  "_hashes": [
+    "13b8ada3d27f3a52",
+    "02d243276ecc4b6d"
+  ],
+  "_kume_key": "13b8ada3d27f3a52",
+  "_gorsel_temsili": false,
+  "_image_pool": [
+    {
+      "id": "ar3nkq",
+      "kind": "artwork",
+      "w": 2808,
+      "h": 1157,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    },
+    {
+      "id": "ar3nkr",
+      "kind": "artwork",
+      "w": 2808,
+      "h": 1157,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    },
+    {
+      "id": "ar3nkp",
+      "kind": "artwork",
+      "w": 2808,
+      "h": 1157,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    },
+    {
+      "id": "ar3nks",
+      "kind": "artwork",
+      "w": 1920,
+      "h": 1080,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    },
+    {
+      "id": "haber-13b8ada3d27f3a52",
+      "kind": "screenshot",
+      "w": 1280,
+      "h": 720,
+      "credit": "pcgamer",
+      "oyun": "The Witcher IV",
+      "url": "https://cdn.mos.cms.futurecdn.net/9rNJr8Y9XjNoMZDu2ndCnc-1280-80.jpg",
+      "thumb": "https://cdn.mos.cms.futurecdn.net/9rNJr8Y9XjNoMZDu2ndCnc-1280-80.jpg",
+      "_kaynak": "pcgamer"
+    },
+    {
+      "id": "scus48",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    },
+    {
+      "id": "scus49",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    },
+    {
+      "id": "scus4a",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    },
+    {
+      "id": "scx6qk",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    },
+    {
+      "id": "scx6ql",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    },
+    {
+      "id": "scx6qm",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    },
+    {
+      "id": "scuxde",
+      "kind": "screenshot",
+      "w": 2048,
+      "h": 1152,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    },
+    {
+      "id": "scuxdf",
+      "kind": "screenshot",
+      "w": 2048,
+      "h": 1152,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    },
+    {
+      "id": "co95i0",
+      "kind": "cover",
+      "w": 1332,
+      "h": 1777,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    }
+  ],
+  "_slug": "the-witcher-iv",
+  "_gorsel_turu": 0
+}
