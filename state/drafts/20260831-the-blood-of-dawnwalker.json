@@ -1,0 +1,430 @@
+{
+  "_kaynak": "https://www.rockpapershotgun.com/the-blood-of-dawnwalker-review-worthy-to-sip-blood-at-the-top-rpgs-table",
+  "_aday_index": 1,
+  "_aday": {
+    "key": "567577dee3703eed",
+    "title": "The Blood of Dawnwalker review - worthy to sip blood at the top RPGs' table",
+    "url": "https://www.rockpapershotgun.com/the-blood-of-dawnwalker-review-worthy-to-sip-blood-at-the-top-rpgs-table",
+    "summary": "The moment I knew The Blood of Dawnwalker had it came when, not far in, one of the local peat diggers fell into a big hole. Tasked with finding him by his brother at the start of what seemed a fairly mundane early fetch quest, I rolled my eyes a bit as I slid in to try and locate the poor sod. He was, predictably, cowering in a corner of the cave complex. Right, now to get out of here and claim a lifetime supply of partially decayed vegetation. Wait, what was that noise? I’ll not spoil the rest of the quest, but suffice it to say that it provided the first taste of Rebel Wolves’ vampire RPG of",
+    "published": "2026-08-31T16:19:26+00:00",
+    "age_hours": 0.9,
+    "lang": "en",
+    "kind": "news",
+    "bucket": "news",
+    "tags": [
+      "mainstream",
+      "pc"
+    ],
+    "source_count": 3,
+    "sources": [
+      "eurogamer",
+      "pcgamer",
+      "rps"
+    ],
+    "rank_score": 7.88,
+    "members": [
+      {
+        "hash": "567577dee3703eed",
+        "url": "https://www.rockpapershotgun.com/the-blood-of-dawnwalker-review-worthy-to-sip-blood-at-the-top-rpgs-table",
+        "title": "The Blood of Dawnwalker review - worthy to sip blood at the top RPGs' table",
+        "summary": "The moment I knew The Blood of Dawnwalker had it came when, not far in, one of the local peat diggers fell into a big hole. Tasked with finding him by his brother at the start of what seemed a fairly mundane early fetch quest, I rolled my eyes a bit as I slid in to try and locate the poor sod. He was, predictably, cowering in a corner of the cave complex. Right, now to get out of here and claim a lifetime supply of partially decayed vegetation. Wait, what was that noise? I’ll not spoil the rest of the quest, but suffice it to say that it provided the first taste of Rebel Wolves’ vampire RPG of",
+        "published": "2026-08-31T16:19:26+00:00",
+        "age_hours": 0.9,
+        "image": "https://assetsio.gnwcdn.com/the-blood-of-dawnwalker-review-best-01.jpg?width=690&quality=85&format=jpg&auto=webp",
+        "source_id": "rps",
+        "source_name": "Rock Paper Shotgun",
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "weight": 0.9,
+        "tags": [
+          "mainstream",
+          "pc"
+        ]
+      },
+      {
+        "hash": "45434c025bda3eb4",
+        "url": "https://www.eurogamer.net/the-blood-of-dawnwalker-review-rebel-wolves",
+        "title": "The Blood of Dawnwalker review",
+        "summary": "CD Projekt Red alumni create a familiar dark fantasy adventure, but one with bold and provocative ideas of its own, that's mostly, enormously successful. Read more",
+        "published": "2026-08-31T15:00:00+00:00",
+        "age_hours": 2.2,
+        "image": "https://assetsio.gnwcdn.com/dawnwalker-brencis-header.jpg?width=690&quality=85&format=jpg&auto=webp",
+        "source_id": "eurogamer",
+        "source_name": "Eurogamer",
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "weight": 0.7,
+        "tags": [
+          "mainstream"
+        ]
+      },
+      {
+        "hash": "c404c996a1ba9ec8",
+        "url": "https://www.pcgamer.com/games/rpg/the-blood-of-dawnwalker-review",
+        "title": "The Blood of Dawnwalker review",
+        "summary": "A horror RPG with novel ideas of its own, even if it doesn’t always have the courage to follow them through.",
+        "published": "2026-08-31T15:00:00+00:00",
+        "age_hours": 2.2,
+        "image": "https://cdn.mos.cms.futurecdn.net/9uoTLJEVZx9wV2t2ArctQk-1280-80.jpg",
+        "source_id": "pcgamer",
+        "source_name": "PC Gamer",
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "weight": 0.7,
+        "tags": [
+          "mainstream"
+        ]
+      }
+    ]
+  },
+  "_kaynak_sayisi": 3,
+  "_is_leak": false,
+  "_model": "gemini-3.6-flash",
+  "tier": "A",
+  "category": "stüdyo",
+  "caption": "cd projekt red ayrılanlarının kurduğu rebel wolves ekibi ilk projeleriyle basının karşısına çıktı. oyunculara tanıdık gelen dark fantasy hissiyatını vampir temasıyla harmanlayan ekip, büyük stüdyo alışkanlıklarını geride bırakmaya çalışıyor. #dawnwalker #indiegame",
+  "game": "the blood of dawnwalker",
+  "search_name": "The Blood of Dawnwalker",
+  "image_candidates": [],
+  "series_fallback": [],
+  "representative_games": [
+    "The Witcher 3: Wild Hunt"
+  ],
+  "credit": "rebel wolves",
+  "pages": [
+    {
+      "type": "cover",
+      "title": "witcher ekibinden vampir rpg'si",
+      "image": "state/img/the-blood-of-dawnwalker-ar5uws.jpg",
+      "credit": "rebel wolves"
+    },
+    {
+      "type": "text",
+      "title": "tanıdık ama farklı",
+      "paragraph": "eski cd projekt red çalışanlarının kurduğu rebel wolves, karanlık fantezi türüne kendi yorumunu getiriyor. basit bir mağara görevi bile bir anda tehlikeli bir vampir hikayesine dönüşüyor.",
+      "bullets": [
+        "eski stüdyolarının havasını hissettirse de kendi özgün fikirlerini sunuyor.",
+        "sıradan gözüken arayışlar oyuncuyu hızlıca karanlık atmosfere çekiyor."
+      ],
+      "image": "state/img/the-blood-of-dawnwalker-sc14p3c.jpg",
+      "credit": "rebel wolves"
+    },
+    {
+      "type": "text",
+      "title": "cesur fikirler ve tereddütler",
+      "paragraph": "basın eleştirileri oyunun büyük rpg masasına oturacak potansiyele sahip olduğunu söylüyor. yeni mekanikler övülse de bazı fikirlerin sonuna kadar götürülmediği belirtiliyor.",
+      "bullets": [
+        "karanlık atmosfer ve korku ögeleri güçlü bir anlatımla birleşiyor.",
+        "yenilikçi fikirlerin arkasında durmakta bazen çekingen davranıyor."
+      ],
+      "image": "state/img/the-blood-of-dawnwalker-steam3751260-1.jpg",
+      "credit": "rebel wolves"
+    },
+    {
+      "type": "outro",
+      "question": "eski witcher ekibinin dev stüdyodan ayrılıp niş bir vampir hikayesine odaklanmasını neden ana akım oyunlara tercih ediyorsun",
+      "ctas": [
+        "sen de karanlık rpg dünyalarından beklentini paylaş"
+      ],
+      "image": "state/img/the-blood-of-dawnwalker-ar6fap.jpg",
+      "credit": "rebel wolves"
+    }
+  ],
+  "_hashes": [
+    "567577dee3703eed",
+    "45434c025bda3eb4",
+    "c404c996a1ba9ec8"
+  ],
+  "_kume_key": "567577dee3703eed",
+  "_gorsel_temsili": false,
+  "_image_pool": [
+    {
+      "id": "ar6fap",
+      "kind": "artwork",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker"
+    },
+    {
+      "id": "ar5uwt",
+      "kind": "artwork",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker"
+    },
+    {
+      "id": "ar5uwu",
+      "kind": "artwork",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker"
+    },
+    {
+      "id": "ar5uws",
+      "kind": "artwork",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker"
+    },
+    {
+      "id": "ar6fae",
+      "kind": "artwork",
+      "w": 3840,
+      "h": 1240,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker"
+    },
+    {
+      "id": "ar6faf",
+      "kind": "artwork",
+      "w": 1920,
+      "h": 1080,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker"
+    },
+    {
+      "id": "ar5uwr",
+      "kind": "artwork",
+      "w": 1920,
+      "h": 1080,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker"
+    },
+    {
+      "id": "haber-c404c996a1ba9ec8",
+      "kind": "screenshot",
+      "w": 1280,
+      "h": 720,
+      "credit": "pcgamer",
+      "oyun": "The Blood of Dawnwalker",
+      "url": "https://cdn.mos.cms.futurecdn.net/9uoTLJEVZx9wV2t2ArctQk-1280-80.jpg",
+      "thumb": "https://cdn.mos.cms.futurecdn.net/9uoTLJEVZx9wV2t2ArctQk-1280-80.jpg",
+      "_kaynak": "pcgamer"
+    },
+    {
+      "id": "sc14p31",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker"
+    },
+    {
+      "id": "sc14p2y",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker"
+    },
+    {
+      "id": "sc14p2z",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker"
+    },
+    {
+      "id": "sc14p32",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker"
+    },
+    {
+      "id": "sc14p3c",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker"
+    },
+    {
+      "id": "sc14p3d",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker"
+    },
+    {
+      "id": "scv1hd",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker"
+    },
+    {
+      "id": "scv1hb",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker"
+    },
+    {
+      "id": "scv1hc",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker"
+    },
+    {
+      "id": "sc14p30",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker"
+    },
+    {
+      "id": "scv1id",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker"
+    },
+    {
+      "id": "steam3751260-0",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/1af5d14d9b6a36c14eae3bebf56c0e0f63235633/ss_1af5d14d9b6a36c14eae3bebf56c0e0f63235633.1920x1080.jpg?t=1788197681",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/1af5d14d9b6a36c14eae3bebf56c0e0f63235633/ss_1af5d14d9b6a36c14eae3bebf56c0e0f63235633.600x338.jpg?t=1788197681"
+    },
+    {
+      "id": "steam3751260-1",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/8b1df8a547116394a9c1b7225c11904c09dc9a37/ss_8b1df8a547116394a9c1b7225c11904c09dc9a37.1920x1080.jpg?t=1788197681",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/8b1df8a547116394a9c1b7225c11904c09dc9a37/ss_8b1df8a547116394a9c1b7225c11904c09dc9a37.600x338.jpg?t=1788197681"
+    },
+    {
+      "id": "steam3751260-2",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/b91c26c945ec2453f7dbb1f6a3f8992edcccc484/ss_b91c26c945ec2453f7dbb1f6a3f8992edcccc484.1920x1080.jpg?t=1788197681",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/b91c26c945ec2453f7dbb1f6a3f8992edcccc484/ss_b91c26c945ec2453f7dbb1f6a3f8992edcccc484.600x338.jpg?t=1788197681"
+    },
+    {
+      "id": "steam3751260-3",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/2aeb99f7ea9968e69ea460e4c994a1ff280fb32d/ss_2aeb99f7ea9968e69ea460e4c994a1ff280fb32d.1920x1080.jpg?t=1788197681",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/2aeb99f7ea9968e69ea460e4c994a1ff280fb32d/ss_2aeb99f7ea9968e69ea460e4c994a1ff280fb32d.600x338.jpg?t=1788197681"
+    },
+    {
+      "id": "steam3751260-4",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/533e61e6ba42cfebbd3b6d3926ecbbc4edd285dc/ss_533e61e6ba42cfebbd3b6d3926ecbbc4edd285dc.1920x1080.jpg?t=1788197681",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/533e61e6ba42cfebbd3b6d3926ecbbc4edd285dc/ss_533e61e6ba42cfebbd3b6d3926ecbbc4edd285dc.600x338.jpg?t=1788197681"
+    },
+    {
+      "id": "steam3751260-5",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/5c76f48ae1487a08118132512ea932afb238cebf/ss_5c76f48ae1487a08118132512ea932afb238cebf.1920x1080.jpg?t=1788197681",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/5c76f48ae1487a08118132512ea932afb238cebf/ss_5c76f48ae1487a08118132512ea932afb238cebf.600x338.jpg?t=1788197681"
+    },
+    {
+      "id": "steam3751260-6",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/c1759e2e30858ddedef1a3cbd08c179e85a329ea/ss_c1759e2e30858ddedef1a3cbd08c179e85a329ea.1920x1080.jpg?t=1788197681",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/c1759e2e30858ddedef1a3cbd08c179e85a329ea/ss_c1759e2e30858ddedef1a3cbd08c179e85a329ea.600x338.jpg?t=1788197681"
+    },
+    {
+      "id": "steam3751260-7",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/2fe9d22ce8483f1ca06b37ffa061a8428447f55c/ss_2fe9d22ce8483f1ca06b37ffa061a8428447f55c.1920x1080.jpg?t=1788197681",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/2fe9d22ce8483f1ca06b37ffa061a8428447f55c/ss_2fe9d22ce8483f1ca06b37ffa061a8428447f55c.600x338.jpg?t=1788197681"
+    },
+    {
+      "id": "steam3751260-8",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/0c8e019519af64118b204928fa5e30cf8bdc0305/ss_0c8e019519af64118b204928fa5e30cf8bdc0305.1920x1080.jpg?t=1788197681",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/0c8e019519af64118b204928fa5e30cf8bdc0305/ss_0c8e019519af64118b204928fa5e30cf8bdc0305.600x338.jpg?t=1788197681"
+    },
+    {
+      "id": "steam3751260-9",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/5c052d1f86776566470516588912b2323da7aeb1/ss_5c052d1f86776566470516588912b2323da7aeb1.1920x1080.jpg?t=1788197681",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/5c052d1f86776566470516588912b2323da7aeb1/ss_5c052d1f86776566470516588912b2323da7aeb1.600x338.jpg?t=1788197681"
+    },
+    {
+      "id": "steam3751260-10",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/6e5bc8a098290a8cbd2156bbd0209bc4592624d4/ss_6e5bc8a098290a8cbd2156bbd0209bc4592624d4.1920x1080.jpg?t=1788197681",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/6e5bc8a098290a8cbd2156bbd0209bc4592624d4/ss_6e5bc8a098290a8cbd2156bbd0209bc4592624d4.600x338.jpg?t=1788197681"
+    },
+    {
+      "id": "steam3751260-11",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/593eddd88a461156d2d7debae80e7620924d8eba/ss_593eddd88a461156d2d7debae80e7620924d8eba.1920x1080.jpg?t=1788197681",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3751260/593eddd88a461156d2d7debae80e7620924d8eba/ss_593eddd88a461156d2d7debae80e7620924d8eba.600x338.jpg?t=1788197681"
+    },
+    {
+      "id": "cob7ym",
+      "kind": "cover",
+      "w": 1200,
+      "h": 1600,
+      "credit": "rebel wolves",
+      "oyun": "The Blood of Dawnwalker"
+    }
+  ],
+  "_slug": "the-blood-of-dawnwalker",
+  "_gorsel_turu": 0
+}
