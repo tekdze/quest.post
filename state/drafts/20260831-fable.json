@@ -1,0 +1,417 @@
+{
+  "_kaynak": "https://www.gamespot.com/articles/fable-reboots-main-story-is-about-20-hours-long-dev-says",
+  "_aday_index": 1,
+  "_aday": {
+    "key": "f8e82b1291132de8",
+    "title": "Fable Reboot’s Main Story Is About 20 Hours Long, Dev Says",
+    "url": "https://www.gamespot.com/articles/fable-reboots-main-story-is-about-20-hours-long-dev-says",
+    "summary": "The upcoming Fable reboot from developer Playground Games will have a main story that should take about 15-20 hours to complete, the developers have stated. However, as with any game, your mileage may vary, and Playground believes the new Fable game can be played forever if players want to. Associate game director Will Kennedy told Polygon , \"We have around 15-20 hours of mainline quest gameplay.\" He added that the game has another 15-20 hours worth of \"side and open-world exploration content gameplay.\" \"And then, of course, the life systems are limitless, so you can play them for as long as y",
+    "published": "2026-08-31T14:02:46+00:00",
+    "age_hours": 2.1,
+    "lang": "en",
+    "kind": "news",
+    "bucket": "news",
+    "tags": [
+      "mainstream"
+    ],
+    "source_count": 2,
+    "sources": [
+      "eurogamer",
+      "gamespot"
+    ],
+    "rank_score": 4.66,
+    "members": [
+      {
+        "hash": "f8e82b1291132de8",
+        "url": "https://www.gamespot.com/articles/fable-reboots-main-story-is-about-20-hours-long-dev-says",
+        "title": "Fable Reboot’s Main Story Is About 20 Hours Long, Dev Says",
+        "summary": "The upcoming Fable reboot from developer Playground Games will have a main story that should take about 15-20 hours to complete, the developers have stated. However, as with any game, your mileage may vary, and Playground believes the new Fable game can be played forever if players want to. Associate game director Will Kennedy told Polygon , \"We have around 15-20 hours of mainline quest gameplay.\" He added that the game has another 15-20 hours worth of \"side and open-world exploration content gameplay.\" \"And then, of course, the life systems are limitless, so you can play them for as long as y",
+        "published": "2026-08-31T14:02:46+00:00",
+        "age_hours": 2.1,
+        "image": "https://www.gamespot.com/wp-content/uploads/2026/08/fablereboot.jpg?w=300",
+        "source_id": "gamespot",
+        "source_name": "GameSpot",
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "weight": 0.7,
+        "tags": [
+          "mainstream"
+        ]
+      },
+      {
+        "hash": "ebccd03b98343bec",
+        "url": "https://www.eurogamer.net/fable-main-story-length-15-20-hours-xbox",
+        "title": "Fable's main story will take around 15 to 20 hours to complete",
+        "summary": "Xbox and Playground Games have given a rough idea of how long Fable will take to finish: 15-20 hours. Read more",
+        "published": "2026-08-31T11:05:50+00:00",
+        "age_hours": 5.0,
+        "image": "https://assetsio.gnwcdn.com/01_Fable_Choices.jpg?width=690&quality=85&format=jpg&auto=webp",
+        "source_id": "eurogamer",
+        "source_name": "Eurogamer",
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "weight": 0.7,
+        "tags": [
+          "mainstream"
+        ]
+      }
+    ]
+  },
+  "_kaynak_sayisi": 2,
+  "_is_leak": false,
+  "_model": "gemini-3.6-flash",
+  "tier": "B",
+  "category": "güncelleme",
+  "caption": "playground games yeni fable hakkındaki oynanış sürelerini paylaştı. açık dünya rpg türünün devasa haritalarla dolduğu bir dönemde ekibin derli toplu bir ana senaryo seçmesi alışılmadık bir tercih. sinematik anlatımla seriye özgü yaşam sistemlerinin nasıl dengeleneceği oyuncular arasında tartışılıyor. #fable #xbox",
+  "game": "fable",
+  "search_name": "Fable",
+  "image_candidates": [],
+  "series_fallback": [
+    "Fable III",
+    "Fable Anniversary"
+  ],
+  "representative_games": [],
+  "credit": "playground games",
+  "pages": [
+    {
+      "type": "cover",
+      "title": "yeni fable beklenenden kısa sürebilir",
+      "image": "state/img/fable-sc13q2f.jpg",
+      "credit": "playground games"
+    },
+    {
+      "type": "text",
+      "title": "ana senaryo kısa tutuluyor",
+      "paragraph": "playground games ekibi yeni fable oyununun ana hikayesini 15 ile 20 saat arasında tamamlanacak şekilde tasarlıyor. devasa rol yapma oyunlarının yüzlerce saat sürdüğü günlerde bu süre oldukça mütevazı kalıyor.",
+      "bullets": [
+        "yan görevler ve harita keşfi ana hikaye kadar zaman alıyor",
+        "yaşam simülasyonu sistemleri oyunculara ucu açık bir alan bırakıyor"
+      ],
+      "image": "state/img/fable-scsoez.jpg",
+      "credit": "playground games"
+    },
+    {
+      "type": "numbers",
+      "title": "oyun süresi detayları",
+      "metrics": [
+        {
+          "value": "15-20 saat",
+          "label": "ana hikaye görevlerinin toplam uzunluğu"
+        },
+        {
+          "value": "15-20 saat",
+          "label": "yan içerik ve keşif etkinliklerinin süresi"
+        }
+      ],
+      "image": "state/img/fable-scsoew.jpg",
+      "credit": "playground games"
+    },
+    {
+      "type": "outro",
+      "question": "rpg türünde kısa hikaye ve ucu açık sistemler doğru bir tercih mi yoksa içerik eksikliği mi",
+      "ctas": [
+        "kendi oynanış tercihini aşağıda kapıştır"
+      ],
+      "image": "state/img/fable-ar558t.jpg",
+      "credit": "playground games"
+    }
+  ],
+  "_hashes": [
+    "f8e82b1291132de8",
+    "ebccd03b98343bec"
+  ],
+  "_kume_key": "f8e82b1291132de8",
+  "_gorsel_temsili": false,
+  "_image_pool": [
+    {
+      "id": "ar558t",
+      "kind": "artwork",
+      "w": 1438,
+      "h": 810,
+      "credit": "playground games",
+      "oyun": "Fable"
+    },
+    {
+      "id": "sc13q2g",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "playground games",
+      "oyun": "Fable"
+    },
+    {
+      "id": "sc13q2f",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "playground games",
+      "oyun": "Fable"
+    },
+    {
+      "id": "sc13q2h",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "playground games",
+      "oyun": "Fable"
+    },
+    {
+      "id": "sc13q2i",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "playground games",
+      "oyun": "Fable"
+    },
+    {
+      "id": "sc13q2j",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "playground games",
+      "oyun": "Fable"
+    },
+    {
+      "id": "sc13q2k",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "playground games",
+      "oyun": "Fable"
+    },
+    {
+      "id": "sc13q2l",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "playground games",
+      "oyun": "Fable"
+    },
+    {
+      "id": "scsoet",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "playground games",
+      "oyun": "Fable"
+    },
+    {
+      "id": "scsoeu",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "playground games",
+      "oyun": "Fable"
+    },
+    {
+      "id": "scsoew",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "playground games",
+      "oyun": "Fable"
+    },
+    {
+      "id": "scsoev",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "playground games",
+      "oyun": "Fable"
+    },
+    {
+      "id": "scsoez",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "playground games",
+      "oyun": "Fable"
+    },
+    {
+      "id": "scsoex",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "playground games",
+      "oyun": "Fable"
+    },
+    {
+      "id": "scsoey",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "playground games",
+      "oyun": "Fable"
+    },
+    {
+      "id": "sc13q2e",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "playground games",
+      "oyun": "Fable"
+    },
+    {
+      "id": "steam1651560-0",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "grenaa games",
+      "oyun": "Fabledom",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_0a35c9943e990dfd6df0f6ebdd1d0b9cc8ceb28d.1920x1080.jpg?t=1758877732",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_0a35c9943e990dfd6df0f6ebdd1d0b9cc8ceb28d.600x338.jpg?t=1758877732"
+    },
+    {
+      "id": "steam1651560-1",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1076,
+      "credit": "grenaa games",
+      "oyun": "Fabledom",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_6351acd5206017ef785784d2c4267bf4ff2fb133.1920x1080.jpg?t=1758877732",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_6351acd5206017ef785784d2c4267bf4ff2fb133.600x338.jpg?t=1758877732"
+    },
+    {
+      "id": "steam1651560-2",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "grenaa games",
+      "oyun": "Fabledom",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_80bc2864fd0a70a8c1773b4cafd12924872e97e4.1920x1080.jpg?t=1758877732",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_80bc2864fd0a70a8c1773b4cafd12924872e97e4.600x338.jpg?t=1758877732"
+    },
+    {
+      "id": "steam1651560-3",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "grenaa games",
+      "oyun": "Fabledom",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_ae45e8046ebff6e49dbf731084bb59240409e52c.1920x1080.jpg?t=1758877732",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_ae45e8046ebff6e49dbf731084bb59240409e52c.600x338.jpg?t=1758877732"
+    },
+    {
+      "id": "steam1651560-4",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "grenaa games",
+      "oyun": "Fabledom",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_e1a3a4905db42091d61be2f71b12acf4db729b56.1920x1080.jpg?t=1758877732",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_e1a3a4905db42091d61be2f71b12acf4db729b56.600x338.jpg?t=1758877732"
+    },
+    {
+      "id": "steam1651560-5",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "grenaa games",
+      "oyun": "Fabledom",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_5a3e4f7623cd601c6a67cee15107ef067246ed3e.1920x1080.jpg?t=1758877732",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_5a3e4f7623cd601c6a67cee15107ef067246ed3e.600x338.jpg?t=1758877732"
+    },
+    {
+      "id": "steam1651560-6",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "grenaa games",
+      "oyun": "Fabledom",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_534af43a1003729021a1b15a681a7ea942ffcd6d.1920x1080.jpg?t=1758877732",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_534af43a1003729021a1b15a681a7ea942ffcd6d.600x338.jpg?t=1758877732"
+    },
+    {
+      "id": "steam1651560-7",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1076,
+      "credit": "grenaa games",
+      "oyun": "Fabledom",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_5bced8cbb0f724dc26839e367ef5bf7713140fb8.1920x1080.jpg?t=1758877732",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_5bced8cbb0f724dc26839e367ef5bf7713140fb8.600x338.jpg?t=1758877732"
+    },
+    {
+      "id": "steam1651560-8",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "grenaa games",
+      "oyun": "Fabledom",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_16fb225d445fc99e1a422612f1a462264bce55c0.1920x1080.jpg?t=1758877732",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_16fb225d445fc99e1a422612f1a462264bce55c0.600x338.jpg?t=1758877732"
+    },
+    {
+      "id": "steam1651560-9",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "grenaa games",
+      "oyun": "Fabledom",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_735051dddb82a69379de56a64cc28583d709430c.1920x1080.jpg?t=1758877732",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_735051dddb82a69379de56a64cc28583d709430c.600x338.jpg?t=1758877732"
+    },
+    {
+      "id": "steam1651560-10",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1076,
+      "credit": "grenaa games",
+      "oyun": "Fabledom",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_a0aad6b990557053eddb48761df4acd1ca6d255a.1920x1080.jpg?t=1758877732",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_a0aad6b990557053eddb48761df4acd1ca6d255a.600x338.jpg?t=1758877732"
+    },
+    {
+      "id": "steam1651560-11",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "grenaa games",
+      "oyun": "Fabledom",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_db68f4cd5f90b3ec6b0941f3c91b4f15152eb39f.1920x1080.jpg?t=1758877732",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_db68f4cd5f90b3ec6b0941f3c91b4f15152eb39f.600x338.jpg?t=1758877732"
+    },
+    {
+      "id": "steam1651560-12",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "grenaa games",
+      "oyun": "Fabledom",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_b3989fc3ea19a1574e6db9c3ad7099c78198dd6f.1920x1080.jpg?t=1758877732",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_b3989fc3ea19a1574e6db9c3ad7099c78198dd6f.600x338.jpg?t=1758877732"
+    },
+    {
+      "id": "steam1651560-13",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "grenaa games",
+      "oyun": "Fabledom",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_dd7dc5df68a869bc469e735c999659bc8e739731.1920x1080.jpg?t=1758877732",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_dd7dc5df68a869bc469e735c999659bc8e739731.600x338.jpg?t=1758877732"
+    },
+    {
+      "id": "steam1651560-14",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "grenaa games",
+      "oyun": "Fabledom",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_9504004b6e62faf249553f855c0a3187e5d1180a.1920x1080.jpg?t=1758877732",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1651560/ss_9504004b6e62faf249553f855c0a3187e5d1180a.600x338.jpg?t=1758877732"
+    },
+    {
+      "id": "cobc6d",
+      "kind": "cover",
+      "w": 600,
+      "h": 800,
+      "credit": "playground games",
+      "oyun": "Fable"
+    }
+  ],
+  "_slug": "fable",
+  "_gorsel_turu": 0
+}
