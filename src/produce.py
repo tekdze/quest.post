@@ -56,8 +56,7 @@ def run(script: str, *args: str) -> None:
     if result.stderr:
         print(result.stderr, end="", file=sys.stderr, flush=True)
     if result.returncode != 0:
-        satirlar = [s.strip() for s in (result.stderr or "").splitlines() if s.strip()]
-        sebep = satirlar[-1][:160] if satirlar else f"cikis kodu {result.returncode}"
+        sebep = tg.hata_satiri(result.stderr, f"cikis kodu {result.returncode}")
         sys.exit(f"\n{script}: {sebep}")
 
 

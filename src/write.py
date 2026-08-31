@@ -60,6 +60,10 @@ PAGE_TYPES = {"cover", "text", "numbers", "outro"}
 
 # Gecici HTTP hatalari icin yeniden deneme (503 = model yogun).
 HTTP_RETRIES = 4
+# Bu kodlardan biri geldiginde ana modelden yedege dusuluyor. 429 kota,
+# 503 yogunluk, 500/502 sunucu tarafi - hepsinde "post uretememektense
+# baska modelle uret" karari gecerli.
+API_GECICI_HATALAR = ("429", "500", "502", "503")
 RETRY_BACKOFF = 5  # saniye, her denemede katlaniyor
 
 # Sabit kategori listesi. LLM buradan secer, serbest yazamaz - kicker metni
@@ -844,10 +848,18 @@ def main() -> int:
             # Yedek modelin hakki 500. Uslup birebir ayni olmayabilir ama
             # style.py filtresi, QA ve kullanicinin onayi devrede - post
             # uretememektense farkli tonda uretmek daha iyi.
-            if "429" not in str(exc) or aktif_model == HELPER_MODEL:
+            #
+            # ⚠️ Eskiden kosul yalnizca "429" ariyordu ve kacak veriyordu:
+            # kota dolunca once 429 geliyor, api_call tekrar deniyor ve
+            # SON hata 503 olabiliyor. O zaman "429 yok" deyip yedege
+            # gecmeden oluyordu (olcum 2026-09-01, /uret 2). Artik GECICI
+            # sayilan her API hatasi yedege dusuruyor - amac ayni: post
+            # uretememektense baska modelle uretmek.
+            if aktif_model == HELPER_MODEL or not any(
+                    kod in str(exc) for kod in API_GECICI_HATALAR):
                 raise
-            print(f"\n{aktif_model} kotasi doldu, yedek modele geciliyor: "
-                  f"{HELPER_MODEL}\n")
+            print(f"\n{aktif_model} cevap vermedi ({str(exc).splitlines()[0][:60]}), "
+                  f"yedek modele geciliyor: {HELPER_MODEL}\n")
             aktif_model = HELPER_MODEL
             draft = generate(prompt, aktif_model, args.temperature)
         except GecersizCevap as exc:

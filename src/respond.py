@@ -58,8 +58,8 @@ def run(script: str, *args: str) -> bool:
 
     if sonuc.returncode == 0:
         return True
-    satirlar = [s.strip() for s in (sonuc.stderr or "").splitlines() if s.strip()]
-    SON_HATA = satirlar[-1][:180] if satirlar else f"{script} cikis kodu {sonuc.returncode}"
+    SON_HATA = tg.hata_satiri(sonuc.stderr,
+                              f"{script} cikis kodu {sonuc.returncode}")
     return False
 
 

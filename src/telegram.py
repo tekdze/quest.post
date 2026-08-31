@@ -378,6 +378,25 @@ def send_documents(cards: list[Path]) -> None:
 
 # ------------------------------------------------------------------ durum
 
+def hata_satiri(stderr: str, varsayilan: str = "") -> str:
+    """Çok satırlı hata çıktısından ANLAMLI satırı seç.
+
+    Son satırı almak yetmiyor: Gemini hatası JSON gövdesiyle geliyor ve son
+    satır `}` oluyordu - Telegram'a "write.py: }" düşüyordu (ölçüm
+    2026-09-01). Süslü parantez, köşeli parantez ve tırnak gibi yapısal
+    satırlar eleniyor, kalanların içinde hata özeti aranıyor.
+    """
+    satirlar = [s.strip() for s in (stderr or "").splitlines() if s.strip()]
+    satirlar = [s for s in satirlar if len(s.strip("{}[]\",: ")) > 3]
+    if not satirlar:
+        return varsayilan
+    # Once "hata/error/message" gecen satir: sebep genelde orada.
+    for satir in satirlar:
+        if any(k in satir.lower() for k in ("hata", "error", "message", "exception")):
+            return satir[:180]
+    return satirlar[-1][:180]
+
+
 def read_json(path: Path, default):
     if not path.exists():
         return default
