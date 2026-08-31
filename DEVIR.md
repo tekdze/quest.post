@@ -340,6 +340,18 @@ diye düştü ve **hiç post çıkmadı**. İki katman eklendi:
    veriyor; beğenmezse `/yeniden`. **Hiç post çıkmaması, kusurlu post
    çıkmasından kötü.**
 
+⚠️ **Model şemayı atlayıp DİZİ döndürebiliyor.** Onarım turu
+`{"metinler": [...]}` bekliyordu, model doğrudan `[...]` döndürdü ve üretim
+`AttributeError: 'list' object has no attribute 'get'` ile düştü. Şema net
+yazılsa bile oluyor. `write.liste_al` iki biçimi de kabul ediyor; menü, QA
+ve eşleştirme çağrıları da aynı korumaya alındı.
+
+⚠️ **Onarımda UZUNLUK EŞİT olmalı.** Metinler sıra bazlı değiştiriliyor
+(`style.replace_strings`); eksik liste gelirse sıra kayar ve caption başlık
+yerine oturur. Diakritik onarımında bunu `fold` karşılaştırması engelliyor
+(kelime değişmişse reddediliyor) ama hedefli onarım serbestçe yeniden
+yazdığı için içerik kıyaslanamıyor - tek koruma uzunluk denetimi.
+
 ⚠️ **Kural eklerken ret olasılığı çarpılıyor.** Artık dört ret kaynağı var:
 sayfa yapısı, üslup kalıpları, ses kuralları, LLM yazım denetimi. Üç hakla
 üçünün de takılması artık ihmal edilebilir değil - yeni kural eklerken

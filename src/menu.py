@@ -273,7 +273,7 @@ def main() -> int:
     cevap = writer.generate(build_prompt(rows), args.model, temperature=0.4)
 
     oyunlar, ozetler, seriler, temsililer = {}, {}, {}, {}
-    for row in cevap.get("adaylar", []):
+    for row in writer.liste_al(cevap, "adaylar"):
         try:
             sira = int(row.get("sira"))
         except (TypeError, ValueError):
@@ -283,7 +283,7 @@ def main() -> int:
         seriler[sira] = row.get("seri")
         temsililer[sira] = row.get("temsili")
 
-    oneri = cevap.get("oneri")
+    oneri = cevap.get("oneri") if isinstance(cevap, dict) else None
     try:
         oneri = int(oneri)
     except (TypeError, ValueError):
@@ -291,7 +291,7 @@ def main() -> int:
     if oneri is not None and not any(r["sira"] == oneri for r in rows):
         print(f"uyari: LLM listede olmayan {oneri} numarasini onerdi, yok sayildi")
         oneri = None
-    gerekce = (cevap.get("gerekce") or "").strip()
+    gerekce = (cevap.get("gerekce") or "").strip() if isinstance(cevap, dict) else ""
 
     # Gorsel kontrolu: LLM'in verdigi oyun adlari IGDB'de aranir.
     # Metin uretilmeden once bakiliyor, bedeli sadece birkac arama.

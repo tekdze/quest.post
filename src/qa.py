@@ -113,7 +113,7 @@ def dogrula(cevap: dict, spec: dict, pool: list[dict],
     notlar: list[str] = []
     kullanilan: set[int] = set()
 
-    for row in cevap.get("sayfalar") or []:
+    for row in writer.liste_al(cevap, "sayfalar"):
         try:
             sayfa = int(row.get("sayfa"))
             havuz = int(row.get("havuz"))

@@ -219,6 +219,22 @@ class GecersizCevap(Exception):
     """
 
 
+def liste_al(cevap, anahtar: str) -> list:
+    """Cevaptaki listeyi al. Model bazen sarmalayıcıyı atlayıp dizi döndürüyor.
+
+    Ölçüldü (2026-08-31): hedefli onarım turu `{"metinler": [...]}` bekliyordu,
+    model doğrudan `[...]` döndürdü ve üretim `AttributeError: 'list' object
+    has no attribute 'get'` ile düştü. Şema net yazılsa bile bu olabiliyor,
+    o yüzden iki biçim de kabul ediliyor.
+    """
+    if isinstance(cevap, list):
+        return cevap
+    if isinstance(cevap, dict):
+        deger = cevap.get(anahtar)
+        return deger if isinstance(deger, list) else []
+    return []
+
+
 def generate(prompt: str, model: str, temperature: float) -> dict:
     payload = {
         "contents": [{"role": "user", "parts": [{"text": prompt}]}],
@@ -335,12 +351,12 @@ def llm_review(spec: dict, source_text: str, model: str | None = None) -> list[s
         print("  qa: model cevap vermedi, atlaniyor")
         return []
 
-    gozlem = (cevap.get("gozlem") or "").strip()
+    gozlem = (cevap.get("gozlem") or "").strip() if isinstance(cevap, dict) else ""
     if gozlem:
         print(f"  qa gozlem: {gozlem[:70]}")
 
     problems = []
-    for row in cevap.get("sorunlar") or []:
+    for row in liste_al(cevap, "sorunlar"):
         tur = (row.get("tur") or "").strip()
         if tur not in ("yazim", "kaynak_disi", "anlamsiz"):
             continue  # karar kumesi disina cikmis, yok sayilir
@@ -452,7 +468,7 @@ def diakritik_onar(spec: dict, model: str) -> dict:
         print("  diakritik onarimi yapilamadi, atlaniyor")
         return spec
 
-    gelen = cevap.get("metinler") or []
+    gelen = liste_al(cevap, "metinler")
     guvenli, duzeltilen, reddedilen = [], 0, 0
     for sira, eski in enumerate(orijinal):
         yeni = gelen[sira] if sira < len(gelen) else None
@@ -514,11 +530,17 @@ def hedefli_onar(spec: dict, problems: list[str], source_text: str,
         print("  hedefli onarim yapilamadi, atlaniyor")
         return spec
 
-    gelen = cevap.get("metinler") or []
-    if not gelen:
+    gelen = liste_al(cevap, "metinler")
+    # UZUNLUK ESIT OLMAK ZORUNDA. Eksik liste gelirse sira kayar ve metinler
+    # yanlis alanlara oturur: caption baslik yerine gecebilir. Diakritik
+    # onariminda bunu fold karsilastirmasi engelliyor, burada engelleyen tek
+    # sey uzunluk - onarim serbestce yeniden yaziyor, icerik kiyaslanamiyor.
+    if len(gelen) != len(orijinal):
+        print(f"  hedefli onarim: {len(gelen)} metin geldi, {len(orijinal)} "
+              f"bekleniyordu - sira kaymasin diye atlandi")
         return spec
-    yeni = [gelen[i] if i < len(gelen) and isinstance(gelen[i], str) else eski
-            for i, eski in enumerate(orijinal)]
+    yeni = [g if isinstance(g, str) and g.strip() else eski
+            for g, eski in zip(gelen, orijinal)]
     aday = style.autofix_suffixes(style.autofix_lowercase(
         style.replace_strings(spec, yeni)))
 
