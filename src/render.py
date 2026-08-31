@@ -4,7 +4,7 @@
 API anahtari gerekmez, sadece Playwright + fontlar.
 
 Tasarim templates/card.html + card.css icinde SABIT durur. Bu dosya sadece
-tarayiciyi surer: veriyi basar, gradyani olcturur, ekran goruntusu alir.
+tarayiciyi surer: veriyi basar, bolme cizgisini olcturur, ekran goruntusu alir.
 
 Kullanim:
     py -3.12 src/render.py examples/sample_post.json
@@ -126,9 +126,9 @@ def render(spec: dict, out_dir: Path) -> list[dict]:
                     "() => { const i = document.querySelector('.card__image');"
                     " return i && i.complete && i.naturalWidth > 0; }"
                 )
-            # Font yuklenmesi metin blogunun yuksekligini degistirir, gradyani
-            # son haliyle yeniden olc.
-            metrics = page.evaluate("() => window.fitScrim()") or metrics
+            # Font yuklenmesi metin blogunun yuksekligini degistirir,
+            # bolme cizgisini son haliyle yeniden olc.
+            metrics = page.evaluate("() => window.fitSplit()") or metrics
 
             target = out_dir / f"{index:02d}.png"
             page.screenshot(path=str(target))
@@ -140,8 +140,8 @@ def render(spec: dict, out_dir: Path) -> list[dict]:
             written.append({
                 "file": label,
                 "type": spec_page["type"],
-                "scrim_start_pct": (metrics or {}).get("scrim_start_pct"),
-                "scrim_solid_pct": (metrics or {}).get("scrim_solid_pct"),
+                "gorsel_pct": (metrics or {}).get("gorsel_pct"),
+                "tasma": (metrics or {}).get("tasma"),
                 "content_height": (metrics or {}).get("content_height"),
             })
 
@@ -150,6 +150,60 @@ def render(spec: dict, out_dir: Path) -> list[dict]:
 
 
 SHEET_THUMB = "https://images.igdb.com/igdb/image/upload/t_screenshot_med/{id}.jpg"
+
+
+def render_kart_sheet(cards: list[Path], out_path: Path) -> int:
+    """Basılmış kartları tek ızgarada topla. Kart denetimi (qa.py) için.
+
+    Kartlar 1440x1800 PNG; tek tek göndermek hem yavaş hem gereksiz büyük.
+    Izgara tek görsel çağrısına sığıyor ve model kartları numarayla
+    işaretleyebiliyor - havuz ızgarasıyla aynı yaklaşım.
+    """
+    if not cards:
+        print("kart yok")
+        return 1
+
+    tiles = []
+    for number, card in enumerate(cards, 1):
+        tiles.append(f"""
+        <div class="tile">
+          <img src="{card.resolve().as_uri()}">
+          <div class="num">{number}</div>
+        </div>""")
+
+    html = f"""<!DOCTYPE html><html><head><meta charset="utf-8">
+    <style>
+      /* Iki sutun: uc sutunda kart 490px kaliyordu ve gorselin
+         icindeki yarim yazi secilmiyordu. */
+      body {{ width: 1600px; background: #7a7a7a; padding: 20px; margin: 0; }}
+      .grid {{ display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }}
+      .tile {{ position: relative; }}
+      .tile img {{ width: 100%; display: block; }}
+      .num {{ position: absolute; top: 0; left: 0; background: #d81b60; color: #fff;
+              font: 700 34px sans-serif; padding: 2px 14px; }}
+    </style></head><body>
+      <div class="grid">{''.join(tiles)}</div>
+    </body></html>"""
+
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    # HTML DOSYAYA yazilip file:// ile aciliyor. set_content ile acilan
+    # sayfanin kaynagi opak oluyor ve Chromium file:// alt kaynaklarini
+    # engelliyor: izgara bombos cikiyordu ve model "gri arka plan" diye
+    # tarif ediyordu (olcum 2026-08-31). Havuz izgarasi calisiyordu cunku
+    # oradaki onizlemeler https.
+    gecici = out_path.with_suffix(".html")
+    gecici.write_text(html, encoding="utf-8")
+    with sync_playwright() as pw:
+        browser = pw.chromium.launch()
+        page = browser.new_page(viewport={"width": 1640, "height": 900})
+        page.goto(gecici.as_uri())
+        page.wait_for_function(
+            "() => Array.from(document.images).every(i => i.complete)", timeout=30000)
+        page.screenshot(path=str(out_path), full_page=True)
+        browser.close()
+    gecici.unlink(missing_ok=True)
+    print(f"kart izgarasi: {out_path} ({len(cards)} kart)")
+    return 0
 
 
 def render_sheet(spec: dict, out_path: Path) -> int:
@@ -235,12 +289,11 @@ def main() -> int:
 
     print(f"{len(written)} kart uretildi -> {out_dir}")
     for row in written:
-        scrim = row["scrim_start_pct"]
-        if scrim:
-            # Krem alanin altta kapladigi oran: tasarim notundaki referans deger.
-            cream = round(100 - row["scrim_solid_pct"], 1)
-            note = (f"metin {row['content_height']}px -> gecis %{scrim}, "
-                    f"krem alan %{cream}")
+        oran = row["gorsel_pct"]
+        if oran:
+            note = f"metin {row['content_height']}px -> gorsel %{oran}"
+            if row.get("tasma"):
+                note += "  UYARI: metin tasiyor"
         else:
             note = "tipografik (gorsel yok)"
         print(f"  {row['file']:34} {row['type']:8} {note}")

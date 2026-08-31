@@ -157,6 +157,172 @@ def mevcut_secim(spec: dict, pool: list[dict]) -> list[int | None]:
     return simdiki
 
 
+# Kart denetiminin karar kumesi. SINIRLI ve SOMUT tutuluyor: "bu kart guzel
+# mi" gibi mutlak estetik sorusu bu sistemde calismiyor - model bozuk karta
+# da "tamam" diyor, serbest birakilinca her kartta kusur buluyor (DEVIR'de
+# iki ayri yerde kayitli). Buradakilerin hepsi GOZLE GORULUR kusur.
+KART_KARARLARI = {
+    "kirpik": "görselin içindeki bir yazı, tabela, logo ya da karakterin "
+              "yüzü kartın kenarında YARIM kalmış (kesik_yazi doluysa "
+              "durum buysa)",
+    "okunmuyor": "kartın kendi metni zemin yüzünden zor okunuyor",
+    "uygunsuz": "görselde hesaba yakışmayan bir öge var (müstehcen tabela, "
+                "kan, başka markanın reklamı)",
+}
+
+KART_SEMA = """{
+  "kartlar": [
+    {"kart": 1,
+     "gozlem": "ustteki gorselde ne var, birkac kelime",
+     "kesik_yazi": "kartin ust kenarinda yarim kalan yazi varsa onu yaz, yoksa null",
+     "durum": "temiz | kirpik | okunmuyor | uygunsuz",
+     "aciklama": "sorun varsa tek cumle, en fazla 12 kelime, kucuk harf"}
+  ]
+}"""
+
+
+def kart_prompt(spec: dict, kart_sayisi: int) -> str:
+    satirlar = []
+    for sira, page in enumerate(spec["pages"][:kart_sayisi], 1):
+        satirlar.append(f"Kart {sira} ({page['type']}): {sayfa_metni(page)[:160]}")
+
+    return "\n".join([
+        "Görselde bir Instagram gönderisinin kartları var, sol üstte numaralı.",
+        "Her kartın üst kısmı oyun görseli, alt kısmı krem zeminde metin.",
+        "",
+        "ÖNCE BAK, SONRA KARAR VER. Her kart için önce 'gozlem' alanına",
+        "üstteki görselde NE GÖRDÜĞÜNÜ yaz (birkaç kelime) - bu, karta",
+        "gerçekten baktığından emin olmak için. Boş bırakma.",
+        "",
+        "Sonra 'kesik_yazi' alanına şunu yaz: kartın HERHANGİ BİR kenarında",
+        "(üst, sol ya da sağ) yarısı kesilmiş bir yazı, tabela ya da logo",
+        "var mı? VARSA okuyabildiğin kadarını yaz (\"...auto\", \"jack of he...\"",
+        "gibi), yoksa null. Görselin içindeki büyük yazılara özellikle bak:",
+        "oyun logosu, tabela, afiş, dükkan adı.",
+        "",
+        "Sonra karar ver. SADECE şu üç kusurdan birini bildir:",
+        "",
+        *[f"  {ad} - {aciklama}" for ad, aciklama in KART_KARARLARI.items()],
+        "",
+        "BİLDİRME: renk tercihi, kompozisyon yorumu, \"daha iyi olabilirdi\",",
+        "yazı tipi, boşluk miktarı, görselin konuyla ilgisi. Bunlar senin",
+        "işin değil. Kart kusursuz olmasa bile bu üç kategoriye girmiyorsa",
+        "\"temiz\" de.",
+        "",
+        "\"kirpik\" için ölçüt NET: kartın üst kenarında yarısı kesilmiş bir",
+        "yazı ya da logo görünüyor mu. Görselin doğal olarak çerçeve dışında",
+        "kalan kısmı kırpık DEĞİLDİR - sadece okunmaya çalışılan bir şeyin",
+        "yarım kalması kırpıktır.",
+        "",
+        "KARTLAR:",
+        *satirlar,
+        "",
+        "SADECE şu şemada JSON döndür:",
+        KART_SEMA,
+    ])
+
+
+def kart_denetimi(spec: dict, cards: list[Path], model: str) -> list[dict]:
+    """Basılmış kartları modele göster, kusurlu olanları döndür.
+
+    Yardımcı modelde çalışıyor (günde 500 istek), yani tur sayısı kota
+    yüzünden kısıtlı değil. Karar kod tarafında: model yalnızca kusuru
+    bildiriyor, hangi görselin geleceğine kod karar veriyor.
+    """
+    sheet = ROOT / "state" / "img" / "_qa-kartlar.jpg"
+    if render.render_kart_sheet(cards, sheet) != 0:
+        return []
+    try:
+        cevap = writer.generate_gorsel(kart_prompt(spec, len(cards)), sheet, model)
+    except (writer.GecersizCevap, SystemExit) as exc:
+        print(f"kart denetimi yapilamadi: {exc}")
+        return []
+    finally:
+        sheet.unlink(missing_ok=True)
+
+    kusurlu = []
+    for row in writer.liste_al(cevap, "kartlar"):
+        if isinstance(row, dict) and row.get("gozlem"):
+            kesik = (row.get("kesik_yazi") or "").strip()
+            print(f"  kart {row.get('kart')}: {str(row['gozlem'])[:52]}"
+                  + (f" | kesik: {kesik[:24]}" if kesik and kesik != "null" else ""))
+        try:
+            kart = int(row.get("kart"))
+        except (TypeError, ValueError):
+            continue
+        durum = (row.get("durum") or "").strip()
+        if durum not in KART_KARARLARI or not 1 <= kart <= len(cards):
+            continue  # "temiz" ve karar kumesi disi cevaplar dusuyor
+        kusurlu.append({"kart": kart, "durum": durum,
+                        "aciklama": (row.get("aciklama") or "").strip(),
+                        "kesik": (row.get("kesik_yazi") or "")})
+    return kusurlu
+
+
+def kart_modu(spec: dict, draft_path: Path, kart_dizini: Path, args) -> int:
+    """Kartlari denetle, kusurlu sayfalara havuzdan BASKA gorsel ata.
+
+    Karar kod tarafinda: model "3. kart kirpik" diyor, hangi karenin
+    gelecegine kod bakiyor - o sayfanin havuzdaki mevcut karesinden
+    sonraki, henuz kullanilmamis kare.
+    """
+    # Yalnizca numarali kartlar: havuz.png gibi yardimci dosyalar
+    # kart sanilip denetime giriyordu.
+    cards = sorted(k for k in kart_dizini.glob("*.png")
+                   if k.stem.isdigit())
+    if not cards:
+        print(f"kart bulunamadi: {kart_dizini}")
+        return 1
+
+    kusurlu = kart_denetimi(spec, cards, args.model)
+    if not kusurlu:
+        print("kart denetimi: temiz")
+        return 0
+
+    for row in kusurlu:
+        print(f"  kart {row['kart']}: {row['durum']} - {row['aciklama']}")
+
+    pool = spec.get("_image_pool") or []
+    if not pool:
+        print("havuz yok, gorsel degistirilemiyor")
+        return 0
+
+    simdiki = mevcut_secim(spec, pool)
+    kullanilan = {s for s in simdiki if s}
+    yeni_secim = list(simdiki)
+    degisen = 0
+    for row in kusurlu:
+        i = row["kart"] - 1
+        if i >= len(yeni_secim):
+            continue
+        # O sayfanin mevcut karesinden sonraki, kullanilmamis kare.
+        bas = (simdiki[i] or 0)
+        aday = next((n for n in range(bas + 1, len(pool) + 1) if n not in kullanilan),
+                    None)
+        if aday is None:
+            aday = next((n for n in range(1, len(pool) + 1) if n not in kullanilan), None)
+        if aday is None:
+            print(f"  kart {row['kart']}: havuzda kullanilabilir baska kare yok")
+            continue
+        yeni_secim[i] = aday
+        kullanilan.add(aday)
+        degisen += 1
+        print(f"  kart {row['kart']}: {simdiki[i]} -> {aday}")
+
+    if not degisen:
+        return 0
+    if args.dry_run:
+        print("--dry-run: taslak degistirilmedi")
+        return 0
+
+    spec["_gorsel_secimi"] = [str(y or s or 1) for y, s in zip(yeni_secim, simdiki)]
+    draft_path.write_text(json.dumps(spec, ensure_ascii=False, indent=2),
+                          encoding="utf-8")
+    print(f"\n{degisen} sayfanin gorseli degistirildi -> {draft_path}")
+    print("kartlari yenilemek icin: images.py + render.py")
+    return 0
+
+
 def main() -> int:
     for stream in (sys.stdout, sys.stderr):
         try:
@@ -168,10 +334,15 @@ def main() -> int:
     ap.add_argument("draft")
     ap.add_argument("--dry-run", action="store_true", help="taslagi degistirme")
     ap.add_argument("--model", default=writer.HELPER_MODEL)
+    ap.add_argument("--kartlar", default=None, metavar="KLASOR",
+                    help="basilmis kartlari denetle (kirpma, okunurluk)")
     args = ap.parse_args()
 
     draft_path = Path(args.draft)
     spec = json.loads(draft_path.read_text(encoding="utf-8"))
+
+    if args.kartlar:
+        return kart_modu(spec, draft_path, Path(args.kartlar), args)
 
     pool = (spec.get("_image_pool") or [])[:MAX_HAVUZ]
     if len(pool) < 2:

@@ -112,12 +112,33 @@ işaretleri. Son sayfada dördüncü: künye bandı.
 (sınır 4.5). Koyu yazı ve turuncuyu koyulaştırmak denendi; kullanıcı
 **kavram bütünlüğü için** krem yazıda karar kıldı. Bilinçli ödün.
 
-### Kart anatomisi
-- Arka planda oyun görseli, tam kanama, `object-position: 50% 25%`
-- Alttan krem gradyan; başlangıcı sabit değil, `card.html` içindeki
-  `fitScrim()` metin yüksekliğine göre hesaplıyor
-- Ölçülen krem alan: kapak %47 · metin %36-40 · son sayfa %50
-- Metin gölgesi/konturu **yok**, okunurluk gradyanla
+### Kart anatomisi — GRADYAN KALDIRILDI (2026-08-31)
+- **Görsel kartın üstünü kaplayan ayrı bir bant**, metin altta krem blokta.
+  Aradaki çizgi keskin, gradyan yok.
+- Bölme çizgisi `card.html` içindeki `fitSplit()` ile metnin **ölçülen**
+  boyuna göre kayıyor. Ölçülen görsel oranı: kapak %56-63 · metin %60-67 ·
+  rakam %54 · son sayfa %53
+- `object-position: 50% 50%` (eskiden %25'ti: yüzler gradyanın üstünde
+  kalsın diyeydi, gradyan gidince gerekçe kalmadı ve gta kapağında logonun
+  üstü kesiliyordu)
+- Metin gölgesi/konturu **yok**, okunurluk krem blokla
+
+**Neden değişti:** görsel tam kanamaydı ve üstüne krem gradyan biniyordu;
+görüntü soluklaşıp "arka planda renk" gibi duruyordu. Üstelik 16:9 bir kare
+4:5 karta sığmak için merkeze ağır yakınlaşıyor ve sahnenin yarısı
+kayboluyordu (gta kapağında köy ve karakterler gidip gökyüzü kalıyordu).
+Geniş bant, karenin kendi oranına yakın: hem daha çok görsel hem daha iyi
+kadraj.
+
+⚠️ **Sabit oran denendi, olmadı.** %80/%20 kapakta güzel duruyor ama metin
+sayfasında başlığı görselin üstüne taşırıyor ve son maddeyi kesiyor.
+Paragraf + 2 madde 270 piksele sığmıyor.
+
+⚠️ **Taban SERT sınır değil.** Görsel oranının altına düşmemesi için taban
+%52 konmuştu; 697px'lik bir metinde kart dışına taştı. Çizgi metnin bittiği
+yere konur, yani metin her zaman sığar; taban %30'a indirildi ve orada
+sadece "şerit gibi görsel" olmasını engelliyor. Kart görsel ağırlığını
+metnin KISA olmasıyla korur, kırparak değil.
 - Üstte 170px ince karartma (aydınlık gökyüzünde köşe bilgileri okunmuyordu)
 - Kapakta iki kutu: kademe (tier renginde) + tür (mürekkep). **Köşe
   yuvarlatma yok** ("AI slop"), genişlik metne göre
@@ -237,6 +258,27 @@ eşleştirme ancak havuzdaki kadar iyi olabiliyor. Steam oyun başına
   boyut okunuyor (`goruntu_boyutu`, bağımlılık yok). Kareler
   1920x1080 çıkıyor: eşiğin üstünde ama IGDB'nin 4K artwork'lerinin
   altında, o yüzden havuzda IGDB önce sıralanıyor
+
+### Kart denetimi (`qa.py --kartlar`)
+Basılmış kartlar tek ızgarada modele gösteriliyor, **üç somut kusur**
+soruluyor: `kirpik` (görselin içindeki yazı/tabela/logo kenarda yarım
+kalmış), `okunmuyor`, `uygunsuz`. Kusurlu sayfaya kod havuzdan bir sonraki
+kullanılmamış kareyi atıyor.
+
+⚠️ **"Kırpık mı?" diye sorulmuyor, kesik yazı OKUTULUYOR.** Evet/hayır
+sorusunda model "hayır"a meyilli. "Ne yazıyor?" sorusu doğrulanabilir:
+okuyamıyorsa kesik yazı yoktur. Ölçüm: model `"jack of hea..."` ve
+`"...auto"` diye okudu ve iki kartı işaretledi.
+
+⚠️ **Gözlem-önce kuralı sessiz bir arızayı yakaladı.** İlk denemede model
+"temiz" dedi ama gözlem alanı *"gri arka plan üzerinde sayılar var"*
+diyordu: kartlar ızgaraya hiç yüklenmemişti. Chromium `set_content` ile
+açılan sayfada `file://` alt kaynaklarını engelliyor - HTML dosyaya yazılıp
+`goto` ile açılmalı. O alan olmasaydı "temiz" cevabı doğru sanılacaktı.
+
+⚠️ Ölçüt yazarken KENAR belirtme: "üst kenarda kesik" dendiğinde sağ
+kenardaki yarım tabelayı bildirmedi. Model kuralı doğru uyguluyordu,
+kural eksikti.
 
 ### Görsel-sayfa eşleştirme (`qa.py`)
 `images.py` kareyi sayfa **tipine** göre dağıtıyor; içerikle bağı

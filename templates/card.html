@@ -11,7 +11,8 @@
 <script>
 /* Tek sablon, tum sayfa tipleri.
    render.py once window.CARD_DATA'yi basar, sonra buildCard() cagirir,
-   sonra fitScrim() ile gradyan olculur. LLM bu dosyaya dokunmaz. */
+   sonra fitSplit() ile gorsel/metin bolme cizgisi olculur.
+   LLM bu dosyaya dokunmaz. */
 
 function el(tag, cls, text) {
   const node = document.createElement(tag);
@@ -32,7 +33,6 @@ function buildCard(data) {
     const img = el("img", "card__image");
     img.src = page.image;
     card.appendChild(img);
-    card.appendChild(el("div", "card__scrim"));
     card.appendChild(el("div", "card__topscrim"));
   }
 
@@ -113,42 +113,55 @@ function buildCard(data) {
   return card;
 }
 
-/* Gradyanin baslangici metin blogunun OLCULEN yuksekligine gore hesaplanir.
-   Sabit birakilirsa az metinde fazla beyaz, cok metinde tasma olur. */
-function fitScrim() {
+/* Gorsel ile metin arasindaki BOLME CIZGISI metnin olculen boyuna gore
+   hesaplanir. Sabit oran denendi ve olmadi: kapakta guzel duran %80,
+   metin sayfasinda basligi gorselin ustune tasiriyor ve son maddeyi
+   kesiyordu (olcum 2026-08-31, fable postu).
+
+   Cizgi metnin BITTIGI yere konuyor, yani metin her zaman sigar.
+   Tavan var: cok kisa metinde kart bos gorunmesin.
+   Taban ESTETIK bir tercih degil, SERT bir sinir: metni kesmek pahasina
+   gorseli buyuk tutmak yanlis (olcum 2026-08-31: 697px metin %52 tabanda
+   kartin disina tasti). Kart gorsel agirligini metnin KISA olmasiyla
+   korur, kirparak degil - uslup kurallari zaten paragrafi sinirliyor. */
+const GORSEL_TAVAN = 82;
+// Bu kadarindan sonra gorsel serit gibi kaliyor; metin daha da uzunsa
+// render raporunda "tasma" uyarisi cikar.
+const GORSEL_SERT_TABAN = 30;
+
+function fitSplit() {
   const card = document.querySelector(".card");
   const content = document.getElementById("content");
   if (!card || !content || card.classList.contains("card--typographic")) return null;
 
   const H = 1350;
-  const FADE = 330;      // gecisin uzunlugu, piksel
-  const BREATH = 38;     // metnin ustunde kalan nefes payi
+  // Once serbest birak, dogal yuksekligini olc, sonra cizgiyi koy.
+  content.style.top = "auto";
+  content.style.height = "auto";
+  const metin = content.getBoundingClientRect().height;
+  content.style.top = "";
+  content.style.height = "";
 
-  const contentTop = content.getBoundingClientRect().top;
-  const solid = Math.max(contentTop - BREATH, 120);
-  const start = Math.max(solid - FADE, 40);
-  const mid = start + (solid - start) * 0.62;
-
-  const pct = px => (px / H * 100).toFixed(2) + "%";
-  card.style.setProperty("--scrim-start", pct(start));
-  card.style.setProperty("--scrim-mid", pct(mid));
-  card.style.setProperty("--scrim-solid", pct(solid));
+  // 6px pay: yuvarlama yuzunden metin son piksellerde tasiyordu.
+  const ham = 100 - ((metin + 6) / H) * 100;
+  const oran = Math.max(GORSEL_SERT_TABAN, Math.min(GORSEL_TAVAN, ham));
+  card.style.setProperty("--gorsel-h", oran.toFixed(2) + "%");
 
   return {
-    content_height: Math.round(content.getBoundingClientRect().height),
-    scrim_start_pct: +(start / H * 100).toFixed(1),
-    scrim_solid_pct: +(solid / H * 100).toFixed(1),
+    content_height: Math.round(metin),
+    gorsel_pct: +oran.toFixed(1),
+    tasma: metin > H * (1 - oran / 100) + 1,
   };
 }
 
 window.renderCard = function (data) {
   buildCard(data);
-  return fitScrim();
+  return fitSplit();
 };
 
 /* Gorsel ve fontlar yuklendikten sonra render.py yeniden olcturuyor:
    font yuklenmesi metin blogunun yuksekligini degistirebiliyor. */
-window.fitScrim = fitScrim;
+window.fitSplit = fitSplit;
 </script>
 </body>
 </html>
