@@ -2,5 +2,9 @@
   "üretim başarısız oldu.\n\nwrite.py basarisiz oldu (cikis kodu 1)": {
     "son": "2026-08-31T08:34:36+00:00",
     "bastirilan": 0
+  },
+  "üretim başarısız oldu.\n\nwrite.py: 3 denemede temiz cikti alinamadi.": {
+    "son": "2026-08-31T16:13:22+00:00",
+    "bastirilan": 0
   }
 }
