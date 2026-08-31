@@ -86,6 +86,22 @@ ISTEK_ACK = {
 # Yeni komut eklerken SADECE buraya yazilir; iki yeri guncelleme derdi
 # olmasin diye. Kisa yardim ilk sutundan, rehber tamamindan.
 KOMUT_REHBERI = [
+    # SIRA once geliyor: komutlarin ne yaptigini bilmek, hangi sirayla
+    # yazilacagini bilmek demek degil. Kullanici "hangi sirayla nasil"
+    # diye sordu ve liste bunu hicbir yerde soylemiyordu (2026-09-01).
+    ("sıra — yeni post böyle çıkar", [
+        ("1. /konular", "adayları getirir. beklemek istemiyorsan menü "
+                        "saatlerini (11:10 · 17:10 · 20:10) beklemeden "
+                        "istediğin an yazabilirsin"),
+        ("2. /uret <numara>", "seçtiğini üretir. ~6-7 dakika sürer, bot "
+                              "işleme aldığını hemen söyler. kartlar "
+                              "hazır olunca buraya düşer"),
+        ("3. kartlara bak", "beğenmediysen /yeniden (metin) ya da /gorsel "
+                            "(görsel). kademe yanlışsa /c /b /a /s"),
+        ("4. /ok", "instagram'a paylaşır. bu adım geri alınamaz"),
+        ("", "elle paylaşacaksan /ok yerine /bana yaz, kartlar dosya "
+             "olarak gelir. vazgeçtiysen /iptal"),
+    ]),
     ("günlük akış", [
         ("/konular", "günün aday haberlerini listeler. her aday için ne haberi "
                      "olduğu, kaç kaynağın yazdığı ve görsel durumu yazılı. "

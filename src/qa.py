@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -147,13 +148,41 @@ def dogrula(cevap: dict, spec: dict, pool: list[dict],
 
 
 def mevcut_secim(spec: dict, pool: list[dict]) -> list[int | None]:
-    """Sayfaların şu anki görselleri havuzun kaçıncı sırası."""
-    sira_of = {row["id"]: n for n, row in enumerate(pool, 1)}
+    """Sayfaların şu anki görselleri havuzun kaçıncı sırası.
+
+    ⚠️ Eskiden kimlik dosya adinin SON TIRESINDEN sonrasi aliniyordu
+    (`stem.rsplit("-", 1)[-1]`) ve bu yalnizca IGDB kimliklerinde
+    dogruydu. Havuzdaki diger kimlikler tire ICERIYOR:
+    "haber-2a8597eae20faf7c" ve "steam3751260-1". Onlarda ayirma
+    yanlis parcayi veriyordu ("2a8597eae20faf7c", "1"), havuzda
+    bulunamiyordu ve sayfa None donuyordu.
+
+    Sonucu SESSIZ ve agirdi: `str(y or s or 1)` None'i 1'e ceviriyor,
+    yani havuzun BIRINCI karesine. Haber gorseli kullanan bir postta
+    qa.py her calistiginda o sayfalar birinci kareye zorlaniyordu -
+    ustelik cogu zaman ayni kare birkac sayfaya birden.
+
+    Olculdu (20260831-onimusha-way-of-the-sword): kart denetimi kapaktaki
+    kirpik logoyu degistirdi, ama ayni turda 2. ve 3. kartlar (ikisi de
+    haber gorseli) kirpik kapak karesine dondu - yani duzeltme kusuru
+    yaymis oldu. Kart denetimi zincire baglanana kadar gorunmuyordu.
+
+    Dogru yol tersten kurmak: her havuz karesi icin images.py'in
+    yazacagi dosya adini uretip onunla eslestiriyoruz. Kimligin bicimi
+    ne olursa olsun calisir.
+    """
+    slug = spec.get("_slug") or ""
+    stem_of = {f"{slug}-{row['id']}": n for n, row in enumerate(pool, 1)}
     simdiki = []
     for page in spec["pages"]:
         yol = page.get("image") or ""
-        kimlik = Path(yol).stem.rsplit("-", 1)[-1] if yol else ""
-        simdiki.append(sira_of.get(kimlik))
+        stem = Path(yol).stem if yol else ""
+        sira = stem_of.get(stem)
+        if sira is None and stem:
+            # Slug degismis olabilir (eski taslak): kimligi sondan ara.
+            sira = next((n for n, row in enumerate(pool, 1)
+                         if stem.endswith(f"-{row['id']}")), None)
+        simdiki.append(sira)
     return simdiki
 
 
@@ -174,7 +203,8 @@ KART_SEMA = """{
   "kartlar": [
     {"kart": 1,
      "gozlem": "ustteki gorselde ne var, birkac kelime",
-     "kesik_yazi": "kartin ust kenarinda yarim kalan yazi varsa onu yaz, yoksa null",
+     "kesik_yazi": "kartin herhangi bir kenarinda yarim kalan yazi varsa onu yaz, yoksa null",
+     "logo_metni": "gorselin icinde oyun logosu/basligi varsa GORDUGUN HARFLERI yaz, yoksa null",
      "durum": "temiz | kirpik | okunmuyor | uygunsuz",
      "aciklama": "sorun varsa tek cumle, en fazla 12 kelime, kucuk harf"}
   ]
@@ -200,6 +230,12 @@ def kart_prompt(spec: dict, kart_sayisi: int) -> str:
         "gibi), yoksa null. Görselin içindeki büyük yazılara özellikle bak:",
         "oyun logosu, tabela, afiş, dükkan adı.",
         "",
+        "Ayrıca 'logo_metni' alanına, görselin içinde bir oyun logosu ya da",
+        "başlığı varsa GÖRDÜĞÜN HARFLERİ yaz - tahmin etme, ekranda ne",
+        "yazıyorsa onu. Eksik görünüyorsa eksik haliyle yaz. Bu alanı kod",
+        "oyunun gerçek adıyla karşılaştırıyor, yani doğru okuman yeterli;",
+        "kesik olup olmadığına karar vermek senin işin değil.",
+        "",
         "Sonra karar ver. SADECE şu üç kusurdan birini bildir:",
         "",
         *[f"  {ad} - {aciklama}" for ad, aciklama in KART_KARARLARI.items()],
@@ -220,6 +256,42 @@ def kart_prompt(spec: dict, kart_sayisi: int) -> str:
         "SADECE şu şemada JSON döndür:",
         KART_SEMA,
     ])
+
+
+# Kesik logo tespitinde en az bu kadar harf okunmus olmali. Daha kisa
+# parcalar tesadufen baska bir kelimenin eki olabiliyor.
+LOGO_MIN_HARF = 4
+
+
+def kesik_logo(okunan: str, tam_ad: str | None) -> str | None:
+    """Okunan logo metni oyunun adinin YARISI mi? Deterministik.
+
+    ⚠️ NEDEN KOD YAPIYOR: model logonun tam halini BILMIYOR. Olcum
+    (20260831-onimusha-way-of-the-sword): kapakta logo sol kenardan
+    kesilmis, ekranda "MUSHA / THE SWORD" yaziyordu. Model bunu dogru
+    okudu - gozlem alanina "musa logosu" yazdi - ama "temiz" dedi,
+    cunku "MUSHA" ona eksiksiz bir kelime gibi gorundu.
+
+    Yani sorun modelin dikkatsizligi degil BILGI EKSIKLIGI: kesik olup
+    olmadigini anlamak icin tam adi bilmek gerekiyor ve o bilgi bizde
+    (`search_name`). Model OKUR, kod KARSILASTIRIR - "kirpik mi?" diye
+    sormak yerine kesik yaziyi okutma dersinin tamamlanmis hali.
+
+    Iki kenar da yakalaniyor: "musha" <- "onimusha" (bas kesik),
+    "dawnwalke" <- "dawnwalker" (son kesik).
+    """
+    if not okunan or not tam_ad:
+        return None
+    tam_kelimeler = re.findall(r"[a-z0-9]+", tam_ad.lower())
+    for parca in re.findall(r"[a-z0-9]+", okunan.lower()):
+        if len(parca) < LOGO_MIN_HARF:
+            continue
+        for kelime in tam_kelimeler:
+            if kelime == parca or len(kelime) <= len(parca):
+                continue
+            if kelime.endswith(parca) or kelime.startswith(parca):
+                return f"{parca} <- {kelime}"
+    return None
 
 
 def kart_denetimi(spec: dict, cards: list[Path], model: str) -> list[dict]:
@@ -250,8 +322,21 @@ def kart_denetimi(spec: dict, cards: list[Path], model: str) -> list[dict]:
             kart = int(row.get("kart"))
         except (TypeError, ValueError):
             continue
+        if not 1 <= kart <= len(cards):
+            continue
+
+        # Modelin karari ONCE koda dogrulatiliyor: "temiz" dese bile
+        # okudugu logo metni oyunun adinin yarisiysa kart kirpiktir.
+        eksik = kesik_logo(row.get("logo_metni") or "", spec.get("search_name"))
+        if eksik:
+            print(f"  kart {kart}: logo kesik ({eksik})")
+            kusurlu.append({"kart": kart, "durum": "kirpik",
+                            "aciklama": f"logo yarim: {eksik}",
+                            "kesik": row.get("logo_metni") or ""})
+            continue
+
         durum = (row.get("durum") or "").strip()
-        if durum not in KART_KARARLARI or not 1 <= kart <= len(cards):
+        if durum not in KART_KARARLARI:
             continue  # "temiz" ve karar kumesi disi cevaplar dusuyor
         kusurlu.append({"kart": kart, "durum": durum,
                         "aciklama": (row.get("aciklama") or "").strip(),

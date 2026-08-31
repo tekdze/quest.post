@@ -235,6 +235,21 @@ def main() -> int:
     out_dir = ROOT / "out" / post_id
     run("render.py", str(draft_file), "--out", str(out_dir))
 
+    # KART DENETIMI. Yazilmisti ama zincire hic baglanmamisti - yani
+    # canlida bir kez bile calismadi (bulundu 2026-09-01: dawnwalker
+    # testinde kapakta "DAWNWALKE" diye kesilmis logo basildi ve hicbir
+    # sey yakalamadi). Yukaridaki qa.py cagrisi GORSEL-SAYFA
+    # ESLESTIRMESI; bu ayri is ve BASILMIS karta bakiyor, cunku kirpma
+    # ancak render'dan sonra gorunur.
+    #
+    # ⚠️ DERS: "yazildi" ile "calisiyor" ayni sey degil. DEVIR'de bitmis
+    # gorunuyordu (bkz. komut listesi dersi: arayuz eklerken once icra
+    # tarafi yazilmali - burada tersi oldu, icra vardi cagri yoktu).
+    if run_yumusak("qa.py", str(draft_file), "--kartlar", str(out_dir)):
+        if read_json(draft_file, {}).get("_gorsel_secimi"):
+            run("images.py", str(draft_file))
+            run("render.py", str(draft_file), "--out", str(out_dir))
+
     if args.dry_run:
         print(f"\n--dry-run: Telegram'a yollanmadi. kartlar: {out_dir}")
         return 0

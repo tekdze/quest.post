@@ -559,6 +559,74 @@ caption bağlı değil ve ölçümde kaynakta olmayan bir iddiaya kaydı
 
 ---
 
+### Kart denetimi zincire bağlandı (2026-09-01)
+
+⚠️ **`qa.py --kartlar` yazılmıştı ama `produce.py` onu hiç çağırmıyordu.**
+Yani canlıda bir kez bile çalışmadı; DEVIR'de bitmiş görünüyordu. Bulunma
+biçimi: Dawnwalker testinde kapakta `DAWNWALKE` diye kesilmiş logo basıldı
+ve hiçbir şey yakalamadı. **Ders: "yazıldı" ile "çalışıyor" ayrı şeyler** —
+komut listesi dersinin tersi (orada arayüz vardı icra yoktu, burada icra
+vardı çağrı yoktu).
+
+### Kesik logoyu KOD yakalıyor
+Bağladıktan sonra ölçüldü (20260831-onimusha): kapakta logo sol kenardan
+kesik, ekranda `MUSHA / THE SWORD` yazıyor. Model bunu **doğru okudu** —
+gözlem alanına "musa logosu" yazdı — ama **"temiz" dedi.**
+
+Sebep dikkatsizlik değil **bilgi eksikliği**: modelin elinde oyunun tam adı
+yok, "MUSHA" ona eksiksiz bir kelime gibi görünüyor. O bilgi bizde
+(`search_name`).
+
+Çözüm, "kesik yazıyı okut" dersinin tamamlanmış hali: model logoyu
+**okuyor** (`logo_metni`), kod **karşılaştırıyor** (`qa.kesik_logo`).
+Okunan parça tam addaki bir kelimenin öneki ya da soneki ama kendisi
+değilse kart kırpıktır. İki kenar da yakalanıyor: `musha <- onimusha`
+(baş kesik), `dawnwalke <- dawnwalker` (son kesik). 7 vakalık testte
+7/7 doğru, yanlış alarm yok.
+
+⚠️ **Model "temiz" dese bile kod kararı ezer.** Sıralama bilinçli: önce
+kod bakar, sonra modelin kararına bakılır.
+
+### ⚠️ `mevcut_secim` sessiz hatası — haber ve Steam görselleri kayboluyordu
+Kart denetimi bağlanınca ortaya çıktı. Görsel kimliği dosya adının **son
+tiresinden** çıkarılıyordu (`stem.rsplit("-", 1)[-1]`) ve bu yalnızca IGDB
+kimliklerinde doğruydu. Havuzdaki diğer kimlikler tire **içeriyor**:
+`haber-2a8597eae20faf7c`, `steam3751260-1`. Onlarda ayırma yanlış parçayı
+veriyor, havuzda bulunamıyor ve sayfa `None` dönüyordu.
+
+Sonucu sessiz ve ağırdı: `str(y or s or 1)` None'ı **1'e** çeviriyor, yani
+havuzun birinci karesine. Haber görseli kullanan bir postta `qa.py` her
+çalıştığında o sayfalar birinci kareye zorlanıyordu — üstelik aynı kare
+birkaç sayfaya birden. Ölçüm: kart denetimi kapaktaki kırpık logoyu
+değiştirdi ve **aynı turda 2. ve 3. kartları o kırpık kareye döndürdü.**
+
+Doğru yol tersten kurmak: her havuz karesi için `images.py`'ın yazacağı
+dosya adı üretilip onunla eşleştiriliyor. Kimliğin biçimi ne olursa olsun
+çalışır. **Bu hata görsel-sayfa eşleştirme turunda da vardı**, yani
+canlıdaki postları da etkilemiş olabilir.
+
+### Sayfa sayısı rehberi olguya bağlandı
+Dayanak mekanizması gelince istemdeki eski rehber ("normal haber: 4-5
+sayfa") onunla çelişir hale geldi: model 4 olgu çıkarıp 4 sayfa açıyor,
+her kartta tek cümle kalıyordu. Dolgu gitmişti ama yerine **fazla sayıda
+seyrek kart** gelmişti ve Instagram'da carousel tamamlanma oranı uzunlukla
+düşüyor.
+
+Rehber artık olgu başına: 2-3 olgu → 1 metin sayfası, 4-6 → 2, 7-9 → 3.
+Ölçüm (20260831-onimusha): 6 olgu → **4 sayfa** (öncesinde 6 olurdu).
+
+⚠️ Kod kuralı BİLEREK eklenmedi. Sayfa birleştirme mekanik olarak
+yapılamıyor (iki paragraf tek paragrafa dönüşmüyor), yani kural
+onarılamaz olurdu — "en az 4 olgu" dersiyle aynı tuzak. İstem tek başına
+ölçüldü ve yetti.
+
+### Kapak başlığı: tanınan ad
+İsteme kural: okurun tanıdığı adı kullan, resmi olanı değil. "witcher
+ekibinden" > "cd projekt red ekibinden" — hem kısa hem okur duruyor.
+Olayı başlığa sıkıştırma, onu kategori kutusu söylüyor.
+
+---
+
 ### Metin QA (`llm_review`) — varsayılan açık
 `style.py` yazım hatası yakalayamıyor. LLM ikinci göz oluyor, karar kümesi
 **sınırlı**: `yazim` / `kaynak_disi` / `anlamsiz`. Üslup yorumu ve "daha iyi
