@@ -1,43 +1,43 @@
 {
-  "olusturuldu": "2026-08-31T09:10:46+00:00",
-  "oneri": 2,
-  "gerekce": "şirketin hile satıcısının evine gidip bunu kameraya alması büyük merak uyandırır",
+  "olusturuldu": "2026-08-31T14:11:03+00:00",
+  "oneri": 3,
+  "gerekce": "activision'ın hile satıcısının evine gidip bunu videoya alması instagram'da çok etkileşim alır",
   "adaylar": [
     {
       "sira": 1,
       "aday_index": 1,
-      "tier": "A",
-      "title": "12TB Valve archive leak includes early Portal 2 builds and hints of Half-Life 2: Episode Three",
-      "kaynak_sayisi": 3,
-      "url": "https://www.eurogamer.net/valve-steam2-leak-12tb-portal-2-half-life-episode-three",
+      "tier": "B",
+      "title": "Sony's next PlayStation State of Play coming this Thursday, followed by a Japan and Asia-dedicated showcase",
+      "kaynak_sayisi": 2,
+      "url": "https://www.eurogamer.net/sony-playstation-state-of-play-september-date-time",
       "aday": {
-        "key": "ba019debcea4c192",
-        "title": "12TB Valve archive leak includes early Portal 2 builds and hints of Half-Life 2: Episode Three",
-        "url": "https://www.eurogamer.net/valve-steam2-leak-12tb-portal-2-half-life-episode-three",
-        "summary": "A leaked archive said to contain around 12TB of old Valve development files, dated between 2003 and 2013, has surfaced online, and fans are already combing through it for any trace of the long-cancelled Half-Life 2 : Episode Three. Read more",
-        "published": "2026-08-30T13:26:42+00:00",
-        "age_hours": 19.7,
+        "key": "6e1ab1aedd6f1ecd",
+        "title": "Sony's next PlayStation State of Play coming this Thursday, followed by a Japan and Asia-dedicated showcase",
+        "url": "https://www.eurogamer.net/sony-playstation-state-of-play-september-date-time",
+        "summary": "Our next port of call when it comes to major livestreams filled with game reveals isn't too far off. Sonytoday announced the date of the next PlayStation State of Play presentation. The showcase airs Thursday, 3rd September. Read more",
+        "published": "2026-08-31T12:50:46+00:00",
+        "age_hours": 1.3,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
         "tags": [
           "mainstream"
         ],
-        "source_count": 3,
+        "source_count": 2,
         "sources": [
           "eurogamer",
-          "kotaku",
-          "pcgamer"
+          "kotaku"
         ],
-        "rank_score": 7.29,
+        "rank_score": 4.67,
         "members": [
           {
-            "hash": "ba019debcea4c192",
-            "url": "https://www.eurogamer.net/valve-steam2-leak-12tb-portal-2-half-life-episode-three",
-            "title": "12TB Valve archive leak includes early Portal 2 builds and hints of Half-Life 2: Episode Three",
-            "summary": "A leaked archive said to contain around 12TB of old Valve development files, dated between 2003 and 2013, has surfaced online, and fans are already combing through it for any trace of the long-cancelled Half-Life 2 : Episode Three. Read more",
-            "published": "2026-08-30T13:26:42+00:00",
-            "age_hours": 19.7,
+            "hash": "6e1ab1aedd6f1ecd",
+            "url": "https://www.eurogamer.net/sony-playstation-state-of-play-september-date-time",
+            "title": "Sony's next PlayStation State of Play coming this Thursday, followed by a Japan and Asia-dedicated showcase",
+            "summary": "Our next port of call when it comes to major livestreams filled with game reveals isn't too far off. Sonytoday announced the date of the next PlayStation State of Play presentation. The showcase airs Thursday, 3rd September. Read more",
+            "published": "2026-08-31T12:50:46+00:00",
+            "age_hours": 1.3,
+            "image": "https://assetsio.gnwcdn.com/state-of-play-september-2026-double-header-1.jpeg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
             "lang": "en",
@@ -49,12 +49,13 @@
             ]
           },
           {
-            "hash": "a06bb6e5af7094c6",
-            "url": "https://kotaku.com/colossal-13tb-steam-leak-reportedly-includes-beta-builds-of-portal-2-left-4-dead-2-and-much-more-2000729638",
-            "title": "Colossal 13TB Steam Leak Reportedly Includes Beta Builds Of Portal 2, Left 4 Dead 2, And Much More",
-            "summary": "The alleged Steam depot data reportedly spans from 2003 to 2013, and contains pre-release builds of potentially thousands of first and third-party games",
-            "published": "2026-08-30T13:22:19+00:00",
-            "age_hours": 19.8,
+            "hash": "070d7ef7da8af216",
+            "url": "https://kotaku.com/september-state-of-play-playstation-showcase-has-been-revealed-with-fans-hopping-intergalactic-the-heretic-prophet-makes-an-appearence-2000729844",
+            "title": "September State Of Play PlayStation Showcase Has Been Revealed With Fans Hoping Intergalactic: The Heretic Prophet Makes An Appearence",
+            "summary": "Back-to-back broadcasts will kick off September",
+            "published": "2026-08-31T12:26:04+00:00",
+            "age_hours": 1.7,
+            "image": "https://kotaku.com/app/uploads/2026/08/prophet.jpg",
             "source_id": "kotaku",
             "source_name": "Kotaku",
             "lang": "en",
@@ -64,16 +65,76 @@
             "tags": [
               "mainstream"
             ]
+          }
+        ]
+      },
+      "oyun_adi": null,
+      "ozet": "sony yeni bir playstation state of play etkinliği duyurdu",
+      "gorsel": {
+        "durum": "az",
+        "sayi": 2,
+        "oyun": "Astro Bot",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": true
+      },
+      "baslik": "Sony's next PlayStation State of Play coming this Th..."
+    },
+    {
+      "sira": 2,
+      "aday_index": 2,
+      "tier": "B",
+      "title": "PlayStation State of Play Officially Returns This Week",
+      "kaynak_sayisi": 2,
+      "url": "https://www.polygon.com/playstation-state-of-play-returns-this-week",
+      "aday": {
+        "key": "8138c5b36d5217a8",
+        "title": "PlayStation State of Play Officially Returns This Week",
+        "url": "https://www.polygon.com/playstation-state-of-play-returns-this-week",
+        "summary": "Sony will stream a new PlayStation State of Play livestream on Thursday, Sept. 3, with a look at what's new for PS5 in the lead up to Tokyo Game Show.",
+        "published": "2026-08-31T12:45:15+00:00",
+        "age_hours": 1.4,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream"
+        ],
+        "source_count": 2,
+        "sources": [
+          "gamespot",
+          "polygon"
+        ],
+        "rank_score": 4.67,
+        "members": [
+          {
+            "hash": "8138c5b36d5217a8",
+            "url": "https://www.polygon.com/playstation-state-of-play-returns-this-week",
+            "title": "PlayStation State of Play Officially Returns This Week",
+            "summary": "Sony will stream a new PlayStation State of Play livestream on Thursday, Sept. 3, with a look at what's new for PS5 in the lead up to Tokyo Game Show.",
+            "published": "2026-08-31T12:45:15+00:00",
+            "age_hours": 1.4,
+            "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/chorus/uploads/chorus_asset/file/24674044/playstation_showcase_may_2023_logo.jpg",
+            "source_id": "polygon",
+            "source_name": "Polygon",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
           },
           {
-            "hash": "7ede29b572ec7cb2",
-            "url": "https://www.pcgamer.com/games/fps/a-massive-cache-of-valve-data-has-reportedly-leaked-online-appearing-to-include-portal-2s-elusive-beta-build-and-a-potential-weapon-from-half-life-2-episode-3",
-            "title": "A massive cache of Valve data has reportedly leaked online, appearing to include Portal 2's elusive beta build and a potential weapon from Half-Life 2: Episode 3",
-            "summary": "The leak purportedly includes files that date between 2003 and 2013.",
-            "published": "2026-08-30T11:41:11+00:00",
-            "age_hours": 21.5,
-            "source_id": "pcgamer",
-            "source_name": "PC Gamer",
+            "hash": "7f9cd71f142e5ce1",
+            "url": "https://www.gamespot.com/articles/back-to-back-playstation-state-of-plays-are-coming-this-week",
+            "title": "Back-To-Back PlayStation State Of Plays Are Coming This Week",
+            "summary": "Sony has announced that there will be not one, but two, PlayStation State of Play events this week. The back-to-back broadcasts will feature \"updates from studios around the world,\" Sony said in its announcement. The first event, kicking off at 6 AM PT / 9 AM ET on September 3, will feature updates from Sony's own development teams and third-party partners. The event will conclude with an \"extended look\" at Final Fantasy VII: Revelation. State of Play x2 Right after the first event will be a second State of Play, a State of Play Japan , hosted by Yuki Kaji. This event will provide \"deep dives ",
+            "published": "2026-08-31T12:08:26+00:00",
+            "age_hours": 2.0,
+            "image": "https://www.gamespot.com/wp-content/uploads/2026/08/state-of-play-1.webp?w=300",
+            "source_id": "gamespot",
+            "source_name": "GameSpot",
             "lang": "en",
             "kind": "news",
             "bucket": "news",
@@ -84,21 +145,21 @@
           }
         ]
       },
-      "oyun_adi": "Portal 2",
-      "ozet": "12 terabaytlık arşiv sızdırıldı, iptal edilen projelerin izleri aranıyor",
+      "oyun_adi": null,
+      "ozet": "tokyo game show öncesi yeni playstation etkinliği yapılacak",
       "gorsel": {
-        "durum": "var",
-        "sayi": 6,
-        "oyun": "Portal 2",
+        "durum": "az",
+        "sayi": 2,
+        "oyun": "Astro Bot",
         "seri_sayi": 0,
         "seri": null,
-        "temsili": false
+        "temsili": true
       },
-      "baslik": "Portal 2"
+      "baslik": "PlayStation State of Play Officially Returns This We..."
     },
     {
-      "sira": 2,
-      "aday_index": 2,
+      "sira": 3,
+      "aday_index": 3,
       "tier": "B",
       "title": "Activision sends a legal rep to a Call of Duty cheat seller's front door, films the whole thing, posts it online",
       "kaynak_sayisi": 2,
@@ -109,7 +170,7 @@
         "url": "https://www.eurogamer.net/activision-cease-and-desist-call-of-duty-cheat-maker-elocarry-video",
         "summary": "Activision has posted footage of one of its legal representatives turning up at the Ohio home of a notorious Call of Duty cheat seller and handing over a cease-and-desist order. Read more",
         "published": "2026-08-30T16:48:46+00:00",
-        "age_hours": 16.4,
+        "age_hours": 21.4,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -121,7 +182,7 @@
           "eurogamer",
           "pcgamer"
         ],
-        "rank_score": 4.36,
+        "rank_score": 4.25,
         "members": [
           {
             "hash": "1dd95b99bdf367f5",
@@ -129,7 +190,8 @@
             "title": "Activision sends a legal rep to a Call of Duty cheat seller's front door, films the whole thing, posts it online",
             "summary": "Activision has posted footage of one of its legal representatives turning up at the Ohio home of a notorious Call of Duty cheat seller and handing over a cease-and-desist order. Read more",
             "published": "2026-08-30T16:48:46+00:00",
-            "age_hours": 16.4,
+            "age_hours": 21.4,
+            "image": "https://assetsio.gnwcdn.com/Screenshot-2026-08-30-at-17.38.39.png?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
             "lang": "en",
@@ -146,7 +208,8 @@
             "title": "Activision serves cease and desist to infamous Call of Duty cheat maker—and films the whole thing: 'We will find you'",
             "summary": "The publisher says it has disrupted 375 reseller operations so far.",
             "published": "2026-08-30T10:05:20+00:00",
-            "age_hours": 23.1,
+            "age_hours": 28.1,
+            "image": "https://cdn.mos.cms.futurecdn.net/cVjMH6DYTqWjxyLVZXJrj6-1280-80.jpg",
             "source_id": "pcgamer",
             "source_name": "PC Gamer",
             "lang": "en",
@@ -159,21 +222,21 @@
           }
         ]
       },
-      "oyun_adi": "Call of Duty",
-      "ozet": "activision hile satıcısının evine gidip tebligat gönderdi ve kayda aldı",
+      "oyun_adi": "Call of Duty: Modern Warfare III",
+      "ozet": "activision hile satıcısının evine gidip video çekti",
       "gorsel": {
         "durum": "var",
-        "sayi": 4,
-        "oyun": "Call of Duty 3",
+        "sayi": 12,
+        "oyun": "Call of Duty: Modern Warfare III",
         "seri_sayi": 0,
         "seri": null,
         "temsili": false
       },
-      "baslik": "Call of Duty"
+      "baslik": "Call of Duty: Modern Warfare III"
     },
     {
-      "sira": 3,
-      "aday_index": 3,
+      "sira": 4,
+      "aday_index": 4,
       "tier": "B",
       "title": "Star Wars and Jurassic Park VFX Legend Phil Tippett Closes CA Studio and Auctions Memorabilia",
       "kaynak_sayisi": 2,
@@ -184,7 +247,7 @@
         "url": "https://www.ign.com/articles/phil-tippett-studio-closure-auction",
         "summary": "Oscar-winning animator Phil Tippett has closed his studio's Berkeley, CA, location and auctioned off legendary Star Wars, Jurassic Park, and RoboCop props and memorabilia. Tippett Studio, however, remains in business.",
         "published": "2026-08-30T18:50:26+00:00",
-        "age_hours": 14.3,
+        "age_hours": 19.3,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -196,7 +259,7 @@
           "ign",
           "kotaku"
         ],
-        "rank_score": 4.3,
+        "rank_score": 4.2,
         "members": [
           {
             "hash": "c40f60ccf9e0534c",
@@ -204,7 +267,8 @@
             "title": "Star Wars and Jurassic Park VFX Legend Phil Tippett Closes CA Studio and Auctions Memorabilia",
             "summary": "Oscar-winning animator Phil Tippett has closed his studio's Berkeley, CA, location and auctioned off legendary Star Wars, Jurassic Park, and RoboCop props and memorabilia. Tippett Studio, however, remains in business.",
             "published": "2026-08-30T18:50:26+00:00",
-            "age_hours": 14.3,
+            "age_hours": 19.3,
+            "image": "https://assets-prd.ignimgs.com/2026/08/30/gettyimages-1321644344-1788113391551.jpg",
             "source_id": "ign",
             "source_name": "IGN",
             "lang": "en",
@@ -221,7 +285,8 @@
             "title": "Star Wars Effects Artist Phil Tippett Shutters Studio",
             "summary": "Following a Chapter 11 bankruptcy, the Hollywood puppetry wizard and director of Mad God is selling over 40 years of movie magic",
             "published": "2026-08-30T06:11:11+00:00",
-            "age_hours": 27.0,
+            "age_hours": 32.0,
+            "image": "https://kotaku.com/app/uploads/2026/08/philtippett.jpg",
             "source_id": "kotaku",
             "source_name": "Kotaku",
             "lang": "en",
@@ -235,7 +300,7 @@
         ]
       },
       "oyun_adi": null,
-      "ozet": "efsanevi görsel efekt sanatçısı stüdyosunu kapatıp eşyalarını açık artırmaya çıkardı",
+      "ozet": "oscar ödüllü vfx sanatçısı phil tippett stüdyosunu kapattı",
       "gorsel": {
         "durum": "var",
         "sayi": 10,
@@ -247,94 +312,19 @@
       "baslik": "Star Wars and Jurassic Park VFX Legend Phil Tippett..."
     },
     {
-      "sira": 4,
-      "aday_index": 4,
-      "tier": "B",
-      "title": "Rockstar confirms GTA 6 won't have microtransactions or generative AI at launch",
-      "kaynak_sayisi": 2,
-      "url": "https://www.eurogamer.net/gta-6-microtransactions-generative-ai-rockstar",
-      "aday": {
-        "key": "90255a1e782ebeb8",
-        "title": "Rockstar confirms GTA 6 won't have microtransactions or generative AI at launch",
-        "url": "https://www.eurogamer.net/gta-6-microtransactions-generative-ai-rockstar",
-        "summary": "Rockstar has confirmed Grand Theft Auto 6 will launch without microtransactions or generative AI. Read more",
-        "published": "2026-08-30T10:48:08+00:00",
-        "age_hours": 22.4,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "mainstream"
-        ],
-        "source_count": 2,
-        "sources": [
-          "eurogamer",
-          "ign"
-        ],
-        "rank_score": 4.23,
-        "members": [
-          {
-            "hash": "90255a1e782ebeb8",
-            "url": "https://www.eurogamer.net/gta-6-microtransactions-generative-ai-rockstar",
-            "title": "Rockstar confirms GTA 6 won't have microtransactions or generative AI at launch",
-            "summary": "Rockstar has confirmed Grand Theft Auto 6 will launch without microtransactions or generative AI. Read more",
-            "published": "2026-08-30T10:48:08+00:00",
-            "age_hours": 22.4,
-            "source_id": "eurogamer",
-            "source_name": "Eurogamer",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream"
-            ]
-          },
-          {
-            "hash": "437e4d353e67b51a",
-            "url": "https://www.ign.com/articles/gta-6-will-have-no-microtransactions-or-generative-ai-at-launch-rockstar-says",
-            "title": "GTA 6 Will Have No Microtransactions or Generative AI at Launch, Rockstar Says",
-            "summary": "Rockstar Games has said Grand Theft Auto 6 will have no microtransactions or generative AI when it launches in November.",
-            "published": "2026-08-29T22:16:08+00:00",
-            "age_hours": 34.9,
-            "source_id": "ign",
-            "source_name": "IGN",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.6,
-            "tags": [
-              "mainstream"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": "Grand Theft Auto 6",
-      "ozet": "oyunun çıkışında mikro ödeme ve yapay zeka olmayacağı açıklandı",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 34,
-        "oyun": "Grand Theft Auto VI",
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": false
-      },
-      "baslik": "Grand Theft Auto 6"
-    },
-    {
       "sira": 5,
       "aday_index": 5,
       "tier": "B",
-      "title": "EA breaks its silence after Iron Man gameplay leak, admitting \"well, that didn't go as planned\"",
+      "title": "12TB Valve archive leak includes early Portal 2 builds and hints of Half-Life 2: Episode Three",
       "kaynak_sayisi": 2,
-      "url": "https://www.eurogamer.net/ea-motive-iron-man-leak-response-tweet",
+      "url": "https://www.eurogamer.net/valve-steam2-leak-12tb-portal-2-half-life-episode-three",
       "aday": {
-        "key": "3793469b4657c5d4",
-        "title": "EA breaks its silence after Iron Man gameplay leak, admitting \"well, that didn't go as planned\"",
-        "url": "https://www.eurogamer.net/ea-motive-iron-man-leak-response-tweet",
-        "summary": "EA has broken its silence on the leaked Iron Man footage that surfaced yesterday , admitting, \"well, that didn't go as planned\". Read more",
-        "published": "2026-08-29T14:56:18+00:00",
-        "age_hours": 42.2,
+        "key": "ba019debcea4c192",
+        "title": "12TB Valve archive leak includes early Portal 2 builds and hints of Half-Life 2: Episode Three",
+        "url": "https://www.eurogamer.net/valve-steam2-leak-12tb-portal-2-half-life-episode-three",
+        "summary": "A leaked archive said to contain around 12TB of old Valve development files, dated between 2003 and 2013, has surfaced online, and fans are already combing through it for any trace of the long-cancelled Half-Life 2 : Episode Three. Read more",
+        "published": "2026-08-30T13:26:42+00:00",
+        "age_hours": 24.7,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -346,15 +336,16 @@
           "eurogamer",
           "pcgamer"
         ],
-        "rank_score": 3.82,
+        "rank_score": 4.19,
         "members": [
           {
-            "hash": "3793469b4657c5d4",
-            "url": "https://www.eurogamer.net/ea-motive-iron-man-leak-response-tweet",
-            "title": "EA breaks its silence after Iron Man gameplay leak, admitting \"well, that didn't go as planned\"",
-            "summary": "EA has broken its silence on the leaked Iron Man footage that surfaced yesterday , admitting, \"well, that didn't go as planned\". Read more",
-            "published": "2026-08-29T14:56:18+00:00",
-            "age_hours": 42.2,
+            "hash": "ba019debcea4c192",
+            "url": "https://www.eurogamer.net/valve-steam2-leak-12tb-portal-2-half-life-episode-three",
+            "title": "12TB Valve archive leak includes early Portal 2 builds and hints of Half-Life 2: Episode Three",
+            "summary": "A leaked archive said to contain around 12TB of old Valve development files, dated between 2003 and 2013, has surfaced online, and fans are already combing through it for any trace of the long-cancelled Half-Life 2 : Episode Three. Read more",
+            "published": "2026-08-30T13:26:42+00:00",
+            "age_hours": 24.7,
+            "image": "https://assetsio.gnwcdn.com/HQ6xhIdWcAAMhTL.jpeg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
             "lang": "en",
@@ -366,12 +357,13 @@
             ]
           },
           {
-            "hash": "53f07ad53af15700",
-            "url": "https://www.pcgamer.com/games/action/well-that-didnt-go-as-planned-says-ea-as-it-footage-of-its-iron-man-game-leaks-online",
-            "title": "'Well, that didn't go as planned' says EA as it footage of its Iron Man game leaks online",
-            "summary": "\"But now you know, we've got a lot more to show you.\"",
-            "published": "2026-08-29T11:45:59+00:00",
-            "age_hours": 45.4,
+            "hash": "7ede29b572ec7cb2",
+            "url": "https://www.pcgamer.com/games/fps/a-massive-cache-of-valve-data-has-reportedly-leaked-online-appearing-to-include-portal-2s-elusive-beta-build-and-a-potential-weapon-from-half-life-2-episode-3",
+            "title": "A massive cache of Valve data has reportedly leaked online, appearing to include Portal 2's elusive beta build and a potential weapon from Half-Life 2: Episode 3",
+            "summary": "The leak purportedly includes files that date between 2003 and 2013.",
+            "published": "2026-08-30T11:41:11+00:00",
+            "age_hours": 26.5,
+            "image": "https://cdn.mos.cms.futurecdn.net/VrZsFJMgUJrMXFZLYZmGCQ-1280-80.jpg",
             "source_id": "pcgamer",
             "source_name": "PC Gamer",
             "lang": "en",
@@ -384,78 +376,77 @@
           }
         ]
       },
-      "oyun_adi": "Iron Man",
-      "ozet": "şirket sızan oynanış görüntüleri hakkında sessizliğini bozarak espriyle yaklaştı",
+      "oyun_adi": "Portal 2",
+      "ozet": "12 terabaytlık valve arşiv sızıntısı hayranları heyecanlandırdı",
       "gorsel": {
         "durum": "var",
-        "sayi": 5,
-        "oyun": "Iron Man",
+        "sayi": 6,
+        "oyun": "Portal 2",
         "seri_sayi": 0,
         "seri": null,
         "temsili": false
       },
-      "baslik": "Iron Man"
+      "baslik": "Portal 2"
     },
     {
       "sira": 6,
       "aday_index": 6,
-      "tier": "A",
-      "title": "Into the Planet’s Flesh",
+      "tier": "B",
+      "title": "‘Book Nook’ has you creating tiny worlds",
       "kaynak_sayisi": 1,
-      "url": "https://www.alphabetagamer.com/into-the-planets-flesh-beta-sign-up",
+      "url": "https://indiegamesplus.com/book-nook-preview",
       "aday": {
-        "key": "03f12d516ae67ec4",
-        "title": "Into the Planet’s Flesh",
-        "url": "https://www.alphabetagamer.com/into-the-planets-flesh-beta-sign-up",
-        "summary": "Into the Planet’s Flesh is a cozy yet creepy incremental game where you hatch parasites to infest the earth and spread your colony like a disease through the planet’s surface. In Into the Planet’s Flesh you click to harvest resources and unlock parasites that work in unique ways to gather grotesque materials. You build veined structures and manage unique buildings while the environment visually changes … Read More The post Into the Planet’s Flesh – Beta Sign Up first appeared on Alpha Beta Gamer .",
-        "published": "2026-08-30T04:53:50+00:00",
-        "age_hours": 28.3,
+        "key": "0e6809e99b217d27",
+        "title": "‘Book Nook’ has you creating tiny worlds",
+        "url": "https://indiegamesplus.com/book-nook-preview",
+        "summary": "You know those little shelf decorations that are a mini-crafting project? The kind that were all the rage as bookends just a couple of years ago. We have so many of those... The post ‘Book Nook’ has you creating tiny worlds appeared first on Indie Games Plus .",
+        "published": "2026-08-31T09:56:12+00:00",
+        "age_hours": 4.2,
         "lang": "en",
-        "kind": "releases",
+        "kind": "news",
         "bucket": "news",
         "tags": [
           "indie",
-          "ayristirici",
-          "demo"
+          "ayristirici"
         ],
         "source_count": 1,
         "sources": [
-          "alphabetagamer"
+          "indiegamesplus"
         ],
-        "rank_score": 2.71,
+        "rank_score": 2.61,
         "members": [
           {
-            "hash": "03f12d516ae67ec4",
-            "url": "https://www.alphabetagamer.com/into-the-planets-flesh-beta-sign-up",
-            "title": "Into the Planet’s Flesh",
-            "summary": "Into the Planet’s Flesh is a cozy yet creepy incremental game where you hatch parasites to infest the earth and spread your colony like a disease through the planet’s surface. In Into the Planet’s Flesh you click to harvest resources and unlock parasites that work in unique ways to gather grotesque materials. You build veined structures and manage unique buildings while the environment visually changes … Read More The post Into the Planet’s Flesh – Beta Sign Up first appeared on Alpha Beta Gamer .",
-            "published": "2026-08-30T04:53:50+00:00",
-            "age_hours": 28.3,
-            "source_id": "alphabetagamer",
-            "source_name": "Alpha Beta Gamer",
+            "hash": "0e6809e99b217d27",
+            "url": "https://indiegamesplus.com/book-nook-preview",
+            "title": "‘Book Nook’ has you creating tiny worlds",
+            "summary": "You know those little shelf decorations that are a mini-crafting project? The kind that were all the rage as bookends just a couple of years ago. We have so many of those... The post ‘Book Nook’ has you creating tiny worlds appeared first on Indie Games Plus .",
+            "published": "2026-08-31T09:56:12+00:00",
+            "age_hours": 4.2,
+            "image": null,
+            "source_id": "indiegamesplus",
+            "source_name": "Indie Games Plus",
             "lang": "en",
-            "kind": "releases",
+            "kind": "news",
             "bucket": "news",
             "weight": 1.3,
             "tags": [
               "indie",
-              "ayristirici",
-              "demo"
+              "ayristirici"
             ]
           }
         ]
       },
-      "oyun_adi": "Into the Planet’s Flesh",
-      "ozet": "parazit yetiştirip dünyaya yığdığınız sevimli ama ürkütücü bir yapım",
+      "oyun_adi": null,
+      "ozet": "kitap rafları için minyatür dünyalar tasarlayan projeler yapılıyor",
       "gorsel": {
-        "durum": "var",
-        "sayi": 8,
-        "oyun": "Into the Planet's Flesh",
+        "durum": "yok",
+        "sayi": 0,
+        "oyun": null,
         "seri_sayi": 0,
         "seri": null,
         "temsili": false
       },
-      "baslik": "Into the Planet’s Flesh"
+      "baslik": "‘Book Nook’ has you creating tiny worlds"
     }
   ]
 }
