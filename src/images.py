@@ -140,6 +140,20 @@ def version_conflict(wanted: str, found: str) -> bool:
     return not (a & b)
 
 
+def tirnakli_adlar(title: str) -> list[str]:
+    """Başlıkta tırnak içinde geçen adlar. Genelde oyunun adıdır.
+
+    Neden kodda: menü modeli "'Book Nook' has you creating tiny worlds"
+    başlığında oyun adını bulamadı (null döndürdü), çünkü özet raf
+    süslerinden bahsediyordu. Oysa IGDB'de 14, Steam'de 11 görseli vardı
+    ve menü kullanıcıya "görsel yok" dedi. Tırnak işareti mekanik bir
+    ipucu - modele güvenmek yerine kod çıkarıyor.
+    """
+    bulunan = re.findall(r"[\"'‘’“”]([^\"'‘’“”]{3,40})"
+                         r"[\"'‘’“”]", title or "")
+    return [a.strip() for a in bulunan if a.strip()]
+
+
 def usable(entry: dict) -> bool:
     """Karta basilacak kadar buyuk mu?
 
@@ -492,7 +506,14 @@ def main() -> int:
         print(mesaj)
         return 0
 
-    if not adaylar:
+    # LLM oyun adini hic vermemis olabilir. Basliktaki tirnakli ad mekanik
+    # bir ipucu: "'Book Nook' has you creating tiny worlds" haberinde model
+    # null dondu ama oyunun IGDB'de 14 goreseli vardi.
+    baslik = ((spec.get("_aday") or {}).get("title")) or ""
+    yedek_adlar = [a for a in tirnakli_adlar(baslik)
+                   if a.lower() not in {str(x).lower() for x in adaylar}]
+
+    if not adaylar and not yedek_adlar:
         return gorselsiz("aranacak oyun adi yok: kartlar tipografik olacak")
 
     def havuz_boyu(g: dict) -> int:
@@ -544,6 +565,28 @@ def main() -> int:
             print(f"\nhicbiri {gereken} gorsele ulasmadi, en zengini secildi: "
                   f"{game['name']} ({boy} gorsel)")
 
+    if game is None and yedek_adlar:
+        for ad in yedek_adlar:
+            game, score, _ = find_game(cid, token, ad)
+            print(f'arama (basliktan): "{ad}" -> '
+                  f'{game["name"] if game else "eslesme yok"}')
+            if game:
+                break
+
+    # IGDB hic bulamadiysa Steam TEK BASINA denenir. Kucuk indie oyunlarin
+    # cogu IGDB'de yok ama Steam sayfasi var; eskiden bu postlar dogrudan
+    # tipografige dusuyordu.
+    steam_only: list[dict] = []
+    if game is None:
+        for ad in (adaylar + yedek_adlar)[:3]:
+            steam_only = steam.havuz(str(ad))
+            if steam_only:
+                game = {"name": steam_only[0]["oyun"]}
+                score = 1.0
+                print(f"IGDB eslesmedi, steam havuzu kullaniliyor: "
+                      f"{game['name']} ({len(steam_only)} kare)")
+                break
+
     if game is None:
         # Hicbir aday tutmadi. Yanlis gorsel basmaktansa gorselsiz basilir.
         return gorselsiz(f"\n{len(adaylar)} aday denendi, eslesme yok. "
@@ -569,7 +612,7 @@ def main() -> int:
     if secim_temsili:
         print("  NOT: bu gorsel TEMSILI - haberde adi gecmiyor")
 
-    studio = developer_of(game)
+    studio = developer_of(game) or (steam_only[0]["credit"] if steam_only else None)
     spec["credit"] = studio
     print(f"  kredi: {studio or 'bilinmiyor'}")
 
@@ -591,13 +634,20 @@ def main() -> int:
         print(f"  haber gorseli: +{len(haber_kare)} kare "
               f"({', '.join(sorted({r['_kaynak'] for r in haber_kare}))})")
 
-    steam_kare = steam.havuz(game["name"])
+    # Steam tek basina kullanildiysa havuz zaten elimizde: tekrar sorma.
+    steam_kare = steam_only or steam.havuz(game["name"])
     if steam_kare:
         var_olan = {r["id"] for kind in pool for r in pool[kind]}
         yeni = [r for r in steam_kare if r["id"] not in var_olan]
         pool["screenshot"] = pool["screenshot"] + yeni
         print(f"  steam: +{len(yeni)} kare ({steam_kare[0]['oyun']}, "
               f"kredi {steam_kare[0]['credit'] or 'bilinmiyor'})")
+        # IGDB'de sirket verisi olmayan kucuk oyunlarda kredi bos kaliyordu
+        # (Book Nook: IGDB'de 14 gorsel var ama studyo yok). Steam biliyor.
+        if not studio and steam_kare[0].get("credit"):
+            studio = steam_kare[0]["credit"]
+            spec["credit"] = studio
+            print(f"  kredi steam'den tamamlandi: {studio}")
     else:
         print("  steam: kare bulunamadi")
 

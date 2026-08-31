@@ -188,6 +188,25 @@ bozulmamalı.
 ⚠️ **Kapak ASLA yedekten/temsiliden seçilmez.** İlk kart vitrindir, orada
 haberin konusu olmayan bir oyun okuru yanıltır.
 
+### Oyun adı bulunamazsa — başlıktaki tırnak
+Ölçüm (2026-08-31): menü "'Book Nook' has you creating tiny worlds"
+haberi için `oyun: null` döndürdü (özet raf süslerinden bahsediyordu) ve
+kullanıcıya **"görsel yok"** dedi. Oysa IGDB'de 14, Steam'de 11 görsel
+vardı. Model kaçırdı, kod yakalıyor: `images.tirnakli_adlar` başlıktaki
+tırnak içi adı çıkarıyor, hem `menu.py` hem `images.py` kullanıyor.
+
+Aynı düzeltmeyle gelen iki şey:
+- **IGDB hiç bulamazsa Steam tek başına** havuz kurabiliyor. Küçük indie
+  oyunların çoğu IGDB'de yok ama Steam sayfası var; bu postlar eskiden
+  doğrudan tipografiğe düşüyordu.
+- **Kredi Steam'den tamamlanıyor.** IGDB'de şirket verisi olmayan
+  oyunlarda kart kredisiz kalıyordu (Book Nook: 14 görsel var, stüdyo
+  yok). Steam biliyor: `malapata studio`.
+
+⚠️ **Menü üretimin GERÇEKTEN yapacağını göstermeli.** `gorsel_durumu`
+yalnızca IGDB'ye bakıyordu; Steam ve haber görseli eklendiğinde menü
+yanlış bilgi verir hale geldi. Kaynak eklerken menüyü de güncelle.
+
 ### Haberin kendi görselleri
 Havuzdaki en ilgili kare, haberi yazan yayının o haber için seçtiği kare:
 bir editör zaten "bu haberi hangi görsel anlatır" sorusunu cevaplamış.

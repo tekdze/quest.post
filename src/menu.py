@@ -32,6 +32,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import images as img  # noqa: E402
+import steam  # noqa: E402
 import telegram as tg  # noqa: E402
 import tier as tier_module  # noqa: E402
 import write as writer  # noqa: E402
@@ -126,7 +127,7 @@ def havuz_boyu(game: dict) -> int:
 
 def gorsel_durumu(cid: str, token: str, oyun: str | None,
                   seri: str | None = None, sayfa_tahmini: int = 4,
-                  temsili: str | None = None) -> dict:
+                  temsili: str | None = None, baslik: str | None = None) -> dict:
     """Adayın IGDB'de kullanılabilir görseli var mı, kaç tane.
 
     Menüde "görsel VAR/YOK" yazabilmek için. Metin üretilmeden önce
@@ -149,7 +150,24 @@ def gorsel_durumu(cid: str, token: str, oyun: str | None,
     if game is None and temsili:
         game, _, _ = img.find_game(cid, token, temsili)
         temsili_mi = game is not None
+    # LLM oyun adini kaciririrsa basliktaki tirnakli ad denenir: "'Book Nook'
+    # has you creating tiny worlds" haberinde model null dondu ama oyunun
+    # IGDB'de 14, Steam'de 11 goreseli vardi ve menu "gorsel yok" dedi.
     if game is None:
+        for ad in img.tirnakli_adlar(baslik or ""):
+            game, _, _ = img.find_game(cid, token, ad)
+            if game is not None:
+                break
+
+    if game is None:
+        # IGDB bulamadi ama Steam bulabilir (kucuk indie oyunlar).
+        # Menu uretimin GERCEKTEN yapacagi seyi gostermeli.
+        for ad in [a for a in (oyun, temsili, *img.tirnakli_adlar(baslik or "")) if a]:
+            st = steam.havuz(str(ad), en_fazla=sayfa_tahmini + 2)
+            if st:
+                return {"durum": "var" if len(st) >= sayfa_tahmini else "az",
+                        "sayi": len(st), "oyun": st[0]["oyun"], "seri_sayi": 0,
+                        "seri": None, "temsili": False, "kaynak": "steam"}
         return bos
 
     sayi = havuz_boyu(game)
@@ -284,7 +302,8 @@ def main() -> int:
         row["oyun_adi"] = oyun
         row["ozet"] = ozetler.get(row["sira"], "")
         row["gorsel"] = gorsel_durumu(cid, token, oyun, seriler.get(row["sira"]),
-                                      temsili=temsililer.get(row["sira"]))
+                                      temsili=temsililer.get(row["sira"]),
+                                      baslik=row.get("title"))
         row["baslik"] = oyun or (row["title"][:52].rstrip() + "..."
                                  if len(row["title"]) > 52 else row["title"])
         isaret = " <- ONERI" if row["sira"] == oneri else ""
