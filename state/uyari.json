@@ -6,5 +6,9 @@
   "üretim başarısız oldu.\n\nwrite.py: 3 denemede temiz cikti alinamadi.": {
     "son": "2026-08-31T16:13:22+00:00",
     "bastirilan": 0
+  },
+  "üretim başarısız oldu.\n\nwrite.py: AttributeError: 'list' object has no attribute 'get'": {
+    "son": "2026-08-31T16:40:53+00:00",
+    "bastirilan": 0
   }
 }
