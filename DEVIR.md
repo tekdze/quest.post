@@ -194,11 +194,19 @@ filtre düzeltir, modeli yeniden çalıştırmaz.
 `tr_lower` "I" harfini "i"ye çeviriyor, "ı"ya değil: karta basılan
 büyük harfli kelimeler neredeyse hep İngilizce oyun adı ("Iron Man").
 
-⚠️ **Yedek model kart metni için güvenilir değil.** `flash-lite`
-işaretsiz Türkçe yazıyor ("temali", "on incelemeler") ve üslup
-filtresine takılıyor; ham çıktıda ölçüldü, düzeltme aşamasıyla ilgisi
-yok. Yani ana modelin kotası dolduğunda yedeğe düşmek çoğu zaman post
-üretmiyor, sadece üç deneme harcıyor. Diakritik geri koymak sözlük işi.
+⚠️ **İşaretsiz Türkçe yeniden üretimle çözülmüyor, ONARIMLA çözülüyor.**
+Yedek model (`flash-lite`) düzenli olarak "temali", "on incelemeler"
+yazıyor; ham çıktıda ölçüldü, model özelliği. Yeniden üretim istemek
+işe yaramıyordu - aynı hata tekrarlanıyor, üç deneme yanıyor ve ana
+modelin kotası dolduğunda sistem fiilen duruyordu.
+
+`write.diakritik_onar` metni yeniden yazdırmıyor, yalnızca işaretleri
+geri koyduruyor (ucuz model, `temperature 0`). **Sonucu kod doğruluyor:**
+dönen her metin, işaretler düşürüldüğünde orijinaliyle birebir aynı
+olmak zorunda (`style.fold`). Kelime değişmişse o metin yok sayılır -
+yani bu tur metni bozamaz, en kötü ihtimalle bir şey düzeltmez.
+Ölçüm (2026-08-31): dün düşen haber yedek modelle üretildi, 13 metin
+onarıldı, filtre temiz geçti.
 
 Yazım modu her üretimde rastgele seçiliyor (gözlem / karşılaştırma / tarihsel
 not / sayısal detay / karşı görüş) — sabit açılış kalıbı oluşmasın.

@@ -350,6 +350,74 @@ def check_structure(draft: dict) -> list[str]:
     return problems
 
 
+DIAKRITIK_SEMA = """{
+  "metinler": ["duzeltilmis metin, girdiyle AYNI sirada, ayni sayida"]
+}"""
+
+
+def diakritik_onar(spec: dict, model: str) -> dict:
+    """İşaretsiz Türkçeyi onar: metni yeniden yazdırma, işaretleri geri koy.
+
+    Neden ayrı bir tur: yedek model (`flash-lite`) düzenli olarak "temali",
+    "on incelemeler" gibi işaretsiz Türkçe yazıyor ve üslup filtresine
+    takılıyor. Yeniden üretim istemek işe yaramıyordu - model aynı hatayı
+    tekrarlıyor, üç deneme de yanıyor ve post hiç çıkmıyordu. Bu, ana modelin
+    kotası dolduğunda sistemin fiilen durması demekti.
+
+    İş bölümü korunuyor: LLM ÖNERİR, KOD DOĞRULAR. Dönen her metin, işaretler
+    düşürüldüğünde orijinaliyle birebir aynı olmak zorunda (`style.fold`).
+    Model kelime değiştirmeye kalkarsa o metin yok sayılır ve eskisi kalır -
+    yani bu tur metni bozamaz, en kötü ihtimalle bir şey düzeltmez.
+    """
+    orijinal = [t for _, t in style.strings_of(spec)]
+    if not any(style.isaretsiz(t) for t in orijinal):
+        return spec
+
+    prompt = "\n".join([
+        "Aşağıdaki Türkçe metinlerde Türkçe harfler eksik yazılmış.",
+        "Örnek: \"temali\" -> \"temalı\", \"on inceleme\" -> \"ön inceleme\",",
+        "\"gorunuyor\" -> \"görünüyor\", \"cikis\" -> \"çıkış\".",
+        "",
+        "SADECE eksik işaretleri koy. Başka HİÇBİR ŞEY değiştirme:",
+        "kelime ekleme, kelime çıkarma, sıra değiştirme, düzeltme yapma.",
+        "Zaten doğru yazılmış metinleri olduğu gibi geri ver.",
+        "İngilizce oyun adlarına dokunma (\"total war\" böyle kalır).",
+        "",
+        "Girdiyle AYNI SAYIDA ve AYNI SIRADA metin döndür.",
+        "",
+        "METİNLER:",
+        *[f"{i}. {t}" for i, t in enumerate(orijinal, 1)],
+        "",
+        "SADECE şu şemada JSON döndür:",
+        DIAKRITIK_SEMA,
+    ])
+
+    try:
+        cevap = generate(prompt, model, temperature=0.0)
+    except (SystemExit, GecersizCevap):
+        print("  diakritik onarimi yapilamadi, atlaniyor")
+        return spec
+
+    gelen = cevap.get("metinler") or []
+    guvenli, duzeltilen, reddedilen = [], 0, 0
+    for sira, eski in enumerate(orijinal):
+        yeni = gelen[sira] if sira < len(gelen) else None
+        if not isinstance(yeni, str) or yeni == eski:
+            guvenli.append(eski)
+            continue
+        # DOGRULAMA: isaretler dusurulunce metin ayni kalmali.
+        if style.fold(yeni) != style.fold(eski):
+            reddedilen += 1
+            guvenli.append(eski)
+            continue
+        duzeltilen += 1
+        guvenli.append(yeni)
+
+    print(f"  diakritik onarimi: {duzeltilen} metin duzeltildi"
+          + (f", {reddedilen} reddedildi (kelime degismis)" if reddedilen else ""))
+    return style.replace_strings(spec, guvenli)
+
+
 def build_prompt(candidate: dict, source_text: str, mode: str,
                  problems: list[str] | None = None) -> str:
     sources = ", ".join(candidate["sources"])
@@ -629,6 +697,13 @@ def main() -> int:
         # Yapi denetimi once: sayfa duzeni bozuksa uslup zaten yeniden
         # yazilacak, QA'ya kota harcamanin anlami yok.
         problems = check_structure(draft) + style.review(draft, source_text)
+
+        # Isaretsiz Turkce mekanik degil ama COZULEBILIR: metni yeniden
+        # yazdirmak yerine isaretleri geri koyduruyoruz (ucuz model, sonucu
+        # kod dogruluyor). Yedek modelin tek engeli buydu.
+        if any("Turkce karakter" in p for p in problems):
+            draft = diakritik_onar(draft, HELPER_MODEL)
+            problems = check_structure(draft) + style.review(draft, source_text)
 
         # Deterministik filtre temizse ikinci goz devreye girer. Once o
         # calissin diye sonra: yasak kalip varken QA'ya para harcamanin

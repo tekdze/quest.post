@@ -224,6 +224,33 @@ def review(spec: dict, source_text: str) -> list[str]:
     return check_patterns(spec) + check_suffixes(spec) + check_numbers(spec, source_text)
 
 
+def replace_strings(spec: dict, yeni: list[str]) -> dict:
+    """`strings_of` ile AYNI sırada dolaşıp metinleri değiştir.
+
+    Sıra bazlı, yol bazlı değil: "pages[1].bullets[0]" gibi yolları
+    ayrıştırmak gereksiz kırılganlık olurdu. İki fonksiyon aynı gezinme
+    kuralını paylaşıyor - biri değişirse diğeri de değişmeli.
+    """
+    kalan = iter(yeni)
+
+    def walk(node):
+        if isinstance(node, str):
+            return next(kalan, node)
+        if isinstance(node, dict):
+            return {k: (v if k.startswith("_") or k in NON_PROSE_KEYS else walk(v))
+                    for k, v in node.items()}
+        if isinstance(node, list):
+            return [walk(v) for v in node]
+        return node
+
+    return walk(spec)
+
+
+def isaretsiz(text: str) -> bool:
+    """Türkçe işaretleri düşmüş uzun metin mi? (`ı, ş, ğ, ü, ö, ç` hiç yok)"""
+    return len(text) > 40 and not TR_CHARS & set(text)
+
+
 def tr_lower(text: str) -> str:
     """Küçük harfe çevir. "İ" özel: düz `.lower()` onu bozuk üretiyor.
 
