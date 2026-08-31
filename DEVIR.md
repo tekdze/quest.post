@@ -5,11 +5,15 @@
 
 Son güncelleme: 2026-09-01 · **Sistem çalışıyor, gönderiler yayınlanıyor.**
 
-**Son iki günde değişen** (hepsi canlıda, ayrıntısı ilgili bölümlerde):
-kart tasarımı gradyansız bölme düzenine geçti (bölüm 3) · görsel havuzu üç
-kaynaktan besleniyor (bölüm 4) · görsel-sayfa eşleştirme ve kart denetimi
-eklendi (`qa.py`) · metin sesi değişti: "sen" dili, evet/hayır sorusu yasak
-(bölüm 4) · üretim artık boş dönmüyor ve hata mesajları sebep taşıyor.
+**En son değişen** (bölüm 4.1 ve 9): metin kalitesi artık **yasakla değil
+mekanizmayla** korunuyor — dayanak zorunluluğu, tekrar denetimi, olay
+kategorileri · Reddit ilgi sinyali eklendi (`reddit.py`, anahtar bekliyor) ·
+GitHub Models sondası hazır (`ghmodels.py`, çalıştırılmayı bekliyor).
+
+**Ondan önce** (hepsi canlıda): kart tasarımı gradyansız bölme düzenine geçti
+(bölüm 3) · görsel havuzu üç kaynaktan besleniyor (bölüm 4) · görsel-sayfa
+eşleştirme ve kart denetimi eklendi (`qa.py`) · metin sesi değişti: "sen"
+dili, evet/hayır sorusu yasak (bölüm 4) · üretim artık boş dönmüyor.
 
 ---
 
@@ -440,6 +444,121 @@ büyük harf içermek zorundalar. Denetime girdiklerinde filtre LLM'i o alanlar�
 **boşaltmaya itiyor** ve arıza hata olarak değil *eksik özellik* olarak
 görünüyor.
 
+---
+
+## 4.1 Kalite mekanizmaları (2026-09-01) — YASAK DEĞİL MEKANİZMA
+
+**Teşhis.** İstemde 22 kural vardı ve **hepsi yasaktı.** Hiçbiri "iyi post
+şudur" demiyordu. 22 yasağa göre optimize edilen model en güvenli metni
+yazar ve **en güvenli metin en boş metindir** — hiçbir şey söylemeyen cümle
+hiçbir kuralı ihlal edemez.
+
+Ölçüm (20260831-the-blood-of-dawnwalker): *"sıradan gözüken arayışlar
+oyuncuyu hızlıca karanlık atmosfere çekiyor"* maddesi 22 kuralın 22'sini de
+geçti. Oysa kaynakta yerini alacak somut bir anekdot vardı (turba kazıcısı
+çukura düşüyor, mağarada bir ses duyuluyor) ve model onu **soyutlayıp attı.**
+
+⚠️ Bu bir GİRDİ sorunu değildi. Anekdot RSS özetinde tam olarak vardı ve
+`source_text_of` onu modele verdi. Yani "tam makale çekilmiyor" maddesi bu
+postta geçerli değil — eksik bilgi değil, **eksik yargı** vardı. İkisi
+tamamen farklı sorunlar ve farklı çözümleri var.
+
+⚠️ **Yasak eklemenin marjinal getirisi artık negatif.** Yeni kural hem ret
+olasılığını çarpıyor hem metni daha da ortalamaya itiyor. Bundan sonraki
+düzeltmeler kural değil mekanizma olmalı.
+
+### 1. Dayanak zorunluluğu (`check_dayanak`, `autofix_dayanak`)
+
+Model önce `cikarim` listesini yazıyor — **şemada ilk sırada**, yani metnini
+kendi çıkarımına koşullanarak yazıyor. Her olgu için kaynaktan **birebir
+alıntı** veriyor, sonra her paragraf ve her madde o listeden bir numara
+gösteriyor.
+
+- Kod alıntıyı doğruluyor (kelimelerin %70'i kaynakta geçmeli). Uydurulmuş
+  olgu düşer. Diakritik onarımındaki `fold` karşılaştırmasıyla aynı desen:
+  **LLM veri verir, kod doğrular.**
+- **Numara tekrar edilemez.** Yan etkisi tasarım gereği: kaynakta 5 olgu
+  varsa post 5 gövde alanından uzun olamaz. Yani sayfa sayısı artık modelin
+  tahminine değil **kaynağın yoğunluğuna** bağlı ve dolgu sayfa yapısal
+  olarak imkânsız.
+- Tam eşleşme değil %70 aranıyor: model tırnak ve boşlukları sessizce
+  düzeltiyor, tam eşleşme şartı ret oranını gereksiz şişiriyordu.
+
+⚠️ **"En az 4 olgu" kuralı DENENDİ ve GERİ ALINDI.** Üretim üç denemenin
+üçünde de takıldı, çünkü `hedefli_onar` metin yazar — **listeye olgu
+ekleyemez.** Onarılamayan bir ihlal her seferinde bir deneme yakıyor.
+Ders: *onarılamayan kural eklenmez.* Ayrıca eşik yanlış kaldıraçtı — model
+3 olgu çıkarıp 3 gövde alanı yazdıysa post kısa ama dürüst.
+
+⚠️ **Ret oranı DÜŞTÜ, artmadı.** İhlallerin çoğu mekanik olarak onarılıyor
+(`autofix_dayanak`): tekrar eden madde siliniyor, dayanaksız madde
+kesiliyor, gövdesi tekrar olan sayfa düşüyor. Ölçüm: üç arka arkaya koşunun
+üçü de **birinci denemede** temiz çıktı (yedek modelle).
+
+⚠️ `dayanak` ve `bullet_dayanak` **`NON_PROSE_KEYS`'e girmek zorundaydı.**
+Model bu alanlara sayı yerine metin yazdığında üslup filtresi o alanlara
+saldırıyordu ("işaretsiz Türkçe", "eğik tırnak") — `search_name` dersinin
+birebir tekrarı: doğrulama mekanizmasının kendisi filtreye yem oluyordu.
+
+### 2. Tekrar denetimi (`style.check_tekrar`) — deterministik
+
+Mevcut denetimlerin hepsi **tek metne** bakıyordu, hiçbiri metinler
+**arasına** bakmıyordu. Dawnwalker'da "karanlık" 4, "fikir" 3 ayrı alanda
+geçti ve hiçbir kural ihlal edilmedi.
+
+Türkçe eklemeli olduğu için tam eşleşme işe yaramaz: kaba kök olarak ilk
+5 harf alınıyor ("karanlık/karanlığa" → `karan`, "fikirlerini" → `fikir`).
+4 harf çok kaba: "karanlık" ile "karakter" çakışıyordu.
+
+⚠️ **Yalnızca GÖVDEYE bakıyor** (paragraf + maddeler). Ölçüm: başlık ve son
+sayfa sorusu dahil edilince 11 taslağın 11'i de işaretlendi, yani filtre
+hiçbir şey ayırt etmiyordu. Konu kelimesinin kapakta, bir paragrafta ve
+soruda geçmesi tekrar değil tutarlılıktır. Gövdeye daraltılınca 11 taslakta
+4 işaret kaldı ve en çok da en tekrarlı post işaretlendi. `credit` de
+dışarıda: sayfa başına yazılan aynı stüdyo adı tekrar değil.
+
+### 3. Kategoriler artık OLAY tipi
+
+Eski listede `stüdyo` vardı ve o bir olay değil bir **özne**. Ölçüm:
+Dawnwalker üç yayının **incelemesiydi** ama listede "inceleme" yoktu, model
+mecburen "stüdyo" seçti ve kapak kutusu haberi yanlış bildirdi. **Kusur
+modelde değil, sözlükte eksiklikti.**
+
+Eklenenler: `inceleme`, `duyuru`, `fragman`, `gecikme`. Ayrıca her
+kategorinin **zorunlu bilgisi** isteme yazıldı (`KATEGORI_SLOTLARI`) —
+inceleme postunda "kaynaklar oyunu nasıl buldu" yoksa post haberi hiç
+vermemiş olur.
+
+⚠️ Bu, kapak başlığı tartışmasının da çözümü. "witcher ekibinden vampir
+rpg'si" başlığı **iyi bir başlık** (tür vaadi net, çengel güçlü) ama fiil
+taşımıyor: aynı cümle duyuruya da, fragmana da, ertelemeye de uyar. Başlığı
+zorlamak yerine **olay kategori kutusuna** bırakıldı; ikisi birlikte hem
+çengeli hem haberi veriyor.
+
+### Ölçülen sonuç (aynı haber, aynı kaynak)
+
+| | eski | yeni |
+|---|---|---|
+| kategori | stüdyo (yanlış) | inceleme |
+| incelemelerin yargısı | **yok** | eurogamer ve pc gamer karşı karşıya |
+| turba kazıcısı anekdotu | soyutlanıp atılmış | kendi sayfasında |
+| tekrar | "karanlık" ×4, "fikir" ×3 | yok |
+| dolgu madde | 2 | yok |
+| metin sayfalarında görsel oranı | %60-67 | **%71-77** |
+| deneme sayısı | - | 1 (sıfır ihlal) |
+
+⚠️ Metin kısaldığı için görsel oranı kendiliğinden yükseldi — bölüm 3'te
+"%80 hedeflenmişti, başlık ve kutular izin vermiyor" deniyordu. Kapakta hâlâ
+geçerli ama metin sayfalarında sınır **metnin uzunluğuydu** ve o sınır
+kalktı.
+
+⚠️ **Kalan zayıf nokta: caption dayanaksız.** Gövde artık kaynağa bağlı ama
+caption bağlı değil ve ölçümde kaynakta olmayan bir iddiaya kaydı
+("eleştirmenlerden farklı tepkiler aldı" — üç kaynak da olumluydu).
+`#indiegame` etiketi de hâlâ yanlış basılıyor.
+
+---
+
 ### Metin QA (`llm_review`) — varsayılan açık
 `style.py` yazım hatası yakalayamıyor. LLM ikinci göz oluyor, karar kümesi
 **sınırlı**: `yazim` / `kaynak_disi` / `anlamsiz`. Üslup yorumu ve "daha iyi
@@ -475,7 +594,9 @@ src/
   tier.py       kademe hesabı (KOD)
   menu.py       aday menüsü
   write.py      Gemini + istem + üslup döngüsü + caption
-  style.py      üslup filtresi
+  style.py      üslup filtresi + tekrar denetimi
+  reddit.py     ilgi sinyali (anahtar yoksa sessizce kapalı)
+  ghmodels.py   GitHub Models sondası (entegrasyon DEĞİL)
   steam.py      Steam mağaza görselleri
   images.py     IGDB + Steam görsel seçimi
   qa.py         görsel-sayfa eşleştirme
@@ -502,6 +623,12 @@ out/            <id>/01.png... — repoya commit edilir (Instagram URL şartı)
 `.env` (yerel) ve GitHub Secrets: `GEMINI_API_KEY` · `IGDB_CLIENT_ID` ·
 `IGDB_CLIENT_SECRET` · `TG_BOT_TOKEN` · `TG_CHAT_ID` · `IG_ACCESS_TOKEN` ·
 `IG_USER_ID`
+
+**Bekleyen (ikisi de opsiyonel, yokken sistem eskisi gibi çalışır):**
+`REDDIT_CLIENT_ID` · `REDDIT_CLIENT_SECRET` — ilgi sinyali için.
+reddit.com/prefs/apps → "script" tipi uygulama → ücretsiz, salt okuma.
+`GH_MODELS_TOKEN` yalnızca yerel deneme için; Actions'ta `GITHUB_TOKEN`
+zaten var ve `permissions: models: read` yeterli.
 
 ### ⚠️ Gemini kotası — model başına ve EŞİT DEĞİL
 İnternetteki "1500 istek/gün" bilgisi bu modellere uymuyor. Gerçek değerler
@@ -683,6 +810,10 @@ metadata'sı küçük boyut raporluyor ama `t_original` büyüğünü veriyor.
 
 Sıra **büyüme etkisine** göre.
 
+**Bitti (2026-09-01 akşamı):** dayanak zorunluluğu · tekrar denetimi · olay
+kategorileri (bölüm 4.1) · Reddit sinyali yazıldı (anahtar bekliyor) ·
+GitHub Models sondası yazıldı (çalıştırılmayı bekliyor).
+
 **Bitti (2026-08-30/09-01):** esnek sayfa sayısı · sızıntı postlarında
 görsel · görsel-sayfa eşleştirme ve kart denetimi (`qa.py`) · Steam havuzu
 (`steam.py`) · haberin kendi görselleri · işaretsiz Türkçe onarımı · ses
@@ -697,18 +828,24 @@ duruyor ama menü akışı `--index` ile çağırdığı için o döngüye giril
 ### Sistem değerlendirmesi (2026-08-30)
 **Sağlam olan:** LLM'in dar tutulması, üslup filtresi, telif disiplini.
 
-**Zayıf olan (2026-09-01 itibarıyla):**
-- ⚠️ **Kademe sistemi fiilen ölü.** Üretilen postların hepsi B çıkıyor, S
-  neredeyse hiç gelmiyor. Vitrindeki fikir çalışmıyor. **En büyük açık bu.**
-- ⚠️ **Seçim ölçütü yaygınlık, ilginçlik değil.** "Kaç kaynak yazdı" sinyali
-  en çok tekrarlanan, yani en sıradan haberi öne çıkarıyor. Paylaşılabilir
-  haberi (köpek poşeti mekaniği gibi) genelde bir iki kaynak yazar, o da C
-  kademesine düşüp hiç üretilmez. Menüdeki ⭐ öneri "ilginç mi" diye
-  soruyor ama tier hesabını ezmiyor.
+**Zayıf olan (2026-09-01 akşamı itibarıyla):**
+- ⚠️ **Seçim ölçütü yaygınlık, ilginçlik değil.** "Kaç kaynak yazdı" en çok
+  tekrarlanan, yani en sıradan haberi öne çıkarıyor. **Reddit sinyali bunun
+  için yazıldı** (`reddit.py`) ama anahtar bekliyor — girilene kadar açık
+  devam ediyor.
+- ⚠️ **Kademe sisteminde ölçüm güncellendi.** "Hepsi B çıkıyor" gözlemi artık
+  doğru değil: Dawnwalker A çıktı. Ayrıca kullanıcı bu tier'ı **onayladı** —
+  yeni bir oyunun incelemesi oyuncu için gerçekten heyecan verici, "sıradan"
+  olan basının rutini, okurun ilgisi değil. Yani sorun tier'ın **kendisinde
+  değil**, hesabın tek sinyale dayanmasında.
 - Kaynak havuzu tek tip (RSS, hepsi haber sitesi)
-- Tam makale çekilmiyor, RSS özetleri birleştiriliyor — "duyuran" seviyede
+- Tam makale çekilmiyor, RSS özetleri birleştiriliyor
+  ⚠️ Ama bu maddenin ağırlığı DÜŞTÜ: Dawnwalker ölçümünde kaçan anekdot
+  RSS özetinde zaten vardı. Kayıp bilgide değil işlemedeydi ve bölüm 4.1
+  onu çözdü. Tam makale hâlâ değerli, ama artık birinci sırada değil.
 - Tek format: hep haber. Uzunluk ve ses değişti ama format tek
 - Görsel-içerik bağı DÜZELDİ (`qa.py` eşleştirme + kart denetimi)
+- Metin dolgusu DÜZELDİ (bölüm 4.1)
 
 **Büyüme tahmini:** Bu içerikle yavaş büyür ve sebebi kalite değil **format**.
 Instagram kaydetme/paylaşma/yorumu ödüllendiriyor, haber ise tüketilip
@@ -733,9 +870,14 @@ haberler dokuz ayrı kümeye bölünüyor, hiçbiri 3 kaynağa ulaşmıyor.
   çıktı, hiçbiri konu değil
 
 Sebep: istatistik "gta" ile "shows"u ayıramıyor, ikisi de nadir. Soru
-**semantik**. Çalışacak yol: LLM'e sormak — ama tier'ı LLM'e teslim etmeden.
-LLM veri verir ("bu haber hangi oyun hakkında"), ısıyı ve tier'ı kod hesaplar.
-`menu.py` zaten oyun adı alıyor.
+**semantik**.
+
+✔ **Çözüm yazıldı: Reddit oyu** (`reddit.py`). Semantik soruyu istatistikle
+çözmeye çalışmak yerine, insanların zaten cevapladığı yerden okuyoruz. Oy
+sayısı ilginçliğin doğrudan ölçüsü ve kaynak sayısından bağımsız.
+Sinyal yalnızca **yukarı** itiyor (bölüm 6'daki gerekçe), yorum/oy oranı
+yüksekse ayrıca yükseltiyor — Instagram'da yorum en değerli etkileşim.
+**Anahtar girilene kadar etkisiz.**
 
 ### 3. Profil ızgarasında tier şeridi
 Bkz. bölüm 3'teki açık sorun.
@@ -755,6 +897,37 @@ render edilmiş kartı modele gösterip yalnızca üç şeyi sormak - görselin
 içindeki yazı kadrajda yarım mı kaldı, kart metni zemin yüzünden
 okunmuyor mu, uygunsuz bir öge var mı. Kurallar aynı: rubrik ayrı
 dosyada, `temperature 0`, sınırlı karar kümesi, en fazla 2 düzeltme turu.
+
+### Sıraya alındı — kullanıcı onayladı, sonra yapılacak
+
+**A. Yeni sayfa tipleri: karşılaştırma, zaman çizelgesi, alıntı kartı.**
+Şu an dört karttan üçü aynı kalıp: başlık + paragraf + iki madde. Kaydedilen
+carousel'ler genelde paragraf değil **yapı** taşır. Gerekçe bölüm 4.1'deki
+mekanizmayla aynı yönde: **yapı boş cümle taşıyamaz** — karşılaştırma
+tablosu doldurmak için gerçek iki taraf gerekir, dolgu cümle o yapıya
+sığmaz. Metin kalitesini istemle kovalamaktan daha çok iş görür ve bu bir
+**tasarım** kararı, model kararı değil.
+
+**B. Eval seti — post birikince.** 12-15 dondurulmuş aday, her istem
+değişikliğinden sonra hepsi yeniden üretilip puanlanır (deterministik
+metrikler + sabit rubrik). "Bu postta sınırı düzeltiyorsun, başka postta
+bozuluyor" probleminin tek çözümü bu; şu an yapılmadı çünkü tasarım yeni ve
+elde yeterli post yok. **Bu kurulmadan yapılan her iyileştirme yazı tura.**
+
+**C. Evergreen içerik.** Aşağıdaki 9.1 maddesi. Kullanıcı sonraya bıraktı.
+
+**D. `/keskinlest` komutu.** Beğenilen bir habere elle "güçlü modelle,
+eleştiri turuyla yeniden yaz" diyebilmek. Zemin makinenin işi, tavan
+kullanıcının: her posta güçlü model harcamak yerine hangisinin buna
+değdiğine kullanıcı karar verir.
+
+**E. Ders dosyası (`dersler.json`).** İstem şu an 22 yasak taşıyor ve yasak
+eklemenin getirisi negatif (bölüm 4.1). Bunun yerine somut örnekler
+biriktirilir (`kötü / iyi / sebep`) ve her üretimde tipine uygun 3 tanesi
+örneklenir. Örnekler yasak gibi birikmiyor — 40 örneğin 3'ü kullanılır,
+istem uzamaz. Beslemesi: `/not <serbest metin>` komutu; kullanıcı doğal
+konuşur, yapılandırmayı ucuz model yapar. **Sabit soru-cevap anketi
+İSTENMEDİ** — kullanıcı agent ile konuşmak istiyor, form doldurmak değil.
 
 ### Sonraya bırakılanlar
 - **`watch.yml` · acil haber:** 10-15 dk'da bir `fetch.py`, ölçüt kaç kaynak
