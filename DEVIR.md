@@ -49,7 +49,8 @@ tier.py      kademe hesabı (KOD, LLM değil)
 menu.py      aday menüsü: tier + görsel durumu + LLM önerisi
 write.py     Gemini → Türkçe metin + caption    → state/drafts/<id>.json
 style.py     üslup filtresi + LLM ikinci gözü
-images.py    IGDB → görsel seç, indir, kredi    → state/img/
+steam.py     Steam mağaza kareleri (havuzu tamamlar)
+images.py    IGDB + Steam → seç, indir, kredi    → state/img/
 qa.py        görsel-sayfa eşleştirme (görüntülü LLM, kod doğrular)
 render.py    HTML → Chromium → PNG              → out/<id>/
 telegram.py  kartları yolla, komutu kaydet      → state/pending.json
@@ -148,7 +149,16 @@ bozulmamalı.
 ## 4. İçerik kuralları
 
 ### Telif — tartışılmaz
-- Görseller **yalnızca IGDB'den** (resmi stüdyo materyali)
+- Görseller **yalnızca resmi mağaza/veritabanı kaynaklarından**: IGDB ve
+  **Steam** (karar 2026-08-31). İkisinde de materyali yayıncının kendisi
+  yüklüyor, yani basın ve tanıtım için dağıtılan içerik.
+  ⚠️ Google Görseller kaynak DEĞİL, indeks: oradaki karelerin sahipleri
+  ayrı ayrı (ajanslar, YouTuber kayıtları, hayran çizimleri). İzinsiz
+  kullanım ihlal; Instagram hak sahibi şikâyetiyle işlem yapıyor ve
+  tekrarlayan uyarı hesabı kapattırabilir.
+  ⚠️ **Epic ve itch.io denendi, alınmadı:** Epic'in herkese açık API'si
+  yok (mağaza GraphQL'i belgesiz, her an kırılır); itch.io'nun API'si
+  üreticinin kendi oyunları için, genel arama yok - kalanı kazıma olurdu.
 - Kredi **IGDB'nin şirket verisinden**, LLM tahmininden değil
 - **Kredi sayfa başına**: seri yedeğinden gelen görselin stüdyosu farklı
   olabiliyor (Pokémon TCG Pocket ≠ ana seri). Tek ortak kredi basmak o
@@ -178,6 +188,22 @@ bozulmamalı.
 ⚠️ **Kapak ASLA yedekten/temsiliden seçilmez.** İlk kart vitrindir, orada
 haberin konusu olmayan bir oyun okuru yanıltır.
 
+### Steam havuzu (`steam.py`)
+IGDB tek kaynakken havuz bazı oyunlarda 3-4 kareye düşüyordu ve
+eşleştirme ancak havuzdaki kadar iyi olabiliyor. Steam oyun başına
+10-15 kare daha getiriyor (ölçüm: Silksong 13 -> 23 kare).
+
+- Anahtar gerekmiyor: `SearchApps` ve `appdetails` herkese açık
+- Kredi uydurulmuyor: `appdetails` geliştirici/yayıncı adı veriyor
+- İsim eşiği ve sürüm kuralı IGDB ile **ortak** (`images.py`).
+  ⚠️ Gerekli: "Grand Theft Auto VI" araması Steam'de "GTA V
+  Enhanced" döndürüyor, kontrolsüz bırakılsa yanlış oyun basılırdı
+- ⚠️ Steam boyut bilgisi VERMİYOR. Bulanık kart basmamak için ölçü
+  şart, o yüzden dosyanın ilk 8 KB'ı çekilip JPEG/PNG başlığından
+  boyut okunuyor (`goruntu_boyutu`, bağımlılık yok). Kareler
+  1920x1080 çıkıyor: eşiğin üstünde ama IGDB'nin 4K artwork'lerinin
+  altında, o yüzden havuzda IGDB önce sıralanıyor
+
 ### Görsel-sayfa eşleştirme (`qa.py`)
 `images.py` kareyi sayfa **tipine** göre dağıtıyor; içerikle bağı
 tesadüftü. Ölçüldü (20260830-gta-6): metin köpek gezdirmekten
@@ -194,6 +220,12 @@ başına **tek** görüntülü çağrı, kart başına değil.
 - kod denetler: aralık, tekrar, ve **kapak ana oyundan mı**
   (model vitrin kuralını bilmiyor, uygulayan kod)
 - reddedilen öneri sessizce düşer, o sayfa eski karesinde kalır
+
+⚠️ **"İlgi çekici mi" diye SORULMUYOR, kıyaslatılıyor.** Mutlak
+estetik yargısı güvenilir değil - model bozuk karta da "tamam" der,
+serbest bırakılınca da her karede kusur bulur (bkz. tier ve menü
+dersleri). Çarpıcılık, eşit derecede ilgili iki kare arasında
+**ayırt edici ölçüt** olarak veriliyor, tek başına onay sorusu değil.
 
 ⚠️ **İyileştirme, zorunluluk değil.** `produce.py` bunu `run_yumusak`
 ile çağırıyor: patlarsa post yine çıkar, sadece eşleştirme tip bazlı
@@ -280,7 +312,8 @@ src/
   menu.py       aday menüsü
   write.py      Gemini + istem + üslup döngüsü + caption
   style.py      üslup filtresi
-  images.py     IGDB görsel seçimi
+  steam.py      Steam mağaza görselleri
+  images.py     IGDB + Steam görsel seçimi
   qa.py         görsel-sayfa eşleştirme
   render.py     HTML → PNG (--sheet ile havuz ızgarası)
   telegram.py   mesajlaşma, komut kaydı
@@ -486,8 +519,8 @@ metadata'sı küçük boyut raporluyor ama `t_original` büyüğünü veriyor.
 
 Sıra **büyüme etkisine** göre.
 
-**Bitti (2026-08-30):** esnek sayfa sayısı (bkz. bölüm 4). Canlıda
-denenmedi: ilk `/uret`te görülecek.
+**Bitti:** esnek sayfa sayısı · sızıntı postlarında görsel · görsel-sayfa
+eşleştirme (`qa.py`) · Steam havuzu (`steam.py`) · işaretsiz Türkçe onarımı.
 
 ⚠️ **Haftalık derleme İSTENMEDİ (2026-08-30).** Yazıldı, çalıştı, sonra
 kullanıcı istemediğini söyledi ve tamamen geri alındı. Yeniden önerilmesin.
@@ -544,19 +577,7 @@ kickerını düzeltir ama **son sayfadaki künyeyi de bozar** ("haberin
 kademesi: ..."). İkisi `card.html` içinde aynı alandan (`data.tier_label`)
 besleniyor. Ayırmak için şablona dokunmak gerekiyor - tasarım kararı.
 
-### 5. Görsel havuzunu büyütmek — telifi bozmadan
-IGDB tek kaynak ve bazı oyunlarda havuz dar; eşleştirme (`qa.py`) ancak
-havuzdaki kadar iyi olabiliyor. Meşru genişletme yolları:
-**Steam mağaza görselleri** (yayıncının kendi yüklediği materyal),
-stüdyo basın kitleri, Wikimedia/CC.
-
-⚠️ Google Görseller bir kaynak DEĞİL, indeks: oradaki karelerin sahipleri
-ayrı (ajanslar, YouTuber kayıtları, hayran çizimleri). İzinsiz kullanım
-ihlal, ve Instagram hak sahibi şikâyetiyle işlem yapıyor - tekrarlayan
-uyarı hesabı kapattırabilir. IGDB/Steam farkı: o materyal basın için
-dağıtılıyor ve şirket verisi geldiği için kredi doğru basılabiliyor.
-
-### 6. Kart denetimi — kırpma ve okunurluk
+### 5. Kart denetimi — kırpma ve okunurluk
 `qa.py` şu an eşleştirme yapıyor, basılmış kartı denetlemiyor. Sıradaki:
 render edilmiş kartı modele gösterip yalnızca üç şeyi sormak - görselin
 içindeki yazı kadrajda yarım mı kaldı, kart metni zemin yüzünden

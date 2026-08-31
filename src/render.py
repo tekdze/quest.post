@@ -167,7 +167,7 @@ def render_sheet(spec: dict, out_path: Path) -> int:
     for number, entry in enumerate(pool, 1):
         tiles.append(f"""
         <div class="tile">
-          <img src="{SHEET_THUMB.format(id=entry['id'])}">
+          <img src="{entry.get('thumb') or SHEET_THUMB.format(id=entry['id'])}">
           <div class="num">{number}</div>
           <div class="meta">{entry.get('kind', '')} · {entry.get('w', 0)}x{entry.get('h', 0)}</div>
         </div>""")

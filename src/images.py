@@ -27,6 +27,9 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import steam  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 
 TOKEN_URL = "https://id.twitch.tv/oauth2/token"
@@ -285,10 +288,25 @@ def assign_images(pages: list[dict], pool: dict[str, list[dict]],
 
 # ---------------------------------------------------------------- indirme
 
-def download(image_id: str, target: Path) -> bool:
+def download(image_id: str, target: Path, url: str | None = None) -> bool:
     """Gorseli indir. Once t_original: IGDB'de 4K bir artwork varken
     t_1080p istemek onu 1920x1080'e dusuruyordu, sonra biz 1350 yukseklige
-    buyutunce bulanik cikiyordu. Original yoksa 1080p'ye duser."""
+    buyutunce bulanik cikiyordu. Original yoksa 1080p'ye duser.
+
+    `url` verilirse dogrudan o adres indirilir: Steam kareleri IGDB kimlik
+    semasini kullanmiyor, tam adresleriyle havuza giriyorlar."""
+    if url:
+        request = urllib.request.Request(url, headers={"User-Agent": "questpost/0.1"})
+        try:
+            with urllib.request.urlopen(request, timeout=90) as response:
+                data = response.read()
+        except (urllib.error.URLError, OSError) as exc:
+            print(f"  gorsel indirilemedi ({exc}): {image_id}", file=sys.stderr)
+            return False
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(data)
+        return True
+
     for size in ("original", "1080p"):
         url = IMAGE_URL.format(size=size, image_id=image_id)
         request = urllib.request.Request(url, headers={"User-Agent": "questpost/0.1"})
@@ -334,7 +352,11 @@ def redownload(spec: dict, draft_path: Path, dry_run: bool = False) -> int:
         if dry_run:
             print(f"  {image_id} (indirilmedi, --dry-run)")
             continue
-        if download(image_id, ROOT / rel):
+        # Steam kareleri IGDB kimlik semasini kullanmiyor: adresleri
+        # havuzdan bulunuyor.
+        url = next((r.get("url") for r in (spec.get("_image_pool") or [])
+                    if r.get("id") == image_id), None)
+        if download(image_id, ROOT / rel, url):
             print(f"  {image_id} -> {rel}")
             continue
         # Indirilemezse o sayfa gorselsiz basilir. Zinciri durdurmak
@@ -503,6 +525,22 @@ def main() -> int:
     spec["credit"] = studio
     print(f"  kredi: {studio or 'bilinmiyor'}")
 
+    # IGDB tek kaynakken havuz bazi oyunlarda 3-4 kareye dusuyordu ve
+    # eslestirme (qa.py) ancak havuzdaki kadar iyi olabiliyor. Steam ayni
+    # oyunun magaza karelerini ekliyor: yayincinin kendi yukledigi materyal,
+    # kredi de kendi verisinden geliyor (bkz. DEVIR bolum 4).
+    # IGDB kareleri once kaliyor: cozunurlukleri daha yuksek (4K artwork'e
+    # karsi 1920x1080).
+    steam_kare = steam.havuz(game["name"])
+    if steam_kare:
+        var_olan = {r["id"] for kind in pool for r in pool[kind]}
+        yeni = [r for r in steam_kare if r["id"] not in var_olan]
+        pool["screenshot"] = pool["screenshot"] + yeni
+        print(f"  steam: +{len(yeni)} kare ({steam_kare[0]['oyun']}, "
+              f"kredi {steam_kare[0]['credit'] or 'bilinmiyor'})")
+    else:
+        print("  steam: kare bulunamadi")
+
     # Ana havuz sayfalara yetmiyorsa ayni serinin baska oyunundan tamamla.
     # LLM'in verdigi seri adaylari sirayla denenir, ilk tutan alinir.
     ana_boy = len(pool["artwork"]) + len(pool["screenshot"]) + len(pool["cover"])
@@ -589,7 +627,7 @@ def main() -> int:
             print(f"  {index}. {page['type']:8} {image_id} (indirilmedi){seri_notu}")
             continue
         target = ROOT / rel
-        if target.exists() or download(image_id, target):
+        if target.exists() or download(image_id, target, secim.get("url")):
             page["image"] = rel
             print(f"  {index}. {page['type']:8} {image_id}{seri_notu}")
         else:
