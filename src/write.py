@@ -811,7 +811,13 @@ def main() -> int:
         for problem in problems[:8]:
             print(f"  - {problem}")
 
-    print(f"\n{MAX_ATTEMPTS} denemede temiz cikti alinamadi.", file=sys.stderr)
+    # Son denemenin ihlalleri STDERR'e de yaziliyor: produce.py alt surecin
+    # son stderr satirini yukari tasiyor ve Telegram mesajina o giriyor.
+    # Eskiden kullaniciya sadece "3 denemede temiz cikti alinamadi" ulasiyor,
+    # HANGI kuralin takildigi Actions kaydini acmadan bilinmiyordu.
+    ozet = " | ".join(p.split(": ", 1)[-1][:60] for p in problems[:3])
+    print(f"\n{MAX_ATTEMPTS} denemede temiz cikti alinamadi. "
+          f"son ihlaller: {ozet}", file=sys.stderr)
     return 1
 
 
