@@ -1,0 +1,43 @@
+# GitHub Models sondasi. ELLE calistirilir, zamanlanmis degil.
+#
+# Amaci tek soruyu canli cevaplamak: bu hesapta GitHub Models calisiyor
+# mu ve Turkcesi nasil. Calisiyorsa Gemini'nin gunde 20 istekli kotasindan
+# BAGIMSIZ ikinci bir butce demek, ve burada ek Secret gerekmiyor -
+# GITHUB_TOKEN zaten hazir.
+#
+# Calistirmak icin: Actions sekmesi -> "gh models sonda" -> Run workflow
+name: gh models sonda
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  models: read          # GitHub Models erisimi bu izinle aciliyor
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: hangi modeller var
+        continue-on-error: true          # katalog kapaliysa sonda devam etsin
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python src/ghmodels.py --models
+
+      - name: cagrilabiliyor mu
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python src/ghmodels.py --probe
+
+      - name: turkce kalitesi
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python src/ghmodels.py --turkce
