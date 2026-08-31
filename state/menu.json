@@ -1,66 +1,48 @@
 {
-  "olusturuldu": "2026-08-31T22:24:00+00:00",
-  "oneri": 1,
-  "gerekce": "yeni rpg oyununun ilk inceleme detaylari merak uyandiriyor",
+  "olusturuldu": "2026-08-31T23:05:38+00:00",
+  "oneri": 3,
+  "gerekce": "etkinlikteki guvenlik skandallari ve itfaiye vakasi yuksek etkilesim saglar",
   "adaylar": [
     {
       "sira": 1,
       "aday_index": 1,
-      "tier": "A",
-      "title": "The Blood of Dawnwalker review - worthy to sip blood at the top RPGs' table",
-      "kaynak_sayisi": 3,
+      "tier": "S",
+      "title": "Onimusha: Way of the Sword review",
+      "kaynak_sayisi": 5,
       "reddit_oy": 0,
       "reddit_yorum": 0,
-      "url": "https://www.rockpapershotgun.com/the-blood-of-dawnwalker-review-worthy-to-sip-blood-at-the-top-rpgs-table",
+      "url": "https://www.eurogamer.net/onimusha-way-of-the-sword-review",
       "aday": {
-        "key": "567577dee3703eed",
-        "title": "The Blood of Dawnwalker review - worthy to sip blood at the top RPGs' table",
-        "url": "https://www.rockpapershotgun.com/the-blood-of-dawnwalker-review-worthy-to-sip-blood-at-the-top-rpgs-table",
-        "summary": "The moment I knew The Blood of Dawnwalker had it came when, not far in, one of the local peat diggers fell into a big hole. Tasked with finding him by his brother at the start of what seemed a fairly mundane early fetch quest, I rolled my eyes a bit as I slid in to try and locate the poor sod. He was, predictably, cowering in a corner of the cave complex. Right, now to get out of here and claim a lifetime supply of partially decayed vegetation. Wait, what was that noise? I’ll not spoil the rest of the quest, but suffice it to say that it provided the first taste of Rebel Wolves’ vampire RPG of",
-        "published": "2026-08-31T16:19:26+00:00",
-        "age_hours": 0.9,
+        "key": "3087504708d86671",
+        "title": "Onimusha: Way of the Sword review",
+        "url": "https://www.eurogamer.net/onimusha-way-of-the-sword-review",
+        "summary": "Legendary swordsman Miyamoto Musashi considered himself more an artist than a fighter. A keen strategist and a self-proclaimed master of war, I think it's Musashi's art that hits more keenly than his katana: it's minimalist, monochromatic, a study of nature defined by its simple brilliance. Less is more. Whether intentional or not, I think Capcom may have internalised this philosophy when creating Onimusha: Way of the Sword - a game based loosely on the life and conquests of Musashi. Seldom over-complicated and often composed with artisanal skill, Way of the Sword takes the philosophies of 16t",
+        "published": "2026-08-31T15:05:47+00:00",
+        "age_hours": 8.0,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
         "tags": [
-          "mainstream",
-          "pc"
+          "mainstream"
         ],
-        "source_count": 3,
+        "source_count": 5,
         "sources": [
           "eurogamer",
+          "kotaku",
+          "nintendolife",
           "pcgamer",
-          "rps"
+          "pcgamesn"
         ],
-        "rank_score": 7.88,
+        "rank_score": 13.53,
         "members": [
           {
-            "hash": "567577dee3703eed",
-            "url": "https://www.rockpapershotgun.com/the-blood-of-dawnwalker-review-worthy-to-sip-blood-at-the-top-rpgs-table",
-            "title": "The Blood of Dawnwalker review - worthy to sip blood at the top RPGs' table",
-            "summary": "The moment I knew The Blood of Dawnwalker had it came when, not far in, one of the local peat diggers fell into a big hole. Tasked with finding him by his brother at the start of what seemed a fairly mundane early fetch quest, I rolled my eyes a bit as I slid in to try and locate the poor sod. He was, predictably, cowering in a corner of the cave complex. Right, now to get out of here and claim a lifetime supply of partially decayed vegetation. Wait, what was that noise? I’ll not spoil the rest of the quest, but suffice it to say that it provided the first taste of Rebel Wolves’ vampire RPG of",
-            "published": "2026-08-31T16:19:26+00:00",
-            "age_hours": 0.9,
-            "image": "https://assetsio.gnwcdn.com/the-blood-of-dawnwalker-review-best-01.jpg?width=690&quality=85&format=jpg&auto=webp",
-            "source_id": "rps",
-            "source_name": "Rock Paper Shotgun",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.9,
-            "tags": [
-              "mainstream",
-              "pc"
-            ]
-          },
-          {
-            "hash": "45434c025bda3eb4",
-            "url": "https://www.eurogamer.net/the-blood-of-dawnwalker-review-rebel-wolves",
-            "title": "The Blood of Dawnwalker review",
-            "summary": "CD Projekt Red alumni create a familiar dark fantasy adventure, but one with bold and provocative ideas of its own, that's mostly, enormously successful. Read more",
-            "published": "2026-08-31T15:00:00+00:00",
-            "age_hours": 2.2,
-            "image": "https://assetsio.gnwcdn.com/dawnwalker-brencis-header.jpg?width=690&quality=85&format=jpg&auto=webp",
+            "hash": "3087504708d86671",
+            "url": "https://www.eurogamer.net/onimusha-way-of-the-sword-review",
+            "title": "Onimusha: Way of the Sword review",
+            "summary": "Legendary swordsman Miyamoto Musashi considered himself more an artist than a fighter. A keen strategist and a self-proclaimed master of war, I think it's Musashi's art that hits more keenly than his katana: it's minimalist, monochromatic, a study of nature defined by its simple brilliance. Less is more. Whether intentional or not, I think Capcom may have internalised this philosophy when creating Onimusha: Way of the Sword - a game based loosely on the life and conquests of Musashi. Seldom over-complicated and often composed with artisanal skill, Way of the Sword takes the philosophies of 16t",
+            "published": "2026-08-31T15:05:47+00:00",
+            "age_hours": 8.0,
+            "image": "https://assetsio.gnwcdn.com/onimusha-header.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
             "lang": "en",
@@ -72,15 +54,230 @@
             ]
           },
           {
-            "hash": "c404c996a1ba9ec8",
-            "url": "https://www.pcgamer.com/games/rpg/the-blood-of-dawnwalker-review",
-            "title": "The Blood of Dawnwalker review",
-            "summary": "A horror RPG with novel ideas of its own, even if it doesn’t always have the courage to follow them through.",
+            "hash": "2a8597eae20faf7c",
+            "url": "https://www.pcgamer.com/games/action/onimusha-way-of-the-sword-review",
+            "title": "Onimusha: Way of the Sword review",
+            "summary": "Ferociously good combat brings this long-dormant series back from the afterlife.",
             "published": "2026-08-31T15:00:00+00:00",
-            "age_hours": 2.2,
-            "image": "https://cdn.mos.cms.futurecdn.net/9uoTLJEVZx9wV2t2ArctQk-1280-80.jpg",
+            "age_hours": 8.1,
+            "image": "https://cdn.mos.cms.futurecdn.net/n4Yy5DBDuYQkZPMBnZ5RXF-1280-80.jpg",
             "source_id": "pcgamer",
             "source_name": "PC Gamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "8b120462961d3a4c",
+            "url": "https://www.nintendolife.com/reviews/nintendo-switch-2/onimusha-way-of-the-sword",
+            "title": "Review: Onimusha: Way Of The Sword (Switch 2) - Capcom Delivers A Superb Samurai Revival",
+            "summary": "Dawn of a new dream. There’s a lot riding on Onimusha: Way of the Sword . Capcom has a few dormant franchises in its dusty closets just waiting to be revived, yet this one feels particularly significant. Despite never really taking off commercially, Onimusha commanded a passionate fanbase that continues to hold the series in the highest regard – right up there with the likes of Resident Evil and Devil May Cry . So to bring back Onimusha with a brand-new mainline entry in 2026 — two decades after the last game — feels especially risky, but it’s one that I’m happy to report has largely paid off.",
+            "published": "2026-08-31T15:00:00+00:00",
+            "age_hours": 8.1,
+            "image": "https://images.nintendolife.com/adc91c5fcf5a8/large.jpg",
+            "source_id": "nintendolife",
+            "source_name": "Nintendo Life",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream",
+              "nintendo"
+            ]
+          },
+          {
+            "hash": "9312085de4cdf16c",
+            "url": "https://www.pcgamesn.com/onimusha-way-of-the-sword/review",
+            "title": "Onimusha: Way of the Sword review - A sword saintly samurai thriller",
+            "summary": "Onimusha is finally back, and Capcom’s penchant for sound storytelling and moreish combat shine through a bleak, Genma-infested Kyoto.",
+            "published": "2026-08-31T15:02:00+00:00",
+            "age_hours": 8.1,
+            "image": "https://www.pcgamesn.com/wp-content/sites/pcgamesn/2026/08/onimusha-way-of-face.jpg",
+            "source_id": "pcgamesn",
+            "source_name": "PCGamesN",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream",
+              "pc"
+            ]
+          },
+          {
+            "hash": "9529f75eab61fa32",
+            "url": "https://kotaku.com/onimusha-way-of-the-sword-the-kotaku-review-2000729856",
+            "title": "Onimusha: Way Of The Sword: The Kotaku Review",
+            "summary": "Capcom buries something special beneath a lot of compromises",
+            "published": "2026-08-31T15:00:47+00:00",
+            "age_hours": 8.1,
+            "image": "https://kotaku.com/app/uploads/2026/08/image-2026-08-31T090445.966-1280x720.jpg",
+            "source_id": "kotaku",
+            "source_name": "Kotaku",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.6,
+            "tags": [
+              "mainstream"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "Onimusha: Way of the Sword",
+      "ozet": "yazar yeni samurai oyununun sanat yonunu ve savasci temasini degerlendirdi",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 14,
+        "oyun": "Onimusha: Way of the Sword",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": false
+      },
+      "baslik": "Onimusha: Way of the Sword"
+    },
+    {
+      "sira": 2,
+      "aday_index": 2,
+      "tier": "A",
+      "title": "The Week In Games: 2.5D Tactics And Retro Dungeon-Crawling",
+      "kaynak_sayisi": 2,
+      "reddit_oy": 0,
+      "reddit_yorum": 0,
+      "url": "https://kotaku.com/the-week-in-games-2-5d-tactics-and-retro-dungeon-crawling-2000729988",
+      "aday": {
+        "key": "4e21eeb3ef61c09d",
+        "title": "The Week In Games: 2.5D Tactics And Retro Dungeon-Crawling",
+        "url": "https://kotaku.com/the-week-in-games-2-5d-tactics-and-retro-dungeon-crawling-2000729988",
+        "summary": "Check out these two indie games in between the bigger blockbusters",
+        "published": "2026-08-31T19:00:06+00:00",
+        "age_hours": 4.1,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream"
+        ],
+        "source_count": 2,
+        "sources": [
+          "indiedb",
+          "kotaku"
+        ],
+        "rank_score": 6.11,
+        "members": [
+          {
+            "hash": "4e21eeb3ef61c09d",
+            "url": "https://kotaku.com/the-week-in-games-2-5d-tactics-and-retro-dungeon-crawling-2000729988",
+            "title": "The Week In Games: 2.5D Tactics And Retro Dungeon-Crawling",
+            "summary": "Check out these two indie games in between the bigger blockbusters",
+            "published": "2026-08-31T19:00:06+00:00",
+            "age_hours": 4.1,
+            "image": "https://kotaku.com/app/uploads/2026/08/this-week-in-games-1280x732.jpg",
+            "source_id": "kotaku",
+            "source_name": "Kotaku",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.6,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "78d5f142b2214b4d",
+            "url": "https://www.indiedb.com/games/shujinkou/news/dungeon-crawling-jrpg-shujinkou-launches-on-epic-games-store-september-9-with-a-20-launch-discount",
+            "title": "Dungeon-Crawling JRPG Shujinkou Launches on Epic Games Store September 9 with a $20 Launch Discount",
+            "summary": "Rice Games brings its massive story-driven JRPG to the Epic Games Store with 70 achievements, 26 leaderboards, cloud saves, Deluxe and Super Deluxe Editions, and the complete Original Soundtrack.",
+            "published": "2026-08-31T15:44:59+00:00",
+            "age_hours": 7.3,
+            "image": "https://media.indiedb.com/images/articles/1/351/350459/Shujinkou_on_EGS_4-3.jpg",
+            "source_id": "indiedb",
+            "source_name": "IndieDB",
+            "lang": "en",
+            "kind": "devlog",
+            "bucket": "discovery",
+            "weight": 1.2,
+            "tags": [
+              "indie",
+              "ayristirici"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": null,
+      "ozet": "haftanin dikkat ceken iki bagimsiz taktik ve zindan oyunu tanitildi",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 7,
+        "oyun": "Dead Cells",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": true
+      },
+      "baslik": "The Week In Games: 2.5D Tactics And Retro Dungeon-Cr..."
+    },
+    {
+      "sira": 3,
+      "aday_index": 3,
+      "tier": "B",
+      "title": "Pokémon World Championships 2026 Was Absolute Chaos",
+      "kaynak_sayisi": 2,
+      "reddit_oy": 0,
+      "reddit_yorum": 0,
+      "url": "https://www.polygon.com/pokemon-world-championships-2026-safety-concern-reports",
+      "aday": {
+        "key": "7bb75e5fc9f9ef64",
+        "title": "Pokémon World Championships 2026 Was Absolute Chaos",
+        "url": "https://www.polygon.com/pokemon-world-championships-2026-safety-concern-reports",
+        "summary": "From safety concerns to the San Francisco Fire Department having to step in, Pokémon Worlds attendees were struggling to \"catch 'em all.\"",
+        "published": "2026-08-31T22:34:12+00:00",
+        "age_hours": 0.5,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream"
+        ],
+        "source_count": 2,
+        "sources": [
+          "eurogamer",
+          "polygon"
+        ],
+        "rank_score": 4.69,
+        "members": [
+          {
+            "hash": "7bb75e5fc9f9ef64",
+            "url": "https://www.polygon.com/pokemon-world-championships-2026-safety-concern-reports",
+            "title": "Pokémon World Championships 2026 Was Absolute Chaos",
+            "summary": "From safety concerns to the San Francisco Fire Department having to step in, Pokémon Worlds attendees were struggling to \"catch 'em all.\"",
+            "published": "2026-08-31T22:34:12+00:00",
+            "age_hours": 0.5,
+            "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/08/pokemonxp_2026_pokemon_world_championships.jpg",
+            "source_id": "polygon",
+            "source_name": "Polygon",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "07e2099939ab133a",
+            "url": "https://www.eurogamer.net/pokemon-worlds-2026-closing-ceremony-every-announcement",
+            "title": "Here's every announcement from Pokémon World Championships",
+            "summary": "The 2026 Pokémon World Championships wrapped up in San Francisco this weekend, marking the franchise's 30th anniversary alongside the inaugural PokémonXP fan event. Read more",
+            "published": "2026-08-31T12:05:49+00:00",
+            "age_hours": 11.0,
+            "image": "https://assetsio.gnwcdn.com/Screenshot-2026-08-31-at-12.55.47.png?width=690&quality=85&format=jpg&auto=webp",
+            "source_id": "eurogamer",
+            "source_name": "Eurogamer",
             "lang": "en",
             "kind": "news",
             "bucket": "news",
@@ -91,17 +288,254 @@
           }
         ]
       },
-      "oyun_adi": "The Blood of Dawnwalker",
-      "ozet": "erken erisim incelemesinde oyunun atmosferi ve gorevleri degerlendirildi",
+      "oyun_adi": "Pokémon",
+      "ozet": "guvenlik sorunlari ve itfaiye mudahalesi turnuvayi tam bir kaosa cevirdi",
       "gorsel": {
         "durum": "var",
-        "sayi": 19,
-        "oyun": "The Blood of Dawnwalker",
+        "sayi": 3,
+        "oyun": "Pokémon Stadium 2",
+        "seri_sayi": 7,
+        "seri": "Pokémon Scarlet and Pokémon Violet Double Pack",
+        "temsili": false
+      },
+      "baslik": "Pokémon"
+    },
+    {
+      "sira": 4,
+      "aday_index": 4,
+      "tier": "B",
+      "title": "After the debacle of Cyberpunk 2077, CD Projekt says The Witcher 4 is already running on PC and consoles, promises 'it's going to run' on all target platforms",
+      "kaynak_sayisi": 2,
+      "reddit_oy": 0,
+      "reddit_yorum": 0,
+      "url": "https://www.pcgamer.com/games/the-witcher/after-the-debacle-of-cyberpunk-2077-cd-projekt-says-the-witcher-4-is-already-running-on-pc-and-consoles-promises-its-going-to-run-on-all-target-platforms",
+      "aday": {
+        "key": "13b8ada3d27f3a52",
+        "title": "After the debacle of Cyberpunk 2077, CD Projekt says The Witcher 4 is already running on PC and consoles, promises 'it's going to run' on all target platforms",
+        "url": "https://www.pcgamer.com/games/the-witcher/after-the-debacle-of-cyberpunk-2077-cd-projekt-says-the-witcher-4-is-already-running-on-pc-and-consoles-promises-its-going-to-run-on-all-target-platforms",
+        "summary": "Sure, it's a low bar, but after the Cyberpunk 2077 fiasco you can understand why CD Projekt Red would want to make the point.",
+        "published": "2026-08-31T21:43:46+00:00",
+        "age_hours": 1.4,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream"
+        ],
+        "source_count": 2,
+        "sources": [
+          "eurogamer",
+          "pcgamer"
+        ],
+        "rank_score": 4.67,
+        "members": [
+          {
+            "hash": "13b8ada3d27f3a52",
+            "url": "https://www.pcgamer.com/games/the-witcher/after-the-debacle-of-cyberpunk-2077-cd-projekt-says-the-witcher-4-is-already-running-on-pc-and-consoles-promises-its-going-to-run-on-all-target-platforms",
+            "title": "After the debacle of Cyberpunk 2077, CD Projekt says The Witcher 4 is already running on PC and consoles, promises 'it's going to run' on all target platforms",
+            "summary": "Sure, it's a low bar, but after the Cyberpunk 2077 fiasco you can understand why CD Projekt Red would want to make the point.",
+            "published": "2026-08-31T21:43:46+00:00",
+            "age_hours": 1.4,
+            "image": "https://cdn.mos.cms.futurecdn.net/9rNJr8Y9XjNoMZDu2ndCnc-1280-80.jpg",
+            "source_id": "pcgamer",
+            "source_name": "PC Gamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "02d243276ecc4b6d",
+            "url": "https://www.eurogamer.net/the-witcher-4-runs-on-pc-ps5-xbox-cyberpunk-2077-lessons",
+            "title": "The Witcher 4 already runs on all target platforms - CD Projekt Red not taking any chances after Cyberpunk 2077",
+            "summary": "The Witcher 4 , CD Projekt Red's next major game, will hopefully not suffer the performance problems of the studio's former major release, Cyberpunk 2077 . The developer, keenly aware of the latter's disastrous launch, has adopted a new approach to game optimisation for the former. Read more",
+            "published": "2026-08-31T10:10:17+00:00",
+            "age_hours": 12.9,
+            "image": "https://assetsio.gnwcdn.com/The-Witcher-4-%E2%80%93-Cinematic-Reveal-Trailer-%E2%80%93-Behind-the-scenes-1-6-screenshot.png?width=690&quality=85&format=jpg&auto=webp",
+            "source_id": "eurogamer",
+            "source_name": "Eurogamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "The Witcher 4",
+      "ozet": "cd projekt yeni oyunun simdiden tum platformlarda calistigini acikladi",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 13,
+        "oyun": "The Witcher IV",
         "seri_sayi": 0,
         "seri": null,
         "temsili": false
       },
-      "baslik": "The Blood of Dawnwalker"
+      "baslik": "The Witcher 4"
+    },
+    {
+      "sira": 5,
+      "aday_index": 5,
+      "tier": "B",
+      "title": "GTA 6 Gets Even More New Screenshots as Rockstar Locks in for November Launch",
+      "kaynak_sayisi": 2,
+      "reddit_oy": 0,
+      "reddit_yorum": 0,
+      "url": "https://www.ign.com/articles/gta-6-gets-even-more-new-screenshots-as-rockstar-locks-in-for-november-launch",
+      "aday": {
+        "key": "4eeda4adb0c8e097",
+        "title": "GTA 6 Gets Even More New Screenshots as Rockstar Locks in for November Launch",
+        "url": "https://www.ign.com/articles/gta-6-gets-even-more-new-screenshots-as-rockstar-locks-in-for-november-launch",
+        "summary": "It seems the drought of Grand Theft Auto 6 news has finally come to an end, as Rockstar has published even more screenshots for fans to comb through.",
+        "published": "2026-08-31T21:32:23+00:00",
+        "age_hours": 1.6,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream"
+        ],
+        "source_count": 2,
+        "sources": [
+          "eurogamer",
+          "ign"
+        ],
+        "rank_score": 4.67,
+        "members": [
+          {
+            "hash": "4eeda4adb0c8e097",
+            "url": "https://www.ign.com/articles/gta-6-gets-even-more-new-screenshots-as-rockstar-locks-in-for-november-launch",
+            "title": "GTA 6 Gets Even More New Screenshots as Rockstar Locks in for November Launch",
+            "summary": "It seems the drought of Grand Theft Auto 6 news has finally come to an end, as Rockstar has published even more screenshots for fans to comb through.",
+            "published": "2026-08-31T21:32:23+00:00",
+            "age_hours": 1.6,
+            "image": "https://assets-prd.ignimgs.com/2026/08/31/jason-and-lucia-in-gta-6-screenshots-1788210851195.png",
+            "source_id": "ign",
+            "source_name": "IGN",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.6,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "90255a1e782ebeb8",
+            "url": "https://www.eurogamer.net/gta-6-microtransactions-generative-ai-rockstar",
+            "title": "Rockstar confirms GTA 6 won't have microtransactions or generative AI at launch",
+            "summary": "Rockstar has confirmed Grand Theft Auto 6 will launch without microtransactions or generative AI. Read more",
+            "published": "2026-08-30T10:48:08+00:00",
+            "age_hours": 36.3,
+            "image": "https://assetsio.gnwcdn.com/GTA-6-Lucia-Caminos.jpg?width=690&quality=85&format=jpg&auto=webp",
+            "source_id": "eurogamer",
+            "source_name": "Eurogamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "Grand Theft Auto VI",
+      "ozet": "kasim cikisi oncesi rockstar tarafindan yeni ekran goruntuleri paylasildi",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 34,
+        "oyun": "Grand Theft Auto VI",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": false
+      },
+      "baslik": "Grand Theft Auto VI"
+    },
+    {
+      "sira": 6,
+      "aday_index": 6,
+      "tier": "B",
+      "title": "Sony CEO Explains Why It Isn’t 'Aggressively Marketing' the PlayStation 5 Anymore",
+      "kaynak_sayisi": 2,
+      "reddit_oy": 0,
+      "reddit_yorum": 0,
+      "url": "https://www.ign.com/articles/sony-ceo-explains-why-it-isnt-aggressively-marketing-the-playstation-5-anymore",
+      "aday": {
+        "key": "0896040cfa0698de",
+        "title": "Sony CEO Explains Why It Isn’t 'Aggressively Marketing' the PlayStation 5 Anymore",
+        "url": "https://www.ign.com/articles/sony-ceo-explains-why-it-isnt-aggressively-marketing-the-playstation-5-anymore",
+        "summary": "Sony CEO Hiroki Totoki confirmed that the company is no longer “aggressively marketing” the PlayStation 5, saying it’s not necessary now that the console is in the later stages of its life cycle.",
+        "published": "2026-08-31T19:11:07+00:00",
+        "age_hours": 3.9,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream"
+        ],
+        "source_count": 2,
+        "sources": [
+          "gamespot",
+          "ign"
+        ],
+        "rank_score": 4.62,
+        "members": [
+          {
+            "hash": "0896040cfa0698de",
+            "url": "https://www.ign.com/articles/sony-ceo-explains-why-it-isnt-aggressively-marketing-the-playstation-5-anymore",
+            "title": "Sony CEO Explains Why It Isn’t 'Aggressively Marketing' the PlayStation 5 Anymore",
+            "summary": "Sony CEO Hiroki Totoki confirmed that the company is no longer “aggressively marketing” the PlayStation 5, saying it’s not necessary now that the console is in the later stages of its life cycle.",
+            "published": "2026-08-31T19:11:07+00:00",
+            "age_hours": 3.9,
+            "image": "https://assets-prd.ignimgs.com/2025/02/26/ps5console-1740609475402.jpeg",
+            "source_id": "ign",
+            "source_name": "IGN",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.6,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "20e96f60d44149d8",
+            "url": "https://www.gamespot.com/articles/aggressively-selling-ps5s-isnt-needed-as-sony-focuses-on-making-more-from-existing-owners",
+            "title": "“Aggressively” Selling PS5s Isn’t Needed, As Sony Focuses On Making More From Existing Owners",
+            "summary": "This November will mark the sixth anniversary of the PlayStation 5 console's launch, but in the years since its arrival, the gaming market has changed dramatically. The trend of consoles becoming cheaper over time has vanished this generation, as the PS5 now costs more today than it did in 2020, and the expectation is that Sony's hardware sales could slow down over time. Sony doesn't seem too worried about that, as company president and CEO Hiroki Totoki explained that there's no need to \"aggressively\" sell the console. \"We are in the latter half of the lifetime cycle of a PS console,\" Totoki ",
+            "published": "2026-08-31T14:07:41+00:00",
+            "age_hours": 9.0,
+            "image": "https://www.gamespot.com/wp-content/uploads/2026/08/PS5-consoles.jpg?w=300",
+            "source_id": "gamespot",
+            "source_name": "GameSpot",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "PlayStation 5",
+      "ozet": "sony baskan yardimcisi konsolu artik neden agresif pazarlamadiklarini acikladi",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 13,
+        "oyun": "God of War Ragnarök",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": true
+      },
+      "baslik": "PlayStation 5"
     }
   ]
 }
