@@ -19,6 +19,7 @@ Kullanim:
 from __future__ import annotations
 
 import argparse
+import base64
 import json
 import os
 import random
@@ -153,6 +154,40 @@ def list_models() -> None:
     print(f"generateContent destekleyen {len(rows)} model:")
     for name, limit in sorted(rows):
         print(f"  {name:44} girdi limiti {limit}")
+
+
+def generate_gorsel(prompt: str, image_path: Path, model: str,
+                    temperature: float = 0.0) -> dict:
+    """Metin + GÖRSEL gönder. Kart denetimi (qa.py) bunu kullanıyor.
+
+    Görsel `inline_data` ile gidiyor: tek çağrılık iş için dosya yükleme
+    API'sine gerek yok. Uzantıdan MIME türü çıkarılıyor; ızgara JPEG
+    basılıyor çünkü PNG hâli 4 MB'a çıkıyor ve base64 ile daha da şişiyor.
+    """
+    veri = base64.b64encode(image_path.read_bytes()).decode("ascii")
+    mime = "image/jpeg" if image_path.suffix.lower() in (".jpg", ".jpeg") else "image/png"
+    payload = {
+        "contents": [{"role": "user", "parts": [
+            {"inline_data": {"mime_type": mime, "data": veri}},
+            {"text": prompt},
+        ]}],
+        "generationConfig": {
+            "temperature": temperature,
+            "responseMimeType": "application/json",
+        },
+    }
+    data = api_call(f"models/{model}:generateContent", payload)
+    aday = (data.get("candidates") or [{}])[0]
+    try:
+        text = aday["content"]["parts"][0]["text"]
+    except (KeyError, IndexError):
+        reason = data.get("promptFeedback", {}).get("blockReason",
+                                                    aday.get("finishReason", "?"))
+        raise GecersizCevap(f"gorsel cagrisi bos dondu (sebep: {reason})")
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError as exc:
+        raise GecersizCevap(f"gorsel cagrisi gecersiz JSON ({exc.msg})") from exc
 
 
 class GecersizCevap(Exception):

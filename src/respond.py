@@ -308,6 +308,12 @@ def girdiyi_isle(entry: dict) -> int:
         yeni["_kume_key"] = spec.get("_kume_key")
         draft.write_text(json.dumps(yeni, ensure_ascii=False, indent=2),
                          encoding="utf-8")
+        # Metin degisti, eslestirme de yenilenmeli: once havuzu kur
+        # (images.py), sonra qa.py yeni metne gore secsin. Asagidaki
+        # yeniden_bas_ve_sor images.py'yi tekrar calistirip secimi
+        # uyguluyor. qa patlarsa mevcut secimle devam edilir.
+        if run("images.py", str(draft)) and run("qa.py", str(draft)):
+            print("eslestirme yenilendi")
         return yeniden_bas_ve_sor(entry, draft, cards_dir, gorsel_yeniden=True)
 
     if durum == "havuz":

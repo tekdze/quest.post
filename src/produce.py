@@ -61,6 +61,20 @@ def run(script: str, *args: str) -> None:
         sys.exit(f"\n{script}: {sebep}")
 
 
+def run_yumusak(script: str, *args: str) -> bool:
+    """Zinciri DURDURMAYAN aşama. İyileştirmeler için.
+
+    `run` patladığında üretim ölüyor; bazı aşamalar ise olmasa da post
+    çıkabilir (görsel eşleştirme gibi). Onlar buradan çalışıyor.
+    """
+    command = [sys.executable, str(SRC / script), *args]
+    print(f"\n$ {script} {' '.join(args)}", flush=True)
+    if subprocess.run(command, cwd=ROOT).returncode == 0:
+        return True
+    print(f"{script} basarisiz oldu, zincir devam ediyor", file=sys.stderr)
+    return False
+
+
 def read_json(path: Path, default):
     if not path.exists():
         return default
@@ -208,6 +222,16 @@ def main() -> int:
     gecici.replace(draft_file)
 
     run("images.py", str(draft_file))
+
+    # Gorsel-sayfa eslestirme. images.py kareleri sayfa TIPINE gore
+    # dagitiyor, icerikle bagi tesadufi kaliyordu. qa.py havuzu modele
+    # gosterip her sayfaya hangi karenin uydugunu soruyor; secimi kod
+    # dogruluyor. Bir IYILESTIRME oldugu icin patlarsa zincir durmuyor,
+    # mevcut secimle devam ediliyor.
+    if run_yumusak("qa.py", str(draft_file)):
+        if read_json(draft_file, {}).get("_gorsel_secimi"):
+            # Yeni secim images.py tarafindan uygulaniyor (indirme dahil).
+            run("images.py", str(draft_file))
 
     out_dir = ROOT / "out" / post_id
     run("render.py", str(draft_file), "--out", str(out_dir))
