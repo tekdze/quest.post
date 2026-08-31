@@ -182,7 +182,23 @@ Deterministik, LLM çağırmaz. Yakaladıkları: em-dash, eğik tırnak, yasak
 kelimeler (işte, peki, devrim niteliğinde, çığır açan, adeta, sonuç olarak,
 yapay zeka destekli), emoji, büyük harf, 2'den fazla hashtag, üçlük kalıbı
 (a, b ve c), soru cümlesiyle başlama, **işaretsiz Türkçe**, yanlış Türkçe ek.
-Ek hataları otomatik düzeltiliyor (`autofix_suffixes`).
+Ek hataları ve büyük harf otomatik düzeltiliyor (`autofix_suffixes`,
+`autofix_lowercase`).
+
+⚠️ **Mekanik hatada yeniden üretim istemek kotayı yakıyor.** Ölçüldü
+(2026-08-31): bir üretim üç denemede düştü, ikisi sırf `game` alanı
+büyük harfle geldiği için ("Total War: Warhammer 40,000"). Kural mutlak
+olduğu için düzeltmesi de mekanik - reddetmek yerine küçük harfe
+çevriliyor. Ölçüt: kural mutlaksa ve düzeltme belirsizlik taşımıyorsa
+filtre düzeltir, modeli yeniden çalıştırmaz.
+`tr_lower` "I" harfini "i"ye çeviriyor, "ı"ya değil: karta basılan
+büyük harfli kelimeler neredeyse hep İngilizce oyun adı ("Iron Man").
+
+⚠️ **Yedek model kart metni için güvenilir değil.** `flash-lite`
+işaretsiz Türkçe yazıyor ("temali", "on incelemeler") ve üslup
+filtresine takılıyor; ham çıktıda ölçüldü, düzeltme aşamasıyla ilgisi
+yok. Yani ana modelin kotası dolduğunda yedeğe düşmek çoğu zaman post
+üretmiyor, sadece üç deneme harcıyor. Diakritik geri koymak sözlük işi.
 
 Yazım modu her üretimde rastgele seçiliyor (gözlem / karşılaştırma / tarihsel
 not / sayısal detay / karşı görüş) — sabit açılış kalıbı oluşmasın.

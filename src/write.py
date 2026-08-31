@@ -623,7 +623,9 @@ def main() -> int:
             problems = [f"cevap kullanilamadi ({exc}). daha KISA yaz: "
                         "sayfa sayisini azalt, paragraflari kisalt."]
             continue
-        draft = style.autofix_suffixes(draft)
+        # Mekanik hatalar once duzeltilir: buyuk harf ve Turkce ek hatasi
+        # yuzunden yeniden uretim istemek kotayi bosa harciyordu.
+        draft = style.autofix_suffixes(style.autofix_lowercase(draft))
         # Yapi denetimi once: sayfa duzeni bozuksa uslup zaten yeniden
         # yazilacak, QA'ya kota harcamanin anlami yok.
         problems = check_structure(draft) + style.review(draft, source_text)

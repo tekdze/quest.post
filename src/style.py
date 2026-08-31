@@ -224,6 +224,40 @@ def review(spec: dict, source_text: str) -> list[str]:
     return check_patterns(spec) + check_suffixes(spec) + check_numbers(spec, source_text)
 
 
+def tr_lower(text: str) -> str:
+    """Küçük harfe çevir. "İ" özel: düz `.lower()` onu bozuk üretiyor.
+
+    "I" bilerek "i"ye düşüyor, "ı"ya değil: karta basılan büyük harfli
+    kelimelerin neredeyse tamamı İngilizce oyun/şirket adı ("Iron Man",
+    "GTA"). Türkçe kuralı uygulasak "ıron man" çıkardı.
+    """
+    return text.replace("İ", "i").lower()
+
+
+def autofix_lowercase(spec: dict) -> dict:
+    """Büyük harfleri düzelt. Yeniden üretim istemeye değmez.
+
+    Ölçüldü (2026-08-31): bir üretimde üç denemenin ikisi "game: buyuk
+    harf var" yüzünden yandı, model her seferinde "Total War: Warhammer
+    40,000" yazdı. Kural mutlak ("tamamen küçük harf, tek istisna yok"),
+    yani düzeltmesi mekanik - ek hatalarında olduğu gibi.
+
+    NON_PROSE_KEYS'e DOKUNMAZ: `search_name` ve arkadaşları karta
+    basılmıyor, İngilizce oyun adları ve büyük harf içermek zorundalar.
+    """
+    def walk(node, key: str = ""):
+        if isinstance(node, str):
+            return tr_lower(node)
+        if isinstance(node, dict):
+            return {k: (v if k in NON_PROSE_KEYS or k.startswith("_") else walk(v, k))
+                    for k, v in node.items()}
+        if isinstance(node, list):
+            return [walk(v, key) for v in node]
+        return node
+
+    return walk(spec)
+
+
 def autofix_suffixes(spec: dict) -> dict:
     """Ek hatalarini yeniden uretim istemeden duzelt.
 
