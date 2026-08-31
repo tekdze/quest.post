@@ -1,0 +1,316 @@
+{
+  "_kaynak": "https://indiegamesplus.com/book-nook-preview",
+  "_aday_index": 1,
+  "_aday": {
+    "key": "0e6809e99b217d27",
+    "title": "‘Book Nook’ has you creating tiny worlds",
+    "url": "https://indiegamesplus.com/book-nook-preview",
+    "summary": "You know those little shelf decorations that are a mini-crafting project? The kind that were all the rage as bookends just a couple of years ago. We have so many of those... The post ‘Book Nook’ has you creating tiny worlds appeared first on Indie Games Plus .",
+    "published": "2026-08-31T09:56:12+00:00",
+    "age_hours": 4.2,
+    "lang": "en",
+    "kind": "news",
+    "bucket": "news",
+    "tags": [
+      "indie",
+      "ayristirici"
+    ],
+    "source_count": 1,
+    "sources": [
+      "indiegamesplus"
+    ],
+    "rank_score": 2.61,
+    "members": [
+      {
+        "hash": "0e6809e99b217d27",
+        "url": "https://indiegamesplus.com/book-nook-preview",
+        "title": "‘Book Nook’ has you creating tiny worlds",
+        "summary": "You know those little shelf decorations that are a mini-crafting project? The kind that were all the rage as bookends just a couple of years ago. We have so many of those... The post ‘Book Nook’ has you creating tiny worlds appeared first on Indie Games Plus .",
+        "published": "2026-08-31T09:56:12+00:00",
+        "age_hours": 4.2,
+        "image": null,
+        "source_id": "indiegamesplus",
+        "source_name": "Indie Games Plus",
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "weight": 1.3,
+        "tags": [
+          "indie",
+          "ayristirici"
+        ]
+      }
+    ]
+  },
+  "_kaynak_sayisi": 1,
+  "_is_leak": false,
+  "_model": "gemini-3.6-flash",
+  "tier": "B",
+  "category": "çıkış",
+  "caption": "kitaplık raflarını süsleyen minyatür maket projeleri dijital oyun formatına uyarlanıyor. oyunculara kendi küçük diorama evrenlerini kurma şansı tanıyan yapım minik detaylara odaklanıyor. #booknook #indiegames",
+  "game": "book nook",
+  "search_name": "book nook",
+  "image_candidates": [],
+  "series_fallback": [],
+  "representative_games": [],
+  "credit": "malapata studio",
+  "pages": [
+    {
+      "type": "cover",
+      "title": "kitaplık arası küçük dünyalar book nook",
+      "image": "state/img/book-nook-coc6t3.jpg",
+      "credit": null
+    },
+    {
+      "type": "text",
+      "title": "minyatür zanaat dünyaları",
+      "paragraph": "kitap raflarının arasına yerleştirilen minyatür dekorasyonlar dijital ortama taşınıyor. oyuncular kendi küçük dünyalarını tasarlayıp raflara yerleştirebilecek.",
+      "bullets": [
+        "dijital minyatür tasarımı",
+        "detaylı dekorasyon seçenekleri"
+      ],
+      "image": "state/img/book-nook-sc13odt.jpg",
+      "credit": null
+    },
+    {
+      "type": "outro",
+      "question": "raflarınızda minyatür bir dünya tasarlamak ister miydiniz?",
+      "ctas": [
+        "düşüncelerinizi yorumlarda paylaşabilirsiniz"
+      ],
+      "image": "state/img/book-nook-sc13odj.jpg",
+      "credit": null
+    }
+  ],
+  "_hashes": [
+    "0e6809e99b217d27"
+  ],
+  "_kume_key": "0e6809e99b217d27",
+  "_gorsel_temsili": false,
+  "_image_pool": [
+    {
+      "id": "ar6alh",
+      "kind": "artwork",
+      "w": 3840,
+      "h": 1240,
+      "credit": null,
+      "oyun": "Book Nook"
+    },
+    {
+      "id": "ar60il",
+      "kind": "artwork",
+      "w": 1280,
+      "h": 720,
+      "credit": null,
+      "oyun": "Book Nook"
+    },
+    {
+      "id": "sc13odj",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": null,
+      "oyun": "Book Nook"
+    },
+    {
+      "id": "sc13odl",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": null,
+      "oyun": "Book Nook"
+    },
+    {
+      "id": "sc13odn",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": null,
+      "oyun": "Book Nook"
+    },
+    {
+      "id": "sc13odb",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": null,
+      "oyun": "Book Nook"
+    },
+    {
+      "id": "sc13odr",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": null,
+      "oyun": "Book Nook"
+    },
+    {
+      "id": "sc13odt",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": null,
+      "oyun": "Book Nook"
+    },
+    {
+      "id": "sc13odf",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": null,
+      "oyun": "Book Nook"
+    },
+    {
+      "id": "sc13odh",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": null,
+      "oyun": "Book Nook"
+    },
+    {
+      "id": "sc13ods",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": null,
+      "oyun": "Book Nook"
+    },
+    {
+      "id": "sc13odp",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": null,
+      "oyun": "Book Nook"
+    },
+    {
+      "id": "sc13odd",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": null,
+      "oyun": "Book Nook"
+    },
+    {
+      "id": "steam4414620-0",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "malapata studio",
+      "oyun": "Book Nook",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4414620/098f83f32efbd34c2713a13b087613059474d72d/ss_098f83f32efbd34c2713a13b087613059474d72d.1920x1080.jpg?t=1785927479",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4414620/098f83f32efbd34c2713a13b087613059474d72d/ss_098f83f32efbd34c2713a13b087613059474d72d.600x338.jpg?t=1785927479"
+    },
+    {
+      "id": "steam4414620-1",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "malapata studio",
+      "oyun": "Book Nook",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4414620/e4f4fab15445cf757154e627095ce5dc72aa3755/ss_e4f4fab15445cf757154e627095ce5dc72aa3755.1920x1080.jpg?t=1785927479",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4414620/e4f4fab15445cf757154e627095ce5dc72aa3755/ss_e4f4fab15445cf757154e627095ce5dc72aa3755.600x338.jpg?t=1785927479"
+    },
+    {
+      "id": "steam4414620-2",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "malapata studio",
+      "oyun": "Book Nook",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4414620/d19f81f5bf9a0ab5bd0a84e665bffc98e72a3bb4/ss_d19f81f5bf9a0ab5bd0a84e665bffc98e72a3bb4.1920x1080.jpg?t=1785927479",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4414620/d19f81f5bf9a0ab5bd0a84e665bffc98e72a3bb4/ss_d19f81f5bf9a0ab5bd0a84e665bffc98e72a3bb4.600x338.jpg?t=1785927479"
+    },
+    {
+      "id": "steam4414620-3",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "malapata studio",
+      "oyun": "Book Nook",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4414620/9358433f7bc2ac6fb6af00f839b6f09646147af9/ss_9358433f7bc2ac6fb6af00f839b6f09646147af9.1920x1080.jpg?t=1785927479",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4414620/9358433f7bc2ac6fb6af00f839b6f09646147af9/ss_9358433f7bc2ac6fb6af00f839b6f09646147af9.600x338.jpg?t=1785927479"
+    },
+    {
+      "id": "steam4414620-4",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "malapata studio",
+      "oyun": "Book Nook",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4414620/ab54d5f51dd78efdd4c95e4df47dd9235da847f0/ss_ab54d5f51dd78efdd4c95e4df47dd9235da847f0.1920x1080.jpg?t=1785927479",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4414620/ab54d5f51dd78efdd4c95e4df47dd9235da847f0/ss_ab54d5f51dd78efdd4c95e4df47dd9235da847f0.600x338.jpg?t=1785927479"
+    },
+    {
+      "id": "steam4414620-5",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "malapata studio",
+      "oyun": "Book Nook",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4414620/e690b5b7f7aaef2b86a9f4e255e3a2a9e7ca009c/ss_e690b5b7f7aaef2b86a9f4e255e3a2a9e7ca009c.1920x1080.jpg?t=1785927479",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4414620/e690b5b7f7aaef2b86a9f4e255e3a2a9e7ca009c/ss_e690b5b7f7aaef2b86a9f4e255e3a2a9e7ca009c.600x338.jpg?t=1785927479"
+    },
+    {
+      "id": "steam4414620-6",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "malapata studio",
+      "oyun": "Book Nook",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4414620/c82a5f7579fdb16d393eeccb5cb4a2300572ad8d/ss_c82a5f7579fdb16d393eeccb5cb4a2300572ad8d.1920x1080.jpg?t=1785927479",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4414620/c82a5f7579fdb16d393eeccb5cb4a2300572ad8d/ss_c82a5f7579fdb16d393eeccb5cb4a2300572ad8d.600x338.jpg?t=1785927479"
+    },
+    {
+      "id": "steam4414620-7",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "malapata studio",
+      "oyun": "Book Nook",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4414620/ad7c2957256132449eced35cc71a88283554eb6f/ss_ad7c2957256132449eced35cc71a88283554eb6f.1920x1080.jpg?t=1785927479",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4414620/ad7c2957256132449eced35cc71a88283554eb6f/ss_ad7c2957256132449eced35cc71a88283554eb6f.600x338.jpg?t=1785927479"
+    },
+    {
+      "id": "steam4414620-8",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "malapata studio",
+      "oyun": "Book Nook",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4414620/cd32b632a2f0c463019c6774bd2aa64ad3298923/ss_cd32b632a2f0c463019c6774bd2aa64ad3298923.1920x1080.jpg?t=1785927479",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4414620/cd32b632a2f0c463019c6774bd2aa64ad3298923/ss_cd32b632a2f0c463019c6774bd2aa64ad3298923.600x338.jpg?t=1785927479"
+    },
+    {
+      "id": "steam4414620-9",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "malapata studio",
+      "oyun": "Book Nook",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4414620/726e2b7df833249aadb1d497a4e4b29b7c203cfe/ss_726e2b7df833249aadb1d497a4e4b29b7c203cfe.1920x1080.jpg?t=1785927479",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4414620/726e2b7df833249aadb1d497a4e4b29b7c203cfe/ss_726e2b7df833249aadb1d497a4e4b29b7c203cfe.600x338.jpg?t=1785927479"
+    },
+    {
+      "id": "steam4414620-10",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "malapata studio",
+      "oyun": "Book Nook",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4414620/f0d63219e7f7e5d79e0e687aa21d8020513b775f/ss_f0d63219e7f7e5d79e0e687aa21d8020513b775f.1920x1080.jpg?t=1785927479",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4414620/f0d63219e7f7e5d79e0e687aa21d8020513b775f/ss_f0d63219e7f7e5d79e0e687aa21d8020513b775f.600x338.jpg?t=1785927479"
+    },
+    {
+      "id": "coc6t3",
+      "kind": "cover",
+      "w": 1200,
+      "h": 1600,
+      "credit": null,
+      "oyun": "Book Nook"
+    }
+  ],
+  "_slug": "book-nook",
+  "_gorsel_turu": 0
+}

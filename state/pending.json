@@ -1,3 +1,18 @@
 {
-  "kuyruk": []
+  "kuyruk": [
+    {
+      "id": "20260831-book-nook",
+      "etiket": "normal",
+      "durum": "onay_bekliyor",
+      "baslik": "book nook",
+      "draft": "state/drafts/20260831-book-nook.json",
+      "cards_dir": "out/20260831-book-nook",
+      "message_ids": [
+        310,
+        311,
+        312
+      ],
+      "tier": "B"
+    }
+  ]
 }
