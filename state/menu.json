@@ -1,7 +1,7 @@
 {
-  "olusturuldu": "2026-09-01T13:28:01+00:00",
-  "oneri": 3,
-  "gerekce": "fiziksel oyunların bitişine karşı cd projektin kutu ısrarı tartışma yaratır",
+  "olusturuldu": "2026-09-01T14:11:32+00:00",
+  "oneri": 2,
+  "gerekce": "mutant yamyamlarla florida nın fethi instagram kullanıcılarının dikkatini çeker",
   "adaylar": [
     {
       "sira": 1,
@@ -18,7 +18,7 @@
         "url": "https://www.pcgamesn.com/star-wars-zero-company/furlough",
         "summary": "Star Wars Zero Company studio, Bit Reactor, allegedly furloughed \"80% of the team\" before launch, with the game’s success dictating its next move.",
         "published": "2026-09-01T10:09:58+00:00",
-        "age_hours": 3.3,
+        "age_hours": 4.0,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -34,7 +34,7 @@
           "ign",
           "pcgamesn"
         ],
-        "rank_score": 13.93,
+        "rank_score": 13.92,
         "members": [
           {
             "hash": "34553dc53f2c9e27",
@@ -42,7 +42,7 @@
             "title": "Star Wars Zero Company studio furloughed staff before the game was released",
             "summary": "Star Wars Zero Company studio, Bit Reactor, allegedly furloughed \"80% of the team\" before launch, with the game’s success dictating its next move.",
             "published": "2026-09-01T10:09:58+00:00",
-            "age_hours": 3.3,
+            "age_hours": 4.0,
             "image": "https://www.pcgamesn.com/wp-content/sites/pcgamesn/2026/09/star-wars-zero-company-furlough.jpg",
             "source_id": "pcgamesn",
             "source_name": "PCGamesN",
@@ -61,7 +61,7 @@
             "title": "The Studio Behind Hit New Star Wars Game Zero Company Quietly Furloughed 'Most' Staff Just Before Launch",
             "summary": "Bit Reactor, the studio behind Star Wars Zero Company, furloughed the majority of its staff just before the game launched.",
             "published": "2026-09-01T09:34:56+00:00",
-            "age_hours": 3.9,
+            "age_hours": 4.6,
             "image": "https://assets-prd.ignimgs.com/2026/08/25/dexb0otbt4smkiweazwpj-6ku-vp1n8bkfwscmpvyay-1787691724080.jpeg",
             "source_id": "ign",
             "source_name": "IGN",
@@ -79,7 +79,7 @@
             "title": "Star Wars Zero Company studio furloughed workers ahead of launch",
             "summary": "Bit Reactor has confirmed it temporarily suspended workers without pay due to concerns over how its debut title would perform.",
             "published": "2026-09-01T09:19:23+00:00",
-            "age_hours": 4.1,
+            "age_hours": 4.9,
             "image": "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt76fd3daae7573477/6a9699589be82339198e4ef4/SW_Zero_Company.png?width=720&quality=80&disable=upscale",
             "source_id": "gamedeveloper",
             "source_name": "Game Developer",
@@ -97,7 +97,7 @@
             "title": "\"Most\" of the developers behind critically acclaimed Star Wars Zero Company were furloughed ahead of launch",
             "summary": "Most of the developers behind the critically acclaimed Star Wars Zero Company were furloughed weeks before the game's launch last week, as a legal dispute between the studio founders puts Bit Reactor's ownership into question. Read more",
             "published": "2026-09-01T09:03:40+00:00",
-            "age_hours": 4.4,
+            "age_hours": 5.1,
             "image": "https://assetsio.gnwcdn.com/star-wars-zero-company.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
@@ -115,7 +115,7 @@
             "title": "Bit Reactor furloughed \"many of its workers\" in the weeks before Star Wars Zero Company's launch",
             "summary": "Star Wars Zero Company developer Bit Reactor furloughed \"many of its workers\" prior to the game's release. Read more",
             "published": "2026-09-01T08:07:34+00:00",
-            "age_hours": 5.3,
+            "age_hours": 6.1,
             "image": "https://assetsio.gnwcdn.com/star-wars-zero-company_OixT1yY.webp?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "gamesindustry",
             "source_name": "GamesIndustry.biz",
@@ -130,7 +130,7 @@
         ]
       },
       "oyun_adi": "Star Wars Zero Company",
-      "ozet": "bit reactor oyunun çıkışından önce ekibin yüzde seksenini izne çıkardı",
+      "ozet": "stüdyo oyun çıkmadan önce ekibin yüzde seksenini ücretsiz izne çıkardı",
       "gorsel": {
         "durum": "var",
         "sayi": 12,
@@ -145,6 +145,243 @@
       "sira": 2,
       "aday_index": 2,
       "tier": "B",
+      "title": "Afterworld, Paradox's post-apocalyptic grand strategy game, let me conquer Florida with a band of alcoholic mutant cannibals",
+      "kaynak_sayisi": 2,
+      "reddit_oy": 0,
+      "reddit_yorum": 0,
+      "url": "https://www.pcgamer.com/games/strategy/afterworld-paradoxs-post-apocalyptic-grand-strategy-game-let-me-conquer-florida-with-a-band-of-alcoholic-mutant-cannibals",
+      "aday": {
+        "key": "dbe95ed15e5def35",
+        "title": "Afterworld, Paradox's post-apocalyptic grand strategy game, let me conquer Florida with a band of alcoholic mutant cannibals",
+        "url": "https://www.pcgamer.com/games/strategy/afterworld-paradoxs-post-apocalyptic-grand-strategy-game-let-me-conquer-florida-with-a-band-of-alcoholic-mutant-cannibals",
+        "summary": "And everyone seemed happy with the change.",
+        "published": "2026-09-01T14:03:04+00:00",
+        "age_hours": 0.1,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream"
+        ],
+        "source_count": 2,
+        "sources": [
+          "gamedeveloper",
+          "pcgamer"
+        ],
+        "rank_score": 5.0,
+        "members": [
+          {
+            "hash": "dbe95ed15e5def35",
+            "url": "https://www.pcgamer.com/games/strategy/afterworld-paradoxs-post-apocalyptic-grand-strategy-game-let-me-conquer-florida-with-a-band-of-alcoholic-mutant-cannibals",
+            "title": "Afterworld, Paradox's post-apocalyptic grand strategy game, let me conquer Florida with a band of alcoholic mutant cannibals",
+            "summary": "And everyone seemed happy with the change.",
+            "published": "2026-09-01T14:03:04+00:00",
+            "age_hours": 0.1,
+            "image": "https://cdn.mos.cms.futurecdn.net/yDyBSfoyp5gRiWAduZaxe4-1280-80.jpg",
+            "source_id": "pcgamer",
+            "source_name": "PC Gamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "f8d1d5fdf62d7a3a",
+            "url": "https://www.gamedeveloper.com/design/paradox-interactive-s-afterworld-wants-to-entice-new-players-to-grand-strategy-with-tasty-rpg-hooks",
+            "title": "Paradox Interactive's Afterworld wants to entice new players to grand strategy with tasty RPG hooks",
+            "summary": "Game director Dan Lind explains the appeal of strategy in grand strategy games, and how to invite new players into a sprawling game.",
+            "published": "2026-09-01T13:00:00+00:00",
+            "age_hours": 1.2,
+            "image": "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt25f1adc41d53b5e2/6a9649eed78fd7bff8938dc5/afterworld_key_art_1280.png?width=720&quality=80&disable=upscale",
+            "source_id": "gamedeveloper",
+            "source_name": "Game Developer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 1.0,
+            "tags": [
+              "endustri"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "Afterworld",
+      "ozet": "alkolik mutant yamyamlarla florida nın fethi deneyimi sunuyor",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 14,
+        "oyun": "Afterworld",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": false
+      },
+      "baslik": "Afterworld"
+    },
+    {
+      "sira": 3,
+      "aday_index": 3,
+      "tier": "B",
+      "title": "CEO of Saudi Arabia's Savvy Games Group Brian Ward steps down after overseeing billions in mobile gaming acquisitions",
+      "kaynak_sayisi": 2,
+      "reddit_oy": 0,
+      "reddit_yorum": 0,
+      "url": "https://www.eurogamer.net/savvy-games-group-ceo-brian-ward-steps-down",
+      "aday": {
+        "key": "e592fe6faa2684e4",
+        "title": "CEO of Saudi Arabia's Savvy Games Group Brian Ward steps down after overseeing billions in mobile gaming acquisitions",
+        "url": "https://www.eurogamer.net/savvy-games-group-ceo-brian-ward-steps-down",
+        "summary": "Brian Ward, the CEO of the Saudi-Arabian-state-owned Savvy Games Group, has left his role. During his tenure, he oversaw $38bn of investment into various gaming companies, including Pokemon Go developer Niantic, and Monopoly Go's Scopely. Read more",
+        "published": "2026-09-01T14:04:45+00:00",
+        "age_hours": 0.1,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream"
+        ],
+        "source_count": 2,
+        "sources": [
+          "eurogamer",
+          "kotaku"
+        ],
+        "rank_score": 4.7,
+        "members": [
+          {
+            "hash": "e592fe6faa2684e4",
+            "url": "https://www.eurogamer.net/savvy-games-group-ceo-brian-ward-steps-down",
+            "title": "CEO of Saudi Arabia's Savvy Games Group Brian Ward steps down after overseeing billions in mobile gaming acquisitions",
+            "summary": "Brian Ward, the CEO of the Saudi-Arabian-state-owned Savvy Games Group, has left his role. During his tenure, he oversaw $38bn of investment into various gaming companies, including Pokemon Go developer Niantic, and Monopoly Go's Scopely. Read more",
+            "published": "2026-09-01T14:04:45+00:00",
+            "age_hours": 0.1,
+            "image": "https://assetsio.gnwcdn.com/Pokemon-Go-XP-World-Championship-Header.jpg?width=690&quality=85&format=jpg&auto=webp",
+            "source_id": "eurogamer",
+            "source_name": "Eurogamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "37adcb99af72c95b",
+            "url": "https://kotaku.com/ceo-steps-down-at-saudi-arabias-38-billion-gaming-fund-that-owns-pokemon-go-2000730210",
+            "title": "CEO Steps Down At Saudi Arabia’s $38 Billion Gaming Fund That Owns Pokémon Go",
+            "summary": "Brian Ward is leaving after five years and a mountain of acquisitions",
+            "published": "2026-09-01T13:58:07+00:00",
+            "age_hours": 0.2,
+            "image": "https://kotaku.com/app/uploads/2026/09/giovani-2-3.jpg",
+            "source_id": "kotaku",
+            "source_name": "Kotaku",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.6,
+            "tags": [
+              "mainstream"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": null,
+      "ozet": "milyarlarca dolarlık alımları yöneten savvy games group ceo su görevinden ayrıldı",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 10,
+        "oyun": "Pokémon: Let's Go, Eevee!",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": true
+      },
+      "baslik": "CEO of Saudi Arabia's Savvy Games Group Brian Ward s..."
+    },
+    {
+      "sira": 4,
+      "aday_index": 4,
+      "tier": "B",
+      "title": "I Am Begging One Cool Billionaire To Take Up Double Fine’s Offer To Fund Brutal Legend 2",
+      "kaynak_sayisi": 2,
+      "reddit_oy": 0,
+      "reddit_yorum": 0,
+      "url": "https://www.gamespot.com/articles/i-am-begging-one-cool-billionaire-to-take-up-double-fines-offer-to-fund-brutal-legend-2",
+      "aday": {
+        "key": "490a23656b996c55",
+        "title": "I Am Begging One Cool Billionaire To Take Up Double Fine’s Offer To Fund Brutal Legend 2",
+        "url": "https://www.gamespot.com/articles/i-am-begging-one-cool-billionaire-to-take-up-double-fines-offer-to-fund-brutal-legend-2",
+        "summary": "What's next for Double Fine following its split from Microsoft and Xbox ? A whole lot, as the Psychonauts developer has multiple projects that it wants fans to vote on--including Brutal Legend 2, if you have a spare $100 million lying around. The studio is currently seeking a more modest $400,000 on Kickstarter to fund its next project--with only a single stretch goal of $100 million--and at the time of writing, has secured $288,000 in pledges. Double Fine will be hosting its own two-week game jam called Amnesia Fortnight--not to be confused with the horror game series--and members of the stud",
+        "published": "2026-09-01T13:41:36+00:00",
+        "age_hours": 0.5,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream"
+        ],
+        "source_count": 2,
+        "sources": [
+          "gamespot",
+          "ign"
+        ],
+        "rank_score": 4.69,
+        "members": [
+          {
+            "hash": "490a23656b996c55",
+            "url": "https://www.gamespot.com/articles/i-am-begging-one-cool-billionaire-to-take-up-double-fines-offer-to-fund-brutal-legend-2",
+            "title": "I Am Begging One Cool Billionaire To Take Up Double Fine’s Offer To Fund Brutal Legend 2",
+            "summary": "What's next for Double Fine following its split from Microsoft and Xbox ? A whole lot, as the Psychonauts developer has multiple projects that it wants fans to vote on--including Brutal Legend 2, if you have a spare $100 million lying around. The studio is currently seeking a more modest $400,000 on Kickstarter to fund its next project--with only a single stretch goal of $100 million--and at the time of writing, has secured $288,000 in pledges. Double Fine will be hosting its own two-week game jam called Amnesia Fortnight--not to be confused with the horror game series--and members of the stud",
+            "published": "2026-09-01T13:41:36+00:00",
+            "age_hours": 0.5,
+            "image": "https://www.gamespot.com/wp-content/uploads/2026/09/Brutal-Legend.jpg?w=300",
+            "source_id": "gamespot",
+            "source_name": "GameSpot",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "a335c2e20afa038d",
+            "url": "https://www.ign.com/articles/after-being-ditched-by-xbox-double-fine-says-itll-make-brtal-legend-2-if-its-amnesia-fortnight-2026-kickstarter-raises-an-impossible-sounding-100-million",
+            "title": "After Being Ditched by Xbox, Double Fine Says It'll Make Brütal Legend 2 If Its Amnesia Fortnight 2026 Kickstarter Raises an Impossible-Sounding $100 Million",
+            "summary": "Psychonauts and Costume Quest maker Double Fine has launched its new game development Kickstarter project after cutting ties with Xbox, and says it'll make Brütal Legend 2 if it raises an impossible-sounding $100 million.",
+            "published": "2026-09-01T10:19:59+00:00",
+            "age_hours": 3.9,
+            "image": "https://assets-prd.ignimgs.com/2026/09/01/brutal-legend-xbox-1788257628884.jpeg",
+            "source_id": "ign",
+            "source_name": "IGN",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.6,
+            "tags": [
+              "mainstream"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "Brutal Legend 2",
+      "ozet": "stüdyo ayrılığın ardından hayranların oylaması için yeni projeler duyurdu",
+      "gorsel": {
+        "durum": "yok",
+        "sayi": 0,
+        "oyun": null,
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": false
+      },
+      "baslik": "Brutal Legend 2"
+    },
+    {
+      "sira": 5,
+      "aday_index": 5,
+      "tier": "B",
       "title": "Nintendo Fans Are Convinced Ubisoft Revealed The Next Direct Date",
       "kaynak_sayisi": 2,
       "reddit_oy": 0,
@@ -156,7 +393,7 @@
         "url": "https://www.nintendolife.com/news/2026/09/nintendo-fans-are-convinced-ubisoft-revealed-the-next-direct-date",
         "summary": "Here we go. If there's one thing Nintendo fans love to speculate about, it's when on earth we'll see the next Direct broadcast. Not that we don't have quite enough on our plates right now, thank you very much. Fire Emblem: Fortune's Weave is right around the corner and Nintendo Switch Sports Resort launches in October, not to mention there's a seemingly never-ending avalanche of third-party titles and indie games. But we want more – we always want more. Read the full article on nintendolife.com",
         "published": "2026-09-01T12:30:00+00:00",
-        "age_hours": 1.0,
+        "age_hours": 1.7,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -169,7 +406,7 @@
           "kotaku",
           "nintendolife"
         ],
-        "rank_score": 4.68,
+        "rank_score": 4.66,
         "members": [
           {
             "hash": "1eaa1a8ad1a93eab",
@@ -177,7 +414,7 @@
             "title": "Nintendo Fans Are Convinced Ubisoft Revealed The Next Direct Date",
             "summary": "Here we go. If there's one thing Nintendo fans love to speculate about, it's when on earth we'll see the next Direct broadcast. Not that we don't have quite enough on our plates right now, thank you very much. Fire Emblem: Fortune's Weave is right around the corner and Nintendo Switch Sports Resort launches in October, not to mention there's a seemingly never-ending avalanche of third-party titles and indie games. But we want more – we always want more. Read the full article on nintendolife.com",
             "published": "2026-09-01T12:30:00+00:00",
-            "age_hours": 1.0,
+            "age_hours": 1.7,
             "image": "https://images.nintendolife.com/31420a1dc82a5/large.jpg",
             "source_id": "nintendolife",
             "source_name": "Nintendo Life",
@@ -196,7 +433,7 @@
             "title": "Fans Think Ubisoft Just Accidentally Revealed The Date Of The Next Nintendo Direct",
             "summary": "If true, I guess we already know one game we'll be seeing",
             "published": "2026-08-31T16:20:56+00:00",
-            "age_hours": 21.1,
+            "age_hours": 21.8,
             "image": "https://kotaku.com/app/uploads/2026/08/just-dance.jpg",
             "source_id": "kotaku",
             "source_name": "Kotaku",
@@ -210,100 +447,21 @@
           }
         ]
       },
-      "oyun_adi": "Fire Emblem: Fortune's Weave",
-      "ozet": "hayranlar ubisoftun yeni nintendo direct tarihini yanlışlıkla sızdırdığına inanıyor",
+      "oyun_adi": null,
+      "ozet": "nintendo hayranları ubisoft un yeni direct tarihini sızdırdığına inanıyor",
       "gorsel": {
-        "durum": "var",
-        "sayi": 10,
-        "oyun": "Fire Emblem: Fortune's Weave",
+        "durum": "az",
+        "sayi": 2,
+        "oyun": "Fire Emblem Engage",
         "seri_sayi": 0,
         "seri": null,
-        "temsili": false
+        "temsili": true
       },
-      "baslik": "Fire Emblem: Fortune's Weave"
+      "baslik": "Nintendo Fans Are Convinced Ubisoft Revealed The Nex..."
     },
     {
-      "sira": 3,
-      "aday_index": 3,
-      "tier": "B",
-      "title": "CD Projekt Promises The Witcher 4 For PlayStation Will Release In A Box, Even If It Can’t Contain A Disc",
-      "kaynak_sayisi": 2,
-      "reddit_oy": 0,
-      "reddit_yorum": 0,
-      "url": "https://kotaku.com/the-witcher-4-cd-projekt-playstation-5-sony-disc-specia-edition-feelies-2000730188",
-      "aday": {
-        "key": "807511c4d089bbe4",
-        "title": "CD Projekt Promises The Witcher 4 For PlayStation Will Release In A Box, Even If It Can’t Contain A Disc",
-        "url": "https://kotaku.com/the-witcher-4-cd-projekt-playstation-5-sony-disc-specia-edition-feelies-2000730188",
-        "summary": "The Polish studio is determined that gaming will remain touchy-feely",
-        "published": "2026-09-01T11:34:19+00:00",
-        "age_hours": 1.9,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "mainstream"
-        ],
-        "source_count": 2,
-        "sources": [
-          "eurogamer",
-          "kotaku"
-        ],
-        "rank_score": 4.66,
-        "members": [
-          {
-            "hash": "807511c4d089bbe4",
-            "url": "https://kotaku.com/the-witcher-4-cd-projekt-playstation-5-sony-disc-specia-edition-feelies-2000730188",
-            "title": "CD Projekt Promises The Witcher 4 For PlayStation Will Release In A Box, Even If It Can’t Contain A Disc",
-            "summary": "The Polish studio is determined that gaming will remain touchy-feely",
-            "published": "2026-09-01T11:34:19+00:00",
-            "age_hours": 1.9,
-            "image": "https://kotaku.com/app/uploads/2026/09/witcher4eyes-1280x720.jpg",
-            "source_id": "kotaku",
-            "source_name": "Kotaku",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.6,
-            "tags": [
-              "mainstream"
-            ]
-          },
-          {
-            "hash": "5925c39ce392f5dc",
-            "url": "https://www.eurogamer.net/witcher-4-physical-edition-disc-ps5",
-            "title": "CD Projekt Red powerless regarding PS5 disc edition of The Witcher 4, but promises a game box with \"feelies\" whatever happens",
-            "summary": "CD Projekt Red, as influential as it is, has said it cannot do anything to guarantee a PlayStation 5 disc-based edition of The Witcher 4 when the game is released in 2028. It is, joint joint-CEO Micha&lstrok Nowakowski said, at the mercy of Sony's manufacturing factories. Read more",
-            "published": "2026-09-01T10:42:51+00:00",
-            "age_hours": 2.8,
-            "image": "https://assetsio.gnwcdn.com/witcher-4-ciri-disc-playstation.jpg?width=690&quality=85&format=jpg&auto=webp",
-            "source_id": "eurogamer",
-            "source_name": "Eurogamer",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": "The Witcher 4",
-      "ozet": "cd projekt ps için çıkacak oyunun içinde disk olmasa bile kutulu satılacağını söyledi",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 13,
-        "oyun": "The Witcher IV",
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": false
-      },
-      "baslik": "The Witcher 4"
-    },
-    {
-      "sira": 4,
-      "aday_index": 4,
+      "sira": 6,
+      "aday_index": 6,
       "tier": "B",
       "title": "Up to 80% of the Team Behind Star Wars' Best-Reviewed Game in Years was Furloughed Before Launch",
       "kaynak_sayisi": 2,
@@ -316,7 +474,7 @@
         "url": "https://www.polygon.com/star-wars-zero-company-bit-reactor-furlough",
         "summary": "Star Wars Zero Company developer Bit Reactor, formed by XCOM veterans, appears to have run out of money amid a bitter disupte",
         "published": "2026-09-01T11:24:55+00:00",
-        "age_hours": 2.1,
+        "age_hours": 2.8,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -328,7 +486,7 @@
           "kotaku",
           "polygon"
         ],
-        "rank_score": 4.66,
+        "rank_score": 4.64,
         "members": [
           {
             "hash": "cb4ec7a1ab2deab7",
@@ -336,7 +494,7 @@
             "title": "Up to 80% of the Team Behind Star Wars' Best-Reviewed Game in Years was Furloughed Before Launch",
             "summary": "Star Wars Zero Company developer Bit Reactor, formed by XCOM veterans, appears to have run out of money amid a bitter disupte",
             "published": "2026-09-01T11:24:55+00:00",
-            "age_hours": 2.1,
+            "age_hours": 2.8,
             "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/08/star-wars-zero-company-review-header.jpg",
             "source_id": "polygon",
             "source_name": "Polygon",
@@ -354,7 +512,7 @@
             "title": "Studio Behind The Best-Reviewed Star Wars Game In 22 Years Furloughed Up To 80 Percent Of Its Staff",
             "summary": "The cofounders of Bit Reactor are embroiled in an ugly lawsuit",
             "published": "2026-09-01T04:09:03+00:00",
-            "age_hours": 9.3,
+            "age_hours": 10.0,
             "image": "https://kotaku.com/app/uploads/2026/08/ss_68d5acedd1b34badb379215eaf2bd0af3f43c3b1.1920x1080-1280x720.jpg",
             "source_id": "kotaku",
             "source_name": "Kotaku",
@@ -369,7 +527,7 @@
         ]
       },
       "oyun_adi": "Star Wars Zero Company",
-      "ozet": "stüdyo anlaşmazlıklar yüzünden para bitince çıkış öncesi ekibin çoğunu ücretsiz izne çıkardı",
+      "ozet": "xcom veterânlarının kurduğu geliştirici para bittiği için personeli izne ayırdı",
       "gorsel": {
         "durum": "var",
         "sayi": 12,
@@ -379,165 +537,6 @@
         "temsili": false
       },
       "baslik": "Star Wars Zero Company"
-    },
-    {
-      "sira": 5,
-      "aday_index": 5,
-      "tier": "B",
-      "title": "How to Watch Capcom's Spotlight stream at Tokyo Game Show 2026",
-      "kaynak_sayisi": 2,
-      "reddit_oy": 0,
-      "reddit_yorum": 0,
-      "url": "https://www.polygon.com/capcom-tokyo-game-show-spotlight-lineup-where-to-watch-when",
-      "aday": {
-        "key": "547bff58e90d8afe",
-        "title": "How to Watch Capcom's Spotlight stream at Tokyo Game Show 2026",
-        "url": "https://www.polygon.com/capcom-tokyo-game-show-spotlight-lineup-where-to-watch-when",
-        "summary": "Big news on major titles is coming on the first day of the Tokyo Game Show with the announcement of the Capcom Spotlight event.",
-        "published": "2026-09-01T09:31:41+00:00",
-        "age_hours": 3.9,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "mainstream"
-        ],
-        "source_count": 2,
-        "sources": [
-          "nintendolife",
-          "polygon"
-        ],
-        "rank_score": 4.62,
-        "members": [
-          {
-            "hash": "547bff58e90d8afe",
-            "url": "https://www.polygon.com/capcom-tokyo-game-show-spotlight-lineup-where-to-watch-when",
-            "title": "How to Watch Capcom's Spotlight stream at Tokyo Game Show 2026",
-            "summary": "Big news on major titles is coming on the first day of the Tokyo Game Show with the announcement of the Capcom Spotlight event.",
-            "published": "2026-09-01T09:31:41+00:00",
-            "age_hours": 3.9,
-            "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/08/pragmata-mega-man-skin.jpg",
-            "source_id": "polygon",
-            "source_name": "Polygon",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream"
-            ]
-          },
-          {
-            "hash": "b2f85e9c7b9c99e2",
-            "url": "https://www.nintendolife.com/news/2026/09/capcom-spotlight-presentation-kicks-off-tgs-2026-later-this-month",
-            "title": "Capcom Spotlight Presentation Kicks Off TGS 2026 Later This Month",
-            "summary": "A 40 minute broadcast covering the latest Capcom news. With Gamescom wrapped, the focus now shifts to the Tokyo Game Show later this month. As part of this upcoming event, Capcom has now announced it will be broadcasting a special Capcom Spotlight Presentation. Read the full article on nintendolife.com",
-            "published": "2026-09-01T04:30:00+00:00",
-            "age_hours": 9.0,
-            "image": "https://images.nintendolife.com/8d22f117c7396/large.jpg",
-            "source_id": "nintendolife",
-            "source_name": "Nintendo Life",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream",
-              "nintendo"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": null,
-      "ozet": "capcom tokyo game show kapsamında büyük duyurular yapacağı etkinlik tarihini açıkladı",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 12,
-        "oyun": "Monster Hunter Wilds",
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": true
-      },
-      "baslik": "How to Watch Capcom's Spotlight stream at Tokyo Game..."
-    },
-    {
-      "sira": 6,
-      "aday_index": 6,
-      "tier": "B",
-      "title": "Orbitals review",
-      "kaynak_sayisi": 2,
-      "reddit_oy": 0,
-      "reddit_yorum": 0,
-      "url": "https://www.eurogamer.net/orbitals-review",
-      "aday": {
-        "key": "230d566dae7e82bc",
-        "title": "Orbitals review",
-        "url": "https://www.eurogamer.net/orbitals-review",
-        "summary": "Orbitals' twin protagonists Maki and Omura have this adorable little habit. When they leave behind a tool – a ground-pound backpack or hacked microwave oven – they'll often say goodbye to it. Or sayonara, rather, if you're playing Orbitals in Japanese (as well you should; subs over dubs any day). Read more",
-        "published": "2026-09-01T09:00:00+00:00",
-        "age_hours": 4.5,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "mainstream"
-        ],
-        "source_count": 2,
-        "sources": [
-          "eurogamer",
-          "kotaku"
-        ],
-        "rank_score": 4.61,
-        "members": [
-          {
-            "hash": "230d566dae7e82bc",
-            "url": "https://www.eurogamer.net/orbitals-review",
-            "title": "Orbitals review",
-            "summary": "Orbitals' twin protagonists Maki and Omura have this adorable little habit. When they leave behind a tool – a ground-pound backpack or hacked microwave oven – they'll often say goodbye to it. Or sayonara, rather, if you're playing Orbitals in Japanese (as well you should; subs over dubs any day). Read more",
-            "published": "2026-09-01T09:00:00+00:00",
-            "age_hours": 4.5,
-            "image": "https://assetsio.gnwcdn.com/Orbitals-review-MAKI-%26-OMU-(2).jpg?width=690&quality=85&format=jpg&auto=webp",
-            "source_id": "eurogamer",
-            "source_name": "Eurogamer",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream"
-            ]
-          },
-          {
-            "hash": "e146b39405b9c61f",
-            "url": "https://kotaku.com/orbitals-review-hazelight-takes-two-split-fiction-switch-2-2000730026",
-            "title": "Orbitals: The Kotaku Review",
-            "summary": "The anime-inspired co-op sci-fi romp has ideas, they’re just not its own",
-            "published": "2026-09-01T09:00:19+00:00",
-            "age_hours": 4.5,
-            "image": "https://kotaku.com/app/uploads/2026/08/IMG_4543-1-1280x720.jpg",
-            "source_id": "kotaku",
-            "source_name": "Kotaku",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.6,
-            "tags": [
-              "mainstream"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": "Orbitals",
-      "ozet": "ikiz kahramanların maceralarını konu alan oyun incelemede sevimli detaylarıyla öne çıktı",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 11,
-        "oyun": "Orbitals",
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": false
-      },
-      "baslik": "Orbitals"
     }
   ]
 }
