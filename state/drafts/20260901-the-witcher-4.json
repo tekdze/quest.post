@@ -1,0 +1,248 @@
+{
+  "_kaynak": "https://kotaku.com/the-witcher-4-cd-projekt-playstation-5-sony-disc-specia-edition-feelies-2000730188",
+  "_aday_index": 1,
+  "_aday": {
+    "key": "807511c4d089bbe4",
+    "title": "CD Projekt Promises The Witcher 4 For PlayStation Will Release In A Box, Even If It Can’t Contain A Disc",
+    "url": "https://kotaku.com/the-witcher-4-cd-projekt-playstation-5-sony-disc-specia-edition-feelies-2000730188",
+    "summary": "The Polish studio is determined that gaming will remain touchy-feely",
+    "published": "2026-09-01T11:34:19+00:00",
+    "age_hours": 1.9,
+    "lang": "en",
+    "kind": "news",
+    "bucket": "news",
+    "tags": [
+      "mainstream"
+    ],
+    "source_count": 2,
+    "sources": [
+      "eurogamer",
+      "kotaku"
+    ],
+    "rank_score": 4.66,
+    "members": [
+      {
+        "hash": "807511c4d089bbe4",
+        "url": "https://kotaku.com/the-witcher-4-cd-projekt-playstation-5-sony-disc-specia-edition-feelies-2000730188",
+        "title": "CD Projekt Promises The Witcher 4 For PlayStation Will Release In A Box, Even If It Can’t Contain A Disc",
+        "summary": "The Polish studio is determined that gaming will remain touchy-feely",
+        "published": "2026-09-01T11:34:19+00:00",
+        "age_hours": 1.9,
+        "image": "https://kotaku.com/app/uploads/2026/09/witcher4eyes-1280x720.jpg",
+        "source_id": "kotaku",
+        "source_name": "Kotaku",
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "weight": 0.6,
+        "tags": [
+          "mainstream"
+        ]
+      },
+      {
+        "hash": "5925c39ce392f5dc",
+        "url": "https://www.eurogamer.net/witcher-4-physical-edition-disc-ps5",
+        "title": "CD Projekt Red powerless regarding PS5 disc edition of The Witcher 4, but promises a game box with \"feelies\" whatever happens",
+        "summary": "CD Projekt Red, as influential as it is, has said it cannot do anything to guarantee a PlayStation 5 disc-based edition of The Witcher 4 when the game is released in 2028. It is, joint joint-CEO Micha&lstrok Nowakowski said, at the mercy of Sony's manufacturing factories. Read more",
+        "published": "2026-09-01T10:42:51+00:00",
+        "age_hours": 2.8,
+        "image": "https://assetsio.gnwcdn.com/witcher-4-ciri-disc-playstation.jpg?width=690&quality=85&format=jpg&auto=webp",
+        "source_id": "eurogamer",
+        "source_name": "Eurogamer",
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "weight": 0.7,
+        "tags": [
+          "mainstream"
+        ]
+      }
+    ]
+  },
+  "_kaynak_sayisi": 2,
+  "_cikarim": [
+    {
+      "olgu": "cd projekt red ortak ceo'su michał nowakowski, the witcher 4'ün 2028 yılında çıkacağını belirtti.",
+      "alinti": "when the game is released in 2028. It is, joint joint-CEO Michał Nowakowski said"
+    },
+    {
+      "olgu": "stüdyo playstation 5 için diskli sürüm garantisi veremiyor çünkü sony'nin üretim tesislerine bağımlı durumdalar.",
+      "alinti": "CD Projekt Red, as influential as it is, has said it cannot do anything to guarantee a PlayStation 5 disc-based edition of The Witcher 4"
+    },
+    {
+      "olgu": "disk basılamazsa bile kutunun içinde oyuncuların dokunabileceği harita ve koleksiyon hediyeleri yer alacak.",
+      "alinti": "promises a game box with \"feelies\" whatever happens"
+    }
+  ],
+  "_is_leak": false,
+  "_model": "gemini-3.6-flash",
+  "tier": "B",
+  "category": "duyuru",
+  "caption": "witcher kutusundan çıkan detaylı haritalar ve kitapçıklar fiziksel medyanın altın çağını temsil ediyordu. sektör tamamen dijitale kayarken ekip o eski dokunma hissini korumaya çalışıyor fakat kutudan diskin kendisi bile çıkmayabilir. #thewitcher4 #cdprojektred",
+  "game": "the witcher 4",
+  "search_name": "The Witcher 4",
+  "image_candidates": [],
+  "series_fallback": [
+    "The Witcher 3: Wild Hunt"
+  ],
+  "representative_games": [],
+  "credit": "cd projekt red",
+  "pages": [
+    {
+      "type": "cover",
+      "title": "witcher ekibinden kutulu oyun kararı",
+      "image": "state/img/the-witcher-iv-ar3nks.jpg",
+      "credit": "cd projekt red"
+    },
+    {
+      "type": "text",
+      "title": "disksiz kutu dönemi",
+      "paragraph": "cd projekt red yöneticisi michał nowakowski, yeni witcher macerası için 2028 hedefini doğruladı. ancak konsol tarafındaki kutulu lansman alışılagelmiş disk formatından uzaklaşabilir.",
+      "dayanak": 0,
+      "bullets": [
+        "playstation 5 için disk basma kararı tamamen sony üretim tesislerinin elinde duruyor.",
+        "kutunun içinde disk olmasa dahi dokunabileceğin fiziki harita ve aksesuarlar bulunacak."
+      ],
+      "bullet_dayanak": [
+        1,
+        2
+      ],
+      "image": "state/img/the-witcher-iv-scuxde.jpg",
+      "credit": "cd projekt red"
+    },
+    {
+      "type": "outro",
+      "question": "içinde disk olmayan kutu fiziksel medyayı yaşatır mı yoksa sadece ambalaj mı",
+      "ctas": [
+        "koleksiyoncular için yeni bir dönem başlıyor"
+      ],
+      "image": "state/img/the-witcher-iv-scx6ql.jpg",
+      "credit": "cd projekt red"
+    }
+  ],
+  "_hashes": [
+    "807511c4d089bbe4",
+    "5925c39ce392f5dc"
+  ],
+  "_kume_key": "807511c4d089bbe4",
+  "_gorsel_temsili": false,
+  "_image_pool": [
+    {
+      "id": "ar3nkq",
+      "kind": "artwork",
+      "w": 2808,
+      "h": 1157,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    },
+    {
+      "id": "ar3nkr",
+      "kind": "artwork",
+      "w": 2808,
+      "h": 1157,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    },
+    {
+      "id": "ar3nkp",
+      "kind": "artwork",
+      "w": 2808,
+      "h": 1157,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    },
+    {
+      "id": "ar3nks",
+      "kind": "artwork",
+      "w": 1920,
+      "h": 1080,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    },
+    {
+      "id": "haber-807511c4d089bbe4",
+      "kind": "screenshot",
+      "w": 1280,
+      "h": 720,
+      "credit": "kotaku",
+      "oyun": "The Witcher IV",
+      "url": "https://kotaku.com/app/uploads/2026/09/witcher4eyes-1280x720.jpg",
+      "thumb": "https://kotaku.com/app/uploads/2026/09/witcher4eyes-1280x720.jpg",
+      "_kaynak": "kotaku"
+    },
+    {
+      "id": "scus48",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    },
+    {
+      "id": "scus49",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    },
+    {
+      "id": "scus4a",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    },
+    {
+      "id": "scx6qk",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    },
+    {
+      "id": "scx6ql",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    },
+    {
+      "id": "scx6qm",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    },
+    {
+      "id": "scuxde",
+      "kind": "screenshot",
+      "w": 2048,
+      "h": 1152,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    },
+    {
+      "id": "scuxdf",
+      "kind": "screenshot",
+      "w": 2048,
+      "h": 1152,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    },
+    {
+      "id": "co95i0",
+      "kind": "cover",
+      "w": 1332,
+      "h": 1777,
+      "credit": "cd projekt red",
+      "oyun": "The Witcher IV"
+    }
+  ],
+  "_slug": "the-witcher-iv",
+  "_gorsel_turu": 0
+}

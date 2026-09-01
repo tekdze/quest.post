@@ -1,3 +1,18 @@
 {
-  "kuyruk": []
+  "kuyruk": [
+    {
+      "id": "20260901-the-witcher-4",
+      "etiket": "normal",
+      "durum": "onay_bekliyor",
+      "baslik": "the witcher 4",
+      "draft": "state/drafts/20260901-the-witcher-4.json",
+      "cards_dir": "out/20260901-the-witcher-4",
+      "message_ids": [
+        397,
+        398,
+        399
+      ],
+      "tier": "B"
+    }
+  ]
 }
