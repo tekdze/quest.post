@@ -1,3 +1,18 @@
 {
-  "kuyruk": []
+  "kuyruk": [
+    {
+      "id": "20260901-don-t-nod",
+      "etiket": "normal",
+      "durum": "onay_bekliyor",
+      "baslik": "don't nod",
+      "draft": "state/drafts/20260901-don-t-nod.json",
+      "cards_dir": "out/20260901-don-t-nod",
+      "message_ids": [
+        442,
+        443,
+        444
+      ],
+      "tier": "B"
+    }
+  ]
 }

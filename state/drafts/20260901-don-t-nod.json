@@ -3,11 +3,11 @@
   "_aday_index": 1,
   "_aday": {
     "key": "13c550fd698f9d69",
-    "title": "Life is Strange developer Don't Nod look primed for layoffs, as the studio announces a \"transformation intitiative\"",
+    "title": "Life is Strange developer Don't Nod look primed for layoffs, as the studio announces a \"transformation initiative\"",
     "url": "https://www.rockpapershotgun.com/life-is-strange-developer-dont-nod-look-primed-for-layoffs-as-the-studio-announces-a-transformation-intitiative",
     "summary": "It is unfortunately that time of day again (because this truly does seem to be a daily occurrence at this point). Back in June, things weren't looking so hot for Life is Strange studio Don't Nod, as it appeared that they'd be out of cash come this November . Now, it looks like the studio is preparing for layoffs. Read more",
     "published": "2026-09-01T17:04:29+00:00",
-    "age_hours": 0.1,
+    "age_hours": 0.7,
     "lang": "en",
     "kind": "news",
     "bucket": "news",
@@ -20,15 +20,15 @@
       "eurogamer",
       "rps"
     ],
-    "rank_score": 4.9,
+    "rank_score": 4.89,
     "members": [
       {
         "hash": "13c550fd698f9d69",
         "url": "https://www.rockpapershotgun.com/life-is-strange-developer-dont-nod-look-primed-for-layoffs-as-the-studio-announces-a-transformation-intitiative",
-        "title": "Life is Strange developer Don't Nod look primed for layoffs, as the studio announces a \"transformation intitiative\"",
+        "title": "Life is Strange developer Don't Nod look primed for layoffs, as the studio announces a \"transformation initiative\"",
         "summary": "It is unfortunately that time of day again (because this truly does seem to be a daily occurrence at this point). Back in June, things weren't looking so hot for Life is Strange studio Don't Nod, as it appeared that they'd be out of cash come this November . Now, it looks like the studio is preparing for layoffs. Read more",
         "published": "2026-09-01T17:04:29+00:00",
-        "age_hours": 0.1,
+        "age_hours": 0.7,
         "image": "https://assetsio.gnwcdn.com/life-is-strange-1-max-chloe.jpg?width=690&quality=85&format=jpg&auto=webp",
         "source_id": "rps",
         "source_name": "Rock Paper Shotgun",
@@ -47,7 +47,7 @@
         "title": "Life is Strange and Aphelion studio Don't Nod probably facing layoffs again, as it announces ominous-sounding \"transformation initiative\"",
         "summary": "French game developer and publisher Don't Nod - creator of the Life is Strange series and games like Remember Me , Vampyr , Banishers , Jusant and most recently Aphelion - seems as though it's about to enter another round of layoffs. Read more",
         "published": "2026-09-01T13:51:29+00:00",
-        "age_hours": 3.3,
+        "age_hours": 3.9,
         "image": "https://assetsio.gnwcdn.com/life-is-strange-max-chloe.jpg?width=690&quality=85&format=jpg&auto=webp",
         "source_id": "eurogamer",
         "source_name": "Eurogamer",
@@ -64,23 +64,23 @@
   "_kaynak_sayisi": 2,
   "_cikarim": [
     {
-      "olgu": "life is strange stüdyosu don't nod yeniden toplu işten çıkarmalara hazırlanıyor.",
-      "alinti": "Life is Strange and Aphelion studio Don't Nod probably facing layoffs again"
+      "olgu": "life is strange, vampyr ve jusant projeleriyle tanınan fransız ekip don't nod, yeni bir işten çıkarma dalgasına hazırlanıyor.",
+      "alinti": "French game developer and publisher Don't Nod - creator of the Life is Strange series and games like Remember Me , Vampyr , Banishers , Jusant and most recently Aphelion - seems as though it's about to enter another round of layoffs."
     },
     {
-      "olgu": "yönetim küçülme kararını dönüşüm girişimi adı altında duyuruyor.",
+      "olgu": "haziran ayındaki raporlar stüdyonun kasım ayına gelindiğinde kasasındaki paranın biteceğini gösteriyordu.",
+      "alinti": "Back in June, things weren't looking so hot for Life is Strange studio Don't Nod, as it appeared that they'd be out of cash come this November"
+    },
+    {
+      "olgu": "yönetim küçülme ve kadro azaltma planını dönüşüm girişimi adı altında resmi olarak duyurdu.",
       "alinti": "as it announces ominous-sounding \"transformation initiative\""
-    },
-    {
-      "olgu": "stüdyonun haziran ayı raporları nakit rezervinin kasım ayında tükenme noktasına geleceğini gösteriyordu.",
-      "alinti": "it appeared that they'd be out of cash come this November"
     }
   ],
   "_is_leak": false,
   "_model": "gemini-3.6-flash",
   "tier": "B",
-  "category": "kapanma",
-  "caption": "life is strange ve jusant gibi oyunlarla tanıdığımız don't nod zorlu bir dönemden geçiyor. haziran ayında ortaya çıkan finansal tablolar kasım ayı için tehlike çanları çalıyordu. hikaye odaklı bağımsız stüdyoların nakit krizini aşmak için bu tür adımlar atması sektörün mevcut durumunu özetliyor. #dontnod #lifeisstrange",
+  "category": "duyuru",
+  "caption": "hikaye odaklı işleriyle tanıdığımız don't nod tarafında uzun süredir devam eden mali belirsizlik nihayet somut bir adıma dönüştü. yaz başında kasadaki paranın tükenmek üzere olduğu haberleri çıkmıştı ve beklenen haber geldi. #dontnod #indiegame",
   "game": "don't nod",
   "search_name": null,
   "image_candidates": [
@@ -90,39 +90,41 @@
   ],
   "series_fallback": [],
   "representative_games": [
-    "Life is Strange"
+    "Life is Strange",
+    "Jusant",
+    "Banishers: Ghosts of New Eden"
   ],
   "credit": "don't nod",
   "pages": [
     {
       "type": "cover",
-      "title": "life is strange ekibinde yeni işten çıkarma dalgası",
-      "image": "state/img/life-is-strange-ar69ks.jpg",
+      "title": "life is strange ekibi zorda",
+      "image": "state/img/life-is-strange-co1r8e.jpg",
       "credit": "don't nod"
     },
     {
       "type": "text",
-      "title": "bütçe krizinin faturası ekibe kesiliyor",
-      "paragraph": "hikaye odaklı oyunlarıyla öne çıkan don't nod, dev canlı hizmet oyunlarının aksine nakit akışını korumakta zorlanıyor. stüdyo bütçe krizini çözmek yerine kadroyu daraltma yolunu seçiyor.",
+      "title": "kasım öncesi kriz kapıda",
+      "paragraph": "hikaye anlatımıyla öne çıkan oyunlar geliştiren don't nod, mali açıdan oldukça dar bir boğazdan geçiyor. ekip daha önce de benzer bir kriz yaşamıştı ancak bu sefer durum daha da ciddi görünüyor.",
       "dayanak": 0,
       "bullets": [
-        "yönetim bu küçülme sürecini resmi metinlerde dönüşüm girişimi olarak tanımlıyor.",
-        "ekibin haziran ayındaki finansal raporu kasım ayında paranın biteceğine işaret ediyordu."
+        "haziran raporları stüdyonun kasım ayında parasız kalacağını gösteriyordu.",
+        "yönetim küçülme hamlelerini dönüşüm girişimi başlığıyla duyuruyor."
       ],
       "bullet_dayanak": [
         1,
         2
       ],
-      "image": "state/img/life-is-strange-b6rjjpluz7vzprxny8oi.jpg",
+      "image": "state/img/life-is-strange-azrk1nu49s6o75bb962n.jpg",
       "credit": "don't nod"
     },
     {
       "type": "outro",
-      "question": "hikaye odaklı stüdyoların ayakta kalmakta bu kadar zorlanması neden kaynaklanıyor?",
+      "question": "kasım ayında parası bitme noktasına gelen stüdyonun sen en çok hangi oyununu seviyorsun?",
       "ctas": [
-        "sektördeki bu daralma hakkındaki görüşünü yorumlarda anlatabilirsin"
+        "ekibin geçmiş projelerini hatırlatmak için gönderiyi arkadaşlarına iletebilirsin."
       ],
-      "image": "state/img/life-is-strange-nw8gupltr8pejuf0wlbs.jpg",
+      "image": "state/img/life-is-strange-ar69ks.jpg",
       "credit": "don't nod"
     }
   ],
