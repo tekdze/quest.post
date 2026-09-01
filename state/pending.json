@@ -1,3 +1,19 @@
 {
-  "kuyruk": []
+  "kuyruk": [
+    {
+      "id": "20260901-star-wars-zero-company",
+      "etiket": "normal",
+      "durum": "onay_bekliyor",
+      "baslik": "star wars zero company",
+      "draft": "state/drafts/20260901-star-wars-zero-company.json",
+      "cards_dir": "out/20260901-star-wars-zero-company",
+      "message_ids": [
+        423,
+        424,
+        425,
+        426
+      ],
+      "tier": "S"
+    }
+  ]
 }
