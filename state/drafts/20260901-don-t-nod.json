@@ -64,68 +64,66 @@
   "_kaynak_sayisi": 2,
   "_cikarim": [
     {
-      "olgu": "life is strange, vampyr ve jusant projeleriyle tanınan fransız ekip don't nod, yeni bir işten çıkarma dalgasına hazırlanıyor.",
-      "alinti": "French game developer and publisher Don't Nod - creator of the Life is Strange series and games like Remember Me , Vampyr , Banishers , Jusant and most recently Aphelion - seems as though it's about to enter another round of layoffs."
+      "olgu": "don't nod stüdyosu dönüşüm girişimi adı altında işten çıkarma sürecine girdi",
+      "alinti": "Life is Strange developer Don't Nod look primed for layoffs, as the studio announces a \"transformation initiative\""
     },
     {
-      "olgu": "haziran ayındaki raporlar stüdyonun kasım ayına gelindiğinde kasasındaki paranın biteceğini gösteriyordu.",
-      "alinti": "Back in June, things weren't looking so hot for Life is Strange studio Don't Nod, as it appeared that they'd be out of cash come this November"
+      "olgu": "şirketin kasım ayında nakit sıkıntısına düşeceği haziran ayında ortaya çıkmıştı",
+      "alinti": "appeared that they'd be out of cash come this November ."
     },
     {
-      "olgu": "yönetim küçülme ve kadro azaltma planını dönüşüm girişimi adı altında resmi olarak duyurdu.",
-      "alinti": "as it announces ominous-sounding \"transformation initiative\""
+      "olgu": "stüdyo life is strange dışında banishers ve jusant gibi oyunların arkasındaki isim",
+      "alinti": "creator of the Life is Strange series and games like Remember Me , Vampyr , Banishers , Jusant and most recently Aphelion"
     }
   ],
   "_is_leak": false,
   "_model": "gemini-3.6-flash",
   "tier": "B",
-  "category": "duyuru",
-  "caption": "hikaye odaklı işleriyle tanıdığımız don't nod tarafında uzun süredir devam eden mali belirsizlik nihayet somut bir adıma dönüştü. yaz başında kasadaki paranın tükenmek üzere olduğu haberleri çıkmıştı ve beklenen haber geldi. #dontnod #indiegame",
+  "category": "kapanma",
+  "caption": "don't nod tarafında işler bir süredir çalkantılı ilerliyordu. kasım ayında kasanın boşalacağına dair haberlerin ardından beklenen hamle geldi. stüdyo süreci dönüşüm olarak adlandırsa da kapıda işten çıkarmalar var. #dontnod #lifeisstrange",
   "game": "don't nod",
   "search_name": null,
   "image_candidates": [
     "Life is Strange",
-    "Jusant",
-    "Banishers: Ghosts of New Eden"
+    "Banishers: Ghosts of New Eden",
+    "Jusant"
   ],
   "series_fallback": [],
   "representative_games": [
-    "Life is Strange",
-    "Jusant",
-    "Banishers: Ghosts of New Eden"
+    "Life is Strange"
   ],
   "credit": "don't nod",
   "pages": [
     {
       "type": "cover",
-      "title": "life is strange ekibi zorda",
-      "image": "state/img/life-is-strange-co1r8e.jpg",
-      "credit": "don't nod"
+      "title": "life is strange ekibinde küçülme dalgası",
+      "image": null,
+      "credit": null
     },
     {
       "type": "text",
-      "title": "kasım öncesi kriz kapıda",
-      "paragraph": "hikaye anlatımıyla öne çıkan oyunlar geliştiren don't nod, mali açıdan oldukça dar bir boğazdan geçiyor. ekip daha önce de benzer bir kriz yaşamıştı ancak bu sefer durum daha da ciddi görünüyor.",
+      "title": "dönüşüm adı altında küçülme",
+      "paragraph": "fransız stüdyo don't nod yeni bir yapılanma sürecine girdiğini duyurdu. şirket bu hamleyi dönüşüm girişimi olarak tanımlasa da masada işten çıkarmalar duruyor.",
       "dayanak": 0,
       "bullets": [
-        "haziran raporları stüdyonun kasım ayında parasız kalacağını gösteriyordu.",
-        "yönetim küçülme hamlelerini dönüşüm girişimi başlığıyla duyuruyor."
+        "stüdyonun kasım ayı itibarıyla nakdinin biteceği haziran döneminde belli olmuştu",
+        "ekip son yıllarda banishers ve jusant gibi farklı türdeki projelere odaklanmıştı"
       ],
       "bullet_dayanak": [
         1,
         2
       ],
-      "image": "state/img/life-is-strange-azrk1nu49s6o75bb962n.jpg",
-      "credit": "don't nod"
+      "image": null,
+      "credit": null
     },
     {
       "type": "outro",
-      "question": "kasım ayında parası bitme noktasına gelen stüdyonun sen en çok hangi oyununu seviyorsun?",
+      "question": "stüdyoların üst üste gelen başarısızlıkları kurumsal küçülmeyle örtmesi sektör krizini mi gösteriyor yoksa yönetim hatasını mı",
       "ctas": [
-        "ekibin geçmiş projelerini hatırlatmak için gönderiyi arkadaşlarına iletebilirsin."
+        "bağımsız stüdyolardaki bu gidişat hakkındaki gözlemini yazabilirsin"
       ],
-      "image": "state/img/life-is-strange-ar69ks.jpg",
-      "credit": "don't nod"
+      "image": null,
+      "credit": null
     }
   ],
   "_hashes": [
