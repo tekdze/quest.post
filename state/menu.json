@@ -1,7 +1,7 @@
 {
-  "olusturuldu": "2026-09-01T17:45:48+00:00",
+  "olusturuldu": "2026-09-01T17:47:44+00:00",
   "oneri": 4,
-  "gerekce": "eski ve sevilen bir oyunun devamı için devasa bütçe şartı heyecan yaratır.",
+  "gerekce": "devam oyununun on milyon dolar bütçe şartıyla duyurulması dikkat çekici",
   "adaylar": [
     {
       "sira": 1,
@@ -18,7 +18,7 @@
         "url": "https://www.gamesindustry.biz/brian-ward-steps-down-as-savvy-games-group-ceo",
         "summary": "Brian Ward is stepping down as CEO of Savvy Games Group, according to a staff note obtained by Bloomberg . Read more",
         "published": "2026-09-01T14:38:11+00:00",
-        "age_hours": 3.1,
+        "age_hours": 3.2,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -31,7 +31,7 @@
           "gamesindustry",
           "kotaku"
         ],
-        "rank_score": 7.84,
+        "rank_score": 7.83,
         "members": [
           {
             "hash": "9fd68536772339e9",
@@ -39,7 +39,7 @@
             "title": "Brian Ward steps down as Savvy Games Group CEO",
             "summary": "Brian Ward is stepping down as CEO of Savvy Games Group, according to a staff note obtained by Bloomberg . Read more",
             "published": "2026-09-01T14:38:11+00:00",
-            "age_hours": 3.1,
+            "age_hours": 3.2,
             "image": "https://assetsio.gnwcdn.com/Brian-Ward.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "gamesindustry",
             "source_name": "GamesIndustry.biz",
@@ -90,7 +90,7 @@
         ]
       },
       "oyun_adi": null,
-      "ozet": "kuruluşun başındaki isim görevinden ayrıldı ve yeni bir dönem başlıyor.",
+      "ozet": "kuruluşun icra kurulu başkanı görevinden ayrıldı",
       "gorsel": {
         "durum": "yok",
         "sayi": 0,
@@ -116,7 +116,7 @@
         "url": "https://www.gamedeveloper.com/business/sega-owned-rovio-is-shutting-down-its-copenhagen-studio",
         "summary": "The closure follows the cancellation of Sonic Blitz and the exact number of redundancies are yet to be confirmed.",
         "published": "2026-09-01T15:37:36+00:00",
-        "age_hours": 2.1,
+        "age_hours": 2.2,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -128,7 +128,7 @@
           "gamedeveloper",
           "gamesindustry"
         ],
-        "rank_score": 4.96,
+        "rank_score": 4.95,
         "members": [
           {
             "hash": "31ec69a370f042ad",
@@ -136,7 +136,7 @@
             "title": "Sega-owned Rovio is shutting down its Copenhagen studio",
             "summary": "The closure follows the cancellation of Sonic Blitz and the exact number of redundancies are yet to be confirmed.",
             "published": "2026-09-01T15:37:36+00:00",
-            "age_hours": 2.1,
+            "age_hours": 2.2,
             "image": "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/bltf0c40dfc01b4bc8c/6a96f26ef33db21db644c08b/New_Project(30).png?width=720&quality=80&disable=upscale",
             "source_id": "gamedeveloper",
             "source_name": "Game Developer",
@@ -169,7 +169,7 @@
         ]
       },
       "oyun_adi": "Sonic Blitz",
-      "ozet": "iptal edilen oyunun ardından stüdyo kapatılıyor ve işten çıkarmalar var.",
+      "ozet": "kopenhag stüdyosu kapatıldı ve sonic blitz iptal edildi",
       "gorsel": {
         "durum": "var",
         "sayi": 3,
@@ -250,7 +250,7 @@
         ]
       },
       "oyun_adi": "Life is Strange",
-      "ozet": "stüdyo kriz nedeniyle dönüşüm süreci başlatarak işten çıkarmalara hazırlanıyor.",
+      "ozet": "stüdyo mali kriz nedeniyle işten çıkarmalara hazırlanıyor",
       "gorsel": {
         "durum": "var",
         "sayi": 8,
@@ -276,7 +276,7 @@
         "url": "https://www.rockpapershotgun.com/double-fine-are-all-in-on-making-brutal-legend-2-if-youre-willing-to-give-them-100-million-in-their-game-jam-kickstarter-anyway",
         "summary": "Under Microsoft's ownership, it was probably a safe bet that Double Fine would never get to make a Brutal Legend 2, even in this IP-obsessed world we find ourselves in. However! Microsoft don't own Double Fine anymore , and so the once again indie developer can more or less do what they want. Which they're already doing, in fact, as they're currently hosting a game jam Kickstarter that includes a stretch goal that'll see them making Brutal Legend 2. If you give them $100 million. Read more",
         "published": "2026-09-01T16:31:35+00:00",
-        "age_hours": 1.2,
+        "age_hours": 1.3,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -289,7 +289,7 @@
           "kotaku",
           "rps"
         ],
-        "rank_score": 4.88,
+        "rank_score": 4.87,
         "members": [
           {
             "hash": "44befd99b4befb4b",
@@ -297,7 +297,7 @@
             "title": "Double Fine are all in on making Brutal Legend 2, if you're willing to give them $100 million in their game jam Kickstarter, anyway",
             "summary": "Under Microsoft's ownership, it was probably a safe bet that Double Fine would never get to make a Brutal Legend 2, even in this IP-obsessed world we find ourselves in. However! Microsoft don't own Double Fine anymore , and so the once again indie developer can more or less do what they want. Which they're already doing, in fact, as they're currently hosting a game jam Kickstarter that includes a stretch goal that'll see them making Brutal Legend 2. If you give them $100 million. Read more",
             "published": "2026-09-01T16:31:35+00:00",
-            "age_hours": 1.2,
+            "age_hours": 1.3,
             "image": "https://assetsio.gnwcdn.com/brutal-legend.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "rps",
             "source_name": "Rock Paper Shotgun",
@@ -331,7 +331,7 @@
         ]
       },
       "oyun_adi": "Brutal Legend 2",
-      "ozet": "stüdyo oyunu yapmak istiyor ancak devasa bir bütçe talep ediyor.",
+      "ozet": "stüdyo yüz milyon dolar bütçe bulursa oyunu yapacak",
       "gorsel": {
         "durum": "yok",
         "sayi": 0,
@@ -412,7 +412,7 @@
         ]
       },
       "oyun_adi": "The Witcher 3: Wild Hunt",
-      "ozet": "genişleme paketinin kapalı kapılar ardındaki önizlemesi ve yenilikleri incelendi.",
+      "ozet": "genişleme paketinin kapalı kapılar arkasındaki önizlemesi paylaşıldı",
       "gorsel": {
         "durum": "var",
         "sayi": 19,
@@ -438,7 +438,7 @@
         "url": "https://www.rockpapershotgun.com/star-wars-zero-company-devs-left-without-pay-report-claims-with-most-staff-furloughed-prior-to-launch",
         "summary": "Prior to releasing Star Wars Zero Company last week, developers Bit Reactor reportedly furloughed \"most\" of the team who made it, seemingly leaving said staff in limbo. Read more",
         "published": "2026-09-01T11:44:31+00:00",
-        "age_hours": 6.0,
+        "age_hours": 6.1,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -451,7 +451,7 @@
           "pcgamer",
           "rps"
         ],
-        "rank_score": 4.78,
+        "rank_score": 4.77,
         "members": [
           {
             "hash": "755da3cf0cddecd6",
@@ -459,7 +459,7 @@
             "title": "Star Wars: Zero Company devs left without pay, report claims, with \"most\" staff furloughed prior to launch",
             "summary": "Prior to releasing Star Wars Zero Company last week, developers Bit Reactor reportedly furloughed \"most\" of the team who made it, seemingly leaving said staff in limbo. Read more",
             "published": "2026-09-01T11:44:31+00:00",
-            "age_hours": 6.0,
+            "age_hours": 6.1,
             "image": "https://assetsio.gnwcdn.com/star-wars-zero-company-devs-furloughed-01.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "rps",
             "source_name": "Rock Paper Shotgun",
@@ -492,8 +492,8 @@
           }
         ]
       },
-      "oyun_adi": "Star Wars: Zero Company",
-      "ozet": "geliştiriciler çıkış öncesi izne çıkarıldı ve maaşlarını alamadı.",
+      "oyun_adi": "Star Wars Zero Company",
+      "ozet": "geliştiriciler çıkıştan hemen önce ücretsiz izne çıkarıldı",
       "gorsel": {
         "durum": "var",
         "sayi": 12,
@@ -502,7 +502,7 @@
         "seri": null,
         "temsili": false
       },
-      "baslik": "Star Wars: Zero Company"
+      "baslik": "Star Wars Zero Company"
     }
   ]
 }
