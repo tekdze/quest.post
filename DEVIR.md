@@ -1049,7 +1049,77 @@ konuşur, yapılandırmayı ucuz model yapar. **Sabit soru-cevap anketi
 
 ---
 
-## 10. Doğrulama komutları
+## 10. Riskler ve maliyet — denetlendi 2026-09-01
+
+### Maliyet: hiçbir ücretli servis yok
+Gemini (ücretsiz katman) · IGDB/Twitch · Steam (anahtarsız) · Telegram ·
+Instagram Graph · GitHub Actions (**public repo = sınırsız dakika**) ·
+cron-job.org (ücretsiz katman). Kota dolduğunda fatura değil **düşüş**
+oluyor: yedek modele geçiliyor ya da o gün post çıkmıyor.
+
+⚠️ **Doğrulanması gereken tek şey: Google Cloud / AI Studio hesabında
+faturalandırma KAPALI olmalı.** Açıksa kota aşımı ücrete dönebilir;
+kapalıysa aşım basitçe reddedilir. Panelden bakılmalı.
+
+### Güvenlik denetimi — dördü de temiz
+- `.env` git geçmişinin tamamında **hiç commit edilmemiş**
+- Çalışma ağacında sızmış anahtar yok (Gemini/Telegram/GitHub/Instagram
+  jeton desenleri tarandı)
+- **Bot yalnızca `TG_CHAT_ID`'den gelen mesajı işliyor**
+  (`telegram.py`, `getUpdates` döngüsünde chat kimliği karşılaştırması).
+  Bot adı herkese açık ama yabancı komut veremez
+- Workflow izinleri dar: hepsi `contents: write`, fazlası yok
+
+### ⚠️ İki mayın — şu an güvende, öyle kalmalı
+1. **Repo public → Actions kayıtları da public.**
+   `refresh_token.py --goster` jetonu ekrana basıyor ve hiçbir workflow'da
+   çağrılmıyor (doğrulandı). "Kolaylık olsun" diye eklenirse jeton
+   **kalıcı olarak** sızar; Actions kaydı silinse bile geç kalınmış olur.
+2. **cron-job.org'daki PAT.** Fine-grained, tek repo, yalnızca
+   `Actions: R/W`. Sızarsa en kötü ihtimalle workflow tetiklenir — kod
+   değişmez, Secrets okunamaz. Kabul edilen risk.
+
+### ⚠️ ASIL RİSK: depo şişmesi. Zamanı var ama saati işliyor
+Kartlar repoya commit ediliyor çünkü Instagram yayınlamak için **public
+URL** istiyor. Ölçüldü (2026-09-01): `.git` **127 MB**, 13 post,
+**post başına 6 MB**.
+
+| | günde 3 post | günde 1 post |
+|---|---|---|
+| 3 ay | 1.6 GB | 0.5 GB |
+| 1 yıl | **6.4 GB** | 2.1 GB |
+
+GitHub 1 GB'ı tavsiye sınırı sayıyor. Üstelik **her Actions çalışması
+repoyu klonluyor**: repo büyüdükçe her çalışma yavaşlar ve sonunda zaman
+aşımına düşer — yani sessizce değil, boru hattının tamamı durarak patlar.
+
+⚠️ **Ertelendikçe pahalılaşıyor: git unutmuyor.** İleride `out/` silinse
+`.git` küçülmez; geçmiş yeniden yazılmadan kurtulunamaz. Bugün ucuz,
+altı ay sonra ameliyat.
+
+Çözüm yönü: URL yalnızca **yayın anında** gerekiyor, Instagram görseli
+kendi tarafına kopyalıyor. Yani kartlar ana dalın geçmişinde durmak
+zorunda değil — periyodik sıfırlanan ayrı bir dal yeter. Tempoyu günde
+1'e düşürmek de sorunu üçe böler (bölüm 9'daki "asıl risk" maddesiyle
+aynı yöne bakıyor).
+
+### ⚠️ Test yok — ve bu ölçülmüş bir risk, teorik değil
+Tek günde **üç ayrı "yazılmış ama çalışmayan"** hata bulundu, üçü de
+ancak gerçek çalıştırmayla ortaya çıktı:
+
+| bulgu | ne kadar süredir bozuktu |
+|---|---|
+| `qa.py --kartlar` zincire hiç bağlanmamış | yazıldığından beri |
+| `mevcut_secim` haber/Steam kimliklerini çözemiyor | canlı postları etkilemiş |
+| `api_call` bağlantı kopmasını yakalamıyor | bugün bir postu düşürdü |
+
+Üçü de sessizdi: hiçbiri hata vermiyor, sadece yanlış çalışıyordu.
+**Eval seti (bölüm 9, madde B) tam olarak bunun için** — ve bu tablo
+onun "sonra yaparız" sırasını sorgulatmalı.
+
+---
+
+## 11. Doğrulama komutları
 
 ```bash
 py -3.12 -m pip install -r requirements.txt
