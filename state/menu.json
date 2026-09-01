@@ -1,122 +1,46 @@
 {
-  "olusturuldu": "2026-09-01T14:11:32+00:00",
-  "oneri": 2,
-  "gerekce": "mutant yamyamlarla florida nın fethi instagram kullanıcılarının dikkatini çeker",
+  "olusturuldu": "2026-09-01T17:10:39+00:00",
+  "oneri": 3,
+  "gerekce": "devam oyununun on milyonlarca dolarlık sıra dışı şartla duyurulması dikkat çekici",
   "adaylar": [
     {
       "sira": 1,
       "aday_index": 1,
-      "tier": "S",
-      "title": "Star Wars Zero Company studio furloughed staff before the game was released",
-      "kaynak_sayisi": 5,
+      "tier": "A",
+      "title": "Brian Ward steps down as Savvy Games Group CEO",
+      "kaynak_sayisi": 3,
       "reddit_oy": 0,
       "reddit_yorum": 0,
-      "url": "https://www.pcgamesn.com/star-wars-zero-company/furlough",
+      "url": "https://www.gamesindustry.biz/brian-ward-steps-down-as-savvy-games-group-ceo",
       "aday": {
-        "key": "34553dc53f2c9e27",
-        "title": "Star Wars Zero Company studio furloughed staff before the game was released",
-        "url": "https://www.pcgamesn.com/star-wars-zero-company/furlough",
-        "summary": "Star Wars Zero Company studio, Bit Reactor, allegedly furloughed \"80% of the team\" before launch, with the game’s success dictating its next move.",
-        "published": "2026-09-01T10:09:58+00:00",
-        "age_hours": 4.0,
+        "key": "9fd68536772339e9",
+        "title": "Brian Ward steps down as Savvy Games Group CEO",
+        "url": "https://www.gamesindustry.biz/brian-ward-steps-down-as-savvy-games-group-ceo",
+        "summary": "Brian Ward is stepping down as CEO of Savvy Games Group, according to a staff note obtained by Bloomberg . Read more",
+        "published": "2026-09-01T14:38:11+00:00",
+        "age_hours": 2.5,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
         "tags": [
-          "mainstream",
-          "pc"
+          "endustri"
         ],
-        "source_count": 5,
+        "source_count": 3,
         "sources": [
           "eurogamer",
-          "gamedeveloper",
           "gamesindustry",
-          "ign",
-          "pcgamesn"
+          "kotaku"
         ],
-        "rank_score": 13.92,
+        "rank_score": 7.85,
         "members": [
           {
-            "hash": "34553dc53f2c9e27",
-            "url": "https://www.pcgamesn.com/star-wars-zero-company/furlough",
-            "title": "Star Wars Zero Company studio furloughed staff before the game was released",
-            "summary": "Star Wars Zero Company studio, Bit Reactor, allegedly furloughed \"80% of the team\" before launch, with the game’s success dictating its next move.",
-            "published": "2026-09-01T10:09:58+00:00",
-            "age_hours": 4.0,
-            "image": "https://www.pcgamesn.com/wp-content/sites/pcgamesn/2026/09/star-wars-zero-company-furlough.jpg",
-            "source_id": "pcgamesn",
-            "source_name": "PCGamesN",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream",
-              "pc"
-            ]
-          },
-          {
-            "hash": "f38bbe6f64db087e",
-            "url": "https://www.ign.com/articles/the-studio-behind-hit-new-star-wars-game-zero-company-quietly-furloughed-most-staff-just-before-launch",
-            "title": "The Studio Behind Hit New Star Wars Game Zero Company Quietly Furloughed 'Most' Staff Just Before Launch",
-            "summary": "Bit Reactor, the studio behind Star Wars Zero Company, furloughed the majority of its staff just before the game launched.",
-            "published": "2026-09-01T09:34:56+00:00",
-            "age_hours": 4.6,
-            "image": "https://assets-prd.ignimgs.com/2026/08/25/dexb0otbt4smkiweazwpj-6ku-vp1n8bkfwscmpvyay-1787691724080.jpeg",
-            "source_id": "ign",
-            "source_name": "IGN",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.6,
-            "tags": [
-              "mainstream"
-            ]
-          },
-          {
-            "hash": "e60694e7ec2c6c7a",
-            "url": "https://www.gamedeveloper.com/business/star-wars-zero-company-studio-furloughed-workers-ahead-of-launch",
-            "title": "Star Wars Zero Company studio furloughed workers ahead of launch",
-            "summary": "Bit Reactor has confirmed it temporarily suspended workers without pay due to concerns over how its debut title would perform.",
-            "published": "2026-09-01T09:19:23+00:00",
-            "age_hours": 4.9,
-            "image": "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt76fd3daae7573477/6a9699589be82339198e4ef4/SW_Zero_Company.png?width=720&quality=80&disable=upscale",
-            "source_id": "gamedeveloper",
-            "source_name": "Game Developer",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 1.0,
-            "tags": [
-              "endustri"
-            ]
-          },
-          {
-            "hash": "5b14611228a88bd1",
-            "url": "https://www.eurogamer.net/star-wars-zero-company-developers-furloughed",
-            "title": "\"Most\" of the developers behind critically acclaimed Star Wars Zero Company were furloughed ahead of launch",
-            "summary": "Most of the developers behind the critically acclaimed Star Wars Zero Company were furloughed weeks before the game's launch last week, as a legal dispute between the studio founders puts Bit Reactor's ownership into question. Read more",
-            "published": "2026-09-01T09:03:40+00:00",
-            "age_hours": 5.1,
-            "image": "https://assetsio.gnwcdn.com/star-wars-zero-company.jpg?width=690&quality=85&format=jpg&auto=webp",
-            "source_id": "eurogamer",
-            "source_name": "Eurogamer",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream"
-            ]
-          },
-          {
-            "hash": "8d4dad13b25e289f",
-            "url": "https://www.gamesindustry.biz/bit-reactor-furloughed-many-of-its-workers-in-the-weeks-before-star-wars-zero-companys-launch",
-            "title": "Bit Reactor furloughed \"many of its workers\" in the weeks before Star Wars Zero Company's launch",
-            "summary": "Star Wars Zero Company developer Bit Reactor furloughed \"many of its workers\" prior to the game's release. Read more",
-            "published": "2026-09-01T08:07:34+00:00",
-            "age_hours": 6.1,
-            "image": "https://assetsio.gnwcdn.com/star-wars-zero-company_OixT1yY.webp?width=690&quality=85&format=jpg&auto=webp",
+            "hash": "9fd68536772339e9",
+            "url": "https://www.gamesindustry.biz/brian-ward-steps-down-as-savvy-games-group-ceo",
+            "title": "Brian Ward steps down as Savvy Games Group CEO",
+            "summary": "Brian Ward is stepping down as CEO of Savvy Games Group, according to a staff note obtained by Bloomberg . Read more",
+            "published": "2026-09-01T14:38:11+00:00",
+            "age_hours": 2.5,
+            "image": "https://assetsio.gnwcdn.com/Brian-Ward.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "gamesindustry",
             "source_name": "GamesIndustry.biz",
             "lang": "en",
@@ -126,136 +50,14 @@
             "tags": [
               "endustri"
             ]
-          }
-        ]
-      },
-      "oyun_adi": "Star Wars Zero Company",
-      "ozet": "stüdyo oyun çıkmadan önce ekibin yüzde seksenini ücretsiz izne çıkardı",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 12,
-        "oyun": "Star Wars Zero Company",
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": false
-      },
-      "baslik": "Star Wars Zero Company"
-    },
-    {
-      "sira": 2,
-      "aday_index": 2,
-      "tier": "B",
-      "title": "Afterworld, Paradox's post-apocalyptic grand strategy game, let me conquer Florida with a band of alcoholic mutant cannibals",
-      "kaynak_sayisi": 2,
-      "reddit_oy": 0,
-      "reddit_yorum": 0,
-      "url": "https://www.pcgamer.com/games/strategy/afterworld-paradoxs-post-apocalyptic-grand-strategy-game-let-me-conquer-florida-with-a-band-of-alcoholic-mutant-cannibals",
-      "aday": {
-        "key": "dbe95ed15e5def35",
-        "title": "Afterworld, Paradox's post-apocalyptic grand strategy game, let me conquer Florida with a band of alcoholic mutant cannibals",
-        "url": "https://www.pcgamer.com/games/strategy/afterworld-paradoxs-post-apocalyptic-grand-strategy-game-let-me-conquer-florida-with-a-band-of-alcoholic-mutant-cannibals",
-        "summary": "And everyone seemed happy with the change.",
-        "published": "2026-09-01T14:03:04+00:00",
-        "age_hours": 0.1,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "mainstream"
-        ],
-        "source_count": 2,
-        "sources": [
-          "gamedeveloper",
-          "pcgamer"
-        ],
-        "rank_score": 5.0,
-        "members": [
-          {
-            "hash": "dbe95ed15e5def35",
-            "url": "https://www.pcgamer.com/games/strategy/afterworld-paradoxs-post-apocalyptic-grand-strategy-game-let-me-conquer-florida-with-a-band-of-alcoholic-mutant-cannibals",
-            "title": "Afterworld, Paradox's post-apocalyptic grand strategy game, let me conquer Florida with a band of alcoholic mutant cannibals",
-            "summary": "And everyone seemed happy with the change.",
-            "published": "2026-09-01T14:03:04+00:00",
-            "age_hours": 0.1,
-            "image": "https://cdn.mos.cms.futurecdn.net/yDyBSfoyp5gRiWAduZaxe4-1280-80.jpg",
-            "source_id": "pcgamer",
-            "source_name": "PC Gamer",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream"
-            ]
           },
-          {
-            "hash": "f8d1d5fdf62d7a3a",
-            "url": "https://www.gamedeveloper.com/design/paradox-interactive-s-afterworld-wants-to-entice-new-players-to-grand-strategy-with-tasty-rpg-hooks",
-            "title": "Paradox Interactive's Afterworld wants to entice new players to grand strategy with tasty RPG hooks",
-            "summary": "Game director Dan Lind explains the appeal of strategy in grand strategy games, and how to invite new players into a sprawling game.",
-            "published": "2026-09-01T13:00:00+00:00",
-            "age_hours": 1.2,
-            "image": "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt25f1adc41d53b5e2/6a9649eed78fd7bff8938dc5/afterworld_key_art_1280.png?width=720&quality=80&disable=upscale",
-            "source_id": "gamedeveloper",
-            "source_name": "Game Developer",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 1.0,
-            "tags": [
-              "endustri"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": "Afterworld",
-      "ozet": "alkolik mutant yamyamlarla florida nın fethi deneyimi sunuyor",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 14,
-        "oyun": "Afterworld",
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": false
-      },
-      "baslik": "Afterworld"
-    },
-    {
-      "sira": 3,
-      "aday_index": 3,
-      "tier": "B",
-      "title": "CEO of Saudi Arabia's Savvy Games Group Brian Ward steps down after overseeing billions in mobile gaming acquisitions",
-      "kaynak_sayisi": 2,
-      "reddit_oy": 0,
-      "reddit_yorum": 0,
-      "url": "https://www.eurogamer.net/savvy-games-group-ceo-brian-ward-steps-down",
-      "aday": {
-        "key": "e592fe6faa2684e4",
-        "title": "CEO of Saudi Arabia's Savvy Games Group Brian Ward steps down after overseeing billions in mobile gaming acquisitions",
-        "url": "https://www.eurogamer.net/savvy-games-group-ceo-brian-ward-steps-down",
-        "summary": "Brian Ward, the CEO of the Saudi-Arabian-state-owned Savvy Games Group, has left his role. During his tenure, he oversaw $38bn of investment into various gaming companies, including Pokemon Go developer Niantic, and Monopoly Go's Scopely. Read more",
-        "published": "2026-09-01T14:04:45+00:00",
-        "age_hours": 0.1,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "mainstream"
-        ],
-        "source_count": 2,
-        "sources": [
-          "eurogamer",
-          "kotaku"
-        ],
-        "rank_score": 4.7,
-        "members": [
           {
             "hash": "e592fe6faa2684e4",
             "url": "https://www.eurogamer.net/savvy-games-group-ceo-brian-ward-steps-down",
             "title": "CEO of Saudi Arabia's Savvy Games Group Brian Ward steps down after overseeing billions in mobile gaming acquisitions",
             "summary": "Brian Ward, the CEO of the Saudi-Arabian-state-owned Savvy Games Group, has left his role. During his tenure, he oversaw $38bn of investment into various gaming companies, including Pokemon Go developer Niantic, and Monopoly Go's Scopely. Read more",
             "published": "2026-09-01T14:04:45+00:00",
-            "age_hours": 0.1,
+            "age_hours": 3.1,
             "image": "https://assetsio.gnwcdn.com/Pokemon-Go-XP-World-Championship-Header.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
@@ -273,7 +75,7 @@
             "title": "CEO Steps Down At Saudi Arabia’s $38 Billion Gaming Fund That Owns Pokémon Go",
             "summary": "Brian Ward is leaving after five years and a mountain of acquisitions",
             "published": "2026-09-01T13:58:07+00:00",
-            "age_hours": 0.2,
+            "age_hours": 3.2,
             "image": "https://kotaku.com/app/uploads/2026/09/giovani-2-3.jpg",
             "source_id": "kotaku",
             "source_name": "Kotaku",
@@ -288,56 +90,76 @@
         ]
       },
       "oyun_adi": null,
-      "ozet": "milyarlarca dolarlık alımları yöneten savvy games group ceo su görevinden ayrıldı",
+      "ozet": "şirketin ceo'su görevinden ayrıldı ve yeni yönetim arayışına başlandı",
       "gorsel": {
-        "durum": "var",
-        "sayi": 10,
-        "oyun": "Pokémon: Let's Go, Eevee!",
+        "durum": "yok",
+        "sayi": 0,
+        "oyun": null,
         "seri_sayi": 0,
         "seri": null,
-        "temsili": true
+        "temsili": false
       },
-      "baslik": "CEO of Saudi Arabia's Savvy Games Group Brian Ward s..."
+      "baslik": "Brian Ward steps down as Savvy Games Group CEO"
     },
     {
-      "sira": 4,
-      "aday_index": 4,
+      "sira": 2,
+      "aday_index": 2,
       "tier": "B",
-      "title": "I Am Begging One Cool Billionaire To Take Up Double Fine’s Offer To Fund Brutal Legend 2",
+      "title": "Life is Strange developer Don't Nod look primed for layoffs, as the studio announces a \"transformation intitiative\"",
       "kaynak_sayisi": 2,
       "reddit_oy": 0,
       "reddit_yorum": 0,
-      "url": "https://www.gamespot.com/articles/i-am-begging-one-cool-billionaire-to-take-up-double-fines-offer-to-fund-brutal-legend-2",
+      "url": "https://www.rockpapershotgun.com/life-is-strange-developer-dont-nod-look-primed-for-layoffs-as-the-studio-announces-a-transformation-intitiative",
       "aday": {
-        "key": "490a23656b996c55",
-        "title": "I Am Begging One Cool Billionaire To Take Up Double Fine’s Offer To Fund Brutal Legend 2",
-        "url": "https://www.gamespot.com/articles/i-am-begging-one-cool-billionaire-to-take-up-double-fines-offer-to-fund-brutal-legend-2",
-        "summary": "What's next for Double Fine following its split from Microsoft and Xbox ? A whole lot, as the Psychonauts developer has multiple projects that it wants fans to vote on--including Brutal Legend 2, if you have a spare $100 million lying around. The studio is currently seeking a more modest $400,000 on Kickstarter to fund its next project--with only a single stretch goal of $100 million--and at the time of writing, has secured $288,000 in pledges. Double Fine will be hosting its own two-week game jam called Amnesia Fortnight--not to be confused with the horror game series--and members of the stud",
-        "published": "2026-09-01T13:41:36+00:00",
-        "age_hours": 0.5,
+        "key": "13c550fd698f9d69",
+        "title": "Life is Strange developer Don't Nod look primed for layoffs, as the studio announces a \"transformation intitiative\"",
+        "url": "https://www.rockpapershotgun.com/life-is-strange-developer-dont-nod-look-primed-for-layoffs-as-the-studio-announces-a-transformation-intitiative",
+        "summary": "It is unfortunately that time of day again (because this truly does seem to be a daily occurrence at this point). Back in June, things weren't looking so hot for Life is Strange studio Don't Nod, as it appeared that they'd be out of cash come this November . Now, it looks like the studio is preparing for layoffs. Read more",
+        "published": "2026-09-01T17:04:29+00:00",
+        "age_hours": 0.1,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
         "tags": [
-          "mainstream"
+          "mainstream",
+          "pc"
         ],
         "source_count": 2,
         "sources": [
-          "gamespot",
-          "ign"
+          "eurogamer",
+          "rps"
         ],
-        "rank_score": 4.69,
+        "rank_score": 4.9,
         "members": [
           {
-            "hash": "490a23656b996c55",
-            "url": "https://www.gamespot.com/articles/i-am-begging-one-cool-billionaire-to-take-up-double-fines-offer-to-fund-brutal-legend-2",
-            "title": "I Am Begging One Cool Billionaire To Take Up Double Fine’s Offer To Fund Brutal Legend 2",
-            "summary": "What's next for Double Fine following its split from Microsoft and Xbox ? A whole lot, as the Psychonauts developer has multiple projects that it wants fans to vote on--including Brutal Legend 2, if you have a spare $100 million lying around. The studio is currently seeking a more modest $400,000 on Kickstarter to fund its next project--with only a single stretch goal of $100 million--and at the time of writing, has secured $288,000 in pledges. Double Fine will be hosting its own two-week game jam called Amnesia Fortnight--not to be confused with the horror game series--and members of the stud",
-            "published": "2026-09-01T13:41:36+00:00",
-            "age_hours": 0.5,
-            "image": "https://www.gamespot.com/wp-content/uploads/2026/09/Brutal-Legend.jpg?w=300",
-            "source_id": "gamespot",
-            "source_name": "GameSpot",
+            "hash": "13c550fd698f9d69",
+            "url": "https://www.rockpapershotgun.com/life-is-strange-developer-dont-nod-look-primed-for-layoffs-as-the-studio-announces-a-transformation-intitiative",
+            "title": "Life is Strange developer Don't Nod look primed for layoffs, as the studio announces a \"transformation intitiative\"",
+            "summary": "It is unfortunately that time of day again (because this truly does seem to be a daily occurrence at this point). Back in June, things weren't looking so hot for Life is Strange studio Don't Nod, as it appeared that they'd be out of cash come this November . Now, it looks like the studio is preparing for layoffs. Read more",
+            "published": "2026-09-01T17:04:29+00:00",
+            "age_hours": 0.1,
+            "image": "https://assetsio.gnwcdn.com/life-is-strange-1-max-chloe.jpg?width=690&quality=85&format=jpg&auto=webp",
+            "source_id": "rps",
+            "source_name": "Rock Paper Shotgun",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.9,
+            "tags": [
+              "mainstream",
+              "pc"
+            ]
+          },
+          {
+            "hash": "c432070d6d1cefac",
+            "url": "https://www.eurogamer.net/dont-nod-layoffs-restructuring-aphelion",
+            "title": "Life is Strange and Aphelion studio Don't Nod probably facing layoffs again, as it announces ominous-sounding \"transformation initiative\"",
+            "summary": "French game developer and publisher Don't Nod - creator of the Life is Strange series and games like Remember Me , Vampyr , Banishers , Jusant and most recently Aphelion - seems as though it's about to enter another round of layoffs. Read more",
+            "published": "2026-09-01T13:51:29+00:00",
+            "age_hours": 3.3,
+            "image": "https://assetsio.gnwcdn.com/life-is-strange-max-chloe.jpg?width=690&quality=85&format=jpg&auto=webp",
+            "source_id": "eurogamer",
+            "source_name": "Eurogamer",
             "lang": "en",
             "kind": "news",
             "bucket": "news",
@@ -345,17 +167,80 @@
             "tags": [
               "mainstream"
             ]
+          }
+        ]
+      },
+      "oyun_adi": "Life is Strange",
+      "ozet": "maddi sıkıntılar yaşayan stüdyo yeniden yapılanma sürecinde işten çıkarmalara hazırlanıyor",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 8,
+        "oyun": "Life Is Strange",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": false
+      },
+      "baslik": "Life is Strange"
+    },
+    {
+      "sira": 3,
+      "aday_index": 3,
+      "tier": "B",
+      "title": "Double Fine are all in on making Brutal Legend 2, if you're willing to give them $100 million in their game jam Kickstarter, anyway",
+      "kaynak_sayisi": 2,
+      "reddit_oy": 0,
+      "reddit_yorum": 0,
+      "url": "https://www.rockpapershotgun.com/double-fine-are-all-in-on-making-brutal-legend-2-if-youre-willing-to-give-them-100-million-in-their-game-jam-kickstarter-anyway",
+      "aday": {
+        "key": "44befd99b4befb4b",
+        "title": "Double Fine are all in on making Brutal Legend 2, if you're willing to give them $100 million in their game jam Kickstarter, anyway",
+        "url": "https://www.rockpapershotgun.com/double-fine-are-all-in-on-making-brutal-legend-2-if-youre-willing-to-give-them-100-million-in-their-game-jam-kickstarter-anyway",
+        "summary": "Under Microsoft's ownership, it was probably a safe bet that Double Fine would never get to make a Brutal Legend 2, even in this IP-obsessed world we find ourselves in. However! Microsoft don't own Double Fine anymore , and so the once again indie developer can more or less do what they want. Which they're already doing, in fact, as they're currently hosting a game jam Kickstarter that includes a stretch goal that'll see them making Brutal Legend 2. If you give them $100 million. Read more",
+        "published": "2026-09-01T16:31:35+00:00",
+        "age_hours": 0.6,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream",
+          "pc"
+        ],
+        "source_count": 2,
+        "sources": [
+          "kotaku",
+          "rps"
+        ],
+        "rank_score": 4.89,
+        "members": [
+          {
+            "hash": "44befd99b4befb4b",
+            "url": "https://www.rockpapershotgun.com/double-fine-are-all-in-on-making-brutal-legend-2-if-youre-willing-to-give-them-100-million-in-their-game-jam-kickstarter-anyway",
+            "title": "Double Fine are all in on making Brutal Legend 2, if you're willing to give them $100 million in their game jam Kickstarter, anyway",
+            "summary": "Under Microsoft's ownership, it was probably a safe bet that Double Fine would never get to make a Brutal Legend 2, even in this IP-obsessed world we find ourselves in. However! Microsoft don't own Double Fine anymore , and so the once again indie developer can more or less do what they want. Which they're already doing, in fact, as they're currently hosting a game jam Kickstarter that includes a stretch goal that'll see them making Brutal Legend 2. If you give them $100 million. Read more",
+            "published": "2026-09-01T16:31:35+00:00",
+            "age_hours": 0.6,
+            "image": "https://assetsio.gnwcdn.com/brutal-legend.jpg?width=690&quality=85&format=jpg&auto=webp",
+            "source_id": "rps",
+            "source_name": "Rock Paper Shotgun",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.9,
+            "tags": [
+              "mainstream",
+              "pc"
+            ]
           },
           {
-            "hash": "a335c2e20afa038d",
-            "url": "https://www.ign.com/articles/after-being-ditched-by-xbox-double-fine-says-itll-make-brtal-legend-2-if-its-amnesia-fortnight-2026-kickstarter-raises-an-impossible-sounding-100-million",
-            "title": "After Being Ditched by Xbox, Double Fine Says It'll Make Brütal Legend 2 If Its Amnesia Fortnight 2026 Kickstarter Raises an Impossible-Sounding $100 Million",
-            "summary": "Psychonauts and Costume Quest maker Double Fine has launched its new game development Kickstarter project after cutting ties with Xbox, and says it'll make Brütal Legend 2 if it raises an impossible-sounding $100 million.",
-            "published": "2026-09-01T10:19:59+00:00",
-            "age_hours": 3.9,
-            "image": "https://assets-prd.ignimgs.com/2026/09/01/brutal-legend-xbox-1788257628884.jpeg",
-            "source_id": "ign",
-            "source_name": "IGN",
+            "hash": "d8bc13a4666d3b74",
+            "url": "https://kotaku.com/brutal-legend-2-double-fine-100-million-kickstarter-2000730205",
+            "title": "Double Fine Promises To Make Brütal Legend 2 But Only If Fans Give Them $100 Million",
+            "summary": "That's an ambitious-ass stretch goal for a Kickstarter, but not impossible",
+            "published": "2026-09-01T14:15:22+00:00",
+            "age_hours": 2.9,
+            "image": "https://kotaku.com/app/uploads/2026/09/brutallegendozzy-1280x720.jpg",
+            "source_id": "kotaku",
+            "source_name": "Kotaku",
             "lang": "en",
             "kind": "news",
             "bucket": "news",
@@ -367,7 +252,7 @@
         ]
       },
       "oyun_adi": "Brutal Legend 2",
-      "ozet": "stüdyo ayrılığın ardından hayranların oylaması için yeni projeler duyurdu",
+      "ozet": "stüdyo dev bütçe verilmesi halinde devam oyununu yapmaya hazır",
       "gorsel": {
         "durum": "yok",
         "sayi": 0,
@@ -379,62 +264,62 @@
       "baslik": "Brutal Legend 2"
     },
     {
-      "sira": 5,
-      "aday_index": 5,
+      "sira": 4,
+      "aday_index": 4,
       "tier": "B",
-      "title": "Nintendo Fans Are Convinced Ubisoft Revealed The Next Direct Date",
+      "title": "The Witcher 3: Songs of Past looked alright in its behind-closed-doors preview, though I'm more enticed by the remaster’s combat upgrades",
       "kaynak_sayisi": 2,
       "reddit_oy": 0,
       "reddit_yorum": 0,
-      "url": "https://www.nintendolife.com/news/2026/09/nintendo-fans-are-convinced-ubisoft-revealed-the-next-direct-date",
+      "url": "https://www.rockpapershotgun.com/the-witcher-3-songs-of-past-looked-alright-in-its-behind-closed-doors-preview-though-im-more-enticed-by-the-remasters-combat-upgrades",
       "aday": {
-        "key": "1eaa1a8ad1a93eab",
-        "title": "Nintendo Fans Are Convinced Ubisoft Revealed The Next Direct Date",
-        "url": "https://www.nintendolife.com/news/2026/09/nintendo-fans-are-convinced-ubisoft-revealed-the-next-direct-date",
-        "summary": "Here we go. If there's one thing Nintendo fans love to speculate about, it's when on earth we'll see the next Direct broadcast. Not that we don't have quite enough on our plates right now, thank you very much. Fire Emblem: Fortune's Weave is right around the corner and Nintendo Switch Sports Resort launches in October, not to mention there's a seemingly never-ending avalanche of third-party titles and indie games. But we want more – we always want more. Read the full article on nintendolife.com",
-        "published": "2026-09-01T12:30:00+00:00",
-        "age_hours": 1.7,
+        "key": "b61cb3905dc55390",
+        "title": "The Witcher 3: Songs of Past looked alright in its behind-closed-doors preview, though I'm more enticed by the remaster’s combat upgrades",
+        "url": "https://www.rockpapershotgun.com/the-witcher-3-songs-of-past-looked-alright-in-its-behind-closed-doors-preview-though-im-more-enticed-by-the-remasters-combat-upgrades",
+        "summary": "Well, I say behind-closed-doors. It turns out that if I wanted to watch a prerecorded saunter through a chunk of The Witcher III: Wild Hunt ’s Songs of the Past expansion , I could have just tuned into the Gamescom livestream , rather than travelling to Germany before parking myself in an almost pitch-black miniature theatre for 45 minutes. Now my by-touch handwritten notes are completely illegible, and I don’t even get to feel smug about attending a super secret preview. Still, the preview – which like Songs of the Past itself, was a joint operation between CD Projekt Red and co-devs Fool’s T",
+        "published": "2026-09-01T16:06:09+00:00",
+        "age_hours": 1.1,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
         "tags": [
           "mainstream",
-          "nintendo"
+          "pc"
         ],
         "source_count": 2,
         "sources": [
           "kotaku",
-          "nintendolife"
+          "rps"
         ],
-        "rank_score": 4.66,
+        "rank_score": 4.88,
         "members": [
           {
-            "hash": "1eaa1a8ad1a93eab",
-            "url": "https://www.nintendolife.com/news/2026/09/nintendo-fans-are-convinced-ubisoft-revealed-the-next-direct-date",
-            "title": "Nintendo Fans Are Convinced Ubisoft Revealed The Next Direct Date",
-            "summary": "Here we go. If there's one thing Nintendo fans love to speculate about, it's when on earth we'll see the next Direct broadcast. Not that we don't have quite enough on our plates right now, thank you very much. Fire Emblem: Fortune's Weave is right around the corner and Nintendo Switch Sports Resort launches in October, not to mention there's a seemingly never-ending avalanche of third-party titles and indie games. But we want more – we always want more. Read the full article on nintendolife.com",
-            "published": "2026-09-01T12:30:00+00:00",
-            "age_hours": 1.7,
-            "image": "https://images.nintendolife.com/31420a1dc82a5/large.jpg",
-            "source_id": "nintendolife",
-            "source_name": "Nintendo Life",
+            "hash": "b61cb3905dc55390",
+            "url": "https://www.rockpapershotgun.com/the-witcher-3-songs-of-past-looked-alright-in-its-behind-closed-doors-preview-though-im-more-enticed-by-the-remasters-combat-upgrades",
+            "title": "The Witcher 3: Songs of Past looked alright in its behind-closed-doors preview, though I'm more enticed by the remaster’s combat upgrades",
+            "summary": "Well, I say behind-closed-doors. It turns out that if I wanted to watch a prerecorded saunter through a chunk of The Witcher III: Wild Hunt ’s Songs of the Past expansion , I could have just tuned into the Gamescom livestream , rather than travelling to Germany before parking myself in an almost pitch-black miniature theatre for 45 minutes. Now my by-touch handwritten notes are completely illegible, and I don’t even get to feel smug about attending a super secret preview. Still, the preview – which like Songs of the Past itself, was a joint operation between CD Projekt Red and co-devs Fool’s T",
+            "published": "2026-09-01T16:06:09+00:00",
+            "age_hours": 1.1,
+            "image": "https://assetsio.gnwcdn.com/witcher-3-songs-of-the-past-04.jpg?width=690&quality=85&format=jpg&auto=webp",
+            "source_id": "rps",
+            "source_name": "Rock Paper Shotgun",
             "lang": "en",
             "kind": "news",
             "bucket": "news",
-            "weight": 0.7,
+            "weight": 0.9,
             "tags": [
               "mainstream",
-              "nintendo"
+              "pc"
             ]
           },
           {
-            "hash": "785f9537d5327570",
-            "url": "https://kotaku.com/ubisoft-leaked-nintendo-direct-date-2000729913",
-            "title": "Fans Think Ubisoft Just Accidentally Revealed The Date Of The Next Nintendo Direct",
-            "summary": "If true, I guess we already know one game we'll be seeing",
-            "published": "2026-08-31T16:20:56+00:00",
-            "age_hours": 21.8,
-            "image": "https://kotaku.com/app/uploads/2026/08/just-dance.jpg",
+            "hash": "80fa3b045fd43124",
+            "url": "https://kotaku.com/50-minutes-behind-closed-doors-with-the-witcher-3-songs-of-the-past-shows-an-expansion-giving-fans-exactly-what-they-want-2000730196",
+            "title": "50 Minutes Behind Closed Doors With The Witcher 3: Songs Of The Past Shows An Expansion Trying To Give Fans Exactly What They Want",
+            "summary": "Old friends return and new monsters menace in what looks like a very classic CD Projekt Red RPG expansion",
+            "published": "2026-09-01T13:15:10+00:00",
+            "age_hours": 3.9,
+            "image": "https://kotaku.com/app/uploads/2026/09/son-of-past-1280x720.jpg",
             "source_id": "kotaku",
             "source_name": "Kotaku",
             "lang": "en",
@@ -447,34 +332,115 @@
           }
         ]
       },
-      "oyun_adi": null,
-      "ozet": "nintendo hayranları ubisoft un yeni direct tarihini sızdırdığına inanıyor",
+      "oyun_adi": "The Witcher 3: Wild Hunt",
+      "ozet": "gizli kapılar arkasında gösterilen genişleme paketinin savaş geliştirmeleri dikkat çekti",
       "gorsel": {
-        "durum": "az",
-        "sayi": 2,
-        "oyun": "Fire Emblem Engage",
+        "durum": "var",
+        "sayi": 19,
+        "oyun": "The Witcher 3: Wild Hunt",
         "seri_sayi": 0,
         "seri": null,
-        "temsili": true
+        "temsili": false
       },
-      "baslik": "Nintendo Fans Are Convinced Ubisoft Revealed The Nex..."
+      "baslik": "The Witcher 3: Wild Hunt"
+    },
+    {
+      "sira": 5,
+      "aday_index": 5,
+      "tier": "B",
+      "title": "Star Wars: Zero Company devs left without pay, report claims, with \"most\" staff furloughed prior to launch",
+      "kaynak_sayisi": 2,
+      "reddit_oy": 0,
+      "reddit_yorum": 0,
+      "url": "https://www.rockpapershotgun.com/star-wars-zero-company-devs-left-without-pay-report-claims-with-most-staff-furloughed-prior-to-launch",
+      "aday": {
+        "key": "755da3cf0cddecd6",
+        "title": "Star Wars: Zero Company devs left without pay, report claims, with \"most\" staff furloughed prior to launch",
+        "url": "https://www.rockpapershotgun.com/star-wars-zero-company-devs-left-without-pay-report-claims-with-most-staff-furloughed-prior-to-launch",
+        "summary": "Prior to releasing Star Wars Zero Company last week, developers Bit Reactor reportedly furloughed \"most\" of the team who made it, seemingly leaving said staff in limbo. Read more",
+        "published": "2026-09-01T11:44:31+00:00",
+        "age_hours": 5.4,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream",
+          "pc"
+        ],
+        "source_count": 2,
+        "sources": [
+          "pcgamer",
+          "rps"
+        ],
+        "rank_score": 4.79,
+        "members": [
+          {
+            "hash": "755da3cf0cddecd6",
+            "url": "https://www.rockpapershotgun.com/star-wars-zero-company-devs-left-without-pay-report-claims-with-most-staff-furloughed-prior-to-launch",
+            "title": "Star Wars: Zero Company devs left without pay, report claims, with \"most\" staff furloughed prior to launch",
+            "summary": "Prior to releasing Star Wars Zero Company last week, developers Bit Reactor reportedly furloughed \"most\" of the team who made it, seemingly leaving said staff in limbo. Read more",
+            "published": "2026-09-01T11:44:31+00:00",
+            "age_hours": 5.4,
+            "image": "https://assetsio.gnwcdn.com/star-wars-zero-company-devs-furloughed-01.jpg?width=690&quality=85&format=jpg&auto=webp",
+            "source_id": "rps",
+            "source_name": "Rock Paper Shotgun",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.9,
+            "tags": [
+              "mainstream",
+              "pc"
+            ]
+          },
+          {
+            "hash": "f3b811238da4b86b",
+            "url": "https://www.pcgamer.com/gaming-industry/the-studio-behind-star-wars-zero-company-which-is-currently-a-steam-bestseller-has-reportedly-furloughed-the-majority-of-its-staff",
+            "title": "The studio behind Star Wars Zero Company, which is currently a Steam bestseller, has reportedly furloughed the majority of its staff",
+            "summary": "Uncertainty around the TTRPG's performance is to blame.",
+            "published": "2026-09-01T04:27:31+00:00",
+            "age_hours": 12.7,
+            "image": "https://cdn.mos.cms.futurecdn.net/wktiJav7qEhfcxgNMejoFR-1280-80.jpg",
+            "source_id": "pcgamer",
+            "source_name": "PC Gamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "Star Wars: Zero Company",
+      "ozet": "oyunun geliştiricileri çıkış öncesi ücretsiz izne çıkarıldı ve maaş alamadı",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 12,
+        "oyun": "Star Wars Zero Company",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": false
+      },
+      "baslik": "Star Wars: Zero Company"
     },
     {
       "sira": 6,
       "aday_index": 6,
       "tier": "B",
-      "title": "Up to 80% of the Team Behind Star Wars' Best-Reviewed Game in Years was Furloughed Before Launch",
+      "title": "New Sony Policy Could Lead To Legal Action Against Vocal PS5 Disc Critics",
       "kaynak_sayisi": 2,
       "reddit_oy": 0,
       "reddit_yorum": 0,
-      "url": "https://www.polygon.com/star-wars-zero-company-bit-reactor-furlough",
+      "url": "https://www.polygon.com/ps5-disc-sony-harassment-policy-digital-games",
       "aday": {
-        "key": "cb4ec7a1ab2deab7",
-        "title": "Up to 80% of the Team Behind Star Wars' Best-Reviewed Game in Years was Furloughed Before Launch",
-        "url": "https://www.polygon.com/star-wars-zero-company-bit-reactor-furlough",
-        "summary": "Star Wars Zero Company developer Bit Reactor, formed by XCOM veterans, appears to have run out of money amid a bitter disupte",
-        "published": "2026-09-01T11:24:55+00:00",
-        "age_hours": 2.8,
+        "key": "56deaed93a8398df",
+        "title": "New Sony Policy Could Lead To Legal Action Against Vocal PS5 Disc Critics",
+        "url": "https://www.polygon.com/ps5-disc-sony-harassment-policy-digital-games",
+        "summary": "Sony announces aggressive new measures amid an ongoing PS5 protest that has plagued games like Marvel's Wolverine",
+        "published": "2026-09-01T16:51:02+00:00",
+        "age_hours": 0.3,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -486,16 +452,16 @@
           "kotaku",
           "polygon"
         ],
-        "rank_score": 4.64,
+        "rank_score": 4.69,
         "members": [
           {
-            "hash": "cb4ec7a1ab2deab7",
-            "url": "https://www.polygon.com/star-wars-zero-company-bit-reactor-furlough",
-            "title": "Up to 80% of the Team Behind Star Wars' Best-Reviewed Game in Years was Furloughed Before Launch",
-            "summary": "Star Wars Zero Company developer Bit Reactor, formed by XCOM veterans, appears to have run out of money amid a bitter disupte",
-            "published": "2026-09-01T11:24:55+00:00",
-            "age_hours": 2.8,
-            "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/08/star-wars-zero-company-review-header.jpg",
+            "hash": "56deaed93a8398df",
+            "url": "https://www.polygon.com/ps5-disc-sony-harassment-policy-digital-games",
+            "title": "New Sony Policy Could Lead To Legal Action Against Vocal PS5 Disc Critics",
+            "summary": "Sony announces aggressive new measures amid an ongoing PS5 protest that has plagued games like Marvel's Wolverine",
+            "published": "2026-09-01T16:51:02+00:00",
+            "age_hours": 0.3,
+            "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/chorus/uploads/chorus_asset/file/24165398/Ragnarok_Ratatoskr_2.jpg",
             "source_id": "polygon",
             "source_name": "Polygon",
             "lang": "en",
@@ -507,13 +473,13 @@
             ]
           },
           {
-            "hash": "9d8c7dfc7e6098a3",
-            "url": "https://kotaku.com/studio-behind-the-best-reviewed-star-wars-game-in-22-years-furloughed-up-to-80-percent-of-its-staff-2000730078",
-            "title": "Studio Behind The Best-Reviewed Star Wars Game In 22 Years Furloughed Up To 80 Percent Of Its Staff",
-            "summary": "The cofounders of Bit Reactor are embroiled in an ugly lawsuit",
-            "published": "2026-09-01T04:09:03+00:00",
-            "age_hours": 10.0,
-            "image": "https://kotaku.com/app/uploads/2026/08/ss_68d5acedd1b34badb379215eaf2bd0af3f43c3b1.1920x1080-1280x720.jpg",
+            "hash": "ae8a1c738da722a8",
+            "url": "https://kotaku.com/sony-playstation-customer-service-harassment-discs-2000730211",
+            "title": "Sony Institutes New Customer Anti-Harassment Policy, Which May Result In Legal Or Criminal Action If Broken",
+            "summary": "PlayStation has been receiving an uptick in online complaints after announcing it would stop manufacturing discs in 2028",
+            "published": "2026-09-01T13:45:34+00:00",
+            "age_hours": 3.4,
+            "image": "https://kotaku.com/app/uploads/2026/08/Wolverinefaceps5-1280x720.jpg",
             "source_id": "kotaku",
             "source_name": "Kotaku",
             "lang": "en",
@@ -526,17 +492,17 @@
           }
         ]
       },
-      "oyun_adi": "Star Wars Zero Company",
-      "ozet": "xcom veterânlarının kurduğu geliştirici para bittiği için personeli izne ayırdı",
+      "oyun_adi": "Marvel's Wolverine",
+      "ozet": "yeni politika diskli sürüm eleştirmenlerine karşı yasal işlem kapısını araladı",
       "gorsel": {
         "durum": "var",
-        "sayi": 12,
-        "oyun": "Star Wars Zero Company",
+        "sayi": 13,
+        "oyun": "Marvel's Wolverine",
         "seri_sayi": 0,
         "seri": null,
         "temsili": false
       },
-      "baslik": "Star Wars Zero Company"
+      "baslik": "Marvel's Wolverine"
     }
   ]
 }
