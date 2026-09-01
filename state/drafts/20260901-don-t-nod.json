@@ -1,0 +1,203 @@
+{
+  "_kaynak": "https://www.rockpapershotgun.com/life-is-strange-developer-dont-nod-look-primed-for-layoffs-as-the-studio-announces-a-transformation-intitiative",
+  "_aday_index": 1,
+  "_aday": {
+    "key": "13c550fd698f9d69",
+    "title": "Life is Strange developer Don't Nod look primed for layoffs, as the studio announces a \"transformation intitiative\"",
+    "url": "https://www.rockpapershotgun.com/life-is-strange-developer-dont-nod-look-primed-for-layoffs-as-the-studio-announces-a-transformation-intitiative",
+    "summary": "It is unfortunately that time of day again (because this truly does seem to be a daily occurrence at this point). Back in June, things weren't looking so hot for Life is Strange studio Don't Nod, as it appeared that they'd be out of cash come this November . Now, it looks like the studio is preparing for layoffs. Read more",
+    "published": "2026-09-01T17:04:29+00:00",
+    "age_hours": 0.1,
+    "lang": "en",
+    "kind": "news",
+    "bucket": "news",
+    "tags": [
+      "mainstream",
+      "pc"
+    ],
+    "source_count": 2,
+    "sources": [
+      "eurogamer",
+      "rps"
+    ],
+    "rank_score": 4.9,
+    "members": [
+      {
+        "hash": "13c550fd698f9d69",
+        "url": "https://www.rockpapershotgun.com/life-is-strange-developer-dont-nod-look-primed-for-layoffs-as-the-studio-announces-a-transformation-intitiative",
+        "title": "Life is Strange developer Don't Nod look primed for layoffs, as the studio announces a \"transformation intitiative\"",
+        "summary": "It is unfortunately that time of day again (because this truly does seem to be a daily occurrence at this point). Back in June, things weren't looking so hot for Life is Strange studio Don't Nod, as it appeared that they'd be out of cash come this November . Now, it looks like the studio is preparing for layoffs. Read more",
+        "published": "2026-09-01T17:04:29+00:00",
+        "age_hours": 0.1,
+        "image": "https://assetsio.gnwcdn.com/life-is-strange-1-max-chloe.jpg?width=690&quality=85&format=jpg&auto=webp",
+        "source_id": "rps",
+        "source_name": "Rock Paper Shotgun",
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "weight": 0.9,
+        "tags": [
+          "mainstream",
+          "pc"
+        ]
+      },
+      {
+        "hash": "c432070d6d1cefac",
+        "url": "https://www.eurogamer.net/dont-nod-layoffs-restructuring-aphelion",
+        "title": "Life is Strange and Aphelion studio Don't Nod probably facing layoffs again, as it announces ominous-sounding \"transformation initiative\"",
+        "summary": "French game developer and publisher Don't Nod - creator of the Life is Strange series and games like Remember Me , Vampyr , Banishers , Jusant and most recently Aphelion - seems as though it's about to enter another round of layoffs. Read more",
+        "published": "2026-09-01T13:51:29+00:00",
+        "age_hours": 3.3,
+        "image": "https://assetsio.gnwcdn.com/life-is-strange-max-chloe.jpg?width=690&quality=85&format=jpg&auto=webp",
+        "source_id": "eurogamer",
+        "source_name": "Eurogamer",
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "weight": 0.7,
+        "tags": [
+          "mainstream"
+        ]
+      }
+    ]
+  },
+  "_kaynak_sayisi": 2,
+  "_cikarim": [
+    {
+      "olgu": "life is strange stüdyosu don't nod yeniden toplu işten çıkarmalara hazırlanıyor.",
+      "alinti": "Life is Strange and Aphelion studio Don't Nod probably facing layoffs again"
+    },
+    {
+      "olgu": "yönetim küçülme kararını dönüşüm girişimi adı altında duyuruyor.",
+      "alinti": "as it announces ominous-sounding \"transformation initiative\""
+    },
+    {
+      "olgu": "stüdyonun haziran ayı raporları nakit rezervinin kasım ayında tükenme noktasına geleceğini gösteriyordu.",
+      "alinti": "it appeared that they'd be out of cash come this November"
+    }
+  ],
+  "_is_leak": false,
+  "_model": "gemini-3.6-flash",
+  "tier": "B",
+  "category": "kapanma",
+  "caption": "life is strange ve jusant gibi oyunlarla tanıdığımız don't nod zorlu bir dönemden geçiyor. haziran ayında ortaya çıkan finansal tablolar kasım ayı için tehlike çanları çalıyordu. hikaye odaklı bağımsız stüdyoların nakit krizini aşmak için bu tür adımlar atması sektörün mevcut durumunu özetliyor. #dontnod #lifeisstrange",
+  "game": "don't nod",
+  "search_name": null,
+  "image_candidates": [
+    "Life is Strange",
+    "Jusant",
+    "Banishers: Ghosts of New Eden"
+  ],
+  "series_fallback": [],
+  "representative_games": [
+    "Life is Strange"
+  ],
+  "credit": "don't nod",
+  "pages": [
+    {
+      "type": "cover",
+      "title": "life is strange ekibinde yeni işten çıkarma dalgası",
+      "image": "state/img/life-is-strange-ar69ks.jpg",
+      "credit": "don't nod"
+    },
+    {
+      "type": "text",
+      "title": "bütçe krizinin faturası ekibe kesiliyor",
+      "paragraph": "hikaye odaklı oyunlarıyla öne çıkan don't nod, dev canlı hizmet oyunlarının aksine nakit akışını korumakta zorlanıyor. stüdyo bütçe krizini çözmek yerine kadroyu daraltma yolunu seçiyor.",
+      "dayanak": 0,
+      "bullets": [
+        "yönetim bu küçülme sürecini resmi metinlerde dönüşüm girişimi olarak tanımlıyor.",
+        "ekibin haziran ayındaki finansal raporu kasım ayında paranın biteceğine işaret ediyordu."
+      ],
+      "bullet_dayanak": [
+        1,
+        2
+      ],
+      "image": "state/img/life-is-strange-b6rjjpluz7vzprxny8oi.jpg",
+      "credit": "don't nod"
+    },
+    {
+      "type": "outro",
+      "question": "hikaye odaklı stüdyoların ayakta kalmakta bu kadar zorlanması neden kaynaklanıyor?",
+      "ctas": [
+        "sektördeki bu daralma hakkındaki görüşünü yorumlarda anlatabilirsin"
+      ],
+      "image": "state/img/life-is-strange-nw8gupltr8pejuf0wlbs.jpg",
+      "credit": "don't nod"
+    }
+  ],
+  "_hashes": [
+    "13c550fd698f9d69",
+    "c432070d6d1cefac"
+  ],
+  "_kume_key": "13c550fd698f9d69",
+  "_gorsel_temsili": false,
+  "_image_pool": [
+    {
+      "id": "ar69ks",
+      "kind": "artwork",
+      "w": 3840,
+      "h": 1240,
+      "credit": "don't nod",
+      "oyun": "Life Is Strange"
+    },
+    {
+      "id": "ar4p6o",
+      "kind": "artwork",
+      "w": 4051,
+      "h": 800,
+      "credit": "don't nod",
+      "oyun": "Life Is Strange"
+    },
+    {
+      "id": "lszanbcwri0hqwpktbk0",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "don't nod",
+      "oyun": "Life Is Strange"
+    },
+    {
+      "id": "azrk1nu49s6o75bb962n",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "don't nod",
+      "oyun": "Life Is Strange"
+    },
+    {
+      "id": "b6rjjpluz7vzprxny8oi",
+      "kind": "screenshot",
+      "w": 1878,
+      "h": 1056,
+      "credit": "don't nod",
+      "oyun": "Life Is Strange"
+    },
+    {
+      "id": "b5qtx5jvklrvchh21isj",
+      "kind": "screenshot",
+      "w": 1562,
+      "h": 879,
+      "credit": "don't nod",
+      "oyun": "Life Is Strange"
+    },
+    {
+      "id": "nw8gupltr8pejuf0wlbs",
+      "kind": "screenshot",
+      "w": 1280,
+      "h": 720,
+      "credit": "don't nod",
+      "oyun": "Life Is Strange"
+    },
+    {
+      "id": "co1r8e",
+      "kind": "cover",
+      "w": 720,
+      "h": 960,
+      "credit": "don't nod",
+      "oyun": "Life Is Strange"
+    }
+  ],
+  "_slug": "life-is-strange",
+  "_gorsel_turu": 0
+}
