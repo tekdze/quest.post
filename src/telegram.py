@@ -86,23 +86,30 @@ ISTEK_ACK = {
 # TEK KAYNAK: hem /komutlar rehberi hem kisa yardim buradan uretiliyor.
 # Yeni komut eklerken SADECE buraya yazilir; iki yeri guncelleme derdi
 # olmasin diye. Kisa yardim ilk sutundan, rehber tamamindan.
+# ⚠️ SIRA AYRI DURUYOR, KOMUT_REHBERI'nin icinde DEGIL.
+# Once icine konmustu ve `/komutlar` dogru gorunuyordu, ama KOMUT_YARDIM
+# bu listeden turetiliyor: her komut IKI KEZ listelendi ("1. /konular"
+# ve "/konular"), araya bos girdi ve "3. kartlara bak" gibi komut olmayan
+# satirlar girdi. Kullanici "komutlari ikiser ikiser aliyor" dedi
+# (2026-09-01) ve haklıydi.
+#
+# Ders: KOMUT_REHBERI turetilmis metinlerin KAYNAGI. Icine komut olmayan
+# bir sey konursa turetilen her yer bozulur. Anlatim buraya, komut oraya.
+SIRA_REHBERI = [
+    ("1. /konular", "adayları getirir. beklemek istemiyorsan menü "
+                    "saatlerini (11:10 · 17:10 · 20:10) beklemeden "
+                    "istediğin an yazabilirsin"),
+    ("2. /uret <numara>", "seçtiğini üretir. ~6-7 dakika sürer, bot "
+                          "işleme aldığını hemen söyler. kartlar "
+                          "hazır olunca buraya düşer"),
+    ("3. kartlara bak", "beğenmediysen /yeniden (metin) ya da /gorsel "
+                        "(görsel). kademe yanlışsa /c /b /a /s"),
+    ("4. /ok", "instagram'a paylaşır. bu adım geri alınamaz"),
+    ("", "elle paylaşacaksan /ok yerine /bana yaz, kartlar dosya olarak "
+         "gelir. vazgeçtiysen /iptal"),
+]
+
 KOMUT_REHBERI = [
-    # SIRA once geliyor: komutlarin ne yaptigini bilmek, hangi sirayla
-    # yazilacagini bilmek demek degil. Kullanici "hangi sirayla nasil"
-    # diye sordu ve liste bunu hicbir yerde soylemiyordu (2026-09-01).
-    ("sıra — yeni post böyle çıkar", [
-        ("1. /konular", "adayları getirir. beklemek istemiyorsan menü "
-                        "saatlerini (11:10 · 17:10 · 20:10) beklemeden "
-                        "istediğin an yazabilirsin"),
-        ("2. /uret <numara>", "seçtiğini üretir. ~6-7 dakika sürer, bot "
-                              "işleme aldığını hemen söyler. kartlar "
-                              "hazır olunca buraya düşer"),
-        ("3. kartlara bak", "beğenmediysen /yeniden (metin) ya da /gorsel "
-                            "(görsel). kademe yanlışsa /c /b /a /s"),
-        ("4. /ok", "instagram'a paylaşır. bu adım geri alınamaz"),
-        ("", "elle paylaşacaksan /ok yerine /bana yaz, kartlar dosya "
-             "olarak gelir. vazgeçtiysen /iptal"),
-    ]),
     ("günlük akış", [
         ("/konular", "günün aday haberlerini listeler. her aday için ne haberi "
                      "olduğu, kaç kaynağın yazdığı ve görsel durumu yazılı. "
@@ -150,6 +157,14 @@ REPLY_NOTU = ("birden fazla post beklerken: komutu o postun mesajına YANIT "
 def komut_rehberi() -> str:
     """`/komutlar` çıktısı: gruplu, açıklamalı tam liste."""
     satirlar = ["quest.post komutları", ""]
+    # Sira once: ne yaptigini bilmek, hangi sirayla yazilacagini bilmek
+    # demek degil. Ayri sabitten geliyor (bkz. SIRA_REHBERI notu).
+    satirlar.append("— sıra: yeni post böyle çıkar —")
+    for komut, aciklama in SIRA_REHBERI:
+        if komut:
+            satirlar.append(komut)
+        satirlar.append(f"   {aciklama}")
+    satirlar.append("")
     for baslik, komutlar in KOMUT_REHBERI:
         satirlar.append(f"— {baslik} —")
         for komut, aciklama in komutlar:
