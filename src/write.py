@@ -168,6 +168,29 @@ def api_call(path: str, payload: dict | None = None) -> dict:
                 time.sleep(RETRY_BACKOFF * attempt)
                 continue
             sys.exit(f"Gemini API'ye ulasilamadi: {exc.reason}")
+        # ⚠️ URLError YETMIYOR. Baglanti gonderim SIRASINDA kopunca
+        # (ConnectionResetError, BrokenPipeError, socket zaman asimi)
+        # istisna urllib'e sarilmadan disari kaciyor ve uretim ham
+        # traceback'le oluyor - yani gecici bir ag hatasi, yeniden
+        # denenebilecekken gunun postunu dusuruyor.
+        #
+        # Olculdu (2026-09-01 17:18 UTC): uretim
+        # "self._send_output(message_body, encode_chunked=...)" satiriyla
+        # dustu. Bu http.client'in govdeyi yazdigi yer; oradaki kopma
+        # HTTPError de URLError de degil, duz bir OSError.
+        #
+        # Hepsi OSError alt sinifi, tek dal yeterli. Ayni geri cekilme
+        # ile yeniden deneniyor: bu hatalar tanimi geregi GECICI.
+        except OSError as exc:
+            if attempt < HTTP_RETRIES:
+                wait = RETRY_BACKOFF * attempt
+                print(f"  baglanti koptu ({type(exc).__name__}), {wait} sn "
+                      f"sonra tekrar ({attempt}/{HTTP_RETRIES - 1})",
+                      file=sys.stderr)
+                time.sleep(wait)
+                continue
+            sys.exit(f"Gemini API baglantisi koptu: "
+                     f"{type(exc).__name__}: {exc}")
     sys.exit("Gemini API: tum denemeler tukendi")
 
 

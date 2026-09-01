@@ -33,6 +33,7 @@ import argparse
 import json
 import mimetypes
 import os
+import re
 import sys
 import urllib.error
 import urllib.parse
@@ -404,13 +405,34 @@ def hata_satiri(stderr: str, varsayilan: str = "") -> str:
     """
     satirlar = [s.strip() for s in (stderr or "").splitlines() if s.strip()]
     satirlar = [s for s in satirlar if len(s.strip("{}[]\",: ")) > 3]
+    # ⚠️ Python traceback'inin GOVDESI elenmeli. Olculdu (2026-09-01):
+    # baglanti kopunca Telegram'a "write.py: self._send_output(message_body,
+    # encode_chu" dustu - bu bir KOD satiri, sebep degil. Traceback'te
+    # sebep en SONDAKI "HataTipi: aciklama" satiridir; ustundeki her sey
+    # cagri zinciri.
+    satirlar = [s for s in satirlar
+                if not s.startswith(("File \"", "Traceback (", "  File \""))]
     if not satirlar:
         return varsayilan
-    # Once "hata/error/message" gecen satir: sebep genelde orada.
-    for satir in satirlar:
-        if any(k in satir.lower() for k in ("hata", "error", "message", "exception")):
+
+    # Once gercek istisna satiri: "ConnectionResetError: [Errno 104] ..."
+    # Bicim net oldugu icin aranabiliyor - buyuk harfle baslayan, "Error"
+    # ya da "Exception" ile biten bir tip adi ve ardindan iki nokta.
+    for satir in reversed(satirlar):
+        if re.match(r"^[A-Za-z_.]*(Error|Exception|Exit)\b\s*:", satir):
             return satir[:180]
-    return satirlar[-1][:180]
+    # Sonra anahtar kelime gecen satir: API govdesi genelde boyle.
+    # ⚠️ Sirasi onemli ve "message" once geliyor: JSON hatasinda
+    # `"error": {` satiri da "error" iceriyor ama ACILIS satiri, sebebi
+    # bir alttaki `"message": "Quota exceeded..."` tasiyor.
+    # Ayrica govdesi bos olan satirlar ( `{` ya da `[` ile bitenler)
+    # eleniyor - onlar yapi, icerik degil.
+    dolular = [s for s in satirlar if not s.rstrip().endswith(("{", "["))]
+    for anahtar in ("message", "hata", "exception", "error"):
+        for satir in dolular:
+            if anahtar in satir.lower():
+                return satir[:180]
+    return (dolular or satirlar)[-1][:180]
 
 
 def read_json(path: Path, default):
