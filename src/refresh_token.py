@@ -78,6 +78,8 @@ def main() -> int:
     kayit["instagram"] = {
         "yenilendi": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "kalan_gun": kalan_gun,
+        # Sonraki ay ayni soru sorulmasin diye kayitli.
+        "deger_degisti": bool(yeni and yeni != token),
     }
     tg.write_json(SURE_FILE, kayit)
 
@@ -85,15 +87,34 @@ def main() -> int:
         print(f"\nyeni jeton:\n{yeni}")
         return 0
 
+    # ⚠️ Meta cogu zaman AYNI jetonu uzatiyor, yenisini vermiyor.
+    # Olculdu (2026-09-01): aylik yenileme calisti, mesaj "secrets'taki
+    # deger hala eski, elle gir" dedi, ama /apideadline YESILDI - cunku
+    # deger degismemisti ve yapilacak bir sey yoktu.
+    #
+    # Eski mesaj her ay bu yanlis alarmi uretecekti. Karsilastirma
+    # mekanik oldugu icin kod yapiyor. Bildirim disiplini bunu
+    # gerektiriyor: her ay "bir sey yap" diyen ama gerekmeyen mesaj,
+    # gercekten gerektiginde de ciddiye alinmaz.
+    if yeni and yeni == token:
+        tg.send_text(
+            f"instagram jetonu tazelendi, ömrü {kalan_gun} gün.\n\n"
+            "değer değişmedi, yapman gereken bir şey yok."
+        )
+        print("jeton ayni: elle islem gerekmiyor")
+        return 0
+
     # Actions kendi secret'ini yazamaz: yeni jeton elle girilmeli.
     # Jeton Telegram'a YOLLANMAZ - sohbete sir dusmemeli.
     tg.send_text(
-        "instagram jetonu yenilendi.\n\n"
+        "instagram jetonu yenilendi ve DEĞER DEĞİŞTİ.\n\n"
         f"yeni jetonun ömrü {kalan_gun} gün. ancak github secrets'taki değer "
         "hâlâ eski: actions kendi secret'ını yazamıyor.\n\n"
+        "önce /apideadline yaz. instagram yeşilse acele yok.\n\n"
         "yapman gereken: bilgisayarda\n"
         "py -3.12 src/refresh_token.py --goster\n"
-        "çalıştır, çıkan jetonu IG_ACCESS_TOKEN secret'ına yapıştır."
+        "çalıştır, çıkan jetonu IG_ACCESS_TOKEN secret'ına yapıştır.\n"
+        "(bunun için .env'inde IG_ACCESS_TOKEN olmalı)"
     )
     print("telegram'a bildirildi (jeton yollanmadi)")
     return 0
