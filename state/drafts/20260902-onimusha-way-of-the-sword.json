@@ -1,0 +1,384 @@
+{
+  "_kaynak": "https://www.polygon.com/onimusha-way-of-the-sword-release-time-when-edt-pdt",
+  "_aday_index": 1,
+  "_aday": {
+    "key": "93a6be3d38d57ce0",
+    "title": "Onimusha Way of the Sword release time in your time zone",
+    "url": "https://www.polygon.com/onimusha-way-of-the-sword-release-time-when-edt-pdt",
+    "summary": "Here's when Onimusha: Way of the Sword releases in different time zones, and what you can get from pre-ordering and buying the different editions",
+    "published": "2026-09-02T04:01:16+00:00",
+    "age_hours": 4.2,
+    "lang": "en",
+    "kind": "news",
+    "bucket": "news",
+    "tags": [
+      "mainstream"
+    ],
+    "source_count": 2,
+    "sources": [
+      "nintendolife",
+      "polygon"
+    ],
+    "rank_score": 4.61,
+    "members": [
+      {
+        "hash": "93a6be3d38d57ce0",
+        "url": "https://www.polygon.com/onimusha-way-of-the-sword-release-time-when-edt-pdt",
+        "title": "Onimusha Way of the Sword release time in your time zone",
+        "summary": "Here's when Onimusha: Way of the Sword releases in different time zones, and what you can get from pre-ordering and buying the different editions",
+        "published": "2026-09-02T04:01:16+00:00",
+        "age_hours": 4.2,
+        "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/06/onimusha.jpg",
+        "source_id": "polygon",
+        "source_name": "Polygon",
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "weight": 0.7,
+        "tags": [
+          "mainstream"
+        ]
+      },
+      {
+        "hash": "6c97825d2312df73",
+        "url": "https://www.nintendolife.com/news/2026/09/round-up-the-reviews-for-onimusha-way-of-the-sword-are-in",
+        "title": "Round Up: The Reviews For Onimusha: Way Of The Sword Are In",
+        "summary": "Here's what the critics had to say. Capcom has already delivered a solid line up of games in 2026, and this week it adds to this with Onimusha: Way of the Sword . This includes a Switch 2 version, and if you haven't already seen it, here's a sample of our Nintendo Life review. We said it was a superb samurai survival, awarding it 9/10 stars. Read the full article on nintendolife.com",
+        "published": "2026-09-01T03:05:00+00:00",
+        "age_hours": 29.1,
+        "image": "https://images.nintendolife.com/5919cfe3683bd/large.jpg",
+        "source_id": "nintendolife",
+        "source_name": "Nintendo Life",
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "weight": 0.7,
+        "tags": [
+          "mainstream",
+          "nintendo"
+        ]
+      }
+    ]
+  },
+  "_kaynak_sayisi": 2,
+  "_cikarim": [
+    {
+      "olgu": "nintendo life ilk incelemesinde oyuna 10 üzerinden 9 puan vererek harika bir samuray hayatta kalma tecrübesi olarak tanımladı.",
+      "alinti": "We said it was a superb samurai survival, awarding it 9/10 stars."
+    },
+    {
+      "olgu": "capcom 2026 yılındaki güçlü oyun serisine bu hafta onimusha: way of the sword'u ekliyor.",
+      "alinti": "Capcom has already delivered a solid line up of games in 2026, and this week it adds to this with Onimusha: Way of the Sword"
+    },
+    {
+      "olgu": "oyunun sürümleri arasında bir switch 2 versiyonu da bulunuyor.",
+      "alinti": "This includes a Switch 2 version, and if you haven't already seen it"
+    },
+    {
+      "olgu": "farklı zaman dilimleri için çıkış saatleri, ön sipariş hediyeleri ve sürüm detayları açıklandı.",
+      "alinti": "releases in different time zones, and what you can get from pre-ordering and buying the different editions"
+    }
+  ],
+  "_is_leak": false,
+  "_model": "gemini-3.6-flash",
+  "tier": "B",
+  "category": "inceleme",
+  "caption": "capcom geçmişten gelen samuray mirasını modern sistemlere taşımaya devam ediyor. onimusha: way of the sword incelemelerden yüksek puanlar alarak switch 2 kütüphanesine güçlü bir giriş yaptı. serinin köklerindeki aksiyon anlayışının hayatta kalma ögeleriyle buluşması oyuncuları ikiye bölecek gibi görünüyor. #onimusha #capcom",
+  "game": "onimusha: way of the sword",
+  "search_name": "Onimusha: Way of the Sword",
+  "image_candidates": [],
+  "series_fallback": [
+    "Onimusha: Warlords"
+  ],
+  "representative_games": [],
+  "credit": "capcom",
+  "pages": [
+    {
+      "type": "cover",
+      "title": "capcom'un efsane samuray serisi geri döndü",
+      "image": "state/img/onimusha-way-of-the-sword-ar4ahh.jpg",
+      "credit": "capcom"
+    },
+    {
+      "type": "text",
+      "title": "ilk incelemeler yüksek puanla açıldı",
+      "paragraph": "nintendo life değerlendirmesinde oyuna 10 üzerinden 9 yıldız verdi. samuray temasını hayatta kalma ögeleriyle harmanlayan oyun, geçmişten gelen aksiyon mirasını başarıyla sürdürüyor.",
+      "dayanak": 0,
+      "bullets": [
+        "capcom 2026'daki güçlü çıkış takvimine bu hafta samuray macerasını ekliyor."
+      ],
+      "bullet_dayanak": [
+        1
+      ],
+      "image": "state/img/onimusha-way-of-the-sword-scus46.jpg",
+      "credit": "capcom"
+    },
+    {
+      "type": "text",
+      "title": "yeni konsola özel sürüm",
+      "paragraph": "oyun çıkışıyla birlikte switch 2 donanımına da adım atıyor. klasik mekanikleri yeni nesil taşınabilir konsola taşımak seri için önemli bir eşik.",
+      "dayanak": 2,
+      "bullets": [
+        "ön sipariş verenler farklı sürüm içeriklerine erişim kazanıyor."
+      ],
+      "bullet_dayanak": [
+        3
+      ],
+      "image": "state/img/onimusha-way-of-the-sword-steam2638890-9.jpg",
+      "credit": "capcom co., ltd."
+    },
+    {
+      "type": "outro",
+      "question": "onimusha serisinin hayatta kalma mekaniklerine kayması sence neleri değiştirdi",
+      "ctas": [
+        "tarafını seçip düşünceni yaz"
+      ],
+      "image": "state/img/onimusha-way-of-the-sword-scus43.jpg",
+      "credit": "capcom"
+    }
+  ],
+  "_hashes": [
+    "93a6be3d38d57ce0",
+    "6c97825d2312df73"
+  ],
+  "_kume_key": "93a6be3d38d57ce0",
+  "_gorsel_temsili": false,
+  "_image_pool": [
+    {
+      "id": "ar43cm",
+      "kind": "artwork",
+      "w": 3840,
+      "h": 2160,
+      "credit": "capcom",
+      "oyun": "Onimusha: Way of the Sword"
+    },
+    {
+      "id": "ar4ahh",
+      "kind": "artwork",
+      "w": 3840,
+      "h": 2160,
+      "credit": "capcom",
+      "oyun": "Onimusha: Way of the Sword"
+    },
+    {
+      "id": "ar43cl",
+      "kind": "artwork",
+      "w": 3840,
+      "h": 2160,
+      "credit": "capcom",
+      "oyun": "Onimusha: Way of the Sword"
+    },
+    {
+      "id": "ar6ho0",
+      "kind": "artwork",
+      "w": 3840,
+      "h": 1240,
+      "credit": "capcom",
+      "oyun": "Onimusha: Way of the Sword"
+    },
+    {
+      "id": "ar387l",
+      "kind": "artwork",
+      "w": 3840,
+      "h": 1240,
+      "credit": "capcom",
+      "oyun": "Onimusha: Way of the Sword"
+    },
+    {
+      "id": "ar5zgh",
+      "kind": "artwork",
+      "w": 1440,
+      "h": 1920,
+      "credit": "capcom",
+      "oyun": "Onimusha: Way of the Sword"
+    },
+    {
+      "id": "ar673s",
+      "kind": "artwork",
+      "w": 1440,
+      "h": 1920,
+      "credit": "capcom",
+      "oyun": "Onimusha: Way of the Sword"
+    },
+    {
+      "id": "ar673u",
+      "kind": "artwork",
+      "w": 1280,
+      "h": 720,
+      "credit": "capcom",
+      "oyun": "Onimusha: Way of the Sword"
+    },
+    {
+      "id": "haber-93a6be3d38d57ce0",
+      "kind": "screenshot",
+      "w": 3840,
+      "h": 2160,
+      "credit": "polygon",
+      "oyun": "Onimusha: Way of the Sword",
+      "url": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/06/onimusha.jpg",
+      "thumb": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/06/onimusha.jpg",
+      "_kaynak": "polygon"
+    },
+    {
+      "id": "haber-6c97825d2312df73",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "nintendolife",
+      "oyun": "Onimusha: Way of the Sword",
+      "url": "https://images.nintendolife.com/5919cfe3683bd/large.jpg",
+      "thumb": "https://images.nintendolife.com/5919cfe3683bd/large.jpg",
+      "_kaynak": "nintendolife"
+    },
+    {
+      "id": "scus45",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "capcom",
+      "oyun": "Onimusha: Way of the Sword"
+    },
+    {
+      "id": "scus43",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "capcom",
+      "oyun": "Onimusha: Way of the Sword"
+    },
+    {
+      "id": "scus47",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "capcom",
+      "oyun": "Onimusha: Way of the Sword"
+    },
+    {
+      "id": "scus44",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "capcom",
+      "oyun": "Onimusha: Way of the Sword"
+    },
+    {
+      "id": "scus46",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "capcom",
+      "oyun": "Onimusha: Way of the Sword"
+    },
+    {
+      "id": "steam2638890-0",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "capcom co., ltd.",
+      "oyun": "Onimusha: Way of the Sword",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2638890/40e49fbd098140a69e897dcce736cba5eae8662f/ss_40e49fbd098140a69e897dcce736cba5eae8662f.1920x1080.jpg?t=1788311809",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2638890/40e49fbd098140a69e897dcce736cba5eae8662f/ss_40e49fbd098140a69e897dcce736cba5eae8662f.600x338.jpg?t=1788311809"
+    },
+    {
+      "id": "steam2638890-1",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "capcom co., ltd.",
+      "oyun": "Onimusha: Way of the Sword",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2638890/8be802aef40ce301104a3ff5d3c6462913d57807/ss_8be802aef40ce301104a3ff5d3c6462913d57807.1920x1080.jpg?t=1788311809",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2638890/8be802aef40ce301104a3ff5d3c6462913d57807/ss_8be802aef40ce301104a3ff5d3c6462913d57807.600x338.jpg?t=1788311809"
+    },
+    {
+      "id": "steam2638890-2",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "capcom co., ltd.",
+      "oyun": "Onimusha: Way of the Sword",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2638890/b8d1f33e7777aa1d1a0a2b9af5e84fb52e1f2e1c/ss_b8d1f33e7777aa1d1a0a2b9af5e84fb52e1f2e1c.1920x1080.jpg?t=1788311809",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2638890/b8d1f33e7777aa1d1a0a2b9af5e84fb52e1f2e1c/ss_b8d1f33e7777aa1d1a0a2b9af5e84fb52e1f2e1c.600x338.jpg?t=1788311809"
+    },
+    {
+      "id": "steam2638890-3",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "capcom co., ltd.",
+      "oyun": "Onimusha: Way of the Sword",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2638890/4ee71e56889c1dc82b55e013d6bbe7f2cd2d1027/ss_4ee71e56889c1dc82b55e013d6bbe7f2cd2d1027.1920x1080.jpg?t=1788311809",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2638890/4ee71e56889c1dc82b55e013d6bbe7f2cd2d1027/ss_4ee71e56889c1dc82b55e013d6bbe7f2cd2d1027.600x338.jpg?t=1788311809"
+    },
+    {
+      "id": "steam2638890-4",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "capcom co., ltd.",
+      "oyun": "Onimusha: Way of the Sword",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2638890/faa6433a23818f7684f5c4220708d60e4e71dc13/ss_faa6433a23818f7684f5c4220708d60e4e71dc13.1920x1080.jpg?t=1788311809",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2638890/faa6433a23818f7684f5c4220708d60e4e71dc13/ss_faa6433a23818f7684f5c4220708d60e4e71dc13.600x338.jpg?t=1788311809"
+    },
+    {
+      "id": "steam2638890-5",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "capcom co., ltd.",
+      "oyun": "Onimusha: Way of the Sword",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2638890/884ef55e720a36debf01d36f742a6db07e12320f/ss_884ef55e720a36debf01d36f742a6db07e12320f.1920x1080.jpg?t=1788311809",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2638890/884ef55e720a36debf01d36f742a6db07e12320f/ss_884ef55e720a36debf01d36f742a6db07e12320f.600x338.jpg?t=1788311809"
+    },
+    {
+      "id": "steam2638890-6",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "capcom co., ltd.",
+      "oyun": "Onimusha: Way of the Sword",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2638890/ca28a3116080d0d6ab309545d08171d1b4cc7dc5/ss_ca28a3116080d0d6ab309545d08171d1b4cc7dc5.1920x1080.jpg?t=1788311809",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2638890/ca28a3116080d0d6ab309545d08171d1b4cc7dc5/ss_ca28a3116080d0d6ab309545d08171d1b4cc7dc5.600x338.jpg?t=1788311809"
+    },
+    {
+      "id": "steam2638890-7",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "capcom co., ltd.",
+      "oyun": "Onimusha: Way of the Sword",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2638890/38db13c961be5bb407a0c42387e7c111886ced5f/ss_38db13c961be5bb407a0c42387e7c111886ced5f.1920x1080.jpg?t=1788311809",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2638890/38db13c961be5bb407a0c42387e7c111886ced5f/ss_38db13c961be5bb407a0c42387e7c111886ced5f.600x338.jpg?t=1788311809"
+    },
+    {
+      "id": "steam2638890-8",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "capcom co., ltd.",
+      "oyun": "Onimusha: Way of the Sword",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2638890/40619d87927fcd2cccc4cc4c93815ce719bb8dbb/ss_40619d87927fcd2cccc4cc4c93815ce719bb8dbb.1920x1080.jpg?t=1788311809",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2638890/40619d87927fcd2cccc4cc4c93815ce719bb8dbb/ss_40619d87927fcd2cccc4cc4c93815ce719bb8dbb.600x338.jpg?t=1788311809"
+    },
+    {
+      "id": "steam2638890-9",
+      "kind": "screenshot",
+      "w": 1920,
+      "h": 1080,
+      "credit": "capcom co., ltd.",
+      "oyun": "Onimusha: Way of the Sword",
+      "url": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2638890/609dd99944f8928f8a8bd35bb08a6695f7e1fdca/ss_609dd99944f8928f8a8bd35bb08a6695f7e1fdca.1920x1080.jpg?t=1788311809",
+      "thumb": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2638890/609dd99944f8928f8a8bd35bb08a6695f7e1fdca/ss_609dd99944f8928f8a8bd35bb08a6695f7e1fdca.600x338.jpg?t=1788311809"
+    },
+    {
+      "id": "cocdt3",
+      "kind": "cover",
+      "w": 1200,
+      "h": 1600,
+      "credit": "capcom",
+      "oyun": "Onimusha: Way of the Sword"
+    }
+  ],
+  "_slug": "onimusha-way-of-the-sword",
+  "_gorsel_turu": 0
+}

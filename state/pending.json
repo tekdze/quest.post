@@ -1,3 +1,19 @@
 {
-  "kuyruk": []
+  "kuyruk": [
+    {
+      "id": "20260902-onimusha-way-of-the-sword",
+      "etiket": "normal",
+      "durum": "onay_bekliyor",
+      "baslik": "onimusha: way of the sword",
+      "draft": "state/drafts/20260902-onimusha-way-of-the-sword.json",
+      "cards_dir": "out/20260902-onimusha-way-of-the-sword",
+      "message_ids": [
+        466,
+        467,
+        468,
+        469
+      ],
+      "tier": "B"
+    }
+  ]
 }
