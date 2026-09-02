@@ -1,7 +1,7 @@
 {
-  "olusturuldu": "2026-09-02T08:10:40+00:00",
-  "oneri": 5,
-  "gerekce": "eski ve sevilmiş bir oyunun devamı için absürt bir bütçe şartı koşulması dikkat çeker.",
+  "olusturuldu": "2026-09-02T12:44:17+00:00",
+  "oneri": 4,
+  "gerekce": "oyunun popüler bir koruma yazılımından kurtulması oyuncuların dikkatini çeker",
   "adaylar": [
     {
       "sira": 1,
@@ -18,7 +18,7 @@
         "url": "https://www.gamedeveloper.com/business/report-savvy-games-group-ceo-brian-ward-departs-company",
         "summary": "'As Savvy embarks on its next period of transformational growth, this is the right time for new leadership for that evolution.'",
         "published": "2026-09-01T21:42:52+00:00",
-        "age_hours": 10.5,
+        "age_hours": 15.0,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -32,7 +32,7 @@
           "gamesindustry",
           "kotaku"
         ],
-        "rank_score": 10.78,
+        "rank_score": 10.69,
         "members": [
           {
             "hash": "4f8a7658b7e29329",
@@ -40,7 +40,7 @@
             "title": "Report: Savvy Games Group CEO Brian Ward departs company",
             "summary": "'As Savvy embarks on its next period of transformational growth, this is the right time for new leadership for that evolution.'",
             "published": "2026-09-01T21:42:52+00:00",
-            "age_hours": 10.5,
+            "age_hours": 15.0,
             "image": "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt7348a0cbe91084d7/6993018dacd57200085959c6/Savvy_Header.png?width=720&quality=80&disable=upscale",
             "source_id": "gamedeveloper",
             "source_name": "Game Developer",
@@ -58,7 +58,7 @@
             "title": "Brian Ward steps down as Savvy Games Group CEO",
             "summary": "Brian Ward is stepping down as CEO of Savvy Games Group, according to a staff note obtained by Bloomberg . Read more",
             "published": "2026-09-01T14:38:11+00:00",
-            "age_hours": 17.5,
+            "age_hours": 22.1,
             "image": "https://assetsio.gnwcdn.com/Brian-Ward.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "gamesindustry",
             "source_name": "GamesIndustry.biz",
@@ -76,7 +76,7 @@
             "title": "CEO of Saudi Arabia's Savvy Games Group Brian Ward steps down after overseeing billions in mobile gaming acquisitions",
             "summary": "Brian Ward, the CEO of the Saudi-Arabian-state-owned Savvy Games Group, has left his role. During his tenure, he oversaw $38bn of investment into various gaming companies, including Pokemon Go developer Niantic, and Monopoly Go's Scopely. Read more",
             "published": "2026-09-01T14:04:45+00:00",
-            "age_hours": 18.1,
+            "age_hours": 22.7,
             "image": "https://assetsio.gnwcdn.com/Pokemon-Go-XP-World-Championship-Header.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
@@ -94,7 +94,7 @@
             "title": "CEO Steps Down At Saudi Arabia’s $38 Billion Gaming Fund That Owns Pokémon Go",
             "summary": "Brian Ward is leaving after five years and a mountain of acquisitions",
             "published": "2026-09-01T13:58:07+00:00",
-            "age_hours": 18.2,
+            "age_hours": 22.8,
             "image": "https://kotaku.com/app/uploads/2026/09/giovani-2-3.jpg",
             "source_id": "kotaku",
             "source_name": "Kotaku",
@@ -109,232 +109,74 @@
         ]
       },
       "oyun_adi": null,
-      "ozet": "savvy games group ceo'su brian ward şirketten ayrıldı.",
+      "ozet": "şirketin ceo'su görevinden ayrıldı ve yeni liderlik dönemine geçiliyor",
       "gorsel": {
-        "durum": "yok",
-        "sayi": 0,
-        "oyun": null,
+        "durum": "var",
+        "sayi": 8,
+        "oyun": "EA Sports FC 24",
         "seri_sayi": 0,
         "seri": null,
-        "temsili": false
+        "temsili": true
       },
       "baslik": "Report: Savvy Games Group CEO Brian Ward departs com..."
     },
     {
       "sira": 2,
       "aday_index": 2,
-      "tier": "B",
-      "title": "\"It's just such a huge galaxy to fill\": Don't expect any Total War: Warhammer 40,000 sequels, but do expect lots of updates that builds upon its sandbox",
+      "tier": "A",
+      "title": "Mario Tennis Fever Serves Up A Small Update On Switch 2 (Version 1.1.1)",
       "kaynak_sayisi": 2,
       "reddit_oy": 0,
       "reddit_yorum": 0,
-      "url": "https://www.rockpapershotgun.com/its-just-such-a-huge-galaxy-to-fill-dont-expect-any-total-war-warhammer-40000-sequels-but-do-expect-lots-of-updates-that-builds-upon-its-sandbox",
+      "url": "https://www.nintendolife.com/news/2026/09/mario-tennis-fever-serves-up-a-small-update-on-switch-2-version-1-1-1",
       "aday": {
-        "key": "28909c63ca1b05b3",
-        "title": "\"It's just such a huge galaxy to fill\": Don't expect any Total War: Warhammer 40,000 sequels, but do expect lots of updates that builds upon its sandbox",
-        "url": "https://www.rockpapershotgun.com/its-just-such-a-huge-galaxy-to-fill-dont-expect-any-total-war-warhammer-40000-sequels-but-do-expect-lots-of-updates-that-builds-upon-its-sandbox",
-        "summary": "Total War: Warhammer 40,000 feels like one of those games where you think to yourself, \"wait, how doesn't this exist already?\" There have been previous Total War: Warhammer games, three of them in fact, but all set in the original, fantasy setting, not the far flung futuristic sci-fi one. We still don't know when Creative Assembly's Total War: Warhammer 40,000 is coming out, though they have shared one thing that will be different compared to the previous Warhammer games: they have no plans for any sequels. Read more",
-        "published": "2026-09-01T21:54:40+00:00",
-        "age_hours": 10.3,
+        "key": "b764f0259b8feb40",
+        "title": "Mario Tennis Fever Serves Up A Small Update On Switch 2 (Version 1.1.1)",
+        "url": "https://www.nintendolife.com/news/2026/09/mario-tennis-fever-serves-up-a-small-update-on-switch-2-version-1-1-1",
+        "summary": "Return to the court today. Mario Tennis Fever for the Switch 2 has received a small update today and it's now running Version 1.1.1 . In this latest patch, there are some general changes. One adjusts the return of high balls to produce a Star Shot, and along with this are some bug fixes tied to Amps. Read the full article on nintendolife.com",
+        "published": "2026-09-01T02:05:00+00:00",
+        "age_hours": 34.7,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
         "tags": [
           "mainstream",
-          "pc"
+          "nintendo"
         ],
         "source_count": 2,
         "sources": [
-          "pcgamer",
-          "rps"
+          "itch-devlogs",
+          "nintendolife"
         ],
-        "rank_score": 4.69,
+        "rank_score": 5.68,
         "members": [
           {
-            "hash": "28909c63ca1b05b3",
-            "url": "https://www.rockpapershotgun.com/its-just-such-a-huge-galaxy-to-fill-dont-expect-any-total-war-warhammer-40000-sequels-but-do-expect-lots-of-updates-that-builds-upon-its-sandbox",
-            "title": "\"It's just such a huge galaxy to fill\": Don't expect any Total War: Warhammer 40,000 sequels, but do expect lots of updates that builds upon its sandbox",
-            "summary": "Total War: Warhammer 40,000 feels like one of those games where you think to yourself, \"wait, how doesn't this exist already?\" There have been previous Total War: Warhammer games, three of them in fact, but all set in the original, fantasy setting, not the far flung futuristic sci-fi one. We still don't know when Creative Assembly's Total War: Warhammer 40,000 is coming out, though they have shared one thing that will be different compared to the previous Warhammer games: they have no plans for any sequels. Read more",
-            "published": "2026-09-01T21:54:40+00:00",
-            "age_hours": 10.3,
-            "image": "https://assetsio.gnwcdn.com/total-war-warhammer-40k-key-art.jpg?width=690&quality=85&format=jpg&auto=webp",
-            "source_id": "rps",
-            "source_name": "Rock Paper Shotgun",
+            "hash": "f163ed05ca31147b",
+            "url": "https://gektorne.itch.io/httpsxcomgektorne/devlog/1649536/small-update-macos-version",
+            "title": "Small update + macOS version",
+            "summary": "A \"Total Coins Collected\" entry has been added to the statistics section; this figure accumulates over the course of your entire playtime and does not reset when you start a new run...",
+            "published": "2026-09-02T07:32:25+00:00",
+            "age_hours": 5.2,
+            "image": null,
+            "source_id": "itch-devlogs",
+            "source_name": "itch.io devlog",
             "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.9,
+            "kind": "devlog",
+            "bucket": "discovery",
+            "weight": 1.4,
             "tags": [
-              "mainstream",
-              "pc"
+              "indie",
+              "ayristirici"
             ]
           },
           {
-            "hash": "c6a16e1b030ef263",
-            "url": "https://www.pcgamer.com/games/strategy/total-war-warhammer-40-000-is-a-sandbox-that-creative-assembly-will-keep-adding-to-rather-than-making-sequels-the-true-experience-is-the-sandbox",
-            "title": "Total War: Warhammer 40,000 is a sandbox that Creative Assembly will keep adding to rather than making sequels: 'The true experience is the sandbox'",
-            "summary": "Expect big updates and DLC, but they'll all be built on top of this one game.",
-            "published": "2026-09-01T15:40:52+00:00",
-            "age_hours": 16.5,
-            "image": "https://cdn.mos.cms.futurecdn.net/8JbDZpsMvX9dN4oJG2MQ7o-1280-80.png",
-            "source_id": "pcgamer",
-            "source_name": "PC Gamer",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": "Total War: Warhammer 40,000",
-      "ozet": "oyun için devam oyunu planlanmıyor ancak sürekli güncellemeler gelecek.",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 12,
-        "oyun": "Total War: Warhammer 40,000",
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": false
-      },
-      "baslik": "Total War: Warhammer 40,000"
-    },
-    {
-      "sira": 3,
-      "aday_index": 3,
-      "tier": "B",
-      "title": "Sega-owned Rovio is shutting down its Copenhagen studio",
-      "kaynak_sayisi": 2,
-      "reddit_oy": 0,
-      "reddit_yorum": 0,
-      "url": "https://www.gamedeveloper.com/business/sega-owned-rovio-is-shutting-down-its-copenhagen-studio",
-      "aday": {
-        "key": "31ec69a370f042ad",
-        "title": "Sega-owned Rovio is shutting down its Copenhagen studio",
-        "url": "https://www.gamedeveloper.com/business/sega-owned-rovio-is-shutting-down-its-copenhagen-studio",
-        "summary": "The closure follows the cancellation of Sonic Blitz and the exact number of redundancies are yet to be confirmed.",
-        "published": "2026-09-01T15:37:36+00:00",
-        "age_hours": 16.5,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "endustri"
-        ],
-        "source_count": 2,
-        "sources": [
-          "gamedeveloper",
-          "gamesindustry"
-        ],
-        "rank_score": 4.66,
-        "members": [
-          {
-            "hash": "31ec69a370f042ad",
-            "url": "https://www.gamedeveloper.com/business/sega-owned-rovio-is-shutting-down-its-copenhagen-studio",
-            "title": "Sega-owned Rovio is shutting down its Copenhagen studio",
-            "summary": "The closure follows the cancellation of Sonic Blitz and the exact number of redundancies are yet to be confirmed.",
-            "published": "2026-09-01T15:37:36+00:00",
-            "age_hours": 16.5,
-            "image": "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/bltf0c40dfc01b4bc8c/6a96f26ef33db21db644c08b/New_Project(30).png?width=720&quality=80&disable=upscale",
-            "source_id": "gamedeveloper",
-            "source_name": "Game Developer",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 1.0,
-            "tags": [
-              "endustri"
-            ]
-          },
-          {
-            "hash": "d90333e54bd2b825",
-            "url": "https://www.gamesindustry.biz/rovio-closes-copenhagen-studio-following-shut-down-of-sonic-blitz",
-            "title": "Rovio closes Copenhagen studio following shut down of Sonic Blitz",
-            "summary": "Rovio has closed its Copenhagen studio after cancelling its mobile title Sonic Blitz. Read more",
-            "published": "2026-09-01T08:47:50+00:00",
-            "age_hours": 23.4,
-            "image": "https://assetsio.gnwcdn.com/sonic-blitz.jpg?width=690&quality=85&format=jpg&auto=webp",
-            "source_id": "gamesindustry",
-            "source_name": "GamesIndustry.biz",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.9,
-            "tags": [
-              "endustri"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": "Sonic Blitz",
-      "ozet": "sega'ya bağlı rovio copenhagen stüdyosunu kapatma kararı aldı.",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 3,
-        "oyun": "Sonic 3D Blitz",
-        "seri_sayi": 21,
-        "seri": "Sonic Frontiers",
-        "temsili": false
-      },
-      "baslik": "Sonic Blitz"
-    },
-    {
-      "sira": 4,
-      "aday_index": 4,
-      "tier": "B",
-      "title": "Onimusha Way of the Sword release time in your time zone",
-      "kaynak_sayisi": 2,
-      "reddit_oy": 0,
-      "reddit_yorum": 0,
-      "url": "https://www.polygon.com/onimusha-way-of-the-sword-release-time-when-edt-pdt",
-      "aday": {
-        "key": "93a6be3d38d57ce0",
-        "title": "Onimusha Way of the Sword release time in your time zone",
-        "url": "https://www.polygon.com/onimusha-way-of-the-sword-release-time-when-edt-pdt",
-        "summary": "Here's when Onimusha: Way of the Sword releases in different time zones, and what you can get from pre-ordering and buying the different editions",
-        "published": "2026-09-02T04:01:16+00:00",
-        "age_hours": 4.2,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "mainstream"
-        ],
-        "source_count": 2,
-        "sources": [
-          "nintendolife",
-          "polygon"
-        ],
-        "rank_score": 4.61,
-        "members": [
-          {
-            "hash": "93a6be3d38d57ce0",
-            "url": "https://www.polygon.com/onimusha-way-of-the-sword-release-time-when-edt-pdt",
-            "title": "Onimusha Way of the Sword release time in your time zone",
-            "summary": "Here's when Onimusha: Way of the Sword releases in different time zones, and what you can get from pre-ordering and buying the different editions",
-            "published": "2026-09-02T04:01:16+00:00",
-            "age_hours": 4.2,
-            "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/06/onimusha.jpg",
-            "source_id": "polygon",
-            "source_name": "Polygon",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream"
-            ]
-          },
-          {
-            "hash": "6c97825d2312df73",
-            "url": "https://www.nintendolife.com/news/2026/09/round-up-the-reviews-for-onimusha-way-of-the-sword-are-in",
-            "title": "Round Up: The Reviews For Onimusha: Way Of The Sword Are In",
-            "summary": "Here's what the critics had to say. Capcom has already delivered a solid line up of games in 2026, and this week it adds to this with Onimusha: Way of the Sword . This includes a Switch 2 version, and if you haven't already seen it, here's a sample of our Nintendo Life review. We said it was a superb samurai survival, awarding it 9/10 stars. Read the full article on nintendolife.com",
-            "published": "2026-09-01T03:05:00+00:00",
-            "age_hours": 29.1,
-            "image": "https://images.nintendolife.com/5919cfe3683bd/large.jpg",
+            "hash": "b764f0259b8feb40",
+            "url": "https://www.nintendolife.com/news/2026/09/mario-tennis-fever-serves-up-a-small-update-on-switch-2-version-1-1-1",
+            "title": "Mario Tennis Fever Serves Up A Small Update On Switch 2 (Version 1.1.1)",
+            "summary": "Return to the court today. Mario Tennis Fever for the Switch 2 has received a small update today and it's now running Version 1.1.1 . In this latest patch, there are some general changes. One adjusts the return of high balls to produce a Star Shot, and along with this are some bug fixes tied to Amps. Read the full article on nintendolife.com",
+            "published": "2026-09-01T02:05:00+00:00",
+            "age_hours": 34.7,
+            "image": "https://images.nintendolife.com/486d38fd16957/large.jpg",
             "source_id": "nintendolife",
             "source_name": "Nintendo Life",
             "lang": "en",
@@ -348,136 +190,314 @@
           }
         ]
       },
-      "oyun_adi": "Onimusha: Way of the Sword",
-      "ozet": "oyunun çıkış saatleri ve ön sipariş içerikleri açıklandı.",
+      "oyun_adi": "Mario Tennis Fever",
+      "ozet": "istatistikler bölümüne toplam toplanan altın girdisi eklendi",
       "gorsel": {
         "durum": "var",
-        "sayi": 14,
-        "oyun": "Onimusha: Way of the Sword",
+        "sayi": 8,
+        "oyun": "Mario Tennis Fever",
         "seri_sayi": 0,
         "seri": null,
         "temsili": false
       },
-      "baslik": "Onimusha: Way of the Sword"
+      "baslik": "Mario Tennis Fever"
+    },
+    {
+      "sira": 3,
+      "aday_index": 3,
+      "tier": "B",
+      "title": "30,000 games are either Steam Deck verified or at least 'playable' on Valve's handheld",
+      "kaynak_sayisi": 2,
+      "reddit_oy": 0,
+      "reddit_yorum": 0,
+      "url": "https://www.pcgamer.com/hardware/handheld-gaming-pcs/30-000-games-are-either-steam-deck-verified-or-at-least-playable-on-valves-handheld",
+      "aday": {
+        "key": "375bc3ce4f02944f",
+        "title": "30,000 games are either Steam Deck verified or at least 'playable' on Valve's handheld",
+        "url": "https://www.pcgamer.com/hardware/handheld-gaming-pcs/30-000-games-are-either-steam-deck-verified-or-at-least-playable-on-valves-handheld",
+        "summary": "Hands on, and on the go.",
+        "published": "2026-09-02T12:17:28+00:00",
+        "age_hours": 0.4,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream"
+        ],
+        "source_count": 2,
+        "sources": [
+          "gamingonlinux",
+          "pcgamer"
+        ],
+        "rank_score": 5.39,
+        "members": [
+          {
+            "hash": "375bc3ce4f02944f",
+            "url": "https://www.pcgamer.com/hardware/handheld-gaming-pcs/30-000-games-are-either-steam-deck-verified-or-at-least-playable-on-valves-handheld",
+            "title": "30,000 games are either Steam Deck verified or at least 'playable' on Valve's handheld",
+            "summary": "Hands on, and on the go.",
+            "published": "2026-09-02T12:17:28+00:00",
+            "age_hours": 0.4,
+            "image": "https://cdn.mos.cms.futurecdn.net/mUFdEX52BA7Tnb2nMQwPmS-1280-80.jpg",
+            "source_id": "pcgamer",
+            "source_name": "PC Gamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "917fbaaeefd520a8",
+            "url": "https://www.gamingonlinux.com/2026/08/steam-deck-steamos-hit-over-30-000-verified-playable-games",
+            "title": "Steam Deck / SteamOS hit over 30,000 Verified + Playable games",
+            "summary": "A big milestone has been hit by Valve for the Steam Deck, and SteamOS for other devices like the Steam Machine, with over 30,000 Verified + Playable games. Read the full article on GamingOnLinux .",
+            "published": "2026-08-31T15:44:21+00:00",
+            "age_hours": 45.0,
+            "image": null,
+            "source_id": "gamingonlinux",
+            "source_name": "GamingOnLinux",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 1.0,
+            "tags": [
+              "indie",
+              "linux"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": null,
+      "ozet": "cihazda oynanabilen veya onaylanan yapım sayısı otuz bine ulaştı",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 30,
+        "oyun": "Cyberpunk 2077",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": true
+      },
+      "baslik": "30,000 games are either Steam Deck verified or at le..."
+    },
+    {
+      "sira": 4,
+      "aday_index": 4,
+      "tier": "B",
+      "title": "Dragon's Dogma 2 gets a big upgrade and Denuvo DRM removed",
+      "kaynak_sayisi": 2,
+      "reddit_oy": 0,
+      "reddit_yorum": 0,
+      "url": "https://www.gamingonlinux.com/2026/09/dragons-dogma-2-gets-a-big-upgrade-and-denuvo-drm-removed",
+      "aday": {
+        "key": "45360030eafe04c7",
+        "title": "Dragon's Dogma 2 gets a big upgrade and Denuvo DRM removed",
+        "url": "https://www.gamingonlinux.com/2026/09/dragons-dogma-2-gets-a-big-upgrade-and-denuvo-drm-removed",
+        "summary": "Capcom released the latest major update for Dragon's Dogma 2 ahead of the Dragon's Dogma 2: Dark Arisen Expansion releasing in October. Read the full article on GamingOnLinux .",
+        "published": "2026-09-02T10:17:09+00:00",
+        "age_hours": 2.5,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "indie",
+          "linux"
+        ],
+        "source_count": 2,
+        "sources": [
+          "gamingonlinux",
+          "pcgamesn"
+        ],
+        "rank_score": 5.35,
+        "members": [
+          {
+            "hash": "45360030eafe04c7",
+            "url": "https://www.gamingonlinux.com/2026/09/dragons-dogma-2-gets-a-big-upgrade-and-denuvo-drm-removed",
+            "title": "Dragon's Dogma 2 gets a big upgrade and Denuvo DRM removed",
+            "summary": "Capcom released the latest major update for Dragon's Dogma 2 ahead of the Dragon's Dogma 2: Dark Arisen Expansion releasing in October. Read the full article on GamingOnLinux .",
+            "published": "2026-09-02T10:17:09+00:00",
+            "age_hours": 2.5,
+            "image": null,
+            "source_id": "gamingonlinux",
+            "source_name": "GamingOnLinux",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 1.0,
+            "tags": [
+              "indie",
+              "linux"
+            ]
+          },
+          {
+            "hash": "11213d777268fdcd",
+            "url": "https://www.pcgamesn.com/dragons-dogma-2/denuvo-removal",
+            "title": "Capcom removes Denuvo from Dragon's Dogma 2 ahead of its new expansion",
+            "summary": "As well as a mountain of other changes, Dragon’s Dogma 2 has had Denuvo DRM software removed ahead of the Dark Arisen expansion.",
+            "published": "2026-09-02T10:16:58+00:00",
+            "age_hours": 2.5,
+            "image": "https://www.pcgamesn.com/wp-content/sites/pcgamesn/2026/09/dragons-dogma-2-denuvo.jpg",
+            "source_id": "pcgamesn",
+            "source_name": "PCGamesN",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream",
+              "pc"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "Dragon's Dogma 2",
+      "ozet": "büyük güncelleme yayınlandı ve koruma yazılımı kaldırıldı",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 8,
+        "oyun": "Dragon's Dogma II",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": false
+      },
+      "baslik": "Dragon's Dogma 2"
     },
     {
       "sira": 5,
       "aday_index": 5,
       "tier": "B",
-      "title": "Double Fine are all in on making Brutal Legend 2, if you're willing to give them $100 million in their game jam Kickstarter, anyway",
+      "title": "All 24 Pokémon Movies Will Be Available in Pricey Amazon-Exclusive Set",
       "kaynak_sayisi": 2,
       "reddit_oy": 0,
       "reddit_yorum": 0,
-      "url": "https://www.rockpapershotgun.com/double-fine-are-all-in-on-making-brutal-legend-2-if-youre-willing-to-give-them-100-million-in-their-game-jam-kickstarter-anyway",
+      "url": "https://www.polygon.com/pokemon-amazon-movie-collection-viz-media",
       "aday": {
-        "key": "44befd99b4befb4b",
-        "title": "Double Fine are all in on making Brutal Legend 2, if you're willing to give them $100 million in their game jam Kickstarter, anyway",
-        "url": "https://www.rockpapershotgun.com/double-fine-are-all-in-on-making-brutal-legend-2-if-youre-willing-to-give-them-100-million-in-their-game-jam-kickstarter-anyway",
-        "summary": "Under Microsoft's ownership, it was probably a safe bet that Double Fine would never get to make a Brutal Legend 2, even in this IP-obsessed world we find ourselves in. However! Microsoft don't own Double Fine anymore , and so the once again indie developer can more or less do what they want. Which they're already doing, in fact, as they're currently hosting a game jam Kickstarter that includes a stretch goal that'll see them making Brutal Legend 2. If you give them $100 million. Read more",
-        "published": "2026-09-01T16:31:35+00:00",
-        "age_hours": 15.6,
+        "key": "65bf2a1f25cdb138",
+        "title": "All 24 Pokémon Movies Will Be Available in Pricey Amazon-Exclusive Set",
+        "url": "https://www.polygon.com/pokemon-amazon-movie-collection-viz-media",
+        "summary": "Exclusive Amazon limited edition set includes all 24 Pokémon movies enclosed in a Poké Ball and a book-form Blu-ray case.",
+        "published": "2026-09-02T10:03:32+00:00",
+        "age_hours": 2.7,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
         "tags": [
-          "mainstream",
-          "pc"
+          "mainstream"
         ],
         "source_count": 2,
         "sources": [
-          "kotaku",
-          "rps"
+          "gamingonlinux",
+          "polygon"
         ],
-        "rank_score": 4.58,
+        "rank_score": 5.34,
         "members": [
           {
-            "hash": "44befd99b4befb4b",
-            "url": "https://www.rockpapershotgun.com/double-fine-are-all-in-on-making-brutal-legend-2-if-youre-willing-to-give-them-100-million-in-their-game-jam-kickstarter-anyway",
-            "title": "Double Fine are all in on making Brutal Legend 2, if you're willing to give them $100 million in their game jam Kickstarter, anyway",
-            "summary": "Under Microsoft's ownership, it was probably a safe bet that Double Fine would never get to make a Brutal Legend 2, even in this IP-obsessed world we find ourselves in. However! Microsoft don't own Double Fine anymore , and so the once again indie developer can more or less do what they want. Which they're already doing, in fact, as they're currently hosting a game jam Kickstarter that includes a stretch goal that'll see them making Brutal Legend 2. If you give them $100 million. Read more",
-            "published": "2026-09-01T16:31:35+00:00",
-            "age_hours": 15.6,
-            "image": "https://assetsio.gnwcdn.com/brutal-legend.jpg?width=690&quality=85&format=jpg&auto=webp",
-            "source_id": "rps",
-            "source_name": "Rock Paper Shotgun",
+            "hash": "65bf2a1f25cdb138",
+            "url": "https://www.polygon.com/pokemon-amazon-movie-collection-viz-media",
+            "title": "All 24 Pokémon Movies Will Be Available in Pricey Amazon-Exclusive Set",
+            "summary": "Exclusive Amazon limited edition set includes all 24 Pokémon movies enclosed in a Poké Ball and a book-form Blu-ray case.",
+            "published": "2026-09-02T10:03:32+00:00",
+            "age_hours": 2.7,
+            "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/09/pok-mon-movie.jpg",
+            "source_id": "polygon",
+            "source_name": "Polygon",
             "lang": "en",
             "kind": "news",
             "bucket": "news",
-            "weight": 0.9,
+            "weight": 0.7,
             "tags": [
-              "mainstream",
-              "pc"
+              "mainstream"
             ]
           },
           {
-            "hash": "d8bc13a4666d3b74",
-            "url": "https://kotaku.com/brutal-legend-2-double-fine-100-million-kickstarter-2000730205",
-            "title": "Double Fine Promises To Make Brütal Legend 2 But Only If Fans Give Them $100 Million",
-            "summary": "That's an ambitious-ass stretch goal for a Kickstarter, but not impossible",
-            "published": "2026-09-01T14:15:22+00:00",
-            "age_hours": 17.9,
-            "image": "https://kotaku.com/app/uploads/2026/09/brutallegendozzy-1280x720.jpg",
-            "source_id": "kotaku",
-            "source_name": "Kotaku",
+            "hash": "d4d48fa1274f654b",
+            "url": "https://www.gamingonlinux.com/2026/09/bazzite-linux-has-another-big-set-of-fixes-available",
+            "title": "Bazzite Linux has another big set of fixes available",
+            "summary": "With the recent release of Bazzite Linux 44 for handhelds, they're working quickly to address various issues that have appeared. Read the full article on GamingOnLinux .",
+            "published": "2026-09-01T08:44:06+00:00",
+            "age_hours": 28.0,
+            "image": null,
+            "source_id": "gamingonlinux",
+            "source_name": "GamingOnLinux",
             "lang": "en",
             "kind": "news",
             "bucket": "news",
-            "weight": 0.6,
+            "weight": 1.0,
             "tags": [
-              "mainstream"
+              "indie",
+              "linux"
             ]
           }
         ]
       },
-      "oyun_adi": "Brutal Legend 2",
-      "ozet": "stüdyo yüz milyon dolar bütçe sağlanırsa oyunu yapmaya hazır.",
+      "oyun_adi": null,
+      "ozet": "tüm filmleri içeren özel set satışa sunulacak",
       "gorsel": {
-        "durum": "yok",
-        "sayi": 0,
-        "oyun": null,
+        "durum": "var",
+        "sayi": 7,
+        "oyun": "Pokémon Scarlet and Pokémon Violet Double Pack",
         "seri_sayi": 0,
         "seri": null,
-        "temsili": false
+        "temsili": true
       },
-      "baslik": "Brutal Legend 2"
+      "baslik": "All 24 Pokémon Movies Will Be Available in Pricey Am..."
     },
     {
       "sira": 6,
       "aday_index": 6,
       "tier": "B",
-      "title": "The Witcher 3: Songs of Past looked alright in its behind-closed-doors preview, though I'm more enticed by the remaster’s combat upgrades",
+      "title": "A behind-closed-doors demo of The Witcher 3: Songs of the Past has been a great reminder: CDPR's writing is some of gaming's very best",
       "kaynak_sayisi": 2,
       "reddit_oy": 0,
       "reddit_yorum": 0,
-      "url": "https://www.rockpapershotgun.com/the-witcher-3-songs-of-past-looked-alright-in-its-behind-closed-doors-preview-though-im-more-enticed-by-the-remasters-combat-upgrades",
+      "url": "https://www.eurogamer.net/witcher-3-songs-of-the-past-behind-closed-doors-preview",
       "aday": {
-        "key": "b61cb3905dc55390",
-        "title": "The Witcher 3: Songs of Past looked alright in its behind-closed-doors preview, though I'm more enticed by the remaster’s combat upgrades",
-        "url": "https://www.rockpapershotgun.com/the-witcher-3-songs-of-past-looked-alright-in-its-behind-closed-doors-preview-though-im-more-enticed-by-the-remasters-combat-upgrades",
-        "summary": "Well, I say behind-closed-doors. It turns out that if I wanted to watch a prerecorded saunter through a chunk of The Witcher III: Wild Hunt ’s Songs of the Past expansion , I could have just tuned into the Gamescom livestream , rather than travelling to Germany before parking myself in an almost pitch-black miniature theatre for 45 minutes. Now my by-touch handwritten notes are completely illegible, and I don’t even get to feel smug about attending a super secret preview. Still, the preview – which like Songs of the Past itself, was a joint operation between CD Projekt Red and co-devs Fool’s T",
-        "published": "2026-09-01T16:06:09+00:00",
-        "age_hours": 16.1,
+        "key": "9f1c21174d582282",
+        "title": "A behind-closed-doors demo of The Witcher 3: Songs of the Past has been a great reminder: CDPR's writing is some of gaming's very best",
+        "url": "https://www.eurogamer.net/witcher-3-songs-of-the-past-behind-closed-doors-preview",
+        "summary": "Last week, as Gamescom 2026 first began to open up to media and business visitors, I double-timed it to CD Projekt Red's booth. I had been promised the very first slot to see a blowout on Songs of the Past , an expansion coming 11 years after the launch of the base game. Rumours about this add-on have been swirling for the better part of a year now (though apparently the idea for Geralt's visit to the ancestral homeland of Dandelion have been percolating for even longer) , and CD Projekt Red has clearly been putting a lot of resources into making sure this new tale lives up to the expectations",
+        "published": "2026-09-02T09:16:09+00:00",
+        "age_hours": 3.5,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
         "tags": [
-          "mainstream",
-          "pc"
+          "mainstream"
         ],
         "source_count": 2,
         "sources": [
-          "kotaku",
+          "eurogamer",
           "rps"
         ],
-        "rank_score": 4.56,
+        "rank_score": 4.83,
         "members": [
+          {
+            "hash": "9f1c21174d582282",
+            "url": "https://www.eurogamer.net/witcher-3-songs-of-the-past-behind-closed-doors-preview",
+            "title": "A behind-closed-doors demo of The Witcher 3: Songs of the Past has been a great reminder: CDPR's writing is some of gaming's very best",
+            "summary": "Last week, as Gamescom 2026 first began to open up to media and business visitors, I double-timed it to CD Projekt Red's booth. I had been promised the very first slot to see a blowout on Songs of the Past , an expansion coming 11 years after the launch of the base game. Rumours about this add-on have been swirling for the better part of a year now (though apparently the idea for Geralt's visit to the ancestral homeland of Dandelion have been percolating for even longer) , and CD Projekt Red has clearly been putting a lot of resources into making sure this new tale lives up to the expectations",
+            "published": "2026-09-02T09:16:09+00:00",
+            "age_hours": 3.5,
+            "image": "https://assetsio.gnwcdn.com/songs-of-the-past-geralt-woods.jpg?width=690&quality=85&format=jpg&auto=webp",
+            "source_id": "eurogamer",
+            "source_name": "Eurogamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          },
           {
             "hash": "b61cb3905dc55390",
             "url": "https://www.rockpapershotgun.com/the-witcher-3-songs-of-past-looked-alright-in-its-behind-closed-doors-preview-though-im-more-enticed-by-the-remasters-combat-upgrades",
             "title": "The Witcher 3: Songs of Past looked alright in its behind-closed-doors preview, though I'm more enticed by the remaster’s combat upgrades",
             "summary": "Well, I say behind-closed-doors. It turns out that if I wanted to watch a prerecorded saunter through a chunk of The Witcher III: Wild Hunt ’s Songs of the Past expansion , I could have just tuned into the Gamescom livestream , rather than travelling to Germany before parking myself in an almost pitch-black miniature theatre for 45 minutes. Now my by-touch handwritten notes are completely illegible, and I don’t even get to feel smug about attending a super secret preview. Still, the preview – which like Songs of the Past itself, was a joint operation between CD Projekt Red and co-devs Fool’s T",
             "published": "2026-09-01T16:06:09+00:00",
-            "age_hours": 16.1,
+            "age_hours": 20.6,
             "image": "https://assetsio.gnwcdn.com/witcher-3-songs-of-the-past-04.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "rps",
             "source_name": "Rock Paper Shotgun",
@@ -489,29 +509,11 @@
               "mainstream",
               "pc"
             ]
-          },
-          {
-            "hash": "80fa3b045fd43124",
-            "url": "https://kotaku.com/50-minutes-behind-closed-doors-with-the-witcher-3-songs-of-the-past-shows-an-expansion-giving-fans-exactly-what-they-want-2000730196",
-            "title": "50 Minutes Behind Closed Doors With The Witcher 3: Songs Of The Past Shows An Expansion Trying To Give Fans Exactly What They Want",
-            "summary": "Old friends return and new monsters menace in what looks like a very classic CD Projekt Red RPG expansion",
-            "published": "2026-09-01T13:15:10+00:00",
-            "age_hours": 18.9,
-            "image": "https://kotaku.com/app/uploads/2026/09/son-of-past-1280x720.jpg",
-            "source_id": "kotaku",
-            "source_name": "Kotaku",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.6,
-            "tags": [
-              "mainstream"
-            ]
           }
         ]
       },
-      "oyun_adi": "The Witcher 3: Songs of Past",
-      "ozet": "genişleme paketinin kapalı kapılar ardındaki önizlemesi paylaşıldı.",
+      "oyun_adi": "The Witcher 3: Songs of the Past",
+      "ozet": "kapalı kapılar ardındaki oynanış demosu basına gösterildi",
       "gorsel": {
         "durum": "var",
         "sayi": 14,
@@ -520,7 +522,7 @@
         "seri": null,
         "temsili": false
       },
-      "baslik": "The Witcher 3: Songs of Past"
+      "baslik": "The Witcher 3: Songs of the Past"
     }
   ]
 }
