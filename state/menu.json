@@ -1,7 +1,7 @@
 {
-  "olusturuldu": "2026-09-02T14:10:43+00:00",
-  "oneri": 3,
-  "gerekce": "steamdb'nin satılması oyuncular arasında büyük tartışma ve merak uyandıracaktır",
+  "olusturuldu": "2026-09-02T17:11:34+00:00",
+  "oneri": 4,
+  "gerekce": "steamdb'nin satılması oyuncular arasında büyük merak ve endişe uyandırır",
   "adaylar": [
     {
       "sira": 1,
@@ -18,7 +18,7 @@
         "url": "https://www.gamedeveloper.com/business/report-savvy-games-group-ceo-brian-ward-departs-company",
         "summary": "'As Savvy embarks on its next period of transformational growth, this is the right time for new leadership for that evolution.'",
         "published": "2026-09-01T21:42:52+00:00",
-        "age_hours": 16.5,
+        "age_hours": 19.5,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -31,7 +31,7 @@
           "gamedeveloper",
           "gamesindustry"
         ],
-        "rank_score": 7.66,
+        "rank_score": 7.59,
         "members": [
           {
             "hash": "4f8a7658b7e29329",
@@ -39,7 +39,7 @@
             "title": "Report: Savvy Games Group CEO Brian Ward departs company",
             "summary": "'As Savvy embarks on its next period of transformational growth, this is the right time for new leadership for that evolution.'",
             "published": "2026-09-01T21:42:52+00:00",
-            "age_hours": 16.5,
+            "age_hours": 19.5,
             "image": "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt7348a0cbe91084d7/6993018dacd57200085959c6/Savvy_Header.png?width=720&quality=80&disable=upscale",
             "source_id": "gamedeveloper",
             "source_name": "Game Developer",
@@ -57,7 +57,7 @@
             "title": "Brian Ward steps down as Savvy Games Group CEO",
             "summary": "Brian Ward is stepping down as CEO of Savvy Games Group, according to a staff note obtained by Bloomberg . Read more",
             "published": "2026-09-01T14:38:11+00:00",
-            "age_hours": 23.5,
+            "age_hours": 26.5,
             "image": "https://assetsio.gnwcdn.com/Brian-Ward.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "gamesindustry",
             "source_name": "GamesIndustry.biz",
@@ -75,7 +75,7 @@
             "title": "CEO of Saudi Arabia's Savvy Games Group Brian Ward steps down after overseeing billions in mobile gaming acquisitions",
             "summary": "Brian Ward, the CEO of the Saudi-Arabian-state-owned Savvy Games Group, has left his role. During his tenure, he oversaw $38bn of investment into various gaming companies, including Pokemon Go developer Niantic, and Monopoly Go's Scopely. Read more",
             "published": "2026-09-01T14:04:45+00:00",
-            "age_hours": 24.1,
+            "age_hours": 27.1,
             "image": "https://assetsio.gnwcdn.com/Pokemon-Go-XP-World-Championship-Header.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
@@ -90,11 +90,11 @@
         ]
       },
       "oyun_adi": null,
-      "ozet": "şirketin ceo'su görevinden ayrıldı ve yeni liderlik dönemi başladı",
+      "ozet": "savvı games group ceo'su brian ward görevinden ayrıldı",
       "gorsel": {
         "durum": "var",
-        "sayi": 8,
-        "oyun": "EA Sports FC 24",
+        "sayi": 16,
+        "oyun": "Grand Theft Auto V",
         "seri_sayi": 0,
         "seri": null,
         "temsili": true
@@ -116,7 +116,7 @@
         "url": "https://www.nintendolife.com/news/2026/09/mario-tennis-fever-serves-up-a-small-update-on-switch-2-version-1-1-1",
         "summary": "Return to the court today. Mario Tennis Fever for the Switch 2 has received a small update today and it's now running Version 1.1.1 . In this latest patch, there are some general changes. One adjusts the return of high balls to produce a Star Shot, and along with this are some bug fixes tied to Amps. Read the full article on nintendolife.com",
         "published": "2026-09-01T02:05:00+00:00",
-        "age_hours": 36.1,
+        "age_hours": 39.1,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -129,7 +129,7 @@
           "itch-devlogs",
           "nintendolife"
         ],
-        "rank_score": 5.65,
+        "rank_score": 5.59,
         "members": [
           {
             "hash": "f163ed05ca31147b",
@@ -137,7 +137,7 @@
             "title": "Small update + macOS version",
             "summary": "A \"Total Coins Collected\" entry has been added to the statistics section; this figure accumulates over the course of your entire playtime and does not reset when you start a new run...",
             "published": "2026-09-02T07:32:25+00:00",
-            "age_hours": 6.6,
+            "age_hours": 9.6,
             "image": null,
             "source_id": "itch-devlogs",
             "source_name": "itch.io devlog",
@@ -156,7 +156,7 @@
             "title": "Mario Tennis Fever Serves Up A Small Update On Switch 2 (Version 1.1.1)",
             "summary": "Return to the court today. Mario Tennis Fever for the Switch 2 has received a small update today and it's now running Version 1.1.1 . In this latest patch, there are some general changes. One adjusts the return of high balls to produce a Star Shot, and along with this are some bug fixes tied to Amps. Read the full article on nintendolife.com",
             "published": "2026-09-01T02:05:00+00:00",
-            "age_hours": 36.1,
+            "age_hours": 39.1,
             "image": "https://images.nintendolife.com/486d38fd16957/large.jpg",
             "source_id": "nintendolife",
             "source_name": "Nintendo Life",
@@ -172,7 +172,7 @@
         ]
       },
       "oyun_adi": "Mario Tennis Fever",
-      "ozet": "oyuna tüm oynanış süresini kapsayan yeni bir istatistik eklendi",
+      "ozet": "switch 2 sürümüne toplam toplanan altın istatistiği eklendi",
       "gorsel": {
         "durum": "var",
         "sayi": 8,
@@ -187,6 +187,86 @@
       "sira": 3,
       "aday_index": 3,
       "tier": "B",
+      "title": "The Humble Choice September 2026 Lineup Is Live With Frostpunk 2, Sonic X Shadow Generations, and 6 More Games",
+      "kaynak_sayisi": 2,
+      "reddit_oy": 0,
+      "reddit_yorum": 0,
+      "url": "https://www.ign.com/articles/humble-choice-september-2026",
+      "aday": {
+        "key": "69374e7b2d9d86a2",
+        "title": "The Humble Choice September 2026 Lineup Is Live With Frostpunk 2, Sonic X Shadow Generations, and 6 More Games",
+        "url": "https://www.ign.com/articles/humble-choice-september-2026",
+        "summary": "The Humble Choice September 2026 lineup is officially live. Members can snag 8 games - including Frostpunk 2, Sonic X Shadow Generations, and 6 more - for just $15 for the month.",
+        "published": "2026-09-02T16:09:11+00:00",
+        "age_hours": 1.0,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream"
+        ],
+        "source_count": 2,
+        "sources": [
+          "gamingonlinux",
+          "ign"
+        ],
+        "rank_score": 5.38,
+        "members": [
+          {
+            "hash": "69374e7b2d9d86a2",
+            "url": "https://www.ign.com/articles/humble-choice-september-2026",
+            "title": "The Humble Choice September 2026 Lineup Is Live With Frostpunk 2, Sonic X Shadow Generations, and 6 More Games",
+            "summary": "The Humble Choice September 2026 lineup is officially live. Members can snag 8 games - including Frostpunk 2, Sonic X Shadow Generations, and 6 more - for just $15 for the month.",
+            "published": "2026-09-02T16:09:11+00:00",
+            "age_hours": 1.0,
+            "image": "https://assets-prd.ignimgs.com/2024/10/18/sonic-x-shadow-generations-blogroll-1729295545078.jpg",
+            "source_id": "ign",
+            "source_name": "IGN",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.6,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "05f81ec6f6bb3d2f",
+            "url": "https://www.gamingonlinux.com/2026/09/humble-choice-for-september-26-includes-frostpunk-2-sonic-x-shadow-generations",
+            "title": "Humble Choice for September 26 includes Frostpunk 2, SONIC X SHADOW GENERATIONS",
+            "summary": "Another interesting game bundle for you to grab - Humble Choice for September 2026 has some highly rated games included like SONIC X SHADOW GENERATIONS. Read the full article on GamingOnLinux .",
+            "published": "2026-09-02T12:22:05+00:00",
+            "age_hours": 4.8,
+            "image": null,
+            "source_id": "gamingonlinux",
+            "source_name": "GamingOnLinux",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 1.0,
+            "tags": [
+              "indie",
+              "linux"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "Frostpunk 2",
+      "ozet": "eylül ayı bundle paketinde sonic ve frostpunk 2 yer alıyor",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 20,
+        "oyun": "Frostpunk 2",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": false
+      },
+      "baslik": "Frostpunk 2"
+    },
+    {
+      "sira": 4,
+      "aday_index": 4,
+      "tier": "B",
       "title": "\"The internet we once loved is gone\": SteamDB founders announce the community-run database has been acquired by Nexus Mods' owners",
       "kaynak_sayisi": 2,
       "reddit_oy": 0,
@@ -198,7 +278,7 @@
         "url": "https://www.rockpapershotgun.com/the-internet-we-once-loved-is-gone-steamdb-founders-announce-the-community-run-database-has-been-acquired-by-nexus-mods-owners",
         "summary": "The owners of Nexus Mods have acquired community-run backend database SteamDB from its founders, the two sides in the deal have announced. The folks behind the former, who've held its keys for 13 years, said their decision to step back is rooted in burnout and a desire to find a suitable team to keep SteamDB running. Meanwhile, Nexus Mods' owners, a company called Chosen, have pointed to wanting to keep track of game updates from a modding perspective as one of the factors that's drawn them to make this deal. Read more",
         "published": "2026-09-02T12:47:49+00:00",
-        "age_hours": 1.4,
+        "age_hours": 4.4,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -211,7 +291,7 @@
           "gamingonlinux",
           "rps"
         ],
-        "rank_score": 5.37,
+        "rank_score": 5.31,
         "members": [
           {
             "hash": "83eccd1d61a86334",
@@ -219,7 +299,7 @@
             "title": "\"The internet we once loved is gone\": SteamDB founders announce the community-run database has been acquired by Nexus Mods' owners",
             "summary": "The owners of Nexus Mods have acquired community-run backend database SteamDB from its founders, the two sides in the deal have announced. The folks behind the former, who've held its keys for 13 years, said their decision to step back is rooted in burnout and a desire to find a suitable team to keep SteamDB running. Meanwhile, Nexus Mods' owners, a company called Chosen, have pointed to wanting to keep track of game updates from a modding perspective as one of the factors that's drawn them to make this deal. Read more",
             "published": "2026-09-02T12:47:49+00:00",
-            "age_hours": 1.4,
+            "age_hours": 4.4,
             "image": "https://assetsio.gnwcdn.com/nexus-mods-logo-01.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "rps",
             "source_name": "Rock Paper Shotgun",
@@ -238,7 +318,7 @@
             "title": "Nexus Mods acquires the popular community site SteamDB",
             "summary": "Something quite unexpected here - the newer owners of Nexus Mods have now acquired the popular community website SteamDB, a site that many rely on. Read the full article on GamingOnLinux .",
             "published": "2026-09-02T10:45:39+00:00",
-            "age_hours": 3.4,
+            "age_hours": 6.4,
             "image": null,
             "source_id": "gamingonlinux",
             "source_name": "GamingOnLinux",
@@ -254,7 +334,7 @@
         ]
       },
       "oyun_adi": null,
-      "ozet": "popüler topluluk veritabanı platformu nexus mods sahipleri tarafından satın alındı",
+      "ozet": "steamdb, nexus mods sahipleri tarafından satın alındı",
       "gorsel": {
         "durum": "var",
         "sayi": 6,
@@ -266,8 +346,8 @@
       "baslik": "\"The internet we once loved is gone\": SteamDB founde..."
     },
     {
-      "sira": 4,
-      "aday_index": 4,
+      "sira": 5,
+      "aday_index": 5,
       "tier": "B",
       "title": "30,000 games are either Steam Deck verified or at least 'playable' on Valve's handheld",
       "kaynak_sayisi": 2,
@@ -280,7 +360,7 @@
         "url": "https://www.pcgamer.com/hardware/handheld-gaming-pcs/30-000-games-are-either-steam-deck-verified-or-at-least-playable-on-valves-handheld",
         "summary": "Hands on, and on the go.",
         "published": "2026-09-02T12:17:28+00:00",
-        "age_hours": 1.9,
+        "age_hours": 4.9,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -292,7 +372,7 @@
           "gamingonlinux",
           "pcgamer"
         ],
-        "rank_score": 5.36,
+        "rank_score": 5.3,
         "members": [
           {
             "hash": "375bc3ce4f02944f",
@@ -300,7 +380,7 @@
             "title": "30,000 games are either Steam Deck verified or at least 'playable' on Valve's handheld",
             "summary": "Hands on, and on the go.",
             "published": "2026-09-02T12:17:28+00:00",
-            "age_hours": 1.9,
+            "age_hours": 4.9,
             "image": "https://cdn.mos.cms.futurecdn.net/mUFdEX52BA7Tnb2nMQwPmS-1280-80.jpg",
             "source_id": "pcgamer",
             "source_name": "PC Gamer",
@@ -313,12 +393,12 @@
             ]
           },
           {
-            "hash": "917fbaaeefd520a8",
-            "url": "https://www.gamingonlinux.com/2026/08/steam-deck-steamos-hit-over-30-000-verified-playable-games",
-            "title": "Steam Deck / SteamOS hit over 30,000 Verified + Playable games",
-            "summary": "A big milestone has been hit by Valve for the Steam Deck, and SteamOS for other devices like the Steam Machine, with over 30,000 Verified + Playable games. Read the full article on GamingOnLinux .",
-            "published": "2026-08-31T15:44:21+00:00",
-            "age_hours": 46.4,
+            "hash": "bfb114ff724526fd",
+            "url": "https://www.gamingonlinux.com/2026/09/everspace-2-gets-a-final-tech-update-making-it-steam-deck-and-steam-machine-verified",
+            "title": "EVERSPACE 2 gets a final tech update making it Steam Deck and Steam Machine Verified",
+            "summary": "ROCKFISH Games just announced and released the final technical update for EVERSPACE 2, which makes it Steam Deck and Steam Machine Verified. Read the full article on GamingOnLinux .",
+            "published": "2026-09-01T15:54:54+00:00",
+            "age_hours": 25.3,
             "image": null,
             "source_id": "gamingonlinux",
             "source_name": "GamingOnLinux",
@@ -334,7 +414,7 @@
         ]
       },
       "oyun_adi": null,
-      "ozet": "el konsolu için onaylanan ve oynanabilir olan oyun sayısı otuz bine ulaştı",
+      "ozet": "otuz bin oyun valve'ın el konsolunda oynanabilir durumda",
       "gorsel": {
         "durum": "var",
         "sayi": 30,
@@ -346,8 +426,8 @@
       "baslik": "30,000 games are either Steam Deck verified or at le..."
     },
     {
-      "sira": 5,
-      "aday_index": 5,
+      "sira": 6,
+      "aday_index": 6,
       "tier": "B",
       "title": "Dragon's Dogma 2 gets a big upgrade and Denuvo DRM removed",
       "kaynak_sayisi": 2,
@@ -360,7 +440,7 @@
         "url": "https://www.gamingonlinux.com/2026/09/dragons-dogma-2-gets-a-big-upgrade-and-denuvo-drm-removed",
         "summary": "Capcom released the latest major update for Dragon's Dogma 2 ahead of the Dragon's Dogma 2: Dark Arisen Expansion releasing in October. Read the full article on GamingOnLinux .",
         "published": "2026-09-02T10:17:09+00:00",
-        "age_hours": 3.9,
+        "age_hours": 6.9,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -373,7 +453,7 @@
           "gamingonlinux",
           "pcgamesn"
         ],
-        "rank_score": 5.32,
+        "rank_score": 5.26,
         "members": [
           {
             "hash": "45360030eafe04c7",
@@ -381,7 +461,7 @@
             "title": "Dragon's Dogma 2 gets a big upgrade and Denuvo DRM removed",
             "summary": "Capcom released the latest major update for Dragon's Dogma 2 ahead of the Dragon's Dogma 2: Dark Arisen Expansion releasing in October. Read the full article on GamingOnLinux .",
             "published": "2026-09-02T10:17:09+00:00",
-            "age_hours": 3.9,
+            "age_hours": 6.9,
             "image": null,
             "source_id": "gamingonlinux",
             "source_name": "GamingOnLinux",
@@ -400,7 +480,7 @@
             "title": "Capcom removes Denuvo from Dragon's Dogma 2 ahead of its new expansion",
             "summary": "As well as a mountain of other changes, Dragon’s Dogma 2 has had Denuvo DRM software removed ahead of the Dark Arisen expansion.",
             "published": "2026-09-02T10:16:58+00:00",
-            "age_hours": 3.9,
+            "age_hours": 6.9,
             "image": "https://www.pcgamesn.com/wp-content/sites/pcgamesn/2026/09/dragons-dogma-2-denuvo.jpg",
             "source_id": "pcgamesn",
             "source_name": "PCGamesN",
@@ -416,7 +496,7 @@
         ]
       },
       "oyun_adi": "Dragon's Dogma 2",
-      "ozet": "oyuna büyük bir güncelleme geldi ve denuvo koruması kaldırıldı",
+      "ozet": "oyuna büyük güncelleme geldi ve denuvo koruması kaldırıldı",
       "gorsel": {
         "durum": "var",
         "sayi": 8,
@@ -426,86 +506,6 @@
         "temsili": false
       },
       "baslik": "Dragon's Dogma 2"
-    },
-    {
-      "sira": 6,
-      "aday_index": 6,
-      "tier": "B",
-      "title": "All 24 Pokémon Movies Will Be Available in Pricey Amazon-Exclusive Set",
-      "kaynak_sayisi": 2,
-      "reddit_oy": 0,
-      "reddit_yorum": 0,
-      "url": "https://www.polygon.com/pokemon-amazon-movie-collection-viz-media",
-      "aday": {
-        "key": "65bf2a1f25cdb138",
-        "title": "All 24 Pokémon Movies Will Be Available in Pricey Amazon-Exclusive Set",
-        "url": "https://www.polygon.com/pokemon-amazon-movie-collection-viz-media",
-        "summary": "Exclusive Amazon limited edition set includes all 24 Pokémon movies enclosed in a Poké Ball and a book-form Blu-ray case.",
-        "published": "2026-09-02T10:03:32+00:00",
-        "age_hours": 4.1,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "mainstream"
-        ],
-        "source_count": 2,
-        "sources": [
-          "gamingonlinux",
-          "polygon"
-        ],
-        "rank_score": 5.31,
-        "members": [
-          {
-            "hash": "65bf2a1f25cdb138",
-            "url": "https://www.polygon.com/pokemon-amazon-movie-collection-viz-media",
-            "title": "All 24 Pokémon Movies Will Be Available in Pricey Amazon-Exclusive Set",
-            "summary": "Exclusive Amazon limited edition set includes all 24 Pokémon movies enclosed in a Poké Ball and a book-form Blu-ray case.",
-            "published": "2026-09-02T10:03:32+00:00",
-            "age_hours": 4.1,
-            "image": "https://static0.polygonimages.com/wordpress/wp-content/uploads/2026/09/pok-mon-movie.jpg",
-            "source_id": "polygon",
-            "source_name": "Polygon",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream"
-            ]
-          },
-          {
-            "hash": "d4d48fa1274f654b",
-            "url": "https://www.gamingonlinux.com/2026/09/bazzite-linux-has-another-big-set-of-fixes-available",
-            "title": "Bazzite Linux has another big set of fixes available",
-            "summary": "With the recent release of Bazzite Linux 44 for handhelds, they're working quickly to address various issues that have appeared. Read the full article on GamingOnLinux .",
-            "published": "2026-09-01T08:44:06+00:00",
-            "age_hours": 29.4,
-            "image": null,
-            "source_id": "gamingonlinux",
-            "source_name": "GamingOnLinux",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 1.0,
-            "tags": [
-              "indie",
-              "linux"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": null,
-      "ozet": "yirmi dört filmin yer aldığı özel koleksiyon kutusu satışa çıkıyor",
-      "gorsel": {
-        "durum": "yok",
-        "sayi": 0,
-        "oyun": null,
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": false
-      },
-      "baslik": "All 24 Pokémon Movies Will Be Available in Pricey Am..."
     }
   ]
 }
