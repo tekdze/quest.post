@@ -1,24 +1,24 @@
 {
-  "olusturuldu": "2026-09-02T17:11:34+00:00",
-  "oneri": 4,
-  "gerekce": "steamdb'nin satılması oyuncular arasında büyük merak ve endişe uyandırır",
+  "olusturuldu": "2026-09-02T17:51:55+00:00",
+  "oneri": 2,
+  "gerekce": "arkadaş gruplarını bölecek sekiz kişilik ekran özelliği oyuncuların ilgisini çeker",
   "adaylar": [
     {
       "sira": 1,
       "aday_index": 1,
       "tier": "A",
-      "title": "Report: Savvy Games Group CEO Brian Ward departs company",
+      "title": "Nexus Mods is acquiring database and analytics site SteamDB",
       "kaynak_sayisi": 3,
       "reddit_oy": 0,
       "reddit_yorum": 0,
-      "url": "https://www.gamedeveloper.com/business/report-savvy-games-group-ceo-brian-ward-departs-company",
+      "url": "https://www.gamedeveloper.com/business/nexus-mods-is-acquiring-database-and-analytics-site-steamdb",
       "aday": {
-        "key": "4f8a7658b7e29329",
-        "title": "Report: Savvy Games Group CEO Brian Ward departs company",
-        "url": "https://www.gamedeveloper.com/business/report-savvy-games-group-ceo-brian-ward-departs-company",
-        "summary": "'As Savvy embarks on its next period of transformational growth, this is the right time for new leadership for that evolution.'",
-        "published": "2026-09-01T21:42:52+00:00",
-        "age_hours": 19.5,
+        "key": "8cb32f7656049a98",
+        "title": "Nexus Mods is acquiring database and analytics site SteamDB",
+        "url": "https://www.gamedeveloper.com/business/nexus-mods-is-acquiring-database-and-analytics-site-steamdb",
+        "summary": "Nexus Mods wants to grant SteamDB resources and the 'long-term stability it deserves.'",
+        "published": "2026-09-02T17:27:45+00:00",
+        "age_hours": 0.4,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -27,20 +27,20 @@
         ],
         "source_count": 3,
         "sources": [
-          "eurogamer",
           "gamedeveloper",
-          "gamesindustry"
+          "gamingonlinux",
+          "rps"
         ],
-        "rank_score": 7.59,
+        "rank_score": 8.39,
         "members": [
           {
-            "hash": "4f8a7658b7e29329",
-            "url": "https://www.gamedeveloper.com/business/report-savvy-games-group-ceo-brian-ward-departs-company",
-            "title": "Report: Savvy Games Group CEO Brian Ward departs company",
-            "summary": "'As Savvy embarks on its next period of transformational growth, this is the right time for new leadership for that evolution.'",
-            "published": "2026-09-01T21:42:52+00:00",
-            "age_hours": 19.5,
-            "image": "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt7348a0cbe91084d7/6993018dacd57200085959c6/Savvy_Header.png?width=720&quality=80&disable=upscale",
+            "hash": "8cb32f7656049a98",
+            "url": "https://www.gamedeveloper.com/business/nexus-mods-is-acquiring-database-and-analytics-site-steamdb",
+            "title": "Nexus Mods is acquiring database and analytics site SteamDB",
+            "summary": "Nexus Mods wants to grant SteamDB resources and the 'long-term stability it deserves.'",
+            "published": "2026-09-02T17:27:45+00:00",
+            "age_hours": 0.4,
+            "image": "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt59a211bbe10e8e28/6a983cc0f40fc7cb60e52b7d/New_Project(32).png?width=720&quality=80&disable=upscale",
             "source_id": "gamedeveloper",
             "source_name": "Game Developer",
             "lang": "en",
@@ -52,254 +52,12 @@
             ]
           },
           {
-            "hash": "9fd68536772339e9",
-            "url": "https://www.gamesindustry.biz/brian-ward-steps-down-as-savvy-games-group-ceo",
-            "title": "Brian Ward steps down as Savvy Games Group CEO",
-            "summary": "Brian Ward is stepping down as CEO of Savvy Games Group, according to a staff note obtained by Bloomberg . Read more",
-            "published": "2026-09-01T14:38:11+00:00",
-            "age_hours": 26.5,
-            "image": "https://assetsio.gnwcdn.com/Brian-Ward.jpg?width=690&quality=85&format=jpg&auto=webp",
-            "source_id": "gamesindustry",
-            "source_name": "GamesIndustry.biz",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.9,
-            "tags": [
-              "endustri"
-            ]
-          },
-          {
-            "hash": "e592fe6faa2684e4",
-            "url": "https://www.eurogamer.net/savvy-games-group-ceo-brian-ward-steps-down",
-            "title": "CEO of Saudi Arabia's Savvy Games Group Brian Ward steps down after overseeing billions in mobile gaming acquisitions",
-            "summary": "Brian Ward, the CEO of the Saudi-Arabian-state-owned Savvy Games Group, has left his role. During his tenure, he oversaw $38bn of investment into various gaming companies, including Pokemon Go developer Niantic, and Monopoly Go's Scopely. Read more",
-            "published": "2026-09-01T14:04:45+00:00",
-            "age_hours": 27.1,
-            "image": "https://assetsio.gnwcdn.com/Pokemon-Go-XP-World-Championship-Header.jpg?width=690&quality=85&format=jpg&auto=webp",
-            "source_id": "eurogamer",
-            "source_name": "Eurogamer",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": null,
-      "ozet": "savvı games group ceo'su brian ward görevinden ayrıldı",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 16,
-        "oyun": "Grand Theft Auto V",
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": true
-      },
-      "baslik": "Report: Savvy Games Group CEO Brian Ward departs com..."
-    },
-    {
-      "sira": 2,
-      "aday_index": 2,
-      "tier": "A",
-      "title": "Mario Tennis Fever Serves Up A Small Update On Switch 2 (Version 1.1.1)",
-      "kaynak_sayisi": 2,
-      "reddit_oy": 0,
-      "reddit_yorum": 0,
-      "url": "https://www.nintendolife.com/news/2026/09/mario-tennis-fever-serves-up-a-small-update-on-switch-2-version-1-1-1",
-      "aday": {
-        "key": "b764f0259b8feb40",
-        "title": "Mario Tennis Fever Serves Up A Small Update On Switch 2 (Version 1.1.1)",
-        "url": "https://www.nintendolife.com/news/2026/09/mario-tennis-fever-serves-up-a-small-update-on-switch-2-version-1-1-1",
-        "summary": "Return to the court today. Mario Tennis Fever for the Switch 2 has received a small update today and it's now running Version 1.1.1 . In this latest patch, there are some general changes. One adjusts the return of high balls to produce a Star Shot, and along with this are some bug fixes tied to Amps. Read the full article on nintendolife.com",
-        "published": "2026-09-01T02:05:00+00:00",
-        "age_hours": 39.1,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "mainstream",
-          "nintendo"
-        ],
-        "source_count": 2,
-        "sources": [
-          "itch-devlogs",
-          "nintendolife"
-        ],
-        "rank_score": 5.59,
-        "members": [
-          {
-            "hash": "f163ed05ca31147b",
-            "url": "https://gektorne.itch.io/httpsxcomgektorne/devlog/1649536/small-update-macos-version",
-            "title": "Small update + macOS version",
-            "summary": "A \"Total Coins Collected\" entry has been added to the statistics section; this figure accumulates over the course of your entire playtime and does not reset when you start a new run...",
-            "published": "2026-09-02T07:32:25+00:00",
-            "age_hours": 9.6,
-            "image": null,
-            "source_id": "itch-devlogs",
-            "source_name": "itch.io devlog",
-            "lang": "en",
-            "kind": "devlog",
-            "bucket": "discovery",
-            "weight": 1.4,
-            "tags": [
-              "indie",
-              "ayristirici"
-            ]
-          },
-          {
-            "hash": "b764f0259b8feb40",
-            "url": "https://www.nintendolife.com/news/2026/09/mario-tennis-fever-serves-up-a-small-update-on-switch-2-version-1-1-1",
-            "title": "Mario Tennis Fever Serves Up A Small Update On Switch 2 (Version 1.1.1)",
-            "summary": "Return to the court today. Mario Tennis Fever for the Switch 2 has received a small update today and it's now running Version 1.1.1 . In this latest patch, there are some general changes. One adjusts the return of high balls to produce a Star Shot, and along with this are some bug fixes tied to Amps. Read the full article on nintendolife.com",
-            "published": "2026-09-01T02:05:00+00:00",
-            "age_hours": 39.1,
-            "image": "https://images.nintendolife.com/486d38fd16957/large.jpg",
-            "source_id": "nintendolife",
-            "source_name": "Nintendo Life",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream",
-              "nintendo"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": "Mario Tennis Fever",
-      "ozet": "switch 2 sürümüne toplam toplanan altın istatistiği eklendi",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 8,
-        "oyun": "Mario Tennis Fever",
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": false
-      },
-      "baslik": "Mario Tennis Fever"
-    },
-    {
-      "sira": 3,
-      "aday_index": 3,
-      "tier": "B",
-      "title": "The Humble Choice September 2026 Lineup Is Live With Frostpunk 2, Sonic X Shadow Generations, and 6 More Games",
-      "kaynak_sayisi": 2,
-      "reddit_oy": 0,
-      "reddit_yorum": 0,
-      "url": "https://www.ign.com/articles/humble-choice-september-2026",
-      "aday": {
-        "key": "69374e7b2d9d86a2",
-        "title": "The Humble Choice September 2026 Lineup Is Live With Frostpunk 2, Sonic X Shadow Generations, and 6 More Games",
-        "url": "https://www.ign.com/articles/humble-choice-september-2026",
-        "summary": "The Humble Choice September 2026 lineup is officially live. Members can snag 8 games - including Frostpunk 2, Sonic X Shadow Generations, and 6 more - for just $15 for the month.",
-        "published": "2026-09-02T16:09:11+00:00",
-        "age_hours": 1.0,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "mainstream"
-        ],
-        "source_count": 2,
-        "sources": [
-          "gamingonlinux",
-          "ign"
-        ],
-        "rank_score": 5.38,
-        "members": [
-          {
-            "hash": "69374e7b2d9d86a2",
-            "url": "https://www.ign.com/articles/humble-choice-september-2026",
-            "title": "The Humble Choice September 2026 Lineup Is Live With Frostpunk 2, Sonic X Shadow Generations, and 6 More Games",
-            "summary": "The Humble Choice September 2026 lineup is officially live. Members can snag 8 games - including Frostpunk 2, Sonic X Shadow Generations, and 6 more - for just $15 for the month.",
-            "published": "2026-09-02T16:09:11+00:00",
-            "age_hours": 1.0,
-            "image": "https://assets-prd.ignimgs.com/2024/10/18/sonic-x-shadow-generations-blogroll-1729295545078.jpg",
-            "source_id": "ign",
-            "source_name": "IGN",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.6,
-            "tags": [
-              "mainstream"
-            ]
-          },
-          {
-            "hash": "05f81ec6f6bb3d2f",
-            "url": "https://www.gamingonlinux.com/2026/09/humble-choice-for-september-26-includes-frostpunk-2-sonic-x-shadow-generations",
-            "title": "Humble Choice for September 26 includes Frostpunk 2, SONIC X SHADOW GENERATIONS",
-            "summary": "Another interesting game bundle for you to grab - Humble Choice for September 2026 has some highly rated games included like SONIC X SHADOW GENERATIONS. Read the full article on GamingOnLinux .",
-            "published": "2026-09-02T12:22:05+00:00",
-            "age_hours": 4.8,
-            "image": null,
-            "source_id": "gamingonlinux",
-            "source_name": "GamingOnLinux",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 1.0,
-            "tags": [
-              "indie",
-              "linux"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": "Frostpunk 2",
-      "ozet": "eylül ayı bundle paketinde sonic ve frostpunk 2 yer alıyor",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 20,
-        "oyun": "Frostpunk 2",
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": false
-      },
-      "baslik": "Frostpunk 2"
-    },
-    {
-      "sira": 4,
-      "aday_index": 4,
-      "tier": "B",
-      "title": "\"The internet we once loved is gone\": SteamDB founders announce the community-run database has been acquired by Nexus Mods' owners",
-      "kaynak_sayisi": 2,
-      "reddit_oy": 0,
-      "reddit_yorum": 0,
-      "url": "https://www.rockpapershotgun.com/the-internet-we-once-loved-is-gone-steamdb-founders-announce-the-community-run-database-has-been-acquired-by-nexus-mods-owners",
-      "aday": {
-        "key": "83eccd1d61a86334",
-        "title": "\"The internet we once loved is gone\": SteamDB founders announce the community-run database has been acquired by Nexus Mods' owners",
-        "url": "https://www.rockpapershotgun.com/the-internet-we-once-loved-is-gone-steamdb-founders-announce-the-community-run-database-has-been-acquired-by-nexus-mods-owners",
-        "summary": "The owners of Nexus Mods have acquired community-run backend database SteamDB from its founders, the two sides in the deal have announced. The folks behind the former, who've held its keys for 13 years, said their decision to step back is rooted in burnout and a desire to find a suitable team to keep SteamDB running. Meanwhile, Nexus Mods' owners, a company called Chosen, have pointed to wanting to keep track of game updates from a modding perspective as one of the factors that's drawn them to make this deal. Read more",
-        "published": "2026-09-02T12:47:49+00:00",
-        "age_hours": 4.4,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "mainstream",
-          "pc"
-        ],
-        "source_count": 2,
-        "sources": [
-          "gamingonlinux",
-          "rps"
-        ],
-        "rank_score": 5.31,
-        "members": [
-          {
             "hash": "83eccd1d61a86334",
             "url": "https://www.rockpapershotgun.com/the-internet-we-once-loved-is-gone-steamdb-founders-announce-the-community-run-database-has-been-acquired-by-nexus-mods-owners",
             "title": "\"The internet we once loved is gone\": SteamDB founders announce the community-run database has been acquired by Nexus Mods' owners",
             "summary": "The owners of Nexus Mods have acquired community-run backend database SteamDB from its founders, the two sides in the deal have announced. The folks behind the former, who've held its keys for 13 years, said their decision to step back is rooted in burnout and a desire to find a suitable team to keep SteamDB running. Meanwhile, Nexus Mods' owners, a company called Chosen, have pointed to wanting to keep track of game updates from a modding perspective as one of the factors that's drawn them to make this deal. Read more",
             "published": "2026-09-02T12:47:49+00:00",
-            "age_hours": 4.4,
+            "age_hours": 5.1,
             "image": "https://assetsio.gnwcdn.com/nexus-mods-logo-01.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "rps",
             "source_name": "Rock Paper Shotgun",
@@ -318,7 +76,7 @@
             "title": "Nexus Mods acquires the popular community site SteamDB",
             "summary": "Something quite unexpected here - the newer owners of Nexus Mods have now acquired the popular community website SteamDB, a site that many rely on. Read the full article on GamingOnLinux .",
             "published": "2026-09-02T10:45:39+00:00",
-            "age_hours": 6.4,
+            "age_hours": 7.1,
             "image": null,
             "source_id": "gamingonlinux",
             "source_name": "GamingOnLinux",
@@ -334,7 +92,7 @@
         ]
       },
       "oyun_adi": null,
-      "ozet": "steamdb, nexus mods sahipleri tarafından satın alındı",
+      "ozet": "nexus mods, veri tabanı ve analiz sitesi steamdb'yi satın alıyor.",
       "gorsel": {
         "durum": "var",
         "sayi": 6,
@@ -343,11 +101,369 @@
         "seri": null,
         "temsili": true
       },
-      "baslik": "\"The internet we once loved is gone\": SteamDB founde..."
+      "baslik": "Nexus Mods is acquiring database and analytics site..."
+    },
+    {
+      "sira": 2,
+      "aday_index": 2,
+      "tier": "A",
+      "title": "Mario Kart 8 Deluxe gets a surprise Switch 2 update, bringing eight-player split-screen to the evergreen racing game",
+      "kaynak_sayisi": 3,
+      "reddit_oy": 0,
+      "reddit_yorum": 0,
+      "url": "https://www.eurogamer.net/mario-kart-8-switch-2-update-eight-player-split-screen-nintendo",
+      "aday": {
+        "key": "410b3801e6374d3e",
+        "title": "Mario Kart 8 Deluxe gets a surprise Switch 2 update, bringing eight-player split-screen to the evergreen racing game",
+        "url": "https://www.eurogamer.net/mario-kart-8-switch-2-update-eight-player-split-screen-nintendo",
+        "summary": "Nintendo heard us. Our Mario Kart 8 Deluxe parties weren't simultaneously ruining enough friendships, so the evergreen racer can now be played in split-screen with up to eight players thanks to a surprise Switch 2 update. Read more",
+        "published": "2026-09-02T17:11:48+00:00",
+        "age_hours": 0.7,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream"
+        ],
+        "source_count": 3,
+        "sources": [
+          "eurogamer",
+          "gamespot",
+          "kotaku"
+        ],
+        "rank_score": 7.69,
+        "members": [
+          {
+            "hash": "410b3801e6374d3e",
+            "url": "https://www.eurogamer.net/mario-kart-8-switch-2-update-eight-player-split-screen-nintendo",
+            "title": "Mario Kart 8 Deluxe gets a surprise Switch 2 update, bringing eight-player split-screen to the evergreen racing game",
+            "summary": "Nintendo heard us. Our Mario Kart 8 Deluxe parties weren't simultaneously ruining enough friendships, so the evergreen racer can now be played in split-screen with up to eight players thanks to a surprise Switch 2 update. Read more",
+            "published": "2026-09-02T17:11:48+00:00",
+            "age_hours": 0.7,
+            "image": "https://assetsio.gnwcdn.com/Mario-Kart-8-Yoshi.jpg?width=690&quality=85&format=jpg&auto=webp",
+            "source_id": "eurogamer",
+            "source_name": "Eurogamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "578c42f13ea4b29d",
+            "url": "https://www.gamespot.com/articles/mario-kart-8-deluxe-just-got-a-surprise-free-update-with-8-player-split-screen",
+            "title": "Mario Kart 8 Deluxe Just Got A Surprise Free Update With 8-Player Split-Screen",
+            "summary": "Mario Kart 8 Deluxe has been Nintendo's golden goose for several years, as it's the company's best-selling Switch game of all time and has received various updates over the years, becoming a feature-packed experience. Even with Mario Kart World aiming to usurp its position, Nintendo isn't done dropping new content into Mario Kart 8 yet, as the game just received a new eight-player split-screen mode out of nowhere on Switch 2. It's free to download, allows for up to eight players to share the screen locally, and it looks wild in action. Alongside the new mode that segments your TV like a slab o",
+            "published": "2026-09-02T15:15:15+00:00",
+            "age_hours": 2.6,
+            "image": "https://www.gamespot.com/wp-content/uploads/2026/09/Mario-Kart-8.jpg?w=300",
+            "source_id": "gamespot",
+            "source_name": "GameSpot",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "b267bb771e847df4",
+            "url": "https://kotaku.com/surprise-switch-2-upgrade-brings-wild-8-player-split-screen-mode-to-mario-kart-8-deluxe-for-free-2000730478",
+            "title": "Surprise Switch 2 Upgrade Brings Wild 8-Player Split-Screen Mode To Mario Kart 8 Deluxe For Free",
+            "summary": "Still the king",
+            "published": "2026-09-02T12:11:33+00:00",
+            "age_hours": 5.7,
+            "image": "https://kotaku.com/app/uploads/2026/09/mario-kart-8-1280x708.jpg",
+            "source_id": "kotaku",
+            "source_name": "Kotaku",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.6,
+            "tags": [
+              "mainstream"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "Mario Kart 8 Deluxe",
+      "ozet": "sürpriz switch 2 güncellemesi oyuna sekiz kişilik bölünmüş ekran getirdi.",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 14,
+        "oyun": "Mario Kart 8 Deluxe",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": false
+      },
+      "baslik": "Mario Kart 8 Deluxe"
+    },
+    {
+      "sira": 3,
+      "aday_index": 3,
+      "tier": "A",
+      "title": "Report: Savvy Games Group CEO Brian Ward departs company",
+      "kaynak_sayisi": 3,
+      "reddit_oy": 0,
+      "reddit_yorum": 0,
+      "url": "https://www.gamedeveloper.com/business/report-savvy-games-group-ceo-brian-ward-departs-company",
+      "aday": {
+        "key": "4f8a7658b7e29329",
+        "title": "Report: Savvy Games Group CEO Brian Ward departs company",
+        "url": "https://www.gamedeveloper.com/business/report-savvy-games-group-ceo-brian-ward-departs-company",
+        "summary": "'As Savvy embarks on its next period of transformational growth, this is the right time for new leadership for that evolution.'",
+        "published": "2026-09-01T21:42:52+00:00",
+        "age_hours": 20.1,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "endustri"
+        ],
+        "source_count": 3,
+        "sources": [
+          "eurogamer",
+          "gamedeveloper",
+          "gamesindustry"
+        ],
+        "rank_score": 7.58,
+        "members": [
+          {
+            "hash": "4f8a7658b7e29329",
+            "url": "https://www.gamedeveloper.com/business/report-savvy-games-group-ceo-brian-ward-departs-company",
+            "title": "Report: Savvy Games Group CEO Brian Ward departs company",
+            "summary": "'As Savvy embarks on its next period of transformational growth, this is the right time for new leadership for that evolution.'",
+            "published": "2026-09-01T21:42:52+00:00",
+            "age_hours": 20.1,
+            "image": "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt7348a0cbe91084d7/6993018dacd57200085959c6/Savvy_Header.png?width=720&quality=80&disable=upscale",
+            "source_id": "gamedeveloper",
+            "source_name": "Game Developer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 1.0,
+            "tags": [
+              "endustri"
+            ]
+          },
+          {
+            "hash": "9fd68536772339e9",
+            "url": "https://www.gamesindustry.biz/brian-ward-steps-down-as-savvy-games-group-ceo",
+            "title": "Brian Ward steps down as Savvy Games Group CEO",
+            "summary": "Brian Ward is stepping down as CEO of Savvy Games Group, according to a staff note obtained by Bloomberg . Read more",
+            "published": "2026-09-01T14:38:11+00:00",
+            "age_hours": 27.2,
+            "image": "https://assetsio.gnwcdn.com/Brian-Ward.jpg?width=690&quality=85&format=jpg&auto=webp",
+            "source_id": "gamesindustry",
+            "source_name": "GamesIndustry.biz",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.9,
+            "tags": [
+              "endustri"
+            ]
+          },
+          {
+            "hash": "e592fe6faa2684e4",
+            "url": "https://www.eurogamer.net/savvy-games-group-ceo-brian-ward-steps-down",
+            "title": "CEO of Saudi Arabia's Savvy Games Group Brian Ward steps down after overseeing billions in mobile gaming acquisitions",
+            "summary": "Brian Ward, the CEO of the Saudi-Arabian-state-owned Savvy Games Group, has left his role. During his tenure, he oversaw $38bn of investment into various gaming companies, including Pokemon Go developer Niantic, and Monopoly Go's Scopely. Read more",
+            "published": "2026-09-01T14:04:45+00:00",
+            "age_hours": 27.8,
+            "image": "https://assetsio.gnwcdn.com/Pokemon-Go-XP-World-Championship-Header.jpg?width=690&quality=85&format=jpg&auto=webp",
+            "source_id": "eurogamer",
+            "source_name": "Eurogamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": null,
+      "ozet": "suudi arabistan destekli yatırım devinin icosu görevinden ayrıldı.",
+      "gorsel": {
+        "durum": "yok",
+        "sayi": 0,
+        "oyun": null,
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": false
+      },
+      "baslik": "Report: Savvy Games Group CEO Brian Ward departs com..."
+    },
+    {
+      "sira": 4,
+      "aday_index": 4,
+      "tier": "A",
+      "title": "Mario Tennis Fever Serves Up A Small Update On Switch 2 (Version 1.1.1)",
+      "kaynak_sayisi": 2,
+      "reddit_oy": 0,
+      "reddit_yorum": 0,
+      "url": "https://www.nintendolife.com/news/2026/09/mario-tennis-fever-serves-up-a-small-update-on-switch-2-version-1-1-1",
+      "aday": {
+        "key": "b764f0259b8feb40",
+        "title": "Mario Tennis Fever Serves Up A Small Update On Switch 2 (Version 1.1.1)",
+        "url": "https://www.nintendolife.com/news/2026/09/mario-tennis-fever-serves-up-a-small-update-on-switch-2-version-1-1-1",
+        "summary": "Return to the court today. Mario Tennis Fever for the Switch 2 has received a small update today and it's now running Version 1.1.1 . In this latest patch, there are some general changes. One adjusts the return of high balls to produce a Star Shot, and along with this are some bug fixes tied to Amps. Read the full article on nintendolife.com",
+        "published": "2026-09-01T02:05:00+00:00",
+        "age_hours": 39.8,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream",
+          "nintendo"
+        ],
+        "source_count": 2,
+        "sources": [
+          "itch-devlogs",
+          "nintendolife"
+        ],
+        "rank_score": 5.57,
+        "members": [
+          {
+            "hash": "f163ed05ca31147b",
+            "url": "https://gektorne.itch.io/httpsxcomgektorne/devlog/1649536/small-update-macos-version",
+            "title": "Small update + macOS version",
+            "summary": "A \"Total Coins Collected\" entry has been added to the statistics section; this figure accumulates over the course of your entire playtime and does not reset when you start a new run...",
+            "published": "2026-09-02T07:32:25+00:00",
+            "age_hours": 10.3,
+            "image": null,
+            "source_id": "itch-devlogs",
+            "source_name": "itch.io devlog",
+            "lang": "en",
+            "kind": "devlog",
+            "bucket": "discovery",
+            "weight": 1.4,
+            "tags": [
+              "indie",
+              "ayristirici"
+            ]
+          },
+          {
+            "hash": "b764f0259b8feb40",
+            "url": "https://www.nintendolife.com/news/2026/09/mario-tennis-fever-serves-up-a-small-update-on-switch-2-version-1-1-1",
+            "title": "Mario Tennis Fever Serves Up A Small Update On Switch 2 (Version 1.1.1)",
+            "summary": "Return to the court today. Mario Tennis Fever for the Switch 2 has received a small update today and it's now running Version 1.1.1 . In this latest patch, there are some general changes. One adjusts the return of high balls to produce a Star Shot, and along with this are some bug fixes tied to Amps. Read the full article on nintendolife.com",
+            "published": "2026-09-01T02:05:00+00:00",
+            "age_hours": 39.8,
+            "image": "https://images.nintendolife.com/486d38fd16957/large.jpg",
+            "source_id": "nintendolife",
+            "source_name": "Nintendo Life",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream",
+              "nintendo"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "Mario Tennis Fever",
+      "ozet": "yeni güncelleme istatistikler bölümüne toplam toplanan altın sayısını ekledi.",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 8,
+        "oyun": "Mario Tennis Fever",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": false
+      },
+      "baslik": "Mario Tennis Fever"
     },
     {
       "sira": 5,
       "aday_index": 5,
+      "tier": "B",
+      "title": "The Humble Choice September 2026 Lineup Is Live With Frostpunk 2, Sonic X Shadow Generations, and 6 More Games",
+      "kaynak_sayisi": 2,
+      "reddit_oy": 0,
+      "reddit_yorum": 0,
+      "url": "https://www.ign.com/articles/humble-choice-september-2026",
+      "aday": {
+        "key": "69374e7b2d9d86a2",
+        "title": "The Humble Choice September 2026 Lineup Is Live With Frostpunk 2, Sonic X Shadow Generations, and 6 More Games",
+        "url": "https://www.ign.com/articles/humble-choice-september-2026",
+        "summary": "The Humble Choice September 2026 lineup is officially live. Members can snag 8 games - including Frostpunk 2, Sonic X Shadow Generations, and 6 more - for just $15 for the month.",
+        "published": "2026-09-02T16:09:11+00:00",
+        "age_hours": 1.7,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream"
+        ],
+        "source_count": 2,
+        "sources": [
+          "gamingonlinux",
+          "ign"
+        ],
+        "rank_score": 5.36,
+        "members": [
+          {
+            "hash": "69374e7b2d9d86a2",
+            "url": "https://www.ign.com/articles/humble-choice-september-2026",
+            "title": "The Humble Choice September 2026 Lineup Is Live With Frostpunk 2, Sonic X Shadow Generations, and 6 More Games",
+            "summary": "The Humble Choice September 2026 lineup is officially live. Members can snag 8 games - including Frostpunk 2, Sonic X Shadow Generations, and 6 more - for just $15 for the month.",
+            "published": "2026-09-02T16:09:11+00:00",
+            "age_hours": 1.7,
+            "image": "https://assets-prd.ignimgs.com/2024/10/18/sonic-x-shadow-generations-blogroll-1729295545078.jpg",
+            "source_id": "ign",
+            "source_name": "IGN",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.6,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "05f81ec6f6bb3d2f",
+            "url": "https://www.gamingonlinux.com/2026/09/humble-choice-for-september-26-includes-frostpunk-2-sonic-x-shadow-generations",
+            "title": "Humble Choice for September 26 includes Frostpunk 2, SONIC X SHADOW GENERATIONS",
+            "summary": "Another interesting game bundle for you to grab - Humble Choice for September 2026 has some highly rated games included like SONIC X SHADOW GENERATIONS. Read the full article on GamingOnLinux .",
+            "published": "2026-09-02T12:22:05+00:00",
+            "age_hours": 5.5,
+            "image": null,
+            "source_id": "gamingonlinux",
+            "source_name": "GamingOnLinux",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 1.0,
+            "tags": [
+              "indie",
+              "linux"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "Frostpunk 2",
+      "ozet": "eylül ayı bundle paketinde frostpunk 2 ve sonic oyunları yer alıyor.",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 20,
+        "oyun": "Frostpunk 2",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": false
+      },
+      "baslik": "Frostpunk 2"
+    },
+    {
+      "sira": 6,
+      "aday_index": 6,
       "tier": "B",
       "title": "30,000 games are either Steam Deck verified or at least 'playable' on Valve's handheld",
       "kaynak_sayisi": 2,
@@ -360,7 +476,7 @@
         "url": "https://www.pcgamer.com/hardware/handheld-gaming-pcs/30-000-games-are-either-steam-deck-verified-or-at-least-playable-on-valves-handheld",
         "summary": "Hands on, and on the go.",
         "published": "2026-09-02T12:17:28+00:00",
-        "age_hours": 4.9,
+        "age_hours": 5.6,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -372,7 +488,7 @@
           "gamingonlinux",
           "pcgamer"
         ],
-        "rank_score": 5.3,
+        "rank_score": 5.28,
         "members": [
           {
             "hash": "375bc3ce4f02944f",
@@ -380,7 +496,7 @@
             "title": "30,000 games are either Steam Deck verified or at least 'playable' on Valve's handheld",
             "summary": "Hands on, and on the go.",
             "published": "2026-09-02T12:17:28+00:00",
-            "age_hours": 4.9,
+            "age_hours": 5.6,
             "image": "https://cdn.mos.cms.futurecdn.net/mUFdEX52BA7Tnb2nMQwPmS-1280-80.jpg",
             "source_id": "pcgamer",
             "source_name": "PC Gamer",
@@ -398,7 +514,7 @@
             "title": "EVERSPACE 2 gets a final tech update making it Steam Deck and Steam Machine Verified",
             "summary": "ROCKFISH Games just announced and released the final technical update for EVERSPACE 2, which makes it Steam Deck and Steam Machine Verified. Read the full article on GamingOnLinux .",
             "published": "2026-09-01T15:54:54+00:00",
-            "age_hours": 25.3,
+            "age_hours": 25.9,
             "image": null,
             "source_id": "gamingonlinux",
             "source_name": "GamingOnLinux",
@@ -414,98 +530,16 @@
         ]
       },
       "oyun_adi": null,
-      "ozet": "otuz bin oyun valve'ın el konsolunda oynanabilir durumda",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 30,
-        "oyun": "Cyberpunk 2077",
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": true
-      },
-      "baslik": "30,000 games are either Steam Deck verified or at le..."
-    },
-    {
-      "sira": 6,
-      "aday_index": 6,
-      "tier": "B",
-      "title": "Dragon's Dogma 2 gets a big upgrade and Denuvo DRM removed",
-      "kaynak_sayisi": 2,
-      "reddit_oy": 0,
-      "reddit_yorum": 0,
-      "url": "https://www.gamingonlinux.com/2026/09/dragons-dogma-2-gets-a-big-upgrade-and-denuvo-drm-removed",
-      "aday": {
-        "key": "45360030eafe04c7",
-        "title": "Dragon's Dogma 2 gets a big upgrade and Denuvo DRM removed",
-        "url": "https://www.gamingonlinux.com/2026/09/dragons-dogma-2-gets-a-big-upgrade-and-denuvo-drm-removed",
-        "summary": "Capcom released the latest major update for Dragon's Dogma 2 ahead of the Dragon's Dogma 2: Dark Arisen Expansion releasing in October. Read the full article on GamingOnLinux .",
-        "published": "2026-09-02T10:17:09+00:00",
-        "age_hours": 6.9,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "indie",
-          "linux"
-        ],
-        "source_count": 2,
-        "sources": [
-          "gamingonlinux",
-          "pcgamesn"
-        ],
-        "rank_score": 5.26,
-        "members": [
-          {
-            "hash": "45360030eafe04c7",
-            "url": "https://www.gamingonlinux.com/2026/09/dragons-dogma-2-gets-a-big-upgrade-and-denuvo-drm-removed",
-            "title": "Dragon's Dogma 2 gets a big upgrade and Denuvo DRM removed",
-            "summary": "Capcom released the latest major update for Dragon's Dogma 2 ahead of the Dragon's Dogma 2: Dark Arisen Expansion releasing in October. Read the full article on GamingOnLinux .",
-            "published": "2026-09-02T10:17:09+00:00",
-            "age_hours": 6.9,
-            "image": null,
-            "source_id": "gamingonlinux",
-            "source_name": "GamingOnLinux",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 1.0,
-            "tags": [
-              "indie",
-              "linux"
-            ]
-          },
-          {
-            "hash": "11213d777268fdcd",
-            "url": "https://www.pcgamesn.com/dragons-dogma-2/denuvo-removal",
-            "title": "Capcom removes Denuvo from Dragon's Dogma 2 ahead of its new expansion",
-            "summary": "As well as a mountain of other changes, Dragon’s Dogma 2 has had Denuvo DRM software removed ahead of the Dark Arisen expansion.",
-            "published": "2026-09-02T10:16:58+00:00",
-            "age_hours": 6.9,
-            "image": "https://www.pcgamesn.com/wp-content/sites/pcgamesn/2026/09/dragons-dogma-2-denuvo.jpg",
-            "source_id": "pcgamesn",
-            "source_name": "PCGamesN",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream",
-              "pc"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": "Dragon's Dogma 2",
-      "ozet": "oyuna büyük güncelleme geldi ve denuvo koruması kaldırıldı",
+      "ozet": "el konsolunda oynanabilir veya onaylı oyun sayısı otuz bine ulaştı.",
       "gorsel": {
         "durum": "var",
         "sayi": 8,
-        "oyun": "Dragon's Dogma II",
+        "oyun": "Playable Alpha",
         "seri_sayi": 0,
         "seri": null,
         "temsili": false
       },
-      "baslik": "Dragon's Dogma 2"
+      "baslik": "30,000 games are either Steam Deck verified or at le..."
     }
   ]
 }
