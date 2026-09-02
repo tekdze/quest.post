@@ -1,0 +1,170 @@
+{
+  "_kaynak": "https://www.gamedeveloper.com/business/report-savvy-games-group-ceo-brian-ward-departs-company",
+  "_aday_index": 1,
+  "_aday": {
+    "key": "4f8a7658b7e29329",
+    "title": "Report: Savvy Games Group CEO Brian Ward departs company",
+    "url": "https://www.gamedeveloper.com/business/report-savvy-games-group-ceo-brian-ward-departs-company",
+    "summary": "'As Savvy embarks on its next period of transformational growth, this is the right time for new leadership for that evolution.'",
+    "published": "2026-09-01T21:42:52+00:00",
+    "age_hours": 15.0,
+    "lang": "en",
+    "kind": "news",
+    "bucket": "news",
+    "tags": [
+      "endustri"
+    ],
+    "source_count": 4,
+    "sources": [
+      "eurogamer",
+      "gamedeveloper",
+      "gamesindustry",
+      "kotaku"
+    ],
+    "rank_score": 10.69,
+    "members": [
+      {
+        "hash": "4f8a7658b7e29329",
+        "url": "https://www.gamedeveloper.com/business/report-savvy-games-group-ceo-brian-ward-departs-company",
+        "title": "Report: Savvy Games Group CEO Brian Ward departs company",
+        "summary": "'As Savvy embarks on its next period of transformational growth, this is the right time for new leadership for that evolution.'",
+        "published": "2026-09-01T21:42:52+00:00",
+        "age_hours": 15.0,
+        "image": "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt7348a0cbe91084d7/6993018dacd57200085959c6/Savvy_Header.png?width=720&quality=80&disable=upscale",
+        "source_id": "gamedeveloper",
+        "source_name": "Game Developer",
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "weight": 1.0,
+        "tags": [
+          "endustri"
+        ]
+      },
+      {
+        "hash": "9fd68536772339e9",
+        "url": "https://www.gamesindustry.biz/brian-ward-steps-down-as-savvy-games-group-ceo",
+        "title": "Brian Ward steps down as Savvy Games Group CEO",
+        "summary": "Brian Ward is stepping down as CEO of Savvy Games Group, according to a staff note obtained by Bloomberg . Read more",
+        "published": "2026-09-01T14:38:11+00:00",
+        "age_hours": 22.1,
+        "image": "https://assetsio.gnwcdn.com/Brian-Ward.jpg?width=690&quality=85&format=jpg&auto=webp",
+        "source_id": "gamesindustry",
+        "source_name": "GamesIndustry.biz",
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "weight": 0.9,
+        "tags": [
+          "endustri"
+        ]
+      },
+      {
+        "hash": "e592fe6faa2684e4",
+        "url": "https://www.eurogamer.net/savvy-games-group-ceo-brian-ward-steps-down",
+        "title": "CEO of Saudi Arabia's Savvy Games Group Brian Ward steps down after overseeing billions in mobile gaming acquisitions",
+        "summary": "Brian Ward, the CEO of the Saudi-Arabian-state-owned Savvy Games Group, has left his role. During his tenure, he oversaw $38bn of investment into various gaming companies, including Pokemon Go developer Niantic, and Monopoly Go's Scopely. Read more",
+        "published": "2026-09-01T14:04:45+00:00",
+        "age_hours": 22.7,
+        "image": "https://assetsio.gnwcdn.com/Pokemon-Go-XP-World-Championship-Header.jpg?width=690&quality=85&format=jpg&auto=webp",
+        "source_id": "eurogamer",
+        "source_name": "Eurogamer",
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "weight": 0.7,
+        "tags": [
+          "mainstream"
+        ]
+      },
+      {
+        "hash": "37adcb99af72c95b",
+        "url": "https://kotaku.com/ceo-steps-down-at-saudi-arabias-38-billion-gaming-fund-that-owns-pokemon-go-2000730210",
+        "title": "CEO Steps Down At Saudi Arabia’s $38 Billion Gaming Fund That Owns Pokémon Go",
+        "summary": "Brian Ward is leaving after five years and a mountain of acquisitions",
+        "published": "2026-09-01T13:58:07+00:00",
+        "age_hours": 22.8,
+        "image": "https://kotaku.com/app/uploads/2026/09/giovani-2-3.jpg",
+        "source_id": "kotaku",
+        "source_name": "Kotaku",
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "weight": 0.6,
+        "tags": [
+          "mainstream"
+        ]
+      }
+    ]
+  },
+  "_kaynak_sayisi": 4,
+  "_cikarim": [
+    {
+      "olgu": "suudi arabistan devletine ait dev fonun oyun kolunu yöneten brian ward görevinden ayrılıyor.",
+      "alinti": "Brian Ward, the CEO of the Saudi-Arabian-state-owned Savvy Games Group, has left his role."
+    },
+    {
+      "olgu": "brian ward, beş yıllık görev süresi boyunca otuz sekiz milyar dolarlık yatırımı yönetti.",
+      "alinti": "Brian Ward is leaving after five years and a mountain of acquisitions"
+    },
+    {
+      "olgu": "bu süreçte niantic ve scopely gibi dev isimler fonun bünyesine katıldı.",
+      "alinti": "including Pokemon Go developer Niantic, and Monopoly Go's Scopely."
+    },
+    {
+      "olgu": "şirketten yapılan açıklamada ayrılık nedeni transformasyonel büyüme dönemi için yeni liderlik ihtiyacı olarak gösterildi.",
+      "alinti": "As Savvy embarks on its next period of transformational growth, this is the right time for new leadership for that evolution."
+    }
+  ],
+  "_is_leak": false,
+  "_model": "gemini-3.5-flash-lite",
+  "tier": "S",
+  "category": "finansman",
+  "caption": "suudi arabistan destekli yatırım fonunun başındaki isim beş yılın ardından koltuğunu bırakıyor. milyarlarca dolarlık alımlarla geçen bu dönemin ardından şirketin nasıl bir strateji izleyeceği merak konusu. #oyundunyasi #yatirim",
+  "game": "savvy games group",
+  "search_name": null,
+  "image_candidates": [],
+  "series_fallback": [],
+  "representative_games": [
+    "Pokemon GO",
+    "Monopoly GO"
+  ],
+  "credit": null,
+  "pages": [
+    {
+      "type": "cover",
+      "title": "milyar dolarlık fonun ceo'su ayrılıyor",
+      "image": null
+    },
+    {
+      "type": "text",
+      "title": "görevden ayrılış açıklaması",
+      "paragraph": "suudi arabistan devletine bağlı yatırım kolunun başında bulunan brian ward şirketten ayrılıyor. içeriden sızan notlar bu ayrılığın gerçekleştiğini doğruluyor.",
+      "dayanak": 0,
+      "bullets": [
+        "yeni döneme yeni liderlerle başlamak istiyorlar",
+        "beş yıllık süreç resmen sona eriyor"
+      ],
+      "bullet_dayanak": [
+        3,
+        1
+      ],
+      "image": null
+    },
+    {
+      "type": "outro",
+      "question": "devlet destekli fonların oyun pazarını bu kadar domine etmesi sence sağlıklı mı",
+      "ctas": [
+        "bu devasa fon değişimi sektörü nasıl etkiler, düşüncelerini bizimle paylaş"
+      ],
+      "image": null
+    }
+  ],
+  "_hashes": [
+    "4f8a7658b7e29329",
+    "9fd68536772339e9",
+    "e592fe6faa2684e4",
+    "37adcb99af72c95b"
+  ],
+  "_kume_key": "4f8a7658b7e29329"
+}

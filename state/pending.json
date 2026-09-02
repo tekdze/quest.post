@@ -1,19 +1,18 @@
 {
   "kuyruk": [
     {
-      "id": "20260902-onimusha-way-of-the-sword",
+      "id": "20260902-savvy-games-group",
       "etiket": "normal",
       "durum": "onay_bekliyor",
-      "baslik": "onimusha: way of the sword",
-      "draft": "state/drafts/20260902-onimusha-way-of-the-sword.json",
-      "cards_dir": "out/20260902-onimusha-way-of-the-sword",
+      "baslik": "savvy games group",
+      "draft": "state/drafts/20260902-savvy-games-group.json",
+      "cards_dir": "out/20260902-savvy-games-group",
       "message_ids": [
-        466,
-        467,
-        468,
-        469
+        478,
+        479,
+        480
       ],
-      "tier": "B"
+      "tier": "S"
     }
   ]
 }
