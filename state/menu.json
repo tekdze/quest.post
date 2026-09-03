@@ -1,45 +1,64 @@
 {
-  "olusturuldu": "2026-09-02T17:51:55+00:00",
-  "oneri": 2,
-  "gerekce": "arkadaş gruplarını bölecek sekiz kişilik ekran özelliği oyuncuların ilgisini çeker",
+  "olusturuldu": "2026-09-03T08:10:46+00:00",
+  "oneri": 1,
+  "gerekce": "iki dev platformun birleşmesi oyuncular arasında büyük merak uyandırır",
   "adaylar": [
     {
       "sira": 1,
       "aday_index": 1,
-      "tier": "A",
-      "title": "Nexus Mods is acquiring database and analytics site SteamDB",
-      "kaynak_sayisi": 3,
+      "tier": "S",
+      "title": "Nexus Mods acquires SteamDB",
+      "kaynak_sayisi": 4,
       "reddit_oy": 0,
       "reddit_yorum": 0,
-      "url": "https://www.gamedeveloper.com/business/nexus-mods-is-acquiring-database-and-analytics-site-steamdb",
+      "url": "https://www.gamesindustry.biz/nexus-mods-acquires-steamdb",
       "aday": {
-        "key": "8cb32f7656049a98",
-        "title": "Nexus Mods is acquiring database and analytics site SteamDB",
-        "url": "https://www.gamedeveloper.com/business/nexus-mods-is-acquiring-database-and-analytics-site-steamdb",
-        "summary": "Nexus Mods wants to grant SteamDB resources and the 'long-term stability it deserves.'",
-        "published": "2026-09-02T17:27:45+00:00",
-        "age_hours": 0.4,
+        "key": "7f693098c2393f39",
+        "title": "Nexus Mods acquires SteamDB",
+        "url": "https://www.gamesindustry.biz/nexus-mods-acquires-steamdb",
+        "summary": "Nexus Mods has acquired SteamDB, the widely used Steam data-tracking site. Read more",
+        "published": "2026-09-02T19:14:24+00:00",
+        "age_hours": 12.9,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
         "tags": [
           "endustri"
         ],
-        "source_count": 3,
+        "source_count": 4,
         "sources": [
           "gamedeveloper",
+          "gamesindustry",
           "gamingonlinux",
           "rps"
         ],
-        "rank_score": 8.39,
+        "rank_score": 11.13,
         "members": [
+          {
+            "hash": "7f693098c2393f39",
+            "url": "https://www.gamesindustry.biz/nexus-mods-acquires-steamdb",
+            "title": "Nexus Mods acquires SteamDB",
+            "summary": "Nexus Mods has acquired SteamDB, the widely used Steam data-tracking site. Read more",
+            "published": "2026-09-02T19:14:24+00:00",
+            "age_hours": 12.9,
+            "image": "https://assetsio.gnwcdn.com/Copy-of-X.png?width=690&quality=85&format=jpg&auto=webp",
+            "source_id": "gamesindustry",
+            "source_name": "GamesIndustry.biz",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.9,
+            "tags": [
+              "endustri"
+            ]
+          },
           {
             "hash": "8cb32f7656049a98",
             "url": "https://www.gamedeveloper.com/business/nexus-mods-is-acquiring-database-and-analytics-site-steamdb",
             "title": "Nexus Mods is acquiring database and analytics site SteamDB",
             "summary": "Nexus Mods wants to grant SteamDB resources and the 'long-term stability it deserves.'",
             "published": "2026-09-02T17:27:45+00:00",
-            "age_hours": 0.4,
+            "age_hours": 14.7,
             "image": "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt59a211bbe10e8e28/6a983cc0f40fc7cb60e52b7d/New_Project(32).png?width=720&quality=80&disable=upscale",
             "source_id": "gamedeveloper",
             "source_name": "Game Developer",
@@ -57,7 +76,7 @@
             "title": "\"The internet we once loved is gone\": SteamDB founders announce the community-run database has been acquired by Nexus Mods' owners",
             "summary": "The owners of Nexus Mods have acquired community-run backend database SteamDB from its founders, the two sides in the deal have announced. The folks behind the former, who've held its keys for 13 years, said their decision to step back is rooted in burnout and a desire to find a suitable team to keep SteamDB running. Meanwhile, Nexus Mods' owners, a company called Chosen, have pointed to wanting to keep track of game updates from a modding perspective as one of the factors that's drawn them to make this deal. Read more",
             "published": "2026-09-02T12:47:49+00:00",
-            "age_hours": 5.1,
+            "age_hours": 19.4,
             "image": "https://assetsio.gnwcdn.com/nexus-mods-logo-01.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "rps",
             "source_name": "Rock Paper Shotgun",
@@ -76,7 +95,7 @@
             "title": "Nexus Mods acquires the popular community site SteamDB",
             "summary": "Something quite unexpected here - the newer owners of Nexus Mods have now acquired the popular community website SteamDB, a site that many rely on. Read the full article on GamingOnLinux .",
             "published": "2026-09-02T10:45:39+00:00",
-            "age_hours": 7.1,
+            "age_hours": 21.4,
             "image": null,
             "source_id": "gamingonlinux",
             "source_name": "GamingOnLinux",
@@ -92,7 +111,7 @@
         ]
       },
       "oyun_adi": null,
-      "ozet": "nexus mods, veri tabanı ve analiz sitesi steamdb'yi satın alıyor.",
+      "ozet": "nexus mods, popüler veri takip sitesi steamdb'yi satın aldı",
       "gorsel": {
         "durum": "var",
         "sayi": 6,
@@ -101,24 +120,24 @@
         "seri": null,
         "temsili": true
       },
-      "baslik": "Nexus Mods is acquiring database and analytics site..."
+      "baslik": "Nexus Mods acquires SteamDB"
     },
     {
       "sira": 2,
       "aday_index": 2,
       "tier": "A",
-      "title": "Mario Kart 8 Deluxe gets a surprise Switch 2 update, bringing eight-player split-screen to the evergreen racing game",
+      "title": "CD Projekt says it never considered charging Witcher 3 owners for the remastered edition: 'It was never a question we asked ourselves'",
       "kaynak_sayisi": 3,
       "reddit_oy": 0,
       "reddit_yorum": 0,
-      "url": "https://www.eurogamer.net/mario-kart-8-switch-2-update-eight-player-split-screen-nintendo",
+      "url": "https://www.pcgamer.com/games/the-witcher/cd-projekt-says-it-never-considered-charging-witcher-3-owners-for-the-remastered-edition-it-was-never-a-question-we-asked-ourselves",
       "aday": {
-        "key": "410b3801e6374d3e",
-        "title": "Mario Kart 8 Deluxe gets a surprise Switch 2 update, bringing eight-player split-screen to the evergreen racing game",
-        "url": "https://www.eurogamer.net/mario-kart-8-switch-2-update-eight-player-split-screen-nintendo",
-        "summary": "Nintendo heard us. Our Mario Kart 8 Deluxe parties weren't simultaneously ruining enough friendships, so the evergreen racer can now be played in split-screen with up to eight players thanks to a surprise Switch 2 update. Read more",
-        "published": "2026-09-02T17:11:48+00:00",
-        "age_hours": 0.7,
+        "key": "a003f9ce284e210b",
+        "title": "CD Projekt says it never considered charging Witcher 3 owners for the remastered edition: 'It was never a question we asked ourselves'",
+        "url": "https://www.pcgamer.com/games/the-witcher/cd-projekt-says-it-never-considered-charging-witcher-3-owners-for-the-remastered-edition-it-was-never-a-question-we-asked-ourselves",
+        "summary": "The Songs of the Past expansion will make money, but the remastered Witcher 3 is a gift.",
+        "published": "2026-09-02T21:34:34+00:00",
+        "age_hours": 10.6,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -128,19 +147,37 @@
         "source_count": 3,
         "sources": [
           "eurogamer",
-          "gamespot",
-          "kotaku"
+          "nintendolife",
+          "pcgamer"
         ],
-        "rank_score": 7.69,
+        "rank_score": 7.48,
         "members": [
           {
-            "hash": "410b3801e6374d3e",
-            "url": "https://www.eurogamer.net/mario-kart-8-switch-2-update-eight-player-split-screen-nintendo",
-            "title": "Mario Kart 8 Deluxe gets a surprise Switch 2 update, bringing eight-player split-screen to the evergreen racing game",
-            "summary": "Nintendo heard us. Our Mario Kart 8 Deluxe parties weren't simultaneously ruining enough friendships, so the evergreen racer can now be played in split-screen with up to eight players thanks to a surprise Switch 2 update. Read more",
-            "published": "2026-09-02T17:11:48+00:00",
-            "age_hours": 0.7,
-            "image": "https://assetsio.gnwcdn.com/Mario-Kart-8-Yoshi.jpg?width=690&quality=85&format=jpg&auto=webp",
+            "hash": "a003f9ce284e210b",
+            "url": "https://www.pcgamer.com/games/the-witcher/cd-projekt-says-it-never-considered-charging-witcher-3-owners-for-the-remastered-edition-it-was-never-a-question-we-asked-ourselves",
+            "title": "CD Projekt says it never considered charging Witcher 3 owners for the remastered edition: 'It was never a question we asked ourselves'",
+            "summary": "The Songs of the Past expansion will make money, but the remastered Witcher 3 is a gift.",
+            "published": "2026-09-02T21:34:34+00:00",
+            "age_hours": 10.6,
+            "image": "https://cdn.mos.cms.futurecdn.net/Z2eeZgaW2ezS85iYRFGdxZ-1280-80.jpg",
+            "source_id": "pcgamer",
+            "source_name": "PC Gamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "b950766953739a4b",
+            "url": "https://www.eurogamer.net/witcher-3-remaster-songs-of-past-expansion",
+            "title": "CD Projekt Red never considered charging for The Witcher 3 remaster, and says expansion Songs of the Past came from a couple of \"happy accidents\"",
+            "summary": "Polish developer CD Projekt Red apparently never considered charging players for the recently revealed Remastered edition of The Witcher 3 , and it has explained more about how the expansion Songs of the Past came to be, citing a couple of \"happy accidents\". Read more",
+            "published": "2026-09-01T15:56:34+00:00",
+            "age_hours": 40.2,
+            "image": "https://assetsio.gnwcdn.com/geralt-lilla-songs-of-the-past-witcher-3.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
             "lang": "en",
@@ -152,54 +189,37 @@
             ]
           },
           {
-            "hash": "578c42f13ea4b29d",
-            "url": "https://www.gamespot.com/articles/mario-kart-8-deluxe-just-got-a-surprise-free-update-with-8-player-split-screen",
-            "title": "Mario Kart 8 Deluxe Just Got A Surprise Free Update With 8-Player Split-Screen",
-            "summary": "Mario Kart 8 Deluxe has been Nintendo's golden goose for several years, as it's the company's best-selling Switch game of all time and has received various updates over the years, becoming a feature-packed experience. Even with Mario Kart World aiming to usurp its position, Nintendo isn't done dropping new content into Mario Kart 8 yet, as the game just received a new eight-player split-screen mode out of nowhere on Switch 2. It's free to download, allows for up to eight players to share the screen locally, and it looks wild in action. Alongside the new mode that segments your TV like a slab o",
-            "published": "2026-09-02T15:15:15+00:00",
-            "age_hours": 2.6,
-            "image": "https://www.gamespot.com/wp-content/uploads/2026/09/Mario-Kart-8.jpg?w=300",
-            "source_id": "gamespot",
-            "source_name": "GameSpot",
+            "hash": "eab8249180800b8c",
+            "url": "https://www.nintendolife.com/news/2026/09/charging-current-owners-for-the-witcher-iii-remastered-never-a-question-we-asked-ourselves-says-cdpr",
+            "title": "Charging Current Owners For The Witcher III Remastered \"Never A Question We Asked Ourselves\", Says CDPR",
+            "summary": "Goodwill Geralt. One of the biggest surprises from this year's Gamescom ONL showcase was the announcement of The Witcher III: Wild Hunt - Remastered for the Switch 2; a reveal made all the more sweet thanks to the confirmation that it would be free for current owners. In speaking with The Game Business , CD Projekt Red CEO Michał Nowakowski stated that charging current owners for the remastered version simply never entered the developers' minds. In his mind, the studio will be fulfilling its commercial goals with the release of the upcoming expansion, Songs of the Past from developer Fool's Th",
+            "published": "2026-09-01T14:30:00+00:00",
+            "age_hours": 41.7,
+            "image": "https://images.nintendolife.com/d74e45c78d8b3/large.jpg",
+            "source_id": "nintendolife",
+            "source_name": "Nintendo Life",
             "lang": "en",
             "kind": "news",
             "bucket": "news",
             "weight": 0.7,
             "tags": [
-              "mainstream"
-            ]
-          },
-          {
-            "hash": "b267bb771e847df4",
-            "url": "https://kotaku.com/surprise-switch-2-upgrade-brings-wild-8-player-split-screen-mode-to-mario-kart-8-deluxe-for-free-2000730478",
-            "title": "Surprise Switch 2 Upgrade Brings Wild 8-Player Split-Screen Mode To Mario Kart 8 Deluxe For Free",
-            "summary": "Still the king",
-            "published": "2026-09-02T12:11:33+00:00",
-            "age_hours": 5.7,
-            "image": "https://kotaku.com/app/uploads/2026/09/mario-kart-8-1280x708.jpg",
-            "source_id": "kotaku",
-            "source_name": "Kotaku",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.6,
-            "tags": [
-              "mainstream"
+              "mainstream",
+              "nintendo"
             ]
           }
         ]
       },
-      "oyun_adi": "Mario Kart 8 Deluxe",
-      "ozet": "sürpriz switch 2 güncellemesi oyuna sekiz kişilik bölünmüş ekran getirdi.",
+      "oyun_adi": "The Witcher 3: Wild Hunt",
+      "ozet": "cd projekt yeni sürüm için ücret almayı hiç düşünmediklerini açıkladı",
       "gorsel": {
         "durum": "var",
-        "sayi": 14,
-        "oyun": "Mario Kart 8 Deluxe",
+        "sayi": 19,
+        "oyun": "The Witcher 3: Wild Hunt",
         "seri_sayi": 0,
         "seri": null,
         "temsili": false
       },
-      "baslik": "Mario Kart 8 Deluxe"
+      "baslik": "The Witcher 3: Wild Hunt"
     },
     {
       "sira": 3,
@@ -216,7 +236,7 @@
         "url": "https://www.gamedeveloper.com/business/report-savvy-games-group-ceo-brian-ward-departs-company",
         "summary": "'As Savvy embarks on its next period of transformational growth, this is the right time for new leadership for that evolution.'",
         "published": "2026-09-01T21:42:52+00:00",
-        "age_hours": 20.1,
+        "age_hours": 34.5,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -229,7 +249,7 @@
           "gamedeveloper",
           "gamesindustry"
         ],
-        "rank_score": 7.58,
+        "rank_score": 7.28,
         "members": [
           {
             "hash": "4f8a7658b7e29329",
@@ -237,7 +257,7 @@
             "title": "Report: Savvy Games Group CEO Brian Ward departs company",
             "summary": "'As Savvy embarks on its next period of transformational growth, this is the right time for new leadership for that evolution.'",
             "published": "2026-09-01T21:42:52+00:00",
-            "age_hours": 20.1,
+            "age_hours": 34.5,
             "image": "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt7348a0cbe91084d7/6993018dacd57200085959c6/Savvy_Header.png?width=720&quality=80&disable=upscale",
             "source_id": "gamedeveloper",
             "source_name": "Game Developer",
@@ -255,7 +275,7 @@
             "title": "Brian Ward steps down as Savvy Games Group CEO",
             "summary": "Brian Ward is stepping down as CEO of Savvy Games Group, according to a staff note obtained by Bloomberg . Read more",
             "published": "2026-09-01T14:38:11+00:00",
-            "age_hours": 27.2,
+            "age_hours": 41.5,
             "image": "https://assetsio.gnwcdn.com/Brian-Ward.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "gamesindustry",
             "source_name": "GamesIndustry.biz",
@@ -273,7 +293,7 @@
             "title": "CEO of Saudi Arabia's Savvy Games Group Brian Ward steps down after overseeing billions in mobile gaming acquisitions",
             "summary": "Brian Ward, the CEO of the Saudi-Arabian-state-owned Savvy Games Group, has left his role. During his tenure, he oversaw $38bn of investment into various gaming companies, including Pokemon Go developer Niantic, and Monopoly Go's Scopely. Read more",
             "published": "2026-09-01T14:04:45+00:00",
-            "age_hours": 27.8,
+            "age_hours": 42.1,
             "image": "https://assetsio.gnwcdn.com/Pokemon-Go-XP-World-Championship-Header.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
@@ -288,14 +308,14 @@
         ]
       },
       "oyun_adi": null,
-      "ozet": "suudi arabistan destekli yatırım devinin icosu görevinden ayrıldı.",
+      "ozet": "suudi fonlu oyun devi şirketin ceo'su görevinden ayrıldı",
       "gorsel": {
-        "durum": "yok",
-        "sayi": 0,
-        "oyun": null,
+        "durum": "var",
+        "sayi": 12,
+        "oyun": "League of Legends",
         "seri_sayi": 0,
         "seri": null,
-        "temsili": false
+        "temsili": true
       },
       "baslik": "Report: Savvy Games Group CEO Brian Ward departs com..."
     },
@@ -303,39 +323,39 @@
       "sira": 4,
       "aday_index": 4,
       "tier": "A",
-      "title": "Mario Tennis Fever Serves Up A Small Update On Switch 2 (Version 1.1.1)",
+      "title": "A big Steam stable update is out with improvements for Remote Play, Steam Input and bug fixes",
       "kaynak_sayisi": 2,
       "reddit_oy": 0,
       "reddit_yorum": 0,
-      "url": "https://www.nintendolife.com/news/2026/09/mario-tennis-fever-serves-up-a-small-update-on-switch-2-version-1-1-1",
+      "url": "https://www.gamingonlinux.com/2026/09/a-big-steam-stable-update-is-out-with-improvements-for-remote-play-steam-input-and-bug-fixes",
       "aday": {
-        "key": "b764f0259b8feb40",
-        "title": "Mario Tennis Fever Serves Up A Small Update On Switch 2 (Version 1.1.1)",
-        "url": "https://www.nintendolife.com/news/2026/09/mario-tennis-fever-serves-up-a-small-update-on-switch-2-version-1-1-1",
-        "summary": "Return to the court today. Mario Tennis Fever for the Switch 2 has received a small update today and it's now running Version 1.1.1 . In this latest patch, there are some general changes. One adjusts the return of high balls to produce a Star Shot, and along with this are some bug fixes tied to Amps. Read the full article on nintendolife.com",
-        "published": "2026-09-01T02:05:00+00:00",
-        "age_hours": 39.8,
+        "key": "755955148f6cc08e",
+        "title": "A big Steam stable update is out with improvements for Remote Play, Steam Input and bug fixes",
+        "url": "https://www.gamingonlinux.com/2026/09/a-big-steam-stable-update-is-out-with-improvements-for-remote-play-steam-input-and-bug-fixes",
+        "summary": "Valve just released the latest main stable Steam update for Desktop, Steam Deck, Steam Machine and SteamOS. Here's everything that's changed. Read the full article on GamingOnLinux .",
+        "published": "2026-09-02T08:03:41+00:00",
+        "age_hours": 24.1,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
         "tags": [
-          "mainstream",
-          "nintendo"
+          "indie",
+          "linux"
         ],
         "source_count": 2,
         "sources": [
-          "itch-devlogs",
-          "nintendolife"
+          "gamingonlinux",
+          "itch-devlogs"
         ],
-        "rank_score": 5.57,
+        "rank_score": 5.9,
         "members": [
           {
-            "hash": "f163ed05ca31147b",
-            "url": "https://gektorne.itch.io/httpsxcomgektorne/devlog/1649536/small-update-macos-version",
-            "title": "Small update + macOS version",
-            "summary": "A \"Total Coins Collected\" entry has been added to the statistics section; this figure accumulates over the course of your entire playtime and does not reset when you start a new run...",
-            "published": "2026-09-02T07:32:25+00:00",
-            "age_hours": 10.3,
+            "hash": "13b421b570f0c076",
+            "url": "https://weirdfellows.itch.io/wizard-school-dropout/devlog/1650284/preview-181-bug-fixes",
+            "title": "Preview 18.1: Bug fixes",
+            "summary": "Bug Fixes Fixed errors when returning home from Sunlit Church. Added text and graphics for the final stage of the Celestial mutation. Order of the Unchained Spirit sees Inheritors of the Sun as enemie...",
+            "published": "2026-09-02T22:39:58+00:00",
+            "age_hours": 9.5,
             "image": null,
             "source_id": "itch-devlogs",
             "source_name": "itch.io devlog",
@@ -349,92 +369,12 @@
             ]
           },
           {
-            "hash": "b764f0259b8feb40",
-            "url": "https://www.nintendolife.com/news/2026/09/mario-tennis-fever-serves-up-a-small-update-on-switch-2-version-1-1-1",
-            "title": "Mario Tennis Fever Serves Up A Small Update On Switch 2 (Version 1.1.1)",
-            "summary": "Return to the court today. Mario Tennis Fever for the Switch 2 has received a small update today and it's now running Version 1.1.1 . In this latest patch, there are some general changes. One adjusts the return of high balls to produce a Star Shot, and along with this are some bug fixes tied to Amps. Read the full article on nintendolife.com",
-            "published": "2026-09-01T02:05:00+00:00",
-            "age_hours": 39.8,
-            "image": "https://images.nintendolife.com/486d38fd16957/large.jpg",
-            "source_id": "nintendolife",
-            "source_name": "Nintendo Life",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream",
-              "nintendo"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": "Mario Tennis Fever",
-      "ozet": "yeni güncelleme istatistikler bölümüne toplam toplanan altın sayısını ekledi.",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 8,
-        "oyun": "Mario Tennis Fever",
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": false
-      },
-      "baslik": "Mario Tennis Fever"
-    },
-    {
-      "sira": 5,
-      "aday_index": 5,
-      "tier": "B",
-      "title": "The Humble Choice September 2026 Lineup Is Live With Frostpunk 2, Sonic X Shadow Generations, and 6 More Games",
-      "kaynak_sayisi": 2,
-      "reddit_oy": 0,
-      "reddit_yorum": 0,
-      "url": "https://www.ign.com/articles/humble-choice-september-2026",
-      "aday": {
-        "key": "69374e7b2d9d86a2",
-        "title": "The Humble Choice September 2026 Lineup Is Live With Frostpunk 2, Sonic X Shadow Generations, and 6 More Games",
-        "url": "https://www.ign.com/articles/humble-choice-september-2026",
-        "summary": "The Humble Choice September 2026 lineup is officially live. Members can snag 8 games - including Frostpunk 2, Sonic X Shadow Generations, and 6 more - for just $15 for the month.",
-        "published": "2026-09-02T16:09:11+00:00",
-        "age_hours": 1.7,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "mainstream"
-        ],
-        "source_count": 2,
-        "sources": [
-          "gamingonlinux",
-          "ign"
-        ],
-        "rank_score": 5.36,
-        "members": [
-          {
-            "hash": "69374e7b2d9d86a2",
-            "url": "https://www.ign.com/articles/humble-choice-september-2026",
-            "title": "The Humble Choice September 2026 Lineup Is Live With Frostpunk 2, Sonic X Shadow Generations, and 6 More Games",
-            "summary": "The Humble Choice September 2026 lineup is officially live. Members can snag 8 games - including Frostpunk 2, Sonic X Shadow Generations, and 6 more - for just $15 for the month.",
-            "published": "2026-09-02T16:09:11+00:00",
-            "age_hours": 1.7,
-            "image": "https://assets-prd.ignimgs.com/2024/10/18/sonic-x-shadow-generations-blogroll-1729295545078.jpg",
-            "source_id": "ign",
-            "source_name": "IGN",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.6,
-            "tags": [
-              "mainstream"
-            ]
-          },
-          {
-            "hash": "05f81ec6f6bb3d2f",
-            "url": "https://www.gamingonlinux.com/2026/09/humble-choice-for-september-26-includes-frostpunk-2-sonic-x-shadow-generations",
-            "title": "Humble Choice for September 26 includes Frostpunk 2, SONIC X SHADOW GENERATIONS",
-            "summary": "Another interesting game bundle for you to grab - Humble Choice for September 2026 has some highly rated games included like SONIC X SHADOW GENERATIONS. Read the full article on GamingOnLinux .",
-            "published": "2026-09-02T12:22:05+00:00",
-            "age_hours": 5.5,
+            "hash": "755955148f6cc08e",
+            "url": "https://www.gamingonlinux.com/2026/09/a-big-steam-stable-update-is-out-with-improvements-for-remote-play-steam-input-and-bug-fixes",
+            "title": "A big Steam stable update is out with improvements for Remote Play, Steam Input and bug fixes",
+            "summary": "Valve just released the latest main stable Steam update for Desktop, Steam Deck, Steam Machine and SteamOS. Here's everything that's changed. Read the full article on GamingOnLinux .",
+            "published": "2026-09-02T08:03:41+00:00",
+            "age_hours": 24.1,
             "image": null,
             "source_id": "gamingonlinux",
             "source_name": "GamingOnLinux",
@@ -446,75 +386,14 @@
               "indie",
               "linux"
             ]
-          }
-        ]
-      },
-      "oyun_adi": "Frostpunk 2",
-      "ozet": "eylül ayı bundle paketinde frostpunk 2 ve sonic oyunları yer alıyor.",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 20,
-        "oyun": "Frostpunk 2",
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": false
-      },
-      "baslik": "Frostpunk 2"
-    },
-    {
-      "sira": 6,
-      "aday_index": 6,
-      "tier": "B",
-      "title": "30,000 games are either Steam Deck verified or at least 'playable' on Valve's handheld",
-      "kaynak_sayisi": 2,
-      "reddit_oy": 0,
-      "reddit_yorum": 0,
-      "url": "https://www.pcgamer.com/hardware/handheld-gaming-pcs/30-000-games-are-either-steam-deck-verified-or-at-least-playable-on-valves-handheld",
-      "aday": {
-        "key": "375bc3ce4f02944f",
-        "title": "30,000 games are either Steam Deck verified or at least 'playable' on Valve's handheld",
-        "url": "https://www.pcgamer.com/hardware/handheld-gaming-pcs/30-000-games-are-either-steam-deck-verified-or-at-least-playable-on-valves-handheld",
-        "summary": "Hands on, and on the go.",
-        "published": "2026-09-02T12:17:28+00:00",
-        "age_hours": 5.6,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "mainstream"
-        ],
-        "source_count": 2,
-        "sources": [
-          "gamingonlinux",
-          "pcgamer"
-        ],
-        "rank_score": 5.28,
-        "members": [
-          {
-            "hash": "375bc3ce4f02944f",
-            "url": "https://www.pcgamer.com/hardware/handheld-gaming-pcs/30-000-games-are-either-steam-deck-verified-or-at-least-playable-on-valves-handheld",
-            "title": "30,000 games are either Steam Deck verified or at least 'playable' on Valve's handheld",
-            "summary": "Hands on, and on the go.",
-            "published": "2026-09-02T12:17:28+00:00",
-            "age_hours": 5.6,
-            "image": "https://cdn.mos.cms.futurecdn.net/mUFdEX52BA7Tnb2nMQwPmS-1280-80.jpg",
-            "source_id": "pcgamer",
-            "source_name": "PC Gamer",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream"
-            ]
           },
           {
-            "hash": "bfb114ff724526fd",
-            "url": "https://www.gamingonlinux.com/2026/09/everspace-2-gets-a-final-tech-update-making-it-steam-deck-and-steam-machine-verified",
-            "title": "EVERSPACE 2 gets a final tech update making it Steam Deck and Steam Machine Verified",
-            "summary": "ROCKFISH Games just announced and released the final technical update for EVERSPACE 2, which makes it Steam Deck and Steam Machine Verified. Read the full article on GamingOnLinux .",
-            "published": "2026-09-01T15:54:54+00:00",
-            "age_hours": 25.9,
+            "hash": "fc7038cf74fd3b8f",
+            "url": "https://www.gamingonlinux.com/2026/09/steam-beta-for-august-31st-brings-fixes-for-remote-play",
+            "title": "Steam Beta for August 31st brings fixes for Remote Play",
+            "summary": "Valve released a small update to the Steam Client Beta, bringing in some fixes - good news for fans of Remote Play. Read the full article on GamingOnLinux .",
+            "published": "2026-09-01T08:37:24+00:00",
+            "age_hours": 47.6,
             "image": null,
             "source_id": "gamingonlinux",
             "source_name": "GamingOnLinux",
@@ -530,16 +409,179 @@
         ]
       },
       "oyun_adi": null,
-      "ozet": "el konsolunda oynanabilir veya onaylı oyun sayısı otuz bine ulaştı.",
+      "ozet": "steam uzaktan oynamave girdi geliştirmeleri içeren kararlı güncelleme yayınladı",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 6,
+        "oyun": "Steam Dreams",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": true
+      },
+      "baslik": "A big Steam stable update is out with improvements f..."
+    },
+    {
+      "sira": 5,
+      "aday_index": 5,
+      "tier": "B",
+      "title": "Dragon's Dogma 2 gets a big upgrade and Denuvo DRM removed",
+      "kaynak_sayisi": 2,
+      "reddit_oy": 0,
+      "reddit_yorum": 0,
+      "url": "https://www.gamingonlinux.com/2026/09/dragons-dogma-2-gets-a-big-upgrade-and-denuvo-drm-removed",
+      "aday": {
+        "key": "45360030eafe04c7",
+        "title": "Dragon's Dogma 2 gets a big upgrade and Denuvo DRM removed",
+        "url": "https://www.gamingonlinux.com/2026/09/dragons-dogma-2-gets-a-big-upgrade-and-denuvo-drm-removed",
+        "summary": "Capcom released the latest major update for Dragon's Dogma 2 ahead of the Dragon's Dogma 2: Dark Arisen Expansion releasing in October. Read the full article on GamingOnLinux .",
+        "published": "2026-09-02T10:17:09+00:00",
+        "age_hours": 21.9,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "indie",
+          "linux"
+        ],
+        "source_count": 2,
+        "sources": [
+          "gamingonlinux",
+          "pcgamesn"
+        ],
+        "rank_score": 4.94,
+        "members": [
+          {
+            "hash": "45360030eafe04c7",
+            "url": "https://www.gamingonlinux.com/2026/09/dragons-dogma-2-gets-a-big-upgrade-and-denuvo-drm-removed",
+            "title": "Dragon's Dogma 2 gets a big upgrade and Denuvo DRM removed",
+            "summary": "Capcom released the latest major update for Dragon's Dogma 2 ahead of the Dragon's Dogma 2: Dark Arisen Expansion releasing in October. Read the full article on GamingOnLinux .",
+            "published": "2026-09-02T10:17:09+00:00",
+            "age_hours": 21.9,
+            "image": null,
+            "source_id": "gamingonlinux",
+            "source_name": "GamingOnLinux",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 1.0,
+            "tags": [
+              "indie",
+              "linux"
+            ]
+          },
+          {
+            "hash": "11213d777268fdcd",
+            "url": "https://www.pcgamesn.com/dragons-dogma-2/denuvo-removal",
+            "title": "Capcom removes Denuvo from Dragon's Dogma 2 ahead of its new expansion",
+            "summary": "As well as a mountain of other changes, Dragon’s Dogma 2 has had Denuvo DRM software removed ahead of the Dark Arisen expansion.",
+            "published": "2026-09-02T10:16:58+00:00",
+            "age_hours": 21.9,
+            "image": "https://www.pcgamesn.com/wp-content/sites/pcgamesn/2026/09/dragons-dogma-2-denuvo.jpg",
+            "source_id": "pcgamesn",
+            "source_name": "PCGamesN",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream",
+              "pc"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "Dragon's Dogma 2",
+      "ozet": "capcom büyük güncelleme yayınladı ve tartışmalı denuvo korumasını kaldırdı",
       "gorsel": {
         "durum": "var",
         "sayi": 8,
-        "oyun": "Playable Alpha",
+        "oyun": "Dragon's Dogma II",
         "seri_sayi": 0,
         "seri": null,
         "temsili": false
       },
-      "baslik": "30,000 games are either Steam Deck verified or at le..."
+      "baslik": "Dragon's Dogma 2"
+    },
+    {
+      "sira": 6,
+      "aday_index": 6,
+      "tier": "B",
+      "title": "NVIDIA Finally Announces Launch Date For Its Controversial DLSS 5",
+      "kaynak_sayisi": 2,
+      "reddit_oy": 0,
+      "reddit_yorum": 0,
+      "url": "https://80.lv/articles/nvidia-finally-announces-launch-date-for-its-controversial-dlss-5",
+      "aday": {
+        "key": "f7ae18817862b223",
+        "title": "NVIDIA Finally Announces Launch Date For Its Controversial DLSS 5",
+        "url": "https://80.lv/articles/nvidia-finally-announces-launch-date-for-its-controversial-dlss-5",
+        "summary": "Unsurprisingly, it comes with a huge performance hit.",
+        "published": "2026-09-02T17:05:00+00:00",
+        "age_hours": 15.1,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "sanat",
+          "gelistirici"
+        ],
+        "source_count": 2,
+        "sources": [
+          "80lv",
+          "eurogamer"
+        ],
+        "rank_score": 4.69,
+        "members": [
+          {
+            "hash": "f7ae18817862b223",
+            "url": "https://80.lv/articles/nvidia-finally-announces-launch-date-for-its-controversial-dlss-5",
+            "title": "NVIDIA Finally Announces Launch Date For Its Controversial DLSS 5",
+            "summary": "Unsurprisingly, it comes with a huge performance hit.",
+            "published": "2026-09-02T17:05:00+00:00",
+            "age_hours": 15.1,
+            "image": "https://cdn.80.lv/api/upload/post/41454/images/6a9857682765c/cover_800x800.jpg",
+            "source_id": "80lv",
+            "source_name": "80 Level",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 1.0,
+            "tags": [
+              "sanat",
+              "gelistirici"
+            ]
+          },
+          {
+            "hash": "305e19d0c0ea0299",
+            "url": "https://www.eurogamer.net/dlss-5-release-date-nvidia-nba-2k7-frame-rate",
+            "title": "Nvidia's controversial, face-changing, gen-AI DLSS 5 tech releases tomorrow for one game, and seems to tank frame-rates",
+            "summary": "Nvidia's hotly debated DLSS 5 tech, which uses generative AI to apply graphical filters to existing games, arrives this week, albeit only in one game. The game is NBA 2K7, and the GeForce drivers for DLSS 5 arrive Thursday night in the US (9pm PDT) and early Friday morning here (5am BST). This is only available for GeForce 50-series graphics cards, laptops and GeForce Now. Read more",
+            "published": "2026-09-02T15:53:39+00:00",
+            "age_hours": 16.3,
+            "image": "https://assetsio.gnwcdn.com/nvida-dlss-5.jpg?width=690&quality=85&format=jpg&auto=webp",
+            "source_id": "eurogamer",
+            "source_name": "Eurogamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": null,
+      "ozet": "nvidia büyük performans düşüşüyle gelecek yeni teknolojisinin tarihini duyurdu",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 30,
+        "oyun": "Cyberpunk 2077",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": true
+      },
+      "baslik": "NVIDIA Finally Announces Launch Date For Its Controv..."
     }
   ]
 }
