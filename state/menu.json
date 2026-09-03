@@ -1,7 +1,7 @@
 {
-  "olusturuldu": "2026-09-03T08:10:46+00:00",
+  "olusturuldu": "2026-09-03T12:47:32+00:00",
   "oneri": 1,
-  "gerekce": "iki dev platformun birleşmesi oyuncular arasında büyük merak uyandırır",
+  "gerekce": "iki büyük platformun birleşmesi oyuncular arasında büyük merak uyandırır",
   "adaylar": [
     {
       "sira": 1,
@@ -18,7 +18,7 @@
         "url": "https://www.gamesindustry.biz/nexus-mods-acquires-steamdb",
         "summary": "Nexus Mods has acquired SteamDB, the widely used Steam data-tracking site. Read more",
         "published": "2026-09-02T19:14:24+00:00",
-        "age_hours": 12.9,
+        "age_hours": 17.6,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -32,7 +32,7 @@
           "gamingonlinux",
           "rps"
         ],
-        "rank_score": 11.13,
+        "rank_score": 11.03,
         "members": [
           {
             "hash": "7f693098c2393f39",
@@ -40,7 +40,7 @@
             "title": "Nexus Mods acquires SteamDB",
             "summary": "Nexus Mods has acquired SteamDB, the widely used Steam data-tracking site. Read more",
             "published": "2026-09-02T19:14:24+00:00",
-            "age_hours": 12.9,
+            "age_hours": 17.6,
             "image": "https://assetsio.gnwcdn.com/Copy-of-X.png?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "gamesindustry",
             "source_name": "GamesIndustry.biz",
@@ -58,7 +58,7 @@
             "title": "Nexus Mods is acquiring database and analytics site SteamDB",
             "summary": "Nexus Mods wants to grant SteamDB resources and the 'long-term stability it deserves.'",
             "published": "2026-09-02T17:27:45+00:00",
-            "age_hours": 14.7,
+            "age_hours": 19.3,
             "image": "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt59a211bbe10e8e28/6a983cc0f40fc7cb60e52b7d/New_Project(32).png?width=720&quality=80&disable=upscale",
             "source_id": "gamedeveloper",
             "source_name": "Game Developer",
@@ -76,7 +76,7 @@
             "title": "\"The internet we once loved is gone\": SteamDB founders announce the community-run database has been acquired by Nexus Mods' owners",
             "summary": "The owners of Nexus Mods have acquired community-run backend database SteamDB from its founders, the two sides in the deal have announced. The folks behind the former, who've held its keys for 13 years, said their decision to step back is rooted in burnout and a desire to find a suitable team to keep SteamDB running. Meanwhile, Nexus Mods' owners, a company called Chosen, have pointed to wanting to keep track of game updates from a modding perspective as one of the factors that's drawn them to make this deal. Read more",
             "published": "2026-09-02T12:47:49+00:00",
-            "age_hours": 19.4,
+            "age_hours": 24.0,
             "image": "https://assetsio.gnwcdn.com/nexus-mods-logo-01.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "rps",
             "source_name": "Rock Paper Shotgun",
@@ -95,7 +95,7 @@
             "title": "Nexus Mods acquires the popular community site SteamDB",
             "summary": "Something quite unexpected here - the newer owners of Nexus Mods have now acquired the popular community website SteamDB, a site that many rely on. Read the full article on GamingOnLinux .",
             "published": "2026-09-02T10:45:39+00:00",
-            "age_hours": 21.4,
+            "age_hours": 26.0,
             "image": null,
             "source_id": "gamingonlinux",
             "source_name": "GamingOnLinux",
@@ -126,105 +126,6 @@
       "sira": 2,
       "aday_index": 2,
       "tier": "A",
-      "title": "CD Projekt says it never considered charging Witcher 3 owners for the remastered edition: 'It was never a question we asked ourselves'",
-      "kaynak_sayisi": 3,
-      "reddit_oy": 0,
-      "reddit_yorum": 0,
-      "url": "https://www.pcgamer.com/games/the-witcher/cd-projekt-says-it-never-considered-charging-witcher-3-owners-for-the-remastered-edition-it-was-never-a-question-we-asked-ourselves",
-      "aday": {
-        "key": "a003f9ce284e210b",
-        "title": "CD Projekt says it never considered charging Witcher 3 owners for the remastered edition: 'It was never a question we asked ourselves'",
-        "url": "https://www.pcgamer.com/games/the-witcher/cd-projekt-says-it-never-considered-charging-witcher-3-owners-for-the-remastered-edition-it-was-never-a-question-we-asked-ourselves",
-        "summary": "The Songs of the Past expansion will make money, but the remastered Witcher 3 is a gift.",
-        "published": "2026-09-02T21:34:34+00:00",
-        "age_hours": 10.6,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "mainstream"
-        ],
-        "source_count": 3,
-        "sources": [
-          "eurogamer",
-          "nintendolife",
-          "pcgamer"
-        ],
-        "rank_score": 7.48,
-        "members": [
-          {
-            "hash": "a003f9ce284e210b",
-            "url": "https://www.pcgamer.com/games/the-witcher/cd-projekt-says-it-never-considered-charging-witcher-3-owners-for-the-remastered-edition-it-was-never-a-question-we-asked-ourselves",
-            "title": "CD Projekt says it never considered charging Witcher 3 owners for the remastered edition: 'It was never a question we asked ourselves'",
-            "summary": "The Songs of the Past expansion will make money, but the remastered Witcher 3 is a gift.",
-            "published": "2026-09-02T21:34:34+00:00",
-            "age_hours": 10.6,
-            "image": "https://cdn.mos.cms.futurecdn.net/Z2eeZgaW2ezS85iYRFGdxZ-1280-80.jpg",
-            "source_id": "pcgamer",
-            "source_name": "PC Gamer",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream"
-            ]
-          },
-          {
-            "hash": "b950766953739a4b",
-            "url": "https://www.eurogamer.net/witcher-3-remaster-songs-of-past-expansion",
-            "title": "CD Projekt Red never considered charging for The Witcher 3 remaster, and says expansion Songs of the Past came from a couple of \"happy accidents\"",
-            "summary": "Polish developer CD Projekt Red apparently never considered charging players for the recently revealed Remastered edition of The Witcher 3 , and it has explained more about how the expansion Songs of the Past came to be, citing a couple of \"happy accidents\". Read more",
-            "published": "2026-09-01T15:56:34+00:00",
-            "age_hours": 40.2,
-            "image": "https://assetsio.gnwcdn.com/geralt-lilla-songs-of-the-past-witcher-3.jpg?width=690&quality=85&format=jpg&auto=webp",
-            "source_id": "eurogamer",
-            "source_name": "Eurogamer",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream"
-            ]
-          },
-          {
-            "hash": "eab8249180800b8c",
-            "url": "https://www.nintendolife.com/news/2026/09/charging-current-owners-for-the-witcher-iii-remastered-never-a-question-we-asked-ourselves-says-cdpr",
-            "title": "Charging Current Owners For The Witcher III Remastered \"Never A Question We Asked Ourselves\", Says CDPR",
-            "summary": "Goodwill Geralt. One of the biggest surprises from this year's Gamescom ONL showcase was the announcement of The Witcher III: Wild Hunt - Remastered for the Switch 2; a reveal made all the more sweet thanks to the confirmation that it would be free for current owners. In speaking with The Game Business , CD Projekt Red CEO Michał Nowakowski stated that charging current owners for the remastered version simply never entered the developers' minds. In his mind, the studio will be fulfilling its commercial goals with the release of the upcoming expansion, Songs of the Past from developer Fool's Th",
-            "published": "2026-09-01T14:30:00+00:00",
-            "age_hours": 41.7,
-            "image": "https://images.nintendolife.com/d74e45c78d8b3/large.jpg",
-            "source_id": "nintendolife",
-            "source_name": "Nintendo Life",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream",
-              "nintendo"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": "The Witcher 3: Wild Hunt",
-      "ozet": "cd projekt yeni sürüm için ücret almayı hiç düşünmediklerini açıkladı",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 19,
-        "oyun": "The Witcher 3: Wild Hunt",
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": false
-      },
-      "baslik": "The Witcher 3: Wild Hunt"
-    },
-    {
-      "sira": 3,
-      "aday_index": 3,
-      "tier": "A",
       "title": "Report: Savvy Games Group CEO Brian Ward departs company",
       "kaynak_sayisi": 3,
       "reddit_oy": 0,
@@ -236,7 +137,7 @@
         "url": "https://www.gamedeveloper.com/business/report-savvy-games-group-ceo-brian-ward-departs-company",
         "summary": "'As Savvy embarks on its next period of transformational growth, this is the right time for new leadership for that evolution.'",
         "published": "2026-09-01T21:42:52+00:00",
-        "age_hours": 34.5,
+        "age_hours": 39.1,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -249,7 +150,7 @@
           "gamedeveloper",
           "gamesindustry"
         ],
-        "rank_score": 7.28,
+        "rank_score": 7.19,
         "members": [
           {
             "hash": "4f8a7658b7e29329",
@@ -257,7 +158,7 @@
             "title": "Report: Savvy Games Group CEO Brian Ward departs company",
             "summary": "'As Savvy embarks on its next period of transformational growth, this is the right time for new leadership for that evolution.'",
             "published": "2026-09-01T21:42:52+00:00",
-            "age_hours": 34.5,
+            "age_hours": 39.1,
             "image": "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt7348a0cbe91084d7/6993018dacd57200085959c6/Savvy_Header.png?width=720&quality=80&disable=upscale",
             "source_id": "gamedeveloper",
             "source_name": "Game Developer",
@@ -275,7 +176,7 @@
             "title": "Brian Ward steps down as Savvy Games Group CEO",
             "summary": "Brian Ward is stepping down as CEO of Savvy Games Group, according to a staff note obtained by Bloomberg . Read more",
             "published": "2026-09-01T14:38:11+00:00",
-            "age_hours": 41.5,
+            "age_hours": 46.2,
             "image": "https://assetsio.gnwcdn.com/Brian-Ward.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "gamesindustry",
             "source_name": "GamesIndustry.biz",
@@ -293,7 +194,7 @@
             "title": "CEO of Saudi Arabia's Savvy Games Group Brian Ward steps down after overseeing billions in mobile gaming acquisitions",
             "summary": "Brian Ward, the CEO of the Saudi-Arabian-state-owned Savvy Games Group, has left his role. During his tenure, he oversaw $38bn of investment into various gaming companies, including Pokemon Go developer Niantic, and Monopoly Go's Scopely. Read more",
             "published": "2026-09-01T14:04:45+00:00",
-            "age_hours": 42.1,
+            "age_hours": 46.7,
             "image": "https://assetsio.gnwcdn.com/Pokemon-Go-XP-World-Championship-Header.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
@@ -308,121 +209,257 @@
         ]
       },
       "oyun_adi": null,
-      "ozet": "suudi fonlu oyun devi şirketin ceo'su görevinden ayrıldı",
+      "ozet": "savvı games group başkanı brian ward görevinden ayrıldı",
       "gorsel": {
-        "durum": "var",
-        "sayi": 12,
-        "oyun": "League of Legends",
+        "durum": "yok",
+        "sayi": 0,
+        "oyun": null,
         "seri_sayi": 0,
         "seri": null,
-        "temsili": true
+        "temsili": false
       },
       "baslik": "Report: Savvy Games Group CEO Brian Ward departs com..."
     },
     {
-      "sira": 4,
-      "aday_index": 4,
-      "tier": "A",
-      "title": "A big Steam stable update is out with improvements for Remote Play, Steam Input and bug fixes",
+      "sira": 3,
+      "aday_index": 3,
+      "tier": "B",
+      "title": "Peak studio Aggro Crab establishes publishing label for \"intense, stylised games with an attitude\"",
       "kaynak_sayisi": 2,
       "reddit_oy": 0,
       "reddit_yorum": 0,
-      "url": "https://www.gamingonlinux.com/2026/09/a-big-steam-stable-update-is-out-with-improvements-for-remote-play-steam-input-and-bug-fixes",
+      "url": "https://www.gamesindustry.biz/peak-studio-aggro-crab-establishes-publishing-label-for-intense-stylised-games-with-an-attitude",
       "aday": {
-        "key": "755955148f6cc08e",
-        "title": "A big Steam stable update is out with improvements for Remote Play, Steam Input and bug fixes",
-        "url": "https://www.gamingonlinux.com/2026/09/a-big-steam-stable-update-is-out-with-improvements-for-remote-play-steam-input-and-bug-fixes",
-        "summary": "Valve just released the latest main stable Steam update for Desktop, Steam Deck, Steam Machine and SteamOS. Here's everything that's changed. Read the full article on GamingOnLinux .",
-        "published": "2026-09-02T08:03:41+00:00",
-        "age_hours": 24.1,
+        "key": "5b190720e55d9221",
+        "title": "Peak studio Aggro Crab establishes publishing label for \"intense, stylised games with an attitude\"",
+        "url": "https://www.gamesindustry.biz/peak-studio-aggro-crab-establishes-publishing-label-for-intense-stylised-games-with-an-attitude",
+        "summary": "Aggro Crab, known for Peak and Another Crab's Treasure, has launched a publishing label to support \"intense, stylised games with an attitude.\" Read more",
+        "published": "2026-09-03T09:29:08+00:00",
+        "age_hours": 3.3,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
         "tags": [
-          "indie",
-          "linux"
+          "endustri"
         ],
         "source_count": 2,
         "sources": [
-          "gamingonlinux",
-          "itch-devlogs"
+          "gamedeveloper",
+          "gamesindustry"
         ],
-        "rank_score": 5.9,
+        "rank_score": 4.93,
         "members": [
           {
-            "hash": "13b421b570f0c076",
-            "url": "https://weirdfellows.itch.io/wizard-school-dropout/devlog/1650284/preview-181-bug-fixes",
-            "title": "Preview 18.1: Bug fixes",
-            "summary": "Bug Fixes Fixed errors when returning home from Sunlit Church. Added text and graphics for the final stage of the Celestial mutation. Order of the Unchained Spirit sees Inheritors of the Sun as enemie...",
-            "published": "2026-09-02T22:39:58+00:00",
-            "age_hours": 9.5,
-            "image": null,
-            "source_id": "itch-devlogs",
-            "source_name": "itch.io devlog",
+            "hash": "5b190720e55d9221",
+            "url": "https://www.gamesindustry.biz/peak-studio-aggro-crab-establishes-publishing-label-for-intense-stylised-games-with-an-attitude",
+            "title": "Peak studio Aggro Crab establishes publishing label for \"intense, stylised games with an attitude\"",
+            "summary": "Aggro Crab, known for Peak and Another Crab's Treasure, has launched a publishing label to support \"intense, stylised games with an attitude.\" Read more",
+            "published": "2026-09-03T09:29:08+00:00",
+            "age_hours": 3.3,
+            "image": "https://assetsio.gnwcdn.com/aggro-crab-presents.jpg?width=690&quality=85&format=jpg&auto=webp",
+            "source_id": "gamesindustry",
+            "source_name": "GamesIndustry.biz",
             "lang": "en",
-            "kind": "devlog",
-            "bucket": "discovery",
-            "weight": 1.4,
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.9,
             "tags": [
-              "indie",
-              "ayristirici"
+              "endustri"
             ]
           },
           {
-            "hash": "755955148f6cc08e",
-            "url": "https://www.gamingonlinux.com/2026/09/a-big-steam-stable-update-is-out-with-improvements-for-remote-play-steam-input-and-bug-fixes",
-            "title": "A big Steam stable update is out with improvements for Remote Play, Steam Input and bug fixes",
-            "summary": "Valve just released the latest main stable Steam update for Desktop, Steam Deck, Steam Machine and SteamOS. Here's everything that's changed. Read the full article on GamingOnLinux .",
-            "published": "2026-09-02T08:03:41+00:00",
-            "age_hours": 24.1,
-            "image": null,
-            "source_id": "gamingonlinux",
-            "source_name": "GamingOnLinux",
+            "hash": "ff3a33fc5a3e87b8",
+            "url": "https://www.gamedeveloper.com/business/aggro-crab-launches-publishing-label-to-splash-that-peak-cash",
+            "title": "Aggro Crab launches publishing label to splash that Peak cash",
+            "summary": "The studio wants to support 'intense, stylized games with an attitude' - but isn't interested in 'generative AI slop.'",
+            "published": "2026-09-01T17:02:48+00:00",
+            "age_hours": 43.7,
+            "image": "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt7869e5cb034ddd73/6a96c6d9a0ff381c214d73cd/Aggro_Crab_Presents.png?width=720&quality=80&disable=upscale",
+            "source_id": "gamedeveloper",
+            "source_name": "Game Developer",
             "lang": "en",
             "kind": "news",
             "bucket": "news",
             "weight": 1.0,
             "tags": [
-              "indie",
-              "linux"
+              "endustri"
             ]
-          },
+          }
+        ]
+      },
+      "oyun_adi": "Another Crab's Treasure",
+      "ozet": "aggro crab stüdyosu yeni bir oyun yayıncılığı markası kurdu",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 8,
+        "oyun": "Another Crab's Treasure",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": false
+      },
+      "baslik": "Another Crab's Treasure"
+    },
+    {
+      "sira": 4,
+      "aday_index": 4,
+      "tier": "B",
+      "title": "Sony and Microsoft request dismissal of consumer lawsuits over tariff refunds",
+      "kaynak_sayisi": 2,
+      "reddit_oy": 0,
+      "reddit_yorum": 0,
+      "url": "https://www.gamesindustry.biz/sony-and-microsoft-request-dismissal-of-consumer-lawsuits-over-tariff-refunds",
+      "aday": {
+        "key": "67bdf7b9e4171024",
+        "title": "Sony and Microsoft request dismissal of consumer lawsuits over tariff refunds",
+        "url": "https://www.gamesindustry.biz/sony-and-microsoft-request-dismissal-of-consumer-lawsuits-over-tariff-refunds",
+        "summary": "Sony and Microsoft have filed motions to dismiss class action lawsuits accusing them of not passing on tariff refunds to consumers. Read more",
+        "published": "2026-09-03T11:24:40+00:00",
+        "age_hours": 1.4,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "endustri"
+        ],
+        "source_count": 2,
+        "sources": [
+          "eurogamer",
+          "gamesindustry"
+        ],
+        "rank_score": 4.87,
+        "members": [
           {
-            "hash": "fc7038cf74fd3b8f",
-            "url": "https://www.gamingonlinux.com/2026/09/steam-beta-for-august-31st-brings-fixes-for-remote-play",
-            "title": "Steam Beta for August 31st brings fixes for Remote Play",
-            "summary": "Valve released a small update to the Steam Client Beta, bringing in some fixes - good news for fans of Remote Play. Read the full article on GamingOnLinux .",
-            "published": "2026-09-01T08:37:24+00:00",
-            "age_hours": 47.6,
-            "image": null,
-            "source_id": "gamingonlinux",
-            "source_name": "GamingOnLinux",
+            "hash": "67bdf7b9e4171024",
+            "url": "https://www.gamesindustry.biz/sony-and-microsoft-request-dismissal-of-consumer-lawsuits-over-tariff-refunds",
+            "title": "Sony and Microsoft request dismissal of consumer lawsuits over tariff refunds",
+            "summary": "Sony and Microsoft have filed motions to dismiss class action lawsuits accusing them of not passing on tariff refunds to consumers. Read more",
+            "published": "2026-09-03T11:24:40+00:00",
+            "age_hours": 1.4,
+            "image": "https://assetsio.gnwcdn.com/ps5___xbox.jpeg?width=690&quality=85&format=jpg&auto=webp",
+            "source_id": "gamesindustry",
+            "source_name": "GamesIndustry.biz",
             "lang": "en",
             "kind": "news",
             "bucket": "news",
-            "weight": 1.0,
+            "weight": 0.9,
             "tags": [
-              "indie",
-              "linux"
+              "endustri"
+            ]
+          },
+          {
+            "hash": "6dcfed467325cce7",
+            "url": "https://www.eurogamer.net/sony-microsoft-no-refunds-us-tariff-lawsuits",
+            "title": "Following Nintendo's example, Sony and Microsoft argue they have no obligation to pass tariff refunds onto customers",
+            "summary": "Lawyers representing Sony and Microsoft have argued, in two separate lawsuits, that the platform holders are not obligated to pass tariff refunds back to consumers. Sony and Microsoft have had to raise prices of their PlayStation and Xbox consoles in 2025 in response to US-imposed tariffs . The US Supreme Court ruled the tariffs illegal earlier this year , allowing impacted companies to request refunds. Read more",
+            "published": "2026-09-03T08:16:40+00:00",
+            "age_hours": 4.5,
+            "image": "https://assetsio.gnwcdn.com/l-intro-1669228211.jpg?width=690&quality=85&format=jpg&auto=webp",
+            "source_id": "eurogamer",
+            "source_name": "Eurogamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
             ]
           }
         ]
       },
       "oyun_adi": null,
-      "ozet": "steam uzaktan oynamave girdi geliştirmeleri içeren kararlı güncelleme yayınladı",
+      "ozet": "sony ve microsoft tüketici davalarının düşürülmesini talep etti",
       "gorsel": {
-        "durum": "var",
-        "sayi": 6,
-        "oyun": "Steam Dreams",
+        "durum": "yok",
+        "sayi": 0,
+        "oyun": null,
         "seri_sayi": 0,
         "seri": null,
-        "temsili": true
+        "temsili": false
       },
-      "baslik": "A big Steam stable update is out with improvements f..."
+      "baslik": "Sony and Microsoft request dismissal of consumer law..."
     },
     {
       "sira": 5,
       "aday_index": 5,
+      "tier": "B",
+      "title": "How does Epic Games CEO Tim Sweeney reckon we can fight the industry's \"Crash 2.0\"? By building more factories",
+      "kaynak_sayisi": 2,
+      "reddit_oy": 0,
+      "reddit_yorum": 0,
+      "url": "https://www.eurogamer.net/tim-sweeney-crash-2-more-factories",
+      "aday": {
+        "key": "af3300ad466178d8",
+        "title": "How does Epic Games CEO Tim Sweeney reckon we can fight the industry's \"Crash 2.0\"? By building more factories",
+        "url": "https://www.eurogamer.net/tim-sweeney-crash-2-more-factories",
+        "summary": "It's pretty obvious to anyone that's been paying attention that the games industry is in a pretty rough place at the moment. No matter where you look, there are mass layoffs: Sony , Microsoft , EA , Ubisoft , Take-Two , Epic Games … the list goes on. The reasons are myriad, but generally companies place the reason for 'restructuring' at the door of the contraction of the market as a result of the pandemic boom in gaming, rising development costs, longer production cycles (and higher wages), shifts in consumers spending patterns, and the hardware shortages fuelled by the rising demand for AI da",
+        "published": "2026-09-03T10:08:38+00:00",
+        "age_hours": 2.6,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream"
+        ],
+        "source_count": 2,
+        "sources": [
+          "eurogamer",
+          "gamesindustry"
+        ],
+        "rank_score": 4.85,
+        "members": [
+          {
+            "hash": "af3300ad466178d8",
+            "url": "https://www.eurogamer.net/tim-sweeney-crash-2-more-factories",
+            "title": "How does Epic Games CEO Tim Sweeney reckon we can fight the industry's \"Crash 2.0\"? By building more factories",
+            "summary": "It's pretty obvious to anyone that's been paying attention that the games industry is in a pretty rough place at the moment. No matter where you look, there are mass layoffs: Sony , Microsoft , EA , Ubisoft , Take-Two , Epic Games … the list goes on. The reasons are myriad, but generally companies place the reason for 'restructuring' at the door of the contraction of the market as a result of the pandemic boom in gaming, rising development costs, longer production cycles (and higher wages), shifts in consumers spending patterns, and the hardware shortages fuelled by the rising demand for AI da",
+            "published": "2026-09-03T10:08:38+00:00",
+            "age_hours": 2.6,
+            "image": "https://assetsio.gnwcdn.com/sweeney-factories.jpg?width=690&quality=85&format=jpg&auto=webp",
+            "source_id": "eurogamer",
+            "source_name": "Eurogamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "bd7fb754cd665bff",
+            "url": "https://www.gamesindustry.biz/this-is-the-worst-crash-weve-seen-since-the-1980s-says-tim-sweeney",
+            "title": "\"This is the worst crash we've seen since the 1980s,\" says Tim Sweeney",
+            "summary": "Epic Games CEO Tim Sweeney says the industry is going through its biggest crash since the 1980s in the latest issue of Edge magazine. Read more",
+            "published": "2026-09-03T07:29:48+00:00",
+            "age_hours": 5.3,
+            "image": "https://assetsio.gnwcdn.com/playstation-controller-glowing-red.jpg?width=690&quality=85&format=jpg&auto=webp",
+            "source_id": "gamesindustry",
+            "source_name": "GamesIndustry.biz",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.9,
+            "tags": [
+              "endustri"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": null,
+      "ozet": "epic games CEO'su tim sweeney sektördeki kriz için fabrika önerdi",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 11,
+        "oyun": "Fortnite",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": true
+      },
+      "baslik": "How does Epic Games CEO Tim Sweeney reckon we can fi..."
+    },
+    {
+      "sira": 6,
+      "aday_index": 6,
       "tier": "B",
       "title": "Dragon's Dogma 2 gets a big upgrade and Denuvo DRM removed",
       "kaynak_sayisi": 2,
@@ -435,7 +472,7 @@
         "url": "https://www.gamingonlinux.com/2026/09/dragons-dogma-2-gets-a-big-upgrade-and-denuvo-drm-removed",
         "summary": "Capcom released the latest major update for Dragon's Dogma 2 ahead of the Dragon's Dogma 2: Dark Arisen Expansion releasing in October. Read the full article on GamingOnLinux .",
         "published": "2026-09-02T10:17:09+00:00",
-        "age_hours": 21.9,
+        "age_hours": 26.5,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -448,7 +485,7 @@
           "gamingonlinux",
           "pcgamesn"
         ],
-        "rank_score": 4.94,
+        "rank_score": 4.85,
         "members": [
           {
             "hash": "45360030eafe04c7",
@@ -456,7 +493,7 @@
             "title": "Dragon's Dogma 2 gets a big upgrade and Denuvo DRM removed",
             "summary": "Capcom released the latest major update for Dragon's Dogma 2 ahead of the Dragon's Dogma 2: Dark Arisen Expansion releasing in October. Read the full article on GamingOnLinux .",
             "published": "2026-09-02T10:17:09+00:00",
-            "age_hours": 21.9,
+            "age_hours": 26.5,
             "image": null,
             "source_id": "gamingonlinux",
             "source_name": "GamingOnLinux",
@@ -475,7 +512,7 @@
             "title": "Capcom removes Denuvo from Dragon's Dogma 2 ahead of its new expansion",
             "summary": "As well as a mountain of other changes, Dragon’s Dogma 2 has had Denuvo DRM software removed ahead of the Dark Arisen expansion.",
             "published": "2026-09-02T10:16:58+00:00",
-            "age_hours": 21.9,
+            "age_hours": 26.5,
             "image": "https://www.pcgamesn.com/wp-content/sites/pcgamesn/2026/09/dragons-dogma-2-denuvo.jpg",
             "source_id": "pcgamesn",
             "source_name": "PCGamesN",
@@ -491,7 +528,7 @@
         ]
       },
       "oyun_adi": "Dragon's Dogma 2",
-      "ozet": "capcom büyük güncelleme yayınladı ve tartışmalı denuvo korumasını kaldırdı",
+      "ozet": "oyuna büyük güncelleme geldi ve denuvo koruması kaldırıldı",
       "gorsel": {
         "durum": "var",
         "sayi": 8,
@@ -501,87 +538,6 @@
         "temsili": false
       },
       "baslik": "Dragon's Dogma 2"
-    },
-    {
-      "sira": 6,
-      "aday_index": 6,
-      "tier": "B",
-      "title": "NVIDIA Finally Announces Launch Date For Its Controversial DLSS 5",
-      "kaynak_sayisi": 2,
-      "reddit_oy": 0,
-      "reddit_yorum": 0,
-      "url": "https://80.lv/articles/nvidia-finally-announces-launch-date-for-its-controversial-dlss-5",
-      "aday": {
-        "key": "f7ae18817862b223",
-        "title": "NVIDIA Finally Announces Launch Date For Its Controversial DLSS 5",
-        "url": "https://80.lv/articles/nvidia-finally-announces-launch-date-for-its-controversial-dlss-5",
-        "summary": "Unsurprisingly, it comes with a huge performance hit.",
-        "published": "2026-09-02T17:05:00+00:00",
-        "age_hours": 15.1,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "sanat",
-          "gelistirici"
-        ],
-        "source_count": 2,
-        "sources": [
-          "80lv",
-          "eurogamer"
-        ],
-        "rank_score": 4.69,
-        "members": [
-          {
-            "hash": "f7ae18817862b223",
-            "url": "https://80.lv/articles/nvidia-finally-announces-launch-date-for-its-controversial-dlss-5",
-            "title": "NVIDIA Finally Announces Launch Date For Its Controversial DLSS 5",
-            "summary": "Unsurprisingly, it comes with a huge performance hit.",
-            "published": "2026-09-02T17:05:00+00:00",
-            "age_hours": 15.1,
-            "image": "https://cdn.80.lv/api/upload/post/41454/images/6a9857682765c/cover_800x800.jpg",
-            "source_id": "80lv",
-            "source_name": "80 Level",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 1.0,
-            "tags": [
-              "sanat",
-              "gelistirici"
-            ]
-          },
-          {
-            "hash": "305e19d0c0ea0299",
-            "url": "https://www.eurogamer.net/dlss-5-release-date-nvidia-nba-2k7-frame-rate",
-            "title": "Nvidia's controversial, face-changing, gen-AI DLSS 5 tech releases tomorrow for one game, and seems to tank frame-rates",
-            "summary": "Nvidia's hotly debated DLSS 5 tech, which uses generative AI to apply graphical filters to existing games, arrives this week, albeit only in one game. The game is NBA 2K7, and the GeForce drivers for DLSS 5 arrive Thursday night in the US (9pm PDT) and early Friday morning here (5am BST). This is only available for GeForce 50-series graphics cards, laptops and GeForce Now. Read more",
-            "published": "2026-09-02T15:53:39+00:00",
-            "age_hours": 16.3,
-            "image": "https://assetsio.gnwcdn.com/nvida-dlss-5.jpg?width=690&quality=85&format=jpg&auto=webp",
-            "source_id": "eurogamer",
-            "source_name": "Eurogamer",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": null,
-      "ozet": "nvidia büyük performans düşüşüyle gelecek yeni teknolojisinin tarihini duyurdu",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 30,
-        "oyun": "Cyberpunk 2077",
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": true
-      },
-      "baslik": "NVIDIA Finally Announces Launch Date For Its Controv..."
     }
   ]
 }
