@@ -1,5 +1,5 @@
 {
-  "olusturuldu": "2026-09-03T12:47:32+00:00",
+  "olusturuldu": "2026-09-03T14:11:02+00:00",
   "oneri": 1,
   "gerekce": "iki büyük platformun birleşmesi oyuncular arasında büyük merak uyandırır",
   "adaylar": [
@@ -18,7 +18,7 @@
         "url": "https://www.gamesindustry.biz/nexus-mods-acquires-steamdb",
         "summary": "Nexus Mods has acquired SteamDB, the widely used Steam data-tracking site. Read more",
         "published": "2026-09-02T19:14:24+00:00",
-        "age_hours": 17.6,
+        "age_hours": 18.9,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -32,7 +32,7 @@
           "gamingonlinux",
           "rps"
         ],
-        "rank_score": 11.03,
+        "rank_score": 11.01,
         "members": [
           {
             "hash": "7f693098c2393f39",
@@ -40,7 +40,7 @@
             "title": "Nexus Mods acquires SteamDB",
             "summary": "Nexus Mods has acquired SteamDB, the widely used Steam data-tracking site. Read more",
             "published": "2026-09-02T19:14:24+00:00",
-            "age_hours": 17.6,
+            "age_hours": 18.9,
             "image": "https://assetsio.gnwcdn.com/Copy-of-X.png?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "gamesindustry",
             "source_name": "GamesIndustry.biz",
@@ -58,7 +58,7 @@
             "title": "Nexus Mods is acquiring database and analytics site SteamDB",
             "summary": "Nexus Mods wants to grant SteamDB resources and the 'long-term stability it deserves.'",
             "published": "2026-09-02T17:27:45+00:00",
-            "age_hours": 19.3,
+            "age_hours": 20.7,
             "image": "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt59a211bbe10e8e28/6a983cc0f40fc7cb60e52b7d/New_Project(32).png?width=720&quality=80&disable=upscale",
             "source_id": "gamedeveloper",
             "source_name": "Game Developer",
@@ -76,7 +76,7 @@
             "title": "\"The internet we once loved is gone\": SteamDB founders announce the community-run database has been acquired by Nexus Mods' owners",
             "summary": "The owners of Nexus Mods have acquired community-run backend database SteamDB from its founders, the two sides in the deal have announced. The folks behind the former, who've held its keys for 13 years, said their decision to step back is rooted in burnout and a desire to find a suitable team to keep SteamDB running. Meanwhile, Nexus Mods' owners, a company called Chosen, have pointed to wanting to keep track of game updates from a modding perspective as one of the factors that's drawn them to make this deal. Read more",
             "published": "2026-09-02T12:47:49+00:00",
-            "age_hours": 24.0,
+            "age_hours": 25.4,
             "image": "https://assetsio.gnwcdn.com/nexus-mods-logo-01.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "rps",
             "source_name": "Rock Paper Shotgun",
@@ -95,7 +95,7 @@
             "title": "Nexus Mods acquires the popular community site SteamDB",
             "summary": "Something quite unexpected here - the newer owners of Nexus Mods have now acquired the popular community website SteamDB, a site that many rely on. Read the full article on GamingOnLinux .",
             "published": "2026-09-02T10:45:39+00:00",
-            "age_hours": 26.0,
+            "age_hours": 27.4,
             "image": null,
             "source_id": "gamingonlinux",
             "source_name": "GamingOnLinux",
@@ -126,76 +126,78 @@
       "sira": 2,
       "aday_index": 2,
       "tier": "A",
-      "title": "Report: Savvy Games Group CEO Brian Ward departs company",
+      "title": "Planet Coaster and Jurassic World devs Frontier have teamed up with Disney to make what is probably a Disneyland tycoon game",
       "kaynak_sayisi": 3,
       "reddit_oy": 0,
       "reddit_yorum": 0,
-      "url": "https://www.gamedeveloper.com/business/report-savvy-games-group-ceo-brian-ward-departs-company",
+      "url": "https://www.rockpapershotgun.com/planet-coaster-and-jurassic-world-devs-frontier-have-teamed-up-with-disney-to-make-what-is-probably-a-disneyland-tycoon-game",
       "aday": {
-        "key": "4f8a7658b7e29329",
-        "title": "Report: Savvy Games Group CEO Brian Ward departs company",
-        "url": "https://www.gamedeveloper.com/business/report-savvy-games-group-ceo-brian-ward-departs-company",
-        "summary": "'As Savvy embarks on its next period of transformational growth, this is the right time for new leadership for that evolution.'",
-        "published": "2026-09-01T21:42:52+00:00",
-        "age_hours": 39.1,
+        "key": "176f6ac307ae64b2",
+        "title": "Planet Coaster and Jurassic World devs Frontier have teamed up with Disney to make what is probably a Disneyland tycoon game",
+        "url": "https://www.rockpapershotgun.com/planet-coaster-and-jurassic-world-devs-frontier-have-teamed-up-with-disney-to-make-what-is-probably-a-disneyland-tycoon-game",
+        "summary": "Planet Zoo and Jurassic World Evolution creators Frontier Developments have signed a deal with Disney to make a game based on one of Disney's many entertainment worlds. Some immediate possibilities occur. You know what Frontier have a lot of? Theme park and resort management games. You know what Disney also have a lot of? Theme parks and resorts. If the fruit of their union isn't Disneyland Park Creator or some variation thereof, I'll eat Mickey Mouse's big yellow buttons. Read more",
+        "published": "2026-09-03T12:45:53+00:00",
+        "age_hours": 1.4,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
         "tags": [
-          "endustri"
+          "mainstream",
+          "pc"
         ],
         "source_count": 3,
         "sources": [
           "eurogamer",
-          "gamedeveloper",
-          "gamesindustry"
+          "ign",
+          "rps"
         ],
-        "rank_score": 7.19,
+        "rank_score": 7.87,
         "members": [
           {
-            "hash": "4f8a7658b7e29329",
-            "url": "https://www.gamedeveloper.com/business/report-savvy-games-group-ceo-brian-ward-departs-company",
-            "title": "Report: Savvy Games Group CEO Brian Ward departs company",
-            "summary": "'As Savvy embarks on its next period of transformational growth, this is the right time for new leadership for that evolution.'",
-            "published": "2026-09-01T21:42:52+00:00",
-            "age_hours": 39.1,
-            "image": "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt7348a0cbe91084d7/6993018dacd57200085959c6/Savvy_Header.png?width=720&quality=80&disable=upscale",
-            "source_id": "gamedeveloper",
-            "source_name": "Game Developer",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 1.0,
-            "tags": [
-              "endustri"
-            ]
-          },
-          {
-            "hash": "9fd68536772339e9",
-            "url": "https://www.gamesindustry.biz/brian-ward-steps-down-as-savvy-games-group-ceo",
-            "title": "Brian Ward steps down as Savvy Games Group CEO",
-            "summary": "Brian Ward is stepping down as CEO of Savvy Games Group, according to a staff note obtained by Bloomberg . Read more",
-            "published": "2026-09-01T14:38:11+00:00",
-            "age_hours": 46.2,
-            "image": "https://assetsio.gnwcdn.com/Brian-Ward.jpg?width=690&quality=85&format=jpg&auto=webp",
-            "source_id": "gamesindustry",
-            "source_name": "GamesIndustry.biz",
+            "hash": "176f6ac307ae64b2",
+            "url": "https://www.rockpapershotgun.com/planet-coaster-and-jurassic-world-devs-frontier-have-teamed-up-with-disney-to-make-what-is-probably-a-disneyland-tycoon-game",
+            "title": "Planet Coaster and Jurassic World devs Frontier have teamed up with Disney to make what is probably a Disneyland tycoon game",
+            "summary": "Planet Zoo and Jurassic World Evolution creators Frontier Developments have signed a deal with Disney to make a game based on one of Disney's many entertainment worlds. Some immediate possibilities occur. You know what Frontier have a lot of? Theme park and resort management games. You know what Disney also have a lot of? Theme parks and resorts. If the fruit of their union isn't Disneyland Park Creator or some variation thereof, I'll eat Mickey Mouse's big yellow buttons. Read more",
+            "published": "2026-09-03T12:45:53+00:00",
+            "age_hours": 1.4,
+            "image": "https://assetsio.gnwcdn.com/planet-coaster-2-park.jpg?width=690&quality=85&format=jpg&auto=webp",
+            "source_id": "rps",
+            "source_name": "Rock Paper Shotgun",
             "lang": "en",
             "kind": "news",
             "bucket": "news",
             "weight": 0.9,
             "tags": [
-              "endustri"
+              "mainstream",
+              "pc"
             ]
           },
           {
-            "hash": "e592fe6faa2684e4",
-            "url": "https://www.eurogamer.net/savvy-games-group-ceo-brian-ward-steps-down",
-            "title": "CEO of Saudi Arabia's Savvy Games Group Brian Ward steps down after overseeing billions in mobile gaming acquisitions",
-            "summary": "Brian Ward, the CEO of the Saudi-Arabian-state-owned Savvy Games Group, has left his role. During his tenure, he oversaw $38bn of investment into various gaming companies, including Pokemon Go developer Niantic, and Monopoly Go's Scopely. Read more",
-            "published": "2026-09-01T14:04:45+00:00",
-            "age_hours": 46.7,
-            "image": "https://assetsio.gnwcdn.com/Pokemon-Go-XP-World-Championship-Header.jpg?width=690&quality=85&format=jpg&auto=webp",
+            "hash": "359ea8742840dad2",
+            "url": "https://www.ign.com/articles/planet-coaster-maker-announces-disney-game-development-opening-doors-to-a-disneyland-park-creator",
+            "title": "Planet Coaster Maker Announces Disney Game Development, Opening Doors to a Disneyland Park Creator",
+            "summary": "Frontier Developments, the studio behind Jurassic World Evolution, Planet Zoo, and Planet Coaster, has inked a deal with Disney to develop an upcoming game.",
+            "published": "2026-09-03T09:54:19+00:00",
+            "age_hours": 4.3,
+            "image": "https://assets-prd.ignimgs.com/2026/09/03/gettyimages-2215111866-1788428613299.jpg",
+            "source_id": "ign",
+            "source_name": "IGN",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.6,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "9f41e22d7f4a81b2",
+            "url": "https://www.eurogamer.net/frontier-disney-new-video-game-planet-coaster-jurassic-world",
+            "title": "Planet Coaster and Jurassic World developer Frontier partners with Disney for a new video game",
+            "summary": "Frontier Developments - the developer behind Planet Coaster and Jurassic World - has announced a partnership with Disney. As part of this collaboration, a new Disney game is in production. Read more",
+            "published": "2026-09-03T08:53:53+00:00",
+            "age_hours": 5.3,
+            "image": "https://assetsio.gnwcdn.com/park_mickey_02.png?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "eurogamer",
             "source_name": "Eurogamer",
             "lang": "en",
@@ -209,20 +211,217 @@
         ]
       },
       "oyun_adi": null,
-      "ozet": "savvı games group başkanı brian ward görevinden ayrıldı",
+      "ozet": "frontier geliştiricileri disney evreninde geçen yeni bir oyun duyurdu",
       "gorsel": {
-        "durum": "yok",
-        "sayi": 0,
-        "oyun": null,
+        "durum": "var",
+        "sayi": 7,
+        "oyun": "Planet Coaster 2",
         "seri_sayi": 0,
         "seri": null,
-        "temsili": false
+        "temsili": true
       },
-      "baslik": "Report: Savvy Games Group CEO Brian Ward departs com..."
+      "baslik": "Planet Coaster and Jurassic World devs Frontier have..."
     },
     {
       "sira": 3,
       "aday_index": 3,
+      "tier": "A",
+      "title": "Final Fantasy 7 Revelation Gets Release Date And Shows Off Extended Open-World RPG Gameplay",
+      "kaynak_sayisi": 3,
+      "reddit_oy": 0,
+      "reddit_yorum": 0,
+      "url": "https://kotaku.com/final-fantasy-7-revelation-gets-release-date-and-shows-off-extended-open-world-rpg-gameplay-2000730880",
+      "aday": {
+        "key": "b28de1a73cb3c08d",
+        "title": "Final Fantasy 7 Revelation Gets Release Date And Shows Off Extended Open-World RPG Gameplay",
+        "url": "https://kotaku.com/final-fantasy-7-revelation-gets-release-date-and-shows-off-extended-open-world-rpg-gameplay-2000730880",
+        "summary": "The game's scope is bigger than ever",
+        "published": "2026-09-03T13:55:34+00:00",
+        "age_hours": 0.3,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream"
+        ],
+        "source_count": 3,
+        "sources": [
+          "gamespot",
+          "kotaku",
+          "nintendolife"
+        ],
+        "rank_score": 7.69,
+        "members": [
+          {
+            "hash": "b28de1a73cb3c08d",
+            "url": "https://kotaku.com/final-fantasy-7-revelation-gets-release-date-and-shows-off-extended-open-world-rpg-gameplay-2000730880",
+            "title": "Final Fantasy 7 Revelation Gets Release Date And Shows Off Extended Open-World RPG Gameplay",
+            "summary": "The game's scope is bigger than ever",
+            "published": "2026-09-03T13:55:34+00:00",
+            "age_hours": 0.3,
+            "image": "https://kotaku.com/app/uploads/2026/09/VS-YouTube-955FinalFantasyVIIRevelation-ReleaseDateRevealTrailerPS5Games-YouTube-011-1280x720.jpg",
+            "source_id": "kotaku",
+            "source_name": "Kotaku",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.6,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "4d966eadf2911776",
+            "url": "https://www.nintendolife.com/news/2026/09/final-fantasy-vii-revelation-release-date-for-switch-2-revealed",
+            "title": "Final Fantasy VII Revelation Release Date For Switch 2 Revealed",
+            "summary": "The end is nigh. Square Enix has announced the release date for Final Fantasy VII Revelation . You ready..? It's 8th April 2027 . Read the full article on nintendolife.com",
+            "published": "2026-09-03T13:47:00+00:00",
+            "age_hours": 0.4,
+            "image": "https://images.nintendolife.com/832b8ff329322/large.jpg",
+            "source_id": "nintendolife",
+            "source_name": "Nintendo Life",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream",
+              "nintendo"
+            ]
+          },
+          {
+            "hash": "82383d7a7e9b62fd",
+            "url": "https://www.gamespot.com/articles/final-fantasy-vii-revelation-arrives-in-april",
+            "title": "Final Fantasy VII Revelation Arrives In April",
+            "summary": "Final Fantasy VII Revelation finally has a release date: April 8, 2027. Sony confirmed the new today as part of its State of Play . This story is developing...",
+            "published": "2026-09-03T13:46:05+00:00",
+            "age_hours": 0.4,
+            "image": "https://www.gamespot.com/wp-content/uploads/2026/09/ff7.jpg?w=300",
+            "source_id": "gamespot",
+            "source_name": "GameSpot",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "Final Fantasy VII Rebirth",
+      "ozet": "oyunun çıkış tarihi açıklandı ve geniş oynanış detayları gösterildi",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 20,
+        "oyun": "Final Fantasy VII Rebirth",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": false
+      },
+      "baslik": "Final Fantasy VII Rebirth"
+    },
+    {
+      "sira": 4,
+      "aday_index": 4,
+      "tier": "A",
+      "title": "Ghost of Yotei: Complete Edition's Most Wanted roguelike mode brings back Tsushima's Jin Sakai",
+      "kaynak_sayisi": 3,
+      "reddit_oy": 0,
+      "reddit_yorum": 0,
+      "url": "https://www.eurogamer.net/ghost-of-yotei-complete-edition-most-wanted-jin-first-look",
+      "aday": {
+        "key": "51dc6ee7fcede70f",
+        "title": "Ghost of Yotei: Complete Edition's Most Wanted roguelike mode brings back Tsushima's Jin Sakai",
+        "url": "https://www.eurogamer.net/ghost-of-yotei-complete-edition-most-wanted-jin-first-look",
+        "summary": "During today's State of Play showcase, Ghost of Yotei developer Sucker Punch brought a first-look trailer at Most Wanted. This is the roguelike mode the studio announced alongside the Complete Edition earlier in August . Read more",
+        "published": "2026-09-03T13:36:28+00:00",
+        "age_hours": 0.6,
+        "lang": "en",
+        "kind": "news",
+        "bucket": "news",
+        "tags": [
+          "mainstream"
+        ],
+        "source_count": 3,
+        "sources": [
+          "eurogamer",
+          "gamespot",
+          "ign"
+        ],
+        "rank_score": 7.69,
+        "members": [
+          {
+            "hash": "51dc6ee7fcede70f",
+            "url": "https://www.eurogamer.net/ghost-of-yotei-complete-edition-most-wanted-jin-first-look",
+            "title": "Ghost of Yotei: Complete Edition's Most Wanted roguelike mode brings back Tsushima's Jin Sakai",
+            "summary": "During today's State of Play showcase, Ghost of Yotei developer Sucker Punch brought a first-look trailer at Most Wanted. This is the roguelike mode the studio announced alongside the Complete Edition earlier in August . Read more",
+            "published": "2026-09-03T13:36:28+00:00",
+            "age_hours": 0.6,
+            "image": "https://assetsio.gnwcdn.com/Ghost-of-Yo%CC%84tei-Complete-Edition---Most-Wanted-Trailer-_-PS5-Games-1-41-screenshot.png?width=690&quality=85&format=jpg&auto=webp",
+            "source_id": "eurogamer",
+            "source_name": "Eurogamer",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "f5968bf30cd6dd78",
+            "url": "https://www.gamespot.com/articles/jin-sakai-returns-in-upcoming-ghost-of-yotei-roguelike-dlc",
+            "title": "Jin Sakai Returns In Upcoming Ghost Of Yotei Roguelike DLC",
+            "summary": "Today, during the PlayStation State of Play livestream , Sucker Punch offered a look at Ghost of Yotei's upcoming roguelike mode, Most Wanted. The mode will feature four playable characters, and Yotei's Atsu, Oyuki, and Nagato will be joined by a familar face from the past: The Ghost of Tsushima, Jin Sakai, will officially return. Most Wanted, which the trailer calls a \"combat survival mode,\" lets players choose one of the four samurai, each with their own weapons and abilities, to take them on a hunt for one of the Yotei Six. Each of the Six, if defeated, will offer a reward of coins that can",
+            "published": "2026-09-03T13:23:50+00:00",
+            "age_hours": 0.8,
+            "image": "https://www.gamespot.com/wp-content/uploads/2026/09/jin-sakai.jpg?w=300",
+            "source_id": "gamespot",
+            "source_name": "GameSpot",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.7,
+            "tags": [
+              "mainstream"
+            ]
+          },
+          {
+            "hash": "6ffeab25c466149a",
+            "url": "https://www.ign.com/articles/ghost-of-yotei-is-getting-a-roguelike-survival-mode-that-includes-ghost-of-tsushimas-jin",
+            "title": "Ghost of Yotei is Getting a Roguelike Survival Mode That Includes Ghost of Tsushima's Jin",
+            "summary": "PlayStation blockbuster Ghost of Yotei is getting a new single-player roguelike mode, Most Wanted, as part of its Complete Edition that includes upcoming expansion Echoes of Sekigahara.",
+            "published": "2026-09-03T13:17:32+00:00",
+            "age_hours": 0.9,
+            "image": "https://assets-prd.ignimgs.com/2026/09/03/screenshot-2026-09-03-141553-1788441396177.png",
+            "source_id": "ign",
+            "source_name": "IGN",
+            "lang": "en",
+            "kind": "news",
+            "bucket": "news",
+            "weight": 0.6,
+            "tags": [
+              "mainstream"
+            ]
+          }
+        ]
+      },
+      "oyun_adi": "Ghost of Yotei",
+      "ozet": "complete sürümüne jin sakai'yi getiren roguelike mod eklendi",
+      "gorsel": {
+        "durum": "var",
+        "sayi": 16,
+        "oyun": "Ghost of Yotei",
+        "seri_sayi": 0,
+        "seri": null,
+        "temsili": false
+      },
+      "baslik": "Ghost of Yotei"
+    },
+    {
+      "sira": 5,
+      "aday_index": 5,
       "tier": "B",
       "title": "Peak studio Aggro Crab establishes publishing label for \"intense, stylised games with an attitude\"",
       "kaynak_sayisi": 2,
@@ -235,7 +434,7 @@
         "url": "https://www.gamesindustry.biz/peak-studio-aggro-crab-establishes-publishing-label-for-intense-stylised-games-with-an-attitude",
         "summary": "Aggro Crab, known for Peak and Another Crab's Treasure, has launched a publishing label to support \"intense, stylised games with an attitude.\" Read more",
         "published": "2026-09-03T09:29:08+00:00",
-        "age_hours": 3.3,
+        "age_hours": 4.7,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -247,7 +446,7 @@
           "gamedeveloper",
           "gamesindustry"
         ],
-        "rank_score": 4.93,
+        "rank_score": 4.9,
         "members": [
           {
             "hash": "5b190720e55d9221",
@@ -255,7 +454,7 @@
             "title": "Peak studio Aggro Crab establishes publishing label for \"intense, stylised games with an attitude\"",
             "summary": "Aggro Crab, known for Peak and Another Crab's Treasure, has launched a publishing label to support \"intense, stylised games with an attitude.\" Read more",
             "published": "2026-09-03T09:29:08+00:00",
-            "age_hours": 3.3,
+            "age_hours": 4.7,
             "image": "https://assetsio.gnwcdn.com/aggro-crab-presents.jpg?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "gamesindustry",
             "source_name": "GamesIndustry.biz",
@@ -273,7 +472,7 @@
             "title": "Aggro Crab launches publishing label to splash that Peak cash",
             "summary": "The studio wants to support 'intense, stylized games with an attitude' - but isn't interested in 'generative AI slop.'",
             "published": "2026-09-01T17:02:48+00:00",
-            "age_hours": 43.7,
+            "age_hours": 45.1,
             "image": "https://eu-images.contentstack.com/v3/assets/blt740a130ae3c5d529/blt7869e5cb034ddd73/6a96c6d9a0ff381c214d73cd/Aggro_Crab_Presents.png?width=720&quality=80&disable=upscale",
             "source_id": "gamedeveloper",
             "source_name": "Game Developer",
@@ -287,113 +486,34 @@
           }
         ]
       },
-      "oyun_adi": "Another Crab's Treasure",
-      "ozet": "aggro crab stüdyosu yeni bir oyun yayıncılığı markası kurdu",
+      "oyun_adi": null,
+      "ozet": "aggro crab yeni tarz oyunlar için yayıncılık etiketini kurdu",
       "gorsel": {
         "durum": "var",
         "sayi": 8,
         "oyun": "Another Crab's Treasure",
         "seri_sayi": 0,
         "seri": null,
-        "temsili": false
+        "temsili": true
       },
-      "baslik": "Another Crab's Treasure"
+      "baslik": "Peak studio Aggro Crab establishes publishing label..."
     },
     {
-      "sira": 4,
-      "aday_index": 4,
+      "sira": 6,
+      "aday_index": 6,
       "tier": "B",
-      "title": "Sony and Microsoft request dismissal of consumer lawsuits over tariff refunds",
+      "title": "Planet Coaster Dev Announces New Game With Disney, And That’s Very Exciting",
       "kaynak_sayisi": 2,
       "reddit_oy": 0,
       "reddit_yorum": 0,
-      "url": "https://www.gamesindustry.biz/sony-and-microsoft-request-dismissal-of-consumer-lawsuits-over-tariff-refunds",
+      "url": "https://www.gamespot.com/articles/planet-coaster-dev-announces-new-game-with-disney-and-thats-very-exciting",
       "aday": {
-        "key": "67bdf7b9e4171024",
-        "title": "Sony and Microsoft request dismissal of consumer lawsuits over tariff refunds",
-        "url": "https://www.gamesindustry.biz/sony-and-microsoft-request-dismissal-of-consumer-lawsuits-over-tariff-refunds",
-        "summary": "Sony and Microsoft have filed motions to dismiss class action lawsuits accusing them of not passing on tariff refunds to consumers. Read more",
-        "published": "2026-09-03T11:24:40+00:00",
-        "age_hours": 1.4,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "endustri"
-        ],
-        "source_count": 2,
-        "sources": [
-          "eurogamer",
-          "gamesindustry"
-        ],
-        "rank_score": 4.87,
-        "members": [
-          {
-            "hash": "67bdf7b9e4171024",
-            "url": "https://www.gamesindustry.biz/sony-and-microsoft-request-dismissal-of-consumer-lawsuits-over-tariff-refunds",
-            "title": "Sony and Microsoft request dismissal of consumer lawsuits over tariff refunds",
-            "summary": "Sony and Microsoft have filed motions to dismiss class action lawsuits accusing them of not passing on tariff refunds to consumers. Read more",
-            "published": "2026-09-03T11:24:40+00:00",
-            "age_hours": 1.4,
-            "image": "https://assetsio.gnwcdn.com/ps5___xbox.jpeg?width=690&quality=85&format=jpg&auto=webp",
-            "source_id": "gamesindustry",
-            "source_name": "GamesIndustry.biz",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.9,
-            "tags": [
-              "endustri"
-            ]
-          },
-          {
-            "hash": "6dcfed467325cce7",
-            "url": "https://www.eurogamer.net/sony-microsoft-no-refunds-us-tariff-lawsuits",
-            "title": "Following Nintendo's example, Sony and Microsoft argue they have no obligation to pass tariff refunds onto customers",
-            "summary": "Lawyers representing Sony and Microsoft have argued, in two separate lawsuits, that the platform holders are not obligated to pass tariff refunds back to consumers. Sony and Microsoft have had to raise prices of their PlayStation and Xbox consoles in 2025 in response to US-imposed tariffs . The US Supreme Court ruled the tariffs illegal earlier this year , allowing impacted companies to request refunds. Read more",
-            "published": "2026-09-03T08:16:40+00:00",
-            "age_hours": 4.5,
-            "image": "https://assetsio.gnwcdn.com/l-intro-1669228211.jpg?width=690&quality=85&format=jpg&auto=webp",
-            "source_id": "eurogamer",
-            "source_name": "Eurogamer",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": null,
-      "ozet": "sony ve microsoft tüketici davalarının düşürülmesini talep etti",
-      "gorsel": {
-        "durum": "yok",
-        "sayi": 0,
-        "oyun": null,
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": false
-      },
-      "baslik": "Sony and Microsoft request dismissal of consumer law..."
-    },
-    {
-      "sira": 5,
-      "aday_index": 5,
-      "tier": "B",
-      "title": "How does Epic Games CEO Tim Sweeney reckon we can fight the industry's \"Crash 2.0\"? By building more factories",
-      "kaynak_sayisi": 2,
-      "reddit_oy": 0,
-      "reddit_yorum": 0,
-      "url": "https://www.eurogamer.net/tim-sweeney-crash-2-more-factories",
-      "aday": {
-        "key": "af3300ad466178d8",
-        "title": "How does Epic Games CEO Tim Sweeney reckon we can fight the industry's \"Crash 2.0\"? By building more factories",
-        "url": "https://www.eurogamer.net/tim-sweeney-crash-2-more-factories",
-        "summary": "It's pretty obvious to anyone that's been paying attention that the games industry is in a pretty rough place at the moment. No matter where you look, there are mass layoffs: Sony , Microsoft , EA , Ubisoft , Take-Two , Epic Games … the list goes on. The reasons are myriad, but generally companies place the reason for 'restructuring' at the door of the contraction of the market as a result of the pandemic boom in gaming, rising development costs, longer production cycles (and higher wages), shifts in consumers spending patterns, and the hardware shortages fuelled by the rising demand for AI da",
-        "published": "2026-09-03T10:08:38+00:00",
-        "age_hours": 2.6,
+        "key": "af17bd0456b01e78",
+        "title": "Planet Coaster Dev Announces New Game With Disney, And That’s Very Exciting",
+        "url": "https://www.gamespot.com/articles/planet-coaster-dev-announces-new-game-with-disney-and-thats-very-exciting",
+        "summary": "Frontier Developments, the UK-based game studio known for a great many creative management sims like Planet Coaster, Zoo Tycoon, and Jurassic World Evolution, has announced a deal with Disney--and it's gotten people excited about the possibilities. In a news release , Frontier said the game is based on \"Disney's iconic portfolio of IP\" and will be \"fully funded\" by Frontier itself. Frontier will also publish it. Frontier CEO Jo Cooke said in a statement, “We are delighted to announce this collaboration with Disney, which further reinforces our clearly defined strategy of developing and nurturi",
+        "published": "2026-09-03T12:43:00+00:00",
+        "age_hours": 1.5,
         "lang": "en",
         "kind": "news",
         "bucket": "news",
@@ -402,21 +522,21 @@
         ],
         "source_count": 2,
         "sources": [
-          "eurogamer",
-          "gamesindustry"
+          "gamesindustry",
+          "gamespot"
         ],
-        "rank_score": 4.85,
+        "rank_score": 4.87,
         "members": [
           {
-            "hash": "af3300ad466178d8",
-            "url": "https://www.eurogamer.net/tim-sweeney-crash-2-more-factories",
-            "title": "How does Epic Games CEO Tim Sweeney reckon we can fight the industry's \"Crash 2.0\"? By building more factories",
-            "summary": "It's pretty obvious to anyone that's been paying attention that the games industry is in a pretty rough place at the moment. No matter where you look, there are mass layoffs: Sony , Microsoft , EA , Ubisoft , Take-Two , Epic Games … the list goes on. The reasons are myriad, but generally companies place the reason for 'restructuring' at the door of the contraction of the market as a result of the pandemic boom in gaming, rising development costs, longer production cycles (and higher wages), shifts in consumers spending patterns, and the hardware shortages fuelled by the rising demand for AI da",
-            "published": "2026-09-03T10:08:38+00:00",
-            "age_hours": 2.6,
-            "image": "https://assetsio.gnwcdn.com/sweeney-factories.jpg?width=690&quality=85&format=jpg&auto=webp",
-            "source_id": "eurogamer",
-            "source_name": "Eurogamer",
+            "hash": "af17bd0456b01e78",
+            "url": "https://www.gamespot.com/articles/planet-coaster-dev-announces-new-game-with-disney-and-thats-very-exciting",
+            "title": "Planet Coaster Dev Announces New Game With Disney, And That’s Very Exciting",
+            "summary": "Frontier Developments, the UK-based game studio known for a great many creative management sims like Planet Coaster, Zoo Tycoon, and Jurassic World Evolution, has announced a deal with Disney--and it's gotten people excited about the possibilities. In a news release , Frontier said the game is based on \"Disney's iconic portfolio of IP\" and will be \"fully funded\" by Frontier itself. Frontier will also publish it. Frontier CEO Jo Cooke said in a statement, “We are delighted to announce this collaboration with Disney, which further reinforces our clearly defined strategy of developing and nurturi",
+            "published": "2026-09-03T12:43:00+00:00",
+            "age_hours": 1.5,
+            "image": "https://www.gamespot.com/wp-content/uploads/2026/09/Screenshot-2026-09-03-at-8.36.45-AM.png?w=300",
+            "source_id": "gamespot",
+            "source_name": "GameSpot",
             "lang": "en",
             "kind": "news",
             "bucket": "news",
@@ -426,13 +546,13 @@
             ]
           },
           {
-            "hash": "bd7fb754cd665bff",
-            "url": "https://www.gamesindustry.biz/this-is-the-worst-crash-weve-seen-since-the-1980s-says-tim-sweeney",
-            "title": "\"This is the worst crash we've seen since the 1980s,\" says Tim Sweeney",
-            "summary": "Epic Games CEO Tim Sweeney says the industry is going through its biggest crash since the 1980s in the latest issue of Edge magazine. Read more",
-            "published": "2026-09-03T07:29:48+00:00",
-            "age_hours": 5.3,
-            "image": "https://assetsio.gnwcdn.com/playstation-controller-glowing-red.jpg?width=690&quality=85&format=jpg&auto=webp",
+            "hash": "71ab9a4a443c1027",
+            "url": "https://www.gamesindustry.biz/planet-coaster-studio-frontier-developments-announces-new-title-based-on-disney-ip",
+            "title": "Planet Coaster studio Frontier Developments announces new title based on Disney IP",
+            "summary": "Frontier Developments has entered into an agreement with Disney to work on a new title based on its portfolio and IP. Read more",
+            "published": "2026-09-03T08:04:49+00:00",
+            "age_hours": 6.1,
+            "image": "https://assetsio.gnwcdn.com/planet-coaster.webp?width=690&quality=85&format=jpg&auto=webp",
             "source_id": "gamesindustry",
             "source_name": "GamesIndustry.biz",
             "lang": "en",
@@ -446,98 +566,16 @@
         ]
       },
       "oyun_adi": null,
-      "ozet": "epic games CEO'su tim sweeney sektördeki kriz için fabrika önerdi",
+      "ozet": "frontier disney ile anlaşarak yeni bir oyun yapacağını duyurdu",
       "gorsel": {
         "durum": "var",
-        "sayi": 11,
-        "oyun": "Fortnite",
+        "sayi": 7,
+        "oyun": "Planet Coaster 2",
         "seri_sayi": 0,
         "seri": null,
         "temsili": true
       },
-      "baslik": "How does Epic Games CEO Tim Sweeney reckon we can fi..."
-    },
-    {
-      "sira": 6,
-      "aday_index": 6,
-      "tier": "B",
-      "title": "Dragon's Dogma 2 gets a big upgrade and Denuvo DRM removed",
-      "kaynak_sayisi": 2,
-      "reddit_oy": 0,
-      "reddit_yorum": 0,
-      "url": "https://www.gamingonlinux.com/2026/09/dragons-dogma-2-gets-a-big-upgrade-and-denuvo-drm-removed",
-      "aday": {
-        "key": "45360030eafe04c7",
-        "title": "Dragon's Dogma 2 gets a big upgrade and Denuvo DRM removed",
-        "url": "https://www.gamingonlinux.com/2026/09/dragons-dogma-2-gets-a-big-upgrade-and-denuvo-drm-removed",
-        "summary": "Capcom released the latest major update for Dragon's Dogma 2 ahead of the Dragon's Dogma 2: Dark Arisen Expansion releasing in October. Read the full article on GamingOnLinux .",
-        "published": "2026-09-02T10:17:09+00:00",
-        "age_hours": 26.5,
-        "lang": "en",
-        "kind": "news",
-        "bucket": "news",
-        "tags": [
-          "indie",
-          "linux"
-        ],
-        "source_count": 2,
-        "sources": [
-          "gamingonlinux",
-          "pcgamesn"
-        ],
-        "rank_score": 4.85,
-        "members": [
-          {
-            "hash": "45360030eafe04c7",
-            "url": "https://www.gamingonlinux.com/2026/09/dragons-dogma-2-gets-a-big-upgrade-and-denuvo-drm-removed",
-            "title": "Dragon's Dogma 2 gets a big upgrade and Denuvo DRM removed",
-            "summary": "Capcom released the latest major update for Dragon's Dogma 2 ahead of the Dragon's Dogma 2: Dark Arisen Expansion releasing in October. Read the full article on GamingOnLinux .",
-            "published": "2026-09-02T10:17:09+00:00",
-            "age_hours": 26.5,
-            "image": null,
-            "source_id": "gamingonlinux",
-            "source_name": "GamingOnLinux",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 1.0,
-            "tags": [
-              "indie",
-              "linux"
-            ]
-          },
-          {
-            "hash": "11213d777268fdcd",
-            "url": "https://www.pcgamesn.com/dragons-dogma-2/denuvo-removal",
-            "title": "Capcom removes Denuvo from Dragon's Dogma 2 ahead of its new expansion",
-            "summary": "As well as a mountain of other changes, Dragon’s Dogma 2 has had Denuvo DRM software removed ahead of the Dark Arisen expansion.",
-            "published": "2026-09-02T10:16:58+00:00",
-            "age_hours": 26.5,
-            "image": "https://www.pcgamesn.com/wp-content/sites/pcgamesn/2026/09/dragons-dogma-2-denuvo.jpg",
-            "source_id": "pcgamesn",
-            "source_name": "PCGamesN",
-            "lang": "en",
-            "kind": "news",
-            "bucket": "news",
-            "weight": 0.7,
-            "tags": [
-              "mainstream",
-              "pc"
-            ]
-          }
-        ]
-      },
-      "oyun_adi": "Dragon's Dogma 2",
-      "ozet": "oyuna büyük güncelleme geldi ve denuvo koruması kaldırıldı",
-      "gorsel": {
-        "durum": "var",
-        "sayi": 8,
-        "oyun": "Dragon's Dogma II",
-        "seri_sayi": 0,
-        "seri": null,
-        "temsili": false
-      },
-      "baslik": "Dragon's Dogma 2"
+      "baslik": "Planet Coaster Dev Announces New Game With Disney, A..."
     }
   ]
 }
